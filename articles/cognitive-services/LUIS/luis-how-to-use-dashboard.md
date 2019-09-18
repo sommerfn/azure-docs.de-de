@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932717"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735052"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Verwenden des Dashboards zum Verbessern Ihrer App
 
@@ -80,7 +80,7 @@ Beispieläußerungen sollten von einer Person hinzugefügt werden, die folgende 
 
 * Sie muss genau verstehen, welche Äußerungen in den unterschiedlichen Absichten verwendet werden.
 * Sie muss wissen, unter welchen Umständen Äußerungen in einer Absicht fälschlicherweise einer anderen Absicht zugeordnet werden.
-* Sie kann entscheiden, ob zwei Absichten, die häufig miteinander verwechselt werden, in einer einzelnen zusammengeführt werden sollten, und kann festlegen, welche unterschiedlichen Daten mit Entitäten extrahiert werden.
+* Sie kann entscheiden, ob zwei Absichten, die häufig miteinander verwechselt werden, in einer einzelnen zusammengeführt werden sollten. Wenn dies der Fall ist, müssen die unterschiedlichen Daten mit Entitäten extrahiert werden.
 
 ### <a name="patterns-and-phrase-lists"></a>Muster und Begriffslisten
 

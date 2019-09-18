@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231271"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914731"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -77,7 +77,7 @@ Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung au
 
 Azure AD Hybrideinbindung wird zurzeit nicht unterstützt, wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
 
-Azure AD Hybrid Join wird für FIPS-konforme TPMs nicht unterstützt. Wenn Ihre Geräte über FIPS-kompatible TPMs verfügen, müssen Sie sie vor dem Fortsetzen der Hybrid-Azure AD-Einbindung deaktivieren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
+Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
 
 Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
@@ -149,7 +149,7 @@ Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs 
 | ----- | ----- | ----- | ----- |
 | Routingfähig | Im Verbund | Version 1703 | Allgemein verfügbar |
 | Nicht routingfähig | Im Verbund | Version 1803 | Allgemein verfügbar |
-| Routingfähig | Verwaltet | Nicht unterstützt | |
+| Routingfähig | Verwaltet | Version 1803 | Allgemein verfügbar, Azure AD SSPR auf Windows-Sperrbildschirm wird nicht unterstützt |
 | Nicht routingfähig | Verwaltet | Nicht unterstützt | |
 
 ## <a name="next-steps"></a>Nächste Schritte

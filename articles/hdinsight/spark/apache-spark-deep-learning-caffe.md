@@ -1,18 +1,18 @@
 ---
 title: Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
-description: Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
+description: Verwenden von Caffe in Apache Spark für verteiltes Deep Learning in Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721516"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814195"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
@@ -175,7 +175,7 @@ Da Sie für dieses Beispiel CPU statt GPU verwenden, muss die letzte Zeile wie f
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe-Konfiguration](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe-Konfiguration 1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
 
 Sie können die anderen Zeilen nach Bedarf anpassen.
 
@@ -184,7 +184,7 @@ Die zweite Datei (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) defin
 - Ändern Sie „file:/Users/mridul/bigml/demodl/mnist_train_lmdb“ in „wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb“.
 - Ändern Sie „file:/Users/mridul/bigml/demodl/mnist_test_lmdb/“ in „wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb“.
 
-![Caffe-Konfiguration](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe-Konfiguration 2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
 Weitere Informationen zum Definieren des Netzwerks finden Sie in der [Caffe-Dokumentation im MNIST-Dataset](https://caffe.berkeleyvision.org/gathered/examples/mnist.html).
 

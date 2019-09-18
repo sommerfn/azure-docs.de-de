@@ -1,19 +1,19 @@
 ---
 title: Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket – Azure
-description: Informationen zum Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket.
+description: Informationen zum Verwalten von Azure HDInsight-Clustern mit dem Enterprise-Sicherheitspaket.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488721"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918911"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket
 Lernen Sie die Benutzer und Rollen im Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) von HDInsight kennen, und erfahren Sie, wie ESP-Cluster verwaltet werden.
@@ -34,7 +34,7 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Apache Ambari-Benu
    
 3. Sie können einen verknüpften Cluster mithilfe des Befehls **Cluster auflisten** anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
 
-   ![Verknüpfter Cluster](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![verknüpfterCluster](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "verknüpfter Cluster")
 
 4. Sie können die Verknüpfung eines Clusters auch aufheben, indem Sie in der Befehlspalette **HDInsight: Unlink a Cluster** (HDInsight: Verknüpfung eines Clusters aufheben) eingeben.
 
@@ -43,11 +43,11 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Apache Ambari-Benu
 Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen. 
 1. Klicken Sie im **Azure-Explorer** auf **Cluster verknüpfen**.
 
-   ![Kontextmenü „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![Cluster verknüpfen Kontextmenü IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Geben Sie **Clustername**, **Benutzername** und **Kennwort** ein. Überprüfen Sie im Falle eines Authentifizierungsfehlers den Benutzernamen und das Kennwort. Fügen Sie optional das Speicherkonto und den Speicherschlüssel hinzu, und wählen Sie anschließend unter „Speichercontainer“ einen Container aus. Die Speicherinformationen beziehen sich auf den Speicher-Explorer in der linken Struktur.
    
-   ![Dialogfeld „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![Cluster verknüpfen Dialogfeld IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
@@ -56,22 +56,22 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernam
    
 3. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
-   ![Verknüpfter Cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![verknüpfter Cluster IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "verknüpfter Cluster IntelliJ]")
 
 4. Sie können die Verknüpfung eines Clusters im **Azure-Explorer** auch aufheben.
    
-   ![Cluster mit aufgehobener Verknüpfung](./media/apache-domain-joined-manage/unlink.png)
+   ![nicht verknüpfter Cluster IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von Eclipse
 
 Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen.
 1. Klicken Sie im **Azure-Explorer** auf **Cluster verknüpfen**.
 
-   ![Kontextmenü „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![Cluster verknüpfen Kontextmenü Eclipse](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Geben Sie **Clustername**, **Benutzername** und **Kennwort** ein, und klicken Sie anschließend auf „OK“, um den Cluster zu verknüpfen. Geben Sie optional das Speicherkonto und den Speicherschlüssel ein, und wählen Sie anschließend den Speichercontainer aus, damit der Speicher-Explorer in der linken Strukturansicht funktioniert.
    
-   ![Dialogfeld „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![Cluster verknüpfen Dialogfeld Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
@@ -79,11 +79,11 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernam
 
 3. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, nachdem Sie auf die Schaltfläche „OK“ geklickt haben, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
-   ![Verknüpfter Cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![verknüpfter Cluster Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Sie können die Verknüpfung eines Clusters im **Azure-Explorer** auch aufheben.
    
-   ![Cluster mit aufgehobener Verknüpfung](./media/apache-domain-joined-manage/unlink.png)
+   ![nicht verknüpfter Cluster Eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Greifen Sie mit dem Enterprise Security Package auf die Cluster zu.
 

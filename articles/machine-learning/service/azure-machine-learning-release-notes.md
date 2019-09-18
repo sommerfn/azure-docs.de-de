@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278293"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900446"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -23,12 +23,42 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2019-09-09"></a>09.09.2019
+
+### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Neue Weboberfläche für Azure Machine Learning-Arbeitsbereiche (Vorschau)
+Die neue Weboberfläche ermöglicht Data Scientists und Datentechnikern, ihren End-to-End-Lebenszyklus für Machine Learning vom Vorbereiten und Visualisieren von Daten bis hin zu Trainings- und Bereitstellungsmodellen an einem einzigen Ort abzuschließen. 
+
+![Benutzeroberfläche des Azure Machine Learning-Arbeitsbereichs (Vorschau)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**Wichtige Features:**
+
+Mit dieser neuen Azure Machine Learning-Benutzeroberfläche können Sie nun folgende Aktionen ausführen:
++ Verwalten Ihrer Notebooks oder Verknüpfen mit Jupyter
++ [Ausführen automatisierter ML-Experimente](tutorial-first-experiment-automated-ml.md)
++ [Erstellen von Datasets aus lokalen Dateien, Datenspeichern und Webdateien](how-to-create-register-datasets.md)
++ Untersuchen und Vorbereiten von Datasets für die Modellerstellung
++ Überwachen der Datenabweichung für Ihre Modelle 
++ Anzeigen aktueller Ressourcen aus einem Dashboard
+
+Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome, Firefox, Safari und Microsoft Edge (Vorschau).
+
+**Bekannte Probleme:**
+
+1. Aktualisieren Sie Ihren Browser, wenn die Meldung „Leider ist ein Fehler aufgetreten. Fehler beim Laden von Blockdateien“ angezeigt wird, wenn die Bereitstellung ausgeführt wird.  
+
+1. Die Datei kann in Notebooks und Dateien nicht gelöscht oder umbenannt werden. Während der Public Preview können Sie die Jupyter-Benutzeroberfläche oder das Terminal in der Notebook-VM verwenden, um Aktualisierungsdateivorgänge auszuführen. Da es sich um ein eingebundenes Netzwerkdateisystem handelt, spiegeln sich alle Änderungen, die Sie an der Notebook-VM vornehmen, sofort im Notebook-Arbeitsbereich wider. 
+
+1. So stellen Sie eine SSH-Verbindung mit der Notebook-VM her:
+   1. Suchen Sie die SSH-Schlüssel, die während der VM-Einrichtung erstellt wurden. Alternativ können Sie die Schlüssel im Azure ML-Azure-Portal suchen: Öffnen Sie die Registerkarte „Compute“, suchen Sie die Notebook-VM in der Liste, öffnen Sie ihre Eigenschaften, und kopieren Sie die Schlüssel aus dem Dialogfeld.
+   1. Importieren Sie diese öffentlichen und privaten SSH-Schlüssel auf Ihren lokalen Computer.
+   1. Verwenden Sie sie, um eine SSH-Verbindung mit der Notebook-VM herzustellen. 
+
 ## <a name="2019-09-03"></a>03.09.2019
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK für Python v1.0.60
 
 + **Neue Features**
   + FileDataset wurde eingeführt, das auf einzelne oder mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs verweist. Die Dateien können ein beliebiges Format aufweisen. Mit FileDataset haben Sie die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Weitere Informationen zu FileDataset finden Sie unter https://aka.ms/file-dataset.
-  + Hinzugefügte Pipeline-YAML-Unterstützung für PythonScript Step, Adla Step, Databrick Step, DataTransferStep und AzureBatch Step
+  + Hinzugefügte Pipeline-YAML-Unterstützung für PythonScript Step, Adla Step, Databricks Step, DataTransferStep und AzureBatch Step
 
 + **Fehlerbehebungen und Verbesserungen**
   + **azureml-automl-core**
@@ -39,7 +69,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + AutoML-Modelle geben jetzt AutoMLExceptions zurück.
     + Dieses Release verbessert die Ausführungsleistung automatisierter lokaler Machine Learning-Ausführungen.
   + **azureml-core**
-    + `Dataset.get_all()` wurde eingeführt und gibt ein Wörterbuch von `TabularDataset`- und `FileDataset`-Objekten zurück, die als Schlüssel ihren Registrierungsnamen verwenden. 
+    + Dataset.get_all(workspace) wurde eingeführt und gibt ein Wörterbuch von `TabularDataset`- und `FileDataset`-Objekten zurück, die als Schlüssel ihren Registrierungsnamen verwenden. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -51,7 +81,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Die Methoden `to_csv_files` und `to_parquet_files` wurden `TabularDataset` hinzugefügt. Diese Methoden ermöglichen die Konvertierung zwischen `TabularDataset` und `FileDataset`, indem die Daten in Dateien des angegebenen Formats konvertiert werden.
     + Automatische Anmeldung bei der Basisimageregistrierung beim Speichern der von Model.package() erstellten Dockerfile-Datei.
     + „gpu_support“ ist nicht mehr erforderlich. AzureML erkennt und verwendet nun automatisch die Nvidia-Docker-Erweiterung, wenn sie verfügbar ist. Dieses Element wird in einer späteren Version entfernt.
-    + Hinzugefügte Unterstützung für das Erstellen, Aktualisieren und Verwenden von PipelineDrafts.
+    + Unterstützung für das Erstellen, Aktualisieren und Verwenden von PipelineDrafts wurde hinzugefügt.
     + Dieses Release verbessert die Ausführungsleistung automatisierter lokaler Machine Learning-Ausführungen.
     + Benutzer können Metriken aus dem Ausführungsverlauf nach Namen abfragen.
     + Verbesserte Protokollierung durch Verwendung von benutzerdefinierten Ausnahmen anstelle von generischen Ausnahmen in den Vorhersagetasks.
@@ -66,10 +96,16 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **azureml-pipeline-core**
     + Unterstützung für das Erstellen, Aktualisieren und Verwenden von PipelineDrafts wurde hinzugefügt. Kann verwendet werden, um änderbare Pipelinedefinitionen zu verwalten und diese interaktiv für die Ausführung zu verwenden.
   + **azureml-train-automl**
-    + Feature zum Installieren spezifischer Versionen von GPU-fähigem PyTorch v1.1.0, Cuda Toolkit 9.0, pytorch-transformers erstellt, das zum Aktivieren von BERT/XLNet in der Python-Remotelaufzeitumgebung erforderlich ist.
+    + Feature zum Installieren spezifischer Versionen von GPU-fähigem PyTorch v1.1.0, Cuda Toolkit 9.0, pytorch-transformers wurde erstellt, das zum Aktivieren von BERT/XLNet in der Python-Remoteruntime erforderlich ist.
   + **azureml-train-core**
     + Früher Ausfall einiger Hyperparameterraum-Definitionsfehler direkt im SDK anstelle auf der Serverseite.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning Data Prep SDK, Version 1.1.14
++ **Fehlerbehebungen und Verbesserungen**
+  + Das Schreiben in ADLS/ADLSGen2 wurde mit dem RAW-Pfad und den Anmeldeinformationen aktiviert.
+  + Es wurde ein Fehler behoben, der dazu führte, dass `include_path=True` nicht für `read_parquet` funktionierte.
+  + Ein `to_pandas_dataframe()`-Fehler aufgrund der Ausnahme „Ungültiger Eigenschaftswert: hostSecret“ wurde korrigiert.
+  + Es wurde ein Fehler behoben, bei dem Dateien nicht im Spark-Modus auf DBFS gelesen werden konnten.
   
 ## <a name="2019-08-19"></a>2019-08-19
 
@@ -81,7 +117,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **automl-client-core-nativeclient**
     + Der Fehler wurde behoben, der auftrat, wenn Trainings- oder Validierungsbezeichnungen („y“ bzw. „y_valid“) in Form eines Pandas-Datenrahmens, jedoch nicht als NumPy-Array angegeben werden.
     + Die Schnittstelle zum Erstellen eines `RawDataContext`-Objekts wurde aktualisiert, sodass nur die Daten und das `AutoMLBaseSettings`-Objekt erforderlich sind.
-    +  AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. - AutoML-Benutzer können nun Intervalle aus dem Trainingssatz löschen, die bei der Prognose im Trainingssatz nicht vorhanden sind.
+    +  AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. – AutoML-Benutzer können nun Intervalle aus dem Testsatz löschen, die bei der Prognose nicht im Trainingssatz vorhanden sind.
   + **azure-cli-ml**
     + Sie können jetzt das SSL-Zertifikat für den im AKS-Cluster bereitgestellten Bewertungsendpunkt aktualisieren. Dies gilt sowohl für von Microsoft generierte Zertifikate als auch für Kundenzertifikate.
   + **azureml-automl-core**
@@ -92,7 +128,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Wenn beim Ausführen der Ensembleiteration für den Trainingstyp der Kreuzvalidierung Fehler beim Herunterladen der Modelle auftraten, die für das gesamte Dataset trainiert wurden, bestand eine Inkonsistenz zwischen den Modellgewichtungen und den Modellen, die in das Abstimmungsensemble aufgenommen wurden.
     + Der Fehler wurde behoben, der auftrat, wenn Trainings- oder Validierungsbezeichnungen („y“ bzw. „y_valid“) in Form eines Pandas-Datenrahmens, jedoch nicht als NumPy-Array angegeben werden.
     + Das Problem wurde behoben, das bei den Vorhersageaufgaben auftrat, wenn in den booleschen Spalten von Eingabetabellen der Wert „Kein“ gefunden wurde.
-    + AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. - AutoML-Benutzer können nun Intervalle aus dem Trainingssatz löschen, die bei der Prognose im Trainingssatz nicht vorhanden sind.
+    + AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. – AutoML-Benutzer können nun Intervalle aus dem Testsatz löschen, die bei der Prognose nicht im Trainingssatz vorhanden sind.
   + **azureml-core**
     + Ein Problem bei der Reihenfolge des Parameters „blob_cache_timeout“ wurde behoben.
     + Den Systemfehlern wurden externe Ausnahmetypen für die Anpassung und Transformation hinzugefügt.
@@ -268,7 +304,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **azureml-explain-model**
     + Fehlerbehebung: „transformations“-Argument für LIME Explainer für unformatierte Featurepriorität im azureml-contrib-explain-model-Paket.
     + SciPy Sparse-Unterstützung für Lime Explainer hinzugefügt.
-    + SHAP Linear Explainer-Wrapper wurde hinzugefügt, und Tabular Explainer wurde eine weitere Ebene zur Erklärung von linearen Modellen hinzugefügt.
+    + Shape Linear Explainer-Wrapper wurde hinzugefügt, und Tabular Explainer wurde eine weitere Ebene zur Erklärung von linearen Modellen hinzugefügt.
     + Für Mimic Explainer in der Erklärungsmodellbibliothek wurde der Fehler behoben, der bei geringer Dateneingabe für „include_local=False“ aufgetreten ist.
     + Erwartete Werte wurden der automl-Ausgabe hinzugefügt.
     + Die Featurepriorität für die Permutation wurde für den Fall korrigiert, in dem das „transformations“-Argument bereitgestellt wurde, um die unformatierte Featurepriorität zu erhalten.
@@ -405,7 +441,7 @@ Wir haben eine Änderung rückgängig gemacht, die zwar die Leistung verbessert,
 + **Fehlerbehebungen und Verbesserungen**
   + Abhängigkeit von paramiko aus azureml-core entfernt. Warnung zu Veraltung für ältere Anfügemethoden für Computeziele hinzugefügt.
   + Leistung von „run.create_children“ verbessert
-  + Im Mimic Explainer mit binärem Klassifizierer die Reihenfolge von Wahrscheinlichkeiten korrigiert, wenn die Wahrscheinlichkeit „Lehrer“ für die Skalierung von Shapewerten verwendet wird
+  + Im Mimic Explainer mit binärem Klassifizierer wurde die Reihenfolge von Wahrscheinlichkeiten korrigiert, wenn die Wahrscheinlichkeit „Lehrer“ für die Skalierung von Shapewerten verwendet wird.
   + Verbesserte Fehlerbehandlung und Meldung für automatisiertes maschinelles Lernen. 
   + Problem durch Timeout bei Iteration für automatisiertes maschinelles Lernen behoben.
   + Leistung bei der Transformation von Zeitreihen für automatisiertes maschinelles Lernen verbessert.

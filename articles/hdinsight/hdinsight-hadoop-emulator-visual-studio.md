@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fba32c9c21faa6e02c8b48b3907ab67e47036d5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65605454"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885519"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Verwenden der Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox
 
@@ -45,13 +45,13 @@ Stellen Sie sicher, dass Hortonworks Sandbox ausgeführt wird. Führen Sie dann 
 
 3. Geben Sie im Dialogfeld **Mit HDInsight-Emulator verbinden** das Kennwort ein, das Sie für Ambari konfiguriert haben.
 
-    ![Screenshot des Dialogfelds mit hervorgehobenen Kennworttextfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
+    ![Screenshot des Dialogfelds mit hervorgehobenen ambari-Kennworttextfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     Klicken Sie auf **Weiter**, um fortzufahren.
 
 4. Verwenden Sie das Feld **Kennwort**, um das Kennwort einzugeben, das Sie für das `root`-Konto konfiguriert haben. Behalten Sie für die anderen Felder den Standardwert bei.
 
-    ![Screenshot des Dialogfelds mit hervorgehobenen Kennworttextfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Screenshot des Dialogfelds mit hervorgehobenen Stammkennwort-Textfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
 
     Klicken Sie auf **Weiter**, um fortzufahren.
 
@@ -90,7 +90,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     Sie können auch das Dropdownmenü neben **Senden** verwenden, um **Erweitert** auszuwählen. Mit den erweiterten Optionen können Sie beim Senden des Auftrags weitere Optionen angeben.
 
-    ![Screenshot des Dialogfelds „Skriptaktion übermitteln“](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![Screenshot des Dialogfeld-Hives „Skriptaktion übermitteln“](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
 3. Nachdem Sie die Abfrage übermittelt haben, wird der Auftragsstatus angezeigt. Der Auftragsstatus zeigt Informationen zum Auftrag an, während er von Hadoop verarbeitet wird. Der **Auftragsstatus** zeigt den Status des Auftrags an. Der Status wird in regelmäßigen Abständen aktualisiert, oder Sie können das Aktualisierungssymbol verwenden, um den Status manuell zu aktualisieren.
 
@@ -149,7 +149,7 @@ Während Hive eine SQL-ähnliche Sprache zum Arbeiten mit strukturierten Daten b
 
     Für Pig wird zwar eine andere Sprache als für Hive verwendet, aber die Ausführung über die Schaltfläche **Übermitteln** ist für beide Sprachen gleich. Wenn Sie die Dropdownliste neben **Übermitteln** auswählen, wird ein erweitertes Sendedialogfeld für Pig angezeigt.
 
-    ![Screenshot des Dialogfelds „Skriptaktion übermitteln“](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![Screenshot des Dialogfeld-Pigs „Skriptaktion übermitteln“](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
 3. Der Auftragsstatus und die Ausgabe werden genauso wie für eine Hive-Abfrage angezeigt.
 
@@ -185,7 +185,7 @@ Mit Data Lake-Tools können Sie leicht Informationen zu Aufträgen anzeigen, die
 
 Sie können die Eigenschaften einer Datenbank oder Tabelle anzeigen. Die Auswahl von **Eigenschaften** zeigt Details für das ausgewählte Element im Fenster „Eigenschaften“ an. Sehen Sie sich beispielsweise die Informationen im folgenden Screenshot an:
 
-![Screenshot des Eigenschaftenfensters](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![Screenshot des Eigenschaftenfensters](./media/hdinsight-hadoop-emulator-visual-studio/hdi-properties-window.png)
 
 ### <a name="create-a-table"></a>Erstellen einer Tabelle
 

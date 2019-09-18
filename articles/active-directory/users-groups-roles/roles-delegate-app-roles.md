@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837879"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382487"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
-In diesem Artikel wird beschrieben, wie Sie über App-Berechtigungen in benutzerdefinierten Rollen in Azure Active Directory (Azure AD) Ihre Anforderungen an die Anwendungsverwaltung erfüllen können. Mit Azure Active Directory (Azure AD) können Sie die Anwendungserstellung und Verwaltungsberechtigungen wie folgt delegieren:
+In diesem Artikel wird beschrieben, wie Sie über Berechtigungen, die von benutzerdefinierten Rollen in Azure Active Directory (Azure AD) gewährt werden, Ihre Anforderungen an die Anwendungsverwaltung erfüllen können. In Azure AD können Sie die Anwendungserstellung und Verwaltungsberechtigungen wie folgt delegieren:
 
 - [Einschränken, welche Benutzer Anwendungen erstellen können](#restrict-who-can-create-applications), und Verwalten der erstellten Anwendungen. Standardmäßig können in Azure AD alle Benutzer Anwendungsregistrierungen registrieren und alle Aspekte der Anwendungen verwalten, die sie erstellen. Dies kann so eingeschränkt werden, dass diese Berechtigung nur für ausgewählte Personen gilt.
 - [Zuweisen eines oder mehrerer Besitzer zu einer Anwendung](#assign-application-owners). Dies ist eine einfache Möglichkeit, einer Person die Berechtigung zu erteilen, alle Aspekte der Azure AD-Konfiguration für eine bestimmte Anwendung zu verwalten.
@@ -40,7 +40,7 @@ Standardmäßig können in Azure AD alle Benutzer Anwendungsregistrierungen reg
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>So deaktivieren Sie die Standardoption zum Erstellen von Anwendungsregistrierungen oder Erteilen der Einwilligung für Anwendungen
 
 1. Melden Sie sich bei Ihrer Azure AD-Organisation mit einem Konto an, das für die Rolle „Globaler Administrator“ in der Azure AD-Organisation berechtigt ist.
-1. Wenn Sie ausreichende Berechtigungen erhalten haben, legen Sie eine oder beide der folgenden fest:
+1. Legen Sie eine der folgenden Einstellungen oder beide fest:
 
     - Legen Sie auf der Seite [„Benutzereinstellungen“ für Ihre Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) die Option **Benutzer können Anwendungen registrieren** auf „Nein“ fest. Dadurch wird die Standardoption für Benutzer zum Erstellen von Anwendungsregistrierungen deaktiviert.
     - Legen Sie unter  [Benutzereinstellungen – Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) die Einstellung **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf „Nein“ fest. Dadurch wird die Standardfunktion für Benutzer deaktiviert, Anwendungen den Zugriff auf Unternehmensdaten in ihrem Namen zu gestatten.

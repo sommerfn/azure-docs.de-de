@@ -1,6 +1,6 @@
 ---
 title: Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
-description: Verwenden des HDInsight-Features „Autoskalierung“ für die automatische Skalierung von Clustern
+description: Verwenden des Azure HDInsight-Features „Autoskalierung“ für die automatische Apache Hadoop-Skalierung von Clustern
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9071b41ab39c62f639b62a439e4d2530a7d7e11b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509107"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880068"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
 
@@ -31,7 +31,7 @@ Die folgende Tabelle beschreibt die Clustertypen und Versionen, die mit dem Feat
 | HDInsight 3.6 ohne ESP | Ja | Ja | Nein | Nein | Nein | Nein | Nein |
 | HDInsight 4.0 ohne ESP | Ja | Ja | Nein | Nein | Nein | Nein | Nein |
 | HDInsight 3.6 mit ESP | Ja | Ja | Nein | Nein | Nein | Nein | Nein |
-| HDInsight 3.6 mit ESP | Ja | Ja | Nein | Nein | Nein | Nein | Nein |
+| HDInsight 4.0 mit ESP | Ja | Ja | Nein | Nein | Nein | Nein | Nein |
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -85,7 +85,7 @@ Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, 
     * **Mindestzahl** von Workerknoten.  
     * **Maximale** Anzahl von Workerknoten.  
 
-    ![Aktivieren der Option für die lastbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Aktivieren der lastbasierten Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-using-autoscale.png)
 
 Die anfängliche Anzahl der Workerknoten kann vom Mindest- bis zum Höchstwert reichen. Dieser Wert definiert die Anfangsgröße des Clusters bei der Erstellung. Die Mindestzahl der Workerknoten muss größer als 0 (null) sein.
 
@@ -103,7 +103,7 @@ Um das Feature „Autoskalierung“ mit zeitplanbasierter Skalierung zu aktivier
 1. Bearbeiten Sie die Zeit, zu der die Bedingung wirksam werden soll, und die Anzahl der Knoten, auf die der Cluster skaliert werden soll.
 1. Fügen Sie gegebenenfalls weitere Bedingungen hinzu.
 
-    ![Aktivieren der Option für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Aktivieren der zeitplanbasierten Erstellung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
 Die Anzahl der Knoten muss zwischen 1 und der Anzahl der Workerknoten liegen, die Sie vor dem Hinzufügen von Bedingungen eingegeben haben.
 
@@ -111,7 +111,7 @@ Die Anzahl der Knoten muss zwischen 1 und der Anzahl der Workerknoten liegen, di
 
 Wählen Sie sowohl für die last- als auch für die zeitplanbasierte Skalierung den VM-Typ für Workerknoten aus, indem Sie auf **Workerknotengröße** und **Hauptknotengröße** klicken. Nachdem Sie den VM-Typ für jeden Knotentyp ausgewählt haben, können Sie den Bereich der geschätzten Kosten für den gesamten Cluster sehen. Passen Sie die VM-Typen entsprechend Ihrem Budget an.
 
-![Aktivieren der Option für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![Aktivieren der Knotengröße für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 Ihr Abonnement verfügt für jede Region über ein Kapazitätskontingent. Die Gesamtzahl der Kerne Ihrer Hauptknoten darf in Kombination mit der maximalen Anzahl von Workerknoten das Kapazitätskontingent nicht überschreiten. Dieses Kontingent ist jedoch eine weiche Grenze. Sie können immer ein Supportticket erstellen, um es problemlos erhöhen zu lassen.
 
@@ -189,7 +189,7 @@ Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und ein
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 Zum Aktivieren der Autoskalierung in einem ausgeführten Cluster wählen **Clustergröße** unter **Einstellungen**. Klicken Sie dann auf **Autoskalierung aktivieren**. Wählen Sie die gewünschte Art der Autoskalierung, und geben Sie die Optionen für die last- oder zeitplanbasierte Skalierung ein. Klicken Sie abschließend auf **Speichern**.
 
-![Aktivieren der Option für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Aktivieren der zeitplanbasierte Autoskalierung des Workerknotens für einen aktiven Cluster](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>Verwenden der REST-API
 Um die Autoskalierung für einen aktiven Cluster über die REST-API zu aktivieren oder zu deaktivieren, senden Sie eine POST-Anforderung an den Endpunkt der Autoskalierung, wie im folgenden Codeausschnitt gezeigt:
@@ -231,7 +231,7 @@ Die ausgeführten Aufträge werden weiterhin ausgeführt und abgeschlossen. Für
 
 Der im Azure-Portal aufgeführte Clusterstatus kann Ihnen helfen, die Aktivitäten der Autoskalierung zu überwachen.
 
-![Aktivieren der Option für die lastbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Aktivieren des Clusterstatus für die lastbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
 Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden in der folgenden Liste erläutert.
 
@@ -251,7 +251,7 @@ Sie können den Verlauf des zentralen Hoch- und Herunterskalierens des Clusters 
 
 Wählen Sie unter **Überwachung** **Metriken** aus. Klicken Sie dann im Dropdownfeld **Metrik** auf **Metrik hinzufügen** und auf **Anzahl der aktiven Worker**. Klicken Sie auf die Schaltfläche in der oberen rechten Ecke, um den Zeitbereich zu ändern.
 
-![Aktivieren der Option für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![Aktivieren der Metrik für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

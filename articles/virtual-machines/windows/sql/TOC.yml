@@ -3,7 +3,7 @@
     - name: Was ist eine SQL Server-VM?
       href: virtual-machines-windows-sql-server-iaas-overview.md
     - name: Welche SQL-Option sollte ich auswählen?
-      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json&bc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2fbreadcrumb%2ftoc.json
     - name: Versionshinweise
       href: virtual-machines-windows-sql-server-iaas-release-notes.md
 - name: Schnellstarts

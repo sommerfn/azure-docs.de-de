@@ -1,6 +1,6 @@
 ---
 title: Ports für Hadoop-Dienste in HDInsight – Azure
-description: Enthält eine Liste mit Ports, die von in HDInsight ausgeführten Hadoop-Diensten verwendet werden.
+description: Dadurch wird eine Liste der Ports bereitgestellt, die von Apache Hadoop-Diensten in Azure HDInsight verwendet werden.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464688"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733425"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
@@ -41,7 +41,7 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 | sshd |23 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog-REST-API. Weitere Informationen finden Sie unter [„Verwenden von MapReduce mit Curl“](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| WebHCat |443 |HTTPS |HCatalog-REST-API. Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Curl](hadoop/apache-hadoop-use-mapreduce-curl.md). |
 | HiveServer2 |443 |ODBC |Stellt per ODBC ein Verbindung mit Hive her. Siehe [Verbinden von Excel mit HDInsight mithilfe des Microsoft ODBC-Treibers](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 |443 |JDBC |Stellt per JDBC ein Verbindung mit Apache Hive her. Siehe [Herstellen einer Verbindung mit Apache Hive unter HDInsight per Hive-JDBC-Treiber](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 

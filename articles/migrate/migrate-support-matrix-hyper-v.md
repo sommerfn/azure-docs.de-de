@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279574"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376091"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
 
@@ -82,7 +82,7 @@ Für die Bewertung führt Azure Migrate eine einfache Appliance aus, die virtuel
 
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
-| **Bereitstellung einer Appliance**   |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die von Azure Migrate bereitgestellte Appliance-VM ist eine Hyper-V-VM mit Version 5.0.<br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs und 1 externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
+| **Bereitstellung einer Appliance**   |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die von Azure Migrate bereitgestellte Appliance-VM ist eine Hyper-V-VM mit Version 5.0.<br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
 | **Azure Migrate-Projekt**  |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden.<br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> Sie können bis zu 35.000 VMs in einem Projekt bewerten.
 | **Hyper-V-Hosts**          | Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
 | **Ermittlung**              | Eine einzelne Appliance kann bis zu 5.000 VMs ermitteln.

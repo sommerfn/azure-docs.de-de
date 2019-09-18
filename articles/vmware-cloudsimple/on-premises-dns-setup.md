@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972433"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845306"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Erstellen einer Zone auf einem Microsoft Windows-DNS-Server
 
-1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, und wählen Sie dann **New Zone** (Neue Zone) aus.  
-![Neue Zone](media/DNS01.png)
+1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, und wählen Sie dann **New Zone** (Neue Zone) aus. 
+  
+    ![Neue Zone](media/DNS01.png)
 2. Wählen Sie **Stub Zone** (Stubzone) aus, und klicken Sie dann auf **Next** (Weiter).
-![Neue Zone](media/DNS02.png)
+
+    ![Neue Zone](media/DNS02.png)
 3. Wählen Sie abhängig von Ihrer Umgebung die entsprechende Option aus, und klicken Sie dann auf **Next** (Weiter).
-![Neue Zone](media/DNS03.png)
+
+    ![Neue Zone](media/DNS03.png)
 4. Wählen Sie **Forward lookup zone (Forward-Lookupzone)**   aus, und klicken Sie dann auf **Next** (Weiter).
-![Neue Zone](media/DNS01.png)
+
+    ![Neue Zone](media/DNS01.png)
 5. Geben Sie den Zonennamen ein, und klicken Sie auf **Next** (Weiter).
-![Neue Zone](media/DNS05.png)
+
+    ![Neue Zone](media/DNS05.png)
 6. Geben Sie die IP-Adressen der DNS-Server für die private Cloud ein, die Sie aus dem CloudSimple-Portal abgerufen haben.
-![Neue Zone](media/DNS06.png)
+
+    ![Neue Zone](media/DNS06.png)
 7. Klicken Sie bei Bedarf auf **Next** (Weiter), um das Setup des Assistenten abzuschließen.
 
 ## <a name="create-a-conditional-forwarder"></a>Erstellen einer bedingten Weiterleitung
@@ -91,5 +97,6 @@ zone “cloudsimple.io” {
 
 1. Öffnen Sie den DNS-Manager auf dem DNS-Server.
 2. Klicken Sie mit der rechten Maustaste auf **Conditional Forwarders** (Bedingte Weiterleitungen), und wählen Sie dann die Option zum Hinzufügen einer neuen bedingten Weiterleitung aus.
-![Bedingte Weiterleitung 1 Windows-DNS](media/DNS08.png)
+
+    ![Bedingte Weiterleitung 1 Windows-DNS](media/DNS08.png)
 3. Geben Sie die DNS-Domäne und die IP-Adresse der DNS-Server in der privaten Cloud ein, und klicken Sie dann auf **OK**.

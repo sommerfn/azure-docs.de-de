@@ -1,19 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung für lokale Hyper-V-VMs in VMM-Clouds nach Azure mit Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Notfallwiederherstellung für lokale Hyper-V-VMs in VMM-Clouds nach Azure mit Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs in System Center VMM-Clouds nach Azure mit Site Recovery einrichten.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59e6bbbca982d428d4e590cb647f186e1c3fec3a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398151"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813775"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 

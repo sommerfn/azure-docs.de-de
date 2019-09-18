@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
-description: Hier erhalten Sie Informationen zum Erstellen und Verwalten von HDInsight-Clustern mithilfe des Azure-Portals.
+description: Hier erhalten Sie Informationen zum Erstellen und Verwalten von Azure HDInsight-Clustern mithilfe des Azure-Portals.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8bb6ca0483a7bc0a5af63a1fae7e5e5a5415abba
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460629"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810309"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -142,7 +142,7 @@ Nachdem ein Cluster erstellt wurde, können Sie weitere Azure-Speicherkonten und
 
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem Azure HDInsight-Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
-Weitere Informationen finden Sie unter [„Skalieren von HDInsight-Clustern“](./hdinsight-scaling-best-practices.md).
+Weitere Informationen finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md).
 
 ## <a name="pauseshut-down-clusters"></a>Anhalten/Herunterfahren von Clustern
 
@@ -208,8 +208,8 @@ Das Kennwort wird auf allen Knoten im Cluster geändert.
 
 2. Laden Sie die Datei an einen Speicherort hoch, auf den von HDInsight über eine HTTP- oder HTTPS-Adresse zugegriffen werden kann. Verwenden Sie z.B. einen öffentlichen Dateispeicher wie OneDrive oder Azure Blob Storage. Speichern Sie den URI (HTTP- oder HTTPS-Adresse) in der Datei, da dieser URI im nächsten Schritt benötigt wird.
 3. Wählen Sie auf der [Startseite des Clusters](#homePage) unter **Einstellungen** die Option **Skriptaktionen** aus.
-4. Wählen Sie auf der Seite **„Script actions“** (Skriptaktionen) die Option **„+ Submit new“** (+ Neue übermitteln) aus.
-5. Geben Sie auf der Seite **„Skriptaktion übermitteln“** die folgenden Informationen ein:
+4. Wählen Sie auf der Seite **Skriptaktionen** die Option **+ Neue übermitteln** aus.
+5. Geben Sie auf der Seite **Skriptaktion übermitteln** die folgenden Informationen ein:
 
    | Feld | Wert |
    | --- | --- |
@@ -247,7 +247,7 @@ Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilf
 
 ## <a name="cluster-size"></a>Clustergröße
 
-Die Kachel **„Clustergröße“** auf der [Cluster-Homepage](#homePage) zeigt die Anzahl der Kerne an, die diesem Cluster zugewiesen sind, und wie sie für die Knoten innerhalb des Clusters zugewiesen sind.
+Die Kachel **Clustergröße** auf der [Cluster-Homepage](#homePage) zeigt die Anzahl der Kerne an, die diesem Cluster zugewiesen sind, und wie sie für die Knoten innerhalb des Clusters zugewiesen sind.
 
 > [!IMPORTANT]  
 > Um die vom HDInsight-Cluster bereitgestellten Dienste zu überwachen, müssen Sie Ambari Web oder die Ambari-REST-API verwenden. Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mit Apache Ambari](hdinsight-hadoop-manage-ambari.md).

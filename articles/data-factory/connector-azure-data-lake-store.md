@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 4bb57190a310e1ea4b8e5c511f1acd90f53b8f09
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276046"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813469"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
@@ -163,12 +163,12 @@ In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Storage-Infor
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-dataset).
+- Informationen zu anderen Formaten wie **ORC** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen.
+Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen.
 Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
 | Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
@@ -209,7 +209,7 @@ Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `location`
 
 ### <a name="other-format-dataset"></a>Dataset in anderen Formaten
 
-Zum Kopieren von Daten in und aus Azure Data Lake Storage Gen1 im **ORC- oder JSON-Format** werden die folgenden Eigenschaften unterstützt:
+Zum Kopieren von Daten in und aus Azure Data Lake Storage Gen1 im **ORC-Format** werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -261,12 +261,12 @@ Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Defin
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store als Quelle
 
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+#### <a name="format-based-source"></a> Quelle für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen.  Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
+Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen.  Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -324,7 +324,7 @@ Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Tr
 
 #### <a name="other-format-source"></a>Quelle in anderen Formaten
 
-Zum Kopieren von Daten aus Azure Data Lake Storage Gen1 im **ORC- oder JSON-Format** werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+Zum Kopieren von Daten aus Azure Data Lake Storage Gen1 im **ORC-Format** werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -366,12 +366,12 @@ Zum Kopieren von Daten aus Azure Data Lake Storage Gen1 im **ORC- oder JSON-Form
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store als Senke
 
-- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie im Abschnitt [Senke im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-sink).
+- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-sink).
 - Informationen zum Kopieren in andere Formate wie **ORC oder JSON** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
 
-#### <a name="format-based-sink"></a> Senke im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+#### <a name="format-based-sink"></a> Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen.  Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSettings`-Einstellungen in der formatbasierten Kopiersenke unterstützt:
+Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen.  Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSettings`-Einstellungen in der formatbasierten Kopiersenke unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -419,7 +419,7 @@ Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Tre
 
 #### <a name="other-format-sink"></a>Senke in anderen Formaten
 
-Zum Kopieren von Daten in Azure Data Lake Storage Gen1 im **ORC- oder JSON-Format** werden die folgenden Eigenschaften im Abschnitt **sink** unterstützt:
+Zum Kopieren von Daten in Azure Data Lake Storage Gen1 im **ORC-Format** werden die folgenden Eigenschaften im Abschnitt **sink** unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

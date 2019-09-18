@@ -35,8 +35,6 @@
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
-        - name: Generieren einer Geräteverbindungszeichenfolge
-          href: howto-generate-connection-string.md
         - name: Vorbereiten und Verbinden einer (generischen) Node.js-Anwendung
           href: howto-connect-nodejs.md
         - name: Vorbereiten und Verbinden eines MXChip IoT DevKit

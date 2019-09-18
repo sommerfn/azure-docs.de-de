@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191784"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883404"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 
@@ -98,6 +98,9 @@ Dieser Bericht enthält Beschreibungen aller Richtlinien, gegen die verstoßen w
 ## <a name="preview-creation"></a>Erstellung einer Vorschau
 
 Während des Schritts **Erstellung einer Vorschau** erstellen wir eine Version Ihres Angebots, die nur für die Zielgruppe zugänglich ist, die Sie im Abschnitt „Vorschau“ Ihres Angebots angegeben haben.
+
+>[!Note]
+> Verwenden Sie diesen Schritt nicht, um Personen außerhalb Ihrer Organisation Einblick in ein Angebot zu geben. Verwenden Sie stattdessen die Option **Privates Angebot**. An diesem Punkt wurde ihr Angebot noch nicht vollständig getestet und überprüft und ist nicht für die externe Verteilung bereit.
 
 ## <a name="publisher-approval"></a>Genehmigung des Herausgebers
 

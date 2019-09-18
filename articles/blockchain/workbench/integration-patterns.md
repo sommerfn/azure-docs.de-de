@@ -1,21 +1,21 @@
 ---
-title: Smart Contract-Integrationsmuster in Azure Blockchain Workbench
-description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockchain Workbench.
+title: Smart Contract-Integrationsmuster in Azure Blockchain Workbench – Vorschau
+description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockchain Workbench – Vorschau.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957011"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845175"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 

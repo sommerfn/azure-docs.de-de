@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309557"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918814"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -206,14 +206,21 @@ Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreiga
 
 Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind in der folgenden Tabelle aufgeführt:
 
-|Region |Unterstützte Redundanz |Unterstützt vorhandene Speicherkonten |Portalunterstützung*   |
+|Region |Unterstützte Redundanz |Unterstützt vorhandene Speicherkonten |Portalunterstützung* |
 |-------|---------|---------|---------|
-|Australien (Osten)  |LRS     |Nein    |Ja|
-|Frankreich, Mitte  |LRS     |Nein    |Noch nicht|
-|Frankreich, Süden    |LRS     |Nein    |Noch nicht|
-|Asien, Südosten  |LRS, ZRS|Nein    |Ja|
-|Europa, Westen     |LRS, ZRS|Nein    |Ja|
-|USA, Westen 2       |LRS, ZRS|Nein    |Ja|
+|Australien (Osten) |LRS     |Nein    |Ja|
+|Australien, Südosten|LRS     |Nein    |Noch nicht|
+|Indien, Mitte  |LRS     |Nein    |Noch nicht|
+|East US        |LRS     |Nein    |Noch nicht|
+|Frankreich, Mitte |LRS, ZRS|Nein    |LRS – Ja, ZRS – Noch nicht|
+|Frankreich, Süden   |LRS     |Nein    |Ja|
+|Indien (Süden)    |LRS     |Nein    |Noch nicht|
+|Asien, Südosten |LRS, ZRS|Nein    |Ja|
+|USA, Westen-Mitte|LRS     |Nein    |Noch nicht|
+|Europa, Westen    |LRS, ZRS|Nein    |Ja|
+|USA (Westen)        |LRS     |Nein    |Noch nicht|
+|USA, Westen 2      |LRS, ZRS|Nein    |Ja|
+
 
 \* Bei Regionen ohne Portalunterstützung können Sie weiterhin PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden, um Freigaben von mehr als 5 TiB zu erstellen. Erstellen Sie alternativ eine neue Freigabe über das Portal ohne Angabe eines Kontingents. Dadurch wird eine Freigabe mit der Standardgröße 100 TiB erstellt, die später über PowerShell oder Azure CLI aktualisiert werden kann.
 

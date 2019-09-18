@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305284"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70392954"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -51,8 +51,7 @@ ms.locfileid: "67305284"
 
 | Category (Kategorie) | Einschränkungen | Kommentare |
 |:---|:---|:---|
-| Maximal Anzahl an zurückgegebenen Datensätzen (nicht aggregierte Daten) | 5\.000 | |
-| Maximale Anzahl an Datensätzen (aggregierte Daten) | 500.000 | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `summarize` enthält. |
+| Maximale Anzahl von Datensätzen, die bei einer einzelnen Abfrage zurückgegeben werden | 500.000 | |
 | Maximale Größe der zurückgegebenen Daten | 64.000.000 Byte (~61 MiB)| |
 | Maximale Ausführungszeit der Abfrage | 10 Minuten | Weitere Informationen finden Sie unter [Timeouts (Zeitlimit)](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts).  |
 | Maximale Anforderungsrate | 200 Anforderungen pro 30 Sekunden und AAD-Benutzer oder Client-IP-Adresse | Weitere Informationen finden Sie unter [Rate limits (Ratenlimits)](https://dev.loganalytics.io/documentation/Using-the-API/Limits). |
@@ -63,7 +62,7 @@ ms.locfileid: "67305284"
 |:---|:---|:---|
 | Maximale Anzahl von Spalten in einer Tabelle         | 500 | |
 | Maximale Anzahl an Zeichen für einen Spaltennamen | 500 | |
-| Verfügbare Regionen | USA, Westen-Mitte | Sie können derzeit keine neuen Arbeitsbereiche in dieser Region erstellen, da deren Kapazitäten vorübergehend ausgeschöpft sind. Diese Einschränkung soll bis Ende September 2019 angegangen werden. |
+| Verfügbare Regionen | USA, Westen-Mitte | Sie können derzeit keine neuen Arbeitsbereiche in dieser Region erstellen, da deren Kapazitäten vorübergehend ausgeschöpft sind. Diese Einschränkung soll bis Ende Oktober 2019 angegangen werden. |
 | Datenexport | Derzeit nicht verfügbar | Verwenden Sie Azure Functions oder Logic Apps, um Daten zu aggregieren und zu exportieren. | 
 
 >[!NOTE]

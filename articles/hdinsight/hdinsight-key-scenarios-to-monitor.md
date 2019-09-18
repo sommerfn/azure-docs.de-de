@@ -1,6 +1,6 @@
 ---
 title: Überwachen der Clusterleistung – Azure HDInsight
-description: Es wird beschrieben, wie Sie die Kapazität und Leistung eines HDInsight-Clusters überwachen.
+description: Überwachen der Integrität und Leistung von Apache Hadoop Clustern in Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3fcd1e54a8993b2693b169a2c8b4c6e9bca57119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393415"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879695"
 ---
-# <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Überwachen der Clusterleistung in Azure HDInsight
 
 Die Überwachung der Integrität und Leistung eines HDInsight-Clusters ist sehr wichtig, um eine optimale Leistung und Ressourcenverwendung zu gewährleisten. Darüber hinaus kann die Überwachung dazu beitragen, Clusterkonfigurationsfehler und Benutzercodeprobleme zu erkennen und zu behandeln.
 
@@ -68,7 +68,7 @@ Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem 
 
 Wählen Sie auf der Benutzeroberfläche des Ressourcen-Managers im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
 
-![Menülink für die Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Resource Manager-Benutzeroberflächenmenü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>Speicherdrosselung
 

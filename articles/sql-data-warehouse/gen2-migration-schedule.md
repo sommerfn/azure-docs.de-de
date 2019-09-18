@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827224"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900319"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -63,7 +63,7 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | Vereinigte Arabische Emirate, Norden |20. Juli 2019 |Abgeschlossen |
 | UK, Süden |Verfügbar |Wird ausgeführt |
 | UK, Westen |Verfügbar |Wird ausgeführt |
-| USA, Westen-Mitte |1\. September 2019 |1\. Oktober 2019|
+| USA, Westen-Mitte |1\. November 2019 |1\. Dezember 2019|
 | Europa, Westen |Verfügbar |Abgeschlossen |
 | USA (Westen) |Verfügbar |Abgeschlossen |
 | USA, Westen 2 |Verfügbar |Abgeschlossen |

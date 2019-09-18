@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Verwenden Sie einen benutzerdefinierten NuGet-Feed für den Zugriff auf und die Verwendung von NuGet-Paketen in Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305398"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873253"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
 
@@ -33,7 +33,7 @@ Fügen Sie einen [Paketverweis](https://docs.microsoft.com/nuget/consume-package
 </ItemGroup>
 ```
 
-Erstellen Sie eine [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file)-Datei im Projektordner, und legen Sie die Abschnitte `packageSources` und `packageSourceCredentials` für den NuGet-Feed fest. Der `packageSources`-Abschnitt enthält die Feed-URL, auf die öffentlicher Zugriff möglich sein muss. Die `packageSourceCredentials` sind die Anmeldeinformationen für den Zugriff auf den Feed. Beispiel:
+Erstellen Sie eine [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file)-Datei im Projektordner, und legen Sie die Abschnitte `packageSources` und `packageSourceCredentials` für den NuGet-Feed fest. Der `packageSources`-Abschnitt enthält die Feed-URL, auf die Zugriff von Ihrem AKS-Cluster möglich sein muss. Die `packageSourceCredentials` sind die Anmeldeinformationen für den Zugriff auf den Feed. Beispiel:
 
 ```xml
 <packageSources>

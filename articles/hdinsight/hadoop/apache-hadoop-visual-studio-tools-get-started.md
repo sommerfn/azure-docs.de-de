@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Azure Hadoop mithilfe von Data Lake Tools für Visual Studio – Azure HDInsight
+title: Apache Hadoop und Data Lake Tools für Visual Studio – Azure HDInsight
 description: Hier erfahren Sie, wie Sie Data Lake Tools für Visual Studio installieren und verwenden, um eine Verbindung mit Apache Hadoop-Clustern in Azure HDInsight herzustellen, und anschließend Hive-Abfragen ausführen.
 keywords: Hadoop-Tools, Hive-Abfrage, Visual Studio, Visual Studio Hadoop
 services: hdinsight
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 485f3a4b6a5fde532229873fe1f3feaa30ece523
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450200"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884046"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -46,7 +46,7 @@ Um diesen Artikel durchzuarbeiten und Data Lake Tools für Visual Studio zu verw
 
   Navigieren Sie für vorhandene Installationen über die Menüleiste zu **Extras** > **Tools und Features abrufen...** , um den Visual Studio-Installer zu öffnen.  Wählen Sie dann mindestens die Workload **Azure development** (Azure-Entwicklung) oder **Datenspeicherung und -verarbeitung** aus.
 
-  ![Screenshot vom Visual Studio-Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Screenshot vom Visual Studio-Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 und 2015  
   [Data Lake Tools herunterladen](https://www.microsoft.com/download/details.aspx?id=49504). Wählen Sie die passende Version von Data Lake Tools für Ihre Visual Studio-Version aus.  
@@ -195,13 +195,13 @@ So können Sie Ad-hoc-Abfragen erstellen und ausführen
 
       Achten Sie darauf, dass **Interactive** (Interaktiv) ausgewählt ist, und klicken Sie dann auf **Senden**.
 
-      ![Screenshot: Abfrage und Ausführen](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![Screenshot: Abfrage und Ausführen](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       Achten Sie darauf, dass **Batch** ausgewählt ist, und klicken Sie dann auf **Senden**.  Konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** für das Skript, wenn Sie die Option für erweitertes Senden auswählen:
 
-      ![Screenshot: Abfrage und Batch](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![Screenshot: Abfrage und Batch](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Übermitteln von Abfragen")
 
@@ -224,7 +224,7 @@ So erstellen Sie eine Hive-Lösung und führen Sie sie aus:
 
 Die Auftragszusammenfassung unterscheidet sich zwischen den Modi **Batch** und **Interactive** (Interaktiv).
 
-![Auftragszusammenfassung](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive-Auftragszusammenfassung")
+![Auftragszusammenfassung](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive-Auftragszusammenfassung")
 
 Klicken Sie auf die Schaltfläche **Aktualisieren**, um den Status zu aktualisieren, bis sich der Auftragsstatus in **Abgeschlossen** ändert.  
 
@@ -232,7 +232,7 @@ Klicken Sie auf die Schaltfläche **Aktualisieren**, um den Status zu aktualisie
 
 * Wenn Sie die Auftragsdetails im **interaktiven** Modus anzeigen möchten, klicken Sie auf die Registerkarten **Ausgabe** und **HiveServer2-Ausgabe**.
 
-  ![Auftragsdetails](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive-Auftragsdetails")
+  ![Auftragsdetails](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive-Auftragsdetails")
 
 ### <a name="view-job-graph"></a>Anzeigen von Auftragsdiagrammen
 

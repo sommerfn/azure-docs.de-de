@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68004477"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772258"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -30,7 +30,7 @@ Auf dieser Seite werden die Konzepte Domänen, DNS-Zonen und DNS-Einträge sowie
 
 Das Domain Name System ist eine Hierarchie von Domänen. Die Hierarchie beginnt mit der Stammdomäne, deren Name einfach „ **.** “ lautet.  Darunter befinden sich Domänen der obersten Ebene, z.B. „com“, „net“, „org“, „uk“ oder „jp“.  Unterhalb davon befinden sich die Domänen der zweiten Ebene, z.B. „org.uk“ oder „co.jp“. Diese Domänen in der DNS-Hierarchie sind global verteilt und werden von DNS-Namenservern in der ganzen Welt gehostet.
 
-Eine Domänennamen-Registrierungsstelle ist eine Organisation, die es Ihnen ermöglicht, einen Domänennamen wie „contoso.com“ zu erwerben.  Das Erwerben eines Domänennamens gibt Ihnen das Recht, die DNS-Hierarchie unter diesem Namen zu kontrollieren. Sie können z.B. der Website Ihrer Firma den Namen „www.contoso.com“ geben. Die Registrierungsstelle kann die Domäne in Ihrem Auftrag auf ihren eigenen Namenservern hosten oder es Ihnen gestatten, alternative Namenserver anzugeben.
+Eine Domänennamen-Registrierungsstelle ist eine Organisation, die es Ihnen ermöglicht, einen Domänennamen wie „contoso.com“ zu erwerben.  Das Erwerben eines Domänennamens gibt Ihnen das Recht, die DNS-Hierarchie unter diesem Namen zu kontrollieren. Sie können z. B. der Website Ihrer Firma den Namen „www.contoso.com“ geben. Die Registrierungsstelle kann die Domäne in Ihrem Auftrag auf ihren eigenen Namenservern hosten oder es Ihnen gestatten, alternative Namenserver anzugeben.
 
 Azure DNS bietet eine weltweit verteilte Infrastruktur von Namenservern mit hoher Verfügbarkeit, die Sie benutzen können, um Ihre Domäne zu hosten. Durch das Hosten Ihrer Domänen in Azure DNS stehen Ihnen für die Verwaltung Ihrer DNS-Einträge die gleichen Anmeldeinformationen, APIs und Tools wie für Ihre anderen Azure-Dienste zur Verfügung. Auch Abrechnung und Support erfolgen wie bei diesen Diensten.
 

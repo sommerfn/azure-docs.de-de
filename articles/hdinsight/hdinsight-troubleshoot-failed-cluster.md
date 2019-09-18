@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster – Azure HDInsight
-description: Es wird beschrieben, wie Sie die Diagnose und Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster durchführen.
+description: Diagnose und Problembehandlung bei einem langsamen oder nicht gelingenden Auftrag auf einem Azure HDInsight-Cluster.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 4e589e694c728cfbd2237a138ad9a2f2bf2342dd
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573627"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900185"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -54,7 +54,7 @@ Wichtige Clusterinformationen sind:
 
 Im Azure-Portal können diese Informationen bereitgestellt werden:
 
-![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
+![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
 Sie können auch die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) verwenden:
 

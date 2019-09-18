@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 40caabc08b08e4c9268bf60d588819ce81717986
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061824"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900274"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -33,19 +33,42 @@ Konfigurieren Sie mithilfe der folgenden Schritte ein Data Lake Storage Gen2-Kon
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 
-Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. Informationen hierzu finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Managed identities in Azure HDInsight (Verwaltete Identitäten in Azure HDInsight)](hdinsight-managed-identities.md).
+Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie links oben **Ressource erstellen** aus.
+1. Geben Sie im Suchfeld den Suchbegriff **Vom Benutzer zugewiesen** ein, und klicken Sie auf **Benutzerseitig zugewiesene verwaltete Identität**.
+1. Klicken Sie auf **Create**.
+1. Geben Sie einen Namen für Ihre verwaltete Identität ein, und wählen Sie das richtige Abonnement, die Ressourcengruppe und den Speicherort aus.
+1. Klicken Sie auf **Create**.
+
+Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](hdinsight-managed-identities.md).
 
 ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Erstellen eines Data Lake Storage Gen2-Kontos
 
-Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. Stellen Sie sicher, dass die Option **Hierarchischer Namespace** aktiviert ist. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie links oben **Ressource erstellen** aus.
+1. Geben Sie im Suchfeld den Suchbegriff **Speicher** ein, und klicken Sie auf **Speicherkonto**.
+1. Klicken Sie auf **Create**.
+1. Auf dem Bildschirm **Speicherkonto erstellen**:
+    1. Wählen Sie das richtige Abonnement und die Ressourcengruppe aus.
+    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Klicken Sie auf die Registerkarte **Erweitert**.
+    1. Klicken Sie auf **Aktiviert** neben **Hierarchischer Namespace** unter **Data Lake Storage Gen2**.
+    1. Klicken Sie auf **Überprüfen + erstellen**.
+    1. Klicken Sie auf **Erstellen**
+
+Weitere Informationen zu anderen Optionen während der Erstellung des Speicherkontos finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 ![Screenshot zur Speicherkontoerstellung im Azure-Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Festlegen von Berechtigungen für verwaltete Identitäten im Data Lake Storage Gen2-Konto
 
-Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten** im Speicherkonto zu. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten von Azure mit RBAC (Vorschau)](../storage/common/storage-auth-aad-rbac.md).
+Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten** im Speicherkonto zu.
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 1. Wählen Sie Ihr Speicherkonto und dann **Zugriffssteuerung (IAM)** aus, um die Zugriffssteuerungseinstellungen für das Konto anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.

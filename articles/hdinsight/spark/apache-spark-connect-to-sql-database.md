@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20c4571ee795c280e6c916e3080279a6d13fecce
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236530"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814217"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
@@ -95,7 +95,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
    
     Eine Ausgabe ähnlich der folgenden wird angezeigt:
 
-    ![Angeben eines neuen Namens für das Notebook](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Angeben eines neuen Namens für das Notebook")
+    ![Ausgabe des Schemas](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Ausgabe des Schemas")
 
 1. Sie können beispielsweise auch die ersten 10 Zeilen abrufen.
 
@@ -148,11 +148,11 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     a. Starten Sie SSMS, und stellen Sie unter Angabe der entsprechenden Verbindungsdetails (siehe dazu Screenshot unten) eine Verbindung mit der Azure SQL-Datenbank her.
 
-    ![Herstellen einer Verbindung mit der SQL-Datenbank über SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Herstellen einer Verbindung mit der SQL-Datenbank über SSMS")
+    ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1")
 
     b. Erweitern Sie im Objekt-Explorer die Azure SQL-Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
 
-    ![Herstellen einer Verbindung mit der SQL-Datenbank über SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit der SQL-Datenbank über SSMS")
+    ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2")
 
 1. Führen Sie eine Abfrage in SSMS aus, um die Spalten in der Tabelle zu sehen.
 

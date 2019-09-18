@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972603"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845361"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Einrichten von VPN-Gateways für ein CloudSimple-Netzwerk
 
@@ -56,7 +56,7 @@ Mit einem Point-to-Site-VPN-Gateway können Sie eine Richtlinie zum automatische
     > [!WARNING]
     > Das Aktivieren der von Hochverfügbarkeit erfordert, dass Ihr lokales VPN-Gerät das Herstellen einer Verbindung mit zwei IP-Adressen unterstützt. Diese Option kann nicht deaktiviert werden, nachdem das VPN-Gateway bereitgestellt wurde.
 
-5. Erstellen Sie die erste Verbindung aus Ihrem lokalen Netzwerk, und klicken Sie auf **Next** (Weiter).
+5. Erstellen Sie die erste Verbindung aus Ihrem lokalen Netzwerk, und klicken Sie auf **Weiter**.
 
     * Geben Sie einen Namen ein, um die Verbindung zu identifizieren.
     * Geben Sie als IP-Peeradresse die öffentliche IP-Adresse Ihres lokalen VPN-Gateways ein.

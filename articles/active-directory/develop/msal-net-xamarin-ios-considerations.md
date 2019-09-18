@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532364"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872847"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Spezielle Überlegungen für Xamarin iOS mit MSAL.NET
 Unter Xamarin iOS gibt es verschiedene Überlegungen, die Sie bei Verwendung von MSAL.NET berücksichtigen müssen.
@@ -104,13 +104,23 @@ Zum Aktivieren der Cachefreigabe müssen Sie mit der Methode „WithIosKeychainS
 
 Weiter oben wurde erwähnt, dass von MSAL bei jeder Verwendung der `WithIosKeychainSecurityGroup()`-API „$(AppIdentifierPrefix)“ hinzugefügt wurde. Dies geschieht, weil mit dem „AppIdentifierPrefix“ bzw. der Team-ID sichergestellt wird, dass nur von demselben Herausgeber erstellte Anwendungen den Keychainzugriff gemeinsam nutzen können.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Hinweis: KychainSecurityGroup-Eigenschaft veraltet
+> [!NOTE]
+> **Die `KeychainSecurityGroup`-Eigenschaft ist veraltet.**
+> 
+> Früher waren Entwickler ab MSAL 2.x gezwungen, beim Verwenden der `KeychainSecurityGroup`-Eigenschaft das TeamId-Präfix einzuschließen.
+>
+>  Ab MSAL 2.7.x wird bei Verwendung der neuen `iOSKeychainSecurityGroup`-Eigenschaft das TeamID-Präfix zur Laufzeit aufgelöst. Wenn diese Eigenschaft verwendet wird, darf der Wert das TeamId-Präfix nicht enthalten.
+>  Verwenden Sie die neue `iOSKeychainSecurityGroup`-Eigenschaft, die von Ihnen keine Angabe der TeamId erfordert. Die frühere `KeychainSecurityGroup`-Eigenschaft ist jetzt veraltet.
 
-Früher waren Entwickler ab MSAL 2.x gezwungen, beim Verwenden der `KeychainSecurityGroup`-Eigenschaft das TeamId-Präfix einzuschließen.
+### <a name="use-microsoft-authenticator"></a>Verwenden von Microsoft Authenticator
 
-Ab MSAL 2.7.x wird bei Verwendung der neuen `iOSKeychainSecurityGroup`-Eigenschaft das TeamID-Präfix zur Laufzeit aufgelöst. Wenn diese Eigenschaft verwendet wird, darf der Wert das TeamId-Präfix nicht enthalten.
+Die Anwendung kann Microsoft Authenticator (einen Broker) verwenden, um Folgendes zu aktivieren:
 
-Verwenden Sie die neue `iOSKeychainSecurityGroup`-Eigenschaft, die keine Angabe der TeamId durch die Entwickler erfordert. Die frühere `KeychainSecurityGroup`-Eigenschaft ist jetzt veraltet.
+- Einmaliges Anmelden (Single Sign-On, SSO). Ihre Benutzer müssen sich nicht bei jeder Anwendung anmelden.
+- Geräteidentifikation. Durch den Zugriff auf das Gerätezertifikat, das auf dem Gerät erstellt wurde, als es in den Arbeitsplatz eingebunden wurde. Die Anwendung ist bereit, wenn die Mandantenadministratoren den bedingten Zugriff auf die Geräte aktivieren.
+- Überprüfung der Anwendungsidentifikation. Wenn eine Anwendung den Broker aufruft, übergibt sie die Umleitungs-URL, und der Broker überprüft sie.
+
+Weitere Informationen zum Aktivieren des Brokers finden Sie unter [Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin iOS- und Android-Anwendungen](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Beispiel zur Veranschaulichung der speziellen Xamarin iOS-Eigenschaften
 

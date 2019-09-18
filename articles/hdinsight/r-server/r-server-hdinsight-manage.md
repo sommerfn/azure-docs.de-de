@@ -1,6 +1,6 @@
 ---
 title: Verwalten eines ML Services-Clusters in HDInsight – Azure
-description: Erfahren Sie, wie Sie einen ML Services-Cluster in Azure HDInsight verwalten.
+description: Erfahren Sie, wie Sie verschiedene Aufgaben auf einem ML Services-Cluster in Azure HDInsight verwalten.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: fa838f371607f3c0b0f76f81d6755c842a5901f7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448958"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900009"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Verwalten eines ML Services-Clusters in Azure HDInsight
 
@@ -209,7 +209,7 @@ Um R-Pakete auf den Workerknoten des Clusters zu installieren, müssen Sie eine 
    >
    >
 
-   ![Hinzufügen einer Skriptaktion](./media/r-server-hdinsight-manage/submitscriptaction.png)
+   ![Hinzufügen einer Skriptaktion](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. Wählen Sie **Erstellen** aus, um das Skript auszuführen. Nach Abschluss der Skriptausführung sind die R-Pakete auf allen Workerknoten verfügbar.
 

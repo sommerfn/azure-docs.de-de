@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277375"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772156"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 
@@ -184,6 +184,10 @@ Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann i
 - Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der aktiv Ereignisse empfängt, und ein neuer Empfänger ohne epoch-Wert erstellt wird, schlägt die Erstellung des neuen Empfängers fehl. Empfänger mit epoch-Wert haben im System immer Vorrang.
 - Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der getrennt wurde, und ein neuer Empfänger ohne epoch-Wert in einer neuen MessagingFactory-Instanz erstellt wird, ist die Erstellung des neuen Empfängers erfolgreich. Hier besteht allerdings der Nachteil, dass das System die Trennung des Empfängers erst nach etwa 10 Minuten erkennt.
 - Wenn mindestens ein Empfänger ohne epoch-Wert erstellt wird und ein neuer Empfänger mit einem epoch-Wert von e1 erstellt wird, werden alle älteren Empfänger getrennt.
+
+
+> [!NOTE]
+> Sie sollten für Anwendungen, die Epochen und für solche, die keine Epochen verwenden, verschiedene Consumergruppen einsetzen, um Fehler zu vermeiden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

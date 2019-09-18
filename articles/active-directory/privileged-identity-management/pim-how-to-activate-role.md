@@ -3,7 +3,7 @@ title: Aktivieren meiner Azure AD-Rollen in PIM – Azure Active Directory | Mic
 description: Erfahren Sie, wie Sie Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) aktivieren.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/28/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b3e02222580da67a4eeb4159e4fc5dc3b9a98f
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: f9d9b2aff1d196d8b2987d77046831e7200ee2fe
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501679"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804472"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
@@ -59,7 +59,7 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in PIM über die N
 
 1. Klicken Sie auf **Aktivieren**, um den Bereich für die Aktivierung zu öffnen.
 
-    ![Aktivierungsfeld zum Angeben einer Startzeit, Dauer, eines Tickets und eines Grundes](./media/pim-how-to-activate-role/directory-roles-activate.png)
+    ![Aktivierungsfeld zum Angeben einer Startzeit, Dauer, eines Tickets und eines Grunds](./media/pim-how-to-activate-role/directory-roles-activate.png)
 
 1. Falls erforderlich, geben Sie einen Startzeitpunkt für die Aktivierung an.
 
@@ -79,7 +79,7 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in PIM über die N
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
-    ![Ausstehende Genehmigung für die Aktivierungsanforderung](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
+    ![Ausstehende Genehmigungsbenachrichtigung für die Aktivierungsanforderung](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 

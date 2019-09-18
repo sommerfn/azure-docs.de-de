@@ -1,6 +1,6 @@
 ---
 title: Operationalisieren von ML Services in HDInsight – Azure
-description: Informationen zum Operationalisieren von ML Services in Azure HDInsight.
+description: Erfahren Sie, wie Sie Ihr Datenmodell operationalisieren, um Vorhersagen mit ML Services in Azure HDInsight zu treffen.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9dbddcba1545e0a110faa9fbf8e3de9ff189525
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448981"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879491"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -50,31 +50,31 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![Operationalisierung mit einem einzelnen Computer (1)](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Sie können jetzt eine Option für die Operationalisierung von ML Server auswählen. Wählen Sie die erste der angebotenen Optionen durch Eingabe von **A** aus.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![Operationalisierung mit einem einzelnen Computer (2)](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Geben Sie bei Aufforderung das Kennwort für einen lokalen Administratorbenutzer ein bzw. erneut ein.
 
 1. Daraufhin sollte ausgegeben werden, dass der Vorgang erfolgreich war. Sie werden außerdem aufgefordert, eine andere Option aus dem Menü auszuwählen. Wählen Sie „E“ aus, um zum Hauptmenü zurückzukehren.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![Operationalisierung mit einem einzelnen Computer (3)](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. Optional können Sie die Diagnoseprüfungen ausführen, indem Sie wie folgt einen Diagnosetest ausführen:
 
     a. Wählen Sie im Hauptmenü **6** aus, um Diagnosetests auszuführen.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/diagnostic-1.png)
+    ![Diagnose (1)](./media/r-server-operationalize/diagnostic-1.png)
 
     b. Wählen Sie im Diagnosetestmenü **A** aus. Wenn Sie aufgefordert werden, geben Sie das Kennwort ein, das Sie für den lokalen Administratorbenutzer bereitgestellt haben.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/diagnostic-2.png)
+    ![Diagnose (2)](./media/r-server-operationalize/diagnostic-2.png)
 
     c. Überprüfen Sie, ob ausgegeben wird, dass die Gesamtintegrität einwandfrei ist.
 
-    ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/diagnostic-3.png)
+    ![Diagnose (3)](./media/r-server-operationalize/diagnostic-3.png)
 
     d. Geben Sie von den angebotenen Menüoptionen **E** ein, um zum Hauptmenü zurückzukehren, und geben Sie dann **8** ein, um das Verwaltungshilfsprogramm zu beenden.
 

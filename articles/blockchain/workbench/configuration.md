@@ -1,21 +1,21 @@
 ---
 title: Referenz zur Azure Blockchain Workbench-Konfiguration
-description: Übersicht über die Anwendungskonfiguration in Azure Blockchain Workbench
+description: Übersicht über die Anwendungskonfiguration in Azure Blockchain Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c737106b47b95fcc6d1abdadc81398a3bc9256d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578979"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845110"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
 
@@ -60,21 +60,21 @@ Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, 
 | Description | Die Beschreibung des Workflows | Nein | 255 |
 | Initiators | Sammlung von [Anwendungsrollen](#application-roles). Rollen, die Benutzern zugeordnet sind, die zum Erstellen von Verträgen im Workflow berechtigt sind. | Ja | |
 | StartState | Der Name des Anfangszustands des Workflows | Ja | |
-| Eigenschaften | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | Ja | |
+| Properties | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | Ja | |
 | Konstruktor | Definiert Eingabeparameter für die Erstellung einer Instanz des Workflows. | Ja | |
 | Functions | Eine Sammlung von [Funktionen](#functions), die im Workflow ausgeführt werden können. | Ja | |
 | Zustände | Eine Sammlung von [Zuständen](#states) des Workflows. | Ja | |
 
 Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-example).
 
-## <a name="type"></a>Type
+## <a name="type"></a>type
 
 Unterstützte Datentypen:
 
-| Type | Description |
+| type | Description |
 |-------|-------------|
 | address  | Blockchainadresstyp, z. B. *Verträge* oder *Benutzer*. |
-| Array    | Array mit einer Ebene vom Typ „Int“, „bool“, „money“ oder „time“. Arrays können statisch oder dynamisch sein. Verwenden Sie **ElementType**, um den Datentyp der Elemente im Array anzugeben. Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-array). |
+| array    | Array mit einer Ebene vom Typ „Int“, „bool“, „money“ oder „time“. Arrays können statisch oder dynamisch sein. Verwenden Sie **ElementType**, um den Datentyp der Elemente im Array anzugeben. Siehe hierzu die [Beispielkonfiguration](#example-configuration-of-type-array). |
 | bool     | Boolean-Datentyp |
 | contract | Adresse vom Typ „Vertrag“ |
 | enum     | Aufgelisteter Satz von benannten Werten. Wenn Sie den enum-Typ verwenden, geben Sie auch eine Liste von „EnumValues“ an. Jeder Wert darf maximal 255 Zeichen lang sein. Gültige Zeichen für den Wert sind Groß-/Kleinbuchstaben (A-Z, a-z) und Zahlen (0-9). Informationen hierzu finden Sie unter [Beispielkonfiguration und Verwendung in Solidity](#example-configuration-of-type-enum). |

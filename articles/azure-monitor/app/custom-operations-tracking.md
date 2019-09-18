@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276857"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883644"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -125,7 +125,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Das HTTP-Protokoll für die Korrelation deklariert außerdem den `Correlation-Context`-Header. Dieser wird hier jedoch zur Vereinfachung weggelassen.
 
 ## <a name="queue-instrumentation"></a>Warteschlangeninstrumentierung
-Es ist zwar ein [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vorhanden, um Korrelationsdetails mit der HTTP-Anforderung zu übergeben, aber für jedes Warteschlangenprotokoll muss definiert werden, wie die gleichen Details für die Warteschlangennachricht übergeben werden. Einige Warteschlangenprotokolle (z.B. AMQP) ermöglichen das Übergeben von zusätzlichen Metadaten, und für einige andere (z.B. Azure Storage Queue) ist es erforderlich, dass der Kontext in der Nachrichtennutzlast codiert wird.
+Es ist zwar ein [W3C Trace Context](https://www.w3.org/TR/trace-context/) und ein [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vorhanden, um Korrelationsdetails mit der HTTP-Anforderung zu übergeben, aber für jedes Warteschlangenprotokoll muss definiert werden, wie die gleichen Details für die Warteschlangennachricht übergeben werden. Einige Warteschlangenprotokolle (z.B. AMQP) ermöglichen das Übergeben von zusätzlichen Metadaten, und für einige andere (z.B. Azure Storage Queue) ist es erforderlich, dass der Kontext in der Nachrichtennutzlast codiert wird.
+
+> [!NOTE]
+> * **Komponenten übergreifende Ablaufverfolgung wird für Warteschlangen noch nicht unterstützt**: Wenn mit HTTP Ihr Producer und Consumer Telemetriedaten an verschiedene Application Insights-Ressourcen senden, zeigen die Oberfläche zur Transaktionsdiagnose und die Anwendungsübersicht Transaktionen und Übersicht End-to-End an. Bei Warteschlangen wird dies noch nicht unterstützt. 
 
 ### <a name="service-bus-queue"></a>Service Bus-Warteschlange
 Application Insights verfolgt Service Bus Messaging-Aufrufe mit dem neuen [Microsoft Azure ServiceBus-Client für .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) (Version 3.0.0 und höher) nach.
@@ -142,7 +145,8 @@ public async Task Enqueue(string payload)
     // StartOperation is a helper method that initializes the telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
-    operation.Telemetry.Type = "Queue";
+    
+    operation.Telemetry.Type = "Azure Service Bus";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
@@ -179,7 +183,7 @@ public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
     // It might also make sense to get the name from the message.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
@@ -228,7 +232,7 @@ Der `Enqueue`-Vorgang ist einem übergeordneten Vorgang untergeordnet (zum Beisp
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
-    operation.Telemetry.Type = "Queue";
+    operation.Telemetry.Type = "Azure queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
@@ -274,38 +278,18 @@ Wenn Sie die Menge an Telemetriedaten, die von Ihrer Anwendung gemeldet werden, 
 #### <a name="dequeue"></a>Entfernen aus der Warteschlange
 Ähnlich wie bei `Enqueue` werden die tatsächlichen HTTP-Anforderungen für die Storage-Warteschlange von Application Insights automatisch nachverfolgt. Der `Enqueue`-Vorgang wird normalerweise aber im Kontext des übergeordneten Elements durchgeführt, z.B. im Kontext einer eingehenden Anforderung. Application Insights SDKs korrelieren Vorgänge dieser Art (und den dazugehörigen HTTP-Teil) automatisch mit der übergeordneten Anforderung und anderen Telemetriedaten, die für denselben Bereich gemeldet werden.
 
-Der `Dequeue`-Vorgang ist nicht ganz einfach. Das Application Insights SDK verfolgt HTTP-Anforderungen automatisch. Allerdings kennt es den Korrelationskontext erst, wenn die Nachricht analysiert wird. Es ist nicht möglich, die HTTP-Anforderung zu korrelieren, um die Nachricht mit den restlichen Telemetriedaten zu erhalten.
-
-In vielen Fällen kann es nützlich sein, die HTTP-Anforderung zusammen mit anderen Ablaufverfolgungen mit der Warteschlange zu korrelieren. Dies wird im folgenden Beispiel veranschaulicht:
+Der `Dequeue`-Vorgang ist nicht ganz einfach. Das Application Insights SDK verfolgt HTTP-Anforderungen automatisch. Allerdings kennt es den Korrelationskontext erst, wenn die Nachricht analysiert wird. Es ist nicht möglich, die HTTP-Anforderung zu korrelieren, um die Nachricht mit den restlichen Telemetriedaten zu erhalten, wenn mehrere Nachrichten empfangen werden.
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
-    var telemetry = new DependencyTelemetry
-    {
-        Type = "Queue",
-        Name = "Dequeue " + queue.Name
-    };
-
-    telemetry.Start();
-
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>("dequeue " + queue.Name);
+    operation.Telemetry.Type = "Azure queue";
+    operation.Telemetry.Data = "Dequeue " + queue.Name;
+    
     try
     {
         var message = await queue.GetMessageAsync();
-
-        if (message != null)
-        {
-            var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
-
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
-            telemetry.Context.Operation.Id = payload.RootId;
-            telemetry.Context.Operation.ParentId = payload.ParentId;
-
-            // Delete the message.
-            return payload;
-        }
     }
     catch (StorageException e)
     {
@@ -317,8 +301,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     finally
     {
         // Update status code and success as appropriate.
-        telemetry.Stop();
-        telemetryClient.TrackDependency(telemetry);
+        telemetryClient.StopOperation(operation);
     }
 
     return null;
@@ -333,7 +316,8 @@ Im folgenden Beispiel wird eine eingehende Nachricht auf ähnliche Weise wie ein
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
+    
     // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
@@ -368,8 +352,15 @@ Stellen Sie beim Instrumentieren der Nachrichtenlöschung sicher, dass Sie die V
 - Beenden Sie die `Activity`.
 - Verwenden Sie `Start/StopOperation`, oder rufen Sie `Track` der Telemetrie manuell auf.
 
+### <a name="dependency-types"></a>Abhängigkeitstypen
+
+Application Insights verwendet Abhängigkeitstypen, um Benutzeroberflächen anzupassen. Für Warteschlangen werden folgende Typen von `DependencyTelemetry` erkannt, die die [Oberfläche zur Transaktionsdiagnose](/azure-monitor/app/transaction-diagnostics) verbessern:
+- `Azure queue` für Azure Storage-Warteschlangen
+- `Azure Event Hubs` für Azure Event Hubs
+- `Azure Service Bus` für Azure Service Bus
+
 ### <a name="batch-processing"></a>Batchverarbeitung
-Bei einigen Warteschlangen können Sie mehrere Nachrichten mit einer Anforderung aus der Warteschlange entfernen. Die Verarbeitung solcher Nachrichten ist vermutlich unabhängig und gehört zu den verschiedenen logischen Vorgängen. In diesem Fall ist es nicht möglich, den `Dequeue`-Vorgang mit einer bestimmten Nachrichtenverarbeitung zu korrelieren.
+Bei einigen Warteschlangen können Sie mehrere Nachrichten mit einer Anforderung aus der Warteschlange entfernen. Die Verarbeitung solcher Nachrichten ist vermutlich unabhängig und gehört zu den verschiedenen logischen Vorgängen. Es ist nicht möglich, den `Dequeue`-Vorgang mit einer bestimmten Nachricht zu korrelieren, die verarbeitet wird.
 
 Jede Nachricht sollte in einer eigenen asynchronen Ablaufsteuerung verarbeitet werden. Weitere Informationen erhalten Sie im Abschnitt [Nachverfolgung von ausgehenden Abhängigkeiten](#outgoing-dependencies-tracking).
 
@@ -495,6 +486,7 @@ Jeder Application Insights-Vorgang (Anforderung oder Abhängigkeit) umfasst ein 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Grundlagen der [Telemetriekorrelation](correlation.md) in Application Insights.
+- Sehen Sie sich an, wie korrelierte Daten die [Oberfläche zur Transaktionsdiagnose](/azure-monitor/app/transaction-diagnostics) und die [Anwendungsübersicht](/azure-monitor/app/app-map) steuern.
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
 - Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](../../azure-monitor/app/api-custom-events-metrics.md) an Application Insights.
 - Informationen zur [Standardkonfiguration](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.

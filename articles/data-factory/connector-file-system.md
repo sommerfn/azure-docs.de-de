@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 677f3cbb6416086843ceb530abd07d412c8b38f0
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 470152e12f3a7a0c643a147f0989a5cc72d2ed22
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275422"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813568"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -99,12 +99,12 @@ Folgende Eigenschaften werden für den mit einem Dateisystem verknüpften Dienst
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-dataset).
+- Informationen zu anderen Formaten wie **ORC** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `location`-Einstellungen im formatbasierten Dataset unterstützt:
+Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `location`-Einstellungen im formatbasierten Dataset unterstützt:
 
 | Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -143,7 +143,7 @@ Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textfo
 
 ### <a name="other-format-dataset"></a>Dataset in anderen Formaten
 
-Für das Kopieren von Daten in ein und aus einem Dateisystem im **ORC- oder JSON-Format** werden folgende Eigenschaften unterstützt:
+Für das Kopieren von Daten in ein und aus einem Dateisystem im **ORC-Format** werden folgende Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -197,12 +197,12 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="file-system-as-source"></a>Dateisystem als Quelle
 
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+#### <a name="format-based-source"></a> Quelle für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopierquelle unterstützt:
+Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopierquelle unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -260,7 +260,7 @@ Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Tr
 
 #### <a name="other-format-source"></a>Quelle in anderen Formaten
 
-Für das Kopieren von Daten aus einem Dateisystem im **ORC- oder JSON-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+Für das Kopieren von Daten aus einem Dateisystem im **ORC-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -302,12 +302,12 @@ Für das Kopieren von Daten aus einem Dateisystem im **ORC- oder JSON-Format** w
 
 ### <a name="file-system-as-sink"></a>Dateisystem als Senke
 
-- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie im Abschnitt [Senke im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat](#format-based-sink).
-- Informationen zum Kopieren in andere Formate wie **ORC oder JSON** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
+- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-sink).
+- Informationen zum Kopieren in andere Formate wie **ORC** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
 
-#### <a name="format-based-sink"></a> Senke im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
+#### <a name="format-based-sink"></a> Senke für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopiersenke unterstützt:
+Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen. Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings`-Einstellungen der formatbasierten Kopiersenke unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -355,7 +355,7 @@ Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Tre
 
 #### <a name="other-format-sink"></a>Senke in anderen Formaten
 
-Für das Kopieren von Daten in ein Dateisystem im **ORC- oder JSON-Format** werden folgende Eigenschaften im Abschnitt **sink** unterstützt:
+Für das Kopieren von Daten in ein Dateisystem im **ORC-Format** werden folgende Eigenschaften im Abschnitt **sink** unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

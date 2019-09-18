@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567808"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845602"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
@@ -142,7 +142,7 @@ Mit Dienstendpunkten können Sie wichtige Azure-Ressourcen ausschließlich für 
 
 #### <a name="reserved-ips"></a>Reservierte IP-Adressen
 
-Sie können auch [reservierte IP-Adressen](../virtual-network/virtual-networks-reserved-public-ip.md) für Ihre virtuellen Computer bereitstellen, und die IP-Adressen für spezifische virtuelle Computer in den Firewalleinstellungen des Servers in die Whitelist eintragen. Das Zuweisen von reservierten IP-Adressen erspart Ihnen das Aktualisieren von Firewallregeln, wenn sich die IP-Adressen ändern.
+Sie können auch [reservierte IP-Adressen](../virtual-network/virtual-networks-reserved-public-ip.md) für Ihre virtuellen Computer bereitstellen und diese IP-Adressen für spezifische virtuelle Computer den Firewalleinstellungen des Servers hinzufügen. Das Zuweisen von reservierten IP-Adressen erspart Ihnen das Aktualisieren von Firewallregeln, wenn sich die IP-Adressen ändern.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Über welchen Port werden Verbindungen mit SQL-Datenbank hergestellt?
 

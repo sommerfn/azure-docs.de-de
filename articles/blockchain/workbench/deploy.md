@@ -1,27 +1,29 @@
 ---
-title: Bereitstellen von Azure Blockchain Workbench
-description: Bereitstellen von Azure Blockchain Workbench
+title: Bereitstellen von Azure Blockchain Workbench Preview
+description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/06/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea18c784c6b5cf61013c131360d20349e67b1e5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154640"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845283"
 ---
-# <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
+# <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
-Azure Blockchain Workbench wird mithilfe einer Projektmappenvorlage im Azure Marketplace bereitgestellt. Die Vorlage vereinfacht die Bereitstellung von Komponenten, die für die Erstellung von Blockchainanwendungen benötigt werden. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf Client-Apps zum Erstellen und Verwalten von Benutzern und Blockchainanwendungen.
+Azure Blockchain Workbench Preview wird mithilfe einer Projektmappenvorlage im Azure Marketplace bereitgestellt. Die Vorlage vereinfacht die Bereitstellung von Komponenten, die für die Erstellung von Blockchainanwendungen benötigt werden. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf Client-Apps zum Erstellen und Verwalten von Benutzern und Blockchainanwendungen.
 
 Weitere Informationen zu den Komponenten der Blockchain Workbench finden Sie unter [Azure Blockchain Workbench-Architektur](architecture.md).
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
@@ -36,7 +38,7 @@ Blockchain Workbench ermöglicht die Bereitstellung eines Blockchainledgers zusa
 * Azure Storage-Konto (Standard LRS)
 * VM-Skalierungsgruppe mit der Kapazität 1
 * Virtual Network-Ressourcengruppe (mit Load Balancer, Netzwerksicherheitsgruppe, öffentlicher IP-Adresse, virtuellem Netzwerk)
-* Optional: Azure Blockchain-Dienst (Standardeinstellung: Basic B0)
+* Azure Blockchain Service. Wenn Sie eine vorherige Blockchain Workbench-Bereitstellung verwenden, sollten Sie die erneute Bereitstellung von Azure Blockchain Workbench erwägen, um Azure Blockchain Service zu verwenden.
 
 Im Folgenden wird eine Beispielbereitstellung gezeigt, die in der Ressourcengruppe **myblockchain** erstellt wurde.
 
@@ -79,7 +81,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | SSH | Verwenden Sie einen öffentlichen RSA-Schlüssel im einzeiligen Format beginnend mit **ssh-rsa**, oder verwenden Sie das mehrzeilige PEM-Format. Sie können SSH-Schlüssel mit `ssh-keygen` unter Linux und OS X oder mit PuTTYGen unter Windows erzeugen. Weitere Informationen zu SSH-Schlüsseln finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md). |
     | Datenbank- und Blockchain-Kennwort | Geben Sie das Kennwort für den Zugriff auf die im Rahmen der Bereitstellung erstellte Datenbank an. Das Kennwort muss drei der folgenden vier Anforderungen erfüllen: Es muss zwischen 12 und 72 Zeichen lang sein und muss einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen beinhalten (nicht zulässig: Raute (#), Prozentzeichen (%), Komma (,), Stern (*), Backquote (\`), doppelte Anführungszeichen ("), einfache Anführungszeichen ('), Bindestriche (-) oder Semikolons (;)). |
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
-    | Abonnement | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
+    | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
     | Location | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 

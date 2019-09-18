@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720991"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882430"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Analysieren von Apache Hadoop-Protokollen
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analysieren von Apache Hadoop-Protokollen in Azure HDInsight
 
 Jeder Apache Hadoop-Cluster in Azure HDInsight hat ein Azure-Speicherkonto, das als Standarddateisystem verwendet wird. Dieses Konto wird als Standardspeicherkonto bezeichnet. Der Cluster nutzt im standardmäßigen Speicherkonto Azure Table Storage und Blob Storage zum Speichern seiner Protokolle.  Informationen zum Ermitteln des Standardspeicherkontos für Ihren Cluster finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Die Protokolle verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
 
@@ -44,7 +44,7 @@ Diese Tabellen enthalten die folgenden Felder:
 * `Message`
 * N
 * PreciseTimeStamp
-* Rolle
+* Role
 * RowIndex
 * Tenant
 * TIMESTAMP
@@ -73,7 +73,7 @@ Power Query kann über [Microsoft Power Query für Excel](https://www.microsoft.
 5. Klicken Sie im Bereich **Navigator** mit der rechten Maustaste auf die Tabelle „hadoopservicelog“, und wählen Sie **Bearbeiten** aus. Es werden vier Spalten angezeigt. Löschen Sie optional die Spalten **Partition Key**, **Row Key** und **Timestamp**, indem Sie sie auswählen und dann auf dem Menüband auf **Spalten entfernen** klicken.
 6. Klicken Sie auf das Symbol zum Erweitern der Spalte „Inhalt“, um die Spalten auszuwählen, die Sie in die Excel-Tabelle importieren möchten. Für diese Demo wurde TraceLevel und ComponentName ausgewählt: Es bietet einige grundlegende Informationen darüber, bei welchen Komponenten Probleme aufgetreten sind.
    
-    ![HDInsight Hadoop-Protokolle, Spalten auswählen](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
+    ![HDInsight Hadoop-Protokolle, Spalten auswählen, Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop-Protokolle, Spalten auswählen, Excel")
 7. Klicken Sie auf **OK** , um die Daten zu importieren.
 8. Wählen Sie die Spalten **TraceLevel**, „Role“ und **ComponentName** aus, und klicken Sie dann auf dem Menüband auf das Steuerelement **Gruppieren nach**.
 9. Klicken Sie im Dialogfeld „Gruppieren nach“ auf **OK** .
@@ -93,7 +93,7 @@ Sie können jetzt Excel zum Filtern und Sortieren verwenden. Es kann ratsam sein
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop-Protokolle, Spalten auswählen](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+    ![HDInsight Hadoop-Protokolle, Spalten auswählen, vs](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop-Protokolle, Spalten auswählen, vs")
    
     Weitere Informationen zum Erstellen von Filtern finden Sie unter [Erstellen von Filterzeichenfolgen für den Tabellen-Designer](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
@@ -120,7 +120,7 @@ Klicken Sie im Azure-Portal auf den Namen eines HDInsight-Clusters, um den Clust
 
 * **Abrufen des Clusterstatus**. Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Info**. Der aktuelle Clusterstatus enthält Informationen zu den Bereichen insgesamt zugeordneter Arbeitsspeicher, verwendete Kerne, Cluster Resource Manager-Status, Clusterversion usw.
   
-    ![Clusterdashboard starten](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
+    ![Starten des Cluster-Dashboards, Yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Starten des Cluster-Dashboards, Yarn")
 * **Abrufen des Knotenstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Knoten**. Hiermit werden alle Knoten im Cluster, die HTTP-Adresse der einzelnen Knoten, die jeweils zugewiesenen Ressourcen usw. aufgeführt.
 * **Überwachen des Auftragsstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie dann auf **Anwendungen**, um alle Aufträge im Cluster aufzulisten. Wenn Sie nur Aufträge in einem bestimmten Zustand betrachten möchten (z.B. neu, übermittelt, ausgeführt usw.), klicken Sie auf den entsprechenden Link unter **Anwendungen**. Sie können außerdem auf den Auftragsnamen klicken, um weitere Informationen zum Auftrag abzurufen, z. B. Ausgabe, Protokolle usw.
 
