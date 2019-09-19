@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989043"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP NetWeaver
 
@@ -163,7 +163,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > ``` 
     > Sie müssen die Objekt-ID des Dienstprinzipals zuerst selbst festlegen, Sie können sie aber auch hier übergeben.
 
-1. Die SAP NetWeaver-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+1. Die SAP NetWeaver-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -360,7 +360,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>Registrieren der neuen OAuth 2.0-Client-ID mit dem Erstellungs-Assistenten
 
-1. Starten Sie zum Registrieren eines neuen OAuth 2.0-Clients die Transaktion **SOAUTH2**. **** Die Transaktion zeigt eine Übersicht über die bereits registrierten OAuth 2.0-Clients an. Wählen Sie **Create** (Erstellen) aus, um den Assistenten für den neuen OAuth-Client mit namens „CLIENT1“ (in diesem Beispiel) zu starten.
+1. Starten Sie zum Registrieren eines neuen **OAuth 2.0-Clients** die Transaktion **SOAUTH2**. Die Transaktion zeigt eine Übersicht über die bereits registrierten OAuth 2.0-Clients an. Wählen Sie **Create** (Erstellen) aus, um den Assistenten für den neuen OAuth-Client mit namens „CLIENT1“ (in diesem Beispiel) zu starten.
 
 2. Navigieren Sie zum T-Code **SOAUTH2**, geben Sie die Beschreibung ein, und klicken Sie auf **Next** (Weiter).
 
