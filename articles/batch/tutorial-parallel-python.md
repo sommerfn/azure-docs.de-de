@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321831"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090788"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die Python-API
 
@@ -123,7 +123,7 @@ In den folgenden Abschnitten ist die Beispielanwendung in die Schritte unterteil
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Authentifizieren des Blobs und der Batch-Clients
 
-Für die Interaktion mit einem Speicherkonto verwendet die App das Paket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) zum Erstellen eines [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice)-Objekts.
+Für die Interaktion mit einem Speicherkonto verwendet die App das Paket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) zum Erstellen eines [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-Objekts.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Hochladen von Eingabedateien
 
-Die App verwendet den `blob_client`-Verweis, um einen Speichercontainer für die MP4-Eingabedateien und einen Container für die Aufgabenausgabe zu erstellen. Anschließend wird die Funktion `upload_file_to_container` aufgerufen, um MP4-Dateien aus dem lokalen Verzeichnis `InputFiles` in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
+Die App verwendet den `blob_client`-Verweis, um einen Speichercontainer für die MP4-Eingabedateien und einen Container für die Aufgabenausgabe zu erstellen. Anschließend wird die Funktion `upload_file_to_container` aufgerufen, um MP4-Dateien aus dem lokalen Verzeichnis `InputFiles` in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -165,13 +165,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Erstellen eines Pools mit Computeknoten
 
-Als Nächstes erstellt das Beispiel im Batch-Konto durch Aufrufen von `create_pool` einen Pool mit Computeknoten. Für diese definierte Funktion wird die Batch-Klasse [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) verwendet, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 18.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene VM-Images im Azure Marketplace und auch benutzerdefinierte VM-Images.
+Als Nächstes erstellt das Beispiel im Batch-Konto durch Aufrufen von `create_pool` einen Pool mit Computeknoten. Für diese definierte Funktion wird die Batch-Klasse [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) verwendet, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 18.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene VM-Images im Azure Marketplace und auch benutzerdefinierte VM-Images.
 
 Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festgelegt. Batch unterstützt dedizierte Knoten und [Knoten mit niedriger Priorität](batch-low-pri-vms.md), und Sie können eine oder beide Arten von Knoten in Ihren Pools verwenden. Dedizierte Knoten sind für Ihren Pool reserviert. Knoten mit niedriger Priorität werden zu einem reduzierten Preis basierend auf überschüssiger VM-Kapazität in Azure angeboten. Knoten mit niedriger Priorität sind nicht mehr verfügbar, wenn in Azure nicht genügend Kapazität vorhanden ist. Im Beispiel wird standardmäßig ein Pool mit nur fünf Knoten mit niedriger Priorität und der Größe *Standard_A1_v2* erstellt. 
 
-Zusätzlich zu den Eigenschaften des physischen Knotens enthält diese Poolkonfiguration ein [StartTask](/python/api/azure.batch.models.starttask)-Objekt. Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. In diesem Beispiel führt die StartTask Bash-Shellbefehle aus, um das ffmpeg-Paket und Abhängigkeiten auf den Knoten zu installieren.
+Zusätzlich zu den Eigenschaften des physischen Knotens enthält diese Poolkonfiguration ein [StartTask](/python/api/azure-batch/azure.batch.models.starttask)-Objekt. Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. In diesem Beispiel führt die StartTask Bash-Shellbefehle aus, um das ffmpeg-Paket und Abhängigkeiten auf den Knoten zu installieren.
 
-Mit der [pool.add](/python/api/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
+Mit der [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -201,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `create_job` erstellt. Bei dieser definierten Funktion wird die [JobAddParameter](/python/api/azure.batch.models.jobaddparameter)-Klasse verwendet, um einen Auftrag in Ihrem Pool zu erstellen. Mit der [job.add](/python/api/azure.batch.operations.joboperations)-Methode wird der Pool an den Batch-Dienst übermittelt. Der Auftrag enthält ursprünglich keine Aufgaben.
+Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `create_job` erstellt. Bei dieser definierten Funktion wird die [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-Klasse verwendet, um einen Auftrag in Ihrem Pool zu erstellen. Mit der [job.add](/python/api/azure-batch/azure.batch.operations.joboperations)-Methode wird der Pool an den Batch-Dienst übermittelt. Der Auftrag enthält ursprünglich keine Aufgaben.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -213,11 +213,11 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Erstellen von Aufgaben
 
-Die App erstellt Aufgaben im Auftrag per Aufruf von `add_tasks`. Diese benutzerdefinierte Funktion erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Für jede Aufgabe wird ffmpeg ausgeführt, um ein `resource_files`-Eingabeobjekt mit dem Parameter `command_line` zu verarbeiten. ffmpeg wurde zuvor bei der Erstellung des Pools auf jedem Knoten installiert. Hier wird in der Befehlszeile ffmpeg ausgeführt, um jede MP4-Eingabedatei (Video) in eine MP3-Datei (Audio) zu konvertieren.
+Die App erstellt Aufgaben im Auftrag per Aufruf von `add_tasks`. Diese benutzerdefinierte Funktion erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Für jede Aufgabe wird ffmpeg ausgeführt, um ein `resource_files`-Eingabeobjekt mit dem Parameter `command_line` zu verarbeiten. ffmpeg wurde zuvor bei der Erstellung des Pools auf jedem Knoten installiert. Hier wird in der Befehlszeile ffmpeg ausgeführt, um jede MP4-Eingabedatei (Video) in eine MP3-Datei (Audio) zu konvertieren.
 
-Im Beispiel wird nach der Ausführung über die Befehlszeile ein [OutputFile](/python/api/azure.batch.models.outputfile)-Objekt für die MP3-Datei erstellt. Die Ausgabedateien (in diesem Fall eine Datei) jeder Aufgabe werden in einen Container im verknüpften Speicherkonto hochgeladen, indem die `output_files`-Eigenschaft der Aufgabe verwendet wird.
+Im Beispiel wird nach der Ausführung über die Befehlszeile ein [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile)-Objekt für die MP3-Datei erstellt. Die Ausgabedateien (in diesem Fall eine Datei) jeder Aufgabe werden in einen Container im verknüpften Speicherkonto hochgeladen, indem die `output_files`-Eigenschaft der Aufgabe verwendet wird.
 
-Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
 
 ```python
 tasks = list()
@@ -247,7 +247,7 @@ batch_service_client.task.add_collection(job_id, tasks)
 
 Wenn Aufgaben einem Auftrag hinzugefügt werden, werden sie von Batch automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten im zugeordneten Pool eingeplant. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung aus. 
 
-Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. In der Funktion `wait_for_tasks_to_complete` dieses Beispiels wird das [TaskState](/python/api/azure.batch.models.taskstate)-Objekt zum Überwachen von Aufgaben für einen bestimmten Status innerhalb eines Zeitlimits verwendet. In diesem Fall ist dies der Status „Abgeschlossen“.
+Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. In der Funktion `wait_for_tasks_to_complete` dieses Beispiels wird das [TaskState](/python/api/azure-batch/azure.batch.models.taskstate)-Objekt zum Überwachen von Aufgaben für einen bestimmten Status innerhalb eines Zeitlimits verwendet. In diesem Fall ist dies der Status „Abgeschlossen“.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -267,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nach dem Ausführen der Aufgaben löscht die App den erstellten Eingabespeichercontainer automatisch und ermöglicht Ihnen das Löschen des Batch-Pools und -Auftrags. Die Klassen [JobOperations](/python/api/azure.batch.operations.joboperations) und [PoolOperations](/python/api/azure.batch.operations.pooloperations) von BatchClient verfügen jeweils über delete-Methoden, die aufgerufen werden, wenn Sie das Löschen bestätigen. Für die Aufträge und Aufgaben fallen zwar keine Kosten an, für Computeknoten dagegen schon. Daher empfehlen wir Ihnen, Pools nur bei Bedarf zuzuordnen. Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. Die Eingabe- und Ausgabedateien verbleiben aber im Speicherkonto.
+Nach dem Ausführen der Aufgaben löscht die App den erstellten Eingabespeichercontainer automatisch und ermöglicht Ihnen das Löschen des Batch-Pools und -Auftrags. Die Klassen [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) und [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) von BatchClient verfügen jeweils über delete-Methoden, die aufgerufen werden, wenn Sie das Löschen bestätigen. Für die Aufträge und Aufgaben fallen zwar keine Kosten an, für Computeknoten dagegen schon. Daher empfehlen wir Ihnen, Pools nur bei Bedarf zuzuordnen. Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. Die Eingabe- und Ausgabedateien verbleiben aber im Speicherkonto.
 
 Löschen Sie die Ressourcengruppe, das Batch-Konto und das Speicherkonto, wenn diese Elemente nicht mehr benötigt werden. Wählen Sie hierzu im Azure-Portal die Ressourcengruppe für das Batch-Konto aus, und klicken Sie auf **Ressourcengruppe löschen**.
 
