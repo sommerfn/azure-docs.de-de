@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967223"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104384"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Tutorial: Integrieren von Apptio in Azure Active Directory
 
@@ -85,7 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     Geben Sie im Textfeld **Bezeichner** den folgenden Wert ein: `urn:federation:apptio`.
 
-5. Die Apptio-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+5. Die Apptio-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -156,7 +156,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Apptio** müssen Sie 
 
 ### <a name="create-apptio-test-user"></a>Erstellen eines Apptio-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Apptio einen Benutzer namens B. Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Apptio-Plattform ggf. vom  [Apptio-Supportteam](https://www.apptio.com/about/contact) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Apptio einen Benutzer namens B. Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Apptio-Plattform ggf. vom [Apptio-Supportteam](https://www.apptio.com/about/contact) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976975"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000664"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -35,7 +35,7 @@ Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure-Schlüsse
 > Dieser Artikel enthält Anweisungen für Azure PowerShell zum Aktualisieren der Diagnoseprotokollierung. Sie können die Diagnoseprotokollierung auch aktualisieren, indem Sie Azure Monitor im Abschnitt **Diagnoseprotokolle** des Azure-Portals verwenden. 
 >
 
-Eine Übersicht über Key Vault finden Sie unter [Was ist Azure Key Vault?](key-vault-whatis.md). Informationen dazu, wo Key Vault verfügbar ist, finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/key-vault/).
+Eine Übersicht über Key Vault finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md). Informationen dazu, wo Key Vault verfügbar ist, finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934353"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003361"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einer Azure-Web-App in .NET
 
@@ -33,7 +33,7 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 > * Zuweisen von Berechtigungen für die Web-App
 > * Ausführen der Web-App in Azure
 
-Machen Sie sich zunächst mit den [grundlegenden Konzepten von Key Vault](key-vault-whatis.md#basic-concepts) vertraut. 
+Machen Sie sich zunächst mit den [grundlegenden Konzepten von Key Vault](basic-concepts.md) vertraut. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -50,7 +50,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Azure Key Vault dient zum sicheren Speichern von Anmeldeinformationen, damit diese nicht in Ihrem Code erscheinen. Sie müssen sich jedoch bei Azure Key Vault authentifizieren, um Ihre Schlüssel abzurufen. Und für die Authentifizierung bei Key Vault benötigen Sie wiederum Anmeldeinformationen. Ein klassisches Bootstrap-Dilemma. Die verwaltete Dienstidentität (Managed Service Identity, MSI) löst dieses Problem, indem sie eine _Bootstrap-Identität_ bereitstellt, die den Prozess vereinfacht.
 
-Wenn Sie MSI für einen Azure-Dienst aktivieren (beispielsweise für Azure Virtual Machines, Azure App Service oder Azure Functions), erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts). MSI führt diesen Schritt für die Instanz des Diensts in Azure Active Directory (Azure AD) aus und fügt die Anmeldeinformationen des Dienstprinzipals in diese Instanz ein.
+Wenn Sie MSI für einen Azure-Dienst aktivieren (beispielsweise für Azure Virtual Machines, Azure App Service oder Azure Functions), erstellt Azure einen [Dienstprinzipal](basic-concepts.md). MSI führt diesen Schritt für die Instanz des Diensts in Azure Active Directory (Azure AD) aus und fügt die Anmeldeinformationen des Dienstprinzipals in diese Instanz ein.
 
 ![MSI-Diagramm](media/MSI.png)
 

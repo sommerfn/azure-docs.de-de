@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976343"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000626"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -35,7 +35,7 @@ Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informati
 > Diese Artikel enthält keine Anweisungen zum Schreiben der Azure-Anwendung, die einen der Schritte enthält, der zeigt, wie Sie eine Anwendung zum Verwenden eines Schlüssels oder Geheimnisses im Schlüsseltresor autorisieren.
 >
 
-Eine Übersicht über Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md).
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen

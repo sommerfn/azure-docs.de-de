@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: 8ee5dbe546b78557dde70868d01ec09ae33bee07
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906320"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996689"
 ---
 # <a name="what-is-bing-local-business-search"></a>Worum handelt es sich bei der API für die Bing-Suche nach ortsansässigen Unternehmen?
 Die API für die Bing-Suche nach ortsansässigen Unternehmen ist ein RESTful-Dienst, mit dem Ihre Anwendungen basierend auf Suchabfragen Informationen zu Unternehmen in der näheren Umgebung suchen können. Beispiel: `q=<business-name> in Redmond, Washington` oder `q=Italian restaurants near me`. 

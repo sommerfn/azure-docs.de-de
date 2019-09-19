@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a4ce0419e3a5615cc5a6d57fe2f1cfecad2f09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26d434069870fbfa52687a3abc7913fd121687a1
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66228580"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000076"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Key Vault 
 
@@ -110,7 +110,7 @@ Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers verwenden, um auf Azure Key Vault zuzugreifen.  Weitere Informationen zu Azure Key Vault finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-whatis)
+>[Azure Key Vault](/azure/key-vault/key-vault-overview)
 
 
 
