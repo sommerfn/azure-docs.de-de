@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390259"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984263"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -47,7 +47,6 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Menge      | Number        | „6“, „sechs“     |
 | Menge      | Prozentsatz    | „50 %“, „fünfzig Prozent“|
 | Menge      | Ordinal       | „2.“, „zweite“     |
-| Menge      | NumberRange   | „4 bis 8“     |
 | Menge      | Alter           | „90 Tage alt“, „30 Jahre alt“    |
 | Menge      | Currency      | „€10,99“     |
 | Menge      | Dimension     | „10 Kilometer“, „40 cm“     |
@@ -59,7 +58,6 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Datetime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     |
 | Datetime      | Duration      | „1 Minute und 45 Sekunden“   |
 | Datetime      | Set           | „jeden Dienstag“     |
-| Datetime      | TimeZone      |    |
 | URL           | N/V\*         | "https:\//www.bing.com"    |
 | Email         | N/V\*         | "support@contoso.com" |
 

@@ -140,7 +140,7 @@ Geben Sie in das Suchfeld „Integrationsdienstumgebung“ als Ihren Filter ein.
 
    * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
 
-   * Es muss mindestens `/27` im Adressbereich verwendet werden, weil jedes Subnetz *mindestens* 32 Adressen aufweisen muss ** . Beispiel:
+   * Es muss mindestens `/27` im Adressbereich verwendet werden, weil jedes Subnetz *mindestens* 32 Adressen aufweisen muss Beispiel:
 
      * `10.0.0.0/27` hat 32 Adressen, da 2<sup>(32 – 27)</sup> 2<sup>5</sup> oder 32 ist.
 

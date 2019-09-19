@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000549"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883067"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und der Azure-Befehlszeilenschnittstelle 
 
@@ -158,7 +158,7 @@ Es gibt drei Möglichkeiten für die Authentifizierung bei Key Vault:
 - Verwenden Sie einen Dienstprinzipal und ein Zertifikat. 
 - Verwenden Sie einen Dienstprinzipal und ein Kennwort. Dieser Ansatz wird nicht empfohlen.
 
-Weitere Informationen finden Sie unter [Azure-Schlüsseltresor: Grundlegende Konzepte](basic-concepts.md).
+Weitere Informationen finden Sie unter [Azure-Schlüsseltresor: Grundlegende Konzepte](key-vault-whatis.md#basic-concepts).
 
 Im folgenden Beispiel wird veranschaulicht, wie SAS-Tokens abgerufen werden. Sie rufen die Tokens ab, nachdem Sie eine SAS-Definition erstellt haben. 
 
