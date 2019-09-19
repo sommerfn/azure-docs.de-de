@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076042"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773220"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -47,10 +47,10 @@ Lösungsbereiche helfen bei der Definition der Szenarien, für die Ihr Angebot k
 
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der folgenden relevanten Vorlagen: <br> <ul> <li> [Einseitige Microsoft Azure-Vorlage](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Einseitige Microsoft Dynamics 365-Vorlage](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Einseitige Office 365-Vorlage](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Einseitige Windows 10-Vorlage](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Office 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul>
  |
-| *Kundenpräsentation* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Weitere Informationen finden Sie unter [Vorlage für die Kundenpräsentation](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Weitere Informationen finden Sie unter [Vorlage zur Fallstudie](https://aka.ms/GTM_Case_Study_Template). |
+| *Kundenpräsentation* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
+| *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
 | *Überprüfbare Kundengewinne (optional)* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |
 | *Kanalpräsentation (optional)* | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihre Lösung zu erfahren und ihre Vertriebsteams darauf vorzubereiten, Ihr Angebot zu verkaufen. Dazu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, Dokumentationen und Supportinformationen. |
 | *Referenzarchitekturdiagramme* | Ein Dokument mit dem Modell, das das vom Partner erstellte IP zusammen mit seiner Beziehung zu Microsoft Cloud Services darstellt und wie es die technischen Anforderungen des IP-Co-Selling-Programms erfüllt. |

@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694284"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916159"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -36,10 +36,9 @@ Dieses Verhalten ist beabsichtigt und soll die unnötige Erfassung persönlicher
 
 Obwohl das Standardverhalten das Erfassen persönlicher Daten minimieren soll, bieten wir weiterhin die Flexibilität, IP-Adressdaten zu erfassen und zu speichern. Bevor Sie sich zur Speicherung persönlicher Daten wie IP-Adressen entscheiden, sollten Sie unbedingt sicherstellen, dass dadurch keine Complianceanforderungen oder lokale Bestimmungen verletzt werden, denen Sie möglicherweise unterliegen. Weitere Informationen zur Behandlung persönlicher Daten in Application Insights finden Sie im [Leitfaden zu persönlichen Daten](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
 
-## <a name="storing-partial-ip-address-data"></a>Speichern partieller IP-Adressdaten
+## <a name="storing-ip-address-data"></a>Speichern von IP-Adressdaten
 
-Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf `true` festgelegt sein, um das Erfassen und Speichern partieller IP-Adressen zu aktivieren. Diese Eigenschaft kann entweder durch Azure Resource Manager-Vorlagen oder durch Aufrufen der REST-API festgelegt werden. Beim Aufzeichnen der IP-Adressen wird das letzte Oktett zurückgesetzt.
-
+Die Eigenschaft `DisableIpMasking` der Application Insights-Komponente muss auf `true` festgelegt sein, um das Erfassen und Speichern von IP-Adressen zu aktivieren. Diese Eigenschaft kann entweder durch Azure Resource Manager-Vorlagen oder durch Aufrufen der REST-API festgelegt werden. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
@@ -92,7 +91,7 @@ Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource än
 
     In diesem Fall wird nichts neues gekauft, sondern lediglich die Konfiguration der vorhandenen Application Insights-Ressource aktualisiert.
 
-6. Nachdem die Bereitstellung abgeschlossen wurde, werden mit den ersten drei Oktetten, die mit der IP-Adresse aufgefüllt und bei denen das letzte Oktett zurückgesetzt wurde, neue Telemetriedaten aufgezeichnet.
+6. Sobald die Bereitstellung abgeschlossen ist, werden neue Telemetriedaten aufgezeichnet.
 
     Wenn Sie die Vorlage erneut auswählen und bearbeiten, wird nur die Standardvorlage und nicht die neu hinzugefügte Eigenschaft und ihr zugehöriger Wert angezeigt. Wenn die IP-Adressdaten nicht angezeigt werden und Sie bestätigen möchten, dass `"DisableIpMasking": true` festgelegt ist, führen Sie folgenden PowerShell-Befehl aus: (Ersetzen Sie `Fabrikam-dev` durch die entsprechende Ressource und den Ressourcengruppennamen.)
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetrieinitialisierer
 
-Wenn Sie die gesamte IP-Adresse und nicht nur die ersten drei Oktette aufzeichnen müssen, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) verwenden, um die IP-Adresse in ein nicht maskiertes benutzerdefiniertes Feld zu kopieren.
+Wenn Sie eine flexiblere Alternative als `DisableIpMasking` benötigen, um alle oder Teile der IP-Adressen aufzuzeichnen, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) verwenden, um die IP-Adressen insgesamt oder teilweise in ein benutzerdefiniertes Feld zu kopieren. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098622"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999047"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -88,7 +88,7 @@ Prinzipien und Muster für den Netzwerkbereich sind bereits seit Jahrzehnten ver
 Mit der nachfolgenden bewährten Methode können Sie den identitätsorientierten Sicherheitsbereich verwalten.
 
 **Bewährte Methode**: Schützen Sie Ihre Schlüssel und Anmeldeinformationen, um Ihre PaaS-Bereitstellung zu schützen.   
-**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. [Azure Key Vault](../../key-vault/key-vault-whatis.md) schützt Ihre Schlüssel und Geheimnisse durch Verschlüsseln von Authentifizierungsschlüsseln, Schlüsseln für Speicherkonten, Datenverschlüsselungsschlüsseln, PFX-Dateien und Kennwörtern durch Verwendung von Schlüsseln, die durch HSMs geschützt sind.
+**Detail**: Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Sie können eine zentrale Lösung verwenden, bei der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. [Azure Key Vault](../../key-vault/key-vault-overview.md) schützt Ihre Schlüssel und Geheimnisse durch Verschlüsseln von Authentifizierungsschlüsseln, Schlüsseln für Speicherkonten, Datenverschlüsselungsschlüsseln, PFX-Dateien und Kennwörtern durch Verwendung von Schlüsseln, die durch HSMs geschützt sind.
 
 **Bewährte Methode**: Speichern Sie Anmeldeinformationen und andere Geheimnisse nicht im Quellcode oder in GitHub.   
 **Detail**: Noch schlimmer als der Verlust von Schlüsseln und Anmeldeinformationen ist es, wenn nicht autorisierte Personen an Ihre Schlüssel und Anmeldeinformationen gelangen. Angreifer können mithilfe von Bottechnologien Coderepositorys wie GitHub nach darin gespeicherten Schlüsseln und Geheimnissen durchsuchen. Speichern Sie daher keine Schlüssel oder Geheimnisse in diesen öffentlichen Coderepositorys.
@@ -133,7 +133,7 @@ Folgende Methoden haben sich bei der Verwendung von App Service bewährt.
 **Detail**: Das Einschränken des Zugriffs ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Sie können die rollenbasierte Zugriffssteuerung (RBAC) verwenden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Weitere Informationen zum Gewähren des Zugriffs auf Anwendungen für Benutzer finden Sie unter [Erste Schritte mit der Zugriffsverwaltung](/azure/role-based-access-control/overview).
 
 **Bewährte Methode**: Schützen Sie Ihre Schlüssel.   
-**Detail**: Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Mit Key Vault können Sie Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem Sie Schlüssel verwenden, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden. Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Weitere Informationen finden Sie unter [Azure Key Vault](/azure/key-vault/key-vault-whatis). Sie können auch Key Vault zum Verwalten Ihrer TLS-Zertifikate mit der automatischen Verlängerung verwenden.
+**Detail**: Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Mit Key Vault können Sie Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem Sie Schlüssel verwenden, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden. Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Weitere Informationen finden Sie unter [Azure Key Vault](/azure/key-vault/key-vault-overview). Sie können auch Key Vault zum Verwalten Ihrer TLS-Zertifikate mit der automatischen Verlängerung verwenden.
 
 **Bewährte Methode**: Schränken Sie eingehende Quell-IP-Adressen ein.   
 **Detail**: Die [App Service-Umgebung](/azure/app-service/environment/intro) verfügt über ein Feature zur Integration virtueller Netzwerke, mit dem Sie eingehende Quell-IP-Adressen über Netzwerksicherheitsgruppen einschränken können. Mit virtuellen Netzwerken können Sie Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Weitere Informationen hierzu finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet).

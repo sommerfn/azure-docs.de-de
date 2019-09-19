@@ -73,7 +73,7 @@ sections:
       - type: list
         style: cards
         className: cardsM
-        columns: 3
+        columns: 2
         items:
           - href: /azure/sql-database/sql-database-single-index
             html: '<p>Verwenden Sie die von einem SQL-Datenbank-Server verwaltete Einzeldatenbank für Ihre SaaS-Anwendungen und -Microservices, die eine Einzeldatenbank mit vorhersagbarer Leistung erfordern.</p>'
@@ -90,6 +90,11 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: Verwaltete Instanz
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>Verwenden Sie verwaltete Instanzpools als einfache und kostengünstige Lösung für die Bereitstellung mehrerer verwalteter Instanzen, die Ressourcen gemeinsam nutzen und schnell skaliert werden.</p>'
+            image:
+              src: media/index/i-instancepools.svg
+            title: Instanzpool
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
@@ -128,6 +133,12 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+          - title: Instanzenpool erstellen
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
   - title: Schritt-für-Schritt-Tutorials und Lernmaterial
     items:
       - type: paragraph

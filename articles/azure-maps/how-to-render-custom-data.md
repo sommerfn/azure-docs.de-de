@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638800"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915756"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -27,7 +27,8 @@ Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, B
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Sie müssen zunächst [ein Azure Maps-Konto](how-to-manage-account-keys.md) im Tarif „S1“ erstellen, um die Vorgehensweisen dieses Artikels durchführen zu können.
+Um die in diesem Artikel beschriebenen Verfahren auszuführen, müssen Sie zunächst ein Azure Maps-Konto erstellen, indem Sie die Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) befolgen, und die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) ausführen, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Rendern von Ortsmarken mit Bezeichnungen und benutzerdefinierten Bildern
 

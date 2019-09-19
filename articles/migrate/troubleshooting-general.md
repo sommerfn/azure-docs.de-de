@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Die
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232407"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067805"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -78,7 +78,7 @@ So löschen Sie ein Projekt in der aktuellen Version von Azure Migrate
 2. Wählen Sie auf der Seite für die Ressourcengruppe **Ausgeblendete Typen anzeigen** aus.
 3. Wählen Sie das zu löschende Migrationsprojekt aus. Der Ressourcentyp ist „Microsoft.Migrate/migrateprojects“, er löscht das Projekt.
 
-So löschen Sie ein Projekt in der vorherigen Version von Azure Migrate 
+So löschen Sie ein Projekt in der vorherigen Version von Azure Migrate
 
 1. Öffnen Sie die Azure-Ressourcengruppe, in der das Projekt erstellt wurde.
 2. Wählen Sie das zu löschende Migrationsprojekt aus. Der Ressourcentyp ist „Migration project“, er löscht das Projekt.
@@ -90,7 +90,7 @@ Navigieren Sie zu dem Log Analytics-Arbeitsbereich, der dem Projekt angefügt is
 * Wenn Sie das Azure Migrate-Projekt nicht gelöscht haben, finden Sie den Link zum Arbeitsbereich unter **Essentials** > **Serverbewertung**.
        ![LA-Arbeitsbereich](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>Fehler „Anforderungen müssen Benutzeridentitätsheader enthalten“
@@ -138,7 +138,7 @@ Ein Fehler bei der Datums- und Zeitsynchronisierung (Fehler 802) weist darauf hi
 3. Führen Sie **w32tm /resync** aus, um die Zeit zu synchronisieren.
 
 
-## <a name="error-unabletoconnecttoserver"></a>Fehler: UnableToConnectToServer
+## <a name="error-unabletoconnecttoserver"></a>Fehler UnableToConnectToServer
 
 Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine Verbindung mit vCenter Server „*Servername*.com:9443“ herstellen. Die Fehlerdetails weisen darauf hin, dass unter „https://*Servername*.com:9443/sdk“ kein Endpunkt lauscht, der die Nachricht akzeptieren kann.
 
@@ -151,18 +151,18 @@ Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine 
     4. Überprüfen Sie, ob vCenter Server ausgeführt wird und betriebsbereit ist.
 
 
-## <a name="error-appliance-might-not-be-registered"></a>Fehler: Die Appliance ist möglicherweise nicht registriert
+## <a name="error-appliance-might-not-be-registered"></a>Fehler Die Appliance ist möglicherweise nicht registriert
 
-- Der Fehler 60052 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert“ tritt auf, wenn das zum Registrieren der Appliance verwendete Azure-Konto nicht über ausreichende Berechtigungen verfügt. 
+- Der Fehler 60052 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert“ tritt auf, wenn das zum Registrieren der Appliance verwendete Azure-Konto nicht über ausreichende Berechtigungen verfügt.
     - Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
     - Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
 - Der Fehler 60039 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert" kann auftreten, wenn die Registrierung fehlschlägt, da das zum Registrieren der Appliance verwendete Azure Migrate Projekt nicht gefunden werden kann.
     - Überprüfen Sie im Azure-Portal, ob das Projekt in der Ressourcengruppe vorhanden ist.
     - Sollte das Projekt nicht vorhanden sein, erstellen Sie in Ihrer Ressourcengruppe ein neues Azure Migrate-Projekt, und registrieren Sie die Appliance erneut. Informationen zum Erstellen eines neuen Projekts finden Sie [hier](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool).
 
-## <a name="error-key-vault-management-operation-failed"></a>Fehler: Ein Key Vault-Verwaltungsvorgang war nicht erfolgreich
+## <a name="error-key-vault-management-operation-failed"></a>Fehler Ein Key Vault-Verwaltungsvorgang war nicht erfolgreich
 
-Wenn der Fehler 60030 oder 60031 „Ein Azure Key Vault-Verwaltungsvorgang war nicht erfolgreich“ auftritt, gehen Sie wie folgt vor: 
+Wenn der Fehler 60030 oder 60031 „Ein Azure Key Vault-Verwaltungsvorgang war nicht erfolgreich“ auftritt, gehen Sie wie folgt vor:
 - Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
 - Vergewissern Sie sich, dass das Konto Zugriff auf den in der Fehlermeldung angegebenen Key Vault hat, und wiederholen Sie dann den Vorgang.
 - Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
@@ -187,7 +187,7 @@ Fehler 60025: „Fehler bei einem Azure AD-Vorgang. Der Fehler trat beim Erstell
 
 ## <a name="discovered-vms-not-in-portal"></a>Im Portal befinden sich keine ermittelten virtuellen Computer
 
-Wenn Sie die Ermittlung starten und bei **Serverbewertung** und **Servermigration** zwar den Status **Ermittlung wird ausgeführt**, nicht aber die virtuellen Computer im Portal sehen können, beachten Sie Folgendes: 
+Wenn Sie die Ermittlung starten und bei **Serverbewertung** und **Servermigration** zwar den Status **Ermittlung wird ausgeführt**, nicht aber die virtuellen Computer im Portal sehen können, beachten Sie Folgendes:
 
 - Nach dem Start der Ermittlung von der Appliance dauert eine VMware-VM-Ermittlung ungefähr 15 Minuten und die Hyper-V-VM-Ermittlung für jeden hinzugefügten Host etwa zwei Minuten.
 - Wenn nach dieser Wartezeit immer noch **Ermittlung wird ausgeführt** angezeigt wird, wählen Sie **Aktualisieren** auf der Registerkarte **Server** aus. Dadurch sollte bei **Serverbewertung** und **Servermigration** die Anzahl der ermittelten Server angezeigt werden.
@@ -198,11 +198,11 @@ Wenn Sie die Ermittlung starten und bei **Serverbewertung** und **Servermigratio
 Wenn Sie eine Appliance bereitgestellt haben, die fortlaufend die lokale Umgebung ermittelt, gelöschte virtuelle Computer jedoch weiterhin im Portal angezeigt werden, beachten Sie Folgendes:  
 
 - Es kann bis zu 30 Minuten dauern, bis die von der Appliance gesammelten Ermittlungsdaten im Portal erscheinen.
-- Wenn nach 30 Minuten immer noch keine aktuellen Informationen angezeigt werden, aktualisieren Sie die Daten mit den folgenden Schritten:
+- Wenn nach 30 Minuten keine aktuellen Informationen angezeigt werden, aktualisieren Sie die Daten mit den folgenden Schritten:
 
     1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
     2. Wählen Sie unter **Verwalten** die Option **Agent-Integrität** aus.
-    3. Wählen Sie **Agent aktualisieren** aus. 
+    3. Wählen Sie **Agent aktualisieren** aus.
     1. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen sehen.
 
 ## <a name="vm-information-isnt-in-the-portal"></a>Im Portal befinden sich keine VM-Informationen
@@ -212,7 +212,7 @@ Wenn Sie eine Appliance bereitgestellt haben, die fortlaufend die lokale Umgebun
 
     1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
     2. Wählen Sie unter **Verwalten** die Option **Agent-Integrität** aus.
-    3. Wählen Sie **Agent aktualisieren** aus. 
+    3. Wählen Sie **Agent aktualisieren** aus.
     1. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen sehen.
 
 
@@ -247,7 +247,7 @@ Erfordert ein Microsoft Visual Studio-Abonnement. | Auf dem Computer wird ein Wi
 Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
 Kein virtueller Computer für erforderliche Netzwerkleistung gefunden. | Die erforderliche Netzwerkleistung (ein-/ausgehend) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie die Netzwerkanforderungen für den Computer.
 Kein virtueller Computer am angegebenen Speicherort gefunden. | Geben Sie vor der Migration einen anderen Zielort an.
-Mindestens ein Datenträger ist ungeeignet. | Mindestens ein an den virtuellen Computer angeschlossener Datenträger erfüllt die Azure-Anforderungen nicht.<br/><br/> Azure Migrate: Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Datenträgergrenzwerte für verwaltete Premium-Datenträger (32 TB).<br/><br/> Stellen Sie für jeden an den virtuellen Computer angeschlossenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 64 TB (von SSD Ultra-Datenträgern unterstützt) ist.<br/><br/> Wenn dies nicht der Fall ist, reduzieren Sie die Datenträgergröße vor der Migration zu Azure, oder verwenden Sie in Azure mehrere Datenträger, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS und Durchsatz) von [verwalteten Azure-Datenträgern virtueller Computer](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits) unterstützt wird.
+Mindestens ein Datenträger ist ungeeignet. | Mindestens ein an den virtuellen Computer angeschlossener Datenträger erfüllt die Azure-Anforderungen nicht.<br/><br/> Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Datenträgergrenzwerte für verwaltete Premium-Datenträger (32 TB).<br/><br/> Stellen Sie für jeden an den virtuellen Computer angeschlossenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 64 TB (von SSD Ultra-Datenträgern unterstützt) ist.<br/><br/> Wenn dies nicht der Fall ist, reduzieren Sie die Datenträgergröße vor der Migration zu Azure, oder verwenden Sie in Azure mehrere Datenträger, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS und Durchsatz) von [verwalteten Azure-Datenträgern virtueller Computer](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits) unterstützt wird.
 Mindestens ein Netzwerkadapter ist ungeeignet. | Entfernen Sie nicht verwendete Netzwerkadapter vor der Migration vom Computer.
 Anzahl der Datenträger überschreitet den Grenzwert | Entfernen Sie nicht verwendete Datenträger vor der Migration vom Computer.
 Datenträgergröße überschreitet den Grenzwert | Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Grenzwerte für Premium-Datenträger (32 TB).<br/><br/> Azure unterstützt jedoch Datenträger mit einer Größe von bis zu 64 TB (von SSD Ultra-Datenträgern unterstützt). Reduzieren Sie die Datenträgergröße vor der Migration auf weniger als 64 TB, oder verwenden Sie mehrere Datenträger in Azure, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen.
@@ -258,10 +258,6 @@ Kein virtueller Computer gefunden, der die Kern- und Arbeitsspeicheranforderunge
 Eignung des virtuellen Computers konnte aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Datenträger aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Netzwerkadapter aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
-
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>Enterprise Agreement (EA) kann in einer Bewertung nicht hinzugefügt werden
-
-Die Azure Migrate-Serverbewertung unterstützt derzeit keine Preise, die auf Enterprise Agreement (EA) basieren. Verwenden Sie zum Umgehen dieser Einschränkung die **Nutzungsbasierte Zahlung** als Azure-Angebot und die Eigenschaft **Rabatt**, um die Ihnen eingeräumten benutzerdefinierten Rabatte anzugeben. Informationen zum Anpassen von Bewertungen finden Sie [hier](https://aka.ms/migrate/selfhelp/eapricing).
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Virtuelle Linux-Computer sind „bedingt bereit“
 
@@ -279,7 +275,7 @@ Je nach Art der Bewertung empfiehlt die Azure Migrate-Serverbewertung möglicher
 
 
 - Die Empfehlung für VM-SKUs richtet sich nach den Bewertungseigenschaften.
-- Dies hängt von der Art der Bewertung ab, die Sie in der Serverbewertung ausführen: *Leistungsbasiert* oder *Wie lokal*. 
+- Dies hängt von der Art der Bewertung ab, die Sie in der Serverbewertung ausführen: *Leistungsbasiert* oder *Wie lokal*.
 - Bei leistungsbasierten Bewertungen berücksichtigt die Serverbewertung die Nutzungsdaten der lokalen virtuellen Computer (CPU-, Speicher-, Datenträger- und Netzwerkauslastung), um die richtige Ziel-VM-SKU für Ihre lokalen virtuellen Computer zu bestimmen. Außerdem wird bei der Bestimmung der effektiven Auslastung ein Komfortfaktor hinzugefügt.
 - Bei der lokalen Dimensionierung werden Leistungsdaten nicht berücksichtigt, und die Ziel-SKU wird auf der Grundlage der lokalen Zuordnung empfohlen.
 
@@ -288,14 +284,14 @@ Um zu veranschaulichen, wie sich dies auf Empfehlungen auswirken kann, sehen wir
 Wir haben einen lokalen virtuellen Computer mit vier Kernen und 8 GB Arbeitsspeicher, mit einer CPU- und Speicherauslastung von jeweils 50 % und einem angegebenen Komfortfaktor von 1,3.
 
 -  Beim Bewertungstyp **Wie lokal** wird eine Azure-VM-SKU mit 4 Kernen und 8 GB Arbeitsspeicher empfohlen.
-- Bei der leistungsbasierten Bewertung würde auf Basis der effektiven CPU- und Speicherauslastung (50 % von 4 Kernen * 1,3 = 2,6 Kerne und 50 % von 8 GB Arbeitsspeicher * 1,3 = 5,3 GB Arbeitsspeicher) die günstigste VM-SKU mit vier Kernen (nächste unterstützte Kernanzahl) und 8 GB Arbeitsspeichergröße (nächste unterstützte Arbeitsspeichergröße) empfohlen. 
+- Bei der leistungsbasierten Bewertung würde auf Basis der effektiven CPU- und Speicherauslastung (50 % von 4 Kernen * 1,3 = 2,6 Kerne und 50 % von 8 GB Arbeitsspeicher * 1,3 = 5,3 GB Arbeitsspeicher) die günstigste VM-SKU mit vier Kernen (nächste unterstützte Kernanzahl) und 8 GB Arbeitsspeichergröße (nächste unterstützte Arbeitsspeichergröße) empfohlen.
 - Weitere Informationen zur Dimensionierung bei Bewertungen finden Sie [hier](concepts-assessment-calculation.md#sizing).
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure-Datenträger-SKUs größer als lokal
 
 Die Azure Migrate-Serverbewertung empfiehlt möglicherweise je nach Art der Bewertung einen größeren Datenträger.
 - Die Datenträgerdimensionierung in der Serverbewertung hängt von zwei Bewertungseigenschaften ab: dem Dimensionierungskriterium und dem Speichertyp.
-- Wenn das Dimensionierungskriterium **Leistungsbasiert** ist und der Speichertyp **Automatisch** lautet, werden bei der Ermittlung des Zieldatenträgertyps (HDD Standard, SSD Standard oder Premium) die IOPS- und Durchsatzwerte des Datenträgers berücksichtigt. Eine Datenträger-SKU dieses Datenträgertyps wird dann unter Berücksichtigung der Größenanforderungen des lokalen Datenträgers empfohlen. 
+- Wenn das Dimensionierungskriterium **Leistungsbasiert** ist und der Speichertyp **Automatisch** lautet, werden bei der Ermittlung des Zieldatenträgertyps (HDD Standard, SSD Standard oder Premium) die IOPS- und Durchsatzwerte des Datenträgers berücksichtigt. Eine Datenträger-SKU dieses Datenträgertyps wird dann unter Berücksichtigung der Größenanforderungen des lokalen Datenträgers empfohlen.
 - Wenn das Dimensionierungskriterium **Leistungsbasiert** ist und der Speichertyp **Premium** lautet, wird eine Premium-Datenträger-SKU in Azure basierend auf den IOPS, dem Durchsatz und den Größenanforderungen des lokalen Datenträgers empfohlen. Die gleiche Logik wird verwendet, um die Datenträgerdimensionierung durchzuführen, wenn das Dimensionierungskriterium **Wie lokal** verwendet wird und der Speichertyp **HDD Standard**, **SSD Standard** oder **Premium** lautet.
 
 Wenn Sie beispielsweise einen lokalen Datenträger mit 32 GB Speicher haben, die aggregierten Lese- und Schreib-IOPS für den Datenträger aber 800 IOPS sind, empfiehlt die Serverbewertung einen Premium-Datenträger (aufgrund der höheren IOPS-Anforderungen) und dann eine Datenträger-SKU, welche die erforderlichen IOPS und die Größe unterstützen kann. Die nächstliegende Übereinstimmung in diesem Beispiel wäre P15 (256 GB, 1100 IOPS). Für den lokalen Datenträger ist also nur eine Größe von 32 GB erforderlich, von der Serverbewertung wurde jedoch aufgrund der hohen IOPS-Anforderungen des lokalen Datenträgers ein größerer Datenträger empfohlen.

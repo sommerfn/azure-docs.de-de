@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: a93f8286c6927a3e87e03fb73e680c9638285336
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917786"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077178"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -60,7 +60,7 @@ Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure 
 
 Um eine Vorlage zu verwenden, die zwei virtuelle Netzwerke in zwei verschiedenen Regionen und die VPN-Verbindung zwischen den VNets zu erstellen, wählen Sie die folgende Schaltfläche **In Azure bereitstellen** aus. Die Vorlagendefinition befindet sich in einem [öffentlichen Blob-Speicher](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 

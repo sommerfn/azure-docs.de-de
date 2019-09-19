@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259240"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003501"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Geheimnis in Azure Key
 * Aktivieren einer [verwalteten Identität](../active-directory/managed-service-identity/overview.md) für die Web-App
 * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten von Key Vault](key-vault-whatis.md#basic-concepts) vertraut sind.
+Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten von Key Vault](basic-concepts.md) vertraut sind.
 
 > [!NOTE]
 > Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen und Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis regelmäßig rotiert werden. 

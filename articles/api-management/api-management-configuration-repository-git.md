@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073757"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104965"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -99,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 Wenn dies zu einem Fehler führt, codieren Sie den Kennwortteil des Befehls als URL. Eine schnelle Möglichkeit, dies zu erreichen, ist, Visual Studio zu öffnen und den folgenden Befehl im **Direktfenster**auszugeben. Um das **Direktfenster** zu öffnen, öffnen Sie eine Projektmappe oder ein Projekt in Visual Studio (oder erstellen Sie eine neue leere Konsolenanwendung), und wählen Sie im Menü **Debuggen** erst **Fenster** und dann **Direkt** aus.
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 Verwenden Sie das verschlüsselte Kennwort zusammen mit Ihrem Benutzernamen und dem Repositoryspeicherort, um den Git-Befehl zu erstellen.

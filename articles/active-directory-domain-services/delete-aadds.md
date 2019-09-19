@@ -1,53 +1,51 @@
 ---
 title: Deaktivieren von Azure Active Directory Domain Services | Microsoft-Dokumentation
-description: Deaktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
+description: Erfahren Sie, wie Sie Azure Active Directory Domain Services im Azure-Portal deaktivieren
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 09/04/2019
 ms.author: iainfou
-ms.openlocfilehash: d5917ad94212c8b18d4362528bdfbafb02aec808
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171969"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842612"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Deaktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
-In diesem Artikel wird gezeigt, wie Sie mit dem Azure-Portal Azure Active Directory Domain Services (AD) für Ihr Azure AD-Verzeichnis deaktivieren.
+
+Wenn Sie eine verwaltete Domäne nicht mehr benötigen, können Sie eine Azure Active Directory Domain Services-Instanz (Azure AD DS) löschen. Es gibt keine Möglichkeit, eine verwaltete Azure AD DS-Domäne abzuschalten oder vorübergehend zu deaktivieren. Durch das Löschen der verwalteten Azure AD DS-Domäne wird der Azure AD-Mandant weder gelöscht noch anderweitig beeinträchtigt. In diesem Artikel erfahren Sie, wie Sie im Azure-Portal eine verwaltete Azure AD DS-Domäne löschen.
 
 > [!WARNING]
-> **Verzeichnisse werden dauerhaft gelöscht, und dieser Vorgang kann nicht rückgängig gemacht werden.**
-> Lassen Sie daher Vorsicht walten. Beim Löschen der verwalteten Domäne geschieht Folgendes:
+> **Die Löschung ist dauerhaft und kann nicht rückgängig gemacht werden.**
+> Beim Löschen einer verwalteten Azure AD DS-Domäne werden die folgenden Schritte ausgeführt:
 >   * Die Bereitstellung der Domänencontroller für die verwaltete Domäne wird aufgehoben, und die Domänencontroller werden aus dem virtuellen Netzwerk entfernt.
->   * Die Daten in der verwalteten Domäne werden endgültig gelöscht. Dazu gehören u.a. benutzerdefinierte Organisationseinheiten, GPOs, benutzerdefinierte DNS-Einträge, Dienstprinzipale und gMSAs, die Sie in der verwalteten Domäne erstellt haben.
+>   * Die Daten in der verwalteten Domäne werden endgültig gelöscht. Dazu gehören u.a. benutzerdefinierte Organisationseinheiten, GPOs, benutzerdefinierte DNS-Einträge, Dienstprinzipale und gruppenverwaltete Dienstkonten (GMSAs), die Sie erstellt haben.
 >   * Computer, die in die verwaltete Domäne eingebunden sind, verlieren ihre Vertrauensstellung mit der Domäne und müssen aus der Domäne entfernt werden.
->   * Bei diesen Computern können Sie sich nicht mit Unternehmens-AD-Anmeldeinformationen anmelden. Verwenden Sie stattdessen die Anmeldeinformationen für den lokalen Administrator des Computers.
-> Durch das Löschen der verwalteten Domäne wird Ihr Azure AD-Verzeichnis weder gelöscht noch anderweitig beeinträchtigt.
+>       * Bei diesen Computern können Sie sich nicht mit AD-Unternehmensanmeldeinformationen anmelden. Stattdessen müssen Sie die Anmeldeinformationen des lokalen Administrators für den Computer verwenden.
 
-Führen Sie zum Löschen der verwalteten Azure AD Domain Services-Domäne die folgenden Schritte aus:
-1. Navigieren Sie im Azure-Portal zur [Azure AD Domain Services-Erweiterung](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
-2. Klicken Sie auf den Namen der verwalteten Domäne.
+## <a name="delete-the-managed-domain"></a>Löschen der verwalteten Domäne
 
-    ![Auswählen der zu löschenden Domäne](./media/getting-started/domain-services-delete-select-domain.png)
+Führen Sie die folgenden Schritte aus, um eine verwaltete Azure AD DS-Domäne zu löschen:
 
-3. Klicken Sie auf der Seite **Übersicht** auf die Schaltfläche **Löschen**.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
+1. Wählen Sie den Namen der verwalteten Azure AD DS-Domäne aus, z.B. *contoso.com*.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Löschen** aus. Geben Sie zum Bestätigen des Löschvorgangs erneut den Domänennamen der verwalteten Domäne ein, und wählen Sie dann **Löschen** aus.
 
-    ![Löschen der Domäne](./media/getting-started/domain-services-delete-domain.png)
+Das Löschen der verwalteten Azure AD DS-Domäne kann 15 bis 20 Minuten (oder länger) dauern.
 
-4. Geben Sie zum Bestätigen des Löschvorgangs den DNS-Domänennamen der verwalteten Domäne ein. Klicken Sie anschließend auf die Schaltfläche **Löschen**.
+## <a name="next-steps"></a>Nächste Schritte
 
-    ![Bestätigung zum Löschen der Domäne](./media/getting-started/domain-services-delete-domain-confirm.png)
+Ziehen Sie [Feedback][feedback] in Betracht, um uns mitzuteilen, welche Funktionen Sie sich in Azure AD DS wünschen.
 
-Das Löschen der verwalteten Domäne kann zwischen 15 und 20 Minuten (oder länger) dauern.
+Wenn Sie erneut mit Azure AD DS beginnen möchten, lesen Sie [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-instance].
 
-Wir würden uns über [Ihr Feedback](contact-us.md) freuen, damit wir besser verstehen, welche Features Sie benötigen, um sich in Zukunft für die Azure AD Domain Services zu entscheiden. Dieses Feedback hilft uns dabei, den Dienst weiter zu verbessern und an die Anforderungen Ihrer Bereitstellungen und Anwendungsfälle anzupassen.
+<!-- INTERNAL LINKS -->
+[feedback]: contact-us.md
+[create-instance]: tutorial-create-instance.md

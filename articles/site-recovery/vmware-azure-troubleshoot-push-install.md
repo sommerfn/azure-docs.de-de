@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/27/2019
-ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/11/2019
+ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925575"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910641"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -240,6 +240,8 @@ Dieser Fehler tritt auf, wenn der Azure Site Recovery-VSS-Anbieter-Dienst [zum L
 Dieser Fehler tritt auf, wenn die Datenbank des Azure Site Recovery-VSS-Anbieter-Diensts [gesperrt](https://msdn.microsoft.com/library/ms833798.aspx) ist. Versuchen Sie, VSS manuell auf dem Quellcomputer zu installieren, indem Sie die folgende Befehlszeile ausführen.
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+Überprüfen Sie im Falle eines Fehlers, ob ein Antivirenprogramm oder andere Dienste im Status „Wird gestartet“ hängen geblieben sind. Dadurch kann die Sperre für Datenbankdienste aufrechterhalten werden. Dies führt zu Fehlern bei der Installation des VSS-Anbieters. Stellen Sie sicher, dass sich kein Dienst im Status „Wird gestartet“ befindet, und wiederholen Sie dann den oben genannten Vorgang.
 
 ### <a name="vss-exit-code-806"></a>VSS Exitcode 806
 

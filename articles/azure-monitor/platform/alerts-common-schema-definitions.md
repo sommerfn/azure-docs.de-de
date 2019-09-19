@@ -1,6 +1,6 @@
 ---
-title: Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks
-description: Grundlagen der Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks
+title: Definitionen des allgemeinen Warnungsschemas für Azure Monitor
+description: Informationen zu Definitionen des allgemeinen Warnungsschemas für Azure Monitor
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034804"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916027"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
-In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Webhooks/Logic Apps/Azure Functions/Automation Runbooks beschrieben. 
+In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
 
-## <a name="overview"></a>Übersicht
+Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der Warnung. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
+* **Zusammenfassung**: Eine Gruppe standardisierter Felder (für alle Warnungstypen gleich), die beschreiben, auf welcher Ressource sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z.B. Schweregrad oder Beschreibung). 
+* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die Ursache der Warnung beschrieben wird. Die Felder variieren basierend auf dem Warnungstyp. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
 
-Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache der Warnung** beschrieben. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
-* **Zusammenfassung**: Eine Gruppe **standardisierter Felder** (für alle Warnungstypen gleich), die beschreiben, auf **welcher Ressource** sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z. B. Schweregrad oder Beschreibung). 
-* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
-
-##### <a name="sample-alert-payload"></a>Beispielnutzlast einer Warnung
+**Beispielnutzlast einer Warnung**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-## <a name="essentials-fields"></a>Felder in „Essentials“
+## <a name="essentials"></a>Zusammenfassung
 
 | Feld | BESCHREIBUNG|
 |:---|:---|
-| alertId | GUID, die diese Warnungsinstanz eindeutig identifiziert. |
-| alertRule | Name der Warnungsregel, die die Warnungsinstanz generiert hat. |
-| severity | Schweregrad der Warnung Mögliche Werte: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Identifiziert das Signal, für das die Warnungsregel definiert wurde. Mögliche Werte: Metrik, Protokoll, Aktivitätsprotokoll |
-| monitorCondition | Wenn eine Warnung ausgelöst wird, wird die Überwachungsbedingung der Warnung auf „Ausgelöst“ festgelegt. Wenn die zugrunde liegende Bedingung gelöscht wurde, die die Warnung ausgelöst hat, wird die Überwachungsbedingung auf „Behoben“ festgelegt.   |
+| alertId | Die GUID, die diese Warnungsinstanz eindeutig identifiziert. |
+| alertRule | Der Name der Warnungsregel, die die Warnungsinstanz generiert hat. |
+| severity | Der Schweregrad der Warnung. Mögliche Werte: Sev0, Sev1, Sev2, Sev3 oder Sev4. |
+| signalType | Identifiziert das Signal, für das die Warnungsregel definiert wurde. Mögliche Werte: Metrik, Protokoll oder Aktivitätsprotokoll. |
+| monitorCondition | Wenn eine Warnung ausgelöst wird, wird die Überwachungsbedingung der Warnung auf **Ausgelöst** festgelegt. Wenn die zugrunde liegende Bedingung gelöscht wurde, die die Warnung ausgelöst hat, wird die Überwachungsbedingung auf **Behoben** festgelegt.   |
 | monitoringService | Der Überwachungsdienst oder die Lösung, von dem bzw. der die Warnung generiert wurde. Die Felder für den Warnungskontext werden vom Überwachungsdienst vorgegeben. |
-| alertTargetIds | Liste der ARM-IDs aller betroffenen Ziele einer Warnung. Für eine Protokollwarnung, die in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Instanz definiert ist, ist es der jeweilige Arbeitsbereich bzw. die jeweilige Anwendung. |
-| originAlertId | ID der Warnungsinstanz, wie sie vom überwachenden Dienst generiert wird, der sie generiert. |
-| firedDateTime | Datum/Uhrzeit der Auslösung der Warnungsinstanz in UTC |
-| resolvedDateTime | Datum/Uhrzeit der Festlegung der Überwachungsbedingung für die Warnungsinstanz auf „Behoben“ in UTC. Gilt derzeit nur für Metrikwarnungen.|
-| description | Die Beschreibung entsprechend der Definition in der Warnungsregel |
-|essentialsVersion| Versionsnummer für den Abschnitt „essentials“|
-|alertContextVersion | Versionsnummer für den Abschnitt „alertContext“ |
+| alertTargetIds | Die Liste der Azure Resource Manager-IDs, die betroffene Ziele einer Warnung sind. Für eine Protokollwarnung, die in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Instanz definiert ist, ist es der jeweilige Arbeitsbereich bzw. die jeweilige Anwendung. |
+| originAlertId | Die ID der Warnungsinstanz, wie sie vom überwachenden Dienst generiert wird, der sie generiert. |
+| firedDateTime | Das Datum und die Uhrzeit, zu der die Warnungsinstanz ausgelöst wurde, in koordinierter Weltzeit (UTC). |
+| resolvedDateTime | Das Datum und die Uhrzeit, zu der die Überwachungsbedingung für die Warnungsinstanz auf **Behoben** festgelegt wurde, in UTC. Gilt derzeit nur für Metrikwarnungen.|
+| description | Die Beschreibung entsprechend der Definition in der Warnungsregel. |
+|essentialsVersion| Die Versionsnummer für den Abschnitt „essentials“.|
+|alertContextVersion | Die Versionsnummer für den Abschnitt `alertContext`. |
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-## <a name="alert-context-fields"></a>Warnungskontextfelder
+## <a name="alert-context"></a>Warnungskontext
 
 ### <a name="metric-alerts"></a>Metrikwarnungen
 
-#### <a name="monitoringservice--platform"></a>monitoringService = 'Platform'
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -154,12 +152,11 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> + Für Protokollwarnungen, für die eine benutzerdefinierte JSON-Nutzlast definiert wurde, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt.
-> + Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. **Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet.** Sie können dies anhand des Flags „IncludedSearchResults“ überprüfen. In Szenarien, in denen die Suchergebnisse nicht enthalten sind, ist es ratsam, die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) zu verwenden. 
+> Für Protokollwarnungen, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = 'Log Analytics'
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = 'Application Insights'
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -289,9 +286,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 
 ### <a name="activity-log-alerts"></a>Aktivitätsprotokollwarnungen
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = 'Activity Log – Administrative'
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -316,9 +313,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = 'Activity Log – Policy'
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -349,9 +346,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = 'Activity Log – Autoscale'
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -379,9 +376,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-#### <a name="monitoringservice--activity-log---security"></a>monitoringService = 'Activity Log – Security'
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -412,9 +409,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -456,9 +453,9 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = 'Resource Health'
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>Beispielwerte
+**Beispielwerte**
 ```json
 {
   "alertContext": {
@@ -487,6 +484,6 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen zum allgemeinen Warnungsschema](https://aka.ms/commonAlertSchemaDocs)
-- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- Erfahren Sie mehr über das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
+- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
 

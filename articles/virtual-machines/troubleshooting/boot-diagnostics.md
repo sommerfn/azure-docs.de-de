@@ -3,19 +3,19 @@ title: Startdiagnose für virtuelle Computer in Azure | Microsoft-Dokumentation
 description: Übersicht über die beiden Debugfeatures für virtuelle Computer in Azure
 services: virtual-machines
 author: Deland-Han
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 7796d24b88ccc531b8042bfadf9d87f0072a2994
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709863"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086484"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 

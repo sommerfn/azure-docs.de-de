@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ad2372f9a9f90e4502b304a08477771fd6ef385
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879178"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037428"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Einrichten der privaten CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads
 
 Ihre private CloudSimple-Cloud kann als Wiederherstellungsstandort für lokale Anwendungen eingerichtet werden, um im Notfall für Geschäftskontinuität zu sorgen. Die Wiederherstellungslösung basiert auf Zerto Virtual Replication als Replikations- und Orchestrierungsplattform. Die grundlegende Infrastruktur sowie wichtige virtuelle Computer können kontinuierlich aus dem lokalen vCenter in Ihre private Cloud repliziert werden. Sie können Ihre private Cloud für Failovertests und zum Sicherstellen der Verfügbarkeit Ihrer Anwendung bei einem Ausfall verwenden. Auf ähnliche Weise können Sie Ihre private Cloud als primären Standort einrichten, der durch einen geografisch getrennten Wiederherstellungsstandort geschützt wird.
 
 > [!NOTE]
-> Richtlinien zum Festlegen der richtigen Größe für Ihre Notfallwiederherstellungsumgebung finden Sie im Zerto-Dokument [Sizing Considerations For Zerto Virtual Replication](http://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) (Überlegungen zum Festlegen der Größe für Zerto Virtual Replication).
+> Richtlinien zum Festlegen der richtigen Größe für Ihre Notfallwiederherstellungsumgebung finden Sie im Zerto-Dokument [Sizing Considerations For Zerto Virtual Replication](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) (Überlegungen zum Festlegen der Größe für Zerto Virtual Replication).
 
 Vorteile der CloudSimple-Lösung:
 

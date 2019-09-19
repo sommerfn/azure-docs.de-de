@@ -1,18 +1,18 @@
 ---
 title: Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
-description: Fasst die Unterstützung der Notfallwiederherstellung für VMware-VMs und physische Server auf Azure mit Azure Site Recovery zusammen.
+description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617644"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910439"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -68,14 +68,14 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
 Computerworkload | Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem unterstützten Computer ausgeführt werden. [Weitere Informationen](https://aka.ms/asr_workload)
-Windows | - Ab Windows Server 2019 (unterstützt ab [Update Rollup 34](https://support.microsoft.com/help/4490016) (Version 9.22 des Mobilitätsdienstes).<br/> - Windows Server 2016 (64-bit Server Core, Server mit Desktopdarstellung)<br/> - Windows Server 2012 R2, Windows Server 2012<br/> - Windows Server 2008 R2 mit mindestens SP1.<br/> - Windows Server 2008, 64 und 32-bit mit mindestens SP2]. Nur für die Migration unterstützt. [Weitere Informationen](migrate-tutorial-windows-server-2008.md)<br/> - Windows 10, Windows 8.1, Windows 8, Windows 7 64-bit (unterstützt ab [Update Rollup 36](https://support.microsoft.com/help/4503156) (ab Vversion 9.22 des Mobilitätsdienstes). Windows 7 RTM wird nicht unterstützt. 
-Linux | Es werden nur 64-Bit-Systeme unterstützt. 32-Bit-Systeme werden nicht unterstützt.<br/><br/>Auf allen Linux-Server sollten [Linux Integration Services (LIS)-Komponente](https://www.microsoft.com/download/details.aspx?id=55106) installiert sein. Sie benötigen sie, um den Server in Azure nach einem Testfailover/Failover zu booten. Wenn LIS-Komponente fehlen, dann stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten. <br/><br/> Site Recovery orchestriert Failover zum Ausführen von Linux-Servern in Azure. Linux-Anbieter sollten jedoch möglicherweise den Support auf Distributionsversionen einschränken, die noch nicht veraltet sind.<br/><br/> Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.<br/><br/> Das Aktualisieren geschützter Computer über die wichtigsten Linux-Distributionsversionen hinweg wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, aktualisieren das Betriebssystem und aktivieren die Replikation erneut.<br/><br/> [Erfahren Sie mehr](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) über die Unterstützung von Linux und Open-Source-Technologie in Azure.
-Linux Red Hat Enterprise | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
-Linux: CentOS | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit CentOS 5.2-5.11 & 6.1-6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
+Windows | – Ab Windows Server 2019 (unterstützt ab [Update Rollup 34](https://support.microsoft.com/help/4490016) (Version 9.22 des Mobilitätsdiensts).<br/> – Windows Server 2016 (64-Bit-Server Core, Server mit Desktopdarstellung)<br/> – Windows Server 2012 R2, Windows Server 2012<br/> – Windows Server 2008 R2 mit mindestens SP1.<br/> – Windows Server 2008, 64 und 32 Bit mit mindestens SP2]. Nur für die Migration unterstützt. [Weitere Informationen](migrate-tutorial-windows-server-2008.md)<br/> – Windows 10, Windows 8.1, Windows 8, Windows 7 64 Bit (unterstützt ab [Update Rollup 36](https://support.microsoft.com/help/4503156) (ab Version 9.22 des Mobilitätsdiensts). Windows 7 RTM wird nicht unterstützt. 
+Linux | Es werden nur 64-Bit-Systeme unterstützt. 32-Bit-Systeme werden nicht unterstützt.<br/><br/>Auf allen Linux-Servern sollten [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installiert sein. Sie benötigen sie, um den Server in Azure nach einem Testfailover/Failover zu booten. Wenn LIS-Komponenten fehlen, dann stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten. <br/><br/> Site Recovery orchestriert Failover zum Ausführen von Linux-Servern in Azure. Linux-Anbieter sollten jedoch möglicherweise den Support auf Distributionsversionen einschränken, die noch nicht veraltet sind.<br/><br/> Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.<br/><br/> Das Aktualisieren geschützter Computer über die wichtigsten Linux-Distributionsversionen hinweg wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, aktualisieren das Betriebssystem und aktivieren die Replikation erneut.<br/><br/> [Erfahren Sie mehr](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) über die Unterstützung von Linux und Open-Source-Technologie in Azure.
+Linux Red Hat Enterprise | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit Red Hat Enterprise Linux 5.2 bis 5.11 und 6.1 bis 6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
+Linux: CentOS | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit CentOS 5.2 bis 5.11 und 6.1 bis 6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
 Ubuntu | Ubuntu 14.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(Überprüfen Sie die unterstützten Kernel-Versionen)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(Überprüfen Sie die unterstützten Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4<br/> Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Mit einem Red Hat-kompatibler Kernel oder Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-Kernelversionen
@@ -118,16 +118,16 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.24][9.24 UR] | SP1 3.1
 **Komponente** | **Unterstützt**
 --- | ---
 Dateisysteme | ext3, ext4, XFS
-Volume-Manager | - LVM wird unterstützt.<br/> - /boot auf LVM wird ab [Update Rollup 31](https://support.microsoft.com/help/4478871/) (Version 9.20 des Mobilitätsdienstes) unterstützt. Es wird in früheren Mobilitätsdienstversionen nicht unterstützt.<br/> - Mehrere Betriebssystemdatenträger werden nicht unterstützt.
+Volume-Manager | – LVM wird unterstützt.<br/> – /boot auf LVM wird ab [Update Rollup 31](https://support.microsoft.com/help/4478871/) (Version 9.20 des Mobilitätsdiensts) unterstützt. Es wird in früheren Versionen des Mobilitätsdiensts nicht unterstützt.<br/> – Mehrere Betriebssystemdatenträger werden nicht unterstützt.
 Paravirtualisierte Speichergeräte | Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 E/A-Geräte mit Blöcken mit mehreren Warteschlangen | Nicht unterstützt.
 Physische Server mit HP CCISS-Speichercontroller | Nicht unterstützt.
-Benennungskonvention für Gerät/Bereitstellungspunkt | Der Gerätename oder Bereitstellungspunktname sollte eindeutig sein.<br/> Stellen Sie sicher, dass keine zwei Geräte/Bereitstellungspunkte Namen aufweisen, für die zwischen Groß-/Kleinschreibung unterschieden wird. So ist es beispielsweise nicht zulässig, zwei Geräte für denselben virtuellen Computers als *device1* und *Device1* zu benennen.
-Verzeichnisse | Wenn Sie eine Version des Mobilitätsdiensts verwenden, die vor der Version 9.20 liegt (veröffentlich im [Update Rollup 31](https://support.microsoft.com/help/4478871/)), dann gelten die folgenden Einschränkungen:<br/><br/> - Diese Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br> 2\. Das /boot-Verzeichnis muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/> Ab Version 9.20 gelten diese Einschränkungen nicht. 
-Startverzeichnis | – Startdatenträger dürfen nicht im GPT-Partitionsformat vorliegen. Dies ist eine Einschränkung der Azure-Architektur. GPT-Datenträger werden als Datenträger für Daten unterstützt.<br/><br/> Mehrere Startdatenträger auf einem virtuellen Computer werden nicht unterstützt.<br/><br/> - „/boot“ auf LVM-Volumes über mehrere Datenträger wird nicht unterstützt.<br/> - Ein Computer ohne einen Startdatenträger kann nicht repliziert werden.
+Benennungskonvention für Gerät/Bereitstellungspunkt | Der Gerätename oder Bereitstellungspunktname sollte eindeutig sein.<br/> Stellen Sie sicher, dass keine zwei Geräte/Bereitstellungspunkte Namen aufweisen, für die zwischen Groß-/Kleinschreibung unterschieden wird. So ist es beispielsweise nicht zulässig, zwei Geräte für denselben virtuellen Computer mit *device1* und *Device1* zu benennen.
+Verzeichnisse | Wenn Sie eine frühere Version des Mobilitätsdiensts als Version 9.20 (veröffentlich in [Update Rollup 31](https://support.microsoft.com/help/4478871/)) verwenden, dann gelten die folgenden Einschränkungen:<br/><br/> – Diese Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Betriebssystemdatenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br> – Das /boot-Verzeichnis muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/> Ab Version 9.20 gelten diese Einschränkungen nicht. 
+Startverzeichnis | – Startdatenträger dürfen nicht im GPT-Partitionsformat vorliegen. Dies ist eine Einschränkung der Azure-Architektur. GPT-Datenträger werden als Datenträger für Daten unterstützt.<br/><br/> Mehrere Startdatenträger auf einem virtuellen Computer werden nicht unterstützt.<br/><br/> – /boot auf LVM-Volumes über mehrere Datenträger wird nicht unterstützt.<br/> – Ein Computer ohne einen Startdatenträger kann nicht repliziert werden.
 Erforderlicher Speicherbedarf| 2 GB auf der /root-Partition <br/><br/> 250 MB im Installationsordner
-XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden unterstützt (ab Mobility Service-Version 9.10).<br/> Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn `ftype` auf 1 festgelegt ist, werden XFSv5-Features verwendet.
-BTRFS | BTRFS wird ab [Update Rollup 34](https://support.microsoft.com/help/4490016) (Version 9.22 des Mobilitätsdienstes) unterstützt. BTRFS wird nicht unterstützt, wenn:<br/><br/> - Das untergeordnete Volume des BTRFS-Dateisystems nach dem Aktivieren des Schutzes geändert wird.</br> - Das BTRFS-Dateisystem über mehrere Datenträger verteilt wird.</br> – Die BTRFS-Dateisystem RAID unterstützt.
+XFSv5 | XFSv5-Features auf XFS-Dateisystemen, z.B. die Metadatenprüfsumme, werden unterstützt (ab Version 9.10 des Mobilitätsdiensts).<br/> Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn `ftype` auf 1 festgelegt ist, werden XFSv5-Features verwendet.
+BTRFS | BTRFS wird ab [Update Rollup 34](https://support.microsoft.com/help/4490016) (Version 9.22 des Mobilitätsdiensts) unterstützt. BTRFS wird nicht unterstützt, wenn:<br/><br/> – Das untergeordnete Volume des BTRFS-Dateisystems nach dem Aktivieren des Schutzes geändert wird.</br> – Das BTRFS-Dateisystem über mehrere Datenträger verteilt wird.</br> – Die BTRFS-Dateisystem RAID unterstützt.
 
 ## <a name="vmdisk-management"></a>VM-/Datenträgerverwaltung
 
@@ -170,7 +170,7 @@ Beschleunigte Netzwerke | Nein
 ## <a name="storage"></a>Storage
 **Komponente** | **Unterstützt**
 --- | ---
-Dynamischer Datenträger | Der Betriebssystem-Datenträger muss ein Basisdatenträger sein. <br/><br/>Datenträger für Daten können dynamische Datenträger sein.
+Dynamischer Datenträger | Der Betriebssystemdatenträger muss ein Basisdatenträger sein. <br/><br/>Datenträger für Daten können dynamische Datenträger sein.
 Dockerdatenträgerkonfiguration | Nein
 Host-NFS | Ja für VMware<br/><br/> Nein für physische Server
 Host-SAN (iSCSI/FC) | Ja
@@ -192,8 +192,8 @@ Gast/Server – Speicherplätze | Nein
 Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen | Nein
 Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein
-Gast/Server GPT-Partitionen | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdienstes) unterstützt. Bisher wurden vier unterstützt.
-EFI-/UEFI-Start von Gast/Server | - Wird unterstützt, wenn Sie die Mobilitätsdienstversion 9.13 oder neuer verwenden.<br/> - Unterstützt bei der Migration von virtuellen VMware-Computern oder physischen Servern unter Windows Server 2012 oder höher zu Azure.<br/> - Sie können nur virtuelle Computer für die Migration replizieren. Ein Failback zu lokalen Ressourcen wird nicht unterstützt.<br/> – Es wird nur NTFS unterstützt. <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. <br/> - Datenträgersektorgröße sollte pro physischem Sektor 512 bytes betragen.
+GPT-Partitionen von Gast/Server | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdiensts) unterstützt. Bisher wurden vier unterstützt.
+EFI-/UEFI-Start von Gast/Server | – Wird unterstützt, wenn Sie Version 9.13 oder eine höhere Version des Mobilitätsdiensts verwenden.<br/> – Unterstützt bei der Migration von virtuellen VMware-Computern oder physischen Servern unter Windows Server 2012 oder höher zu Azure.<br/> – Sie können nur virtuelle Computer für die Migration replizieren. Ein Failback zu lokalen Ressourcen wird nicht unterstützt.<br/> – Es wird nur NTFS unterstützt. <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. <br/> – Die Datenträgersektorgröße sollte pro physischem Sektor 512 Bytes betragen.
 
 ## <a name="replication-channels"></a>Replikationskanäle
 
@@ -213,7 +213,7 @@ Georedundanter Speicher mit Lesezugriff | Ja
 Speicherebene „Kalt“ | Nein
 Speicherebene „Heiß“| Nein
 Blockblobs | Nein
-Encryption-at-rest (SSE)| Ja
+Verschlüsselung ruhender Daten (SSE)| Ja
 Storage Premium | Ja
 Import-/Exportdienst | Nein
 Azure Storage-Firewalls für VNets | Ja.<br/> Konfiguriert in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten).
@@ -246,14 +246,18 @@ Fiber-Channel-Datenträger | Nicht unterstützt. | Beim Überprüfen tritt ein F
 BitLocker | Nicht unterstützt. | BitLocker muss deaktiviert sein, bevor Sie die Replikation für einen Computer aktivieren. |
 Name des virtuellen Computers | 1 bis 63 Zeichen.<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt.<br/><br/> Der Computername muss mit einem Buchstaben oder einer Ziffer beginnen und enden. |  Aktualisieren Sie den Wert in den Computereigenschaften in Site Recovery.
 
-## <a name="churn-limits"></a>Änderungseinschränkungen
+## <a name="resource-group-limits"></a>Grenzwerte für Ressourcengruppen
+
+Informationen zur Anzahl virtueller Computer, die unter einer einzelnen Ressourcengruppe geschützt werden können, finden Sie im Artikel zu [Grenzwerten und Kontingenten für Abonnements](https://docs.microsoft.com/azure/azure-subscription-service-limits#resource-group-limits).
+
+## <a name="churn-limits"></a>Änderungsgrenzwerte
 
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. 
 - Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen E/A-Kombinationen für Anwendungen abdecken.
 - Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren.
-- Um die bestmöglichen Ergebnisse zu erzielen, empfehlen wir dringend, das Sie das [Tool für die Bereitstellungsplanung](site-recovery-deployment-planner.md) ausführen und umfangreiche Anwendungstests per Testfailover durchführen, um sich ein eindeutiges Bild der Anwendungsleistung zu verschaffen.
+- Um die bestmöglichen Ergebnisse zu erzielen, empfehlen wir dringend, das Sie das [Bereitstellungsplanertool](site-recovery-deployment-planner.md) ausführen und umfangreiche Anwendungstests per Testfailover durchführen, um sich ein eindeutiges Bild der Anwendungsleistung zu verschaffen.
 
-**Replikation des Ziels** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
+**Replikationsziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
 ---|---|---|---
 Standardspeicher | 8 KB | 2 MB/s | 168 GB pro Datenträger
 Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträger
@@ -280,7 +284,7 @@ Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird |
 Tresor über Ressourcengruppen hinweg verschieben | Nein
 Tresor innerhalb von und über Abonnements hinweg verschieben | Nein
 Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben | Nein
-Verschieben von Speicher, Netzwerk, Azure-VMs innerhalb oder zwischen Abonnements. | Nein
+Speicher, Netzwerk, Azure-VMs innerhalb von und über Abonnements hinweg verschieben | Nein
 
 
 ## <a name="obtain-latest-components"></a>Erhalten der neusten Komponenten
@@ -288,7 +292,7 @@ Verschieben von Speicher, Netzwerk, Azure-VMs innerhalb oder zwischen Abonnement
 **Name** | **Beschreibung** | **Details**
 --- | --- | ---
 Konfigurationsserver | Lokal installiert.<br/> Koordiniert die Kommunikation zwischen lokalen VMware-Servern oder physischen Computern und Azure. | - [Erfahren Sie mehr über](vmware-physical-azure-config-process-server-overview.md) den Konfigurationsserver.<br/> - [Erfahren Sie mehr über](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) das Upgrade auf die neuste Version.<br/> - [Erfahren Sie mehr über](vmware-azure-deploy-configuration-server.md) die Einrichtung des Konfigurationsservers. 
-Prozessserver | Wird standardmäßig auf dem Konfigurationsserver installiert.<br/> Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure.<br/> Bei zunehmender Größe der Bereitstellung können Sie zusätzliche Prozessserver hinzufügen, um größere Mengen von Replikationsdatenverkehr zu bewältigen. | - [Erfahren Sie mehr über](vmware-physical-azure-config-process-server-overview.md) den Prozessserver.<br/> - [Erfahren Sie mehr über](vmware-azure-manage-process-server.md#upgrade-a-process-server) das Upgrade auf die neuste Version.<br/> - [Erfahren Sie mehr über](vmware-physical-large-deployment.md#set-up-a-process-server) die Einrichtung des horizontal skalierten Prozessservers.
+Prozessserver | Wird standardmäßig auf dem Konfigurationsserver installiert.<br/> Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure.<br/> Bei zunehmender Größe der Bereitstellung können Sie zusätzliche Prozessserver hinzufügen, um größere Mengen von Replikationsdatenverkehr zu bewältigen. | - [Erfahren Sie mehr über](vmware-physical-azure-config-process-server-overview.md) den Prozessserver.<br/> - [Erfahren Sie mehr über](vmware-azure-manage-process-server.md#upgrade-a-process-server) das Upgrade auf die neuste Version.<br/> - [Erfahren Sie mehr über](vmware-physical-large-deployment.md#set-up-a-process-server) die Einrichtung horizontal skalierter Prozessserver.
 Mobility Service | Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten.<br/> Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure.| - [Erfahren Sie mehr über](vmware-physical-mobility-service-overview.md) den Mobilitätsdienst.<br/> - [Erfahren Sie mehr über](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) das Upgrade auf die neuste Version.<br/> 
 
 

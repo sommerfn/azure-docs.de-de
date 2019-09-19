@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595452"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861080"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -50,6 +50,9 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. Verwenden Sie den Bereich **Zeitauswahl**, um den Zeitraum, die Vergrößerung oder die Verkleinerung Ihres Diagramms zu ändern. 
 
 ![Bereich zum Ändern des Zeitraums](./media/metrics-getting-started/time-picker.png)
+
+> [!NOTE]
+> Verwenden Sie **Time Brush**, um einen interessanten Bereich des Diagramms (Spitze oder Senke) zu untersuchen. Setzen Sie den Mauszeiger an den Anfang des Bereichs, klicken und halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste dann los. Im Diagramm wird dieser Zeitbereich vergrößert. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Anwenden von Dimensionsfiltern und Aufteilung
 

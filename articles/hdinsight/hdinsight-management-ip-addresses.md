@@ -3,16 +3,17 @@ title: Azure HDInsight-Verwaltungs-IP-Adressen
 description: Hier erfahren Sie, von welchen IP-Adressen Sie eingehenden Datenverkehr zulassen müssen, um Netzwerksicherheitsgruppen und benutzerdefinierte Routen für virtuelle Netzwerke mit Azure HDInsight richtig zu konfigurieren.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479207"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076635"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 

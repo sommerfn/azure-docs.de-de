@@ -1,18 +1,18 @@
 ---
 title: Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 description: Erfahren Sie, wie Sie auf Analyseberichte zugreifen können, um Verkäufe zu überwachen, die Leistung zu bewerten und Ihre Marketplace-Angebote zu optimieren.
-author: mattwojo
+author: chjenk
 manager: evansma
 ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/09/2019
+ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619684"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880187"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
@@ -26,6 +26,7 @@ Um auf die Analysetools im Partner Center zuzugreifen, öffnen Sie das Dashboard
 |[Bestellungen](#orders-dashboard)|Informationen zu Ihren Bestellungen in grafischem und herunterladbarem Format|
 |[Kunden](#customer-dashboard)|Informationen zu Ihrer Kunden, einschließlich Wachstumstrends, in grafischem und herunterladbarem Format dargestellt|
 |[Downloads](#downloads-dashboard)|Eine Liste Ihrer Downloadanforderungen über die letzten 30 Tage|
+|[Bewertungen und Rezensionen](#ratings-and-reviews)| Informationen zu Bewertungen und Rezensionen, die von Ihren Kunden für die von ihnen erworbenen Angebote abgegeben wurden.
 
 ## <a name="summary-dashboard"></a>Dashboard „Zusammenfassung“
 
@@ -56,11 +57,11 @@ Der Abschnitt **Gesamtwerte** zeigt die Anzahl aller im ausgewählten Datumsbere
 
 ### <a name="customers-by-geography"></a>Kunden nach Geographie
 
-Die Heatmap **Kunden nach Geografie** zeigt die Kundenanzahl auf einer Weltkarte an. 
+Die Heatmap **Kunden nach Geografie** zeigt die Kundenanzahl auf einer Weltkarte an.
 
-- Sie können die Karte verschieben, um den genauen Standort anzuzeigen. 
-- Sie können an einen bestimmten Ort zoomen. 
-- Die Heatmap verfügt über ein zusätzliches Raster, um Details zur Anzahl der Kunden (oder [Bestellungen](#orders-by-geography)) an einem bestimmten Ort anzuzeigen. 
+- Sie können die Karte verschieben, um den genauen Standort anzuzeigen.
+- Sie können an einen bestimmten Ort zoomen.
+- Die Heatmap verfügt über ein zusätzliches Raster, um Details zur Anzahl der Kunden (oder [Bestellungen](#orders-by-geography)) an einem bestimmten Ort anzuzeigen.
 - Sie können ein Land im Raster suchen und auswählen, um an den Ort in der Karte zu zoomen. Um wieder zur ursprünglichen Ansicht zurückzukehren, drücken Sie die Taste **Home** in der Karte.
 - Ein **Neukunde** hat eines Ihrer Angebote im Laufe des Monats innerhalb des ausgewählten Datumsbereichs zum ersten Mal gekauft.
 
@@ -122,7 +123,7 @@ Die Heatmap **Bestellungen nach Geographie** zeigt die Anzahl Ihrer Bestellungen
 
 Im Kreisdiagramm **Aktive Bestellungen nach Angeboten** sind alle Ihre aktiven Bestellungen nach Angebotsnamen aufgeführt.
 
-- Die besten 4 Angebote werden im Diagramm angezeigt, die übrigen Angebote werden unter „Sonstige“ zusammengefasst.
+- Die besten vier Angebote werden im Diagramm angezeigt, die übrigen Angebote werden unter „Sonstige“ zusammengefasst.
 - Sie können bestimmte Angebote in der Legende auswählen, um nur diese Angebote im Diagramm anzuzeigen. 
 - Wenn Sie den Cursor über ein Segment im Diagramm bewegen, wird die Anzahl der Bestellungen und der Prozentsatz dieses Angebots im Vergleich zur Gesamtzahl der Bestellungen für alle Ihre Angebote angezeigt.
 - Der **Trend „Bestellungen nach Angeboten“** zeigt Wachstumstrends Monat für Monat an. Die Spalte „Monat“ gibt die Anzahl der Bestellungen nach Angebotsname an. Das Liniendiagramm stellt den prozentualen Wachstumstrend auf einer z-Achse dar.
@@ -285,3 +286,38 @@ Sie erhalten eine Popupbenachrichtigung und eine E-Mail mit einem Link zum Dashb
 | Anbietername| Kunde| Der Name des Anbieters, der an der Beziehung zwischen Microsoft und dem Endkunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben.|
 | SKU| Reihenfolge| Der bei der Veröffentlichung definierte SKU-Name. Ein Angebot kann mehrere SKUs enthalten, aber eine SKU kann nur einem einzigen Angebot zugeordnet werden.||
 | Enddatum der Testversion| Reihenfolge| Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist.||
+
+## <a name="ratings-and-reviews"></a>Bewertungen und Rezensionen
+
+Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben. Die Kunden können neue Bewertungen und Rezensionen senden oder bereits übermittelte Bewertungen und Rezensionen aktualisieren oder löschen. Rezensionen werden im Azure Marketplace oder in AppSource auf der Registerkarte „Rezensionen“ auf der Produktseite des Angebots veröffentlicht. Kunden können ihre Namen für Bewertungen oder Rezensionen angeben oder anonym posten.  
+
+> [!NOTE]
+> Kunden können nur Änderungen an den Bewertungen und Rezensionen vornehmen, deren Besitzer sie sind.
+
+Im Dashboard **Bewertungen und Rezensionen** werden die Trends und Erkenntnisse von Kundenaktivitäten angezeigt. Es bietet grafische Darstellungen der folgenden Elemente:
+
+- Bewertungen und Rezensionen  
+- Rezensionskommentare
+
+### <a name="marketplace-storefront-tabs"></a>Registerkarten der Marketplace-Storefront
+
+Herausgeber können ihre Angebotsmetriken separat auf den Registerkarte von AppSource und Azure Marketplace anzeigen. Wählen Sie im Dropdownmenü die Option **Angebot** aus, um bestimmte Angebotsmetriken anzuzeigen:
+
+![Partner Center, Dashboard „Analyse“, Dropdownoption „Angebot“](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
+
+Im Abschnitt mit der Zusammenfassung von Bewertungen und Rezensionen werden die folgenden Metriken für einen ausgewählten Datumsbereich angezeigt:
+
+- **Durchschnittliche Bewertung:** Gewichtete durchschnittliche Sternebewertung aller Bewertungen, die von Kunden für das ausgewählte Angebot gesendet wurden.
+- **Aufschlüsselung der Bewertungen:** Aufschlüsselung der Sternebewertung nach Anzahl von Kunden, die Bewertungen gesendet haben. Im Balkendiagramm sind tatsächliche und überarbeitete Bewertungen (Anzahl aktualisierter Bewertungen) gestapelt.
+- **Bewertungen gesamt:** Gesamtanzahl der gesendeten Bewertungen. Diese Anzahl umfasst auch Bewertungen mit und ohne Rezensionen.
+- **Bewertungen mit Rezensionen:** Anzahl gesendeter Rezensionen.
+
+![Partner Center, Dashboard „Analyse“, Zusammenfassung von Bewertungen und Rezensionen](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Rezensionskommentare
+
+Rezensionen werden in chronologischer Reihenfolge nach Veröffentlichungsdatum angezeigt. In der Standardansicht werden alle Rezensionen angezeigt. Mit der Option **Filter** im Dropdownmenü können Sie die Rezensionen nach Sternebewertung filtern. Sie können auch nach Schlüsselwörtern suchen, die in der Rezension vorkommen.  
+
+![Partner Center, Dashboard „Analyse“, Rezensionskommentare](./media/analyze-reviews.png)

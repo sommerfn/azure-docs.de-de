@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/10/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142558"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899411"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -34,7 +34,7 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 ||||
 
 <a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
-<a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz im Azure-VNet mit einer privaten IP-Adresse ausgeführt wird, ist ein lokales Datengateway erforderlich. Die Verwendung einer verwalteten Azure SQL-Datenbank-Instanz mit einem öffentlichem Endpunkt wird zurzeit nicht unterstützt.   
+<a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Ist das nicht der Fall, ist ein lokales Datengateway erforderlich.    
 <a name="databricks">3</a>: Azure Databricks unter Verwendung des Spark-Connectors wird derzeit nicht unterstützt.   
 <a name="gen2">4</a>: ADLS Gen2 wird aktuell nicht unterstützt.
 
@@ -76,7 +76,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |OData-Feed<sup>[1](#tab1400b)</sup>     |  
 |ODBC-Abfrage     | 
 |OLE DB     |   
-|Postgre SQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
 |Salesforce-Objekte<sup>[1](#tab1400b)</sup> |  
 |Salesforce-Berichte<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  

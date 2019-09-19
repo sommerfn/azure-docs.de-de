@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: e444d6254b575ead4b5d436a4b92f960c61b1d1c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802661"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088091"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte erläutert, die in Foodee und Azure Activ
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten.
-* [Einen Foodee-Mandanten](https://Foodee.com/pricing/)
+* [Einen Foodee-Mandanten](https://www.food.ee/about/)
 * Ein Benutzerkonto in Foodee mit Administratorberechtigungen.
 
 ## <a name="assigning-users-to-foodee"></a>Zuweisen von Benutzern zu Foodee 

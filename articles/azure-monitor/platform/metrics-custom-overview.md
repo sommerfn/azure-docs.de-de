@@ -5,15 +5,15 @@ author: ancav
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254058"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844659"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -168,22 +168,38 @@ Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, könne
 ## <a name="supported-regions"></a>Unterstützte Regionen
 Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Die folgende Tabelle enthält die unterstützten Azure-Regionen für benutzerdefinierte Metriken. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
 
-|Azure-Region|Präfix des regionalen Endpunkts|
+|Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|
-|USA (Ost)| https:\//eastus.monitoring.azure.com/ |
+| **USA und Kanada** | |
+|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com/ |
+|USA, Westen 2       | https:\//westus2.monitoring.azure.com/ |
+|USA Nord Mitte | https:\//northcentralus.monitoring.azure.com
 |USA Süd Mitte| https:\//southcentralus.monitoring.azure.com/ |
-|USA, Westen-Mitte| https:\//westcentralus.monitoring.azure.com/ |
-|USA, Westen 2| https:\//westus2.monitoring.azure.com/ |
-|Asien, Südosten| https:\//southeastasia.monitoring.azure.com/ |
-|Nordeuropa| https:\//northeurope.monitoring.azure.com/ |
-|Europa, Westen| https:\//westeurope.monitoring.azure.com/ |
+|USA (Mitte)      | https:\//centralus.monitoring.azure.com |
+|Kanada, Mitte | https:\//canadacentral.monitoring.azure.comc
+|East US| https:\//eastus.monitoring.azure.com/ |
+| **Europa** | |
+|Nordeuropa    | https:\//northeurope.monitoring.azure.com/ |
+|Europa, Westen     | https:\//westeurope.monitoring.azure.com/ |
+|UK, Süden | https:\//uksouth.monitoring.azure.com
+|Frankreich, Mitte | https:\//francecentral.monitoring.azure.com |
+| **Afrika** | |
+|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com
+| **Asien** | |
+|Indien, Mitte | https:\//centralindia.monitoring.azure.com
+|Australien (Osten) | https:\//australiaeast.monitoring.azure.com
+|Japan, Osten | https:\//japaneast.monitoring.azure.com
+|Asien, Südosten  | https:\//southeastasia.monitoring.azure.com |
+|Asien, Osten | https:\//eastasia.monitoring.azure.com
+|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com
+
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 Azure Monitor erzwingt die folgenden Nutzungslimits für benutzerdefinierte Metriken:
 
 |Category (Kategorie)|Begrenzung|
 |---|---|
-|Aktive Zeitreihen/Abonnements/Region|50\.000|
+|Aktive Zeitreihen/Abonnements/Region|50.000|
 |Dimensionsschlüssel pro Metrik|10|
 |Zeichenkettenlänge für metrische Namespaces, metrische Namen, Dimensionsschlüssel und Dimensionswerte|256 Zeichen|
 

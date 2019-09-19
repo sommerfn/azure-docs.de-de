@@ -1,84 +1,89 @@
 ---
-title: Azure AD Domain Services – Überprüfen der Integrität Ihrer verwalteten Domäne | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Integrität Ihrer verwalteten Domäne im Azure-Portal über die Seite „Integrität“ überprüfen.
+title: Überprüfen der Integrität von Azure Active Directory Domain Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Integrität einer verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) überprüfen und die Statusmeldungen mithilfe des Azure-Portals verstehen.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234154"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898244"
 ---
-# <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure AD Domain Services-Domäne
+# <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure Active Directory Domain Services-Domäne
 
-## <a name="overview-of-the-health-page"></a>Übersicht über die Seite „Integrität“
-Über die Seite „Integrität“ im Azure-Portal können Sie darüber auf dem Laufenden bleiben, was in Ihrer verwalteten Domäne passiert. In diesem Artikel werden die Elemente der Seite „Integrität“ einzeln beschrieben.
+Azure Active Directory Domain Services (Azure AD DS) führt einige Hintergrundaufgaben aus, um die verwaltete Domäne fehlerfrei und auf dem neuesten Stand zu halten. Zu diesen Aufgaben gehören das Ausführen von Sicherungen, das Anwenden von Sicherheitsupdates und das Synchronisieren von Daten aus Azure AD. Wenn Probleme mit der verwalteten Azure AD DS-Domäne auftreten, werden diese Aufgaben möglicherweise nicht erfolgreich ausgeführt. Um Probleme zu überprüfen und zu beheben, können Sie den Integritätsstatus einer verwalteten Azure AD DS-Domäne mithilfe des Azure-Portals überprüfen.
 
-### <a name="how-to-view-the-health-of-your-managed-domain"></a>Anzeigen der Integrität Ihrer verwalteten Domäne
-1. Navigieren Sie im Azure-Portal zur [Seite „Azure AD Domain Services“](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
-2. Klicken Sie auf die Domäne, für die Sie die Integrität anzeigen möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Integrität**.
+In diesem Artikel wird gezeigt, wie Sie den Integritätsstatus von Azure AD DS anzeigen und die angezeigten Informationen oder Warnungen verstehen.
 
-Die folgende Abbildung zeigt eine beispielhafte Seite „Integrität“: ![Beispiel für die Seite „Integrität“](./media/active-directory-domain-services-alerts/health-page.png)
+## <a name="view-the-health-status"></a>Anzeigen des Integritätsstatus
 
->[!NOTE]
-> Die Integrität Ihrer verwalteten Domäne wird einmal pro Stunde ausgewertet. Warten Sie nach dem Vornehmen von Änderungen an Ihrer verwalteten Domäne bis zum nächsten Auswertungszyklus, um den aktualisierten Integritätsstatus für Ihre verwaltete Domäne anzuzeigen. Der Zeitstempel „Zuletzt ausgewertet“ oben rechts zeigt an, wann die Integrität Ihrer verwalteten Domäne zuletzt ausgewertet wurde.
->
+Der Integritätsstatus für eine verwaltete Azure AD DS-Domäne wird im Azure-Portal angezeigt. Neben Informationen zum Zeitpunkt der letzten Sicherung und Synchronisierung mit Azure AD finden Sie auch mögliche Warnungen, die auf ein Problem mit der Integrität der verwalteten Domäne hinweisen. Zum Anzeigen des Integritätsstatus für eine verwaltete Azure AD DS-Domäne führen Sie die folgenden Schritte aus:
 
-### <a name="status-of-your-managed-domain"></a>Status Ihrer verwalteten Domäne
-Der Status oben rechts auf der Seite „Integrität“ zeigt die Gesamtintegrität Ihrer verwalteten Domäne an. In den Status werden alle vorhandenen Warnungen Ihrer Domäne einbezogen. Sie können den Status Ihrer Domäne auch auf der Übersichtsseite von Azure AD Domain Services anzeigen.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
+1. Wählen Sie die verwaltete Azure AD DS-Domäne aus, z.B. *contoso.com*.
+1. Wählen Sie links im Azure AD DS-Ressourcenfenster die Option **Integrität** aus. Der folgende Screenshot zeigt als Beispiel eine fehlerfreie verwaltete Azure AD DS-Domäne sowie den Status der letzten Sicherung und Synchronisierung mit Azure AD:
+
+    ![Übersicht über die Seite „Integrität“ im Azure-Portal mit dem Azure Active Directory Domain Services-Status](./media/check-health/health-page.png)
+
+Der Zeitstempel *Letzte Auswertung* auf der Seite „Integrität“ gibt an, wann die verwaltete Azure AD DS-Domäne zuletzt überprüft wurde. Die Integrität einer verwalteten Azure AD DS-Domäne wird stündlich ausgewertet. Warten Sie nach Änderungen an einer verwalteten Azure AD DS-Domäne bis zum nächsten Auswertungszyklus, um den aktualisierten Integritätsstatus anzuzeigen.
+
+Der Status oben rechts auf der Seite gibt die Gesamtintegrität der verwalteten Azure AD DS-Domäne an. Der Status berücksichtigt alle vorhandenen Warnungen für Ihre Domäne. Die folgende Tabelle enthält die verfügbaren Statusindikatoren:
 
 | Status | Symbol | Erklärung |
 | --- | :----: | --- |
-| Wird ausgeführt | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Ihre verwaltete Domäne wird ohne Probleme ausgeführt, und es liegen keine kritischen Fehler oder Warnmeldungen vor. Für die Domäne können ggf. Warnungen vom Typ „Information“ bestehen. |
-| Eingreifen erforderlich (Warnung) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Für Ihre verwaltete Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnmeldung vorhanden, die ein Eingreifen erforderlich macht. |
-| Eingreifen erforderlich (Kritisch) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Für Ihre verwaltete Domäne liegt mindestens eine kritische Warnung vor. Außerdem sind ggf. Warnmeldungen oder Warnungen vom Typ „Information“ vorhanden. |
-| Wird bereitgestellt | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Die Domäne wird gerade bereitgestellt. |
+| Wird ausgeführt | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Die verwaltete Azure AD DS-Domäne wird fehlerfrei ausgeführt, und es liegen keine kritischen Fehler oder Warnungen vor. Eventuell gibt es Informationsmeldungen für die Domäne. |
+| Eingreifen erforderlich (Warnung) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Für die verwaltete Azure AD DS-Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnung vorhanden, die behandelt werden sollte. |
+| Eingreifen erforderlich (Kritisch) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Es gibt mindestens eine kritische Warnung für die verwaltete Azure AD DS-Domäne, die behandelt werden muss. Außerdem sind eventuell Warnungen und/oder Informationsmeldungen vorhanden. |
+| Wird bereitgestellt | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Die Azure AD DS-Domäne wird bereitgestellt. |
 
-## <a name="monitors"></a>Monitore
-Monitore sind Aspekte Ihrer verwalteten Domäne, die von Azure AD Domain Services regelmäßig überwacht werden. Die beste Möglichkeit, Ihre Monitore in einem fehlerfreien Zustand zu halten, ist das Beheben der Probleme aller aktiven Warnungen für Ihre verwaltete Domäne.
+## <a name="understand-monitors-and-alerts"></a>Grundlegendes zu Monitoren und Warnungen
 
-Mit Azure AD Domain Services wird derzeit Folgendes überwacht:
- - Backup
- - Synchronisierung mit Azure AD
+Der Integritätsstatus für eine verwaltete Azure AD DS-Domäne gibt zwei Arten von Informationen an: Monitore und Warnungen. Monitore zeigen den Zeitpunkt an, an dem grundlegende Hintergrundaufgaben abgeschlossen wurden. Warnungen stellen Informationen oder Vorschläge bereit, um die Stabilität der verwalteten Domäne zu verbessern.
 
-### <a name="the-backup-monitor"></a>Monitor „Sicherung“
-Hiermit wird überwacht, ob für Ihre verwaltete Domäne regelmäßige Sicherungen erstellt werden. In der folgenden Tabelle ist beschrieben, was im Monitor „Sicherung“ in der Spalte mit den Details enthalten ist:
+### <a name="monitors"></a>Monitore
+
+Monitore sind Bereiche einer verwalteten Azure AD DS-Domäne, die in regelmäßigen Abständen überprüft werden. Wenn aktive Warnungen für die verwaltete Azure AD DS-Domäne vorhanden sind, kann dies dazu führen, dass einer der Monitore ein Problem meldet. Azure AD Domain Services überwacht derzeit die folgenden Bereiche:
+
+* Sicherung
+* Synchronisierung mit Azure AD
+
+#### <a name="backup-monitor"></a>Monitor „Sicherung“
+
+Der Monitor „Sicherung“ überprüft, ob regelmäßige automatische Sicherungen der verwalteten Azure AD DS-Domäne erfolgreich ausgeführt wurden. Die folgende Tabelle enthält die verfügbaren Statuswerte des Monitors „Sicherung“:
 
 | Detailwert | Erklärung |
 | --- | --- |
-|„Never backed up“ (Nie gesichert) | Dieser Status ist für eine neu erstellte verwaltete Domäne normal. Generell wird die erste Sicherung 24 Stunden nach der Bereitstellung Ihrer verwalteten Domäne erstellt. Wenn Ihre verwaltete Domäne nicht neu erstellt wurde oder dieser Status ungewöhnlich lange angezeigt wird, sollten Sie sich [an den Support wenden](contact-us.md). |
-| Last backup was taken 1 to 14 days ago (Letzte Sicherung vor 1 bis 14 Tagen) | Dies ist der Wert, der für den Monitor „Sicherung“ erwartet wird. |
-| Last backup was taken more than 14 days ago (Letzte Sicherung vor mehr als 14 Tagen) | Längere Zeiträume als zwei Wochen für die letzte Sicherung sind ungewöhnlich. Unter Umständen wird das Erstellen regelmäßiger Sicherungen für Ihre verwaltete Domäne durch aktive kritische Warnungen verhindert. Beheben Sie zuerst alle aktiven Warnungen für Ihre verwaltete Domäne, und [wenden Sie sich an den Support](contact-us.md), falls das Problem weiterhin besteht. |
+| Nie gesichert | Dieser Status ist für eine neu erstellte verwaltete Azure AD DS-Domäne normal. Die erste Sicherung sollte 24 Stunden nach der Bereitstellung der verwalteten Azure AD DS-Domäne erstellt werden. Wenn dieser Status weiterhin auftritt, [erstellen Sie eine Azure-Supportanfrage][azure-support]. |
+| Letzte Sicherung vor 1 bis 14 Tagen | Dieser Zeitbereich ist der erwartete Status für den Monitor „Sicherung“. In diesem Zeitraum sollten regelmäßige automatische Sicherungen erfolgen. |
+| Letzte Sicherung vor mehr als 14 Tagen | Ein Zeitraum von mehr als zwei Wochen weist auf ein Problem mit den regelmäßigen automatischen Sicherungen hin. Unter Umständen wird das Erstellen von Sicherungen für die verwaltete Azure AD DS-Domäne durch aktive kritische Warnungen verhindert. Beheben Sie alle aktiven Warnungen für die verwaltete Azure AD DS-Domäne. Wenn der Monitor „Sicherung“ den Status nicht aktualisiert und keine aktuelle Sicherung meldet, [erstellen Sie eine Azure-Supportanfrage][azure-support]. |
 
+#### <a name="synchronization-with-azure-ad-monitor"></a>Monitor „Synchronisierung mit Azure AD“
 
-### <a name="the-synchronization-with-azure-ad-monitor"></a>Monitor „Synchronisierung mit Azure AD“
-Microsoft überwacht, wie häufig Ihre verwaltete Domäne mit Azure Active Directory synchronisiert wird. Die Anzahl von Objekten (Benutzer und Gruppen) und die Anzahl von Änderungen, die seit der letzten Synchronisierung in Ihrer Azure AD-Instanz vorgenommen wurden, können sich darauf auswirken, wie lange eine Synchronisierung dauern kann. Falls Ihre verwaltete Domäne zuletzt vor mehr als drei Tagen synchronisiert wurde, sollten Sie sich [an den Support wenden](contact-us.md).
+Eine verwaltete Azure AD DS-Domäne wird regelmäßig mit Azure Active Directory synchronisiert. Die Anzahl der Benutzer- und Gruppenobjekte sowie die Anzahl der seit der letzten Synchronisierung im Azure AD Verzeichnis vorgenommenen Änderungen wirken sich auf die Dauer der Synchronisierung aus. Wenn die verwaltete Azure AD DS-Domäne zuletzt vor mehr als drei Tagen synchronisiert wurde, überprüfen Sie, ob aktive Warnungen vorhanden sind, und beheben Sie diese. Wenn der Monitor „Synchronisierung“ den Status nicht aktualisiert und keine aktuelle Synchronisierung anzeigt, [erstellen Sie eine Azure-Supportanfrage][azure-support].
 
-## <a name="alerts"></a>Alerts
-Warnungen werden für Probleme in Ihrer verwalteten Domäne generiert, die behoben werden müssen, damit Azure AD Domain Services ausgeführt werden kann. Für jede Warnung wird das Problem beschrieben und eine URL zu einer Seite mit Lösungsansätzen angegeben, auf der bestimmte Schritte für die Behebung aufgeführt sind. Eine Übersicht über alle Warnungen und die dazugehörigen Lösungen finden Sie im Artikel zur [Problembehandlung von Warnungen](troubleshoot-alerts.md).
+### <a name="alerts"></a>Warnungen
 
-### <a name="alert-severity"></a>Schweregrad der Warnung
-Warnungen sind in drei verschiedenen Sicherheitsebenen kategorisiert: Kritisch, Warnung und Information.
+Warnungen werden für Probleme in einer verwalteten Azure AD DS-Domäne generiert, die behoben werden müssen, damit der Dienst ordnungsgemäß ausgeführt werden kann. Jede Warnung enthält eine Beschreibung des Problems sowie eine URL, unter der Sie eine Erläuterung der Schritte zur Behebung des Problems finden. Weitere Informationen zu möglichen Warnungen und deren Behebung finden Sie unter [Problembehandlung von Warnungen](troubleshoot-alerts.md).
 
- * **Kritische** Warnungen sind Probleme, die eine erhebliche Auswirkung auf Ihre verwaltete Domäne haben. Diese Warnungen sollten sofort behoben werden, da Microsoft für Ihre verwaltete Domäne das Überwachen, Verwalten, Patchen und Synchronisieren nicht durchführen kann. 
- * Mit **Warnungen** werden Sie über Probleme benachrichtigt, die später eine Auswirkung auf Ihre verwaltete Domäne haben können. Diese Warnungen enthalten Empfehlungen zum Schützen Ihrer verwalteten Domäne.
- * Warnungen vom Typ **Information** sind Benachrichtigungen, die keine negative Auswirkung auf Ihre Domäne haben. Mit diesen Warnungen sollen Sie darüber informiert werden, was in Ihrer Domäne und in Azure AD Domain Services passiert.
+Warnungen bezüglich des Integritätsstatus werden in die folgenden Schweregrade eingeteilt:
+
+ * **Kritische Warnungen** sind Probleme, die eine erhebliche Auswirkung auf die verwaltete Azure AD DS-Domäne haben. Diese Warnungen sollten sofort behoben werden. Die Azure-Plattform kann die verwaltete Domäne erst wieder überwachen, verwalten, patchen und synchronisieren, wenn die Probleme behoben wurden.
+ * **Warnungen** informieren Sie über Probleme, die sich auf Vorgänge in der verwalteten Azure AD DS-Domäne auswirken können, falls das Problem weiterhin besteht. Diese Warnungen enthalten außerdem Empfehlungen zum Schutz der verwalteten Domäne.
+ * **Informationsmeldungen** sind Benachrichtigungen, die sich nicht negativ auf die verwaltete Azure AD DS-Domäne auswirken. Informationsmeldungen bieten gewisse Einblicke in die Vorgänge in der verwalteten Domäne.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure AD Domain Services – Problembehandlung von Warnungen](troubleshoot-alerts.md)
-- [Weitere Informationen zu Azure AD Domain Services](overview.md)
-- [Wenden Sie sich an das Produktteam](contact-us.md)
+
+Weitere Informationen zu Warnungen, die auf der Seite „Integritätsstatus“ angezeigt werden, finden Sie unter [Azure AD Domain Services – Problembehandlung von Warnungen][troubleshoot-alerts].
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[troubleshoot-alerts]: troubleshoot-alerts.md

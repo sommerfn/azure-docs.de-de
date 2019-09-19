@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348178"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915573"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
 
@@ -27,7 +27,7 @@ Der [Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos und Abrufen eines Schlüssels finden Sie unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md).
+Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos finden Sie in den Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), und führen Sie die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) aus, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 > [!Tip]
 > Um den Suchdienst abzufragen, können Sie die [Postman-App](https://www.getpostman.com/apps) verwenden, um REST-Aufrufe zu erstellen, oder Sie können eine beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.

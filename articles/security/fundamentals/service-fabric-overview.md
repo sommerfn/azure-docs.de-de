@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934570"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998946"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Übersicht über die Azure Service Fabric-Sicherheit
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
@@ -132,7 +132,7 @@ Sie konfigurieren die Client-zu-Knoten-Sicherheit mithilfe von „ClientIdentiti
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Verwalten von Geheimnissen in Service Fabric-Anwendungen
 Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
 
-In diesem Leitfaden wird [Azure Key Vault](../../key-vault/key-vault-whatis.md) für die Verwaltung von Schlüsseln und Geheimnissen verwendet. Allerdings ist die Verwendung von Geheimnissen in einer Anwendung nicht von einer bestimmten Cloud-Plattform abhängig. Sie können Anwendungen in einem Cluster bereitstellen, der an einem beliebigen Ort gehostet wird. Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
+In diesem Leitfaden wird [Azure Key Vault](../../key-vault/key-vault-overview.md) für die Verwaltung von Schlüsseln und Geheimnissen verwendet. Allerdings ist die Verwendung von Geheimnissen in einer Anwendung nicht von einer bestimmten Cloud-Plattform abhängig. Sie können Anwendungen in einem Cluster bereitstellen, der an einem beliebigen Ort gehostet wird. Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
 
 1.  Rufen Sie ein Datenverschlüsselungszertifikat ab.
 2.  Installieren des Zertifikats in Ihrem Cluster

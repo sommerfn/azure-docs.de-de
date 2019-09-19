@@ -1,19 +1,19 @@
 ---
-title: Informationen zum Migrieren lokaler Computer und virtueller Azure-Computer mit Azure Site Recovery | Microsoft-Dokumentation
+title: Informationen zum Migrieren lokaler Computer und virtueller Azure-Computer mit Azure Site Recovery
 description: In diesem Artikel wird erläutert, wie Sie lokale Computer und virtuelle Azure-IaaS-Computer mithilfe des Azure Site Recovery-Diensts migrieren.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 5b7858793ec75d20bb367a6cf49b59fa9906ec9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66396482"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814491"
 ---
 # <a name="about-migration"></a>Informationen zur Migration
 
@@ -25,6 +25,8 @@ Mit Site Recovery können Sie wie folgt migrieren:
 - **Migrieren in Azure**: Migrieren von Azure-VMs zwischen Azure-Regionen. 
 - **Migrieren von AWS**: Migrieren Sie AWS Windows-Instanzen zu Azure IaaS-VMs. 
 
+> [!NOTE]
+> Sie können jetzt mit dem Azure Migrate-Dienst von einem lokalen Standort zu Azure migrieren. [Weitere Informationen](../migrate/migrate-overview.md)
 
 ## <a name="what-do-we-mean-by-migration"></a>Was bedeutet „Migration“?
 

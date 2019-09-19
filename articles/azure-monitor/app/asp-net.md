@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73f62ff8c95fae694a43df48aa99b696fb05d131
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256623"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916275"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -58,6 +58,8 @@ Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchte
  Wählen Sie **Registrieren**.
 
 ![Screenshot der Seite „App bei Application Insights registrieren“](./media/asp-net/00005-register-ed.png)
+
+ Wählen Sie **Projekt** > **NuGet-Pakete verwalten** > **Paketquelle: nuget.org** aus, und vergewissern Sie sich, dass Sie über die neueste stabile Version des Application Insights SDK verfügen.
 
  Die Telemetriedaten werden an das [Azure-Portal](https://portal.azure.com) gesendet – sowohl während des Debuggens als auch nach dem Veröffentlichen Ihrer App.
 > [!NOTE]

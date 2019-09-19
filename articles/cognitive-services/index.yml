@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965461"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087554"
 highlightedContent:
   items:
   - title: Was ist Cognitive Services?
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Sprachübersetzung (wird eingestellt)
-  - title: Entscheidungsdienste
+  - title: Entscheidung
     summary: Erstellen Sie Apps, die Empfehlungen geben, um fundiert und effizient Entscheidungen treffen zu können.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Websuche
-  - title: Container
+  - title: Cognitive Services-Container
     summary: Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit Docker-Containern verbundenen Dienste bereitgestellt und gehostet werden.
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Container für Cognitive Services
+      text: Cognitive Services-Container
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: Erstellen wiederverwendbarer Container

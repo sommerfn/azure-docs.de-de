@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910488"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036404"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -55,7 +55,7 @@ Das Löschen von Containern und Konten ist ebenfalls nicht zulässig, wenn Blobs
 > [!IMPORTANT]
 > Eine zeitbasierte Aufbewahrungsrichtlinie muss *gesperrt* sein, damit das Blob zur Erzielung von Konformität mit SEC 17a-4(f) und anderen gesetzlichen Bestimmungen in einem konformen unveränderlichen Zustand ist (Schreib- und Löschschutz). Sie sollten die Richtlinie in einem angemessenen Zeitraum sperren – in der Regel weniger als 24 Stunden. Der ursprüngliche Zustand einer angewendeten zeitbasierten Aufbewahrungsrichtlinie lautet *Entsperrt*, damit Sie das Feature testen und Änderungen an der Richtlinie vornehmen können, bevor Sie das Sperren durchführen. Der Zustand *Entsperrt* bietet zwar Unveränderlichkeitsschutz, aber wir empfehlen Ihnen, *Entsperrt* nicht für andere Zwecke als für kurzfristige Featuretests zu verwenden. 
 
-Wenn eine zeitbasierte Aufbewahrungsrichtlinie auf einen Container angewendet wird, bleiben alle Blobs im Container so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für vorhandene Blobs entspricht der Differenz zwischen dem Zeitpunkt der Blobänderung und dem vom Benutzer angegebenen Aufbewahrungszeitraum.
+Wenn eine zeitbasierte Aufbewahrungsrichtlinie auf einen Container angewendet wird, bleiben alle Blobs im Container so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für vorhandene Blobs entspricht der Differenz zwischen der Bloberstellung und dem vom Benutzer angegebenen Aufbewahrungszeitraum.
 
 Für neue Blobs entspricht die Gültigkeit des Aufbewahrungszeitraums dem vom Benutzer angegebenen Aufbewahrungszeitraum. Da Benutzer den Aufbewahrungszeitraum verlängern können, nutzt unveränderlicher Speicher den letzten Wert des vom Benutzer angegebenen Aufbewahrungszeitraums, um den effektiven Aufbewahrungszeitraum zu berechnen.
 

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a87066425845a7f1043576a858a361e601ba9cc8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588235"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003422"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications
 
-Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../key-vault/key-vault-whatis.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Der Managed Applications-Dienst verwendet diese Identität, um Vorgänge auszuführen. Um einen Wert während der Bereitstellung erfolgreich aus einem Schlüsseltresor abzurufen, muss der Dienstprinzipal auf den Schlüsseltresor zugreifen können.
+Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../key-vault/key-vault-overview.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Der Managed Applications-Dienst verwendet diese Identität, um Vorgänge auszuführen. Um einen Wert während der Bereitstellung erfolgreich aus einem Schlüsseltresor abzurufen, muss der Dienstprinzipal auf den Schlüsseltresor zugreifen können.
 
 Dieser Artikel beschreibt, wie Sie den Schlüsseltresor zum Arbeiten mit verwalteten Anwendungen konfigurieren.
 

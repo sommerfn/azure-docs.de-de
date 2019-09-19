@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d0a12bde119e9dae3f950603fac4bce060bb5f91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145955"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057746"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debuggen von Problemen mit Anwendungsproxyanwendungen 
 
@@ -42,7 +42,7 @@ Dieses Flussdiagramm führt Sie durch die Schritte zum Debuggen einiger der häu
 |  | Aktion | BESCHREIBUNG | 
 |---------|---------|---------|
 |1 | Browser öffnen, auf die App zugreifen und Anmeldeinformationen eingeben | Versuchen Sie, sich mit Ihren Anmeldeinformationen bei der App anzumelden, und überprüfen Sie, ob benutzerbezogene Fehler auftreten, z. B. [Zugriff auf diese Unternehmens-App nicht möglich](application-proxy-sign-in-bad-gateway-timeout-error.md). |
-|2 | Benutzerzuweisung zur App überprüfen | Stellen Sie sicher, dass Ihr Benutzerkonto über die Berechtigung verfügt, innerhalb des Unternehmensnetzwerks auf die App zuzugreifen, und testen Sie dann die Anmeldung bei der App anhand der Schritte in [Testen der Anwendung](application-proxy-add-on-premises-application.md#test-the-application). Falls weiterhin Probleme bei der Anmeldung auftreten, finden Sie unter [Beheben von Anmeldefehlern](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-troubleshoot-sign-in-errors) weitere Informationen.  |
+|2 | Benutzerzuweisung zur App überprüfen | Stellen Sie sicher, dass Ihr Benutzerkonto über die Berechtigung verfügt, innerhalb des Unternehmensnetzwerks auf die App zuzugreifen, und testen Sie dann die Anmeldung bei der App anhand der Schritte in [Testen der Anwendung](application-proxy-add-on-premises-application.md#test-the-application). Falls weiterhin Probleme bei der Anmeldung auftreten, finden Sie unter [Beheben von Anmeldefehlern](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) weitere Informationen.  |
 |3 | Browser öffnen und auf die App zugreifen | Wenn sofort ein Fehler angezeigt wird, überprüfen Sie, ob der Anwendungsproxy richtig konfiguriert ist. Informationen zu bestimmten Fehlermeldungen finden Sie unter [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md).  |
 |4 | Konfiguration Ihrer benutzerdefinierten Domäne überprüfen oder den Fehler beheben | Wenn die Seite gar nicht angezeigt wird, stellen Sie wie unter [Arbeiten mit benutzerdefinierten Domänen](application-proxy-configure-custom-domain.md) beschrieben sicher, dass Ihre benutzerdefinierte Domäne korrekt konfiguriert ist.<br></br>Wenn die Seite nicht geladen wird und eine Fehlermeldung angezeigt wird, beheben Sie den Fehler wie unter [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md) beschrieben. <br></br>Wenn es länger als 20 Sekunden dauert, bis eine Fehlermeldung angezeigt wird, liegt möglicherweise ein Konnektivitätsproblem vor. Weitere Informationen finden Sie im Artikel zur Problembehandlung [Debug Application Proxy connectors](application-proxy-debug-connectors.md) (Debuggen von Anwendungsproxyconnectors).  |
 |5 | Wenn weiterhin Probleme auftreten, Connectors debuggen | Möglicherweise liegt ein Konnektivitätsproblem zwischen dem Proxy und dem Connector oder zwischen dem Connector und dem Back-End vor. Weitere Informationen finden Sie im Artikel zur Problembehandlung [Debug Application Proxy connectors](application-proxy-debug-connectors.md) (Debuggen von Anwendungsproxyconnectors). |

@@ -1,45 +1,77 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zum Azure-Portal
+summary: Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt. Sie können Ihr Azure-Abonnement mit dem Azure-Portal verwalten. Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudbereitstellungen. Erstellen Sie benutzerdefinierte Dashboards für eine strukturierte Ansicht von Ressourcen, und konfigurieren Sie Barrierefreiheitsoptionen für optimale Benutzerfreundlichkeit.
 metadata:
-  description: 'Hier erfahren Sie, wie Sie das Azure-Portal verwenden und benutzerdefinierte Dashboards erstellen.'
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Dokumentation zum Azure-Portal
+  description: Erfahren Sie, wie Sie Ihr Azure-Abonnement und Ihre Ressourcen mit der webbasierten Konsole des Azure-Portals verwalten.
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
+  ms.collection: collection
+  author: kfollis
   ms.author: kfollis
-abstract:
-  description: 'Das Azure-Portal ist eine webbasierte einheitliche Konsole zum Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudanwendungen. Es enthält ein anpassbares Dashboard und Optionen für Barrierefreiheit.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: <p>Das Azure-Portal kann auf allen modernen Desktop- und Tabletgeräten und in allen Browsern ausgeführt werden.</p>
-            title: Unterstützte Browser und Geräte
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>Ändern Sie den Kontrast oder das Farbschema im Azure-Portal.</p>
-            title: Aktivieren von hohem Kontrast
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: '<p>Erfahren Sie mehr über die Tastenkombinationen, die im gesamten Azure-Portal unterstützt werden.</p>'
-            title: Tastenkombinationen
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: '<p>Erstellen Sie mehrere Dashboards, und geben Sie sie für andere Benutzer frei, die Zugriff auf Ihre Azure-Abonnements haben.</p>'
-            title: Erstellen und Freigeben von Azure-Dashboards
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: '<p>Veröffentlichen Sie ein Dashboard, und geben Sie es für andere Benutzer in Ihrer Organisation frei.</p>'
-            title: Freigeben von Dashboards mithilfe der RBAC
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>Programmgesteuertes Erstellen und Veröffentlichen von Dashboards für Ihre Organisation</p>
-            title: Programmgesteuertes Erstellen von Azure-Dashboards
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076653"
+landingContent:
+- title: Informationen zum Azure-Portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist das Azure-Portal?
+      url: azure-portal-overview.md
+    - text: Unterstützte Browser und Geräte
+      url: azure-portal-supported-browsers-devices.md
+- title: Anpassen des Azure-Portals
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen und Freigeben von benutzerdefinierten Dashboards
+      url: azure-portal-dashboards.md
+    - text: Verwalten Ihrer Favoriten
+      url: azure-portal-add-remove-sort-favorites.md
+- title: Verwalten des Zugriffs auf das Azure-Portal
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Hinzufügen von Azure-Portal-URLs zu einer Liste sicherer IP-Adressen
+      url: azure-portal-safelist-urls.md
+    - text: Rollenbasierte Zugriffssteuerung für Dashboards
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Verwalten von Ressourcen in Azure
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Schützen Ihrer Azure-Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Onboarding mit Azure Quickstart Center
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Anleitungsvideos für das Azure-Portal
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Azure-Grundlagen
+      url: /learn/paths/azure-fundamentals/
+    - text: 'Cloudkonzepte: Cloud Computing-Prinzipien'
+      url: /learn/modules/principles-cloud-computing/
+- title: Verwenden von Barrierefreiheitsoptionen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Tastenkombinationen
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivieren von hohem Kontrast
+      url: azure-portal-change-theme-high-contrast.md

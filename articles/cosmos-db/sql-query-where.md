@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6a942e48ffea7785fe971cc2f8fa66e8569ed672
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343117"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003471"
 ---
 # <a name="where-clause"></a>WHERE-Klausel
 
@@ -74,7 +74,7 @@ Sie können die folgenden unterstützten binären Operatoren verwenden:
 |Bitweise    | \|, &, ^, <<, >>, >>> (Nullauffüllung, Verschiebung nach rechts) |
 |Logisch    | AND, OR, NOT      |
 |Vergleich | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|string     |  \|\| (Verkettung) |
+|Zeichenfolge     |  \|\| (Verkettung) |
 
 Die folgenden Abfragen verwenden binäre Operatoren:
 
@@ -109,5 +109,5 @@ Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erste Schritte](sql-query-getting-started.md)
-- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM-Klausel](sql-query-from.md)

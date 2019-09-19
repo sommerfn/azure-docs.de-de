@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943155"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962884"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -71,7 +71,7 @@ Beispiel:
     2.  URL der Angebotsseite = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. Der Benutzer klickt auf den Link \"Produkt testen\" und gelangt zur AppSource.
     1. Verweis-URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. URL der Angebotsseite (**Stellen Sie sicher, dass dieser URL utm\_campaign und utm\_source hinzugefügt wurde**) = [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. URL der Angebotsseite (**Stellen Sie sicher, dass dieser URL utm\_campaign und utm\_source hinzugefügt wurde**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Auswerten des Erfolgs einer Kampagne
 -----------------------------------------

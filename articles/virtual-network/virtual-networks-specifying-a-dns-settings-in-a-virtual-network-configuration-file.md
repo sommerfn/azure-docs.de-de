@@ -4,7 +4,7 @@ description: 'Gewusst wie: Ändern der DNS-Servereinstellungen in einem virtuell
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 tags: azure-service-management
 ms.assetid: a8905927-92ac-42b5-8c33-8e42c000692c
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60232868"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059089"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Angeben von DNS-Einstellungen in der Konfigurationsdatei eines virtuellen Netzwerks
 Eine Netzwerk-Konfigurationsdatei besteht aus zwei Elementen, mit denen Sie DNS-Einstellungen (Domain Name System) angeben können: **DnsServers** und **DnsServerRef**. Sie können eine Liste von DNS-Servern hinzufügen, indem Sie ihre IP-Adressen und Referenznamen für das **DnsServers** -Element angeben. Anschließend können Sie mit dem **DnsServerRef** -Element angeben, welche DNS-Servereinträge aus dem DnsServers-Element für verschiedene Netzwerkstandorte innerhalb des virtuellen Netzwerks verwendet werden.

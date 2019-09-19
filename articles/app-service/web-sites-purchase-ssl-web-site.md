@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074041"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001203"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen, indem Sie ein App Service-Zertifikat in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) erstellen (kaufen) und es dann an eine App Service-App binden.
+In diesem Tutorial erfahren Sie, wie Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen, indem Sie ein App Service-Zertifikat in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) erstellen (kaufen) und es dann an eine App Service-App binden.
 
 > [!TIP]
 > App Service-Zertifikate können für alle Dienste – ob von Azure oder nicht – verwendet werden und sind nicht auf App Services beschränkt. Hierzu müssen Sie eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es beliebig verwenden können. Weitere Informationen finden Sie unter [Create a local PFX copy of App Service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/) (Erstellen einer lokalen PFX-Kopie eines App Service-Zertifikats).
@@ -64,7 +64,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. So wird ein neuer Schlüsseltresors im gleichen Abonnement und in der gleichen Ressourcengruppe erstellt.
 

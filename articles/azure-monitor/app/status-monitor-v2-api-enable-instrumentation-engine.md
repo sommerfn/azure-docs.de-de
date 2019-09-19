@@ -3,7 +3,7 @@ title: 'API-Referenz für Azure-Statusmonitor v2: Aktivieren der Instrumentierun
 description: API-Referenz für Statusmonitor v2. Enable-InstrumentationEngine. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d4683a1cad5172f7104e745433bd141bcf36d56f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326369"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033148"
 ---
 # <a name="status-monitor-v2-api-enable-instrumentationengine"></a>API für Statusmonitor v2: Enable-InstrumentationEngine
 

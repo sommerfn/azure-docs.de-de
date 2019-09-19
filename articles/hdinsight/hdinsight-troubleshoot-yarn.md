@@ -4,14 +4,15 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeit
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573708"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076566"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -33,27 +34,27 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**defa
 
 1. Wählen Sie das **Ambari-Ansichten**-Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
 
-    ![Ambari-Ansichten-Symbol auswählen](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Ambari-Ansichten-Symbol auswählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wählen Sie die Warteschlange **default** aus.
 
-    ![Warteschlange „default“ auswählen](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Warteschlange „default“ auswählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Ändern Sie für die **default**-Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr**-Warteschlange **capacity** in 25%.
 
-    ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
 
-    ![„Add Queue“ wählen](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![„Add Queue“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Benennen Sie die neue Warteschlange.
 
-    ![Neue Warteschlange „spark“ nennen](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Neue Warteschlange „spark“ nennen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Lassen Sie die **capacity**-Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
 
-    ![Schaltfläche „Actions“ wählen](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Schaltfläche „Actions“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Wählen Sie **Save and Refresh Queues**.
 
-    ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angezeigt.
 

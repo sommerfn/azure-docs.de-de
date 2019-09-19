@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726760"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999170"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Bewährte Methoden zum Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
 In diesem Artikel wird eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen (Platform-as-a-Service) erläutert. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -71,7 +71,7 @@ Weitere Informationen über RBAC:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Verwenden von clientseitiger Verschlüsselung für wertvolle Daten
 Die clientseitige Verschlüsselung ermöglicht Ihnen das programmgesteuerte Verschlüsseln von Daten während der Übertragung, bevor sie in Azure Storage hochgeladen werden, und das programmgesteuerte Entschlüsseln von Daten beim Abrufen. So können Daten während der Übertragung, jedoch auch ruhende Daten verschlüsselt werden. Die clientseitige Verschlüsselung ist die sicherste Methode zum Verschlüsseln der Daten, sie erfordert jedoch programmgesteuerte Änderungen an Ihrer Anwendung und die Platzierung von Schlüsselverwaltungsprozessen.
 
-Die clientseitige Verschlüsselung bietet Ihnen außerdem die alleinige Kontrolle über die Verschlüsselungsschlüssel. Sie können eigene Verschlüsselungsschlüssel generieren und verwalten. Bei der clientseitigen Verschlüsselung wird ein Umschlagverfahren verwendet. Dabei generiert die Azure Storage-Clientbibliothek einen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK), der dann mit dem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) umschlossen wird. Der KEK wird anhand eines Schlüsselbezeichners identifiziert und kann ein asymmetrisches Schlüsselpaar oder ein symmetrischer Schlüssel sein. Er kann lokal verwaltet oder im [Azure Key Vault](/azure/key-vault/key-vault-whatis) gespeichert werden.
+Die clientseitige Verschlüsselung bietet Ihnen außerdem die alleinige Kontrolle über die Verschlüsselungsschlüssel. Sie können eigene Verschlüsselungsschlüssel generieren und verwalten. Bei der clientseitigen Verschlüsselung wird ein Umschlagverfahren verwendet. Dabei generiert die Azure Storage-Clientbibliothek einen Inhaltsverschlüsselungsschlüssel (Content Encryption Key, CEK), der dann mit dem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) umschlossen wird. Der KEK wird anhand eines Schlüsselbezeichners identifiziert und kann ein asymmetrisches Schlüsselpaar oder ein symmetrischer Schlüssel sein. Er kann lokal verwaltet oder im [Azure Key Vault](/azure/key-vault/key-vault-overview) gespeichert werden.
 
 Die clientseitige Verschlüsselung ist in den Java- und .NET-Speicherclientbibliotheken integriert. Informationen zum Verschlüsseln von Daten in Clientanwendungen sowie zum Generieren und Verwalten eigener Verschlüsselungsschlüssel finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption).
 

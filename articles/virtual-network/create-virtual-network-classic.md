@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie ein (klassisches) virtuelles Netzwerk mit meh
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202874"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059007"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen
 
@@ -51,7 +51,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
     |Adressraum|10.0.0.0/16|
     |Subnetzname|Öffentlich|
     |Subnetzadressbereich|10.0.0.0/24|
-    |Ressourcengruppe|Lassen Sie **Neu erstellen** ausgewählt, und geben Sie **myResourceGroup** ein.|
+    |Resource group|Lassen Sie **Neu erstellen** ausgewählt, und geben Sie **myResourceGroup** ein.|
     |Abonnement und Standort|Wählen Sie Ihr Abonnement und Ihren Standort aus.
 
     Wenn Sie noch nicht mit Azure vertraut sind, informieren Sie sich über [Ressourcengruppen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) und [Standorte](https://azure.microsoft.com/regions) (die auch als *Regionen* bezeichnet werden).

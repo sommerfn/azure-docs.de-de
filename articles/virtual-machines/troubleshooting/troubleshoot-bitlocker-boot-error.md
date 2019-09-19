@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie BitLocker-Startfehler auf einer Azure-VM behe
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b9ff0dfa98fb3b6f12974512e197142d44223b80
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080286"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058104"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
@@ -271,13 +271,13 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Problembehandlung bei Skripts
 
-**Fehler: Datei oder Assembly konnte nicht geladen werden.**
+**Error: Datei oder Assembly konnte nicht geladen werden.**
 
 Dieser Fehler tritt auf, weil die Pfade der ADAL-Assemblys falsch sind. Wenn das VZ-Modul nur für den aktuellen Benutzer installiert wird, befinden sich die ADAL-Assemblys in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
 
 Sie können auch nach dem Ordner `Az.Accounts` suchen, um den richtigen Pfad zu ermitteln.
 
-**Fehler: Get-AzKeyVaultSecret oder Get-AzKeyVaultSecret wird nicht als Name des Cmdlets erkannt.**
+**Error: Get-AzKeyVaultSecret oder Get-AzKeyVaultSecret wird nicht als Name des Cmdlets erkannt.**
 
 Wenn Sie das alte PowerShell-VZ-Modul verwenden, müssen Sie die beiden Befehle in `Get-AzureKeyVaultSecret` und `Get-AzureKeyVaultSecret` ändern.
 

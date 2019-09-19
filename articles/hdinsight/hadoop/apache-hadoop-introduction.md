@@ -4,16 +4,17 @@ description: Eine Einführung in HDInsight, den Apache Hadoop-Technologiestapel
 keywords: Azure Hadoop, Hadoop Azure, Hadoop-Intro, Hadoop-Einführung, Hadoop-Technologiestapel, Einführung in Hadoop, Einführung für Hadoop, was ist ein Hadoop-Cluster, was ist ein Hadoop-Cluster, wozu dient Hadoop
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: 16845e5891117cc01bef5fae28cf4b36c0508651
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899558"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088197"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Worum handelt es sich bei Apache Hadoop in Azure HDInsight?
 
@@ -30,6 +31,10 @@ Apache Hadoop MapReduce ist ein Softwareframework zum Schreiben von Aufträgen, 
 * **Mapper:** Verarbeitet Eingabedaten, analysiert sie (in der Regel mit Filter- und Sortiervorgängen) und gibt Tupel (Schlüssel-Wert-Paare) aus
 
 * **Reducer:** Verarbeitet Tupel, die vom Mapper ausgegeben wurden, und führt einen Zusammenfassungsvorgang aus, der kleinere, kombinierte Ergebnisse aus den Mapper-Daten erstellt
+
+Ein Beispiel für einen grundlegenden MapReduce-Auftrag zum Zählen von Wörtern wird im folgenden Diagramm veranschaulicht:   
+
+ ![HDI.Wortzähldiagramm](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
 Dieses Auftrag gibt die Anzahl der Vorkommen jedes Worts im Text aus.
 
@@ -55,5 +60,3 @@ Beispiele für die Verwendung von Hadoop-Datenströmen mit HDInsight finden Sie 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Apache Hadoop-Clusters in HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

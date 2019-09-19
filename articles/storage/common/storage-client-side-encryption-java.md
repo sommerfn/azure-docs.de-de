@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 058dc97054aad310135ccc1f51d765f0af3f571b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa5657a7ee2043e09c80593651d88a527770d7a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147025"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998979"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ Bei Batchvorgängen wird derselbe KEK für alle Zeilen in einem Batchvorgang ver
 > Zum Ausführen von Abfragevorgängen müssen Sie einen Schlüsselresolver angeben, der alle Schlüssel im Resultset auflösen kann. Wenn eine im Abfrageergebnis enthaltene Entität nicht in einen Anbieter aufgelöst werden kann, löst die Clientbibliothek einen Fehler aus. Für jede Abfrage, die serverseitige Projektionen ausführt, fügt die Clientbibliothek den ausgewählten Spalten standardmäßig die spezifischen Verschlüsselungsmetadateneigenschaften ("_ClientEncryptionMetadata1" und "_ClientEncryptionMetadata2") hinzu.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Durch Verwenden des Azure-Schlüsseltresors können Benutzer Schlüssel und geheime Schlüssel (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem sie durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden. Weitere Informationen finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-whatis.md).
+Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Durch Verwenden des Azure-Schlüsseltresors können Benutzer Schlüssel und geheime Schlüssel (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem sie durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden. Weitere Informationen finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md).
 
 Die Speicherclientbibliothek verwendet die Schlüsseltresor-Kernbibliothek, um ein gemeinsames Framework zum Verwalten von Schlüsseln innerhalb von Azure bereitzustellen. Ein zusätzlicher Vorteil für die Benutzer besteht in der Verwendung der Schlüsseltresor-Erweiterungsbibliothek. Die Erweiterungsbibliothek bietet nützliche Funktionen für die einfache und nahtlose Nutzung von lokalen und Cloudschlüsselanbietern von symmetrischen/RSA-Schlüsseln sowie für Aggregation und Zwischenspeicherung.
 
@@ -254,4 +254,4 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
 * Herunterladen der Azure Key Vault-Maven-Bibliothek für das Java-Maven-Paket
   * [Core](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) -Paket
   * [Client](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) -Paket
-* Anzeigen der [Azure Key Vault-Dokumentation](../../key-vault/key-vault-whatis.md)
+* Anzeigen der [Azure Key Vault-Dokumentation](../../key-vault/key-vault-overview.md)

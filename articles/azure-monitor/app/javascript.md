@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 09/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035229"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933772"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -143,14 +143,14 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 
 Standardmäßig verarbeitet dieses SDK **keine** statusbasierte Routenänderung, die in Single-Page-Webanwendungen erfolgt. Um das automatische Nachverfolgen von Routenänderungen für Ihre Single-Page-Webanwendung zu aktivieren, können Sie Ihrer Setupkonfiguration `enableAutoRouteTracking: true` hinzufügen.
 
-Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie mit diesem SDK initialisieren können. Es wird auch die Nachverfolgung von Routenänderungen automatisch ausführen sowie [weitere React-spezifische Telemetriedaten](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js) sammeln.
+Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie mit diesem SDK initialisieren können. Es wird auch die Nachverfolgung von Routenänderungen automatisch ausführen sowie [weitere React-spezifische Telemetriedaten](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md) sammeln.
 
 ## <a name="react-extensions"></a>React-Erweiterungen
 
 | Erweiterungen |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native)|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Browser-/clientseitige Daten erkunden
 

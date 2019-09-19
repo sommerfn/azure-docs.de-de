@@ -152,6 +152,9 @@
         - name: Hinzufügen und Registrieren von Dataset
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Trainieren mit Datasets
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Trainieren von Modellen
       items:
         - name: Einrichten von Trainingsumgebungen

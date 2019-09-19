@@ -164,7 +164,7 @@
           href: sql-database-reserved-capacity.md
         - name: Migrieren von der Premium RS-Dienstebene
           href: sql-database-service-tiers-prs.md
-    - name: Compute und Speicher
+    - name: Dienstebenen
       items:
         - name: Übersicht
           href: sql-database-service-tiers-general-purpose-business-critical.md
@@ -302,6 +302,8 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: 'Endpunkte im virtuellen Netzwerk: PowerShell'
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
         - name: Zugriffssteuerung
           items:
             - name: Zugriffssteuerung

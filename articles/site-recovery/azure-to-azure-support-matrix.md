@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884105"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736041"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Unterstützungsmatrix für die Replikation von Azure-VMs von einer Region in eine andere
 
@@ -53,6 +53,7 @@ Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Aust
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“ 
 Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
 China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
+Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Deutschland, Norden“ reserviert für Kunden in „Deutschland, Westen-Mitte“, „Schweiz, Westen“ reserviert für Kunden in „Schweiz, Norden“, „Frankreich, Süden“ reserviert für Kunden in „Frankreich, Mitte“ 
 
 >[!NOTE]
 >
@@ -105,7 +106,7 @@ Debian 8 | [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-fo
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Unterstützte Kernel-Versionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Ein Upgrade von replizierenden Computern von SP3 auf SP4 wird nicht unterstützt. Wenn ein replizierter Computer aktualisiert wurde, müssen Sie die Replikation deaktivieren und nach dem Upgrade dann wieder aktivieren.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Mit einem Red Hat-kompatibler Kernel oder Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Ubuntu-Kernelversionen für virtuelle Azure-Computer

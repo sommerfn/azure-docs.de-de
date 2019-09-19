@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034372"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002888"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 
@@ -89,31 +89,6 @@ Personalisierung basiert auf innovativer Wissenschaft und Forschung im Bereich d
 * Bot-Merkmale und Ton: Erwägen Sie für Bots, die Ton, Ausführlichkeit und Schreibstil variieren können, diese Eigenschaften auf personalisierte Weise zu variieren.
 * Benachrichtigungs- und Warnungsinhalt: Entscheiden Sie, welchen Text Sie für Warnmeldungen verwenden möchten, um die Benutzer stärker einzubeziehen.
 * Zeitliche Steuerung von Benachrichtigungen und Warnungen: Nutzen Sie personalisierte Informationen dazu, wann Benachrichtigungen am besten an Benutzer gesendet werden, um sie stärker einzubeziehen.
-
-## <a name="checklist-for-applying-personalizer"></a>Checkliste für die Anwendung der Personalisierung
-
-Sie können Personalisierung in folgenden Situationen anwenden:
-
-* Sie haben einen Unternehmens- oder Benutzerfreundlichkeitsziel für Ihre Anwendung.
-* Sie haben eine Stelle in Ihrer Anwendung, wo das Treffen einer kontextbezogenen Entscheidung, was den Benutzern angezeigt wird, dieses Ziel verbessern wird.
-* Die beste Auswahl kann und sollte aus dem kollektiven Benutzerverhalten und der Belohnungsgesamtbewertung abgeleitet werden.
-* Die Verwendung von maschinellem Lernen für die Personalisierung befolgt die [Leitlinien für die verantwortungsvolle Verwendung](ethics-responsible-use.md) und die für Ihr Team ausgewählten Optionen.
-* Die Entscheidung kann als Rangfolge der besten Option ([Aktion](concepts-features.md#actions-represent-a-list-of-options)) aus einer begrenzten Anzahl von Auswahlmöglichkeiten ausgedrückt werden.
-* Wie gut diese Option funktioniert hat, kann durch Ihre Geschäftslogik berechnet werden, indem Sie einen Aspekt des Benutzerverhaltens messen und in einer Zahl zwischen -1 und 1 ausdrücken.
-* Die Relevanzbewertung bringt nicht allzu viele verwirrende oder externe Faktoren mit sich, insbesondere ist die Experimentdauer kurz genug, sodass die Relevanzbewertung berechnet werden kann, während sie noch relevant ist.
-* Sie können den Kontext für die Rangfolge als Wörterbuch von mindestens 5 Merkmalen ausdrücken, von denen Sie glauben, dass sie beim Treffen der richtigen Auswahl hilfreich sind, und die keine personenbezogenen Informationen enthalten.
-* Sie haben Informationen über jede Aktion in Form eines Wörterbuchs mit mindestens 5 Attributen oder Merkmalen, von denen Sie denken, dass sie die Personalisierung bei der richtigen Wahl unterstützen.
-* Sie können Daten lange genug speichern, um einen Verlauf von mindestens 100.000 Interkationen zu sammeln.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Erwägungen zum maschinellen Lernen bei der Anwendung der Personalisierung
-
-Personalisierung basiert auf vertiefendem Lernen, einem Ansatz für maschinelles Lernen, der über von Ihnen gegebenes Feedback gelernt wird. 
-
-Personalisierung lernt in folgenden Situationen am besten:
-* Es gibt genügend Ereignisse, um das Niveau optimaler Personalisierung halten zu können, wenn sich das Problem im Laufe der Zeit verschiebt (z. B. Vorlieben bei Nachrichten oder Mode). Personalisierung passt sich an kontinuierliche Änderungen in der realen Welt an, aber Ergebnisse werden nur dann optimal sein, wenn genügend Ereignisse und Daten zum Lernen vorhanden sind, um neue Muster zu ermitteln und sich auf diese einzustellen. Sie sollten einen Anwendungsfall auswählen, der häufig genug auftritt. Erwägen Sie, nach Anwendungsfällen zu suchen, die mindestens 500-mal am Tag auftreten.
-* Kontext und Aktionen besitzen genug Merkmale, um das Lernen zu fördern.
-* Es gibt weniger als 50 Aktionen, denen pro Aufruf ein Rang zugewiesen werden muss.
-* Ihre Datenaufbewahrungseinstellungen gestatten der Personalisierung das Sammeln ausreichender Daten, um Offlineauswertungen und Richtlinienoptimierungen durchzuführen. Hierbei handelt es sich normalerweise um mindestens 50.000 Datenpunkte.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Verwenden von Personalisierung in einer Webanwendung
 

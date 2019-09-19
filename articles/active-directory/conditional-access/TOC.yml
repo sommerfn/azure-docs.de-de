@@ -19,10 +19,10 @@
 - name: Konzepte
   expanded: false
   items:
-    - name: Einführen von bedingtem Zugriff
-      href: howto-conditional-access-adoption-kit.md
     - name: Allgemeine Richtlinien für bedingten Zugriff
       href: concept-conditional-access-policy-common.md
+    - name: Komponenten der Richtlinie für bedingten Zugriff
+      href: concept-conditional-access-policies.md
     - name: Bedingungen
       href: conditions.md
     - name: Standortbedingungen

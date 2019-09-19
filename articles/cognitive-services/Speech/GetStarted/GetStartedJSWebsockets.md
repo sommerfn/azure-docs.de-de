@@ -3,20 +3,20 @@ title: Erste Schritte mit der Bing-Spracheingabe-API von Microsoft in JavaScript
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Bing-Spracheingabe-API in Cognitive Services, um Anwendungen zu entwickeln, die gesprochene Audiosignale fortlaufend in Text konvertieren.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eef1a4885b77ae94f11d3d5bda5ded9b70ed63a4
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515212"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965814"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Erste Schritte mit der Spracherkennungs-API in JavaScript
 

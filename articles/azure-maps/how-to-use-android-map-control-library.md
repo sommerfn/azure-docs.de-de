@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839407"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915661"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -24,7 +24,7 @@ Das Android SDK in Azure Maps ist eine Vektorenzuordnungsbibliothek für Android
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](how-to-manage-account-keys.md), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
+Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
 
 ### <a name="download-android-studio"></a>Herunterladen von Android Studio
 
@@ -109,7 +109,18 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     * Festlegen Ihrer Azure Maps-Authentifizierungsinformationen
     * Abrufen der Kartensteuerelementinstanz in der **onCreate**-Methode
 
-    Indem Sie die Authentifizierungsinformationen für die „AzureMaps“-Klasse global mit der Methode „setSubscriptionKey“ oder „setAadProperties“ festlegen, wird es möglich, dass Sie nicht in jeder Ansicht Ihre Authentifizierungsinformationen hinzufügen müssen. Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Damit Ihre App ordnungsgemäß funktioniert, rufen Sie die Lebenszyklusmethoden des Kartensteuerelements auf. Sie müssen die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
+    Indem Sie die Authentifizierungsinformationen für die `AzureMaps`-Klasse global mit der Methode `setSubscriptionKey` oder `setAadProperties` festlegen, wird es möglich, dass Sie nicht in jeder Ansicht Ihre Authentifizierungsinformationen hinzufügen müssen. 
+
+    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Damit Ihre App ordnungsgemäß funktioniert, rufen Sie die Lebenszyklusmethoden des Kartensteuerelements auf. Sie müssen die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
+
+    * onCreate(Bundle) 
+    * onStart() 
+    * onResume() 
+    * onPause() 
+    * onStop() 
+    * onDestroy() 
+    * onSaveInstanceState(Bundle) 
+    * onLowMemory() 
 
     Bearbeiten Sie die Datei **MainActivity.java** wie folgt:
     
@@ -140,13 +151,24 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -178,7 +200,6 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
 
     ```

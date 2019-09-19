@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200611"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860322"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Verwenden des Azure Cloud Shell-Fensters
 
@@ -48,7 +48,7 @@ Klicken Sie links oben im Fenster auf das Einstellungssymbol, und bewegen Sie da
 Klicken Sie links oben im Fenster auf das Symbol „Dateien hochladen/herunterladen“, und wählen Sie dann „Hochladen“ oder „Herunterladen“ aus.  
 ![Hoch-/Herunterladen von Dateien](media/using-the-shell-window/uploaddownload.png)
 * Verwenden Sie zum Hochladen von Dateien das Popupelement, um zur Datei auf Ihrem lokalen Computer zu navigieren, wählen Sie die gewünschte Datei aus, und klicken Sie auf die Schaltfläche „Öffnen“.  Die Datei wird in das Verzeichnis `/home/user` hochgeladen.
-* Geben Sie zum Herunterladen von Dateien den vollqualifizierten Dateipfad in das Popupfenster ein, und wählen Sie die Schaltfläche „Herunterladen“ aus.  
+* Geben Sie zum Herunterladen der Datei den voll qualifizierten Dateipfad in das Popupfenster ein (d.h. im Grunde genommen einen Pfad im standardmäßig angezeigten Verzeichnis `/home/user`), und klicken Sie auf die Schaltfläche „Herunterladen“.  
 > [!NOTE] 
 > Bei Dateien und Dateipfaden wird in der Cloud Shell die Groß-/Kleinschreibung berücksichtigt. Überprüfen Sie die Groß-/Kleinschreibung Ihres Dateipfads.
 

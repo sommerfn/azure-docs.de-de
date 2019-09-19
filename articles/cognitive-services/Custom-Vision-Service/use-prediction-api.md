@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883978"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966949"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
@@ -44,8 +44,6 @@ Nachdem das Modell veröffentlicht wurde, können Sie die erforderlichen Informa
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um den Wert „Vorhersage-URL“ für die Verwendung einer Bilddatei und um den Wert „Vorhersage-Schlüssel“ angezeigt.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> Ihr __Vorhersage-Schlüssel__ befindet sich auch auf der Seite [Azure-Portal](https://portal.azure.com) für die Ihrem Projekt zugeordnete Azure-Ressource von Custom Vision unter dem Blatt __Schlüssel__.
 
 In dieser Anleitung verwenden Sie ein lokales Bild, also kopieren Sie die URL unter **Wenn eine Bilddatei vorliegt** an einen temporären Speicherort. Kopieren Sie auch den entsprechenden __Vorhersage-Schlüssel__-Wert.
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: f9dbddcba1545e0a110faa9fbf8e3de9ff189525
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879491"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967674"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -66,15 +66,15 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
     a. Wählen Sie im Hauptmenü **6** aus, um Diagnosetests auszuführen.
 
-    ![Diagnose (1)](./media/r-server-operationalize/diagnostic-1.png)
+    ![Diagnose (1)](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Wählen Sie im Diagnosetestmenü **A** aus. Wenn Sie aufgefordert werden, geben Sie das Kennwort ein, das Sie für den lokalen Administratorbenutzer bereitgestellt haben.
 
-    ![Diagnose (2)](./media/r-server-operationalize/diagnostic-2.png)
+    ![Diagnose (2)](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Überprüfen Sie, ob ausgegeben wird, dass die Gesamtintegrität einwandfrei ist.
 
-    ![Diagnose (3)](./media/r-server-operationalize/diagnostic-3.png)
+    ![Diagnose (3)](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. Geben Sie von den angebotenen Menüoptionen **E** ein, um zum Hauptmenü zurückzukehren, und geben Sie dann **8** ein, um das Verwaltungshilfsprogramm zu beenden.
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8c7680896507cd3738fa3bce0d30a516d08509c4
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208096"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383284"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Kontomigration vom Cloud-Partnerportal zu Partner Center
 
@@ -43,17 +43,17 @@ Falls Ihr CPP-Konto keine Microsoft Partner Network-ID aufweist oder die ID ung�
 Die Migration muss nur ein Mal für ein bestimmtes Konto ausgeführt werden. Nachdem ein bestimmter Partner die Migration für das Konto abgeschlossen hat, wird allen Besitzern folgendes Verhalten auf der Seite mit ihrem Herausgeberprofil angezeigt:
 
 1. Es wird die Seite mit den Partnereinstellungen in Microsoft Partner Network angezeigt, auf der Sie nun Kontoeinstellungen verwalten können. 
-2. Ein gelbes Banner auf Ihrer Herausgeberprofilseite in CPP wird Benutzern mit der Rolle „Besitzer“ angezeigt und fordert sie auf, ihre Kontoeinstellungen in Partner Center zu verwalten. 
-3. Die Seite mit den Kontoeinstellungen in CPP wechselt daraufhin in den schreibgeschützten Modus. 
+2. Ein gelbes Banner auf Ihrer Herausgeberprofilseite in CPP wird Benutzern mit der Rolle „Besitzer“ angezeigt und fordert sie auf, ihre Kontoeinstellungen in Partner Center zu verwalten.
+3. Die Seite mit den Kontoeinstellungen in CPP wechselt daraufhin in den schreibgeschützten Modus.
 
 ## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Verschieben von Dynamics 365-basierten Lösungen in Partner Center
 
 Wenn Sie Dynamics 365 for Customer Engagement- oder Dynamics 365 for Finance and Operations-Lösungen im GTM-Portal für One Commercial Partner erstellt haben, **sollten diese Lösungen nun in Partner Center verwaltet werden**.
 
-**Wenn Sie Ihre Lösungen nicht bis zum 31. August 2019 verschoben haben**, führen Sie die folgenden Schritte so bald wie möglich aus. Bis dahin gilt: 
+**Wenn Sie Ihre Lösungen nicht bis zum 31. August 2019 verschoben haben**, führen Sie die folgenden Schritte so bald wie möglich aus. Bis dahin gilt:
 - ISVs haben keinen Zugriff auf Marketingvorteile
 - Co-Selling priorisiert verliert den Status
-- Für Cloud Embed besteht keine Compliance
+- Für Cloud Embed besteht nach dem 15. Oktober 2019 keine Compliance
 
 > [!NOTE]
 > Wenn Ihr MPN-Mitgliedschaftskonto ursprünglich in Partner Membership Center (PMC) erstellt wurde, melden Sie sich bei [Partner Center](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) an, um zu bestätigen, dass Ihr Konto migriert wurde, bevor Sie die folgenden Schritte ausführen. Wenn ein Profilbildschirm mit Ihrer MPN-ID angezeigt wird, können Sie fortfahren. Wenn das nicht der Fall ist, müssen Sie mit der Kontomigration beginnen, indem Sie den Anweisungen im [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx) folgen. Wenn Sie hierbei Hilfe benötigen, besuchen Sie den [Support](https://partner.microsoft.com/support?issueid=100-0077).

@@ -3,16 +3,17 @@ title: Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 description: Erfahren Sie, wie Sie ein virtuelles Azure-Netzwerk erstellen, um HDInsight mit anderen Cloudressourcen oder Ressourcen in Ihrem Rechenzentrum zu verbinden.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2fd4c20e5c1cd0a8e1ee6f7c36d4b4a8b99d37ea
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442006"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073631"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 

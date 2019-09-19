@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128056"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090767"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
 
@@ -116,7 +116,7 @@ Ausführliche Informationen finden Sie in der Datei `python_quickstart_client.py
 
 ### <a name="preliminaries"></a>Vorbereitende Maßnahmen
 
-Für die Interaktion mit einem Speicherkonto verwendet die App das Paket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) zum Erstellen eines [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice)-Objekts.
+Für die Interaktion mit einem Speicherkonto verwendet die App das Paket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) zum Erstellen eines [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-Objekts.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-Die App verwendet den `blob_client`-Verweis, um im Speicherkonto einen Container zu erstellen und Datendateien in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
+Die App verwendet den `blob_client`-Verweis, um im Speicherkonto einen Container zu erstellen und Datendateien in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -149,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Erstellen eines Pools mit Computeknoten
 
-Zum Erstellen eines Batch-Pools verwendet die App die [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter)-Klasse, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 18.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene Linux- und Windows Server-Images im Azure Marketplace und außerdem benutzerdefinierte VM-Images.
+Zum Erstellen eines Batch-Pools verwendet die App die [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-Klasse, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 18.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene Linux- und Windows Server-Images im Azure Marketplace und außerdem benutzerdefinierte VM-Images.
 
 Die Anzahl von Knoten (`_POOL_NODE_COUNT`) und die VM-Größe (`_POOL_VM_SIZE`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei Knoten der Größe *Standard_A1_v2* erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
 
-Mit der [pool.add](/python/api/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
+Mit der [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Erstellen eines Batch-Auftrags
 
-Ein Batch-Auftrag ist eine logische Gruppierung für eine oder mehrere Aufgaben. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Die App verwendet die [JobAddParameter](/python/api/azure.batch.models.jobaddparameter)-Klasse, um in Ihrem Pool einen Auftrag zu erstellen. Die Methode [job.add](/python/api/azure.batch.operations.joboperations) fügt einen Auftrag zum angegebenen Batch-Konto hinzu. Der Auftrag enthält ursprünglich keine Aufgaben.
+Ein Batch-Auftrag ist eine logische Gruppierung für eine oder mehrere Aufgaben. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Die App verwendet die [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-Klasse, um in Ihrem Pool einen Auftrag zu erstellen. Die Methode [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) fügt einen Auftrag zum angegebenen Batch-Konto hinzu. Der Auftrag enthält ursprünglich keine Aufgaben.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,9 +185,9 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Erstellen von Aufgaben
 
-Die App erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Jede Aufgabe verarbeitet ein `resource_files`-Eingabeobjekt, indem ein `command_line`-Parameter verwendet wird. Im Beispiel führt die Befehlszeile den Bash-Shellbefehl `cat` aus, um die Textdatei anzuzeigen. Dieser Befehl ist ein einfaches Beispiel für Demonstrationszwecke. Bei Verwendung von Batch befindet sich die Befehlszeile dort, wo Sie Ihre App bzw. Ihr Skript angeben. In Batch gibt es mehrere Möglichkeiten, Apps und Skripts auf Computeknoten bereitzustellen.
+Die App erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Jede Aufgabe verarbeitet ein `resource_files`-Eingabeobjekt, indem ein `command_line`-Parameter verwendet wird. Im Beispiel führt die Befehlszeile den Bash-Shellbefehl `cat` aus, um die Textdatei anzuzeigen. Dieser Befehl ist ein einfaches Beispiel für Demonstrationszwecke. Bei Verwendung von Batch befindet sich die Befehlszeile dort, wo Sie Ihre App bzw. Ihr Skript angeben. In Batch gibt es mehrere Möglichkeiten, Apps und Skripts auf Computeknoten bereitzustellen.
 
-Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
 
 ```python
 tasks = list()

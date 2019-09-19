@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05faf77d22f77da87e7c22d47473e6debf0f77c8
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 245a69f5e5834e68bbbd17a96859a93bc16eacbe
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460888"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744271"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Datenmodellierung in Azure Time Series Insights Preview
 
@@ -31,7 +31,7 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
     [![Erstellen eines einzelnen Typs](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **+ Hinzufügen**.
 1. Geben Sie alle Details ein, die sich auf Typen beziehen, und wählen Sie **Erstellen** aus. Diese Aktion erstellt Typen in der Umgebung.
 
     [![Hinzufügen eines Typs](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
@@ -66,11 +66,11 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
     [![Auswählen von Hierarchien](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **+ Hinzufügen**.
 
     [![Hinzufügen einer Hierarchie](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
-1. Wählen Sie im rechten Bereich **Ebene hinzufügen** aus.
+1. Wählen Sie im rechten Bereich **+ Ebene hinzufügen** aus.
 
     [![Hinzufügen einer Ebene](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 

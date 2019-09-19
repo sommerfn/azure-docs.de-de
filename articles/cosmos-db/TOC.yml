@@ -666,6 +666,8 @@
           href: how-to-configure-change-feed-start-time.md
         - name: Verwenden des Änderungsfeed-Estimators
           href: how-to-use-change-feed-estimator.md
+        - name: Migrieren von der Änderungsfeed-Verarbeitungsbibliothek
+          href: how-to-migrate-from-change-feed-library.md
     - name: Integrierte Analysen mit Apache Spark
       items:
         - name: Spark-Connector in Azure Databricks

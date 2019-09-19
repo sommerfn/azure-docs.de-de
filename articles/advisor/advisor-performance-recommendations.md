@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254647"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898201"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -73,7 +73,7 @@ Advisor identifiziert die Tabellen, die keine replizierten Tabellen sind, würde
 Migrieren Sie Ihr Speicherkonto-Bereitstellungsmodell zu Azure Resource Manager (Resource Manager), um von Vorlagenbereitstellungen, zusätzlichen Sicherheitsoptionen und der Möglichkeit zum Upgrade auf ein Konto vom Typ „Allgemein v2“ zur Nutzung der neuesten Features von Azure Storage zu profitieren. Advisor identifiziert eigenständige Speicherkonten, die das klassische Bereitstellungsmodell verwenden, und empfiehlt eine Migration zum Resource Manager-Bereitstellungsmodell.
 
 > [!NOTE]
-> Es ist geplant, klassische Warnungen in Azure Monitor im Juni 2019 einzustellen. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Entwerfen Ihrer Speicherkonten, damit die maximale Abonnementgrenze nicht erreicht wird
 

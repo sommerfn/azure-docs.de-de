@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147984"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960112"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
@@ -91,7 +91,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | log\_kafkacontroller\_CL | controller.log des Kafka-Brokers |
     | metrics\_kafka\_CL | Kafka-JMX-Metriken |
     
-    ![Abbildung der Suche nach der CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
+    ![Abbildung der Suche nach der CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
  
 ## <a name="next-steps"></a>Nächste Schritte
 

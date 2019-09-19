@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: Unterstützte Kubernetes-Version
       href: supported-kubernetes-versions.md
+    - name: Sicherheitshärtung im Hostbetriebssystem
+      href: security-hardened-vm-host-image.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
@@ -116,7 +118,7 @@
         - name: Löschen eines AKS-Clusters
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Erstellen eines ACR mit einem AKS-Cluster (Vorschau)
+        - name: Erstellen eines ACR mit einem AKS-Cluster
           href: cluster-container-registry-integration.md
         - name: Erstellen von virtuellen Knoten
           items:

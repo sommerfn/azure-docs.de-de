@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845431"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004102"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -185,7 +185,7 @@ Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, kö
 
 Während der Ausführung einer Logik-App werden alle Daten bei der Übertragung mithilfe von [Transit Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) sowie im [Ruhezustand](../security/fundamentals/encryption-atrest.md) verschlüsselt. Wenn Ihre Logik-App die Ausführung beendet hat, können Sie den Verlauf für diese Ausführung anzeigen, einschließlich der ausgeführten Schritte sowie Status, Dauer, Eingaben und Ausgaben für die einzelnen Aktionen. Diese umfangreichen Informationen geben einen Einblick in die Funktionsweise Ihrer Logik-App und zeigen, wo Sie bei der Problembehandlung ansetzen können.
 
-Wenn Sie auf den Ausführungsverlauf einer Logik-App zugreifen, authentifiziert Logic Apps den Zugriff und stellt Links zu den Eingaben und Ausgaben aus den Anforderungen und Antworten in der Ausführung Ihrer Logik-App bereit. Bei Aktionen, die Kennwörter, Geheimnisse, Schlüssel oder andere sensible Informationen verarbeiten, sollten Sie jedoch verhindern, dass andere Personen diese Daten einsehen und darauf zugreifen. Wenn Ihre Logik-App beispielsweise ein Geheimnis aus [Azure Key Vault](../key-vault/key-vault-whatis.md) erhält, das bei der Authentifizierung einer HTTP-Aktion verwendet werden soll, sollten Sie dieses Geheimnis ausblenden.
+Wenn Sie auf den Ausführungsverlauf einer Logik-App zugreifen, authentifiziert Logic Apps den Zugriff und stellt Links zu den Eingaben und Ausgaben aus den Anforderungen und Antworten in der Ausführung Ihrer Logik-App bereit. Bei Aktionen, die Kennwörter, Geheimnisse, Schlüssel oder andere sensible Informationen verarbeiten, sollten Sie jedoch verhindern, dass andere Personen diese Daten einsehen und darauf zugreifen. Wenn Ihre Logik-App beispielsweise ein Geheimnis aus [Azure Key Vault](../key-vault/key-vault-overview.md) erhält, das bei der Authentifizierung einer HTTP-Aktion verwendet werden soll, sollten Sie dieses Geheimnis ausblenden.
 
 Um den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App zu steuern, stehen Ihnen folgende Optionen zur Verfügung:
 
@@ -370,7 +370,7 @@ Weitere Informationen finden Sie unter [Sichere Parameter in Workflowdefinitione
 
 Wenn Sie Bereitstellungen mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md#parameters) automatisieren, können Sie mithilfe der Typen `securestring` und `secureobject` sichere Vorlagenparameter definieren, die bei der Bereitstellung ausgewertet werden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/key-vault-whatis.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
+Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/key-vault-overview.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Verwenden von Azure Key Vault zum Übergeben sicherer Parameterwerte bei der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * [Sichere Parameter in Azure Resource Manager-Vorlagen](#secure-parameters-deployment-template) weiter unten in diesem Thema
@@ -425,7 +425,7 @@ Zum Schützen sensibler Informationen in der Workflowdefinition der Logik-App ve
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Sichere Parameter in Azure Resource Manager-Vorlagen
 
-Eine Resource Manager-Vorlage für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/key-vault-whatis.md) speichern und die [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben sicherer Parameterwerte bei der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Eine Resource Manager-Vorlage für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und die [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben sicherer Parameterwerte bei der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 Hier finden Sie weitere Informationen zu diesen `parameters`-Abschnitten:
 

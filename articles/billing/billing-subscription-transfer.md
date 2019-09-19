@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e4496e2b5d2b21fd878ef68665b8e5b06fa6cc5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70012542"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103753"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -38,7 +38,7 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
 
 1. Wählen Sie **Abonnements** im linken Bereich aus. Je nach Zugriff müssen Sie möglicherweise einen Abrechnungsbereich auswählen. Wählen Sie dann **Abonnements** oder **Azure-Abonnements** aus.
 
-1. Wählen Sie für das Abonnement, das Sie übertragen möchten, **Abrechnungsbesitz übertragen** aus. 
+1. Wählen Sie für das Abonnement, das Sie übertragen möchten, **Abrechnungsbesitz übertragen** aus.
 
    ![Auswählen des zu übertragenden Abonnements](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -49,7 +49,7 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
     > [!IMPORTANT]
     >
     > Wenn Sie das Abonnement in den Azure AD-Mandanten des neuen Kontos verschieben, werden alle Zuweisungen der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) zum Verwalten von Ressourcen im Abonnement dauerhaft entfernt. Nur der Benutzer des neuen Kontos, der Ihre Übertragungsanforderung angenommen hat, hat Zugriff auf die Verwaltung von Ressourcen im Abonnement. Weitere Informationen finden Sie unter [Übertragen des Abonnements an einen Benutzer in einem anderen Azure AD-Mandanten](../active-directory/managed-identities-azure-resources/known-issues.md). Alternativ können Sie das Kontrollkästchen deaktivieren, mit dem der Azure AD-Mandant des Abonnements den Abrechnungsbesitz überträgt, ohne das Abonnement in den Mandanten des neuen Kontos zu verschieben. In diesem Fall werden vorhandene RBAC-Berechtigungen zum Verwalten von Azure-Ressourcen beibehalten.
-  
+
     ![Seite zum Senden der Übertragungsanforderung](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
 1. Wählen Sie **Übertragungsanforderung senden** aus.
@@ -58,7 +58,7 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
 
    ![An den Empfänger gesendete E-Mail zur Abonnementübertragung](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen. Der Benutzer muss eine Zahlungsmethode auswählen, die für die Bezahlung des Abonnements verwendet wird. Falls der Benutzer kein Azure-Konto hat, muss er sich außerdem für ein neues Konto registrieren. 
+1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen. Der Benutzer muss eine Zahlungsmethode auswählen, die für die Bezahlung des Abonnements verwendet wird. Falls der Benutzer kein Azure-Konto hat, muss er sich außerdem für ein neues Konto registrieren.
 
    ![Erste Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -79,7 +79,7 @@ Wenn Sie den Abrechnungsbesitz Ihres Abonnements an ein Konto in einem anderen A
 
 ## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Übertragen von Visual Studio-, MPN- und Dev/Test-Abonnements mit nutzungsbasierter Bezahlung
 
-Mit Abonnements für Visual Studio und Microsoft Partner Network sind monatliche Azure-Gutschriften verbunden. Wenn Sie derartige Abonnements übertragen, ist Ihr Guthaben im Ziel-Abrechnungskonto nicht verfügbar. Für das Abonnement wird das Guthaben des Ziel-Abrechnungskontos verwendet. Beispiel: Bob überträgt am 9. September ein Abonnement für Visual Studio Enterprise an das Konto von Jane, die die Übertragung annimmt. Nach der Übertragung wird für das Abonnement die Gutschrift für Janes Konto verwendet. Die Gutschrift erfolgt jeweils am 9. des Monats. 
+Mit Abonnements für Visual Studio und Microsoft Partner Network sind monatliche Azure-Gutschriften verbunden. Wenn Sie derartige Abonnements übertragen, ist Ihr Guthaben im Ziel-Abrechnungskonto nicht verfügbar. Für das Abonnement wird das Guthaben des Ziel-Abrechnungskontos verwendet. Beispiel: Bob überträgt am 9. September ein Abonnement für Visual Studio Enterprise an das Konto von Jane, die die Übertragung annimmt. Nach der Übertragung wird für das Abonnement die Gutschrift für Janes Konto verwendet. Die Gutschrift erfolgt jeweils am 9. des Monats.
 
 
 <a id="EA"></a>
@@ -107,9 +107,9 @@ Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführte
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
-- [Visual Studio Enterprise-Abonnenten (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) 
+- [Visual Studio Enterprise-Abonnenten (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/)
 - [MSDN-Plattformen](https://azure.microsoft.com/offers/ms-azr-0062p/)  
-- [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) 
+- [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
@@ -119,7 +119,7 @@ Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführte
 
 \* [Über das EA-Portal](#EA).
 
-\*\* Wird nur für Konten unterstützt, die bei der Registrierung auf der Azure-Website erstellt werden. 
+\*\* Wird nur für Konten unterstützt, die bei der Registrierung auf der Azure-Website erstellt werden.
 
 <a id="faq"></a>
 
@@ -134,8 +134,14 @@ Ein Abrechnungsadministrator ist eine Person, die über Berechtigungen zum Verwa
 Führen Sie die folgenden Schritte aus, um die Konten zu ermitteln, für die Sie als Abrechnungsadministrator fungieren:
 
 1. Navigieren Sie im Azure-Portal zur Seite [Kostenverwaltung + Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
-1. Wählen Sie im linken Bereich die Option **Alle Abrechnungsbereiche** aus. 
+1. Wählen Sie im linken Bereich die Option **Alle Abrechnungsbereiche** aus.
 1. Auf der Seite „Abonnements“ werden alle Abonnements aufgelistet, für die Sie als Abrechnungsadministrator fungieren.
+
+Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher sind, wer der Kontoadministrator für ein Abonnement ist.
+
+1. Navigieren Sie [im Azure-Portal zur Seite „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wählen Sie das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach.
+1. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wird alles übertragen? Auch Ressourcengruppen, virtuelle Computer, Datenträger und andere aktive Dienste?
 
@@ -201,13 +207,13 @@ Ja. Bei der Annahme der Übertragungsanforderung können Sie eine vorhandene Zah
 
 ### <a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
 
-Die Self-Service-Abonnementübertragung ist für Ihr Abrechnungskonto nicht verfügbar. Derzeit wird die Übertragung des Abrechnungsbesitzes von Abonnements in Enterprise Agreement (EA)-Konten im Azure-Portal nicht unterstützt. Darüber hinaus wird die Übertragung des Abrechnungsbesitzes für Konten für die Microsoft-Kundenvereinbarung, die in Zusammenarbeit mit einem Microsoft-Vertreter erstellt werden, nicht unterstützt. 
+Die Self-Service-Abonnementübertragung ist für Ihr Abrechnungskonto nicht verfügbar. Derzeit wird die Übertragung des Abrechnungsbesitzes von Abonnements in Enterprise Agreement (EA)-Konten im Azure-Portal nicht unterstützt. Darüber hinaus wird die Übertragung des Abrechnungsbesitzes für Konten für die Microsoft-Kundenvereinbarung, die in Zusammenarbeit mit einem Microsoft-Vertreter erstellt werden, nicht unterstützt.
 
-### <a id="no-button"></a> Warum unterstützt mein Abonnementtyp die Übertragung nicht? 
+### <a id="no-button"></a> Warum unterstützt mein Abonnementtyp die Übertragung nicht?
 
 Nicht alle Abonnementtypen unterstützen die Übertragung des Abrechnungsbesitzes. Unter [Unterstützte Abonnementtypen](#supported-subscription-types) sind die Abonnementtypen aufgelistet, die eine Übertragung unterstützen.
 
-### <a id="no-button"></a> Warum erhalte ich den Fehler „Zugriff verweigert“, wenn ich versuche, den Abrechnungsbesitz eines Abonnements zu übertragen? 
+### <a id="no-button"></a> Warum erhalte ich den Fehler „Zugriff verweigert“, wenn ich versuche, den Abrechnungsbesitz eines Abonnements zu übertragen?
 
 Dieser Fehler wird angezeigt, wenn Sie versuchen, ein Abonnement für einen Microsoft Azure-Plan zu übertragen und nicht über die erforderliche Berechtigung verfügen. Um das Abonnement für einen Microsoft Azure-Plan zu übertragen, müssen Sie im Rechnungsabschnitt entweder Besitzer oder Mitwirkender sein, dem das Abonnement in Rechnung gestellt wird. Weitere Informationen finden Sie unter [Verwalten von Abonnements für den Rechnungsabschnitt](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 

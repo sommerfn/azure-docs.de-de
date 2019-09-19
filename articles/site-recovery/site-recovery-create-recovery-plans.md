@@ -1,19 +1,18 @@
 ---
-title: Erstellen und Anpassen von Wiederherstellungsplänen für die Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+title: Erstellen und Anpassen von Wiederherstellungsplänen für die Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst erstellen und anpassen | Microsoft-Dokumentation
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 866374df7d3a6973cfc5995afd5cc3c4b0145c48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400005"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814405"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Erstellen und Anpassen von Wiederherstellungsplänen
 

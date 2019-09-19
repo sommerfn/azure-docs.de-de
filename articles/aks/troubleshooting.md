@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533524"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844262"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -132,3 +132,12 @@ Basierend auf der Ausgabe des Status des Clusters:
 * Wenn sich der Cluster einem anderen Bereitstellungsstatus als *Erfolgreich* oder *Fehler* befindet, warten Sie, bis der Vorgang (*Upgrade/Aktualisieren/Erstellen/Skalieren/Löschen/Migrieren*) abgeschlossen ist. Sobald der vorherige Vorgang abgeschlossen ist, wiederholen Sie Ihren letzten Clustervorgang.
 
 * Wenn im Cluster ein fehlerhaftes Upgrade erfolgt, befolgen Sie die Anweisungen unter [Ich erhalte Fehler, dass sich mein Cluster in einem fehlerhaften Zustand befindet und ein Upgrade oder eine Skalierung nicht funktioniert, bis der Fehler behoben wurde](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Ich erhalte Fehler, dass der Dienstprinzipal nicht gefunden wurde, wenn ich versuche, einen neuen Cluster zu erstellen, ohne einen vorhandenen Cluster zu übergeben.
+
+Beim Erstellen eines AKS-Clusters ist ein Dienstprinzipal erforderlich, um Ressourcen in Ihrem Auftrag zu erstellen. AKS bietet die Möglichkeit, zum Zeitpunkt der Clustererstellung einen neuen Cluster zu erstellen. Dazu ist es jedoch erforderlich, dass Azure Active Directory den neuen Dienstprinzipal in einem angemessenen Zeitraum vollständig weitergibt, damit der Cluster erfolgreich erstellt werden kann. Wenn diese Weitergabe zu lange dauert, schlägt die Überprüfung zum Erstellen des Clusters fehl, da kein verfügbarer Dienstprinzipal dafür gefunden werden kann. 
+
+Verwenden Sie in diesem Fall die folgenden Problemumgehungen:
+1. Verwenden Sie einen vorhandenen Dienstprinzipal, der bereits über Regionen weitergegeben wurde und zum Zeitpunkt der Clustererstellung für die Übergabe an AKS vorhanden ist.
+2. Bei Verwendung von Automatisierungsskripts fügen Sie Zeitverzögerungen zwischen der Erstellung des Dienstprinzipals und der Erstellung des AKS-Clusters ein.
+3. Wenn Sie das Azure-Portal verwenden, kehren Sie während der Erstellung zu den Clustereinstellungen zurück, und wiederholen Sie die Überprüfung nach einigen Minuten.

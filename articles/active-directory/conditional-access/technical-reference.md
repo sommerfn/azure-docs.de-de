@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 390c961eaa692e6ca5bf26e2954c0764207fc210
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853674"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086842"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -125,7 +125,7 @@ Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
 | Windows Phone          | Microsoft Edge, Internet Explorer               |
 | Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
-| Windows Server 2016    | Microsoft Edge, Internet Explorer               |
+| Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
 | macOS                  | Chrome, Safari                                  |

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478064"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910064"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -41,9 +41,9 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 
 Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen:
 
-* string
+* Zeichenfolge
 * Integer
-* DateTime
+* Datetime
 * Boolean
 * Null
 
@@ -60,7 +60,7 @@ Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwa
 
 ## <a name="activities"></a>activities
 
-Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
+Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Variablen in einem Runbook oder DSC-Konfigurationen verwendet. Der Unterschied zwischen den Cmdlets „Get-AzureRmAutomationVariable“ und „Get-AutomationVariable“ ist oben am Anfang dieses Dokuments erläutert.
 
 | activities | BESCHREIBUNG |
 |:---|:---|

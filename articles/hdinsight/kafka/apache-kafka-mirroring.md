@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: bdc393d041bd40fd27493ccc8f3c4f39adfa35b2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657142"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960237"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -84,7 +84,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     1. Klicken Sie auf **Hinzufügen**.
     1. Geben Sie auf dem Bildschirm **Peering hinzufügen** die Informationen wie im Screenshot unten gezeigt ein.
 
-        ![Hinzufügen des VNET-Peerings](./media/apache-kafka-mirroring/add-vnet-peering.png)
+        ![Hinzufügen des VNET-Peerings](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. Konfigurieren der Ankündigung der IP-Adresse:
     1. Wechseln Sie zum Ambari-Dashboard für den primären Cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.

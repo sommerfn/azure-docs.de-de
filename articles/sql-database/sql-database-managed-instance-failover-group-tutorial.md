@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103082"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103210"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -31,7 +31,7 @@ Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe. In 
   > [!NOTE]
   > - Stellen Sie beim Durcharbeiten dieses Tutorials sicher, dass Sie Ihre Ressourcen mit den [Voraussetzungen für das Einrichten von Failovergruppen für eine verwaltete Instanz](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets) konfigurieren. 
   > - Das Erstellen einer verwalteten Instanz kann sehr viel Zeit in Anspruch nehmen. Folglich kann es mehrere Stunden dauern, bis Sie dieses Tutorial fertiggestellt haben. Weitere Informationen zu den Bereitstellungszeiten finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](sql-database-managed-instance.md#managed-instance-management-operations). 
-  > - Die Verwendung von Failovergruppen mit verwalteten Instanzen befindet sich zurzeit in der Vorschau. 
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,7 +43,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 ## <a name="1---create-resource-group-and-primary-managed-instance"></a>1\. Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
 In diesem Schritt erstellen Sie die Ressourcengruppe und die primäre verwaltete Instanz für Ihre Failovergruppe mithilfe des Azure-Portals. 
 
-1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details anzeigen“ auswählen.
 1. Wählen Sie auf der Kachel **Verwaltete SQL-Instanzen** die Option **Erstellen** aus. 
 
@@ -100,7 +100,7 @@ Die zweite verwaltete Instanz muss die folgenden Bedingungen erfüllen:
 
 Führen Sie die folgenden Schritte aus, um Ihre sekundäre verwaltete Instanz zu erstellen: 
 
-1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details anzeigen“ auswählen.
 1. Wählen Sie auf der Kachel **Verwaltete SQL-Instanzen** die Option **Erstellen** aus. 
 

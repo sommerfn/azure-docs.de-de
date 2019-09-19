@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872990"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744587"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer AKS-Cluster (Azure Kubernetes Service) aus zwei Perspektiven zu überwachen. Sie können die Überwachung direkt aus einem AKS-Cluster durchführen, oder Sie können alle AKS-Cluster unter einem Abonnement mit Azure Monitor überwachen. Die Anzeige von Azure Container Instances ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -118,18 +118,18 @@ Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explore
 
 Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung aus Azure Monitor für Container anzeigen. In der folgenden Tabelle sind die Details zur Verwendung der Metrikdiagramme für die Visualisierung von Containermetriken zusammengefasst.
 
-|Namespace | Metrik |
-|----------|--------|
+|Namespace | Metrik | BESCHREIBUNG | 
+|----------|--------|-------------|
 | insights.container/nodes | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | Aggregierte Messung der CPU-Auslastung im gesamten Cluster. Hierbei handelt es sich um eine Aufteilung des CPU-Kerns in 1000 Einheiten (Milli = 1000). Dient zum Bestimmen der Verwendung von Kernen in einem Container, in dem viele Anwendungen einen einzigen Kern verwenden können.| 
+| | cpuUsagePercentage | Aggregierte durchschnittliche CPU-Auslastung in Prozent für den gesamten Cluster.|
+| | memoryRssBytes | Verwendeter RSS-Arbeitsspeicher des Containers in Byte.| 
+| | memoryRssPercentage | Verwendeter RSS-Arbeitsspeicher des Containers in Prozent.|
+| | memoryWorkingSetBytes | Verwendeter Arbeitssatz-Arbeitsspeicher des Containers.| 
+| | memoryWorkingSetPercentage | Verwendeter Arbeitssatz-Arbeitsspeicher des Containers in Prozent. | 
+| | nodesCount | Die Knotenanzahl von Kubernetes.|
 | insights.container/pods | |
-| | PodCount |
+| | PodCount | Die Podanzahl von Kubernetes.|
 
 Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting-to-a-chart), um sie nach Dimension anzuzeigen und damit zu visualisieren, wie verschiedene Segmente der Metrik zusammenhängen. Für einen Knoten können Sie das Diagramm nach der Dimension *Host* segmentieren. Über einen Pod können Sie die Segmentierung nach den folgenden Dimensionen durchführen:
 
@@ -170,7 +170,7 @@ Auf einem erweiterten Knoten können Sie per Drilldown von dem Pod oder Containe
 
 Wählen Sie oben auf der Seite Controller oder Container aus, um den Status und die Ressourcenauslastung für diese Objekte zu überprüfen. Wählen Sie zum Überprüfen der Arbeitsspeicherauslastung in der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar.
 
-Im **Arbeitsspeicher-Arbeitssatz** sind der „residente“ Speicher und der virtuelle Speicher (Cache) enthalten. Dies ist der gesamte Speicher, der von der Anwendung verwendet wird. Unter **Arbeitsspeicher-RSS** wird nur der Hauptspeicher angezeigt. Dies ist der residente Speicher. Diese Metrik zeigt die tatsächliche Kapazität des verfügbaren Arbeitsspeichers an.
+Im **Arbeitsspeicher-Arbeitssatz** sind der „residente“ Speicher und der virtuelle Speicher (Cache) enthalten. Dies ist der gesamte Speicher, der von der Anwendung verwendet wird. Unter **Arbeitsspeicher-RSS** wird nur der Hauptspeicher angezeigt (dies ist in anderen Worten nichts anderes als der residente Speicher). Diese Metrik zeigt die tatsächliche Kapazität des verfügbaren Arbeitsspeichers an.
 
 ![Leistungsansicht zu den Containerknoten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 

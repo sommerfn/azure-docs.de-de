@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4b3116230a085bfbb9a6139fbada4179d802bf5e
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296065"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076702"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Verwenden von Funktionen in Azure Monitor-Protokollabfragen
 
@@ -38,8 +38,6 @@ Erstellen Sie eine Funktion mit Log Analytics, indem Sie im Azure-Portal auf **S
 > [!NOTE]
 > Eine Funktion in Azure Monitor kann keine andere Funktion enthalten.
 
-> [!NOTE]
-> Funktionen können in Azure Monitor-Protokollabfragen, aktuell jedoch nicht in Application Insights-Abfragen, gespeichert werden.
 
 
 

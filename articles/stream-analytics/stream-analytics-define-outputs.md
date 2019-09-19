@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563320"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984873"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -310,7 +310,7 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 | Azure Service Bus-Thema | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |
 | Azure Service Bus-Warteschlange | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen in der Ausgabewarteschlange. |
 | Azure Cosmos DB | Ja | Basierend auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
-| Azure-Funktionen | Nein | Keine | Nicht zutreffend |
+| Azure-Funktionen | Ja | Basierend auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 
 Die Anzahl der Ausgabeschreiber können Sie auch mithilfe der `INTO <partition count>`-Klausel (siehe [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in Ihrer Abfrage steuern, die hilfreich sein kann, um die gewünschte Auftragstopologie zu erzielen. Wenn der Ausgabeadapter nicht partitioniert ist, führt das Fehlen von Daten in einer Eingabepartition zu einer Verzögerung, bis die Zeitspanne für die Eingangsverzögerung verstrichen ist. In solchen Fällen wird die Ausgabe in einen einzigen Writer zusammengeführt, was Engpässe in Ihrer Pipeline verursachen kann. Weitere Informationen zur Richtlinie bei Eingangsverzögerung finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972171"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383203"
 ---
 # <a name="monitor-the-process-server"></a>Überwachen des Prozessservers
 
@@ -57,10 +57,12 @@ Der Prozessserver generiert eine Reihe von Integritätswarnungen, die in der fol
 ![Warnung][yellow] | CPU-Auslastung > 80 % während der letzten 15 Minuten
 ![Warnung][yellow] | Speicherauslastung > 80 % während der letzten 15 Minuten
 ![Warnung][yellow] | Freier Speicherplatz des Cacheordners < 30 % während der letzten 15 Minuten
+![Warnung][yellow] | Site Recovery überwacht ausstehende/ausgehende Daten alle fünf Minuten und schätzt, dass Daten im Prozessservercache nicht innerhalb von 30 Minuten in Azure hochgeladen werden können.
 ![Warnung][yellow] | Prozessserverdienste wurden während der letzten 15 Minuten nicht ausgeführt
 ![Kritisch][red] | CPU-Auslastung > 95 % während der letzten 15 Minuten
 ![Kritisch][red] | Speicherauslastung > 95 % während der letzten 15 Minuten
 ![Kritisch][red] | Freier Speicherplatz des Cacheordners < 25 % während der letzten 15 Minuten
+![Kritisch][red] | Site Recovery überwacht ausstehende/ausgehende Daten alle fünf Minuten und schätzt, dass Daten im Prozessservercache nicht innerhalb von 45 Minuten in Azure hochgeladen werden können.
 ![Kritisch][red] | 15 Minuten kein Heartbeat vom Prozessserver
 
 ![Tabellenschlüssel](./media/vmware-physical-azure-monitor-process-server/table-key.png)

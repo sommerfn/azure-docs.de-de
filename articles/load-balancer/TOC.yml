@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurieren von Hochverfügbarkeitsports für den internen Lastenausgleich
       href: load-balancer-configure-ha-ports.md
+    - name: Regionsübergreifendes Verschieben
+      items:
+        - name: 'Externer Lastenausgleich: Portal'
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: 'Externer Lastenausgleich: PowerShell'
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: 'Interner Lastenausgleich: PowerShell'
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit Azure Load Balancer

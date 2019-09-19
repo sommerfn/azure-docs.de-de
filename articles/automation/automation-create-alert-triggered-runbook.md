@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f58783a4d5ce1b81e951b811dfa8d65bc2a4f926
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477768"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915726"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -35,7 +35,7 @@ Wenn eine Warnung ein Runbook aufruft, erfolgt der eigentliche Aufruf in Form ei
 
 |Warnung  |BESCHREIBUNG|Nutzlast und Schema  |
 |---------|---------|---------|
-|[Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert.|[Nutzlastschema von allgemeinen Warnungen](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
+|[Allgemeines Warnungsschema](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert.|Nutzlastschema von allgemeinen Warnungen|
 |[Aktivitätsprotokollwarnung](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung, wenn ein beliebiges neues Ereignis im Azure-Aktivitätsprotokoll bestimmte Bedingungen erfüllt. Beispiel: Wenn ein `Delete VM`-Vorgang in **myProductionResourceGroup** auftritt oder wenn ein neues Azure Service Health-Ereignis mit dem Status **Aktiv** angezeigt wird.| [Nutzlastschema vom Typ „Aktivitätsprotokollwarnung“](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
 |[Near Real-Time Metric Alerts](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Sendet eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene bestimmte Bedingungen erfüllt. Beispiel: Wenn der Wert für **CPU in %** auf einer VM größer als **90** ist und der Wert für **Netzwerk eingehend** in den letzten fünf Minuten über **500 MB** gelegen hat.| [Nutzlastschema vom Typ „Near Real-Time Metric Alert“](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 

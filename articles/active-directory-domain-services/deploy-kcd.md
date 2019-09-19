@@ -1,84 +1,104 @@
 ---
-title: 'Azure Active Directory Domain Services: Aktivieren der eingeschränkten Kerberos-Delegierung | Microsoft-Dokumentation'
-description: Aktivieren der eingeschränkten Kerberos-Delegierung in verwalteten Azure Active Directory Domain Services-Domänen
+title: Eingeschränkte Kerberos-Delegierung für Azure AD Domain Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die eingeschränkte Kerberos-Delegierung (Kerberos constrained delegation, KCD) in verwalteten Azure Active Directory Domain Services-Domänen aktivieren.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/04/2019
 ms.author: iainfou
-ms.openlocfilehash: f234eaea0d4df3859ef9458ea334f1b7616add34
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612928"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842657"
 ---
-# <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in einer verwalteten Domäne
-Viele Anwendungen müssen im Kontext des Benutzers auf Ressourcen zugreifen. Active Directory unterstützt einen Mechanismus, die so genannte Kerberos-Delegierung, die diesen Anwendungsfall ermöglicht. Darüber hinaus können Sie die Delegierung einschränken, sodass im Kontext des Benutzers nur auf bestimmte Ressourcen zugegriffen werden kann. In Azure AD Domain Services verwaltete Domänen unterscheiden sich insofern von herkömmlichen Active Directory-Domänen, als dass sie sicherer gesperrt sind.
+# <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in Azure Active Directory Domain Services
 
-Dieser Artikel veranschaulicht die Konfiguration der eingeschränkten Kerberos-Delegierung in einer verwalteten Azure AD Domain Services-Domäne.
+Beim Ausführen von Anwendungen müssen diese Anwendungen möglicherweise im Kontext eines anderen Benutzers auf Ressourcen zugreifen. Active Directory Domain Services (AD DS) unterstützt einen Mechanismus namens *Kerberos-Delegierung*, die diesen Anwendungsfall ermöglicht. Die *eingeschränkte* Kerberos-Delegierung (KCD) baut auf diesem Mechanismus auf und definiert bestimmte Ressourcen, auf die im Kontext des Benutzers zugegriffen werden kann. Die verwalteten Azure AD DS-Domänen (Azure Active Directory Domain Services) sind zuverlässiger geschützt als herkömmliche lokale AD DS-Umgebungen. Verwenden Sie daher die sicherere *ressourcenbasierte* KCD.
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+Dieser Artikel veranschaulicht die Konfiguration der ressourcenbasierten eingeschränkten Kerberos-Delegierung in einer verwalteten Azure AD DS-Domäne.
 
-## <a name="kerberos-constrained-delegation-kcd"></a>Eingeschränkte Kerberos-Delegierung (KCD)
-Die Kerberos-Delegierung ermöglicht einem Konto den Identitätswechsel zu einem anderen Sicherheitsprinzipal (z.B. einem Benutzer) für den Zugriff auf Ressourcen. Stellen Sie sich eine Webanwendung vor, die im Kontext eines Benutzers auf eine Back-End-Web-API zugreift. In diesem Beispiel nimmt die Webanwendung (die im Kontext eines Dienstkontos oder eines Computerkontos ausgeführt wird) beim Zugriff auf die Ressource (Back-End-Web-API) die Identität des Benutzers an. Die Kerberos-Delegierung ist unsicher, da sie nicht die Ressourcen einschränkt, auf die das Konto mit dem Identitätswechsel im Kontext des Benutzers zugreifen kann.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Die eingeschränkte Kerberos-Delegierung (KCD) schränkt die Dienste/Ressourcen ein, an denen der angegebene Server im Namen eines Benutzers Aktionen durchführen kann. Die herkömmliche KCD erfordert Domänenadministratorrechte zum Konfigurieren eines Domänenkontos für einen Dienst und beschränkt das Konto auf eine einzelne Domäne.
+Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie folgende Ressourcen:
 
-Mit der herkömmlichen KCD sind auch einige Probleme verbunden. Wenn der Domänenadministrator kontobasierte KCD für den Dienst konfiguriert hat, hatte der Dienstadministrator in früheren Betriebssystemversionen keine praktische Möglichkeit herauszufinden, welche Front-End-Dienste an die Ressourcendienste delegierten, die sich in ihrem Besitz befanden. Jeder Front-End-Dienst, der an einen Ressourcendienst delegieren konnte, bot einen potenziellen Angriffspunkt. Wenn ein Server kompromittiert wurde, der einen Front-End-Dienst hostete, und wenn dieser Server für die Delegierung an Ressourcendienste konfiguriert war, wurden möglicherweise auch die Ressourcendienste kompromittiert.
+* Ein aktives Azure-Abonnement.
+    * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
+    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
+    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+* Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Windows Server-Computers und Einbinden des virtuellen Computers in eine verwaltete Domäne][create-join-windows-vm] aus, und [installieren Sie dann die AD DS-Verwaltungstools][tutorial-create-management-vm].
+* Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
-> [!NOTE]
-> In einer verwalteten Azure AD Domain Services-Domäne besitzen Sie keine Domänenadministratorberechtigungen. Aus diesem Grund **kann die herkömmliche kontobasierte KCD in einer verwalteten Domäne nicht konfiguriert werden**. Verwenden Sie die ressourcenbasierte KCD entsprechend der Beschreibung in diesem Artikel. Dieser Mechanismus ist zudem sicherer.
->
->
+## <a name="kerberos-constrained-delegation-overview"></a>Übersicht über die eingeschränkte Kerberos-Delegierung
 
-## <a name="resource-based-kcd"></a>Ressourcenbasierte KCD
-Seit Windows Server 2012 haben Dienstadministratoren die Möglichkeit, eingeschränkte Delegierung für den Dienst zu konfigurieren. In diesem Modell kann der Back-End-Dienstadministrator bestimmten Front-End-Diensten die Verwendung von KCD erlauben oder verweigern. Dieses Modell wird als **ressourcenbasierte KCD** bezeichnet.
+Die Kerberos-Delegierung ermöglicht einem Konto, für den Zugriff auf Ressourcen die Identität eines anderen Kontos anzunehmen. Beispielsweise kann eine Webanwendung, die auf eine Back-End-Webkomponente zugreift, beim Herstellen der Back-End-Verbindung die Identität eines anderen Benutzerkontos annehmen. Die Kerberos-Delegierung ist unsicher, da sie die Ressourcen, auf die das Konto für den Identitätswechsel zugreifen kann, nicht einschränkt.
 
-Die ressourcenbasierte KCD wird mithilfe von PowerShell konfiguriert. Sie verwenden die Cmdlets `Set-ADComputer` oder `Set-ADUser` abhängig davon, ob es sich beim Konto für den Identitätswechsel um ein Computerkonto oder ein Benutzerkonto/Dienstkonto handelt.
+Die eingeschränkte Kerberos-Delegierung (KCD) schränkt die Dienste oder Ressourcen ein, mit denen ein bestimmter Server oder eine Anwendung bei einem Identitätswechsel eine Verbindung herstellen kann. Bei der herkömmlichen eingeschränkten Kerberos-Delegierung sind zum Konfigurieren eines Domänenkontos für einen Dienst Domänenadministratorrechte erforderlich. Außerdem muss das Konto in einer einzelnen Domäne ausgeführt werden. Mit der herkömmlichen KCD sind auch einige Probleme verbunden. Bei früheren Betriebssystemversionen beispielsweise hatte der Dienstadministrator keine praktische Möglichkeit herauszufinden, welche Front-End-Dienste an die Ressourcendienste delegierten, die sich in ihrem Besitz befanden. Jeder Front-End-Dienst, der an einen Ressourcendienst delegieren konnte, bot einen potenziellen Angriffspunkt. Wenn ein Server kompromittiert wurde, der einen Front-End-Dienst hostete, für den die Delegierung an Ressourcendienste konfiguriert war, wurden möglicherweise auch die Ressourcendienste kompromittiert.
 
-### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>Konfigurieren der ressourcenbasierten KCD für ein Computerkonto in einer verwalteten Domäne
-Angenommen, Sie haben eine Web-App, die auf dem Computer „contoso-webapp.contoso.com“ ausgeführt wird. Sie muss im Kontext von Domänenbenutzern auf die Ressource zugreifen (eine Web-API, die auf „contoso-api.contoso.com“ ausgeführt wird). Hier wird gezeigt, wie Sie die ressourcenbasierte KCD für dieses Szenario einrichten würden:
+In einer verwalteten Azure AD DS-Domäne haben Sie keine Domänenadministratorrechte. Demzufolge kann die herkömmliche kontobasierte eingeschränkte Kerberos-Delegierung (KCD) nicht in einer verwalteten Azure AD DS-Domäne konfiguriert werden. Stattdessen kann eine ressourcenbasierte KCD verwendet werden, die außerdem sicherer ist.
 
-1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit an Benutzer innerhalb der verwalteten Domäne delegieren.
-2. Verknüpfen Sie beide virtuellen Computer (den mit der Web-App und den mit der Web-API) mit der verwalteten Domäne. Erstellen Sie diese Computerkonten innerhalb der benutzerdefinierten OE.
-3. Jetzt konfigurieren Sie ressourcenbasierte KCD mit dem folgenden PowerShell-Befehl:
+### <a name="resource-based-kcd"></a>Ressourcenbasierte KCD
 
-```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
-```
+Seit Windows Server 2012 haben Dienstadministratoren die Möglichkeit, eine eingeschränkte Delegierung für ihren Dienst zu konfigurieren. Dieses Modell wird als ressourcenbasierte KCD bezeichnet. Mit diesem Ansatz kann der Back-End-Dienstadministrator bestimmten Front-End-Diensten die Verwendung von KCD erlauben oder verweigern.
 
-> [!NOTE]
-> Die Computerkonten für die Web-App und die Web-API müssen sich in einer benutzerdefinierten OE befinden, in der Sie zum Erstellen ressourcenbasierter KCD berechtigt sind. Im integrierten Container „AAD DC Computers“ können Sie keine ressourcenbasierte KCD für ein Benutzerkonto konfigurieren.
->
+Die ressourcenbasierte KCD wird mithilfe von PowerShell konfiguriert. Sie verwenden das Cmdlet [Set-ADComputer][Set-ADComputer] oder [Set-ADUser][Set-ADUser], je nachdem, ob es sich beim Konto für den Identitätswechsel um ein Computerkonto oder ein Benutzerkonto/Dienstkonto handelt.
 
-### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>Konfigurieren der ressourcenbasierten KCD für ein Benutzerkonto in einer verwalteten Domäne
-Angenommen, Sie haben eine Web-App, die als Dienstkonto „appsvc“ ausgeführt wird, und diese muss im Kontext von Domänenbenutzern auf die Ressource zugreifen (eine Web-API, die als Dienstkonto „backendsvc“ ausgeführt wird). Hier wird gezeigt, wie Sie die ressourcenbasierte KCD für dieses Szenario einrichten würden.
+## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Konfigurieren der ressourcenbasierten KCD für ein Computerkonto
 
-1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit an Benutzer innerhalb der verwalteten Domäne delegieren.
-2. Verknüpfen Sie den virtuellen Computer, auf dem die Back-End-Web-API/-Ressource ausgeführt wird, mit der verwalteten Domäne. Erstellen Sie das zugehörige Computerkonto innerhalb der benutzerdefinierten OE.
-3. Erstellen Sie das Dienstkonto (z.B. „appsvc“) zum Ausführen der Web-App innerhalb der benutzerdefinierten OE.
-4. Jetzt konfigurieren Sie ressourcenbasierte KCD mit dem folgenden PowerShell-Befehl:
+In diesem Szenario gehen wir davon aus, dass Sie über eine Web-App verfügen, die auf einem Computer namens *contoso-webapp.contoso.com* ausgeführt wird. Die Web-App muss im Kontext von Domänenbenutzern auf eine Web-API zugreifen können, die auf einem Computer namens *contoso-api.contoso.com* ausgeführt wird. Führen Sie die folgenden Schritte aus, um dieses Szenario zu konfigurieren:
 
-```powershell
-$ImpersonatingAccount = Get-ADUser -Identity appsvc
-Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
-```
+1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit (OE) an Benutzer innerhalb der verwalteten Azure AD DS-Domäne delegieren.
+1. [Binden Sie die virtuellen Computer in die verwaltete Azure AD DS-Domäne ein][create-join-windows-vm], und zwar sowohl den Computer, auf dem die Web-App ausgeführt wird, als auch den Computer, der die Web-API ausführt. Erstellen Sie diese Computerkonten in der benutzerdefinierten Organisationseinheit (OE) aus dem vorherigen Schritt.
 
-> [!NOTE]
-> Sowohl das Computerkonto für die Back-End-Web-API als auch das Dienstkonto müssen sich in einer benutzerdefinierten OE befinden, in der Sie zum Erstellen ressourcenbasierter KCD berechtigt sind. Im integrierten Container „AAD DC Computers“ oder für Benutzerkonten im integrierten Container „AAD DC Users“ können Sie keine ressourcenbasierte KCD für ein Benutzerkonto konfigurieren. Daher können Sie keine aus Azure AD synchronisierten Benutzerkonten zum Einrichten ressourcenbasierter KCD verwenden.
->
+    > [!NOTE]
+    > Die Computerkonten für die Web-App und die Web-API müssen sich in einer benutzerdefinierten OE befinden, in der Sie zum Erstellen der ressourcenbasierten KCD berechtigt sind. Im integrierten Container *AAD DC Computers* können Sie keine ressourcenbasierte KCD für ein Computerkonto konfigurieren.
 
-## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](tutorial-create-instance.md)
-* [Übersicht über die eingeschränkte Kerberos-Delegierung](https://technet.microsoft.com/library/jj553400.aspx)
+1. Konfigurieren Sie abschließend die ressourcenbasierte KCD mit dem PowerShell-Cmdlet [Set-ADComputer][Set-ADComputer]. Melden Sie sich mit einem Benutzerkonto an, das Mitglied der Gruppe *Azure AD DC-Administratoren* ist, und führen Sie auf Ihrem in die Domäne eingebundenen virtuellen Verwaltungscomputer die folgenden Cmdlets aus. Geben Sie Ihre eigenen Computernamen nach Bedarf an:
+    
+    ```powershell
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
+    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    ```
+
+## <a name="configure-resource-based-kcd-for-a-user-account"></a>Konfigurieren der ressourcenbasierten KCD für ein Benutzerkonto
+
+In diesem Szenario gehen wir davon aus, dass Sie über eine Web-App verfügen, die als Dienstkonto namens *appsvc* ausgeführt wird. Die Web-App muss im Kontext von Domänenbenutzern auf eine Web-API zugreifen können, die als Dienstkonto namens *backendsvc* ausgeführt wird. Führen Sie die folgenden Schritte aus, um dieses Szenario zu konfigurieren:
+
+1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit (OE) an Benutzer innerhalb der verwalteten Azure AD DS-Domäne delegieren.
+1. [Binden Sie die virtuellen Computer][create-join-windows-vm], auf denen die Back-End-Web-API/-Ressource ausgeführt werden, in die verwaltete Azure AD DS-Domäne ein. Erstellen Sie das zugehörige Computerkonto innerhalb der benutzerdefinierten OE.
+1. Erstellen Sie das Dienstkonto (z.B. „appsvc“) zum Ausführen der Web-App innerhalb der benutzerdefinierten OE.
+
+    > [!NOTE]
+    > Zur Erinnerung: Sowohl das Computerkonto für den virtuellen Web-API-Computer als auch das Dienstkonto für die Web-App müssen sich in einer benutzerdefinierten OE befinden, in der Sie zum Erstellen der ressourcenbasierten KCD berechtigt sind. Im integrierten Container *AAD DC Computers* bzw. *AAD DC Users* können Sie keine ressourcenbasierte KCD für Konten konfigurieren. Das bedeutet auch, dass Sie keine von Azure AD synchronisierten Benutzerkonten zum Einrichten einer ressourcenbasierten KCD verwenden können. Sie müssen speziell in Azure AD DS erstellte Dienstkonten verwenden.
+
+1. Konfigurieren Sie abschließend die ressourcenbasierte KCD mit dem PowerShell-Cmdlet [Set-ADUser][Set-ADUser]. Melden Sie sich mit einem Benutzerkonto an, das Mitglied der Gruppe *Azure AD DC-Administratoren* ist, und führen Sie auf Ihrem in die Domäne eingebundenen virtuellen Verwaltungscomputer die folgenden Cmdlets aus. Geben Sie Ihre eigenen Computernamen nach Bedarf an:
+
+    ```powershell
+    $ImpersonatingAccount = Get-ADUser -Identity appsvc
+    Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zur Funktionsweise der Delegierung in Active Directory Domain Services finden Sie unter [Übersicht über die eingeschränkte Kerberos-Delegierung][kcd-technet].
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Set-ADUser]: /powershell/module/addsadministration/set-aduser
+
+<!-- EXTERNAL LINKS -->
+[kcd-technet]: https://technet.microsoft.com/library/jj553400.aspx

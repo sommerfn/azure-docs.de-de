@@ -1,6 +1,6 @@
 ---
 title: 'Grafische Benutzeroberfläche: Beispiel Nr. 3: Klassifizierung zur Vorhersage des Kreditrisikos'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie über die grafische Benutzeroberfläche eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990055"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997056"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos
 

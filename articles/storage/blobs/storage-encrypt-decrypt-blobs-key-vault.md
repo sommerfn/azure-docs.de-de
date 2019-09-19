@@ -9,12 +9,12 @@ ms.date: 05/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: d7c740133911689c6d3f8e29c2cb20aa8873f0c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65788009"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003436"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault
 
@@ -23,7 +23,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie die clientseitige Speicherverschlü
 
 **Geschätzter Zeitaufwand**: 20 Minuten
 
-Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-whatis.md).
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
 Übersichtsinformationen zur clientseitigen Verschlüsselung für Azure Storage finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
