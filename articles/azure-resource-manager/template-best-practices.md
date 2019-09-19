@@ -1,22 +1,17 @@
 ---
 title: Bewährte Methoden für Azure Resource Manager-Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812906"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983823"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -47,7 +42,8 @@ Wenn Sie Ressourcen für eine Ressourcengruppe bereitstellen, speichert die Ress
 Ist die Region der Ressourcengruppe vorübergehend nicht verfügbar, können Sie keine Ressourcen in der Ressourcengruppe aktualisieren, da die Metadaten nicht verfügbar sind. Die Ressourcen in anderen Regionen funktionieren weiterhin wie erwartet, doch können Sie diese nicht aktualisieren. Um das Risiko zu minimieren, platzieren Sie Ihre Ressourcengruppe und Ressourcen in der gleichen Region.
 
 ## <a name="parameters"></a>Parameter
-Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern](resource-group-authoring-templates.md#parameters) hilfreich sein.
+
+Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern](template-parameters.md) hilfreich sein.
 
 ### <a name="general-recommendations-for-parameters"></a>Allgemeine Empfehlungen für Parameter
 
@@ -149,7 +145,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 ## <a name="variables"></a>Variables
 
-Die folgenden Informationen können bei der Arbeit mit [Variablen](resource-group-authoring-templates.md#variables) hilfreich sein:
+Die folgenden Informationen können bei der Arbeit mit [Variablen](template-variables.md) hilfreich sein:
 
 * Verwenden Sie die camel-Schreibweise für Variablennamen.
 
@@ -286,7 +282,7 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](resource-gro
 
 ## <a name="outputs"></a>Ausgaben
 
-Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese einen [Ausgabeabschnitt](resource-group-authoring-templates.md#outputs) enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen.
+Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese einen [Ausgabeabschnitt](template-outputs.md) enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen.
 
 ```json
 "outputs": {
