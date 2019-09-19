@@ -14,11 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "70861174"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
@@ -78,12 +78,6 @@ Die Rolle „Authentifizierungsadministrator“ ist derzeit als öffentliche Vor
 * Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
 * Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
 * Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
-
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps-Administrator](#azure-devops-administrator-permissions)
-
-Benutzer mit dieser Rolle können die Azure DevOps-Richtlinie verwalten, um die Erstellung einer neuen Azure DevOps-Organisation auf einen Satz konfigurierbarer Benutzer/AAD-Gruppen zu beschränken. Benutzer in dieser Rolle können diese Richtlinie über jede Azure DevOps-Organisation verwalten, die durch Azure AD des Unternehmens unterstützt wird.
-
-In Zukunft werden alle Azure DevOps-Richtlinien des Unternehmens von Benutzern in dieser Rolle verwaltet.
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection-Administrator](#azure-information-protection-administrator-permissions)
 
@@ -497,19 +491,6 @@ Ist berechtigt, Informationen zur Authentifizierungsmethode für alle Benutzer o
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 | microsoft.directory/users/password/update | Aktualisieren von Kennwörtern für alle Benutzer in der Office 365-Organisation. Weitere Informationen finden Sie in der Onlinedokumentation. |
-
-### <a name="azure-devops-administrator-permissions"></a>Berechtigungen von Azure DevOps-Administratoren
-
-Kann Richtlinien und Einstellungen für die Azure DevOps-Organisation verwalten.
-
-> [!NOTE]
-> Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der [Rollenbeschreibung](#azure-devops-administrator) weiter oben.
->
->
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.azure.devOps/allEntities/allTasks | Lesen und Konfigurieren von Azure DevOps |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Berechtigungen von Azure Information Protection-Administratoren
 
@@ -1515,7 +1496,6 @@ Graph displayName | Anzeigename des Azure-Portals | directoryRoleTemplateId
 Anwendungsadministrator | Anwendungsadministrator | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Anwendungsentwickler | Anwendungsentwickler | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Authentifizierungsadministrator | Authentifizierungsadministrator | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Azure DevOps-Administrator | Azure DevOps-Administrator | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection-Administrator | Azure Information Protection-Administrator | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C-Benutzerflowadministrator | B2C-Benutzerflowadministrator | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C-Administrator für Benutzerflowattribute | B2C-Administrator für Benutzerflowattribute | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

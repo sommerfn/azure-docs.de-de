@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 09/16/2019
 ms.locfileid: "70174621"
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe.
@@ -147,7 +147,7 @@ Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von 
 
 <sup>1</sup> Für diese großen VMs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
-<sup>2</sup> VMs der Mv2-Serie sind nur als [Generation 2](/azure/virtual-machines/linux/generation-2) erhältlich. Bei Verwendung von Linux helfen Ihnen die Informationen zur Ermittlung und Auswahl eines SUSE Linux-Images im folgenden Abschnitt weiter.
+<sup>2</sup> VMs der Mv2-Serie sind nur als „Generation 2“ erhältlich. Bei Verwendung von Linux helfen Ihnen die Informationen zur Ermittlung und Auswahl eines SUSE Linux-Images im folgenden Abschnitt weiter.
 
 #### <a name="find-a-suse-image"></a>Ermitteln eines SUSE-Images
 

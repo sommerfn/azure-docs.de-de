@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: bd7a78730186e4ea3d34449fd7977f7575bb8180
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd19723b80fdf4e4fc7e4581a9b8dcb80ca42045
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935226"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962905"
 ---
 # <a name="dynamics-365-for-finance-and-operations-offer"></a>Dynamics 365 for Finance and Operations-Angebot
 
@@ -23,7 +23,7 @@ ms.locfileid: "64935226"
 
 Führen Sie die folgenden Schritte aus, um Ihre Dynamics 365 for Finance and Operations-App zu entwickeln und in AppSource zu veröffentlichen:
 
-1. Sie müssen zunächst eine [Dev Center-Zertifizierung](https://dev.windows.com/en-us/registration?accountProgram=Azure) erhalten.
+1. Sie müssen zunächst eine [Dev Center-Zertifizierung](https://dev.windows.com/registration?accountProgram=Azure) erhalten.
 2. Erweitern und aktualisieren Sie Ihren Code.
 3. Verwenden Sie [Lifecycle Services](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lifecycle-services/lcs) (LCS), um Ihre Daten zu erstellen, zu packen und bereitzustellen.
 4. Erstellen Sie eine Implementierungsmethodik in LCS.

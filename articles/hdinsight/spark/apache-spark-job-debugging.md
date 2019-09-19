@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814116"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995500"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden
 
@@ -29,14 +29,14 @@ Sie benötigen Folgendes:
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nachverfolgen einer Anwendung auf der YARN-Benutzeroberfläche
 1. Starten Sie die YARN-Benutzeroberfläche. Klicken Sie unter **Cluster-Dashboards** auf **Yarn**.
    
-    ![YARN-Benutzeroberfläche starten](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![YARN-Benutzeroberfläche starten](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Alternativ können Sie die YARN-Benutzeroberfläche auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche unter **Cluster-Dashboards** auf **Ambari Home**. Klicken Sie auf der Ambari-Benutzeroberfläche auf **YARN**, auf **QuickLinks**, auf den aktiven Ressourcen-Manager und dann auf **Resource Manager UI** (Ressourcen-Manager-UI). 
 
 2. Da Sie den Spark-Auftrag mit Jupyter-Notebooks gestartet haben, hat die Anwendung den Namen **remotesparkmagics** (dies ist der Name für alle Anwendungen, die über die Notebooks gestartet werden). Klicken Sie auf die Anwendungs-ID für den Anwendungsnamen, um weitere Informationen zum Auftrag abzurufen. Dadurch wird die Anwendungsansicht geöffnet.
    
-    ![Suchen der Spark-Anwendungs-ID](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Suchen der Spark-Anwendungs-ID](./media/apache-spark-job-debugging/find-application-id1.png)
    
     Für Anwendungen, die über die Jupyter-Notebooks gestartet werden, ist der Status immer **WIRD AUSGEFÜHRT** , bis Sie das Notebook beenden.
 3. In der Anwendungsansicht können Sie weitere Details anzeigen, um die der Anwendung zugeordneten Container und die Protokolle (stdout/stderr) zu finden. Sie können die Spark-Benutzeroberfläche auch starten, indem Sie auf die Verknüpfung für die **Nachverfolgungs-URL**klicken, wie unten dargestellt. 
@@ -48,13 +48,13 @@ Auf der Spark-Benutzeroberfläche können Sie Details der Spark-Aufträge anzeig
 
 1. Um die Spark-Benutzeroberfläche zu starten, klicken Sie in der Anwendungsansicht auf den Link für die **Nachverfolgungs-URL**, wie im Screenshot oben dargestellt. Es werden alle Spark-Aufträge angezeigt, die von der Anwendung, die im Jupyter-Notebook ausgeführt wird, gestartet werden.
    
-    ![Anzeigen von Spark-Aufträgen](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Anzeigen von Spark-Aufträgen](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Klicken Sie auf die Registerkarte **Executors** , um Informationen zur Verarbeitung und Speicherung für jeden Executor anzuzeigen. Sie können auch die Aufrufliste abrufen, indem Sie auf den Link **Thread Dump** klicken.
    
     ![Anzeigen von Spark-Executors](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. Klicken Sie auf die Registerkarte **Stages** , um die der Anwendung zugeordneten Phasen anzuzeigen.
    
-    ![Anzeigen von Spark-Phasen](./media/apache-spark-job-debugging/view-spark-stages.png "Anzeigen von Spark-Phasen")
+    ![Anzeigen von Spark-Phasen](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Anzeigen von Spark-Phasen")
    
     Jede Phase kann mehrere Aufgaben aufweisen, für die Sie Ausführungsstatistiken anzeigen können, wie unten dargestellt.
    

@@ -3,20 +3,20 @@ title: WebSocket-Protokoll für die Bing-Spracheingabe | Microsoft-Dokumentation
 titlesuffix: Azure Cognitive Services
 description: Protokolldokumentation für die Bing-Spracheingabe basierend auf WebSockets
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515321"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966885"
 ---
 # <a name="bing-speech-websocket-protocol"></a>WebSocket-Protokoll für die Bing-Spracheingabe
 
@@ -61,7 +61,7 @@ Für alle Sprachanforderungen ist die [TLS](https://en.wikipedia.org/wiki/Transp
 
 Für den Spracherkennungsdienst ist es erforderlich, dass alle Clients eine eindeutige ID zum Identifizieren der Verbindung enthalten. Clients *müssen* den *X-ConnectionId*-Header enthalten, wenn sie einen WebSocket-Handshake starten. Der *X-ConnectionId*-Header muss ein [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert (Universally Unique Identifier) sein. WebSocket-Upgradeanforderungen, die *X-ConnectionId* nicht enthalten, keinen Wert für den *X-ConnectionId*-Header angeben oder keinen gültigen UUID-Wert enthalten, werden vom Dienst mit der HTTP-Antwort `400 Bad Request` abgelehnt.
 
-### <a name="authorization"></a>Autorisierung
+### <a name="authorization"></a>Authorization
 
 Zusätzlich zu Standardheadern für den WebSocket-Handshake wird für Sprachanforderungen ein *Authorization*-Header benötigt. Verbindungsanforderungen ohne diesen Header werden vom Dienst mit der HTTP-Antwort `403 Forbidden` abgelehnt.
 

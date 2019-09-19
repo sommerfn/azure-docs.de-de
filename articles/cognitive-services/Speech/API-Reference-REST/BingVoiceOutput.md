@@ -3,20 +3,20 @@ title: Text-to-Speech-API des Speech-Diensts von Microsoft | Microsoft-Dokumenta
 titlesuffix: Azure Cognitive Services
 description: Die Text-to-Speech-API ermöglicht die Umwandlung von Text in Sprache mit verschiedenen Stimmen und Sprachen in Echtzeit.
 services: cognitive-services
-author: priyaravi20
-manager: yanbo
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: priyar
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee9b0b47fb88cba948bc06db6eb83fe9c076fe40
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515422"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966873"
 ---
 # <a name="bing-text-to-speech-api"></a>Text-to-Speech-API von Bing
 

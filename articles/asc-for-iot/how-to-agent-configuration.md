@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596323"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933880"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
 
@@ -87,28 +87,28 @@ Um einen Standardeigenschaftswert zu verwenden, entfernen Sie die Eigenschaft au
 
 1. Suchen und wählen Sie in Ihrem IoT Hub das Gerät aus, das Sie ändern möchten.
 
-2. Klicken Sie auf Ihr Gerät und dann auf das Modul **azureiotsecurity**.
+1. Klicken Sie auf Ihr Gerät und dann auf das Modul **azureiotsecurity**.
 
-3. Klicken Sie auf **Modulidentitätszwilling**.
+1. Klicken Sie auf **Modulidentitätszwilling**.
 
-4. Bearbeiten Sie die zu ändernden Eigenschaften im Sicherheitsmodul.
+1. Bearbeiten Sie die zu ändernden Eigenschaften im Sicherheitsmodul.
    
    Verwenden Sie z. B. die folgende Konfiguration, um Verbindungsereignisse mit hoher Priorität zu konfigurieren und Ereignisse mit hoher Priorität alle 7 Minuten zu sammeln.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="using-a-default-value"></a>Verwendung eines Standardwerts
 

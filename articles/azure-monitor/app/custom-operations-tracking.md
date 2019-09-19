@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883644"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087674"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -354,7 +354,7 @@ Stellen Sie beim Instrumentieren der Nachrichtenlöschung sicher, dass Sie die V
 
 ### <a name="dependency-types"></a>Abhängigkeitstypen
 
-Application Insights verwendet Abhängigkeitstypen, um Benutzeroberflächen anzupassen. Für Warteschlangen werden folgende Typen von `DependencyTelemetry` erkannt, die die [Oberfläche zur Transaktionsdiagnose](/azure-monitor/app/transaction-diagnostics) verbessern:
+Application Insights verwendet Abhängigkeitstypen, um Benutzeroberflächen anzupassen. Für Warteschlangen werden folgende Typen von `DependencyTelemetry` erkannt, die die [Oberfläche zur Transaktionsdiagnose](/azure/azure-monitor/app/transaction-diagnostics) verbessern:
 - `Azure queue` für Azure Storage-Warteschlangen
 - `Azure Event Hubs` für Azure Event Hubs
 - `Azure Service Bus` für Azure Service Bus
@@ -486,7 +486,7 @@ Jeder Application Insights-Vorgang (Anforderung oder Abhängigkeit) umfasst ein 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Grundlagen der [Telemetriekorrelation](correlation.md) in Application Insights.
-- Sehen Sie sich an, wie korrelierte Daten die [Oberfläche zur Transaktionsdiagnose](/azure-monitor/app/transaction-diagnostics) und die [Anwendungsübersicht](/azure-monitor/app/app-map) steuern.
+- Sehen Sie sich an, wie korrelierte Daten die [Oberfläche zur Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md) und die [Anwendungsübersicht](../../azure-monitor/app/app-map.md) steuern.
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
 - Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](../../azure-monitor/app/api-custom-events-metrics.md) an Application Insights.
 - Informationen zur [Standardkonfiguration](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.

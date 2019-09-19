@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ba008ffdf0fe00d6720b0968dc42bfcfc651c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259358"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962780"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
@@ -144,7 +144,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
   > Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/azure/marketplace/become-publisher), um weitere Informationen zu erhalten.
 
 * **Wie beginne ich mit der Dev Center-Registrierung?**
-  > Überprüfen Sie zur Vermeidung von Duplikaten, ob Ihr Unternehmen nicht bereits ein Dev Center-Konto registriert hat. Sie müssen mit dem Microsoft-Konto angemeldet sein, das Sie Ihrem Entwicklerkonto zuordnen möchten. Wenn Sie noch kein Microsoft-Konto haben, können Sie [hier](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) ein neues erstellen. (Beispiel: contoso_marketplace@live.com) Wechseln Sie zum Anmelden und Registrieren zu https://dev.windows.com/en-us/registration?accountProgram=Azure.
+  > Überprüfen Sie zur Vermeidung von Duplikaten, ob Ihr Unternehmen nicht bereits ein Dev Center-Konto registriert hat. Sie müssen mit dem Microsoft-Konto angemeldet sein, das Sie Ihrem Entwicklerkonto zuordnen möchten. Wenn Sie noch kein Microsoft-Konto haben, können Sie [hier](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) ein neues erstellen. (Beispiel: contoso_marketplace@live.com) Wechseln Sie zum Anmelden und Registrieren zu https://dev.windows.com/registration?accountProgram=Azure.
   > <br>Weitere Informationen zum Registrierungsprozess finden Sie [hier](https://docs.microsoft.com/azure/marketplace/register-dev-center).</br>
 
 * **Soll ich für den Kontotyp „Individual“ (Einzelperson) oder „Company“ (Unternehmen) auswählen?**

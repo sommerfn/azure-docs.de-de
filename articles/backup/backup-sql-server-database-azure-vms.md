@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872909"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934845"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -36,8 +36,7 @@ Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien 
 1. Bestimmen oder [erstellen](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) Sie einen Recovery Services-Tresor in derselben Region oder im selben Gebietsschema wie die VM, die die SQL Server-Instanz hostet.
 2. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-sql-server-database-azure-vms.md#establish-network-connectivity) verfügt.
 3. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
-4. Fügen Sie für SQL Server 2008 und 2008 R2 [einen Registrierungsschlüssel hinzu](#add-registry-key-to-enable-registration), um die Serverregistrierung zu aktivieren. Dieser Schritt ist nicht erforderlich, wenn das Feature allgemein verfügbar ist.
-5. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
+4. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
 
 > [!NOTE]
 > Sie können Azure Backup für eine Azure-VM und auch für eine auf der VM ausgeführte SQL Server-Datenbank ohne Konflikte aktivieren.
@@ -98,22 +97,6 @@ Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
 
 Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
-### <a name="add-registry-key-to-enable-registration"></a>Hinzufügen eines Registrierungsschlüssels, um die Registrierung aktivieren
-
-1. Öffnen Sie den Registrierungs-Editor.
-2. Erstellen Sie den folgenden Verzeichnispfad in der Registrierung: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook. Dazu müssen Sie unter „Microsoft“ zuerst „WorkloadBackup“ und unter diesem Eintrag anschließend den Schlüssel „TestHook“ erstellen.
-3. Erstellen Sie unter dem Verzeichnispfad in der Registrierung einen neuen Zeichenfolgenwert mit dem Namen **AzureBackupEnableWin2K8R2SP1** und dem folgenden Wert: **True**
-
-    ![Registrierungs-Editor zur Aktivierung der Registrierung](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-Alternativ können Sie diesen Schritt auch automatisieren, indem Sie eine REG-Datei mit dem folgenden Befehl ausführen:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -261,18 +244,6 @@ So erstellen Sie eine Sicherungsrichtlinie
     - Auf dem Back-End verwendet Azure Backup die native SQL-Sicherungskomprimierung.
 
 14. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
-
-
-### <a name="modify-policy"></a>Ändern der Richtlinie
-Bearbeiten Sie die Richtlinie, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
-
-> [!NOTE]
-> Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
-
-Navigieren Sie im Tresordashboard zu **Verwalten** > **Sicherungsrichtlinien**, und wählen Sie die Richtlinie aus, die Sie bearbeiten möchten.
-
-  ![Verwalten von Sicherungsrichtlinien](./media/backup-azure-sql-database/modify-backup-policy.png)
-
 
 ## <a name="enable-auto-protection"></a>Aktivieren des automatischen Schutzes  
 

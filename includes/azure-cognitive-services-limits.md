@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "68703090"
 ---
 Die folgenden Grenzwerte gelten für die Anzahl der Cognitive Services-Ressourcen pro Azure-Abonnement. Für alle Cognitive Services-Dienste können zusätzliche Einschränkungen gelten. Weitere Informationen finden Sie unter [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).

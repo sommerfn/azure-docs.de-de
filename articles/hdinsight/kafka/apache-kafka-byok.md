@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811547"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000096"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight
 
@@ -58,7 +58,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 
         b. Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
 
-        ![Generieren eines Schlüsselnamens](./media/apache-kafka-byok/kafka-create-a-key.png "Generieren eines Schlüsselnamens")
+        ![Generieren eines Schlüsselnamens](./media/apache-kafka-byok/apache-kafka-create-key.png "Generieren eines Schlüsselnamens")
 
         c. Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
 
@@ -103,7 +103,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 
    Um den Schlüssel zu rotieren, müssen Sie über die vollständige URL des neuen Schlüssels verfügen (siehe Schritt 3 unter [Einrichten des Schlüsseltresors und der Schlüssel](#setup-the-key-vault-and-keys)). Wechseln Sie anschließend zum Abschnitt „Kafka-Clustereigenschaften“ im Portal, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
 
-   ![Schlüssel für Kafka-Datenträgerverschlüsselung rotieren](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Schlüssel für Kafka-Datenträgerverschlüsselung rotieren](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Häufig gestellte Fragen zu BYOK in Apache Kafka
 
@@ -146,5 +146,5 @@ Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-whatis.md).
+* Weitere Informationen zu Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md).
 * Weitere Informationen zu den ersten Schritten mit Azure Key Vault finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](../../key-vault/key-vault-overview.md).

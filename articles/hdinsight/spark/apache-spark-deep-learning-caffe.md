@@ -3,16 +3,17 @@ title: Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learnin
 description: Verwenden von Caffe in Apache Spark für verteiltes Deep Learning in Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814195"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995634"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
@@ -65,7 +66,7 @@ Der zweite Schritt beinhaltet das Herunterladen, Kompilieren und Installieren vo
 
 Zum Einstieg können Sie auch nur diese Skriptaktion in Ihrem Cluster für alle Workerknoten und Hauptknoten (für HDInsight 3.5) ausführen. Sie können die Skriptaktionen auf einem vorhandenen Cluster ausführen oder Skriptaktionen während der Clustererstellung verwenden. Weitere Informationen zu Skriptaktionen finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) in der Dokumentation.
 
-![Skriptaktionen zum Installieren von Abhängigkeiten](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Skriptaktionen zum Installieren von Abhängigkeiten](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Schritt 2: Erstellen von Caffe auf Apache Spark für HDInsight auf dem Hauptknoten
@@ -175,7 +176,8 @@ Da Sie für dieses Beispiel CPU statt GPU verwenden, muss die letzte Zeile wie f
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe-Konfiguration 1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe-Konfiguration 1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 Sie können die anderen Zeilen nach Bedarf anpassen.
 
@@ -184,7 +186,7 @@ Die zweite Datei (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) defin
 - Ändern Sie „file:/Users/mridul/bigml/demodl/mnist_train_lmdb“ in „wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb“.
 - Ändern Sie „file:/Users/mridul/bigml/demodl/mnist_test_lmdb/“ in „wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb“.
 
-![Caffe-Konfiguration 2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe-Konfiguration 2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Weitere Informationen zum Definieren des Netzwerks finden Sie in der [Caffe-Dokumentation im MNIST-Dataset](https://caffe.berkeleyvision.org/gathered/examples/mnist.html).
 
@@ -204,15 +206,15 @@ Wenn Sie wissen möchten, was geschehen ist, müssen Sie normalerweise das Proto
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![YARN-Benutzeroberfläche](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![YARN-Benutzeroberfläche](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Sie können einen Blick darauf werfen, wie viele Ressourcen dieser bestimmten Anwendung zugeordnet sind. Sie können auf den Link „Scheduler“ klicken und sehen dann, dass für diese Anwendung neun Container ausgeführt werden. Sie fordern YARN auf, acht Executors bereitzustellen. Ein weiterer Container ist für den Treiberprozess bestimmt. 
 
-![YARN-Scheduler](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![YARN-Scheduler](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Sie können bei Fehlern die Treiberprotokolle oder die Containerprotokolle überprüfen. Treiberprotokolle erhalten Sie durch Klicken auf die Anwendungs-ID auf der YARN-Benutzeroberfläche und anschließendes Klicken auf die Schaltfläche „Protokolle“. Die Treiberprotokolle werden in STDERR geschrieben.
 
-![YARN-Benutzeroberfläche 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![YARN-Benutzeroberfläche 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Beispiel: Sie sehen möglicherweise einige der unten aufgeführten Fehler aus den Treiberprotokollen, die angeben, dass zu viele Executors zugeordnet sind.
 

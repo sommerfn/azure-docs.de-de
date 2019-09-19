@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899951"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091951"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
@@ -107,7 +107,7 @@ Eingehendere Informationen zum Authentifizierungsprozesses in anderen Szenarios 
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>Benutzer verwaltet Windows Hello for Business-Anmeldeinformationen
 
-Der [Microsoft-PIN-Zurücksetzungsdienst](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) ist ein Feature in Azure AD, mit dem Benutzer ihre PIN bei Bedarf zurücksetzen können. Mithilfe einer Gruppenrichtlinie, Microsoft Intune oder einer kompatiblen MDM-Lösung kann ein Administrator Windows 10-Geräte für die sichere Verwendung des PIN-Zurücksetzungsdiensts von Microsoft konfigurieren. Dieser ermöglicht es Benutzern, ihre vergessene PIN über Einstellungen oder den Sperrbildschirm zurückzusetzen, ohne sich nochmals registrieren zu müssen.
+Der [Microsoft-PIN-Zurücksetzungsdienst](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) ist ein Feature in Azure AD, mit dem Benutzer ihre PIN bei Bedarf zurücksetzen können. Mithilfe einer Gruppenrichtlinie, Microsoft Intune oder einer kompatiblen MDM-Lösung kann ein Administrator Windows 10-Geräte für die sichere Verwendung des PIN-Zurücksetzungsdiensts von Microsoft konfigurieren. Dieser ermöglicht es Benutzern, ihre vergessene PIN über Einstellungen oder den Sperrbildschirm zurückzusetzen, ohne sich nochmals registrieren zu müssen.
 
 Manchmal müssen Benutzer wieder auf die Verwendung von Kennwörtern zurückgreifen. Die [Self-Service-Kennwortzurücksetzung](../../active-directory/authentication/howto-sspr-deployment.md) (Self-Service Password Reset, SSPR) ist ein Feature, mit dem Benutzer ihre Kennwörter zurücksetzen können, ohne sich an IT-Mitarbeiter wenden zu müssen. Benutzer müssen sich für die Self-Service-Kennwortzurücksetzung registrieren, bevor sie den Dienst verwenden können. Während der Registrierung wählt der Benutzer eine oder mehrere Authentifizierungsmethoden aus, die von seiner Organisation aktiviert wurden. SSPR ermöglicht es Benutzern, die Blockierung schnell aufzuheben und die Arbeit fortzusetzen, unabhängig von Aufenthaltsort und Uhrzeit. Indem sie ihren Benutzern erlaubt, die Blockierung selbst aufzuheben, kann Ihre Organisation die unproduktive Zeit und die hohen Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern verringern.
 

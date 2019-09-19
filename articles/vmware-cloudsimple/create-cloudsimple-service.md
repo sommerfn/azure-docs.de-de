@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f589adf5cbcd04b9642dfe1362fd13d5be1f9aa
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640632"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035720"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Erstellen der Azure-VMware-Lösung des CloudSimple-Diensts
 
@@ -24,7 +24,7 @@ Als ersten Schritt für die Azure-VMware-Lösung von CloudSimple erstellen Sie d
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-the-service"></a>Erstellen des Diensts
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 4181a44e87d59d35d424a51c8fedc89523223f90
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343124"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003493"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>SQL-Unterabfragenbeispiele für Azure Cosmos DB
 
@@ -368,7 +368,7 @@ SELECT EXISTS (SELECT undefined)
 
 Die Unterabfrage umschließt die Liste der Werte in der ausgewählten Liste in einem Objekt. Wenn die ausgewählte Liste keine Werte aufweist, gibt die Unterabfrage die einzelnen Wert „{}“ zurück. Dieser Wert ist definiert, darum ist das Auswertungsergebnis von EXISTS „true“.
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>Beispiel: Umschreiben von ARRAY_CONTAINS und JOIN in EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Beispiel: Umschreiben von ARRAY_CONTAINS und JOIN in EXISTS
 
 Ein häufiger Anwendungsfall von ARRAY_CONTAINS ist das Filtern eines Dokuments nach dem Vorhandensein eines Elements in einem Array. In diesem Fall prüfen wir, ob das tags-Array ein Element mit dem Namen „orange“ enthält.
 
@@ -519,5 +519,5 @@ Abfrageausgabe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Modelldokumentdaten](modeling-data.md)

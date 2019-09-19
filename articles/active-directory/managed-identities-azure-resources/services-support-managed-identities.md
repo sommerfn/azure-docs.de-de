@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136521"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087599"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -33,7 +33,7 @@ Die folgenden Azure-Dienste unterstützen verwaltete Identitäten für Azure-Res
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Vom System zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau | 
-| Vom Benutzer zugewiesen | Vorschau | Vorschau | Vorschau | Vorschau |
+| Vom Benutzer zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -48,7 +48,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand d
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Vom System zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
-| Vom Benutzer zugewiesen | Vorschau | Vorschau | Vorschau | Vorschau |
+| Vom Benutzer zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Sets anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -210,7 +210,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | Vorschau |
+| Azure Global | `https://eventhubs.azure.net` | Verfügbar |
 | Azure Government |  | Nicht verfügbar. |
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
@@ -219,8 +219,8 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | Vorschau |
-| Azure Government |  | Nicht verfügbar. |
+| Azure Global | `https://servicebus.azure.net`  | Verfügbar |
+| Azure Government |  | Verfügbar |
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 

@@ -4,15 +4,16 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azu
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779527"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960329"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal
 
@@ -38,7 +39,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
 2. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** > **Analytics** > **HDInsight**.
    
-    ![Erstellen eines HDInsight-Clusters](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![Erstellen eines HDInsight-Clusters](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. Geben Sie unter **Grundlagen** folgende Informationen ein, bzw. wählen Sie sie aus:
 
@@ -49,7 +50,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
     
    Wählen Sie __Clustertyp__ aus, um die **Clusterkonfiguration** zu öffnen.
    
-   ![Standardkonfiguration eines Apache Kafka-Clusters in HDInsight](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![Standardkonfiguration eines Apache Kafka-Clusters in HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. Wählen Sie unter __Clusterkonfiguration__ die folgenden Werte aus:
 
@@ -60,7 +61,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Klicken Sie auf **Auswählen**, um die Clustertypeinstellungen zu speichern und zu __Grundlagen__ zurückzukehren.
 
-    ![Auswählen des Clustertyps](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Auswählen des Clustertyps](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. Geben Sie unter __Grundlagen__ folgende Informationen ein, bzw. wählen Sie sie aus:
 
@@ -98,7 +99,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Der Eintrag für **Datenträger pro Workerknoten** konfiguriert die Skalierbarkeit von Apache Kafka in HDInsight. Apache Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Apache Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen. Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Die Art des Datenträgers hängt von der VM-Größe ab, die von den Workerknoten (Apache Kafka-Broker) verwendet wird. Premium-Datenträger werden automatisch mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp.
 
-   ![Festlegen der Apache Kafka-Clustergröße](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Festlegen der Apache Kafka-Clustergröße](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. Wählen Sie unter __Erweiterte Einstellungen__ zum Fortfahren mit den Standardeinstellungen __Weiter__ aus.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884449"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962850"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Angebote für Azure Marketplace und Microsoft AppSource
 
@@ -36,7 +36,7 @@ Das Verfahren zum Erstellen eines neuen Angebots unterscheidet sich je nach Ange
 
 *Testversion* ist ein Marketplace-Feature, das Kunden für jedes derart aktivierte Angebot eine Demo-Option zum Testen vor dem Kauf bietet.  Die Funktion „Testversion“ ist auf die folgenden Angebotstypen beschränkt: [Azure-Anwendungen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-Anwendungen](./saas-app/cpp-saas-offer.md) und [virtuelle Computer](./virtual-machine/cpp-virtual-machine-offer.md).  Diese Funktion erfordert, dass der Herausgeber eine Testversionsvorlage erstellt, die an sein Angebot angepasst ist.  Weitere Informationen finden Sie im Abschnitt [Testversion](./test-drive/what-is-test-drive.md).
 
-Sie können die vorhandenen Marketplace-Angebote mit Testversionen durchsuchen, indem Sie den Filter [Testversion](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive) verwenden. 
+Sie können die vorhandenen Marketplace-Angebote mit Testversionen durchsuchen, indem Sie den Filter [Testversion](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive) verwenden. 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace- und AppSource-Angebotstypen

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901394"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091102"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
@@ -58,7 +58,7 @@ Weitere Informationen hierzu finden Sie unter [Anforderungen und Einschränkunge
 Um ein Peering virtueller Netzwerke in verschiedenen Abonnements oder Active Directory-Mandanten zu konfigurieren, führen Sie die Schritte unter [Erstellen eines Peerings für unterschiedliche Abonnements über Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli) aus.
 
 > [!Note]
-> Damit Sie ein Netzwerkpeering konfigurieren können, benötigen Sie in beiden Abonnements die Berechtigung **Netzwerkmitwirkender**. Weitere Informationen hierzu finden Sie unter [Peering-Berechtigungen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions).
+> Damit Sie ein Netzwerkpeering konfigurieren können, benötigen Sie in beiden Abonnements die Berechtigung **Netzwerkmitwirkender**. Weitere Informationen hierzu finden Sie unter [Peering-Berechtigungen](virtual-network-manage-peering.md#permissions).
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Szenario 2: Konfigurieren eines Peerings virtueller Netzwerke mit Hub-Spoke-Topologie, in der lokale Ressourcen verwendet werden
 
@@ -104,7 +104,7 @@ Informationen zu den Anforderungen und Einschränkungen für globales Peering fi
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Szenario 4: Konnektivitätsproblem zwischen zwei virtuellen Netzwerken, die über Peering verbunden sind
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Konto an, dem die erforderlichen [Rollen und Berechtigungen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions) zugewiesen sind. Wählen Sie das virtuelle Netzwerk aus, wählen Sie **Peering** aus, und überprüfen Sie dann das Feld **Status**. Welcher Status wird angezeigt?
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Konto an, dem die erforderlichen [Rollen und Berechtigungen](virtual-network-manage-peering.md#permissions) zugewiesen sind. Wählen Sie das virtuelle Netzwerk aus, wählen Sie **Peering** aus, und überprüfen Sie dann das Feld **Status**. Welcher Status wird angezeigt?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>Verbindungstyp 1: Als Status für Peering wird „Verbunden“ angezeigt.
 

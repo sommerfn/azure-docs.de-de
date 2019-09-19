@@ -3,20 +3,20 @@ title: Beheben von Problemen bei der Bing-Spracheingabe | Microsoft-Dokumentatio
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Probleme bei der Verwendung der Bing-Spracheingabe beheben.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f222d9d4cf6c56dea0832938dcb132cf711491bc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1213045867f84efd6d77aebff12b8c8725d82d08
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934062"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965569"
 ---
 # <a name="troubleshooting-bing-speech"></a>Beheben von Problemen bei der Bing-Spracheingabe
 

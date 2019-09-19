@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 01ab4f6f0535f137c7ffeb99c36ecd1e831de6f7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 15223c59f270dc562e521697186cfaf7f30073b9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727662"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004110"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zu Azure Log Integration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
 
@@ -44,7 +44,7 @@ Die Informationen, die Ihnen währenddessen bereitgestellt werden, helfen Ihnen 
 
 Weitere Informationen zu den Diensten, die in diesem Tutorial verwendet werden, finden Sie hier: 
 
-- [Azure Key Vault](/azure/key-vault/key-vault-whatis)
+- [Azure Key Vault](/azure/key-vault/key-vault-overview)
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-what-is-event-hubs)
 - [Azure-Protokollintegration](azure-log-integration-overview.md)
 

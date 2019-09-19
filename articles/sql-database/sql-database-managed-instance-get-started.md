@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873868"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101671"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -35,7 +35,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
 
-1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn Azure SQL nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein.
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn Azure SQL nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* in das Suchfeld ein.
 2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zur verwalteten Azure SQL-Datenbank-Instanz anzeigen, indem Sie auf der Kachel **Verwaltete Instanzen** die Option **Details anzeigen** auswählen.
 3. Wählen Sie **Erstellen** aus:
 
@@ -60,7 +60,7 @@ Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
 
    ![Formular für die verwaltete Instanz](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Wenn Sie die verwaltete Instanz als sekundäre Instanzfailovergruppe verwenden möchten, wählen Sie den Auftragsabschluss aus, und geben Sie die verwaltete Instanz „DnsAzurePartner“ an. Dieses Feature befindet sich in der Vorschauphase und ist nicht im folgenden Screenshot zu sehen.
+5. Wenn Sie die verwaltete Instanz als sekundäre Instanzfailovergruppe verwenden möchten, wählen Sie den Auftragsabschluss aus, und geben Sie die verwaltete Instanz „DnsAzurePartner“ an. 
 6. Wählen Sie **Tarif** aus, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Der Tarif „Universell“ mit 32 GB Arbeitsspeicher und 16 V-Kernen ist der Standardwert.
 7. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben.
 8. Wählen Sie abschließend **Anwenden** aus, um Ihre Auswahl zu speichern. 

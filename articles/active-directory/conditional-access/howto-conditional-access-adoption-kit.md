@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cc4ff5fb528760be8c910f3da7d5691a6aae0d8
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387068"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075276"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Einführen des bedingten Azure AD-Zugriffs
 
 In einer von Mobilgeräten und der Cloud geprägten Welt können Benutzer über verschiedenste Geräte und Anwendungen auf die Ressourcen Ihrer Organisation zugreifen. Daher reicht es nicht mehr aus, sich nur darauf zu konzentrieren, wer Zugriff auf Ihre Ressourcen hat. Sie können steuern, wer Zugriff hat, und ermitteln, wo sich der Benutzer befindet, welches Gerät verwendet wird und vieles mehr.
 
-Für diese Steuerung können Sie mit dem **bedingten Azure Active Directory-Zugriff (AD)** die Bedingungen angeben, die jeder Benutzer für den Zugriff auf eine Anwendung erfüllen muss, z. B. mehrstufige Authentifizierung (MFA). Mit Richtlinien für bedingten Zugriff lässt sich steuern, wie autorisierte Benutzer (Benutzer, denen der Zugriff auf eine Cloud-App gewährt wurde) unter bestimmten Bedingungen auf Cloud-Apps zugreifen können. Weitere Informationen finden Sie unter [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md#conditional-access-policies).
+Für diese Steuerung können Sie mit dem **bedingten Azure Active Directory-Zugriff (AD)** die Bedingungen angeben, die jeder Benutzer für den Zugriff auf eine Anwendung erfüllen muss, z. B. mehrstufige Authentifizierung (MFA). Mit Richtlinien für bedingten Zugriff lässt sich steuern, wie autorisierte Benutzer (Benutzer, denen der Zugriff auf eine Cloud-App gewährt wurde) unter bestimmten Bedingungen auf Cloud-Apps zugreifen können. Weitere Informationen finden Sie unter [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md).
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
