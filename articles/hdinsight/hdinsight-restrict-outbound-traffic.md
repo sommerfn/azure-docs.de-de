@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811958"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018744"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mithilfe von Firewall (Vorschau)
 
@@ -63,7 +63,8 @@ Führen Sie auf dem Bildschirm **Anwendungsregelsammlung hinzufügen** die folge
    | **Name** | **Quelladresse** | **Protokoll:Port** | **Ziel-FQDNs** | **Hinweise** |
    | --- | --- | --- | --- | --- |
    | Regel 2 | * | https:443 | login.windows.net | Lässt Windows Anmeldeaktivität zu |
-   | Regel 3 | * | https:443,http:80 | <Speicherkontoname.blob.core.windows.net> | Wenn Ihr Cluster WASB nutzt, fügen Sie eine Regel für WASB hinzu. Um NUR HTTPS-Verbindungen zu verwenden, stellen Sie sicher, dass die Option [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) im Speicherkonto aktiviert ist. |
+   | Regel 3 | * | https:443 | login.microsoftonline.com | Lässt Windows Anmeldeaktivität zu |
+   | Regel 4 | * | https:443,http:80 | <Speicherkontoname.blob.core.windows.net> | Wenn Ihr Cluster WASB nutzt, fügen Sie eine Regel für WASB hinzu. Um NUR HTTPS-Verbindungen zu verwenden, stellen Sie sicher, dass die Option [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) im Speicherkonto aktiviert ist. |
 
 1. Klicken Sie auf **Hinzufügen**.
 
