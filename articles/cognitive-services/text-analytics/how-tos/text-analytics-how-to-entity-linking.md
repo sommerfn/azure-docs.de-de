@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697846"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390259"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -52,16 +52,16 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Menge      | Currency      | „€10,99“     |
 | Menge      | Dimension     | „10 Kilometer“, „40 cm“     |
 | Menge      | Temperatur   | „32 Grad“    |
-| DateTime      | N/V\*         | „18:30 4. Februar 2012“      |
-| DateTime      | Date          | „2. Mai 2017“ und „02/05/2017“   |
-| DateTime      | Time          | „8:00“, „8 Uhr“  |
-| DateTime      | DateRange     | „2. Mai bis 5. Mai“    |
-| DateTime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     |
-| DateTime      | Duration      | „1 Minute und 45 Sekunden“   |
-| DateTime      | Set           | „jeden Dienstag“     |
-| DateTime      | TimeZone      |    |
+| Datetime      | N/V\*         | „18:30 4. Februar 2012“      |
+| Datetime      | Date          | „2. Mai 2017“ und „02/05/2017“   |
+| Datetime      | Time          | „8:00“, „8 Uhr“  |
+| Datetime      | DateRange     | „2. Mai bis 5. Mai“    |
+| Datetime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     |
+| Datetime      | Duration      | „1 Minute und 45 Sekunden“   |
+| Datetime      | Set           | „jeden Dienstag“     |
+| Datetime      | TimeZone      |    |
 | URL           | N/V\*         | "https:\//www.bing.com"    |
-| E-Mail         | N/V\*         | "support@contoso.com" |
+| Email         | N/V\*         | "support@contoso.com" |
 
 \* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.  Alle aufgelisteten unterstützten Entitätstypen, die nur für Englisch, Chinesisch (vereinfacht), Französisch, Deutsch und Spanisch verfügbar sind.
 
@@ -98,7 +98,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [Entitäten-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Legen Sie den HTTP-Endpunkt für die Entitätsextraktion fest. Er muss die Ressource `/entities` enthalten: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`.
++ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffsextraktion entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Sie müssen `/text/analytics/v2.1/entities` einschließen. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Legen Sie einen Anforderungsheader fest, der den [Zugriffsschlüssel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) für Textanalysevorgänge enthält.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562811"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801459"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
@@ -37,13 +37,14 @@ Wenn Sie mit Ihrem Modell auf Erkennungsprobleme stoßen, kann die Verwendung vo
 
 Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsdaten. Unter [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md) finden Sie schrittweise Anweisungen zum Vorbereiten von menschenmarkierten Transkriptionen und zugehörigem Text (Äußerungen und Aussprache). Nachdem Sie Trainingsdaten hochgeladen haben, folgen Sie diesen Anweisungen, um mit dem Trainieren Ihres Modells zu beginnen:
 
-1. Navigieren Sie zu **Spracherkennung > Custom Speech > Training**.
-2. Klicken Sie auf **Modell trainieren**.
-3. Geben Sie als Nächstes einen **Namen** und eine **Beschreibung** für Ihr Training ein.
-4. Wählen Sie aus dem Dropdownmenü für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Wenn Sie keine Präferenz haben, können Sie das neueste Modell verwenden.
-5. Wählen Sie auf der Seite **Trainingsdaten auswählen** ein oder mehrere Audiodatasets und menschenmarkierten Transkriptionsdatasets aus, die Sie für das Training verwenden möchten.
-6. Nachdem das Training abgeschlossen ist, können Sie sich für das Ausführen von Genauigkeitsprüfungen für das neu trainierte Modell entscheiden. Dieser Schritt ist optional.
-7. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.
+1. Melden Sie sich beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an.
+2. Navigieren Sie zu **Spracherkennung > Custom Speech > Training**.
+3. Klicken Sie auf **Modell trainieren**.
+4. Geben Sie als Nächstes einen **Namen** und eine **Beschreibung** für Ihr Training ein.
+5. Wählen Sie aus dem Dropdownmenü für **Szenario und Basismodell** das für Ihre Domäne am besten geeignete Szenario aus. Wenn Sie sich nicht sicher sind, welches Szenario Sie wählen sollen, wählen Sie **Allgemein** aus. Das Basismodell stellt den Ausgangspunkt für das Training dar. Wenn Sie keine Präferenz haben, können Sie das neueste Modell verwenden.
+6. Wählen Sie auf der Seite **Trainingsdaten auswählen** ein oder mehrere Audiodatasets und menschenmarkierten Transkriptionsdatasets aus, die Sie für das Training verwenden möchten.
+7. Nachdem das Training abgeschlossen ist, können Sie sich für das Ausführen von Genauigkeitsprüfungen für das neu trainierte Modell entscheiden. Dieser Schritt ist optional.
+8. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.
 
 In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an:  Wird verarbeitet, Erfolgreich, Fehlerhaft.
 

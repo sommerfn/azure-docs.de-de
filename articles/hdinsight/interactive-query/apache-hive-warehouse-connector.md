@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983078"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811658"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
 
@@ -229,10 +229,10 @@ Führen Sie die unten angegebenen Schritte aus, um ein Hive Warehouse Connector-
 1. Wenden Sie eine Richtlinie für die Spaltenmaskierung an, bei der nur die letzten vier Zeichen der Spalte angezeigt werden.  
     1. Navigieren Sie zur Ranger-Administratoroberfläche unter `https://CLUSTERNAME.azurehdinsight.net/ranger/`.
     1. Klicken Sie unter **Hive** auf den Hive-Dienst für Ihren Cluster.
-        ![Tabelle „demo“ vor dem Anwenden der Ranger-Richtlinie](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Klicken Sie auf die Registerkarte für die **Maskierung** und dann auf **Neue Richtlinie hinzufügen**. ![Liste mit Richtlinien](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. Klicken Sie auf die Registerkarte für die **Maskierung** und dann auf **Neue Richtlinie hinzufügen**. ![Liste mit Hive-Richtlinien](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
     1. Geben Sie den gewünschten Namen für die Richtlinie ein. Wählen Sie Folgendes aus. Datenbank: **Standard**, Hive-Tabelle: **demo**, Hive-Spalte: **name**, Benutzer: **rsadmin2**, Zugriffstypen: **Auswählen** und **Teilmaske: Letzte 4 anzeigen** (Menü **Maskierungsfunktion auswählen**). Klicken Sie auf **Hinzufügen**.
-                ![Liste mit Richtlinien](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                ![Richtlinie erstellen](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Zeigen Sie den Inhalt der Tabelle erneut an. Nachdem die Ranger-Richtlinie angewendet wurde, werden nur die letzten vier Zeichen der Spalte angezeigt.
 
     ![Tabelle „demo“ nach dem Anwenden der Ranger-Richtlinie](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

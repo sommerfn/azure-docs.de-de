@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663598"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802516"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -35,7 +35,7 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 
 ## <a name="upload-data"></a>Hochladen von Daten
 
-Wenn Sie Ihre Daten hochladen möchten, klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
+Wenn Sie Ihre Daten hochladen möchten, navigieren Sie zum [Custom Speech-Portal](https://speech.microsoft.com/customspeech), und klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Sie werden aufgefordert, einen Sprachdatentyp für das Dataset auszuwählen, bevor Sie die Daten hochladen können.
 
 ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -96,7 +96,7 @@ In Hinsicht auf Probleme wie die Löschung oder Ersetzung von Wörtern sind erhe
 
 Der Text der Transkriptionen wird normalisiert, damit diese vom System verarbeitet werden können. Einige wichtige Normalisierungen müssen jedoch noch _vor_ dem Hochladen der Daten für den Custom Speech Service durch den Benutzer vorgenommen werden. Informationen dazu, welche Sprache bei der Vorbereitung Ihrer Transkriptionen verwendet werden muss, finden Sie unter [Erstellen einer menschenmarkierten Transkription](how-to-custom-speech-human-labeled-transcriptions.md).
 
-Nachdem Sie die Audiodateien und entsprechenden Transkriptionen zusammengetragen haben, sollten diese in eine einzige ZIP-Datei gepackt werden, bevor Sie sie in das Custom Speech-Portal hochladen. Hier sehen Sie ein Beispieldataset mit drei Audiodateien und einer menschenmarkierten Transkriptionsdatei:
+Nachdem Sie die Audiodateien und entsprechenden Transkriptionen zusammengetragen haben, sollten diese in eine einzige ZIP-Datei gepackt werden, bevor Sie sie in das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) hochladen. Hier sehen Sie ein Beispieldataset mit drei Audiodateien und einer menschenmarkierten Transkriptionsdatei:
 
 ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Wenn Sie über eindeutige Produktnamen oder Features verfügen und sicherstellen
 | Äußerungen und/oder Sätze | Diese können die Genauigkeit beim Erkennen von Produktnamen oder branchenspezifischem Vokabular innerhalb des Kontexts eines Satzes verbessern. |
 | Aussprache | Diese können die Aussprache von selten vorkommenden Begriffen, Abkürzungen oder anderen Wörtern mit nicht definierter Aussprache verbessern. |
 
-Äußerungen können als eine einzelne oder mehrere Textdateien bereitgestellt werden. Je stärker die Textdaten dem gesprochenen Text entsprechen, desto größer ist die Wahrscheinlichkeit, dass die Genauigkeit verbessert wird. Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Alles kann als eine einzige ZIP-Datei gepackt und in das Custom Speech-Portal hochgeladen werden.
+Äußerungen können als eine einzelne oder mehrere Textdateien bereitgestellt werden. Je stärker die Textdaten dem gesprochenen Text entsprechen, desto größer ist die Wahrscheinlichkeit, dass die Genauigkeit verbessert wird. Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Alles kann als eine einzige ZIP-Datei gepackt und in das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) hochgeladen werden.
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Richtlinien zum Erstellen einer Datei mit Äußerungen
 

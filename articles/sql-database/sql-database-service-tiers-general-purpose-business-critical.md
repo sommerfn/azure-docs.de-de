@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: decb4428321d5083d6ba7af134e223eb2fa5a912
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccbecd7aec3980d5adf91340ff0e230fb410f4f3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566712"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918853"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
 
@@ -26,7 +26,37 @@ Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur 
 - [Unternehmenskritisch](sql-database-service-tier-business-critical.md) ist für Workloads mit geringer Latenz und einem lesbaren Replikat konzipiert.
 - [Hyperscale](sql-database-service-tier-hyperscale.md) ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
 
-In diesem Artikel werden die Speicher- und Sicherungsaspekte für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell beschrieben.
+In diesem Artikel werden die Unterschiede zwischen den Dienstebenen, die Speicher- und Sicherungsaspekte für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell beschrieben.
+
+## <a name="service-tier-comparison"></a>Vergleich der Dienstebenen
+
+In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Dienstebenen für die neueste Generation (Gen5) beschrieben. Beachten Sie, dass sich die Merkmale der Dienstebenen bei Einzeldatenbanken und verwalteten Instanzen unterscheiden können.
+
+| | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
+|:---:|:---:|:---:|:---:|:---:|
+| **Am besten geeignet für** | |  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
+|  **Verfügbar in Ressourcentyp:** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
+| **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne |
+| | Verwaltete Instanz | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
+| | Verwaltete Instanzpools | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | – |
+| **Speichertyp** | Alle | Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
+| **Datenbankgröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
+| | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
+| | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| **TempDB-Größe** | Einzeldatenbank/Pool für elastische Datenbanken | [32 GB pro virtuellem Kern](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB pro virtuellem Kern](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB pro virtuellem Kern](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Verwaltete Instanz  | [24 GB pro virtuellem Kern](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | Bis zu 4 TB – [begrenzt durch Speichergröße](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **E/A-Durchsatz** | Einzeldatenbank | [500 IOPS pro virtuellem Kern](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Die tatsächlichen IOPs hängen von der Workload ab. | [4000 IOPS pro virtuellem Kern](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
+| | Verwaltete Instanz | [100–250 MB/s und 500–7.500 IOPS pro Datei](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [1375 IOPS pro virtuellem Kern](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Schreibdurchsatz** | Einzeldatenbank | [1.875 MB/Sek. pro virtuellem Kern (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab. | [6 MB/Sek. pro virtuellem Kern (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Verwaltete Instanz | [3 MB/Sek. pro virtuellem Kern (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [4 MB/Sek. pro virtuellem Kern (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Verfügbarkeit**|Alle| 99,99 % |  [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
+|**In-Memory-OLTP** | | – | Verfügbar | – |
+|**Schreibgeschützte Replikate**| | 0 | 1 (integriert, im Preis inbegriffen) | 0–4 |
+|**Preise/Abrechnung** | Einzeldatenbank | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. | [Virtueller Kern für jedes Replikat, verwendeter Speicher, Sicherungsspeicher und IOPS](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>Sicherungsspeicher wird noch nicht abgerechnet. | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. |
+|| Verwaltete Instanz | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | – | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | 
+|**Rabattmodelle**| | [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements|
 
 > [!NOTE]
 > Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).

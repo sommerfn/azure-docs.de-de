@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516858"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859163"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 
-In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennungs-API von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Regionen synchronisieren.
+In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennungs-API von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Abonnements in verschiedenen Regionen synchronisieren.
 
 Dieselbe Migrationsstrategie gilt auch für LargePersonGroup- und LargeFaceList-Objekte. Wenn Sie mit den Konzepten in diesem Leitfaden nicht vertraut sind, finden Sie die Definitionen unter [Konzepte der Gesichtserkennung](../concepts/face-recognition.md). In diesem Leitfaden wird die .NET-Clientbibliothek für die Gesichtserkennungs-API mit C# verwendet.
 
@@ -41,7 +41,9 @@ In diesem Leitfaden wird die Migration der Daten zur Gesichtserkennung anhand ei
 
 ## <a name="create-face-clients"></a>Erstellen von Clients für die Gesichtserkennung
 
-Erstellen Sie in der **Main**-Methode in *Program.cs* zwei [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)-Instanzen für Ihre Quell- und Zielabonnements. In diesem Beispiel werden als Quelle ein Abonnement für die Gesichtserkennung in der Region „Asien, Osten“ und als Ziel ein Abonnement in der Region „USA, Westen“ verwendet. In diesem Beispiel wird veranschaulicht, wie Daten von einer Azure-Region zu einer anderen migriert werden. Wenn sich Ihre Abonnements in unterschiedlichen Regionen befinden, ändern Sie die `Endpoint`-Zeichenfolgen.
+Erstellen Sie in der **Main**-Methode in *Program.cs* zwei [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)-Instanzen für Ihre Quell- und Zielabonnements. In diesem Beispiel werden als Quelle ein Abonnement für die Gesichtserkennung in der Region „Asien, Osten“ und als Ziel ein Abonnement in der Region „USA, Westen“ verwendet. In diesem Beispiel wird veranschaulicht, wie Daten von einer Azure-Region zu einer anderen migriert werden. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))

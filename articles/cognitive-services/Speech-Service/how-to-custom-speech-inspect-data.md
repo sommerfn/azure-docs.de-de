@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562850"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801487"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
 > [!NOTE]
 > Auf dieser Seite wird vorausgesetzt, dass Sie [Prepare data for Custom Speech](how-to-custom-speech-test-data.md) (Vorbereiten von Testdaten für Custom Speech) gelesen und ein Dataset für die Überprüfung hochgeladen haben.
 
-Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das Custom Speech-Portal können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist. Mit diesem Tool können Sie schnell die Qualität des Baseline-Spracherkennungsmodells von Microsoft oder eines trainierten benutzerdefinierten Modells überprüfen, ohne Audiodaten transkribieren zu müssen.
+Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist. Mit diesem Tool können Sie schnell die Qualität des Baseline-Spracherkennungsmodells von Microsoft oder eines trainierten benutzerdefinierten Modells überprüfen, ohne Audiodaten transkribieren zu müssen.
 
 In diesem Dokument erfahren Sie, wie Sie die Qualität eines Modells unter Verwendung der zuvor hochgeladenen Trainingsdaten visuell überprüfen.
 
@@ -32,11 +32,12 @@ Auf dieser Seite erfahren Sie, wie Sie die Qualität des Baseline-Spracherkennun
 
 Gehen Sie wie folgt vor, um einen Test zu erstellen:
 
-1. Navigieren Sie zu **Spracherkennung > Custom Speech > Testen**.
-2. Klicken Sie auf **Test hinzufügen**.
-3. Wählen Sie **Inspect quality (Audio-only data)** (Qualität überprüfen (nur Audiodaten)) aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audiodataset aus.
-4. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
-5. Klicken Sie auf **Create**.
+1. Melden Sie sich beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an.
+2. Navigieren Sie zu **Spracherkennung > Custom Speech > Testen**.
+3. Klicken Sie auf **Test hinzufügen**.
+4. Wählen Sie **Inspect quality (Audio-only data)** (Qualität überprüfen (nur Audiodaten)) aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audiodataset aus.
+5. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
+6. Klicken Sie auf **Create**.
 
 Nach erfolgreicher Testerstellung können Sie die Modelle nebeneinander vergleichen.
 

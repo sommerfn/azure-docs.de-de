@@ -6,14 +6,14 @@ services: key-vault
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934181"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000549"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und der Azure-Befehlszeilenschnittstelle 
 
@@ -67,7 +67,7 @@ Es gibt vier grundlegende Schritte, nach denen Speicherkontoschlüssel mit Key V
 
 1. Besorgen Sie sich Zugriff auf ein vorhandenes Speicherkonto.
 1. Rufen Sie einen vorhandenen Schlüsseltresor ab.
-1. Fügen Sie dem Tresor ein von Key Vault verwaltetes Speicherkonto hinzu. Legen Sie `key1` als aktiven Schlüssel mit einem Regenerierungszeitraum von 180 Tagen fest.
+1. Fügen Sie dem Tresor ein von Key Vault verwaltetes Speicherkonto hinzu. Legen Sie `key1` als aktiven Schlüssel mit einem Regenerierungszeitraum von 90 Tagen fest.
 1. Verwenden Sie `key1`, um einen Speicherkontext für das angegebene Speicherkonto festzulegen.
 
 > [!NOTE]
@@ -158,7 +158,7 @@ Es gibt drei Möglichkeiten für die Authentifizierung bei Key Vault:
 - Verwenden Sie einen Dienstprinzipal und ein Zertifikat. 
 - Verwenden Sie einen Dienstprinzipal und ein Kennwort. Dieser Ansatz wird nicht empfohlen.
 
-Weitere Informationen finden Sie unter [Azure-Schlüsseltresor: Grundlegende Konzepte](key-vault-whatis.md#basic-concepts).
+Weitere Informationen finden Sie unter [Azure-Schlüsseltresor: Grundlegende Konzepte](basic-concepts.md).
 
 Im folgenden Beispiel wird veranschaulicht, wie SAS-Tokens abgerufen werden. Sie rufen die Tokens ab, nachdem Sie eine SAS-Definition erstellt haben. 
 

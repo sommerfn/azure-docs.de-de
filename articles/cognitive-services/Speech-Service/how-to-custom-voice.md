@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562798"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881480"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
-Bei Custom Voice handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Nutzen Sie die unten angegebenen Links, um mit dem Erstellen einer benutzerdefinierten Sprachsynthese zu beginnen.
+Bei [Custom Voice](https://aka.ms/customvoice) handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Nutzen Sie die unten angegebenen Links, um mit dem Erstellen einer benutzerdefinierten Sprachsynthese zu beginnen.
 
 ## <a name="whats-in-custom-voice"></a>Was ist in Custom Voice enthalten?
 
 Bevor Sie mit der Verwendung von Custom Voice beginnen können, benötigen Sie ein Azure-Konto und ein Abonnement für die Speech-Dienste. Nachdem Sie ein Konto erstellt haben, können Sie Ihre Daten vorbereiten, Ihre Modelle trainieren und testen, die Stimmqualität bewerten und schließlich Ihr benutzerdefiniertes Stimmmodell bereitstellen.
 
-Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten Stimmmodells über das Custom Voice-Portal hervorgehoben. Weitere Informationen finden Sie unter den Links.
+Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten Stimmmodells über das [Custom Voice-Portal](https://aka.ms/customvoice) hervorgehoben. Weitere Informationen finden Sie unter den Links.
 
 ![Custom Voice-Architekturdiagramm](media/custom-voice/custom-voice-diagram.png)
 

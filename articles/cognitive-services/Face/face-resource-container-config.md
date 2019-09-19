@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 09/06/2019
 ms.author: dapine
-ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 752613becb92711866d520e6fcd46ed3a320353f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564112"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860275"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -139,7 +139,9 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
 |{API_KEY} | Der Endpunktschlüssel der Cognitive Services-Ressource. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Der Wert für den Endpunkt, einschließlich Region und Gesichtserkennungsrouting.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{ENDPOINT_URI} | Der Wert der Endpunkt-URL.|`https://myresourcename.cognitive.microsoft.com/face/v1.0`|
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](face-how-to-install-containers.md#billing).

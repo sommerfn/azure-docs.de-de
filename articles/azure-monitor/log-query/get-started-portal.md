@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348090"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899513"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
 
@@ -162,7 +162,7 @@ Wenn in einem Zeitdiagramm eine abrupte Spitze oder ein Sprung in Ihren Daten da
 ![Intelligente Diagnose](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>An Dashboard anheften
-Um ein Diagramm oder eine Tabelle an eines Ihrer freigegebenen Azure-Dashboards anzuheften, klicken Sie auf das Stecknadelsymbol.
+Um ein Diagramm oder eine Tabelle an eines Ihrer freigegebenen Azure-Dashboards anzuheften, klicken Sie auf das Stecknadelsymbol. Beachten Sie, dass dieses Symbol anders als im nachfolgenden Screenshot an den oberen Rand des Log Analytics-Fensters verschoben wurde.
 
 ![An Dashboard anheften](media/get-started-portal/pin-dashboard.png)
 

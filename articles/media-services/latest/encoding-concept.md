@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/08/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303934"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910404"
 ---
 # <a name="encoding-with-media-services"></a>Codierung mit Media Services
 
@@ -25,12 +25,12 @@ Der Begriff Codierung beschreibt in Media Services den Prozess der Konvertierung
 
 Das Übermitteln der Videos an Geräte und Anwendungen erfolgt in der Regel durch [progressiven Download](https://en.wikipedia.org/wiki/Progressive_download) oder über [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-* Zur Bereitstellung per progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden, die das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei enthält, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z. B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) oder .[NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Zur Bereitstellung per progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden, die das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei enthält, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Die Mezzanine-Datei muss mit mehreren Bitraten (hoch bis niedrig) codiert werden, um Inhalte für die Übermittlung durch das Adaptive Bitrate Streaming vorzubereiten. Mit abnehmender Bitrate wird auch die Auflösung des Videos verringert, um eine gleichmäßige Qualitätsminderung zu gewährleisten. Dies führt zu einer sogenannten Codierungsleiter, also einer Tabelle mit Auflösungen und Bitraten. Weitere Informationen hierzu erhalten Sie unter [auto-generated adaptive bitrate ladder (Automatisches Generieren einer Reihe von adaptiven Bitraten)](autogen-bitrate-ladder.md). Sie können Media Services zum Codieren Ihrer Mezzanine-Dateien mit mehreren Bitraten verwenden. Dabei erhalten Sie einige MP4-Dateien und zugeordnete Streaming-Konfigurationsdateien, die in ein Medienobjekt in Ihrem Speicherkonto geschrieben werden. Sie können dann die Funktion [Dynamische Paketerstellung](dynamic-packaging-overview.md) in Media Services verwenden, um das Video über Streamingprotokolle wie [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) oder [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) bereitzustellen. Dazu müssen Sie einen [Streaminglocator](streaming-locators-concept.md) und Streaming-URLs erstellen, die dem unterstützten Protokoll entsprechen. Dieses kann dann je nach Funktionen von Geräten/Anwendungen an diese übergeben werden.
 
 Das folgende Diagramm zeigt den Workflow für bedarfsgesteuerte Codierung mit der dynamischen Paketerstellung.
 
-![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 In diesem Thema erhalten Sie Anleitungen zum Codieren Ihrer Inhalte mit Media Services v3.
 
@@ -79,7 +79,7 @@ Sie können angeben, dass ein [Auftrag](https://docs.microsoft.com/rest/api/medi
 
 Beispiele finden Sie hier:
 
-* [Subclip a video with .NET (Erstellen von Subclips mit .NET)](subclip-video-dotnet-howto.md)
+* [Erstellen von Subclips mit .NET](subclip-video-dotnet-howto.md)
 * [Subclip a video with REST (Erstellen von Subclips mit REST)](subclip-video-rest-howto.md)
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen

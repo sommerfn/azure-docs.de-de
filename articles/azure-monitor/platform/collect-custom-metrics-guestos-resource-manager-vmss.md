@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129632"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844971"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -31,6 +31,7 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 - Sie müssen [Azure PowerShell](/powershell/azure) installiert haben, oder Sie können [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. 
 
+- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke 
 Die Azure-Diagnoseerweiterung verwendet eine Feature namens **Datensenken**, um Metriken und Protokolle an verschiedene Orte zu leiten. Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen. 

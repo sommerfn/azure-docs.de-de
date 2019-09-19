@@ -1,5 +1,5 @@
 ---
-title: Tools für Apache Hive mit Data Lake (Apache Hadoop) für Visual Studio – Azure HDInsight
+title: Tools für Apache Hive mit Data Lake für Visual Studio – Azure HDInsight
 description: Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio verwenden, um Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight auszuführen.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7480dafe435e555bfba81ebd9242bb5724c0bf3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861597"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917472"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio
 
@@ -59,7 +59,7 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
 
 6. Um dieselbe Abfrage im Modus **Batch** auszuführen, wechseln Sie in der Dropdownliste von **Interaktiv** zu **Batch**. Beachten Sie, dass die Schaltfläche für die Ausführung von **Execute** (Ausführen) zu **Submit** (Übermitteln) wechselt.
 
-    ![Screenshot: Übermitteln einer Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![Screenshot: Übermitteln einer Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise `SELECT * FROM` eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs. IntelliSense schlägt nur die Metadaten des Clusters vor, der auf der HDInsight-Symbolleiste ausgewählt ist.
 
@@ -71,7 +71,7 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
 
    Wenn Sie die Option für erweitertes Senden auswählen, konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** für das Skript:
 
-    ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Übermitteln von Abfragen")
+    ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Übermitteln von Abfragen")
 
 ### <a name="hive-application"></a>Hive-Anwendung
 
@@ -115,11 +115,11 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
 
 6. Wählen Sie auf der Symbolleiste den **HDInsight-Cluster**, den Sie für diese Abfrage verwenden möchten. Wählen Sie **Übermitteln**, um die Anweisungen als Hive-Auftrag auszuführen.
 
-   ![Leiste „Übermitteln“](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Leiste „Übermitteln“](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
 
-   ![Auftragszusammenfassung, die einen abgeschlossenen Auftrag anzeigt](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![Auftragszusammenfassung, die einen abgeschlossenen Auftrag anzeigt](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. Verwenden Sie den Link **Auftragsausgabe** , um die Ausgabe dieses Auftrags anzuzeigen. `[ERROR] 3` wird angezeigt – dies ist der Wert, der von dieser Abfrage zurückgegeben wird.
 

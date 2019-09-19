@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129570"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844921"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
 
@@ -34,6 +34,8 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virt
 - Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
 
 - [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+
+- Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions).
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Erstellen eines klassischen virtuellen Computers und eines Speicherkontos
 

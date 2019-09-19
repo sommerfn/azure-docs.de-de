@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875656"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861395"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -41,7 +41,15 @@ Das Site Recovery-Team arbeitet mit dem Azure-Kapazitätsverwaltungsteam zusamme
 ## <a name="replication"></a>Replikation
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Kann ich virtuelle Computer replizieren, die für die Azure Disk Encryption aktiviert sind?
-Ja, Sie können diese replizieren. Lesen Sie den Artikel [Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region](azure-to-azure-how-to-enable-replication-ade-vms.md). Derzeit unterstützt Azure Site Recovery nur virtuelle Azure-Computer, auf denen das Windows-Betriebssystem ausgeführt wird und die für die Verschlüsselung mit Azure AD-Apps aktiviert sind.
+
+Ja. Site Recovery unterstützt die Notfallwiederherstellung von virtuellen Computern, für die Azure Disk Encryption (ADE) aktiviert ist. Wenn Sie die Replikation aktivieren, werden sämtliche erforderlichen Schlüssel und Geheimnisse für die Datenträgerverschlüsselung im Benutzerkontext aus der Quellregion in die Zielregion kopiert. Sollten Sie nicht über die erforderliche Berechtigung verfügen, kann dem Sicherheitsadministrator ein vorgefertigtes Skript zur Verfügung gestellt werden, um die Schlüssel und Geheimnisse zu kopieren.
+
+- Site Recovery unterstützt ADE für virtuelle Azure-Computer unter Windows.
+- Site Recovery unterstützt die ADE-Version 0.1 (mit einem Schema, das Azure Active Directory (AAD) verwendet) und die Version 1.1 (ohne AAD). [Weitere Informationen](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)
+- Bei der ADE-Version 1.1 müssen die virtuellen Windows-Computer verwaltete Datenträger verwenden.
+- Weitere Informationen zum Aktivieren der Replikation für verschlüsselte virtuelle Computer finden Sie [hier](azure-to-azure-how-to-enable-replication-ade-vms.md).
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Kann ich VMs in ein anderes Abonnement replizieren?
 Ja, Sie können virtuelle Azure-Computer in ein anderes Abonnement im selben Azure AD-Mandanten replizieren.

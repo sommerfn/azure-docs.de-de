@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279599"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375312"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -73,7 +73,7 @@ Azure Migrate führt eine einfache Appliance aus, die virtuelle VMware-Computer 
 
 **Unterstützung** | **Details**
 --- | ---
-**Bereitstellung einer Appliance** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden. 
+**Bereitstellung einer Appliance** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden. 
 **Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> Sie können bis zu 35.000 VMs in einem Projekt bewerten.
 **Ermittlung** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
 **Bewertungsgruppe** | Sie können einer einzelnen Gruppe bis zu 35.000 Computer hinzufügen.

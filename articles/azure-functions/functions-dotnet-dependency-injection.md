@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377374"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375998"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
 
-Für ASP.NET Core wird die Konstruktorinjektion verwendet, um Ihre Abhängigkeiten für Ihre Funktion verfügbar zu machen. Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden.
+Für ASP.NET Core wird die Konstruktorinjektion verwendet, um Ihre Abhängigkeiten für Ihre Funktion verfügbar zu machen. Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden. 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-Die Verwendung der Konstruktorinjektion bedeutet, dass Sie nicht die statischen Funktionen nutzen sollten, wenn Sie die Abhängigkeitsinjektion einsetzen möchten.
+Die Verwendung der Konstruktorinjektion bedeutet, dass Sie nicht die statischen Funktionen nutzen sollten, wenn Sie die Abhängigkeitsinjektion einsetzen möchten. Informationen zum Cosmos-Client finden Sie [hier](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs).
 
 ## <a name="service-lifetimes"></a>Dienstlebensdauer
 

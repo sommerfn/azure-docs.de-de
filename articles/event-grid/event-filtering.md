@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305053"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390174"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -61,23 +61,40 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Sie können eine Zahl, boolescher Wert oder Zeichenfolge eingeben.
 * Wert oder Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-Die JSON-Syntax für die Verwendung der erweiterten Filterung lautet:
+Wenn Sie einen einzelnen Filter mit mehreren Werten angeben, wird ein **OR**-Vorgang ausgeführt, daher muss das Schlüsselfeld einen der folgenden Werte aufweisen. Beispiel:
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgeführt, sodass jede Filterbedingung erfüllt sein muss. Beispiel: 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
     },
     {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
 ### <a name="operator"></a>Operator

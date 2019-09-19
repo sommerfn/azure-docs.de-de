@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 3dc1866a3c0339bca0c27fb53894a14581e88490
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230978"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390493"
 ---
 # <a name="assets"></a>Objekte
 
@@ -48,7 +48,7 @@ Nachdem die digitalen Dateien in den Speicher hochgeladen und einem Medienobjekt
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. Rufen Sie eine SAS-URL mit Lese-/Schreibberechtigungen ab, die verwendet wird, um digitale Dateien in den Medienobjektcontainer hochzuladen. Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md), [Java SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen. 
+3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen. 
 4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md).
 5. Streamen Sie die Inhalte des Ausgabemedienobjekts.
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Arbeitsbereichen
+title: Erstellen von Azure ML-Arbeitsbereichen im Portal
 titleSuffix: Azure Machine Learning service
 description: Hier erfahren Sie, wie Sie Azure Machine Learning Service-Arbeitsbereiche im Azure-Portal erstellen, anzeigen und löschen.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f103bde99eb5b21d06988f11ac6f17fcf50ceb31
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: df015df3c20cdb99512167e3dc3e455da2762c52
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278274"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744788"
 ---
-# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen
+# <a name="create-and-manage-azure-machine-learning-service-workspaces-in-the-azure-portal"></a>Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen im Portal
 
 In diesem Artikel wird erläutert, wie Sie [**Azure Machine Learning Service-Arbeitsbereiche**](concept-workspace.md) im Azure-Portal für [Azure Machine Learning Service](overview-what-is-azure-ml.md) erstellen, anzeigen und löschen.  Das Portal eignet sich am besten für die ersten Schritte mit Arbeitsbereichen. Wenn sich Ihre Anforderungen ändern oder eine umfassendere Automatisierung erforderlich wird, können Sie Arbeitsbereiche aber auch mit der [CLI](reference-azure-machine-learning-cli.md), mit [Python-Code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder über die [VS Code-Erweiterung](how-to-vscode-tools.md#get-started-with-azure-machine-learning) erstellen und löschen.
 

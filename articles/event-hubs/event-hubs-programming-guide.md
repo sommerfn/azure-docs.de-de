@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679105"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913976"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Programmierhandbuch für Azure Event Hubs
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -140,7 +140,10 @@ Außerdem implementiert die [EventProcessorHost][] -Klasse ein auf Azure Storage
 
 ## <a name="publisher-revocation"></a>Herausgebersperrung
 
-Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][] ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+Zusätzlich zu den erweiterten Laufzeitfunktionen des Ereignisprozessorhosts ermöglicht der Event Hubs-Dienst die [Herausgebersperrung](/rest/api/eventhub/revoke-publisher), damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+
+> [!NOTE]
+> Derzeit wird diese Funktion nur von der REST-API unterstützt ([Herausgebersperrung](/rest/api/eventhub/revoke-publisher)).
 
 Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs als Herausgeber finden Sie im Beispiel [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs – Sicheres Veröffentlichen in größerem Umfang).
 

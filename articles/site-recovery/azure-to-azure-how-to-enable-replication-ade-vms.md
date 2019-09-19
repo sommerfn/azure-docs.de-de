@@ -1,29 +1,26 @@
 ---
-title: Konfigurieren der Replikation für ADE-fähige (Azure Disk Encryption) virtuelle Computer in Azure Site Recovery | Microsoft-Dokumentation
+title: Konfigurieren der Replikation für ADE-fähige (Azure Disk Encryption) virtuelle Computer in Azure Site Recovery
 description: In diesem Artikel erfahren Sie, wie Sie die Replikation ADE-fähiger (Azure Disk Encryption) virtueller Azure-Computer zwischen Azure-Regionen mithilfe von Site Recovery konfigurieren.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884126"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861316"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
-In diesem Artikel erfahren Sie, wie Sie ADE-fähige (Azure Disk Encryption) virtueller Computer zwischen Azure-Regionen replizieren.
+In diesem Artikel erfahren Sie, wie Sie virtuelle Azure-Computer mit aktivierter Azure Disk Encryption (ADE) zwischen Azure-Regionen replizieren.
 
 >[!NOTE]
->Azure Site Recovery unterstützt derzeit nur ADE-fähige (Azure Disk Encryption) virtuelle Azure-Computer mit einem Windows-Betriebssystem. ADE-fähige virtuelle Computer ohne Azure AD-App werden nun unterstützt, wenn sie verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt.
+> Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows ausgeführt wird.  Für Computer, auf denen ADE 1.1 (ohne AAD) ausgeführt wird, müssen die virtuellen Windows-Computer verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
 
->[!NOTE]
->Bei der Umstellung von ADE V1 (mit Azure AD-App) auf ADE V2 (ohne Azure AD-App) müssen Sie die Replikation deaktivieren und nach der Aktivierung von ADE V2 wieder aktivieren.
 
 ## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
 Site Recovery erfordert, dass der Benutzer über Berechtigungen zum Erstellen des Schlüsseltresors in der Zielregion und zum Kopieren von Schlüsseln aus dem Schlüsseltresor der Quellregion in den Schlüsseltresor der Zielregion verfügt.

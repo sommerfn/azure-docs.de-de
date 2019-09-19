@@ -1,21 +1,21 @@
 ---
 title: Apache Phoenix in HDInsight – Azure HDInsight
-description: ''
+description: Übersicht über Apache Phoenix
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697994"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811899"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix in HDInsight
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in Azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](hbase/apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen per HBase verwenden. Phoenix nutzt im Hintergrund JDBC-Treiber, um Benutzern das Erstellen, Löschen und Ändern von SQL-Tabellen, -Indizes, -Sichten und -Sequenzen sowie das Durchführen des Upsert-Vorgangs für Zeilen einzeln oder als Massenvorgang zu ermöglichen. Für Phoenix wird anstelle von MapReduce die native NoSQL-Kompilierung verwendet, um Abfragen zu kompilieren und so basierend auf HBase die Erstellung von Anwendungen mit geringer Wartezeit zu ermöglichen. Phoenix fügt Coprozessoren hinzu, um das Ausführen von per Client bereitgestelltem Code im Adressraum des Servers zu unterstützen und den Code auszuführen, der den Daten beigefügt ist. Mit diesem Ansatz kann der Aufwand für die Datenübertragung zwischen Client und Server reduziert werden.
 

@@ -1,6 +1,6 @@
 ---
 title: Migrieren eines HBase-Clusters zu einer neuen Version – Azure HDInsight
-description: Hier erfahren Sie, wie Sie HBase-Cluster zu einer neuen Version migrieren.
+description: Migrieren von Apache HBase-Clustern zu einer neueren Version in Azure HDInsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143316"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917441"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrieren eines Apache HBase-Clusters zu einer neuen Version
 
@@ -180,7 +180,7 @@ Führen Sie die folgenden Schritte aus, um für den Apache HBase-Cluster in Azur
 5. Führen Sie das vorherige Skript erneut aus, um sicherzustellen, dass alle aktuellen Daten im Memstore geleert wurden.
 6. Melden Sie sich im alten Cluster (https://OLDCLUSTERNAME.azurehdidnsight.net) bei [Apache Ambari](https://ambari.apache.org/) an, und beenden Sie die HBase-Dienste. Wenn Sie zur Bestätigung aufgefordert werden, dass Sie die Dienste beenden möchten, aktivieren Sie das Kontrollkästchen, um den Wartungsmodus für HBase zu aktivieren. Weitere Informationen zur Verbindungsherstellung mit Ambari sowie zur Verwendung finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
 
-    ![Klicken Sie in Ambari unter „Dienstaktionen“ auf „Dienste > HBase > Beenden“.](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![Klicken Sie in Ambari unter „Dienstaktionen“ auf „Dienste > HBase > Beenden“.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![Aktivieren Sie das Kontrollkästchen zum Aktivieren des Wartungsmodus für HBase, und bestätigen Sie den Vorgang.](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 

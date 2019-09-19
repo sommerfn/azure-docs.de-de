@@ -4,14 +4,14 @@ description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Az
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479283"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914195"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -25,6 +25,7 @@ Bei jedem Speichern eines Elements in einem Container wird dessen Inhalt als ein
 
 Betrachten Sie z. B. dieses Element:
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Betrachten Sie z. B. dieses Element:
             { "city": "Athens" }
         ]
     }
+```
 
 Es wird durch die folgende Struktur dargestellt:
 
@@ -70,13 +72,13 @@ Der **Range**-Indextyp wird für Folgendes verwendet:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - Bereichsabfragen:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
 
 - `ORDER BY` fragt Folgendes ab:
@@ -107,15 +109,27 @@ Der **Spatial**-Indextyp wird für Folgendes verwendet:
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString und Polygon unterstützt.
+Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
 
 Der **zusammengesetzte** Index wird für Folgendes verwendet:
 
-- `ORDER BY` fragt mehrere Eigenschaften ab: 
+- `ORDER BY` fragt mehrere Eigenschaften ab:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Abfragen mit einem Filter und `ORDER BY`. Diese Abfragen können einen zusammengesetzten Index verwenden, wenn die Filter-Eigenschaft der `ORDER BY`-Klausel hinzugefügt wird.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- Abfragen mit einem Filter für zwei oder mehr Eigenschaften, bei denen mindestens eine Eigenschaft ein Gleichheitsfilter ist
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 
@@ -126,7 +140,7 @@ Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM locati
 ![Abgleichen mit einem bestimmten Pfad in einer Struktur](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Eine Abfrage mit mehreren `ORDER BY`-Klauseln benötigt hingegen *immer* einen zusammengesetzten Index.
+> Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

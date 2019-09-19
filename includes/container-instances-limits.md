@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67178456"
 ---
 | Resource | Standardlimit |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561555"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899489"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 
 ## <a name="cluster-autoscaler"></a>Automatische Clusterskalierung
 
-Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung (derzeit in AKS in der Vorschau), die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
+Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung (derzeit in AKS in der Vorschau), die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den Metrik-API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
 
 ![Automatische Kubernetes-Clusterskalierung](media/concepts-scale/cluster-autoscaler.png)
 

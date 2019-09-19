@@ -1,25 +1,25 @@
 ---
-title: Was ist Video Indexer?
-titlesuffix: Azure Media Services
-description: Dieses Thema bietet eine Übersicht über den Video Indexer-Dienst.
+title: Was ist Azure Media Services Video Indexer?
+titleSuffix: Azure Media Services
+description: Dieses Thema bietet eine Übersicht zum Azure Media Services Video Indexer-Dienst.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e3f60b5fb0693e40c9db040f7b14f487fce8f68e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422982"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860253"
 ---
 # <a name="what-is-video-indexer"></a>Was ist Video Indexer?
 
-Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, Azure Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) basiert. Sie ermöglicht Ihnen, mithilfe der folgenden Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen:
+Azure Media Services Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, Azure Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) basiert. Sie ermöglicht Ihnen, mithilfe der folgenden Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen:
   
 ## <a name="video-insights"></a>Erkenntnisse aus Videoaufnahmen
 
@@ -35,10 +35,13 @@ Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, 
 - **Erkennung schwarzer Frames:** erkennt schwarze Frames im Video.
 - **Extraktion von Keyframes:** erkennt stabile Keyframes in einem Video.
 - **Durchlaufender Abspann**: Identifiziert den Anfang und das Ende des durchlaufenden Abspanns am Ende von Fernsehsendungen und Filmen.
+- **Erkennung animierter Figuren** (Vorschau): Bestimmung, Gruppierung und Erkennung von Figuren in animierten Inhalten mittels Integration von [Cognitive Services Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Weitere Informationen finden Sie unter [Erkennung animierter Figuren](animated-characters-recognition.md).
+- **Erkennung von redaktionellen Aufnahmetypen**: Kategorisierung von Aufnahmen auf der Grundlage ihres Typs (wie etwa Totale, Halbtotale, Nahaufnahme, extreme Nahaufnahme, zwei Personen, mehrere Personen, Außenaufnahme, Innenaufnahme usw.). Weitere Informationen finden Sie unter [Erkennung von redaktionellen Aufnahmetypen](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ## <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 
 - **Automatische Sprachenerkennung:** Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch. Falls die Sprache nicht zuverlässig identifiziert werden kann, geht Video Indexer davon aus, dass die gesprochene Sprache Englisch ist. Weitere Informationen finden Sie unter [Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung](language-identification-model.md).
+- **Spracherkennung und Transkription für mehrere Sprachen** (Vorschau): Automatische Erkennung der gesprochenen Sprache in verschiedenen Audiosegmenten, Versenden der einzelnen Segmente der Mediendatei zur Transkription und Zusammenführen der Transkriptionen in einer einzelnen Transkription. Weitere Informationen finden Sie unter [Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte](multi-language-identification-transcription.md).
 - **Audiotranskription:** konvertiert Sprache in Text in 12 Sprachen und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, brasilianisches Portugiesisch, Spanisch, Russisch, Hindi und Koreanisch.
 - **Untertitelung:** erstellt Untertitel in drei Formaten: VTT, TTML und SRT.
 - **Verarbeitung von zwei Kanälen:** erkennt automatisch ein getrenntes Transkript und sorgt für eine Zusammenführung auf einer einzelnen Zeitachse.
@@ -56,7 +59,7 @@ Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, 
 Bei Indizierung nach einem Kanal steht ein Teilergebnis für die folgenden Modelle zur Verfügung:
 
 - **Extraktion von Schlüsselwörtern:** extrahiert Stichwörter aus Sprache und sichtbarem Text.
-- **Extrahieren von Marken:** extrahiert Marken aus Sprache und sichtbarem Text.
+- **Extraktion benannter Entitäten**: Extrahiert mithilfe der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) Marken, Standorte und Personen aus Sprache und visuellem Text.
 - **Themenerschließung:** zieht in den Transkripten einen Rückschluss auf Hauptthemen. Eine IPTC-Taxonomie erster Ebene ist eingeschlossen.
 - **Artefakte**: Extrahiert für jedes der Modelle eine umfangreiche Menge von Artefakten mit höherem Detailgrad.
 - **Standpunktanalyse:** erkennt anhand von Sprache und sichtbarem Text positive, negative und neutrale Stimmungen.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828598"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910472"
 ---
 # <a name="service-updates-in-site-recovery"></a>Dienstupdates in Azure Site Recovery
 
@@ -103,8 +103,7 @@ Wenn Sie Updates manuell verwalten möchten, gehen Sie folgendermaßen vor:
 
 1. Installieren Sie basierend auf Ihrer aktuellen Version und dem [Supporthinweis](#support-statement-for-azure-site-recovery) das Update zuerst auf dem lokalen Konfigurationsserver, indem Sie [diese Anweisungen](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server) befolgen. 
 2. Wenn Sie über Prozessserver für die horizontale Skalierung verfügen, aktualisieren Sie diese als Nächstes anhand [dieser Anweisungen](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. Um den Mobilitäts-Agent auf jedem geschützten Computer zu aktualisieren, öffnen Sie **Geschützte Elemente** > **Replizierte Elemente**.
-4. Wählen Sie die VM und dann die Schaltfläche **Update-Agent** aus, die im unteren Bereich der Seite für jeden virtuellen Computer angezeigt wird. Dadurch wird der Mobility Service-Agent auf allen geschützten VMs aktualisiert.
+3. Informationen zum Aktualisieren des Mobilitäts-Agent auf jedem geschützten Computer finden Sie in [diesem](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) Artikel.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Neustart nach dem Upgrade des Mobilitätsdiensts
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851724"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390790"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
@@ -40,7 +40,7 @@ Wir empfehlen Ihnen, nach Möglichkeit immer benutzerdefinierte Domänen für Ih
 
 Stellen Sie vor dem Konfigurieren einer benutzerdefinierten Domäne sicher, dass Sie die folgenden Anforderungen erfüllt haben: 
 - Sie haben [Azure Active Directory eine überprüfte Domäne hinzugefügt](../fundamentals/add-custom-domain.md).
-- Es ist ein benutzerdefiniertes Zertifikat für die Domäne in Form einer PFX-Datei vorhanden. 
+- Es ist ein benutzerdefiniertes Zertifikat für die Domäne in Form einer PFX-Datei vorhanden.
 - Es ist eine lokale App vorhanden, [die über den Anwendungsproxy veröffentlicht wurde](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurieren Ihrer benutzerdefinierten Domäne
@@ -72,6 +72,8 @@ Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte 
 Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve Cryptography (ECC), Subject Alternative Name (SAN) und andere gängige Zertifikattypen werden unterstützt. 
 
 Sie können ein Platzhalterzertifikats verwenden, solange der Platzhalter mit der gewünschten externen URL übereinstimmt.
+
+Das Zertifikat muss den privaten Schlüssel enthalten.
 
 Von ihrer eigenen Public Key-Infrastruktur (PKI) ausgestellte Zertifikate können verwendet werden, wenn die Zertifikatkette auf Ihren Clientgeräten installiert ist. Intune kann verwendet werden, um diese Zertifikate auf verwalteten Geräten bereitzustellen. Bei nicht verwalteten Geräten müssen diese Zertifikate manuell installiert werden.
 

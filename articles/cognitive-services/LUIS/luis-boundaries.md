@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883958"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844802"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
@@ -29,6 +29,7 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 |Bereich|Begrenzung|
 |--|:--|
 | [App-Name][luis-get-started-create-app] | \* Standardzeichenlimit |
+| ANWENDUNGEN| 500 Anwendungen pro Azure-Erstellungsressource |
 | [Batchtests][batch-testing]| 10 Datasets, 1.000 Äußerungen pro Dataset|
 | Explizite Listen | 50 pro Anwendung|
 | Externe Entitäten | Keine Einschränkungen |
@@ -44,7 +45,7 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
 | [Äußerung][utterances] | 500 Zeichen|
 | [Äußerungen][utterances] | 15.000 pro Anwendung – es gibt keine Beschränkung für die Anzahl von Äußerungen pro Absicht|
-| [Versionen](luis-concept-version.md)| Keine Begrenzung |
+| [Versionen](luis-concept-version.md)| 100 Versionen pro Anwendung |
 | [Versionsname][luis-how-to-manage-versions] | 10 Zeichen, ausschließlich alphanumerische Zeichen und Punkt (.) |
 
 \* Das Standardzeichenlimit beträgt 50 Zeichen. 
@@ -64,19 +65,24 @@ Verwenden Sie die folgenden Zeichen in den folgenden Namen.
 
 Language Understanding verfügt über separate Schlüssel, einen Typ für die Erstellung und einen Typ für die Abfrage des Vorhersageendpunkts. Weitere Informationen zu den Unterschieden zwischen Schlüsseltypen finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-concept-keys.md).
 
-## <a name="key-limits"></a>Schlüsselgrenzwerte
+<a name="key-limits"></a>
 
-Beim Erstellungsschlüssel gelten verschiedene Limits für die Verwendung beim Erstellen und auf Endpunkten. Der Endpunktschlüssel für den LUIS-Dienst gilt ausschließlich für Endpunktabfragen.
+## <a name="resource-key-limits"></a>Grenzen von Ressourcenschlüsseln
 
+Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung beim Erstellen und auf Endpunkten. Der LUIS-Endpunktschlüssel für Vorhersageabfragen gilt ausschließlich für Endpunktabfragen. 
+
+* 500 Anwendungen pro Azure-Erstellungsressource 
 
 |Schlüssel|Erstellen|Endpunkt|Zweck|
 |--|--|--|--|
-|Language Understanding Erstellung/Starter|1 Mio./Monat, 5/Sekunde|1\.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
-|Language Understanding-[Abonnement][pricing] – F0 – Free-Tarif |ungültig|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|Language Understanding-[Abonnement][pricing] – S0 – Basic-Tarif|ungültig|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|Cognitive Services-[Abonnement][pricing] – S0 – Standard-Tarif|ungültig|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|[Integration der Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|ungültig|kostenlos|Hinzufügen von Informationen zur Stimmung, einschließlich Datenextraktion für Schlüsselausdrücke |
-|[Speech-Integration](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|ungültig|5,50 USD/1.000 Endpunktanforderungen|Konvertieren gesprochener Äußerungen in Textäußerungen und Zurückgeben der LUIS-Ergebnisse|
+|Starter|1 Mio./Monat, 5/Sekunde|1\.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
+|F0: Free-Tarif |1 Mio./Monat, 5/Sekunde|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
+|S0: Basic-Tarif|-|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
+|S0: Standard-Tarif|-|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
+|[Integration der Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Das Hinzufügen von Informationen zur Stimmung, einschließlich Datenextraktion für Schlüsselausdrücke wird bereitgestellt, ohne eine weitere Azure-Ressource zu benötigen. |
+|[Speech-Integration](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1\.000 Endpunktanforderungen pro Einheitenkosten|Konvertieren gesprochener Äußerungen in Textäußerungen und Zurückgeben der LUIS-Ergebnisse|
+
+[Weitere Informationen zu Preisen][pricing]
 
 ## <a name="keyboard-controls"></a>Tastenkombinationen
 

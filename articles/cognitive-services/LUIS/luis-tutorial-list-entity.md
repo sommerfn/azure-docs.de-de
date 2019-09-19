@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946066"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390270"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
-Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
+Dieser Artikel veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Listenentität 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!Tip]
 > Wenn Sie noch kein Abonnement besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
 
-Der gesamte Code in diesem Tutorial ist im [GitHub-Repository mit Azure-Beispielen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity) verfügbar. 
+Der gesamte Code in diesem Artikel ist im [GitHub-Repository mit Azure-Beispielen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity) verfügbar. 
 
 ## <a name="use-homeautomation-app"></a>Verwenden der HomeAutomation-App
 Die HomeAutomation-App ermöglicht die Steuerung von Geräten wie Beleuchtungen, Unterhaltungselektronik und Gebäudesystemen (z.B. Heizung und Kühlung). Solche Systeme werden unterschiedlich benannt, beispielsweise mit herstellerspezifischen Namen, umgangssprachlichen Bezeichnungen und Akronymen. 
@@ -59,7 +59,7 @@ Die HomeAutomation.Device-Entität ist bei einer kleinen Anzahl von Geräten ode
 
 In diesem Szenario ist eine **Listenentität** eine gute Option, da die Gruppe von Benennungen für ein Gerät in einem Gebäude oder Hochschulgelände bekannt ist, selbst bei einer großen Gruppe. Mithilfe einer Listenentität erhält der LUIS alle möglichen Werte in der Gruppe für das Thermostat und ordnet diese einem einzigen Gerät zu, nämlich dem „Thermostat“. 
 
-In diesem Tutorial wird eine Entitätsliste mit dem Thermostat erstellt. In diesem Tutorial werden folgende alternative Bezeichnungen für ein Thermostat verwendet: 
+In diesem Artikel wird eine Entitätsliste mit dem Thermostat erstellt. In diesem Artikel werden folgende alternative Bezeichnungen für ein Thermostat verwendet: 
 
 |Alternative Bezeichnungen für ein Thermostat|
 |--|

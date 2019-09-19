@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 93f01513841d1174fea796f1615ab05df0a41af4
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150379"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802258"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
@@ -28,7 +28,7 @@ In Azure Media Services gibt es zwei Arten von [Liveereignissen](https://docs.mi
 
 In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der eingespeiste Datenstrom durchläuft Liveereignisse ohne weitere Verarbeitung. 
+* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. 
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt einen Datenstrom mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösung/Bitrate-Paaren codiert wird (weitere Informationen folgen später in diesem Artikel).
 * **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt einen Datenstrom mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösung/Bitrate-Paaren an (weitere Informationen folgen später in diesem Artikel). 
 
@@ -50,7 +50,7 @@ In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. D
 | Maximale Bildfrequenz eines Eingangsvideos|60 Frames/Sekunde|Standard oder Premium1080p: 30 Frames/Sekunde|
 | Eingabeprotokolle|RTMP, fragmentiertes MP4 (Smooth Streaming)|RTMP, fragmentiertes MP4 (Smooth Streaming)|
 | Preis|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|
-| Maximale Laufzeit| 24 Stunden × 365 Tage, live linear | Bis zu 24 Stunden|
+| Maximale Laufzeit| 24 Stunden × 365 Tage, live linear | 24 Stunden × 365 Tage, live linear (Vorschauversion)|
 | Möglichkeit zum Übergeben von eingebetteten CEA-608/708-Untertiteldaten|Ja|Ja|
 | Unterstützung für das Einfügen von Slates|Nein|Nein|
 | Unterstützung für Werbeeinblendungen über API| Nein|Nein|

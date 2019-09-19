@@ -1,25 +1,25 @@
 ---
-title: Datenbanksichten in Azure Blockchain Workbench
-description: Enthält eine Übersicht über Datenbanksichten in der Azure Blockchain Workbench-SQL-Datenbank.
+title: Datenbanksichten in Azure Blockchain Workbench (Vorschauversion)
+description: Enthält eine Übersicht über Datenbanksichten in der Azure Blockchain Workbench-SQL-Datenbank (Vorschauversion).
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/28/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 9071cf524a0f3d319d108cb5c961fa886cf8747f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d460d0d99642d11e4eb5755730400b509e94
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399901"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845040"
 ---
-# <a name="database-views-in-azure-blockchain-workbench"></a>Datenbanksichten in Azure Blockchain Workbench
+# <a name="database-views-in-azure-blockchain-workbench-preview"></a>Datenbanksichten in Azure Blockchain Workbench (Vorschauversion)
 
-Azure Blockchain Workbench stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), um mit Blockchain-Daten zu interagieren.
+Azure Blockchain Workbench (Vorschauversion) stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), um mit Blockchain-Daten zu interagieren.
 
 Azure Blockchain Workbench verfügt über einen Satz mit Datenbanksichten, mit denen der Zugriff auf Daten möglich ist, die beim Durchführen Ihrer Abfragen nützlich sind. Die Sichten sind stark denormalisiert, um den schnellen Einstieg in die Erstellung von Berichten und Analysen und die anderweitige Nutzung von Blockchain-Daten mit vorhandenen Tools zu ermöglichen, ohne dass die für Datenbanken zuständigen Mitarbeiter neu geschult werden müssen.
 
@@ -33,7 +33,7 @@ Dieser Abschnitt enthält eine Übersicht über die Datenbanksichten und die dar
 
 Diese Sicht enthält Details zu **Anwendungen**, die in Azure Blockchain Workbench hochgeladen wurden.
 
-| NAME                             | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
+| NAME                             | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                  | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -54,7 +54,7 @@ Diese Sicht enthält Details zu den Rollen, die in Azure Blockchain Workbench-An
 
 In einer Anwendung vom Typ *Assettransfer* können beispielsweise Rollen wie *Käufer* und *Verkäufer* definiert werden.
 
-| NAME                   | Type             | Kann null sein | BESCHREIBUNG                                       |
+| NAME                   | type             | Kann null sein | BESCHREIBUNG                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | Nein          | Ein eindeutiger Bezeichner für die Anwendung.           |
 | ApplicationName        | nvarchar(50)     | Nein          | Der Name der Anwendung.                       |
@@ -70,7 +70,7 @@ Diese Sicht enthält Details zu den Rollen, die in Azure Blockchain Workbench-An
 
 In einer Anwendung vom Typ *Assetübertragung* kann *John Smith* beispielsweise die Rolle *Käufer* zugeordnet werden.
 
-| NAME                       | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                           |
+| NAME                       | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung.                                                                                                                                                                                               |
 | ApplicationName            | nvarchar(50)  | Nein          | Der Name der Anwendung.                                                                                                                                                                                                           |
@@ -93,7 +93,7 @@ Diese Sicht enthält Details zu den in Azure Blockchain Workbench definierten Ve
 -   Details zum zugeordneten Ledger
 -   Informationen zum zugeordneten Benutzer
 
-| NAME                     | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                           |
+| NAME                     | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | Nein          | Der eindeutige Bezeichner für eine Verbindung in Azure Blockchain Workbench. |
 | ConnectionEndpointUrl    | nvarchar(50)  | Nein          | Die Endpunkt-URL für eine Verbindung. |
@@ -118,7 +118,7 @@ Diese Sicht enthält Details zu bereitgestellten Verträgen. Für jeden Vertrag 
 -   Details zum Benutzer, der die Aktion initiiert hat
 -   Details zum Blockchain-Block und zur Transaktion
 
-| NAME                                     | Type           | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
+| NAME                                     | type           | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | Nein          | Der eindeutige Bezeichner für eine Verbindung in Azure Blockchain Workbench.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar(50)   | Nein          | Die Endpunkt-URL für eine Verbindung. |
@@ -159,7 +159,7 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Aktionen, die 
 -   Details zum Benutzer, der die Aktion initiiert hat
 -   Details zum Blockchain-Block und zur Transaktion
 
-| NAME                                     | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    |
+| NAME                                     | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                          | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -218,7 +218,7 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf Eigenschaften,
 -   Spezifische Instanzwerte für Eigenschaften
 -   Details für die state-Eigenschaft des Vertrags
 
-| NAME                               | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                        |
+| NAME                               | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                    | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -258,7 +258,7 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf den Status ein
 -   Zugeordnete Smart Contract-Eigenschaftendefinition
 -   Details für die state-Eigenschaft des Vertrags
 
-| NAME                               | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                        |
+| NAME                               | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                    | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -293,9 +293,9 @@ Diese Sicht enthält den Großteil der Informationen in Bezug auf den Status ein
 
 Diese Sicht enthält Details zu den Konsortiumsmitgliedern, die für die Nutzung von Azure Blockchain Workbench bereitgestellt werden. Standardmäßig werden Daten bei der anfänglichen Bereitstellung des Benutzers aufgefüllt.
 
-| NAME               | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                               |
+| NAME               | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID                 | int           | Nein          | Ein eindeutiger Bezeichner für einen Benutzer. |
+| id                 | int           | Nein          | Ein eindeutiger Bezeichner für einen Benutzer. |
 | ExternalID         | nvarchar(255) | Nein          | Ein externer Bezeichner für einen Benutzer. Standardmäßig ist diese ID die GUID, die die Azure Active Directory-ID für den Benutzer darstellt. |
 | ProvisioningStatus | int           | Nein          |Identifiziert den aktuellen Status des Bereitstellungsprozesses für den Benutzer. Mögliche Werte: <br />0 – Benutzer wurde von der API erstellt<br />1 – Dem Benutzer wurde in der Datenbank ein Schlüssel zugeordnet<br />2 – Der Benutzer wurde vollständig bereitgestellt |
 | FirstName          | nvarchar(50)  | Ja         | Der Vorname des Benutzers. |
@@ -310,7 +310,7 @@ Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Fu
 -   Zugeordnete Workflowdefinition
 -   Zugeordnete Informationen zum Workflowanfangsstatus
 
-| NAME                              | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                |
+| NAME                              | type          | Kann null sein | BESCHREIBUNG                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                   | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -337,7 +337,7 @@ Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Fu
 -   Zugeordnete Workflowdefinition
 -   Details zur Workflowfunktion
 
-| NAME                                 | Type          | Kann null sein | BESCHREIBUNG                                                                          |
+| NAME                                 | type          | Kann null sein | BESCHREIBUNG                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName                      | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -366,7 +366,7 @@ Diese Sicht stellt die Eigenschaften dar, die für einen Workflow definiert werd
 -   Zugeordnete Workflowdefinition
 -   Details zur Workfloweigenschaft
 
-| NAME                         | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
+| NAME                         | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName              | nvarchar(50)  | Nein          | Der Name der Anwendung. |
@@ -393,7 +393,7 @@ Diese Sicht enthält die Eigenschaften, die einem Workflow zugeordnet sind. Für
 -   Zugeordnete Workflowdefinition
 -   Informationen zum Workflowstatus
 
-| NAME                         | Type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
+| NAME                         | type          | Kann null sein | BESCHREIBUNG                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nein          | Ein eindeutiger Bezeichner für die Anwendung. |
 | ApplicationName              | nvarchar(50)  | Nein          | Der Name der Anwendung. |

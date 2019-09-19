@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258616"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390446"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
 
@@ -38,7 +38,8 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
-    Die Gewährung des Zugriffs auf eine Anwendungsidentität im Schlüsselspeicher ist ein einmaliger Vorgang, der für alle Azure-Abonnements gleich bleibt. Sie können damit beliebig viele Zertifikate bereitstellen. 
+    > [!NOTE]
+    > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/key-vault-overview-vnet-service-endpoints.md) auflösen.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 

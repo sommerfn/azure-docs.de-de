@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279900"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913990"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbank-Dienst?
 
@@ -26,6 +26,8 @@ Mit der Cloud-First-Strategie von Microsoft werden die neuesten Funktionen von S
 
 > [!NOTE]
 > Ein Glossar von Begriffen in Azure SQL-Datenbank finden Sie unter [Azure SQL Database glossary of terms](sql-database-glossary-terms.md) (Azure SQL-Datenbank – Glossar).
+
+## <a name="deployment-models"></a>Bereitstellungsmodelle
 
 Azure SQL-Datenbank bietet die folgenden Bereitstellungsoptionen für eine Azure SQL-Datenbank:
 
@@ -51,11 +53,19 @@ Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleine
 
 Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Eine Einzeldatenbank unterstützt die manuelle dynamische Skalierbarkeit, aber keine automatische Skalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen. Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine Einzeldatenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer Einzeldatenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Kaufmodelle, Dienstebenen, Computegrößen und Speichermengen
+### <a name="purchasing-models"></a>Kaufmodelle
 
 SQL-Datenbank bietet zwei Kaufmodelle:
-- Beim [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Mit dem vCore-basierten Kaufmodell können Sie auch den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Kosten einzusparen. Weitere Informationen zum Azure-Hybridvorteil finden Sie in den [häufig gestellten Fragen](#sql-database-frequently-asked-questions-faq).
+- Beim [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Mit dem vCore-basierten Kaufmodell können Sie auch den **[Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)** nutzen, um Kosten einzusparen. Weitere Informationen zum Azure-Hybridvorteil finden Sie in den [häufig gestellten Fragen](#sql-database-frequently-asked-questions-faq).
 - Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen in drei Dienstebenen. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
+- Das [serverlose Modell](sql-database-serverless.md), welches die Computekapazität basierend auf dem Workloadbedarf skaliert und verwendete Computeressourcen nach Menge pro Sekunde abrechnet. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
+
+### <a name="service-tiers"></a>Dienstebenen
+
+Azure SQL-Datenbank bietet drei Dienstebenen, die für unterschiedliche Anwendungstypen entwickelt wurden:
+- Dienstebene [Universell/Standard](sql-database-service-tier-general-purpose.md), die für gemeinsame Workloads konzipiert ist. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.
+- Dienstebene [Unternehmenskritisch/Premium](sql-database-service-tier-business-critical.md) die für OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen konzipiert ist. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.
+- Dienstebene [Hyperscale](sql-database-service-tier-hyperscale.md), die für sehr große OLTP-Datenbanken und die Möglichkeit zur automatischen Skalierung von Speicher sowie zur nahtlosen Skalierung von Computeressourcen konzipiert ist. 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 

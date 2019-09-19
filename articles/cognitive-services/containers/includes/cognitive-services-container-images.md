@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Containerrepositorys und -images
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Zwei Tabellen, die die Containerregistrierungen, Repositorys und Imagenamen für alle Cognitive Service-Angebote darstellen.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051243"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775855"
 ---
 ### <a name="container-repositories-and-images"></a>Containerrepositorys und -images
 
 Die folgenden Tabellen stellen eine umfassende Liste der verfügbaren Containerimages dar, die von Azure Cognitive Services geboten werden.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Öffentlich (Containerregistrierung: `mcr.microsoft.com`)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Öffentliche „nicht verwaltete“ Vorschau (Containerregistrierung: `mcr.microsoft.com`)
 
-Die Microsoft-Containerregistrierung hostet alle Container für die allgemeine Verfügbarkeit (General Availability, GA) für Cognitive Services.
+Die Microsoft-Containerregistrierung hostet alle öffentlich verfügbaren, „nicht verwalteten“ Container für Cognitive Services.
 
 | Dienst | Container | Containerregistrierung/Repository/Imagename |
 |--|--|--|
@@ -21,9 +30,9 @@ Die Microsoft-Containerregistrierung hostet alle Container für die allgemeine V
 | [Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Spracherkennung | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Textanalyse](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Standpunktanalyse | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Öffentliche Vorschau (Containerregistrierung: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Öffentliche "verwaltete" Vorschau (Containerregistrierung: `containerpreview.azurecr.io`)
 
-Die Container Preview-Registrierung hostet alle „Öffentliche Vorschau“-Container für Cognitive Services, die noch nicht auf die allgemeine Verfügbarkeit (General Availability, GA) umgestellt wurden. Diese Container erfordern eine formelle Zugriffsanforderung, um sie zu nutzen.
+Die Vorschauversion der Containerregistrierung hostet alle öffentlich verfügbaren, „verwalteten“ Container für Cognitive Services. Diese Container erfordern eine formelle Zugriffsanforderung, um sie zu nutzen.
 
 | Dienst | Container | Containerregistrierung/Repository/Imagename |
 |--|--|--|

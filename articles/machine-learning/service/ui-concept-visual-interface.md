@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677986"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860401"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning Service? 
 
@@ -81,7 +81,7 @@ Verwenden Sie Computeressourcen aus Ihrem Workspace, um Ihr Experiment auszufüh
 | Azure Machine Learning Compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Computeziele sind in Ihren Machine Learning-[Workspace](concept-workspace.md) integriert. Ihre Computeziele verwalten Sie in Ihrem Workspace im [Azure-Portal](https://portal.azure.com).
+Computeziele sind in Ihren Machine Learning-[Workspace](concept-workspace.md) integriert. Ihre Computeziele verwalten Sie in Ihrem Workspace im [Azure-Portal](https://portal.azure.com) oder auf der [Angebotsseite des Arbeitsbereichs (Vorschauversion)](https://ml.azure.com).
 
 ## <a name="deployment"></a>Bereitstellung
 

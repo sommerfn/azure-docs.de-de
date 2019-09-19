@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 892076954535d880f9081a269215cb7e2a0a8dce
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541861"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914026"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -37,10 +37,10 @@ Da in diesem Artikel Visual Studio 2019 als Hauptentwicklungstool verwendet wird
 
 Wenn Visual Studio 2019 bereit ist, benötigen Sie auch die folgenden Tools und Komponenten:
 
-- Laden Sie die [Azure IoT Edge-Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) vom Visual Studio Marketplace herunter, und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2019 erstellen zu können.
+- Laden Sie die [Azure IoT Edge-Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) aus dem Visual Studio Marketplace herunter, und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2019 zu erstellen.
 
 > [!TIP]
-> Wenn Sie Visual Studio 2017 verwenden, laden Sie die [Azure IoT Edge-Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) für VS 2017 vom Visual Studio Marketplace herunter, und installieren Sie sie.
+> Wenn Sie Visual Studio 2017 verwenden, laden Sie die [Azure IoT Edge-Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) für VS 2017 aus dem Visual Studio Marketplace herunter, und installieren Sie sie.
 
 - Laden Sie die [Docker Community Edition](https://docs.docker.com/install/) auf Ihren Entwicklungscomputer herunter, und installieren Sie sie, um Ihre Modulimages erstellen und ausführen zu können. Sie müssen für die Docker CE festlegen, dass sie entweder im Linux-Containermodus oder im Windows-Containermodus ausgeführt wird.
 
@@ -105,13 +105,13 @@ Die Azure IoT Edge-Projektvorlage in Visual Studio erstellt ein Projekt, das auf
 
 1. Wählen Sie **OK** aus, um die Azure IoT Edge-Lösung mit einem Modul zu erstellen, das entweder C# oder C verwendet.
 
-Ihre Lösung enthält nun das Projekt **AzureIoTEdgeApp1.Linux.Amd64** oder das Projekt **AzureIoTEdgeApp1.Windows.Amd64** sowie das Projekt **IotEdgeModule1**. Jedes Projekt vom Typ **AzureIoTEdgeApp1** enthält eine Datei namens `deployment.template.json`. Diese Datei definiert die Module, die Sie für Ihre IoT Edge-Lösung erstellen und bereitstellen möchten, sowie die Routen zwischen Modulen. Die Standardlösung besteht aus einem **tempSensor**-und einem **IotEdgeModule1**-Modul. Das **tempSensor**-Modul generiert simulierte Daten für das **IotEdgeModule1**-Modul, und der Standardcode im **IotEdgeModule1**-Modul sendet empfangene Nachrichten direkt an den Azure IoT Hub.
+Ihre Lösung enthält nun das Projekt **AzureIoTEdgeApp1.Linux.Amd64** oder das Projekt **AzureIoTEdgeApp1.Windows.Amd64** sowie das Projekt **IotEdgeModule1**. Jedes Projekt vom Typ **AzureIoTEdgeApp1** enthält eine Datei namens `deployment.template.json`. Diese Datei definiert die Module, die Sie für Ihre IoT Edge-Lösung erstellen und bereitstellen möchten, sowie die Routen zwischen Modulen. Die Standardlösung besteht aus einem **SimulatedTemperatureSensor**- und einem **IoTEdgeModule1**-Modul. Das **SimulatedTemperatureSensor**-Modul generiert simulierte Daten für das **IoTEdgeModule1**-Modul, und der Standardcode im **IoTEdgeModule1**-Modul sendet empfangene Nachrichten direkt an den Azure IoT Hub.
 
 Das Projekt **IotEdgeModule1** ist eine .NET Core 2.1-Konsolenanwendung, wenn es sich um ein C#-Modul handelt. Es enthält die erforderlichen Dockerfiles, die Sie für Ihr IoT Edge-Gerät benötigen, das entweder mit einem Windows-Container oder einem Linux-Container läuft. Die Datei `module.json` beschreibt die Metadaten eines Moduls. Der eigentliche Modulcode, der das Azure IoT-Geräte-SDK als Abhängigkeit verwendet, befindet sich in der Datei `Program.cs` oder `main.c`.
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
-Der in der Lösung enthaltene Standardmodulcode befindet sich unter **IotEdgeModule1** > **Program.cs** (C#) oder **main.c** (C). Das Modul und die Datei `deployment.template.json` werden so eingerichtet, dass Sie die Lösung erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende **tempSensor**-Modul) und an den Azure IoT Hub sendet.
+Der in der Lösung enthaltene Standardmodulcode befindet sich unter **IotEdgeModule1** > **Program.cs** (C#) oder **main.c** (C). Das Modul und die Datei `deployment.template.json` werden so eingerichtet, dass Sie die Lösung erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende **SimulatedTemperatureSensor**-Modul) und an den Azure IoT Hub sendet.
 
 Wenn Sie bereit sind, die Modulvorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen.
 
@@ -172,9 +172,9 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
     ```json
         "routes": {
           "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIotEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+          "sensorToIotEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
           "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIotEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
+          "sensorToIotEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ Im Schnellstartartikel, anhand dessen Sie Ihr IoT Edge-Gerät eingerichtet haben
    > [!NOTE]
    > Wählen Sie auf keinen Fall `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json` aus.
 
-1. Klicken Sie auf die Schaltfläche „Aktualisieren“, um sich anzusehen, wie die neuen Module zusammen mit dem **tempSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden.
+1. Klicken Sie auf die Schaltfläche „Aktualisieren“, um sich anzusehen, wie die neuen Module zusammen mit dem **SimulatedTemperatureSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden.
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856209"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860504"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Was ist ein Azure Machine Learning Service-Arbeitsbereich?
 
@@ -36,7 +36,7 @@ In dem Diagramm sind die folgenden Komponenten eines Arbeitsbereichs dargestellt
 + Wenn Sie den Arbeitsbereich erstellen, werden auch [zugeordnete Ressourcen](#resources) für Sie erstellt.
 + [Experimente](concept-azure-machine-learning-architecture.md#experiments) sind Trainingsläufe (Trainingsausführungen), mit denen Sie Ihre Modelle erstellen.  Experimente können Sie erstellen und ausführen über
     + Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + Den Abschnitt für [automatisierte Machine Learning-Experimente (Vorschau)](how-to-create-portal-experiments.md) im Azure-Portal.
+    + Der Abschnitt zu [automatisierten Machine Learning-Experimenten (Vorschauversion)](how-to-create-portal-experiments.md) im Azure-Portal oder der Landing Page Ihres Arbeitsbereichs (Vorschauversion).
     + Die [grafische Benutzeroberfläche (Vorschau)](ui-concept-visual-interface.md).
 + [Pipelines](concept-azure-machine-learning-architecture.md#ml-pipelines) sind wiederverwendbare Workflows zum Trainieren und erneuten Trainieren Ihres Modells.
 + [Datasets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) vereinfachen die Verwaltung der Daten, die Sie zum Modelltraining und zur die Pipelineerstellung verwenden.
@@ -49,6 +49,7 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 
 + Im Web:
     + Das [Azure-Portal](https://portal.azure.com)
+    + Die [Landing Page des Arbeitsbereichs (Vorschauversion)](https://ml.azure.com)
     + Die [grafische Benutzeroberfläche (Vorschau)](ui-concept-visual-interface.md)
 + In Python über das Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) für Azure Machine Learning

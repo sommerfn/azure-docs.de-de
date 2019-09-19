@@ -3,7 +3,7 @@ title: Aktivieren von Azure-Ressourcenrollen in PIM – Azure Active Directory |
 description: Erfahren Sie, wie Sie Ihre Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) aktivieren.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/28/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdce060006f65f2b0fb08023066ee504578bc552
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 4e2bf1253f1c2f53b839a73034fcdb33f3aab463
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501659"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804339"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivieren von Azure-Ressourcenrollen in PIM
 
@@ -38,7 +38,7 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM übe
 
 1. Klicken Sie auf **Meine Rollen**.
 
-    ![Die Seite „Meine Rollen“ zeigt Ihnen die Rollen, die aktiviert werden können.](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Seite „Meine Rollen“ mit den Rollen, die aktiviert werden können](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. Klicken Sie auf **Azure-Ressourcenrollen**, um eine Liste der Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
 
@@ -118,7 +118,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
     Durch das Klicken auf „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
 
-   ![„Meine Anforderungen“-Liste mit hervorgehobener Aktion „Abbrechen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![Liste „Meine Anforderungen“ mit hervorgehobener Aktion „Abbrechen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

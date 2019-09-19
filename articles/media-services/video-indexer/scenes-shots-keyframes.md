@@ -1,6 +1,6 @@
 ---
-title: Szenen, Aufnahmen und Keyframes in Video Indexer – Azure
-titlesuffix: Azure Media Services
+title: Szenen, Aufnahmen und Keyframes in Video Indexer
+titleSuffix: Azure Media Services
 description: Dieses Thema bietet eine Übersicht über Szenen, Aufnahmen und Keyframes in Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815658"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860228"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
 
@@ -39,6 +39,30 @@ Der Video Indexer bestimmt, wann sich eine Aufnahme im Video aufgrund visueller 
 Wählt Sie die Frames aus, die die Aufnahme am besten darstellen. Keyframes sind die repräsentativen Einzelframes, die basierend auf ästhetischen Eigenschaften (z.B. Kontrast und Stabilität) aus dem gesamten Video ausgewählt werden. Video Indexer ruft eine Liste von Keyframe-IDs als Teil der Metadaten der Aufnahme ab, anhand derer Kunden das Keyframeminiaturbild extrahieren können. 
 
 Keyframes sind mit Aufnahmen in der Ausgabe-JSON verknüpft. 
+
+## <a name="editorial-shot-type-detection"></a>Erkennung von redaktionellen Aufnahmetypen
+
+Der einer einzelnen Aufnahme im Erkenntnis-JSON zugeordnete Aufnahmetyp stellt deren redaktionellen Typ dar. Diese Art Aufnahmetyp-Charakterisierung kann beim Bearbeiten von Videos zu Clips oder Trailern oder bei der Suche nach einem bestimmten Stil oder Keyframe zu künstlerischen Zwecken nützlich sein. Die verschiedenen Typen werden auf der Grundlage einer Analyse des ersten Keyframes jeder Aufnahme bestimmt. Aufnahmen werden anhand des Maßstabs, der Größe und der Position der Gesichter identifiziert, die in ihrem ersten Keyframe abgebildet sind. 
+
+Größe und Maßstab der Aufnahme werden auf der Grundlage des Abstands zwischen der Kamera und den Gesichtern bestimmt, die im Frame dargestellt sind. Mithilfe dieser Eigenschaften erkennt Video Indexer die folgenden Aufnahmetypen:
+
+* Wide (Totale): Zeigt den gesamten Körper einer Person.
+* Medium (Halbtotale): Zeigt Oberkörper und Gesicht einer Person.
+* Close up (Nahaufnahme): Zeigt in der Hauptsache das Gesicht einer Person.
+* Extreme close-up (Extreme Nahaufnahme): Zeigt das Gesicht einer Person bildschirmfüllend. 
+
+Aufnahmetypen können auch anhand der Position der Hauptfiguren im Verhältnis zum Mittelpunkt des Frames bestimmt werden. Diese Eigenschaft definiert die folgenden Aufnahmetypen im Video Indexer:
+
+* Left face (Gesicht links): Eine Person ist auf der linken Seite des Frames dargestellt.
+* Center face (Gesicht Mitte): Eine Person ist im mittleren Bereich des Frames dargestellt.
+* Right face (Gesicht rechts): Eine Person ist auf der rechten Seite des Frames dargestellt.
+* Outdoor (Außen): Eine Person ist in einer Außenumgebung dargestellt.
+* Indoor (Innen): Eine Person ist in einer Innenumgebung dargestellt.
+
+Zusätzliche Merkmale:
+
+* Two shots (Zwei Aufnahmen): Zeigt die Gesichter von zwei Personen mit mittlerer Größe.
+* Multiple faces (Mehrere Gesichter): mehr als zwei Personen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

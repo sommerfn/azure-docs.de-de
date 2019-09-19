@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559665"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802534"
 ---
 # <a name="deploy-a-custom-model"></a>Bereitstellen eines benutzerdefinierten Modells
 
-Nachdem Sie Daten hochgeladen und überprüft, die Genauigkeit ausgewertet und ein benutzerdefiniertes Modell trainiert haben, können Sie einen benutzerdefinierten Endpunkt zur Verwendung mit Ihren Apps, Tools und Produkten bereitstellen. In diesem Dokument erfahren Sie, wie Sie einen Endpunkt mithilfe des Custom Speech-Portals erstellen und bereitstellen.
+Nachdem Sie Daten hochgeladen und überprüft, die Genauigkeit ausgewertet und ein benutzerdefiniertes Modell trainiert haben, können Sie einen benutzerdefinierten Endpunkt zur Verwendung mit Ihren Apps, Tools und Produkten bereitstellen. In diesem Dokument erfahren Sie, wie Sie einen Endpunkt mithilfe des [Custom Speech-Portals](https://speech.microsoft.com/customspeech) erstellen und bereitstellen.
 
 ## <a name="create-a-custom-endpoint"></a>Erstellen eines benutzerdefinierten Endpunkts
 
-Wählen Sie zum Erstellen eines neuen benutzerdefinierten Endpunkts am oberen Rand der Seite im Menü „Custom Speech“ die Option **Bereitstellung** aus. Wenn dies Ihre erste Ausführung ist, werden Sie feststellen, dass in der Tabelle keine Endpunkte aufgeführt sind. Nachdem Sie einen Endpunkt erstellt haben, verwenden Sie diese Seite zum Nachverfolgen der einzelnen bereitgestellten Endpunkte.
+Melden Sie sich zum Erstellen eines neuen benutzerdefinierten Endpunkts beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an, und wählen Sie am oberen Rand der Seite im Menü „Custom Speech“ die Option **Bereitstellung** aus. Wenn dies Ihre erste Ausführung ist, werden Sie feststellen, dass in der Tabelle keine Endpunkte aufgeführt sind. Nachdem Sie einen Endpunkt erstellt haben, verwenden Sie diese Seite zum Nachverfolgen der einzelnen bereitgestellten Endpunkte.
 
 Wählen Sie als Nächstes **Endpunkt hinzufügen** aus, und geben Sie einen **Namen** und eine **Beschreibung** für Ihren benutzerdefinierten Endpunkt ein. Wählen Sie dann das benutzerdefinierte Modell aus, das Sie diesem Endpunkt zuordnen möchten. Auf dieser Seite können Sie auch die Protokollierung aktivieren. Die Protokollierung ermöglicht es Ihnen, den Datenverkehr des Endpunkts zu überwachen. Wenn die Protokollierung deaktiviert ist, wird Datenverkehr nicht gespeichert.
 

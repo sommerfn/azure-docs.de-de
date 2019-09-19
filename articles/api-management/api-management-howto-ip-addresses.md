@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242479"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861252"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 
@@ -102,5 +102,6 @@ Im Developer-, Basic-, Standard- und Premium-Tarif von API Management sind die 
 * Der Dienst wird gelöscht und anschließend neu erstellt.
 * Das Dienstabonnement wird [gesperrt](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states), oder es wird eine diesbezügliche [Warnung](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) ausgegeben (z.B. aufgrund von nicht geleisteten Zahlungen), und anschließend wird es reaktiviert.
 * Azure Virtual Network wird dem Dienst hinzugefügt oder daraus entfernt.
+* Der API Management-Dienst wird zwischen dem externen und internen VNET-Bereitstellungsmodus umgeschaltet.
 
 Bei [Bereitstellungen in mehreren Regionen](api-management-howto-deploy-multi-region.md) ändert sich die regionale IP-Adresse, wenn eine Region verlassen und anschließend reaktiviert wird.

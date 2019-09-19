@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101028"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910460"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
@@ -143,7 +143,7 @@ Die dritte Ebene zeigt virtuelle Computer, ähnlich wie in der Beschreibung oben
 |Der Zugriff auf App Services sollte eingeschränkt werden.|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.|Hoch|10|App Service|
 |Verwaltungsports sollten auf Ihren virtuellen Computern geschlossen werden.|Härten Sie die Netzwerksicherheitsgruppe Ihrer virtuellen Computer, um den Zugriff auf Verwaltungsports einzuschränken.|Hoch|10|Virtueller Computer|
 DDoS Protection Standard sollte aktiviert sein.|Schützen Sie virtuelle Netzwerke, die Anwendungen mit öffentlichen IP-Adressen enthalten, indem Sie den DDoS-Schutzdienststandard aktivieren. DDoS-Schutz ermöglicht die Entschärfung von volumetrischen Netzwerk- und Protokollangriffen.|Hoch|10|Virtuelles Netzwerk|
-|Die IP-Weiterleitung auf dem virtuellen Computer muss deaktiviert sein.|Aktivieren Sie die IP-Weiterleitung. Wenn die IP-Weiterleitung auf der NIC eines virtuellen Computers aktiviert ist, kann der Computer Datenverkehr empfangen, der für andere Ziele bestimmt ist. Da die IP-Weiterleitung nur selten benötigt wird (z. B. bei Verwendung der VM als virtuelles Netzwerkgerät), sollte dieser Vorgang vom Netzwerksicherheitsteam geprüft werden.|Mittel|10|Virtueller Computer|
+|Die IP-Weiterleitung auf dem virtuellen Computer muss deaktiviert sein.|Aktivieren Sie die IP-Weiterleitung. Wenn die IP-Weiterleitung auf der NIC eines virtuellen Computers aktiviert ist, kann der Computer Datenverkehr empfangen, der für andere Ziele bestimmt ist. Da die IP-Weiterleitung nur selten benötigt wird (z. B. bei Verwendung des virtuellen Computers als virtuelles Netzwerkgerät), sollte dieser Vorgang vom Netzwerksicherheitsteam geprüft werden.|Mittel|10|Virtueller Computer|
 |Zugriff auf Webanwendung nur über HTTPS gestatten|Aktivieren Sie Zugriff vom Typ „Nur HTTPS“ für Webanwendungen. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.|Mittel|20|Webanwendung|
 |Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.|Wenden Sie die Just-In-Time-VM-Zugriffssteuerung (JIT) an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie per JIT nur für einen begrenzten Zeitraum zu öffnen.|Hoch|20|Virtueller Computer|
 |Zugriff auf Funktions-App nur über HTTPS gestatten|Aktivieren Sie den Zugriff vom Typ „Nur HTTPS“ für Funktions-Apps. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.|Mittel|20|Funktionen-App|

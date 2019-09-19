@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856311"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801393"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -34,6 +34,10 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="september-2019"></a>September 2019
+
+Media Services v3 gibt die Vorschauversion von 24 Stunden x 365 Tagen linearer Livecodierung von Liveereignisssen bekannt.
+ 
 ## <a name="august-2019"></a>August 2019
 
 ### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Südafrika-Regionspaar für Media Services verfügbar 

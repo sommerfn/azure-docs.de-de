@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562866"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801544"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Bewerten der Custom Speech-Genauigkeit
 
@@ -51,11 +51,12 @@ Wenn Sie die Qualität des Basismodells für Spracherkennung von Microsoft oder 
 
 Parallele Auswertung von Modellen:
 
-1. Navigieren Sie zu **Spracherkennung > Custom Speech > Testen**.
-2. Klicken Sie auf **Test hinzufügen**.
-3. Wählen Sie **Bewerten der Genauigkeit** aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audio- und menschenmarkiertes Transkriptionsdataset aus.
-4. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
-5. Klicken Sie auf **Create**.
+1. Melden Sie sich beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an.
+2. Navigieren Sie zu **Spracherkennung > Custom Speech > Testen**.
+3. Klicken Sie auf **Test hinzufügen**.
+4. Wählen Sie **Bewerten der Genauigkeit** aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audio- und menschenmarkiertes Transkriptionsdataset aus.
+5. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
+6. Klicken Sie auf **Create**.
 
 Nachdem der Test erfolgreich erstellt wurde, können Sie die Ergebnisse nebeneinander vergleichen.
 
