@@ -79,7 +79,7 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 
 | Attribut | Erforderlich | Typ | BESCHREIBUNG |
 |-----------|----------|------|-------------|
-| <*parameter-name*> | Ja | Zeichenfolge | Der Name des Parameters, den Sie definieren möchten |
+| <*parameter-name*> | Ja | String | Der Name des Parameters, den Sie definieren möchten |
 | <*parameter-type*> | Ja | int, float, string, bool, array, object, securestring, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und Geheimnisse die Typen `securestring` oder `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
 | <*default-parameter-value*> | Ja | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird. Das `defaultValue`-Attribut ist erforderlich, damit der Logik-App-Designer den Parameter korrekt anzeigen kann, Sie können jedoch einen leeren Wert angeben. |
 | <*array-with-permitted-parameter-values*> | Nein | Array | Ein Array mit Werten, die vom Parameter akzeptiert werden können |
