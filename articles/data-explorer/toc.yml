@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: Überwachen
       items:
+        - name: Verwenden von Diagnoseprotokollen zum Überwachen der Erfassung
+          href: using-diagnostic-logs.md
         - name: Verwenden von Metriken zum Überwachen der Clusterintegrität
           href: using-metrics.md
     - name: Integration in andere Tools
       items:
-        - name: Massenkopieren von Daten mit einer Azure Data Factory-Vorlage
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Massenkopieren von Daten mit einer Azure Data Factory-Vorlage
+              href: data-factory-template.md
+            - name: Ausführen von Steuerungsbefehlen mithilfe von Azure Data Factory
+              href: data-factory-command-activity.md
         - name: Apache Spark-Connector
           href: spark-connector.md
         - name: Herstellen einer Databricks-Verbindung unter Verwendung von Python

@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Authentifizierungsflüsse und App-Szenarien
           href: authentication-flows-app-scenarios.md
+        - name: Bewährte Methoden für die Identitätsplattform
+          href: identity-platform-integration-checklist.md
         - name: Anwendungsszenarien
           items:
             - name: Zielgruppe für die Anmeldung
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Überführen in die Produktion
                   href: scenario-mobile-production.md
-            - name: Checkliste für die Integration
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Übersicht

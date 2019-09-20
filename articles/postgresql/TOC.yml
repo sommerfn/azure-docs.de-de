@@ -232,7 +232,7 @@
       items:
         - name: Verwalten von Lesereplikaten im Azure-Portal
           href: howto-read-replicas-portal.md
-        - name: Verwalten von Lesereplikaten mit der Azure CLI
+        - name: 'Verwalten von Lesereplikaten mit der Azure CLI, REST-API'
           href: howto-read-replicas-cli.md
 - name: Verweis
   items:
