@@ -31,7 +31,7 @@
             - name: Automatisches Trainieren eines ML-Modells
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: Batchbewertung mit Pipelines (erweitert)
+        - name: Machine Learning-Pipelines (erweitert)
           items:
             - name: Ausführen einer Batchbewertung für ein Klassifizierungsmodell
               displayName: pipelines
