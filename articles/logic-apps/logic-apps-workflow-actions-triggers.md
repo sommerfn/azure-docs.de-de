@@ -52,10 +52,10 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*trigger-name*> | Zeichenfolge | Name des Triggers | 
-| <*trigger-type*> | Zeichenfolge | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
+| <*trigger-name*> | String | Name des Triggers | 
+| <*trigger-type*> | String | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
 | <*trigger-inputs*> | JSON-Objekt | Eingaben, die das Verhalten des Triggers definieren | 
-| <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*time-unit*> | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
 | <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
