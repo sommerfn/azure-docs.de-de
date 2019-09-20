@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Verwenden von Python
               href: sdk-python-quickstart.md
+            - name: Verwenden von Java
+              href: sdk-java-quickstart.md
 - name: Lernprogramme
   items:
     - name: Erstellen einer benutzerdefinierten Suchwebseite

@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker-Dokumentation
   description: QnA Maker ist ein cloudbasierter API-Dienst, mit dem eine Frage-und-Antwort-Ebene im Konversationsstil für Ihre Daten erstellt wird. Mit QnA Maker können Sie einen Frage-und-Antwort-Dienst auf der Grundlage Ihrer teilweise strukturierten Inhalte bereitstellen. Bei solchen Inhalten kann es sich beispielsweise um FAQ-Dokumente, URLs und Produkthandbücher handeln. Mit dem QnA Maker-Dienst werden die von Ihren Benutzern in natürlicher Sprache gestellten Fragen beantwortet, indem aus den Fragen und Antworten in Ihrer Wissensdatenbank die bestmögliche Antwort zugewiesen wird.
-  ms.openlocfilehash: 36b1c69ba1b94afadd105117ee5ac9dabcdd64a7
-  ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+  ms.openlocfilehash: 8e47211194be3653c3d0ba060b573bad446162ba
+  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71123005"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71155091"
 landingContent:
 - title: Informationen zu QnA Maker
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Was ist QnA Maker?
       url: overview/overview.md
+    - text: QnA Maker-Portal
+      url: https://www.qnamaker.ai
   - linkListType: concept
     links:
     - text: Lebenszyklus der Entwicklung
@@ -54,14 +56,6 @@ landingContent:
       url: how-to/chit-chat-knowledge-base.md
     - text: Hinzufügen einer gesicherten SharePoint-Datenquelle
       url: how-to/add-sharepoint-datasources.md
-- title: Testen und veröffentlichen
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Interaktives Testen Ihrer Wissensdatenbank
-      url: how-to/test-knowledge-base.md
-    - text: Veröffentlichen einer Wissensdatenbank
-      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
 - title: Erhalten einer Antwort von der Wissensdatenbank
   linkLists:
   - linkListType: get-started
@@ -78,6 +72,14 @@ landingContent:
     links:
     - text: Abrufen einer Antwort mit Metadaten.
       url: how-to/metadata-generateanswer-usage.md
+- title: Testen und veröffentlichen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Interaktives Testen Ihrer Wissensdatenbank
+      url: how-to/test-knowledge-base.md
+    - text: Veröffentlichen einer Wissensdatenbank
+      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
 - title: Verbessern der Wissensdatenbank
   linkLists:
   - linkListType: how-to-guide
@@ -112,3 +114,13 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Problembehandlung
+      url: troubleshooting.md
+    - text: Stellen von Fragen zu Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/QnAMaker
+    - text: Einflussnahme auf den Dienst mit UserVoice
+      url: https://cognitive.uservoice.com/forums/578689-qna-maker-api
