@@ -42,9 +42,9 @@ Sie können die folgenden Parameter verwenden:
 
 | NAME | Optionen | BESCHREIBUNG | Standard |
 | --- | --- | --- | --- |
-| sensitivityLevel |Zeichenfolge: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
+| sensitivityLevel |String: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
 | frameSamplingValue |Positive ganze Zahl |Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw. |1 |
-| detectLightChange |Boolescher Wert: „true“, „false“ |Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden. |„false“ |
+| detectLightChange |Boolean: „true“, „false“ |Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden. |„false“ |
 | mergeTimeThreshold |Xs-time: hh:mm:ss<br/>Beispiel: 00:00:03 |Gibt das Zeitfenster zwischen Bewegungsereignissen an, wenn zwei Ereignisse kombiniert und als ein Ereignis gemeldet werden. |00:00:00 |
 | detectionZones |Ein Array mit Erkennungszonen:<br/>- Eine Erkennungszone ist ein Array aus mindestens drei Punkten.<br/>– Ein Punkt ist eine x- und y-Koordinate zwischen 0 und 1. |Beschreibt die Liste mit den zu verwendenden polygonalen Erkennungszonen.<br/>Die Ergebnisse werden mit den Zonen als ID gemeldet, und die erste ID lautet 'id':0. |Einzelne Zone, die den gesamten Rahmen abdeckt. |
 
