@@ -56,8 +56,8 @@ Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung.
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --app-name [erforderlich] | Der Name der Anwendung, einschließlich des URI-Schemas „fabric\:“. |
-| -- app-type [erforderlich] | Der Anwendungstypname, der im Anwendungsmanifest gefunden wurde. |
-| -- app-version [erforderlich] | Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist. |
+| --app-type [erforderlich] | Der Anwendungstypname, der im Anwendungsmanifest gefunden wurde. |
+| --app-version [erforderlich] | Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist. |
 | --max-node-count | Die maximale Anzahl von Knoten, für die Service Fabric Kapazität für diese Anwendung reserviert. Hinweis: Dies bedeutet nicht, dass die Dienste dieser Anwendung auf allen dieser Knoten platziert werden. |
 | --metrics | Eine JSON-codierte Liste der Kapazitätsmetrikbeschreibungen einer Anwendung. Eine Metrik ist als Name definiert, der einem Satz von Kapazitäten für jeden Knoten zugeordnet ist, auf dem die Anwendung vorhanden ist. |
 | --min-node-count | Die minimale Anzahl von Knoten, für die Service Fabric Kapazität für diese Anwendung reserviert wird. Hinweis: Dies bedeutet nicht, dass die Dienste dieser Anwendung auf allen dieser Knoten platziert werden. |
