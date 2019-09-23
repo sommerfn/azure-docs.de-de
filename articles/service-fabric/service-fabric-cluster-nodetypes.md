@@ -77,19 +77,19 @@ Dies sind die Beschreibungen der Eigenschaften:
 
 | **Name** | **Zulässige Werte** | ** --- ** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| name | Zeichenfolge | --- | Eindeutiger Name für die Erweiterung |
+| name | string | --- | Eindeutiger Name für die Erweiterung |
 | type | „ServiceFabricLinuxNode“ oder „ServiceFabricWindowsNode“ | --- | Identifiziert das Betriebssystem, in dem Service Fabric gestartet wird. |
 | autoUpgradeMinorVersion | "true" oder "false" | --- | Aktivieren des automatischen Upgrades von Nebenversionen der Service Fabric-Laufzeit |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Name des Herausgebers der Service Fabric-Erweiterung |
-| clusterEndpoint | Zeichenfolge | --- | URI:PORT zum Verwaltungsendpunkt |
-| nodeTypeRef | Zeichenfolge | --- | Name von nodeType |
-| durabilityLevel | Bronze, Silber, Gold, Platin | --- | Zulässige Zeitspanne zum Anhalten der unveränderliche Azure-Infrastruktur |
+| clusterEndpoint | string | --- | URI:PORT zum Verwaltungsendpunkt |
+| nodeTypeRef | string | --- | Name von nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | --- | Zulässige Zeitspanne zum Anhalten der unveränderliche Azure-Infrastruktur |
 | enableParallelJobs | "true" oder "false" | --- | Aktivieren von Compute-ParallelJobs wie paralleles Entfernen und Neustarten von virtuellen Computern in der gleichen Skalierungsgruppe |
-| nicPrefixOverride | Zeichenfolge | --- | Subnetzpräfix, z.B. „10.0.0.0/24“ |
+| nicPrefixOverride | string | --- | Subnetzpräfix, z.B. „10.0.0.0/24“ |
 | commonNames | string[] | --- | Allgemeine Namen von installierten Clusterzertifikaten |
-| x509StoreName | Zeichenfolge | --- | Name des Speichers, in dem sich das installierte Clusterzertifikat befindet |
+| x509StoreName | string | --- | Name des Speichers, in dem sich das installierte Clusterzertifikat befindet |
 | typeHandlerVersion | 1.1 | --- | Version der Erweiterung. Für klassische Version 1.0 der Erweiterung wird Upgrade auf Version 1.1 empfohlen |
-| dataPath | Zeichenfolge | --- | Der Pfad zum Laufwerk, das zum Speichern des Zustands der Service Fabric-Systemdienste und Anwendungsdaten verwendet wird. 
+| dataPath | string | --- | Der Pfad zum Laufwerk, das zum Speichern des Zustands der Service Fabric-Systemdienste und Anwendungsdaten verwendet wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen finden Sie unter [Übersicht über das Feature „Deploy Anywhere“ (umgebungsunabhängige Bereitstellung) und ein Vergleich mit Clustern, die von Azure verwaltet werden](service-fabric-deploy-anywhere.md).
