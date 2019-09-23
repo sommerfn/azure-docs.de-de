@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233121"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098603"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Bereitstellen von Python für Azure Functions mit Visual Studio Code
 
@@ -45,7 +45,7 @@ Wenn Sie kein Azure-Abonnement haben, [registrieren Sie sich jetzt](https://azur
 
 Installieren Sie folgende Software:
 
-- Python 3.6.x wie für Azure Functions erforderlich. [Python 3.6.8](https://www.python.org/downloads/release/python-368/) ist die aktuelle 3.6.x-Version.
+- Python 3.6.x wie für Azure Functions erforderlich. [Python 3.6.9](https://www.python.org/downloads/release/python-369/) ist die neueste 3.6.x-Version.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - Die [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python) wie in [Erste Schritte in Python mit Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial) beschrieben.
 - Die [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Allgemeine Informationen finden Sie im [vscode-azurefunctions-GitHub-Repository](https://github.com/Microsoft/vscode-azurefunctions).
@@ -444,6 +444,18 @@ In diesem Abschnitt fügen Sie der HttpExample-Funktion, die Sie zuvor in diesem
           "queueName": "outqueue",
           "connection": "AzureWebJobsStorage"
         }
+    ```
+
+1. Ersetzen Sie den Inhalt von *host.json* durch Folgendes, und fügen Sie den [Erweiterungsbundleverweis](functions-bindings-register.md#extension-bundles) hinzu.
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
     ```
 
 1. Nachdem Sie die Bindung konfiguriert haben, können Sie sie in Ihrem Funktionscode verwenden. Wiederum wird die neu definierte Bindung in Ihrem Code als Argument der `main`-Funktion in *\_\_init\_\_.py* angezeigt. Beispielsweise können Sie die Datei *\_\_init\_\_.py* in HttpExample so ändern, dass sie der folgenden entspricht, die die Verwendung des `msg`-Arguments zum Schreiben einer Meldung mit Zeitstempel mit dem in der Anforderung verwendeten Namen zeigt. In den Kommentaren werden die spezifischen Änderungen erläutert:

@@ -14,19 +14,19 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 2e64f996a346e0241fd5feefb11a38a0c8605b27
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173398"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967829"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements für dieses Thema. 
+In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein Azure Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements für dieses Thema. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

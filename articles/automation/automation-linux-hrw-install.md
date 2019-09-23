@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94d34c8a9a3480032a79d100af883a85868d327e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 878e79097114f60aff084d60c835661196cec5ce
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478472"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076004"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -51,7 +51,7 @@ Die Mindestanforderungen für einen Linux Hybrid Runbook Worker sind:
 |Glibc |GNU C-Bibliothek| 2.5-12 |
 |Openssl| OpenSSL-Bibliotheken | 1.0 (TLS 1.1 und TLS 1.2 werden unterstützt)|
 |Curl | cURL-Webclient | 7.15.5|
-|Python-ctypes | |
+|Python-ctypes | Python 2.x ist erforderlich. |
 |PAM | Module für austauschbare Authentifizierung|
 | **Optionale Pakete** | **Beschreibung** | **Mindestversion**|
 | PowerShell Core | Zum Ausführen von PowerShell-Runbooks muss PowerShell installiert werden. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell installieren.  | 6.0.0 |

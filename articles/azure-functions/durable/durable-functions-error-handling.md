@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734305"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933430"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
-Durable Function-Orchestrierungen sind im Code implementiert und können die Funktionen zur Fehlerbehandlung aus der Programmiersprache nutzen. Daher gibt es eigentlich keine neuen Konzepte, die Sie bei der Einbindung der Fehlerbehandlung und Kompensierung in Ihre Orchestrierungen beachten müssen. Es gibt jedoch einige wenige Verhaltensweisen, die Sie kennen sollten:
+Durable Function-Orchestrierungen sind im Code implementiert und können die integrierten Funktionen zur Fehlerbehandlung der Programmiersprache nutzen. Daher gibt es eigentlich keine neuen Konzepte, die Sie bei der Einbindung der Fehlerbehandlung und Kompensierung in Ihre Orchestrierungen beachten müssen. Es gibt jedoch einige wenige Verhaltensweisen, die Sie kennen sollten:
 
 ## <a name="errors-in-activity-functions"></a>Fehler in Aktivitätsfunktionen
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Wenn der Aufruf der **CreditAccount**-Funktion (Kreditkonto) für das Zielkonto fehlschlägt, wird dies durch die Orchestratorfunktion kompensiert, indem die Gelder auf das Quellkonto zurücküberwiesen werden.
+Wenn der erste Funktionsaufruf von **CreditAccount** fehlschlägt, wird dies durch die Orchestratorfunktion kompensiert, indem die Gelder auf das Quellkonto zurücküberwiesen werden.
 
 ## <a name="automatic-retry-on-failure"></a>Automatische Wiederholung bei einem Fehler
 
@@ -192,14 +192,14 @@ module.exports = df.orchestrator(function*(context) {
 
 Die `CallActivityWithRetryAsync`-API (.NET) oder die `callActivityWithRetry`-API (JavaScript) erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API (.NET) oder `callSubOrchestratorWithRetry`-API (JavaScript) verwenden, können dieselben Wiederholungsrichtlinien verwenden.
 
-Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen. Dazu zählen:
+Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen:
 
 * **Maximale Anzahl von Versuchen**: Die maximale Anzahl der Wiederholungsversuche.
 * **Intervall für erste Wiederholung**: Die abzuwartende Zeitspanne bis zum ersten Wiederholungsversuch.
 * **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um die Rate für die Erhöhung des Backoffs zu bestimmen. Der Standardwert lautet 1.
 * **Max. Wiederholungsintervall**: Die maximale Zeitspanne zwischen den Wiederholungsversuchen.
 * **Timeout für Wiederholungsversuche**: Die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
-* **Handle**: Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
+* **Handle**: Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob eine Funktion wiederholt werden soll.
 
 ## <a name="function-timeouts"></a>Funktion-Timeouts
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 Fällt eine Orchestratorfunktion mit einer nicht behandelten Ausnahme aus, werden die Details der Ausnahme protokolliert, und die Instanz wird mit einem `Failed`-Status abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zu „ewigen“ Orchestrierungen](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [Learn how to diagnose problems (Informationen zur Diagnose von Problemen)](durable-functions-diagnostics.md)

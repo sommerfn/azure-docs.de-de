@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 84f035a55256ab22c823b2aaed9c9c2400eebf5b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173407"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967853"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus-Warteschlangen und Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
+In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
 
 > [!NOTE]
 > Java-Beispiele finden Sie auf GitHub im [azure-service-bus-Repository](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).

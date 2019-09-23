@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596092"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958984"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 
@@ -55,6 +55,10 @@ Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario
 |MemoryLimitLow|Arbeitsspeicher: Untere Arbeitsspeichergrenze|Byte|Durchschnitt|Unterer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
 |MemoryLimitVertiPaq|Arbeitsspeicher: VertiPaq-Arbeitsspeichergrenze|Byte|Durchschnitt|In-Memory-Grenzwert gemäß Konfigurationsdatei.|
 |MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Von der In-Memory-Analyse-Engine (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze der Engine hinausgeht, wird dabei ignoriert.|
+|private_bytes_metric|Private Bytes |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die der Analysis Services-Engineprozess und die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|
+|virtual_bytes_metric|Virtuelle Bytes |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den der Analysis Services-Engineprozess und die Mashupcontainerprozesse verwenden.|
+|mashup_engine_private_bytes_metric|Private Bytes für M-Engine |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|
+|mashup_engine_virtual_bytes_metric|Virtuelle Bytes für M-Engine |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den die Mashupcontainerprozesse verwenden.|
 |Kontingent|Arbeitsspeicher: Kontingent|Byte|Durchschnitt|Aktuelles Arbeitsspeicherkontingent in Byte. Das Arbeitsspeicherkontingent wird auch als Speicherzuweisung oder Speicherreservierung bezeichnet.|
 |QuotaBlocked|Arbeitsspeicher: Kontingent blockiert|Count|Durchschnitt|Aktuelle Anzahl von Kontingentanforderungen, die blockiert werden, bis andere Arbeitsspeicherkontingente freigegeben werden.|
 |VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch die In-Memory-Engine gesperrt sind.|

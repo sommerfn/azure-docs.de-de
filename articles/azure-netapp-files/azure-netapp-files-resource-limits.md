@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515847"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984001"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -36,7 +36,7 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 |  Anzahl der Volumes pro Kapazitätspool     |    500   |    Ja     |
 |  Anzahl von Momentaufnahmen pro Volume       |    255     |    Nein        |
 |  Anzahl der an Azure NetApp Files (Microsoft.NetApp/volumes) delegierten Subnetze pro virtuellem Azure-Netzwerk    |   1   |    Nein    |
-|  Anzahl gleichzeitiger IP-Adressen innerhalb eines VNets (einschließlich VNets mit Peering), die auf Azure NetApp Files zugreifen können   |    1000   |    Nein   |
+|  Anzahl der IP-Adressen innerhalb eines VNETs (einschließlich VNETs mit Peering), die auf Azure NetApp Files zugreifen können   |    1000   |    Ja   |
 |  Mindestgröße eines einzelnen Kapazitätspools   |  4 TiB     |    Nein  |
 |  Maximale Größe eines einzelnen Kapazitätspools    |  500 TiB   |   Nein   |
 |  Mindestgröße eines einzelnen Volumes    |    100 GB    |    Nein    |

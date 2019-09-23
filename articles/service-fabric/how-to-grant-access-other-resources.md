@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640929"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091196"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung (Vorschau)
 
@@ -40,9 +40,14 @@ Die Unterstützung von systemseitig zugewiesenen verwalteten Identitäten für S
 
 ![Key Vault-Zugriffsrichtlinie](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Das folgende Beispiel veranschaulicht das Gewähren des Zugriffs auf einen Tresor per Vorlagenbereitstellung. Fügen Sie den unten stehenden Codeausschnitt als weiteren Eintrag unter dem `resources`-Element der Vorlage hinzu.
+Das folgende Beispiel veranschaulicht das Gewähren des Zugriffs auf einen Tresor über eine Vorlagenbereitstellung. Fügen Sie die Codeausschnitte unten als weitere Einträge unter dem `resources`-Element der Vorlage hinzu. Das Beispiel veranschaulicht die Gewährung des Zugriffs für vom Benutzer zugewiesene bzw. vom System zugewiesene Identitätstypen. Wählen Sie die entsprechende Option aus.
 
 ```json
+    # under 'variables':
+  "variables": {
+        "userAssignedIdentityResourceId" : "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]",
+    }
+    # under 'resources':
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
@@ -65,11 +70,45 @@ Das folgende Beispiel veranschaulicht das Gewähren des Zugriffs auf einen Treso
         }
     },
 ```
+Vom System zugewiesene verwaltete Identitäten:
+```json
+    # under 'variables':
+  "variables": {
+        "sfAppSystemAssignedIdentityResourceId": "[concat(resourceId('Microsoft.ServiceFabric/clusters/applications/', parameters('clusterName'), parameters('applicationName')), '/providers/Microsoft.ManagedIdentity/Identities/default')]"
+    }
+    # under 'resources':
+    {
+        "type": "Microsoft.KeyVault/vaults/accessPolicies",
+        "name": "[concat(parameters('keyVaultName'), '/add')]",
+        "apiVersion": "2018-02-14",
+        "properties": {
+            "accessPolicies": [
+            {
+                    "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+                    "tenantId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').tenantId]",
+                    "objectId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').principalId]",
+                    "dependsOn": [
+                        "[variables('sfAppSystemAssignedIdentityResourceId')]"
+                    ],
+                    "permissions": {
+                        "secrets": [
+                            "get",
+                            "list"
+                        ],
+                        "certificates": 
+                        [
+                            "get", 
+                            "list"
+                        ]
+                    }
+            },
+        ]
+        }
+    }
+```
 
 Weitere Informationen finden Sie unter [Tresore: Aktualisieren der Zugriffsrichtlinie](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

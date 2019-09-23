@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735169"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933313"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -31,9 +31,6 @@ Es ist wichtig, eine Instanz der Orchestrierung starten zu können. Dies geschie
 Die [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)-Methode der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse (.NET) oder die `startNew`-Methode der `DurableOrchestrationClient`-Klasse (JavaScript) startet eine neue Instanz. Sie erwerben Instanzen dieser Klasse mithilfe der `orchestrationClient`-Bindung. Intern stellt diese Methode eine Nachricht in die Steuerwarteschlange, die dann den Start einer Funktion mit dem angegebenen Namen auslöst, der die `orchestrationTrigger`-Bindung verwendet.
 
 Dieser asynchrone Vorgang wird abgeschlossen, wenn der Orchestrierungsprozess erfolgreich geplant wurde. Der Orchestrierungsprozess sollte innerhalb von 30 Sekunden gestartet werden. Wenn es länger dauert, wird eine `TimeoutException` ausgelöst.
-
-> [!WARNING]
-> Wenn Sie lokal in JavaScript entwickeln, legen Sie die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` fest (z.B. `localhost:7071`), um `DurableOrchestrationClient`-Methoden zu verwenden. Weitere Informationen zu dieser Anforderung finden Sie in der [Beschreibung des Problems auf GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Senden von Ereignissen an Instanzen
 
-In einigen Szenarien müssen Ihre Orchestratorfunktionen warten und auf externe Ereignisse lauschen können. Dies schließt [Überwachungsfunktionen](durable-functions-concepts.md#monitoring) und Funktionen ein, die auf [menschliche Interaktion](durable-functions-concepts.md#human) warten.
+In einigen Szenarien müssen Ihre Orchestratorfunktionen warten und auf externe Ereignisse lauschen können. Dies schließt [Überwachungsfunktionen](durable-functions-overview.md#monitoring) und Funktionen ein, die auf [menschliche Interaktion](durable-functions-overview.md#human) warten.
 
 Senden Sie Ereignisbenachrichtigungen mit der [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)-Methode der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse (.NET) oder `raiseEvent`-Methode der `DurableOrchestrationClient`-Klasse (JavaScript) an aktive Instanzen. Instanzen, die auf einen Aufruf von [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) oder `waitForExternalEvent` (JavaScript) warten, können diese Ereignisse verarbeiten.
 
@@ -541,7 +538,7 @@ Wenn bei einer Orchestrierung aus unerwartetem Grund Fehler auftreten, können S
 
 Setzen Sie die Orchestrierung mit der [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_)-API (.NET) oder `rewindAsync`-API (JavaScript) in den Zustand *Wird ausgeführt* zurück. Führen Sie die Aktivität oder untergeordnete Orchestrierung, die den Orchestrierungsfehler verursacht hat, erneut aus.
 
-Stellen Sie sich als Beispiel einen Workflow vor, der eine Reihe von [menschlichen Genehmigungen](durable-functions-concepts.md#human) umfasst. Angenommen, eine Reihe von Aktivitätsfunktionen benachrichtigt jemanden, dass seine Genehmigung erforderlich ist, und wartet in Echtzeit auf die Antwort. Stellen Sie sich vor, dass nachdem alle Genehmigungsaktivitäten Antworten erhalten haben oder abgelaufen sind, aufgrund einer Fehlkonfiguration einer Anwendung, z.B. einer ungültige Datenbank-Verbindungszeichenfolge, ein Fehler bei einer anderen Aktivität auftritt. Das Ergebnis ist ein Orchestrierungsfehler tief im Workflow. Mit der `RewindAsync`-API (.NET) oder `rewindAsync`-API (JavaScript) kann ein Anwendungsadministrator den Konfigurationsfehler beheben und die fehlerhafte Orchestrierung zum Zustand unmittelbar vor dem Fehler zurückspulen. Keiner der Schritte, die menschliche Interaktion erforderten, muss erneut genehmigt werden, und die Orchestrierung kann jetzt erfolgreich abgeschlossen werden.
+Stellen Sie sich als Beispiel einen Workflow vor, der eine Reihe von [menschlichen Genehmigungen](durable-functions-overview.md#human) umfasst. Angenommen, eine Reihe von Aktivitätsfunktionen benachrichtigt jemanden, dass seine Genehmigung erforderlich ist, und wartet in Echtzeit auf die Antwort. Stellen Sie sich vor, dass nachdem alle Genehmigungsaktivitäten Antworten erhalten haben oder abgelaufen sind, aufgrund einer Fehlkonfiguration einer Anwendung, z.B. einer ungültige Datenbank-Verbindungszeichenfolge, ein Fehler bei einer anderen Aktivität auftritt. Das Ergebnis ist ein Orchestrierungsfehler tief im Workflow. Mit der `RewindAsync`-API (.NET) oder `rewindAsync`-API (JavaScript) kann ein Anwendungsadministrator den Konfigurationsfehler beheben und die fehlerhafte Orchestrierung zum Zustand unmittelbar vor dem Fehler zurückspulen. Keiner der Schritte, die menschliche Interaktion erforderten, muss erneut genehmigt werden, und die Orchestrierung kann jetzt erfolgreich abgeschlossen werden.
 
 > [!NOTE]
 > Die Funktion *Zurückspulen* unterstützt kein Zurückspulen von Orchestrierungsinstanzen, die permanente Timer verwenden.
@@ -661,4 +658,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [HTTP APIs in Durable Functions (Azure Functions)](durable-functions-http-api.md) (HTTP-APIs in Durable Functions [Azure Functions])
+> [Versioning in Durable Functions (Azure Functions)](durable-functions-versioning.md) (Versionsverwaltung in Durable Functions [Azure Functions])
+
+> [!div class="nextstepaction"]
+> [Integrierte in HTTP API-Referenz für Instanzverwaltung](durable-functions-http-api.md)

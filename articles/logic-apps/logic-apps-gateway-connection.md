@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/01/2019
+ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861030"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036655"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
-Um in Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, erstellen Sie eine lokale Datengatewayressource im Azure-Portal. Ihre Logik-Apps können dann die [lokalen Connectors](../logic-apps/logic-apps-gateway-install.md#supported-connections) verwenden. In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource erstellen, *nachdem* Sie [das Gateway auf Ihren lokalen Computer heruntergeladen und installiert haben](../logic-apps/logic-apps-gateway-install.md). Weitere Informationen zur Funktionsweise des Gateways finden Sie unter [Funktionsweise des Gateways](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Um in Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, erstellen Sie eine lokale Datengatewayressource im Azure-Portal. Ihre Logik-Apps können dann die [lokalen Connectors](../connectors/apis-list.md#on-premises-connectors) verwenden. In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource erstellen, *nachdem* Sie [das Gateway auf einen lokalen Computer heruntergeladen und dort installiert haben](../logic-apps/logic-apps-gateway-install.md). Weitere Informationen zum Gateway finden Sie unter [So funktioniert das Gateway](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
 > [!TIP]
 > Erwägen Sie zum Herstellen einer Verbindung mit virtuellen Azure-Netzwerken stattdessen die Erstellung einer [*Integrationsdienstumgebung*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE). 
@@ -29,6 +29,27 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 * [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>Unterstützte Datenquellen
+
+Für Azure Logic Apps unterstützt das lokale Datengateway [lokale Connectors](../connectors/apis-list.md#on-premises-connectors) für die folgenden Datenquellen:
+
+* BizTalk Server 2016
+* Dateisystem
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle-Datenbank
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
+
+Obwohl das Gateway selbst keine zusätzlichen Kosten verursacht, gilt das [Logic Apps-Preismodell](../logic-apps/logic-apps-pricing.md) für diese Connectors und andere Vorgänge in Azure Logic Apps.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,7 +84,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, erstellen 
    | **Ressourcenname** | Ihr Gatewayressourcenname, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. |
    | **Abonnement** | Ihr Azure-Abonnement. Dieses muss mit der Gatewayinstallation und der Logik-App identisch sein. Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben. |
    | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die Sie verwenden möchten. |
-   | **Standort** | Die gleiche Region wie der Standort, der während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. Andernfalls kann es sein, dass Ihre Gatewayinstallation nicht in der Liste **Installationsname** zur Auswahl angezeigt wird. Der Standort Ihrer Logik-App kann sich vom Standort Ihrer Gatewayressource unterscheiden. |
+   | **Location** | Die gleiche Region wie der Standort, der während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. Andernfalls kann es sein, dass Ihre Gatewayinstallation nicht in der Liste **Installationsname** zur Auswahl angezeigt wird. Der Standort Ihrer Logik-App kann sich vom Standort Ihrer Gatewayressource unterscheiden. |
    | **Installationsname** | Wenn Ihre Gatewayinstallation noch nicht ausgewählt ist, wählen Sie das Gateway aus, das Sie zuvor installiert haben. Zuvor verknüpfte Gatewayinstallationen werden nicht in der Liste angezeigt und stehen nicht zur Auswahl zur Verfügung. |
    |||
 
@@ -135,6 +156,13 @@ Um eine andere Gatewayressource zu erstellen, Ihre Gatewayinstallation mit einer
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**F:** Warum sehe ich meine Gatewayinstallation nicht, wenn ich die Gatewayressource in Azure erstelle? <br/>
+**A:** Dieses Problem kann folgende Ursachen haben:
+
+* Ihre Gatewayinstallation wurde bereits registriert und von einer anderen Gatewayressource in Azure beansprucht. Gatewayinstallationen werden in der Instanzenliste nicht angezeigt, nachdem Gatewayressourcen für sie erstellt wurden. Sehen Sie sich zum Überprüfen der Gatewayregistrierungen im Azure-Portal alle Azure-Ressourcen mit dem Typ **Lokales Datengateway** für *alle* Azure-Abonnements an.
+
+* Die Azure AD-Identität der Person, die das Gateway installiert hat, unterscheidet sich von der Person, die sich beim Azure-Portal angemeldet hat. Vergewissern Sie sich, dass Sie mit der gleichen Identität angemeldet sind, mit der das Gateway installiert wurde.
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517419"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967227"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Artefakten zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
-Fügen Sie nach der Erstellung einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) Artefakte wie Logik-Apps, Integrationskonten und benutzerdefinierte Connectors hinzu, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können.
+Fügen Sie nach der Erstellung einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) Artefakte wie Logik-Apps, Integrationskonten und Connectors hinzu, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Fügen Sie nach der Erstellung einer [Integrationsdienstumgebung (ISE)](../logic
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>Erstellen von Logik-Apps in einer ISE
+## <a name="create-logic-apps"></a>Erstellen von Logik-Apps
 
 Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer Integrationsdienstumgebung (ISE) ausgeführt werden:
 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Erstellen von Integrationskonten in einer ISE
+## <a name="create-integration-accounts"></a>Erstellen von Integrationskonten
 
 Basierend auf der während der Erstellung gewählten [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) umfasst Ihre ISE die Nutzung des jeweiligen Integrationskontos ohne weitere Kosten. Logik-Apps, die in einer Integrationsdienstumgebung (ISE) enthalten sind, können nur auf Integrationskonten verweisen, die sich in derselben ISE befinden. Damit ein Integrationskonto mit Logik-Apps in einer ISE funktioniert, muss sowohl für das Integrationskonto als auch für die Logik-Apps *dieselbe Umgebung* als Speicherort verwendet werden. Weitere Informationen zu Integrationskonten und ISEs finden Sie unter [Integrationskonten mit ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 ).
@@ -84,9 +84,25 @@ Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, d
 
 1. Informationen zum Verwalten von Integrationskonten in Ihrer ISE finden Sie unter [Manage your integration service environment (ISE) in Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md) (Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps.)
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>Hinzufügen von ISE-Connectors
+
+Sie können von Microsoft verwaltete Connectors hinzufügen, die für die Verwendung in Ihrer ISE verfügbar sind, dort aber nicht bereitgestellt werden.
+
+1. Wählen Sie im ISE-Menü unter **Einstellungen** die Option **Verwaltete Connectors** aus. Wählen Sie auf der Symbolleiste **Hinzufügen** aus.
+
+   ![Anzeigen verwalteter Connectors](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. Öffnen Sie im Bereich **Neuen verwalteten Connector hinzufügen** die Liste **Connector suchen**. Wenn der gewünschte Connector verfügbar ist, wählen Sie diesen Connector aus, und wählen Sie dann **Erstellen** aus.
+
+   In der Liste werden nur die Connectors angezeigt, die berechtigt sind, aber nicht in ihrer ISE bereitgestellt werden. Connectors, die bereits in der ISE bereitgestellt wurden, sind für die Auswahl nicht verfügbar.
+
+   ![Auswählen eines berechtigten Connectors](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>Erstellen benutzerdefinierter Connectors in einer ISE
+## <a name="create-custom-connectors"></a>Erstellen benutzerdefinierter Connectors
 
 Wenn Sie benutzerdefinierte Connectors in ihrer ISE verwenden möchten, erstellen Sie diese direkt in der ISE.
 

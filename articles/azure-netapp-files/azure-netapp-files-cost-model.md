@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030794"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995116"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodell für Azure NetApp Files 
 
@@ -73,7 +73,7 @@ Das folgende Diagramm veranschaulicht diese Konzepte:
     * Den Volumes 1 bis 8 ist ein Kontingent von je 60 TiB zugewiesen.  Die insgesamt genutzte Kapazität ist 480 TiB.  
         Jedes Volume hat einen QoS-Grenzwert von 3,75 GiB/s Durchsatz (60 TiB x 64 MiB/s).  
     * Volume 9 ist ein Kontingent von 20 TiB zugewiesen.  
-        Volume 9 hat einen QoS-Grenzwert von 1,25 GiB/s Durchsatz (60 TiB x 64 MiB/s).
+        Volume 9 hat einen QoS-Grenzwert von 1,25 GiB/s Durchsatz (20 TiB x 64 MiB/s).
 * Volume 9 stellt ein Überschreitungsszenario dar. 25 TiB werden tatsächlich genutzt.  
     * Nach Ablauf der einstündigen Karenzzeit wird die Größe des Kapazitätspools in 505 TiB geändert.  
         Das heißt: insgesamt genutzte Kapazität = 8 x 60-TiB-Kontingent für die Volumes 1 bis 8 und 25 TiB tatsächliche Nutzung für Volume 9.

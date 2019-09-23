@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087307"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933411"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Behandeln von externen Ereignissen in Durable Functions (Azure Functions)
 
@@ -201,10 +201,7 @@ Intern fügt `RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript) eine Nachri
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Eternal orchestrations in Durable Functions (Azure Functions)](durable-functions-eternal-orchestrations.md) (Ewige Orchestrierungen in Durable Functions [Azure Functions])
-
-> [!div class="nextstepaction"]
-> [Stateful singletons in Durable Functions - Counter sample](durable-functions-phone-verification.md) (Statusbehaftete Singletons in Durable Functions – Zählerbeispiel)
+> [Erfahren Sie, wie Fehlerbehandlung implementiert wird](durable-functions-error-handling.md)
 
 > [!div class="nextstepaction"]
 > [Human interaction in Durable Functions - Phone verification sample](durable-functions-phone-verification.md) (Menschliche Interaktion in Durable Functions – Telefonüberprüfungsbeispiel)

@@ -8,43 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: 657bc704e33e89b1646dffa6123a27169e6c317a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/01/2019
+ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860791"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087723"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
-Bevor Sie eine Verbindung mit lokalen Datenquellen aus Azure Logic Apps herstellen können, müssen Sie das lokale Datengateway herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen (nicht cloudbasierten) Datenquellen und Ihren Logik-Apps bereitstellt. Sie können die gleiche Gatewayinstallation für andere Clouddienste verwenden, etwa für Power BI, Microsoft Flow, PowerApps und Azure Analysis Services. Weitere Informationen zum Verwenden des Gateways mit diesen Diensten finden Sie in den folgenden Artikeln:
+Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md) herstellen können, müssen Sie das [lokale Datengateway](https://aka.ms/on-premises-data-gateway-installer) herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Datenquellen und Ihren Logik-Apps bereitstellt. Sie können die gleiche Gatewayinstallation für andere Clouddienste verwenden, etwa für Power BI, Microsoft Flow, PowerApps und Azure Analysis Services. Weitere Informationen zum Verwenden des Gateways mit diesen Diensten finden Sie in den folgenden Artikeln:
 
 * [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
-Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service).
-
-<a name="supported-connections"></a>
-
-Das Gateway unterstützt [lokale Connectors](../connectors/apis-list.md#on-premises-connectors) in Azure Logic Apps für die folgenden Datenquellen:
-
-* BizTalk Server 2016
-* Dateisystem
-* IBM DB2  
-* IBM Informix
-* IBM MQ
-* MySQL
-* Oracle-Datenbank
-* PostgreSQL
-* SAP
-* SharePoint Server
-* SQL Server
-* Teradata
-
-Obwohl das Gateway allein keine zusätzlichen Kosten verursacht, gilt das [Logic Apps-Preismodell](../logic-apps/logic-apps-pricing.md) für diese Connectors und andere Vorgänge in Azure Logic Apps.
+Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
@@ -66,7 +47,7 @@ Obwohl das Gateway allein keine zusätzlichen Kosten verursacht, gilt das [Logic
 
   **Mindestanforderungen**
 
-  * .NET Framework 4.6
+  * .NET Framework 4.7.2
   * 64-Bit-Version von Windows 7 oder Windows Server 2008 R2 (oder höher)
 
   **Empfohlen**
@@ -159,11 +140,18 @@ Obwohl das Gateway allein keine zusätzlichen Kosten verursacht, gilt das [Logic
 
 1. [Erstellen Sie jetzt die Azure-Ressource für Ihre Gatewayinstallation](../logic-apps/logic-apps-gateway-connection.md).
 
+## <a name="check-or-adjust-communication-settings"></a>Überprüfen oder Anpassen von Kommunikationseinstellungen
+
+Das lokale Datengateway ist für Cloudkonnektivität von [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) abhängig und richtet die entsprechenden ausgehenden Verbindungen zu der dem Gateway zugeordneten Azure-Region ein. Wenn in Ihrer Arbeitsumgebung der Datenverkehr über einen Proxy oder eine Firewall an das Internet weitergeleitet werden muss, verhindert diese Einschränkung unter Umständen, dass das lokale Datengateway eine Verbindung mit dem Gatewayclouddienst und Azure Service Bus herstellt. Das Gateway verfügt über mehrere Kommunikationseinstellungen, die Sie anpassen können. Weitere Informationen finden Sie in den folgenden Themen:
+
+* [Anpassen von Kommunikationseinstellungen für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+
 <a name="high-availability"></a>
 
 ## <a name="high-availability-support"></a>Unterstützung für Hochverfügbarkeit
 
-Um einzelne Fehlerquellen (Single Points of Failure) für lokalen Datenzugriff zu vermeiden, können Sie mehrere Gatewayinstallationen (nur Standardmodus) für jeweils eine Fehlerquelle auf einem anderen Computer einrichten und Sie als Cluster oder Gruppe einrichten. Auf diese Weise werden Datenanforderungen an das zweite Gateway weitergeleitet, wenn das primäre Gateway nicht verfügbar ist. Da Sie nur ein Standardgateway auf einem Computer installieren können, müssen Sie jedes weitere Gateway, das sich im Cluster befindet, auf einem anderen Computer installieren. Alle Connectors, die mit dem lokalen Datengateway zusammenarbeiten, unterstützen Hochverfügbarkeit. 
+Um einzelne Fehlerquellen (Single Points of Failure) für lokalen Datenzugriff zu vermeiden, können Sie mehrere Gatewayinstallationen (nur Standardmodus) für jeweils eine Fehlerquelle auf einem anderen Computer einrichten und Sie als Cluster oder Gruppe einrichten. Auf diese Weise werden Datenanforderungen an das zweite Gateway weitergeleitet, wenn das primäre Gateway nicht verfügbar ist. Da Sie nur ein Standardgateway auf einem Computer installieren können, müssen Sie jedes weitere Gateway, das sich im Cluster befindet, auf einem anderen Computer installieren. Alle Connectors, die mit dem lokalen Datengateway zusammenarbeiten, unterstützen Hochverfügbarkeit.
 
 * Sie müssen bereits über mindestens eine Gatewayinstallation im gleichen Azure-Abonnement wie das primäre Gateway sowie über den Wiederherstellungsschlüssel für diese Installation verfügen.
 
@@ -197,293 +185,88 @@ Wenn Sie den Ort Ihres Gateways ändern, die Gatewayinstallation auf einen neuen
 
 1. Wenn Sie fertig sind, wählen Sie **Konfigurieren** aus, damit Sie die Aufgabe abschließen können.
 
-## <a name="configure-proxy-or-firewall"></a>Konfigurieren eines Proxys oder einer Firewall
+## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene
 
-Wenn in Ihrer Arbeitsumgebung der Datenverkehr über einen Proxy an das Internet weitergeleitet werden muss, verhindert diese Einschränkung unter Umständen, dass das lokale Datengateway eine Verbindung mit dem Gatewayclouddienst und [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) herstellt. Weitere Informationen finden Sie unter [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](https://docs.microsoft.com/power-bi/service-gateway-proxy).
+Um einen Einblick in alle lokalen Datengateways in einem Azure AD-Mandanten zu erhalten, können sich globale Administratoren in diesem Mandanten am [Power Platform Admin Center](https://powerplatform.microsoft.com) als Mandantenadministrator anmelden und die Option **Datengateways** auswählen. Weitere Informationen finden Sie unter [Verwaltung auf Mandantenebene für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
-Um zu überprüfen, ob der Proxy oder die Firewall Verbindungen möglicherweise blockiert, vergewissern Sie sich, dass der Computer tatsächlich eine Verbindung mit dem Internet und Azure Service Bus herstellen kann. Führen Sie an einer PowerShell-Eingabeaufforderung folgenden Befehl aus:
+<a name="restart-gateway"></a>
 
-`Test-NetConnection -ComputerName watchdog.servicebus.windows.net -Port 9350`
-
-> [!NOTE]
-> Dieser Befehl testet nur die Netzwerkverbindung und die Verbindung mit dem Azure Service Bus. Der Befehl führt keine Aktion für das Gateway oder den Gatewayclouddienst aus, der Ihre Anmeldeinformationen und Gatewaydetails verschlüsselt und speichert. 
->
-> Außerdem ist dieser Befehl ist nur unter Windows Server 2012 R2 oder höher und Windows 8.1 oder höher verfügbar. In früheren Betriebssystemversionen können Sie Telnet verwenden, um Konnektivität zu testen. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-messaging-overview.md).
-
-Die Ergebnisse sollten etwa wie das folgende Beispiel aussehen. Dabei muss **TcpTestSucceeded** auf **True** festgelegt sein:
-
-```text
-ComputerName           : watchdog.servicebus.windows.net
-RemoteAddress          : 70.37.104.240
-RemotePort             : 5672
-InterfaceAlias         : vEthernet (Broadcom NetXtreme Gigabit Ethernet - Virtual Switch)
-SourceAddress          : 10.120.60.105
-PingSucceeded          : False
-PingReplyDetails (RTT) : 0 ms
-TcpTestSucceeded       : True
-```
-
-Ist **TcpTestSucceeded** nicht auf **True** festgelegt, wird Ihr Gateway möglicherweise durch eine Firewall blockiert. Wenn Sie alles abdecken möchten, können Sie die Werte von **ComputerName** und **Port** durch die Werte unter [Konfigurieren von Ports](#configure-ports) in diesem Artikel ersetzen.
-
-Es kann auch sein, dass die Firewall Verbindungen blockiert, die von Azure Service Bus mit Azure-Rechenzentren hergestellt werden. Trifft dies zu, gehen Sie so vor, dass Sie alle IP-Adressen für diese Rechenzentren in Ihrer Region genehmigen (Blockierung aufheben). Für diese IP-Adressen können Sie [die Azure-IP-Adressenliste hier abrufen](https://www.microsoft.com/download/details.aspx?id=41653).
-
-<a name="configure-ports"></a>
-
-## <a name="configure-ports"></a>Konfigurieren von Ports
-
-Das Gateway erstellt eine ausgehende Verbindung mit Azure Service Bus und kommuniziert über Ports für ausgehenden Datenverkehr: TCP 443 (Standard), 5671, 5672, 9350 bis 9354. Das Gateway benötigt keine eingehenden Ports. Erfahren Sie mehr über [Azure Service Bus und Hybridlösungen](../service-bus-messaging/service-bus-messaging-overview.md).
-
-Das Gateway verwendet die folgenden vollqualifizierten Domänennamen:
-
-| Domänennamen | Ausgehende Ports | BESCHREIBUNG |
-| ------------ | -------------- | ----------- |
-| *. analysis.windows.net | 443 | HTTPS |
-| *.core.windows.net | 443 | HTTPS |
-| *.frontend.clouddatahub.net | 443 | HTTPS |
-| *.login.windows.net | 443 | HTTPS |
-| *.microsoftonline-p.com | 443 | Wird je nach Konfiguration für die Authentifizierung verwendet. |
-| *.msftncsi.com | 443 | Wird verwendet, um die Internetkonnektivität zu testen, wenn der Power BI-Dienst das Gateway nicht erreicht. |
-| *.servicebus.windows.net | 443, 9350-9354 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) |
-| *.servicebus.windows.net | 5671-5672 | Advanced Message Queuing Protocol (AMQP) |
-| login.microsoftonline.com | 443 | HTTPS |
-||||
-
-In einigen Fällen werden Azure Service Bus-Verbindungen nicht mithilfe von vollständig qualifizierten Domänennamen hergestellt, sondern mit IP-Adressen. Es wird daher empfohlen, die Blockierung der IP-Adressen für Ihre Datenregion in der Firewall aufzuheben. Um den Zugriff auf IP-Adressen anstatt auf Domänen zu ermöglichen, können Sie die [Liste der IP-Bereiche aus Microsoft Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen und verwenden. Die IP-Adressen in dieser Liste finden Sie in der [CIDR-Notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing).
-
-### <a name="force-https-communication-with-azure-service-bus"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
-
-Einige Proxys lassen Datenverkehr nur an Port 80 und 443 durch. Standardmäßig erfolgt die Kommunikation mit Azure Service Bus über andere Ports als 443. Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS kommuniziert. Dies kann allerdings die Leistung erheblich beeinträchtigen. Weitere Informationen finden Sie unter [Erzwingen von HTTPS-Kommunikation mit Azure Service Bus](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication#force-https-communication-with-azure-service-bus).
-
-<a name="windows-service-account"></a>
-
-## <a name="windows-service-account"></a>Windows-Dienstkonto
+## <a name="restart-gateway"></a>Neustarten des Gateways
 
 Standardmäßig wird die Gatewayinstallation auf Ihrem lokalen Computer als Windows-Dienstkonto mit dem Namen „Lokaler Datengatewaydienst“ ausgeführt. Die Gatewayinstallation verwendet jedoch den Namen `NT SERVICE\PBIEgwService` für die Kontoanmeldeinformationen „Anmelden als“ und verfügt über die Berechtigungen „Anmelden als Dienst“.
 
 > [!NOTE]
 > Ihr Windows-Dienstkonto ist weder mit dem Konto, das zum Herstellen von Verbindungen mit den lokalen Datenquellen verwendet wird, noch mit dem Azure-Konto identisch, das Sie zum Anmelden bei Clouddiensten verwenden.
 
-<a name="restart-gateway"></a>
-
-## <a name="restart-gateway"></a>Neustarten des Gateways
-
-Das Datengateway wird als Windows-Dienst ausgeführt, und Sie können das Gateway wie jeden anderen Windows-Dienst auf verschiedene Arten starten und beenden. Weitere Informationen finden Sie unter [Neustarten eines lokalen Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
-
-## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene
-
-Um einen Einblick in alle lokalen Datengateways in einem Azure AD-Mandanten zu erhalten, können sich globale Administratoren in diesem Mandanten am [Power Platform Admin Center](https://powerplatform.microsoft.com) als Mandantenadministrator anmelden und die Option **Datengateways** auswählen. Weitere Informationen finden Sie unter [Verwaltung auf Mandantenebene für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Sie können Gateways (wie jeden anderen Windows-Dienst) auf verschiedene Arten starten und beenden. Weitere Informationen finden Sie unter [Neustarten eines lokalen Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
 ## <a name="how-the-gateway-works"></a>So funktioniert das Gateway
 
-Das Datengateway ermöglicht die schnelle und sichere Kommunikation zwischen Ihrer Logik-App, dem Gatewayclouddienst und Ihrer lokalen Datenquelle. Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen Ihrer Logik-App, dem lokalen Datengateway und Ihrer lokalen Datenquelle weiter.
+Benutzer in Ihrer Organisation können auf lokale Daten zugreifen, für die sie bereits über autorisierten Zugriff verfügen. Bevor diese Benutzer jedoch eine Verbindung mit Ihrer lokalen Datenquelle herstellen können, müssen Sie ein lokales Datengateway installieren und einrichten. Normalerweise ist ein Administrator die Person, die ein Gateway installiert und einrichtet. Diese Aktionen erfordern möglicherweise Serveradministratorberechtigungen oder besondere Kenntnisse zu Ihren lokalen Servern.
 
-Das Gateway funktioniert mit Firewalls und verwendet nur ausgehende Verbindungen. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über Azure Service Bus. Diese Service Bus-Instanz erstellt einen Kanal zwischen dem Gateway und dem aufrufenden Dienst, speichert jedoch keine Daten. Alle über das Gateway übertragenen Daten sind verschlüsselt.
+Das Gateway ermöglicht die schnelle und sichere Kommunikation hinter den Kulissen. Diese Kommunikation erfolgt zwischen einem Benutzer in der Cloud, dem Gatewayclouddienst und ihrer lokalen Datenquelle. Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen dem Benutzer, dem Gateway und Ihrer lokalen Datenquelle weiter.
+
+Das Gateway funktioniert mit Firewalls und verwendet nur ausgehende Verbindungen. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Diese Service Bus-Instanz erstellt einen Kanal zwischen dem Gateway und dem aufrufenden Dienst, speichert jedoch keine Daten. Alle über das Gateway übertragenen Daten sind verschlüsselt.
 
 ![Architektur für das lokale Datengateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
-In den folgenden Schritten wird beschrieben, was geschieht, wenn ein Benutzer in der Cloud mit einem Element interagiert, das mit Ihrer lokalen Datenquelle verbunden ist:
+> [!NOTE]
+> Abhängig vom Clouddienst müssen Sie möglicherweise eine Datenquelle für das Gateway einrichten.
 
-1. Der Gatewayclouddienst erstellt zusammen mit den verschlüsselten Anmeldeinformationen für die Datenquelle eine Abfrage und sendet die Abfrage an die Warteschlange zur Verarbeitung durch das Gateway.
+In den folgenden Schritten wird beschrieben, was geschieht, wenn Sie mit einem Element interagieren, das mit einer lokalen Datenquelle verbunden ist:
 
-1. Der Gatewayclouddienst analysiert die Abfrage und überträgt die Anforderung per Push an den Azure Service Bus.
+1. Der Clouddienst erstellt eine Abfrage mit den verschlüsselten Anmeldeinformationen für die lokale Datenquelle. Der Dienst sendet dann die Abfrage und die Anmeldeinformationen zur Verarbeitung an die Gatewaywarteschlange.
 
-1. Das lokale Datengateway fragt den Azure Service Bus nach ausstehenden Anforderungen ab.
+1. Der Gatewayclouddienst analysiert die Abfrage und pusht die Anforderung dann an Azure Service Bus.
 
-1. Das Gateway ruft die Abfrage ab, entschlüsselt die Anmeldeinformationen und stellt mit diesen Anmeldeinformationen eine Verbindung mit der Datenquelle her.
+1. Azure Service Bus sendet die ausstehenden Anforderungen an das Gateway.
+
+1. Das Gateway ruft die Abfrage ab, entschlüsselt die Anmeldeinformationen und stellt anhand dieser Anmeldeinformationen eine Verbindung mit mindestens einer Datenquelle her.
 
 1. Das Gateway sendet die Abfrage zur Ausführung an die Datenquelle.
 
 1. Die Ergebnisse werden aus der Datenquelle zurück an das Gateway und dann an den Gatewayclouddienst gesendet. Der Gatewayclouddienst verwendet dann die Ergebnisse.
 
+### <a name="authentication-to-on-premises-data-sources"></a>Authentifizierung bei lokalen Datenquellen
+
+Gespeicherte Anmelde Informationen werden verwendet, um eine Verbindung zwischen dem Gateway und lokalen Datenquellen herzustellen. Unabhängig vom Benutzer verwendet das Gateway die gespeicherten Anmeldeinformationen, um eine Verbindung herzustellen. Möglicherweise gibt es Authentifizierungsausnahmen für bestimmte Dienste, z.B. DirectQuery und LiveConnect für Analysis Services in Power BI.
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+Microsoft Cloud Services nutzen [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) zum Authentifizieren von Benutzern. Ein Azure AD-Mandant enthält Benutzernamen und Sicherheitsgruppen. In der Regel ist die E-Mail-Adresse, die Sie für die Anmeldung verwenden, identisch mit dem Benutzerprinzipalnamen (User Principal Name, UPN) für Ihr Konto.
+
+### <a name="what-is-my-upn"></a>Was ist mein UPN?
+
+Wenn Sie kein Domänenadministrator sind, kennen Sie Ihren UPN möglicherweise nicht. Um den UPN für Ihr Konto zu ermitteln, führen Sie den Befehl `whoami /upn` über Ihre Arbeitsstation aus. Obwohl das Ergebnis wie eine E-Mail-Adresse aussieht, ist es der UPN für Ihr lokales Domänenkonto.
+
+### <a name="synchronize-an-on-premises-active-directory-with-azure-active-directory"></a>Synchronisieren eines lokalen Active Directory mit Azure Active Directory
+
+Der UPN für Ihre lokalen Active Directory Konten-und Azure AD-Konten muss identisch sein. Stellen Sie daher sicher, dass jedes lokale Active Directory-Konto mit Ihrem Azure AD-Konto übereinstimmt. Die Clouddienste kennen nur die Konten in Azure AD. Daher müssen Sie Ihrem lokalen Active Directory kein Konto hinzufügen. Wenn das Konto in Azure AD nicht vorhanden ist, können Sie dieses Konto nicht verwenden. 
+
+Nachfolgend finden Sie Möglichkeiten, wie Sie Ihre lokalen Active Directory-Konten mit Azure AD abgleichen können. 
+
+* Manuelles Hinzufügen von Konten zu Azure AD.
+
+  Erstellen Sie ein Konto im Azure-Portal oder im Microsoft 365 Admin Center. Stellen Sie sicher, dass der Kontoname mit dem UPN für das lokale Active Directory-Konto übereinstimmt.
+
+* Synchronisieren lokaler Konten mit Ihrem Azure AD-Mandanten, indem Sie das Azure Active Directory Connect-Tool verwenden.
+
+  Das Azure AD Connect-Tool stellt Optionen für die Verzeichnissynchronisierung und die Einrichtung von Authentifizierung bereit. Diese Optionen umfassen Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund. Wenn Sie kein Mandantenadministrator oder lokaler Domänenadministrator sind, wenden Sie sich an Ihren IT-Administrator, um Azure AD Connect einzurichten. Azure AD Connect stellt sicher, dass der Azure AD-UPN mit dem lokalen Active Directory-UPN übereinstimmt. Dieser Abgleich ist hilfreich, wenn Sie Analysis Services-Liveverbindungen mit Power BI-oder SSO-Funktionen (einmaliges Anmelden) verwenden.
+
+  > [!NOTE]
+  > Durch die Synchronisierung von Konten mit dem Azure AD Connect-Tool werden neue Konten in Ihrem Azure AD-Mandanten erstellt.
+
 <a name="faq"></a>
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+## <a name="faq-and-troubleshooting"></a>FAQ und Fehlerbehebung
 
-### <a name="general"></a>Allgemein
+Weitere Informationen finden Sie in den folgenden Themen:
 
-**F:** Benötige ich ein Gateway für Datenquellen in der Cloud (etwa für Azure SQL-Datenbank)? <br/>
-**A:** Nein. Das Gateway stellt nur Verbindungen mit lokalen Datenquellen her.
-
-**F:** Muss das Gateway auf dem gleichen Computer installiert sein wie die Datenquelle? <br/>
-**A:** Nein. Das Gateway stellt mithilfe der bereitgestellten Verbindungsinformationen eine Verbindung mit der Datenquelle her. Stellen Sie sich das Gateway in diesem Sinne als Clientanwendung vor. Für das Gateway ist nur die Funktion zum Herstellen der Verbindung mit dem angegebenen Servernamen erforderlich.
-
-<a name="why-azure-work-school-account"></a>
-
-**F:** Warum muss ich ein Geschäfts-, Schul- oder Unikonto verwenden, um mich anzumelden? <br/>
-**A:** Sie können beim Installieren des lokalen Datengateways ausschließlich ein Geschäfts-, Schul- oder Unikonto verwenden. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
-
-**F:** Wo werden meine Anmeldeinformationen gespeichert? <br/>
-**A:** Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gatewayclouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.
-
-**F:** Gibt es Anforderungen an die Netzwerkbandbreite? <br/>
-**A:** Überprüfen Sie, ob die Netzwerkverbindung einen guten Durchsatz ermöglicht. Jede Umgebung ist anders, und die Menge der zu sendenden Daten kann sich auf die Ergebnisse auswirken. Probieren Sie [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) aus, um eine Durchsatzstufe zwischen der lokalen Datenquelle und den Azure-Datencentern zu gewährleisten. Sie können mithilfe eines externen Tools wie Azure Speed Test messen, wie hoch der Durchsatz ist.
-
-**F:** Mit welcher Wartezeit ist beim Ausführen von Abfragen für eine Datenquelle über das Gateway zu rechnen? Welche Architektur ist die beste? <br/>
-**A:** Installieren Sie das Gateway möglichst nah an der Datenquelle, um die Netzwerkwartezeit zu reduzieren. Wenn Sie das Gateway auf der tatsächlichen Datenquelle installieren können, wird die Wartezeit durch diese Nähe minimiert. Berücksichtigen Sie außerdem die Nähe zu Azure-Datencentern. Wenn für Ihren Dienst beispielsweise das Rechenzentrum „USA, Westen“ verwendet wird und Sie SQL Server auf einer Azure-VM hosten, sollte sich die Azure-VM ebenfalls in der Region „USA, Westen“ befinden. Aufgrund dieser Nähe wird die Wartezeit verringert, und es werden Gebühren für ausgehenden Datenverkehr auf der Azure-VM vermieden.
-
-**F:** Wie werden Ergebnisse an die Cloud zurückgesendet? <br/>
-**A:** Die Ergebnisse werden über Azure Service Bus gesendet.
-
-**F:** Gibt es eingehende Verbindungen mit dem Gateway aus der Cloud? <br/>
-**A:** Nein. Das Gateway verwendet ausgehende Verbindungen mit Azure Service Bus.
-
-**F:** Was geschieht, wenn ich ausgehende Verbindungen blockiere? Was muss ich öffnen? <br/>
-**A:** Die Ports und Hosts, die das Gateway verwendet.
-
-**F:** Wie heißt der eigentliche Windows-Dienst? <br/>
-**A:** Auf der Registerkarte „Dienste“ im Task-Manager lautet der Dienstname „PBIEgwService“ oder Power BI Enterprise Gateway-Dienst. In der Dienstkonsole lautet der Dienstname „On-premises data gateway service“ (Dienst „Lokales Datengateway“). Der Windows-Dienst verwendet „NT SERVICE\PBIEgwService“ als Dienst-SID (SSID).
-
-**F:** Kann der Windows-Gatewaydienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
-**A:** Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto.
-
-### <a name="disaster-recovery"></a>Notfallwiederherstellung
-
-**F:** Welche Optionen sind für die Notfallwiederherstellung verfügbar? <br/>
-**A:** Sie können den Wiederherstellungsschlüssel verwenden, um ein Gateway wiederherzustellen oder zu verschieben. Wenn Sie das Gateway installieren, geben Sie den Wiederherstellungsschlüssel an.
-
-**F:** Welchen Vorteil bietet der Wiederherstellungsschlüssel? <br/>
-**A:** Der Wiederherstellungsschlüssel bietet eine Möglichkeit zum Migrieren oder Wiederherstellen Ihrer Gatewayeinstellungen nach einem Notfall.
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-In diesem Abschnitt werden einige allgemeine Probleme behandelt, die beim Einrichten und Verwenden des lokalen Datengateways auftreten können.
-
-**F:** Warum ist bei der Gatewayinstallation ein Fehler aufgetreten? <br/>
-**A:** Dieses Problem kann auftreten, wenn die Virenschutzsoftware auf dem Zielcomputer veraltet ist. Sie können die Virenschutzsoftware entweder aktualisieren oder für die Dauer der Gatewayinstallation deaktivieren. Aktivieren Sie die Software anschließend wieder.
-
-**F:** Warum sehe ich meine Gatewayinstallation nicht, wenn ich die Gatewayressource in Azure erstelle? <br/>
-**A:** Dieses Problem kann folgende Ursachen haben:
-
-* Ihre Gatewayinstallation wurde bereits registriert und von einer anderen Gatewayressource in Azure beansprucht. Gatewayinstallationen werden in der Instanzenliste nicht angezeigt, nachdem Gatewayressourcen für sie erstellt wurden. Sehen Sie sich zum Überprüfen der Gatewayregistrierungen im Azure-Portal alle Azure-Ressourcen mit dem Typ **Lokales Datengateway** für *alle* Azure-Abonnements an.
-
-* Die Azure AD-Identität der Person, die das Gateway installiert hat, unterscheidet sich von der Person, die sich beim Azure-Portal angemeldet hat. Vergewissern Sie sich, dass Sie mit der gleichen Identität angemeldet sind, mit der das Gateway installiert wurde.
-
-[!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
-
-**F:** Wo befinden sich die Gatewayprotokolle? <br/>
-**A:** Informationen hierzu finden Sie weiter unten in diesem Artikel im [Abschnitt **Protokolle**](#logs).
-
-**F:** Wie kann ich feststellen, welche Abfragen an die lokale Datenquelle gesendet werden? <br/>
-**A:** Sie können die Abfrageablaufverfolgung aktivieren. Diese enthält auch die gesendeten Abfragen. Denken Sie daran, die Abfrageablaufverfolgung nach Abschluss der Problembehandlung wieder auf den ursprünglichen Wert zurückzusetzen. Wenn Sie die Abfrageablaufverfolgung aktiviert lassen, werden größere Protokolle erstellt.
-
-Sie können auch Tools anzeigen, die Ihre Datenquelle für die Verfolgung von Abfrageabläufen bietet. Sie können z.B. Erweiterte Ereignisse oder SQL Profiler für SQL Server und Analysis Services verwenden.
-
-### <a name="outdated-gateway-version"></a>Veraltete Gatewayversion
-
-Es können vermehrt Probleme auftreten, wenn die Gatewayversion veraltet ist. Achten Sie daher am besten darauf, dass Sie immer die aktuelle Version verwenden. Wenn Sie das Gateway für einen Monat oder länger nicht aktualisiert haben, sollten Sie erwägen, die neueste Version des Gateways zu installieren und zu ermitteln, ob Sie das Problem reproduzieren können.
-
-### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Fehler Fehler beim Hinzufügen des Benutzers zur Gruppe. (-2147463168 PBIEgwService Leistungsprotokollbenutzer)
-
-Dieser Fehler wird ggf. angezeigt, wenn Sie versuchen, das Gateway auf einem Domänencontroller zu installieren, der nicht unterstützt wird. Stellen Sie sicher, dass Sie das Gateway auf einem Computer bereitstellen, der kein Domänencontroller ist.
-
-<a name="logs"></a>
-
-### <a name="logs"></a>Protokolle
-
-Sammeln Sie zur Problembehandlung stets die Gatewayprotokolle, und sehen Sie sich diese an. Sie haben mehrere Optionen zum Sammeln der Protokolle. Die einfachste Möglichkeit ist jedoch die Erfassung über die Benutzeroberfläche des Gateway-Installers nach der Gatewayinstallation.
-
-1. Öffnen Sie auf Ihrem Computer den Installer für das lokale Datengateway.
-
-1. Wählen Sie im Menü links **Diagnose** aus.
-
-1. Klicken Sie unter **Gatewayprotokolle** auf **Protokolle exportieren**.
-
-   ![Exportieren von Protokollen über den Gateway-Installer](./media/logic-apps-gateway-install/export-logs.png)
-
-Nachfolgend sehen Sie weitere Speicherorte mit verschiedenen Protokollen:
-
-| Protokolltyp | Location |
-|----------|----------|
-| **Installationsprotokolle** | %localappdata%\Temp\On-premises_data_gateway_<*jjjjmmtt*>.<*Nummer*>.log |
-| **Konfigurationsprotokolle** | C:\Users\<*Benutzername*>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator<*jjjjmmtt*>.<*Nummer*>.log |
-| **Enterprise-Gatewaydienstprotokolle** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\Gateway<*jjjjmmtt*>.<*Nummer*>.log |
-|||
-
-**Ereignisprotokolle**
-
-Führen Sie die folgenden Schritte aus, um zu den Ereignisprotokollen für das Gateway zu navigieren:
-
-1. Öffnen Sie auf dem Computer mit der Gatewayinstallation die **Ereignisanzeige**.
-
-1. Erweitern Sie **Ereignisanzeige (lokal)**  > **Anwendungs- und Dienstprotokolle**.
-
-1. Wählen Sie **On-premises data gateway service** (Dienst „Lokales Datengateway“) aus.
-
-   ![Anzeigen von Ereignisprotokollen für das Gateway](./media/logic-apps-gateway-install/event-viewer.png)
-
-### <a name="review-slow-query-performance"></a>Überprüfen bei beeinträchtigter Abfrageleistung
-
-Falls Abfragen über das Gateway langsam ausgeführt werden, können Sie zusätzliche Protokolle aktivieren, die Abfragen und ihre Dauer ausgeben. Anhand dieser Protokolle können Sie unter Umständen die Abfragen mit beeinträchtigter Leistung oder langer Ausführungsdauer ermitteln. Um die Abfrageleistung zu verbessern, müssen Sie möglicherweise Ihre Datenquelle ändern und beispielsweise Indizes für SQL Server-Abfragen anpassen.
-
-Führen Sie die folgenden Schritte aus, um die Dauer einer Abfrage zu ermitteln:
-
-1. Navigieren Sie zum Speicherort für den Gatewayclient. In der Regel befindet er sich hier: ```C:\Program Files\On-premises data gateway```
-
-   Öffnen Sie zum Ermitteln des Clientspeicherorts andernfalls die Dienstkonsole auf dem gleichen Computer, suchen Sie **On-premises data gateway service** (Dienst „Lokales Datengateway“), und sehen Sie sich die Eigenschaft **Path to executable** (Pfad zur ausführbaren Datei) an.
-
-1. Öffnen Sie die folgenden Konfigurationsdateien, und bearbeiten Sie sie wie hier beschrieben:
-
-   * **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-     Ändern Sie in dieser Datei den Wert **EmitQueryTraces** aus **FALSE** in **TRUE**, damit Ihr Gateway Abfragen protokollieren kann, die von einem Gateway an eine Datenquelle gesendet werden:
-
-     ```html
-     <setting name="EmitQueryTraces" serializeAs="String">
-        <value>true</value>
-     </setting>
-     ```
-
-     > [!IMPORTANT]
-     > Wenn Sie die Einstellung „EmitQueryTraces“ aktivieren, erhöht sich dadurch basierend auf der Gatewaynutzung die Protokollgröße unter Umständen erheblich. Lassen Sie den Wert „EmitQueryTraces“ nicht langfristig aktiviert, sondern setzen Sie ihn nach der Überprüfung der Protokolle unbedingt auf **false** zurück.
-
-   * **Microsoft.PowerBI.DataMovement.Pipeline.Diagnostics.dll.config**
-
-     Damit vom Gateway ausführliche Einträge (einschließlich Einträge zur Dauer) protokolliert werden, ändern Sie den Wert **TracingVerbosity** von **4** in **5**. Führen Sie dazu einen der folgenden Schritte aus:
-
-     * Ändern Sie in dieser Konfigurationsdatei den Wert **TracingVerbosity** von **4** in **5**.
-
-       ```html
-       <setting name="TracingVerbosity" serializeAs="String">
-          <value>5</value>
-       </setting>
-       ```
-
-     * Öffnen Sie den Gateway-Installer, klicken Sie auf **Diagnose**, und aktivieren Sie **Zusätzliche Protokollierung**. Klicken Sie anschließend auf **Übernehmen**:
-
-       ![Aktivieren der zusätzlichen Protokollierung](./media/logic-apps-gateway-install/turn-on-additional-logging.png)
-
-     > [!IMPORTANT]
-     > Wenn Sie die Einstellung „TracingVerbosity“ aktivieren, erhöht sich dadurch basierend auf der Gatewaynutzung die Protokollgröße unter Umständen erheblich. Deaktivieren Sie nach der Überprüfung der Protokolle die Option **Zusätzliche Protokollierung** im Gateway-Installer unbedingt wieder, oder setzen Sie „TracingVerbosity“ in der Konfigurationsdatei auf **4** zurück, und lassen Sie diese Einstellung nicht langfristig aktiviert.
-
-1. Führen Sie die folgenden Schritte aus, um die Dauer einer Abfrage zu ermitteln:
-
-   1. [Exportieren](#logs) und öffnen Sie das Gatewayprotokoll.
-
-   1. Suchen Sie zum Ermitteln einer Abfrage nach einem Aktivitätstyp. Beispiel:
-
-      | Aktivitätstyp | BESCHREIBUNG |
-      |---------------|-------------|
-      | MGEQ | Über ADO.NET ausgeführte Abfragen |
-      | MGEO | Über OLEDB ausgeführte Abfragen |
-      | MGEM | Über die Mashup-Engine ausgeführte Abfragen |
-      |||
-
-   1. Notieren Sie die zweite GUID. Dabei handelt es sich um die Anforderungs-ID.
-
-   1. Suchen Sie weiter nach dem Aktivitätstyp, bis Sie den Eintrag „FireActivityCompletedSuccessfullyEvent“ gefunden haben, für den eine Dauer in Millisekunden angegeben ist. Vergewissern Sie sich, dass der Eintrag die gleiche Anforderungs-ID hat, etwa:
-
-      ```text
-      DM.EnterpriseGateway Verbose: 0 : 2016-09-26T23:08:56.7940067Z DM.EnterpriseGateway    baf40f21-2eb4-4af1-9c59-0950ef11ec4a    5f99f566-106d-c8ac-c864-c0808c41a606    MGEQ    21f96cc4-7496-bfdd-748c-b4915cb4b70c    B8DFCF12 [DM.Pipeline.Common.TracingTelemetryService] Event: FireActivityCompletedSuccessfullyEvent (duration=5004)
-      ```
-
-      > [!NOTE]
-      > Der Eintrag „FireActivityCompletedSuccessfullyEvent“ ist ein ausführlicher Eintrag, der nur protokolliert wird, wenn die Einstellung „TracingVerbosity“ auf 5 festgelegt ist.
-
-### <a name="trace-traffic-with-fiddler"></a>Überwachen des Datenverkehrs mit Fiddler
-
-[Fiddler](https://www.telerik.com/fiddler) ist ein kostenloses Tool von Telerik, das HTTP-Datenverkehr überwacht. Sie können diesen Datenverkehr mit dem Power BI-Dienst auf dem Clientcomputer überprüfen. Für den Dienst werden ggf. Fehler und andere zugehörige Informationen angezeigt.
+* [Lokales Datengateway: Häufig gestellte Fragen](/data-integration/gateway/service-gateway-onprem-faq)
+* [Problembehandlung des lokalen Datengateways](/data-integration/gateway/service-gateway-tshoot)
+* [Überwachen und Optimieren der Gatewayleistung](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,45 +12,79 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275347"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098926"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
-Azure Load Balancer bietet Integritätstests zur Verwendung mit Lastenausgleichsregeln.  Die Integritätstestkonfiguration und Testantworten bestimmen, welche Back-End-Poolinstanzen neue Flows empfangen. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung auf einer Back-End-Instanz erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und den Integritätstest zur Flusssteuerung verwenden, um die Last oder geplante Downtimes zu verwalten. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.
+Wenn Sie Lastausgleichsregeln mit Azure Load Balancer verwenden, müssen Sie einen Integritätstest angeben, damit Load Balancer den Back-End-Endpunktstatus erkennen kann.  Die Konfiguration des Integritätstests und die Testantworten bestimmen, welche Back-End-Poolinstanzen neue Flows empfangen. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung für einen Back-End-Endpunkt erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und den Integritätstest zur Flusssteuerung verwenden, um die Last oder geplante Downtimes zu verwalten. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.
 
-Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bestimmten Integritätstesttyps zur Unterstützung eines bestimmten Protokolls hängt von der Load Balancer-SKU ab.  Darüber hinaus variiert das Verhalten des Diensts je nach Load Balancer-SKU.
+Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bestimmten Integritätstestprotokolls hängt von der Load Balancer-SKU ab.  Darüber hinaus variiert das Verhalten des Diensts je nach Load Balancer-SKU. Die Tabelle zeigt dies:
 
 | | Standard-SKU | Basic-SKU |
 | --- | --- | --- |
 | [Testtypen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Verhalten bei Tests mit Fehlern](#probedown) | Alle Tests mit Fehlern, alle TCP-Flows werden fortgesetzt. | Alle Tests mit Fehlern, alle TCP-Flows laufen ab. | 
 
-> [!IMPORTANT]
-> Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
 
+>[!IMPORTANT]
+>Lesen Sie dieses Dokument in seiner Gesamtheit, einschließlich der wichtigen [Hinweise zum Entwurf](#design) unten, um einen zuverlässigen Dienst zu erstellen.
+
+>[!IMPORTANT]
+>Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
+
+## <a name="probes"></a>Testkonfiguration
+
+Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
+
+- Dauer des Intervalls zwischen einzelnen Tests
+- Anzahl der Testantworten, die beobachtet werden müssen, bevor der Test in einen anderen Zustand übergeht.
+- Protokoll des Tests
+- Port des Tests
+- HTTP-Pfad, der für HTTP GET bei Verwendung von HTTP(S)-Tests verwendet werden soll.
+
+## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Verstehen des Anwendungssignals, Erkennen des Signals und Reaktion der Plattform
+
+Anzahl der Testantworten, die auf beides angewendet wird
+
+- Anzahl der erfolgreichen Tests, bei der eine Instanz als online gekennzeichnet werden kann und
+- Anzahl der fehlerhaften Tests, bei der eine Instanz als offline gekennzeichnet wird.
+
+Die angegebenen Werte für das Timeout und das Intervall bestimmen, ob eine Instanz als online oder offline markiert wird.  Die Dauer des Intervalls multipliziert mit der Anzahl der Testantworten bestimmt die Zeitspann, in der die Testantworten erkannt werden müssen.  Und der Dienst reagiert, nachdem die erforderlichen Tests erreicht wurden.
+
+Wir können das Verhalten anhand eines Beispiels weiter veranschaulichen. Wenn Sie die Anzahl der Testantworten auf 2 und das Intervall auf 5 Sekunden festgelegt haben, bedeutet dies, dass 2 Testfehler innerhalb eines Intervalls von 10 Sekunden beobachtet werden müssen.  Da der Zeitpunkt, zu dem ein Test gesendet wird, nicht synchronisiert ist, wenn Ihre Anwendung den Zustand ggf. ändert, können wir die Zeit bis zur Erkennung an zwei Szenarien festmachen:
+
+1. Wenn Ihre Anwendung kurz vor dem Eintreffen des ersten Tests mit der Generierung einer fehlerhaften Testantwort beginnt, dauert die Erkennung dieser Ereignisse 10 Sekunden (Intervalle von 2 x 5 Sekunden) plus die Dauer der Anwendung, die beginnt, einen Fehler zu signalisieren, wenn der erste Test eintrifft.  Sie können davon ausgehen, dass diese Erkennung etwas länger als 10 Sekunden dauert.
+2. Wenn Ihre Anwendung unmittelbar nach dem Eintreffen des ersten Tests mit der Generierung einer Testfehlerantwort beginnt, beginnt die Erkennung dieser Ereignisse erst mit dem Eintreffen des nächsten Tests (und schlägt fehl) plus weiteren 10 Sekunden (Intervalle von 2 x 5 Sekunden).  Sie können davon ausgehen, dass diese Erkennung fast 15 Sekunden in Anspruch nimmt.
+
+In diesem Beispiel benötigt die Plattform nach der Erkennung eine kurze Zeit, um auf diese Änderung zu reagieren.  Dies bedeutet eine Abhängigkeit von mehreren Faktoren: 
+
+1. Wann die Anwendung mit der Zustandsänderung beginnt und
+2. wann diese Änderung erkannt wird und die erforderlichen Kriterien erfüllt sind (Anzahl der im angegebenen Intervall gesendeten Tests) und
+3. wann die Erkennung über die Plattform kommuniziert wurde. 
+
+Sie können davon ausgehen, dass die Reaktion auf einen fehlerhaften Test zwischen einem Minimum von etwas mehr als 10 Sekunden und einem Maximum von etwas mehr als 15 Sekunden dauert, um auf eine Änderung des Signals von der Anwendung zu reagieren.  Dieses Beispiel dient der Veranschaulichung des Geschehens, jedoch ist es nicht möglich, eine genaue Dauer über die in diesem Beispiel dargestellte grobe Orientierung hinaus vorherzusagen.
+ 
 ## <a name="types"></a>Testtypen
 
-Der Integritätstest kann mithilfe der folgenden drei Protokolle für Listener konfiguriert werden:
+Das vom Integritätstest verwendete Protokoll kann für Folgendes konfiguriert werden:
 
 - [TCP-Listener](#tcpprobe)
 - [HTTP-Endpunkte](#httpprobe)
 - [HTTPS-Endpunkte](#httpsprobe)
 
-Die verfügbaren Typen von Integritätstests sind abhängig von der ausgewählten Load Balancer-SKU unterschiedlich:
+Die verfügbaren Protokolle sind von der verwendeten Load Balancer-SKU abhängig:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
 | Standard-SKU |    &#9989; |   &#9989; |   &#9989; |
 | Basic-SKU |   &#9989; |   &#9989; | &#10060; |
-
-Unabhängig vom ausgewählten Typ kann mit Integritätstests ein beliebiger Port einer Back-End-Instanz (einschließlich des Ports, an dem der eigentliche Dienst bereitgestellt wird) überwacht werden.
 
 ### <a name="tcpprobe"></a> TCP-Test
 
@@ -62,7 +96,7 @@ TCP-Tests führen in folgenden Fällen zu Fehlern:
 * Der TCP-Listener für die Instanz reagiert innerhalb des Zeitlimits gar nicht.  Wann der Test als nicht ausgeführt markiert wird, hängt von der konfigurierten Anzahl unbeantworteter fehlerhafter Testanforderungen vor dem Markieren des Tests als nicht ausgeführt ab.
 * Der Test empfängt ein TCP-Reset von der Instanz.
 
-#### <a name="resource-manager-template"></a>Resource Manager-Vorlage
+Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in einer Resource Manager-Vorlage ausdrücken können:
 
 ```json
     {
@@ -77,8 +111,8 @@ TCP-Tests führen in folgenden Fällen zu Fehlern:
 
 ### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP-/HTTPS-Test
 
-> [!NOTE]
-> Der HTTPS-Test ist nur für [Load Balancer Standard](load-balancer-standard-overview.md) verfügbar.
+>[!NOTE]
+>Der HTTPS-Test ist nur für [Load Balancer Standard](load-balancer-standard-overview.md) verfügbar.
 
 HTTP- und HTTPS-Tests basieren auf dem TCP-Test und geben eine HTTP GET-Anforderung mit dem angegebenen Pfad aus. Diese beiden Tests unterstützen für HTTP GET relative Pfade. HTTPS-Tests sind mit HTTP-Tests identisch, weisen jedoch zusätzlich einen Transport Layer Security-Wrapper (TLS, früher als SSL bezeichnet) auf. Der Integritätstest kennzeichnet die Instanz als online, wenn diese innerhalb des Zeitlimits mit dem HTTP-Statuscode 200 antwortet.  Bei diesem Integritätstest wird standardmäßig versucht, den konfigurierten Integritätstestport alle 15 Sekunden zu prüfen. Das minimale Testintervall beträgt 5 Sekunden. Die gesamte Dauer aller Intervalle darf 120 Sekunden nicht überschreiten.
 
@@ -91,7 +125,7 @@ HTTP-/HTTPS-Tests führen in folgenden Fällen zu Fehlern:
 * Der Testendpunkt reagiert während des Zeitlimits von 31 Sekunden gar nicht. Möglicherweise bleiben mehrere Testanforderungen unbeantwortet, bevor der Test als nicht ausgeführt markiert wird und die Summe aller Timeoutintervalle erreicht wurde.
 * Der Testendpunkt schließt die Verbindung über ein TCP-Reset.
 
-#### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in einer Resource Manager-Vorlage ausdrücken können:
 
 ```json
     {
@@ -132,42 +166,35 @@ Wenn der Gast-Agent mit dem HTTP-Code 200 antwortet, sendet das Lastenausgleichs
 Wenn Sie eine Webrolle verwenden, wird der Websitecode in der Regel in „w3wp.exe“ ausgeführt. Dieses Programm wird nicht von der Azure-Fabric oder vom Gast-Agent überwacht. Fehler in „w3wp.exe“ (z. B. HTTP 500-Antworten) werden dem Gast-Agent nicht gemeldet. Folglich nimmt der Lastenausgleich diese Instanz nicht aus der Rotation.
 
 <a name="health"></a>
-## <a name="probehealth"></a>Testen der Integrität
+## <a name="probehealth"></a>Verhalten bei erfolgreichen Tests
 
-TCP-, HTTP- und HTTPS-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren die Rolleninstanz als fehlerfrei:
+TCP-, HTTP- und HTTPS-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren den Back-End-Endpunkt als fehlerfrei:
 
 * Der Integritätstest ist nach dem Starten der VM erfolgreich.
-* Die angegebene Anzahl von Tests, die erforderlich ist, um die Rolleninstanz als fehlerfrei zu markieren, wurde erreicht.
+* Die angegebene Anzahl von Tests, die erforderlich ist, um den Back-End-Endpunkt als fehlerfrei zu markieren, wurde erreicht.
+
+Jeder Back-End-Endpunkt, der einen fehlerfreien Zustand erreicht hat, ist berechtigt, neue Streams zu empfangen.  
 
 > [!NOTE]
-> Wenn das Ergebnis des Integritätstests schwankt, wartet der Lastenausgleich länger, bevor die Rolleninstanz wieder in den fehlerfreien Zustand versetzt wird. Diese zusätzliche Wartezeit schützt den Benutzer und die Infrastruktur und ist eine bewusste Richtlinie.
-
-## <a name="probe-count-and-timeout"></a>Anzahl und Timeout von Tests
-
-Das Verhalten von Tests hängt von folgenden Faktoren ab:
-
-* Anzahl der erfolgreichen Tests, bei der eine Instanz als online gekennzeichnet werden kann
-* Anzahl der fehlerhaften Tests, bei der eine Instanz als offline gekennzeichnet wird
-
-Die angegebenen Werte für das Timeout und das Intervall bestimmen, ob eine Instanz als online oder offline markiert wird.
+> Wenn das Ergebnis des Integritätstests schwankt, wartet der Lastenausgleich länger, bevor der Back-End-Endpunkt erneut in den fehlerfreien Zustand versetzt wird. Diese zusätzliche Wartezeit schützt den Benutzer und die Infrastruktur und ist eine bewusste Richtlinie.
 
 ## <a name="probedown"></a>Verhalten bei Tests mit Fehlern
 
 ### <a name="tcp-connections"></a>TCP-Verbindungen
 
-Neue TCP-Verbindungen mit den verbleibenden fehlerfreien Back-End-Instanzen werden erfolgreich hergestellt.
+Neue TCP-Verbindungen mit dem verbleibenden fehlerfreien Back-End-Endpunkt werden erfolgreich hergestellt.
 
-Wenn beim Integritätstest einer Back-End-Instanz ein Fehler auftritt, bleiben die für diese Back-End-Instanz eingerichteten TCP-Verbindungen bestehen.
+Wenn beim Integritätstest eines Back-End-Endpunkts ein Fehler auftritt, bleiben die für diesen Back-End-Endpunkt eingerichteten TCP-Verbindungen bestehen.
 
 Wenn bei allen Überprüfungen für sämtliche Instanzen in einem Back-End-Pool ein Fehler auftritt, werden keine neue Flows an den Back-End-Pool gesendet. Load Balancer Standard erlaubt aber die Fortführung der eingerichteten TCP-Flows.  Load Balancer Basic beendet alle vorhandenen TCP-Flows an den Back-End-Pool.
  
-Load Balancer ist ein Pass-Through-Dienst (TCP-Verbindungen werden nicht beendet), und der Flow erfolgt immer zwischen dem Client und dem Gastbetriebssystem sowie der Anwendung der VM. Wenn bei einem Pool alle Tests zu Fehlern führen, reagiert das Front-End nicht auf Versuche zum Öffnen von TCP-Verbindungen (SYN), da keine fehlerfreie Back-End-Instanz zum Empfangen des Flows vorhanden ist, und es sendet eine SYN-ACK-Antwort.
+Load Balancer ist ein Pass-Through-Dienst (TCP-Verbindungen werden nicht beendet), und der Flow erfolgt immer zwischen dem Client und dem Gastbetriebssystem sowie der Anwendung der VM. Wenn bei einem Pool alle Tests zu Fehlern führen, reagiert das Front-End nicht auf Versuche zum Öffnen von TCP-Verbindungen (SYN), da kein fehlerfreier Back-End-Endpunkt zum Empfangen des Flows vorhanden ist, und es sendet eine SYN-ACK-Antwort.
 
 ### <a name="udp-datagrams"></a>UDP-Datagramme
 
-UDP-Datagramme werden an fehlerfreie Back-End-Instanzen übermittelt.
+UDP-Datagramme werden an fehlerfreie Back-End-Endpunkte übermittelt.
 
-Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachverfolgt. Wenn beim Integritätstest einer beliebigen Back-End-Instanz ein Fehler auftritt, können vorhandene UDP-Flows an eine andere fehlerfreie Instanz im Back-End-Pool umgeleitet werden.
+Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachverfolgt. Wenn beim Integritätstest eines beliebigen Back-End-Endpunkts ein Fehler auftritt, können vorhandene UDP-Flows an eine andere fehlerfreie Instanz im Back-End-Pool umgeleitet werden.
 
 Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, werden alle vorhandenen UDP-Flows für Load Balancer Basic und Standard beendet.
 
@@ -188,15 +215,15 @@ Zusätzlich zu Load Balancer-Integritätstests [wird diese IP-Adresse für die f
 
 Integritätstests werden verwendet, um Ihren Dienst resilient zu machen und die Skalierung des Diensts zu ermöglichen. Eine fehlerhafte Konfiguration oder ein schlechtes Entwurfsmuster können sich auf die Verfügbarkeit und Skalierbarkeit des Diensts auswirken. Lesen Sie dieses gesamte Dokument, und überlegen Sie, wie sich die Markierung der Testantwort als offline oder online auf Ihr Szenario und die Verfügbarkeit Ihres Anwendungsszenarios auswirkt.
 
-Beim Entwerfen des Integritätsmodells für Ihre Anwendung sollten Sie einen Port einer Back-End-Instanz testen, der die Integrität dieser Instanz __und__ des von Ihnen bereitgestellten Anwendungsdiensts widerspiegelt.  Der Anwendungsport und der Testport müssen nicht identisch sein.  In einigen Szenarien kann es wünschenswert sein, dass der Testport und der Port, an dem Ihre Anwendung den Dienst bereitstellt, nicht identisch sind.  
+Beim Entwerfen des Integritätsmodells für Ihre Anwendung sollten Sie einen Port eines Back-End-Endpunkts testen, der die Integrität dieser Instanz __und__ des von Ihnen bereitgestellten Anwendungsdiensts widerspiegelt.  Der Anwendungsport und der Testport müssen nicht identisch sein.  In einigen Szenarien kann es wünschenswert sein, dass der Testport und der Port, an dem Ihre Anwendung den Dienst bereitstellt, nicht identisch sind.  
 
 Manchmal kann es nützlich sein, wenn Ihre Anwendung nicht nur eine Integritätstestantwort zur Erkennung der Anwendungsintegrität generiert, sondern Load Balancer auch direkt signalisiert, ob Ihre Instanz neue Flows empfangen soll.  Sie können die Testantwort bearbeiten, um es Ihrer Anwendung zu ermöglichen, einen Rückstau zu erzeugen und die Übermittlung neuer Flows an eine Instanz zu drosseln, indem der Integritätstest als fehlerhaft markiert wird, oder die Wartung der Anwendung vorzubereiten und den Ausgleich für Ihr Szenario zu initiieren.  Bei Verwendung von Load Balancer Standard können TCP-Flows bei einem Signal vom Typ [Test mit Fehlern](#probedown) immer fortgesetzt werden, bis das Leerlauftimeout erreicht oder die Verbindung geschlossen wird. 
 
-Für den UDP-Lastenausgleich sollten Sie ein benutzerdefiniertes Integritätstestsignal von der Back-End-Instanz generieren und einen TCP-, HTTP- oder HTTPS-Integritätstest mit dem entsprechenden Listener als Ziel verwenden, um die Integrität der UDP-Anwendung widerzuspiegeln.
+Für den UDP-Lastenausgleich sollten Sie ein benutzerdefiniertes Integritätstestsignal vom Back-End-Endpunkt generieren und einen TCP-, HTTP- oder HTTPS-Integritätstest mit dem entsprechenden Listener als Ziel verwenden, um die Integrität der UDP-Anwendung widerzuspiegeln.
 
 Bei Verwendung von [Lastenausgleichsregeln für Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md) mit [Load Balancer Standard](load-balancer-standard-overview.md) wird für alle Ports ein Lastenausgleich ausgeführt, sodass eine Antwort vom Integritätstest den Status der gesamten Instanz widerspiegeln muss.
 
-Verwenden Sie für einen Integritätstest der Instanz, die den Integritätstest empfängt, weder eine Übersetzung noch einen Proxy für eine andere Instanz in Ihrem VNET. Diese Konfiguration kann zu kaskadierenden Fehlern in Ihrem Szenario führen.  Stellen Sie sich folgendes Szenario vor: Eine Reihe von Appliances von einem Drittanbieter wird im Back-End-Pool einer Load Balancer-Ressource bereitgestellt, um Skalierung und Redundanz für die Appliance zu bieten. Der Integritätstest ist zum Testen eines Ports konfiguriert, für den die Drittanbieterappliance einen Proxy oder eine Übersetzung für andere VMs hinter der Appliance verwendet.  Wenn Sie den gleichen Port testen, den Sie verwenden, um Anforderungen zu übersetzen oder über einen Proxy an die anderen VMs hinter der Appliance zu senden, wird die Appliance selbst durch jede Testantwort von einer einzelnen VM hinter der Appliance als inaktiv markiert. Diese Konfiguration kann aufgrund einer einzelnen Back-End-Instanz hinter der Appliance zu einem kaskadierenden Fehler des gesamten Anwendungsszenarios führen.  Der Trigger kann ein zeitweiliger Testfehler sein, durch den Load Balancer das ursprüngliche Ziel (die Applianceinstanz) als offline markiert, wodurch wiederum das gesamte Anwendungsszenario deaktiviert werden kann. Testen Sie stattdessen die Integrität der Anwendung selbst. Die Auswahl des Tests zum Bestimmen des Integritätssignals ist ein wichtiger Aspekt für Szenarien mit virtuellen Netzwerkgeräten (Network Virtual Appliance, NVA). Fragen Sie den Anwendungshersteller, welches Integritätssignal für solche Szenarien geeignet ist.
+Verwenden Sie für einen Integritätstest der Instanz, die den Integritätstest empfängt, weder eine Übersetzung noch einen Proxy für eine andere Instanz in Ihrem VNET. Diese Konfiguration kann zu kaskadierenden Fehlern in Ihrem Szenario führen.  Stellen Sie sich folgendes Szenario vor: Eine Reihe von Appliances von einem Drittanbieter wird im Back-End-Pool einer Load Balancer-Ressource bereitgestellt, um Skalierung und Redundanz für die Appliance zu bieten. Der Integritätstest ist zum Testen eines Ports konfiguriert, für den die Drittanbieterappliance einen Proxy oder eine Übersetzung für andere VMs hinter der Appliance verwendet.  Wenn Sie den gleichen Port testen, den Sie verwenden, um Anforderungen zu übersetzen oder über einen Proxy an die anderen VMs hinter der Appliance zu senden, wird die Appliance selbst durch jede Testantwort von einer einzelnen VM hinter der Appliance als inaktiv markiert. Diese Konfiguration kann aufgrund eines einzelnen Back-End-Endpunkts hinter der Appliance zu einem kaskadierenden Fehler des gesamten Anwendungsszenarios führen.  Der Trigger kann ein zeitweiliger Testfehler sein, durch den Load Balancer das ursprüngliche Ziel (die Applianceinstanz) als offline markiert, wodurch wiederum das gesamte Anwendungsszenario deaktiviert werden kann. Testen Sie stattdessen die Integrität der Anwendung selbst. Die Auswahl des Tests zum Bestimmen des Integritätssignals ist ein wichtiger Aspekt für Szenarien mit virtuellen Netzwerkgeräten (Network Virtual Appliance, NVA). Fragen Sie den Anwendungshersteller, welches Integritätssignal für solche Szenarien geeignet ist.
 
 Wenn Sie die [IP-Quelladresse](#probesource) des Tests in Ihren Firewallrichtlinien nicht zulassen, tritt ein Fehler beim Integritätstest auf, da Ihre Instanz nicht erreicht werden kann.  Daraufhin kennzeichnet das Lastenausgleichsmodul Ihre Instanz als offline, da beim Integritätstest ein Fehler aufgetreten ist.  Diese Fehlkonfiguration kann dazu führen, dass Ihr Szenario mit Lastenausgleich fehlschlägt.
 
@@ -208,18 +235,18 @@ Konfigurieren Sie Ihr VNET nicht mit dem für Microsoft reservierten IP-Adressbe
 
 Wenn Sie über mehrere Schnittstellen auf dem virtuellen Computer verfügen, müssen Sie sicherstellen, dass auf den Test über die Schnittstelle geantwortet wird, über die er empfangen wurde.  Möglicherweise müssen Sie diese Adresse auf der VM oder für jede Schnittstelle einzeln mittels Übersetzung der Quellnetzwerkadresse übersetzen.
 
-Aktivieren Sie [TCP-Zeitstempel](https://tools.ietf.org/html/rfc1323) nicht.  Das Aktivieren von TCP-Zeitstempeln führt zu einem Fehler bei Integritätstests, weil TCP-Pakete vom TCP-Stapel des Gastbetriebssystems der VM gelöscht werden und Load Balancer den entsprechenden Endpunkt dadurch als offline markiert.  Standardmäßig werden TCP-Zeitstempel bei VM-Images mit verstärkter Sicherheit routinemäßig aktiviert. Sie müssen deaktiviert werden.
+Aktivieren Sie [TCP-Zeitstempel](https://tools.ietf.org/html/rfc1323) nicht.  Das Aktivieren von TCP-Zeitstempeln kann zu einem Fehler bei Integritätstests führen, weil TCP-Pakete vom TCP-Stapel des Gastbetriebssystems der VM gelöscht werden und Load Balancer den entsprechenden Endpunkt dadurch als offline markiert.  Standardmäßig werden TCP-Zeitstempel bei VM-Images mit verstärkter Sicherheit routinemäßig aktiviert. Sie müssen deaktiviert werden.
 
 ## <a name="monitoring"></a>Überwachung
 
-Öffentliche und interne [Load Balancer Standard](load-balancer-standard-overview.md) stellen pro Endpunkt und Back-End-Instanz den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
+Öffentliche und interne [Load Balancer Standard](load-balancer-standard-overview.md) stellen pro Endpunkt und Back-End-Endpunkt den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
 
 Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Azure Monitor-Protokolle bereit.  Azure Monitor-Protokolle steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Azure Monitor-Protokolle](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
 
 ## <a name="limitations"></a>Einschränkungen
 
 - HTTPS-Tests bieten keine Unterstützung für die gegenseitige Authentifizierung mit einem Clientzertifikat.
-- Bei Integritätstests tritt ein Fehler auf, wenn TCP-Zeitstempel aktiviert sind.
+- Gehen Sie davon aus, dass bei Integritätstests ein Fehler auftritt, wenn TCP-Zeitstempel aktiviert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

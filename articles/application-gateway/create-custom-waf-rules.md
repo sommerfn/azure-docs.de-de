@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231981"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058314"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für die Web Application Firewall v2
 
@@ -179,7 +179,7 @@ Zugehörige CRS-Regel: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,d
 
 ## <a name="example-3"></a>Beispiel 3
 
-In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.0/24 blockieren. Hierzu können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. So wird sichergestellt, dass sowohl *evilbot* im Header des Benutzers-Agents **als auch** IP-Adressen aus dem Bereich 192.168.5.0/24 blockiert werden.
+In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.0/24 blockieren. Hierzu können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. So wird sichergestellt, dass die Anforderung blockiert wird, wenn *evilbot* im Header des Benutzers-Agents **und** IP-Adressen aus dem Bereich 192.168.5.0/24 abgeglichen werden.
 
 Logik: p **and** q
 
