@@ -74,9 +74,9 @@ Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung.
 
 | NAME | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
-| protocol | `http` oder `tcp` | Zeichenfolge |
+| protocol | `http` oder `tcp` | string |
 | port | Optional, wenn das Protokoll `http` ist, obligatorisch, wenn das Protokoll `tcp` ist. | int |
-| requestPath | Obligatorisch, wenn das Protokoll `http` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | Zeichenfolge |
+| requestPath | Obligatorisch, wenn das Protokoll `http` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Bereitstellen der Application Health-Erweiterung
 Es gibt mehrere Möglichkeiten, die Application Health-Erweiterung für Ihre Skalierungsgruppen bereitzustellen, wie in den folgenden Beispielen beschrieben.
