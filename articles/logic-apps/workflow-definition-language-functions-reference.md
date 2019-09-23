@@ -481,7 +481,7 @@ Dies ist das zurückgegebene Ergebnis: `"Succeeded"`
 
 <a name="add"></a>
 
-### <a name="add"></a>Hinzufügen
+### <a name="add"></a>add
 
 Gibt das Ergebnis der Addition zweier Zahlen zurück.
 
