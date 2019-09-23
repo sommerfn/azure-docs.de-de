@@ -47,11 +47,11 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | ResourceType | `Servers` |
 | resourceId | Ressourcen-URI |
 | Resource | Name des Servers |
-| Category (Kategorie) | `PostgreSQLLogs` |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
 | `Message` | Primäre Protokollmeldung | 
-| Domäne | Serverversion, Beispiel: postgres-10 |
+| Domain | Serverversion, Beispiel: postgres-10 |
 | Detail | Sekundäre Protokollmeldung (falls zutreffend) |
 | ColumnName | Name der Spalte (falls zutreffend) |
 | SchemaName | Name des Schemas (falls zutreffend) |
