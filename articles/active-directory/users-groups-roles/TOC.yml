@@ -36,27 +36,25 @@
   items:
     - name: Verwalten von Benutzern
       items:
-        - name: Hinzufügen neuer Benutzer zu Azure AD
+        - name: Erstellen von Benutzern
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Massenerstellung von Benutzern (Vorschauversion)
+          href: users-bulk-add.md
         - name: Verwalten von Benutzerprofilen
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Massenvorgänge (Vorschau)
-          items:
-            - name: Herunterladen von Benutzern (Vorschau)
-              href: users-bulk-download.md
-            - name: Massenimport von Benutzern (Vorschau)
-              href: users-bulk-add.md
-            - name: Massenlöschung von Benutzern (Vorschau)
-              href: users-bulk-delete.md
-            - name: Massenwiederherstellung von Benutzern (Vorschau)
-              href: users-bulk-restore.md
+        - name: Herunterladen von Benutzerinformationen (Vorschauversion)
+          href: users-bulk-download.md
         - name: Freigeben von Benutzerkonten
           href: users-sharing-accounts.md
         - name: Zuweisen von Benutzern zu Administratorrollen
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Massenlöschung von Benutzern (Vorschau)
+          href: users-bulk-delete.md
         - name: Wiederherstellen eines gelöschten Benutzers
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Schließen Ihres Kontos in einem nicht verwalteten Verzeichnis
+        - name: Massenwiederherstellung von Benutzern (Vorschau)
+          href: users-bulk-restore.md
+        - name: Schließen eines Kontos in einem nicht verwalteten Verzeichnis
           href: users-close-account.md
         - name: Hinzufügen von B2B-Benutzern
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Durchsuchen von Gruppen-und Mitgliederlisten (Vorschau)
           href: groups-members-owners-search.md
+        - name: Erstellen einer Gruppe (Azure-Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 'Verwalten von Gruppen: PowerShell für Graph (v2)'
           href: groups-settings-v2-cmdlets.md
         - name: 'Verwalten von Gruppen: PowerShell MSOnline'
           href: groups-settings-cmdlets.md
-        - name: Verwalten von Gruppenmitgliedern
+        - name: Hinzufügen oder Entfernen von Gruppenmitgliedern
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Massenhinzufügen von Mitgliedern (Vorschauversion)
+          href: groups-bulk-import-members.md
+        - name: Massenentfernung von Mitgliedern (Vorschau)
+          href: groups-bulk-remove-members.md
+        - name: Massendownload von Mitgliedslisten (Vorschauversion)
+          href: groups-bulk-download-members.md
         - name: Verwalten von Gruppenbesitzern
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Massenvorgänge (Vorschau)
-          items:
-            - name: Massenimport von Mitgliedern (Vorschau)
-              href: groups-bulk-import-members.md
-            - name: Massendownload von Mitgliedern (Vorschau)
-              href: groups-bulk-download-members.md
-            - name: Massenentfernung von Mitgliedern (Vorschau)
-              href: groups-bulk-remove-members.md
-            - name: Massendownload einer Gruppenliste (Vorschau)
-              href: groups-bulk-download.md
+        - name: Massendownload von Gruppenlisten (Vorschauversion)
+          href: groups-bulk-download.md
         - name: Verwalten von Gruppen in Gruppen
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Erstellen einer Gruppe (Azure-Portal)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Hinzufügen des Gruppenzugriffs auf SaaS-Apps
           href: groups-saasapps.md
         - name: Referenz zur Gruppenbenennung

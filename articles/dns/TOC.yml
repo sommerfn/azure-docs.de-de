@@ -9,12 +9,22 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Namensauflösung: Portal'
-      href: dns-getstarted-portal.md
-    - name: 'Namensauflösung: PowerShell'
-      href: dns-getstarted-powershell.md
-    - name: 'Namensauflösung: CLI'
-      href: dns-getstarted-cli.md
+    - name: Öffentliche DNS
+      items:
+        - name: 'Erstellen einer öffentlichen Zone: Portal'
+          href: dns-getstarted-portal.md
+        - name: 'Erstellen einer öffentlichen Zone: PowerShell'
+          href: dns-getstarted-powershell.md
+        - name: 'Erstellen einer öffentlichen Zone: CLI'
+          href: dns-getstarted-cli.md
+    - name: Privates DNS
+      items:
+        - name: 'Erstellen einer privaten Zone: Portal'
+          href: private-dns-getstarted-portal.md
+        - name: 'Erstellen einer privaten Zone: CLI'
+          href: private-dns-getstarted-cli.md
+        - name: 'Erstellen einer privaten Zone: PowerShell'
+          href: private-dns-getstarted-powershell.md
 - name: Lernprogramme
   items:
     - name: Öffentliche DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Aliaseinträge für Zoneneinträge
           href: tutorial-alias-rr.md
-    - name: Privates DNS
-      items:
-        - name: Erstellen einer privaten DNS-Zone und eines Eintrags
-          href: private-dns-portal.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Anleitung
   items:
-    - name: Privates DNS
-      items:
-        - name: 'Erstellen einer privaten Zone: CLI'
-          href: private-dns-getstarted-cli.md
-        - name: 'Erstellen einer privaten Zone: PowerShell'
-          href: private-dns-getstarted-powershell.md
     - name: Öffentliche DNS
       items:
         - name: Aliaseinträge für Web-Apps mit Lastenausgleich
