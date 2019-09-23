@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Erstellen und Bereitstellen mithilfe von Azure Pipelines
           href: functions-how-to-azure-devops.md
+        - name: Erstellen und Bereitstellen mithilfe von GitHub-Aktionen
+          href: functions-how-to-github-actions.md
         - name: ZIP-Bereitstellung
           href: deployment-zip-push.md
         - name: Ausführen über ein Paket

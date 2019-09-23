@@ -134,8 +134,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Infrastrukturautomatisierung
       href: infrastructure-automation.md
-    - name: Sicherheit und Richtlinien
-      href: security-policy.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheit und Richtlinien
+          href: security-policy.md
     - name: Zustände und Lebenszyklus
       href: states-lifecycle.md
     - name: Überwachung
@@ -183,6 +185,8 @@
           href: windows-desktop-multitenant-hosting-deployment.md
     - name: Schützen von virtuellen Computern
       items:
+        - name: Empfehlungen
+          href: security-recommendations.md
         - name: Just-in-Time-Zugriff
           href: ../../security-center/security-center-just-in-time.md
         - name: Verschlüsseln
@@ -259,6 +263,14 @@
           href: instance-metadata-service.md
         - name: Aktivieren der geschachtelten Virtualisierung
           href: nested-virtualization.md
+    - name: Überwachen virtueller Computer
+      items:
+        - name: Azure Monitor für VMs
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: Erstellen von Metrikwarnungen
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: Erstellen von Protokollwarnungen
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: Verwalten von Kosten
       items:
         - name: 'Vorauszahlen für virtuelle Computer: Azure-Reservierungen'

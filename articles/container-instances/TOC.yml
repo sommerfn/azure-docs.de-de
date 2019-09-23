@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: 'Bereitstellen einer Containergruppe: Resource Manager'
           href: container-instances-multi-container-group.md
+    - name: Integration in Azure-Dienste
+      items:
+        - name: Auslösen mit Azure Functions
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -121,6 +125,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
     - name: Connector
       href: /connectors/aci
 - name: Ressourcen

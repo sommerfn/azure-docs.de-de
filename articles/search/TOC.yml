@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Abfragedokumente
       items:
-        - name: Erstellen einer einfachen Abfrage
+        - name: Abfragetypen und Komposition
           href: search-query-overview.md
-        - name: Suchexplorer (Portal)
+        - name: Erstellen einer einfachen Abfrage
+          href: search-query-simple-examples.md
+        - name: Verwenden der vollständigen Lucene-Syntax
+          href: search-query-lucene-examples.md
+        - name: Verwenden des Suchexplorers (Portal)
           href: search-explorer.md
         - name: Einfache Abfragesyntax
           href: query-simple-syntax.md
         - name: Vollständige Lucene-Abfragesyntax
           href: query-lucene-syntax.md
-        - name: Beispiele (einfache Syntax)
-          href: search-query-simple-examples.md
-        - name: Beispiele (vollständige Lucene-Syntax)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (Vorschau)
           href: search-more-like-this.md
     - name: Anwenden von Filtern

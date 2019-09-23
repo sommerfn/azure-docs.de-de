@@ -140,7 +140,11 @@
             - name: Schritte zur Optimierung der Leistung
               href: performance-tuning-ordered-CCI.md
         - name: Zwischenspeichern von Resultsets
-          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+          items:
+            - name: Für eine Datenbank festlegen
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: Für eine Sitzung festlegen
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabellen
           items:
             - name: Übersicht

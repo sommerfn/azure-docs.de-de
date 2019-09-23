@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Data Science Virtual Machine
-summary: Azure Data Science Virtual Machine (DSVM) ist ein benutzerdefiniertes VM-Image mit Data Science- und ML-Tools. Mit diesem virtuellen Computer können Sie intelligente Anwendungen für die erweiterte Analyse erstellen.
+summary: Azure Data Science Virtual Machine (DSVM) ist ein VM-Image mit vorab geladenen Data Science- und Machine Learning-Tools. Mit diesem virtuellen Computer können Sie intelligente Anwendungen für die erweiterte Analyse erstellen.
 metadata:
   title: 'Dokumentation zu Data Science Virtual Machine: Azure'
-  description: Data Science Virtual Machine ist eine für Data Science entwickelte, experimentelle Umgebung in der Azure-Cloud. Beliebte Data Science- und ML-Tools sind bereits vorinstalliert.
-  services: machine-learning
+  description: Azure Data Science Virtual Machine (DSVM) ist ein VM-Image mit vorab geladenen Data Science- und Machine Learning-Tools.
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308792"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170712"
 landingContent:
 - title: Erste Schritte mit DSVM
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Azure DSVM?
+    - text: Was ist die DSVM?
       url: overview.md
-    - text: Was ist DSVM für geografische KI?
+    - text: Worum handelt es sich bei der DSVM-Instanz für geografische KI?
       url: geo-ai-dsvm-overview.md
   - linkListType: get-started
     links:
@@ -39,6 +38,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: Verwalten Ihrer DSVM-Instanz
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: Unternehmenssicherheit und -leitfäden
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: Erstellen von DSVM-Pools mit automatischer Skalierung
@@ -49,7 +52,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: Weitere Azure Machine Learning-Technologien
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Azure Machine Learning-Dienst
       url: /azure/machine-learning/
