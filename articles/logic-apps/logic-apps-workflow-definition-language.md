@@ -117,11 +117,11 @@ Definieren Sie im `staticResults`-Attribut die Attribute `outputs` und `status` 
 
 | Attribut | Erforderlich | Typ | BESCHREIBUNG |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | Ja | Zeichenfolge | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
+| <*static-result-definition-name*> | Ja | String | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
 | <*output-attributes-and-values-returned*> | Ja | Varies | Die Anforderungen an diese Attribute variieren auf Grundlage verschiedener Bedingungen. Wenn z. B. für das Attribut `status` `Succeeded` gilt, schließt das `outputs`-Attribut Attribute und Werte ein, die von der Aktion als Modellausgaben zurückgegeben werden. Wenn für das Attribut `status` `Failed` gilt, schließt das `outputs`-Attribut das `errors`-Attribut ein. Dabei handelt es sich um ein Array mit mindestens einem `message`-Objekt, in dem Fehlerinformationen enthalten sind. |
 | <*header-values*> | Nein | JSON | Alle Headerwerte, die von der Aktion zurückgegeben werden. |
-| <*status-code-returned*> | Ja | Zeichenfolge | Der von der Aktion zurückgegebene Statuscode. |
-| <*action-status*> | Ja | Zeichenfolge | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
+| <*status-code-returned*> | Ja | String | Der von der Aktion zurückgegebene Statuscode. |
+| <*action-status*> | Ja | String | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
 |||||
 
 In dieser HTTP-Aktionsdefinition verweist beispielsweise das `runtimeConfiguration.staticResult.name`-Attribut auf `HTTP0` innerhalb des `staticResults`-Attributs, wo die Modellausgaben für die Aktion definiert werden. Das `runtimeConfiguration.staticResult.staticResultOptions`-Attribut gibt an, dass die Einstellung für statische Ergebnisse für die HTTP-Aktion `Enabled` ist.
@@ -280,7 +280,7 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 
 | Attribut | Erforderlich | Typ | BESCHREIBUNG |
 |-----------|----------|------|-------------|
-| <*key-name*> | Ja | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |
+| <*key-name*> | Ja | String | Der Schlüsselname des Rückgabewerts der Ausgabe |
 | <*key-type*> | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe |
 | <*key-value*> | Ja | Entspricht <*key-type*> | Der Rückgabewert der Ausgabe |
 |||||
