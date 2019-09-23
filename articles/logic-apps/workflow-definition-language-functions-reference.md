@@ -181,7 +181,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 
 | Mathematische Funktion | Aufgabe |
 | ------------- | ---- |
-| [Hinzufügen](../logic-apps/workflow-definition-language-functions-reference.md#add) | Gibt das Ergebnis der Addition zweier Zahlen zurück. |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Gibt das Ergebnis der Addition zweier Zahlen zurück. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Gibt das Ergebnis der Division zweier Zahlen zurück. |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Gibt den höchsten Wert aus einer Reihe von Zahlen oder einem Array zurück. |
 | [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Gibt den niedrigsten Wert aus einer Reihe von Zahlen oder einem Array zurück. |
