@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API – Azure Active Directory B2C | Microsoft-Dokumentation'
+title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API – Azure Active Directory B2C'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Webanwendung aufrufen.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347134"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103398"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API unter Verwendung von Azure Active Directory B2C
 
-In diesem Tutorial erfahren Sie, wie Sie eine geschützte Web-API-Ressource in Azure Active Directory (Azure AD) B2C über eine ASP.NET-Webanwendung aufrufen.
+In diesem Tutorial erfahren Sie, wie Sie eine geschützte Web-API-Ressource in Azure Active Directory B2C (Azure AD B2C) über eine ASP.NET-Webanwendung aufrufen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -82,20 +82,20 @@ Die Beispielprojektmappe enthält zwei Projekte:
 
 Die Beispielprojektmappe enthält die folgenden zwei Projekte:
 
-- **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern verwendet.
-- **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
+* **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern verwendet.
+* **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
 
 ### <a name="configure-the-web-application"></a>Konfigurieren der Webanwendung
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
-2. Öffnen Sie **Web.config** im Projekt **TaskWebApp**.
-3. Verwenden Sie zum lokalen Ausführen der API die localhost-Einstellung für **api:TaskServiceUrl**. Nehmen Sie in der Datei „Web.config“ folgende Änderungen vor: 
+1. Öffnen Sie **Web.config** im Projekt **TaskWebApp**.
+1. Verwenden Sie zum lokalen Ausführen der API die localhost-Einstellung für **api:TaskServiceUrl**. Nehmen Sie in der Datei „Web.config“ folgende Änderungen vor:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Konfigurieren Sie den URI der API. Dieser URI wird von der Webanwendung für die API-Anforderung verwendet. Konfigurieren Sie außerdem die angeforderten Berechtigungen.
+1. Konfigurieren Sie den URI der API. Dieser URI wird von der Webanwendung für die API-Anforderung verwendet. Konfigurieren Sie außerdem die angeforderten Berechtigungen.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -106,25 +106,26 @@ Die Beispielprojektmappe enthält die folgenden zwei Projekte:
 ### <a name="configure-the-web-api"></a>Konfigurieren der Web-API
 
 1. Öffnen Sie **Web.config** im Projekt **TaskService**.
-2. Konfigurieren Sie die API für die Verwendung Ihres Mandanten.
+1. Konfigurieren Sie die API für die Verwendung Ihres Mandanten.
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. Legen Sie die Client-ID auf die ID der registrierten Anwendung für Ihre API fest.
+1. Legen Sie die Client-ID auf die Anwendungs-ID Ihrer registrierten Web-API-Anwendung (*webapi1*) fest.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Aktualisieren Sie die Benutzerfloweinstellung mit dem Namen des Registrierungs- und Anmeldebenutzerflows.
+1. Aktualisieren Sie die Benutzerfloweinstellung mit dem Namen des Registrierungs- und Anmeldebenutzerflows (*B2C_1_signupsignin1*).
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Konfigurieren Sie die Bereichseinstellung so, dass sie dem entspricht, was Sie im Portal erstellt haben.
+1. Konfigurieren Sie die Bereichseinstellung so, dass sie dem entspricht, was Sie im Portal erstellt haben.
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -133,19 +134,20 @@ Die Beispielprojektmappe enthält die folgenden zwei Projekte:
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Führen Sie sowohl das Projekt **TaskWebApp** als auch das Projekt **TaskService** aus. 
+Führen Sie sowohl das Projekt **TaskWebApp** als auch das Projekt **TaskService** aus.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen...** aus. 
-2. Wählen Sie **Mehrere Startprojekte** aus.
-3. Ändern Sie die **Aktion** für beide Projekte in **Start**.
-4. Klicken Sie auf **OK**, um die Konfiguration zu speichern.
-5. Drücken Sie**F5**, um beide Anwendungen auszuführen. Jede Anwendung wird auf einer eigenen Browserregisterkarte geöffnet. `https://localhost:44316/` ist die Webanwendung.
-    `https://localhost:44332/` ist die Web-API.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen...** aus.
+1. Wählen Sie **Mehrere Startprojekte** aus.
+1. Ändern Sie die **Aktion** für beide Projekte in **Start**.
+1. Klicken Sie auf **OK**, um die Konfiguration zu speichern.
+1. Drücken Sie**F5**, um beide Anwendungen auszuführen. Jede Anwendung wird in einem eigenen Browserfenster geöffnet.
+    * `https://localhost:44316/` ist die Webanwendung.
+    * `https://localhost:44332/` ist die Web-API.
 
-6. Klicken Sie in der Webanwendung auf **sign-up / sign-in** (Registrierung/Anmeldung), um sich bei der Webanwendung anzumelden. Verwenden Sie das Konto, das Sie zuvor erstellt haben. 
-7. Klicken Sie nach der Anmeldung auf **Aufgabenliste**, und erstellen Sie ein Aufgabenlistenelement.
+1. Wählen Sie in der Webanwendung **sign-up / sign-in** (Registrierung/Anmeldung) aus, um sich bei der Webanwendung anzumelden. Verwenden Sie das Konto, das Sie zuvor erstellt haben.
+1. Wählen Sie nach der Anmeldung die **Aufgabenliste** aus, und erstellen Sie ein Aufgabenlistenelement.
 
-Wenn Sie ein Aufgabenlistenelement erstellen, richtet die Webanwendung eine Anforderung an die Web-API, um das Element zu generieren. Ihre geschützte Webanwendung ruft die geschützte Web-API in Ihrem Azure AD B2C-Mandanten auf.
+Wenn Sie ein Aufgabenlistenelement erstellen, richtet die Webanwendung eine Anforderung an die Web-API, um das Element zu generieren. Ihre geschützte Webanwendung ruft die von Azure AD B2C geschützte Web-API auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

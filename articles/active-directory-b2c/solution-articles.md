@@ -9,16 +9,16 @@ ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 95002eb73277176d4a8aeaa40deea4d96c39a755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82f78ba50a6717c1d14e4921bb3c46a3525ad2cf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512408"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063502"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Lösungen und Schulung für Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C ermöglicht Organisationen die Implementierung von Geschäftslösungen, die ihnen helfen, mit ihren Kunden eine Verbindung herzustellen. Die folgenden Lösungsanleitungen und Schulungen sind Dokumente zum Herunterladen, die Sie durch diese Lösungen führen.
+Azure Active Directory B2C (Azure AD B2C) ermöglicht Organisationen die Implementierung von Geschäftslösungen, die ihnen helfen, mit ihren Kunden eine Verbindung herzustellen. Die folgenden Lösungsanleitungen und Schulungen sind Dokumente zum Herunterladen, die Sie durch diese Lösungen führen.
 
 | Titel | BESCHREIBUNG |
 | ----- | ----------- |

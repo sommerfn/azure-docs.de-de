@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49f62b6fc1ea00084266d4c5405f8bf96d034cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509254"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065527"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory (Azure AD) B2C können Sie es mit einem lokalen Konto angemeldeten Benutzern ermöglichen, ihr Kennwort zu ändern, ohne die Echtheit durch E-Mail-Überprüfung nachweisen zu müssen. Wenn die Sitzung abläuft, bevor der Benutzer den Kennwortänderungsflow erreicht, wird er aufgefordert, sich erneut anzumelden. In diesem Artikel wird beschrieben, wie Sie die Kennwortänderung in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) konfigurieren. Es ist auch möglich, die [Self-Service-Kennwortzurücksetzung](active-directory-b2c-reference-sspr.md) für Benutzerflows zu konfigurieren.
+In Azure Active Directory B2C (Azure AD B2C) können Sie es mit einem lokalen Konto angemeldeten Benutzern ermöglichen, ihr Kennwort zu ändern, ohne die Authentizität durch E-Mail-Überprüfung nachweisen zu müssen. Wenn die Sitzung abläuft, bevor der Benutzer den Kennwortänderungsflow erreicht, wird er aufgefordert, sich erneut anzumelden. In diesem Artikel wird beschrieben, wie Sie die Kennwortänderung in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) konfigurieren. Es ist auch möglich, die [Self-Service-Kennwortzurücksetzung](active-directory-b2c-reference-sspr.md) für Benutzerflows zu konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
 
-## <a name="add-the-elements"></a>Hinzufügen der Elemente 
+## <a name="add-the-elements"></a>Hinzufügen der Elemente
 
-1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu: 
+1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu:
 
     ```XML
     <BuildingBlocks>
@@ -156,7 +156,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht. Beispiel: *PasswordChange*.
 8. Speichern Sie die Änderungen.
 
-Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 
 ## <a name="test-your-policy"></a>Testen Ihrer Richtlinie
 
@@ -177,8 +177,8 @@ Wenn Sie Ihre Anwendungen in Azure AD B2C testen, kann es nützlich sein, das Az
 
 1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_profile_edit_password_change*.
 2. Wählen Sie für **Anwendung** Ihre Anwendung aus, die Sie zuvor registriert haben. Um das Token anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
-3. Klicken Sie auf **Jetzt ausführen**. Melden Sie sich mit dem Konto an, das Sie zuvor erstellt haben. Jetzt sollten Sie die Möglichkeit haben, das Kennwort zu ändern. 
+3. Klicken Sie auf **Jetzt ausführen**. Melden Sie sich mit dem Konto an, das Sie zuvor erstellt haben. Jetzt sollten Sie die Möglichkeit haben, das Kennwort zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über das [Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md). 
+- Informieren Sie sich über das [Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md).

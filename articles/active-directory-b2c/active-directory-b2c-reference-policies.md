@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 54677dc0771f65b7636b4d1cac77f53f9c04a09d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08da04a8bf167c99ef2384a9714034ae1865bec1
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508935"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065369"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
 
-Das erweiterbare Richtlinienframework von Azure Active Directory (Azure AD) B2C ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden. 
+Das erweiterbare Richtlinienframework von Azure Active Directory B2C (Azure AD B2C) ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden.
 
 ## <a name="what-are-user-flows"></a>Was sind Benutzerflows?
 
@@ -29,9 +29,9 @@ Ein Benutzerflow ermöglicht das Steuern des Verhaltens in Ihren Anwendungen dur
 - Attribute, die vom Kunden gesammelt werden, wie z.B. Vorname, Postleitzahl und Schuhgröße
 - Azure Multi-Factor Authentication
 - Anpassung der Benutzeroberfläche
-- Informationen, die die Anwendung in Form von Ansprüchen in einem Token erhält 
+- Informationen, die die Anwendung in Form von Ansprüchen in einem Token erhält
 
-Sie können viele Benutzerflows verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Identität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Ihre Anwendung löst einen Benutzerflow mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus, die Parameter für einen Benutzerflow enthält. Als Antwort wird ein benutzerdefiniertes [Token](active-directory-b2c-reference-tokens.md) empfangen. 
+Sie können viele Benutzerflows verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Identität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Ihre Anwendung löst einen Benutzerflow mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus, die Parameter für einen Benutzerflow enthält. Als Antwort wird ein benutzerdefiniertes [Token](active-directory-b2c-reference-tokens.md) empfangen.
 
 Die folgenden Beispiele zeigen den Parameter „p“ der Abfragezeichenfolge, der den zu verwendenden Benutzerflow angibt:
 
@@ -71,16 +71,16 @@ Die folgenden Benutzerflows werden derzeit empfohlen:
 
 ## <a name="linking-user-flows"></a>Verknüpfen von Benutzerflows
 
-Ein Benutzerflow für **Registrierung oder Anmeldung** für lokale Konten zeigt auf der ersten Seite der Oberfläche den Link **Kennwort vergessen?** an. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst. 
+Ein Benutzerflow für **Registrierung oder Anmeldung** für lokale Konten zeigt auf der ersten Seite der Oberfläche den Link **Kennwort vergessen?** an. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst.
 
 Stattdessen wird der Fehlercode `AADB2C90118` an Ihre Anwendung zurückgegeben. Die Anwendung muss diesen Fehlercode verarbeiten, indem sie einen bestimmten Benutzerflow zum Zurücksetzen des Kennworts ausführt. Sehen Sie sich ein [einfaches ASP.NET-Beispiel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) an, das die Verknüpfung von Benutzerflows veranschaulicht.
 
 ## <a name="email-address-storage"></a>Speicherung der E-Mail-Adresse
 
 Eine E-Mail-Adresse kann als Teil eines Benutzerflows erforderlich sein. Wenn sich der Benutzer mit einem sozialen Netzwerk als Identitätsanbieter authentifiziert, wird die E-Mail-Adresse in der **otherMails**-Eigenschaft gespeichert. Wenn ein lokales Konto auf einem Benutzernamen basiert, wird die E-Mail-Adresse in einer speziellen Eigenschaft für die sichere Authentifizierung gespeichert. Wenn ein lokales Konto auf einer E-Mail-Adresse basiert, wird die E-Mail-Adresse in der **signInNames**-Eigenschaft gespeichert.
- 
+
 Es ist in diesen Fällen nicht garantiert, dass die E-Mail-Adresse überprüft wird. Ein Mandantenadministrator kann die E-Mail-Überprüfung in den grundlegenden Richtlinien für lokale Konten deaktivieren. Selbst wenn die Überprüfung der E-Mail-Adresse aktiviert ist, werden die Adressen nicht überprüft, wenn sie von einem sozialen Netzwerk als Identitätsanbieter stammen und nicht geändert wurden.
- 
+
 Nur die Eigenschaften **otherMails** und **signInNames** werden über die Active Directory Graph-API verfügbar gemacht. Die E-Mail-Adresse in der Eigenschaft für die sichere Authentifizierung ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte

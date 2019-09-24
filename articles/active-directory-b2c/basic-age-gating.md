@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511663"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064455"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
 >[!IMPORTANT]
->Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Verwenden Sie dieses Feature nicht für Produktionsanwendungen. 
+>Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Verwenden Sie dieses Feature nicht für Produktionsanwendungen.
 >
 
-Mit der Altersbeschränkung in Azure Active Directory (Azure AD) B2C können Sie Minderjährige identifizieren, die Ihre Anwendung nutzen möchten. Sie können Minderjährige bei Bedarf daran hindern, sich an der Anwendung anzumelden. Benutzer können auch zur Anwendung zurückkehren und ihre Altersgruppe und den Status der Zustimmung durch die Erziehungsberechtigten angeben. Azure AD B2C kann Minderjährige ohne elterliche Zustimmung sperren. Außerdem kann Azure AD B2C so eingerichtet werden, dass von der Anwendung entschieden werden kann, wie mit Minderjährigen verfahren wird.
+Mit der Altersbeschränkung in Azure Active Directory B2C (Azure AD B2C) können Sie Minderjährige identifizieren, die Ihre Anwendung verwenden möchten. Sie können Minderjährige bei Bedarf daran hindern, sich an der Anwendung anzumelden. Benutzer können auch zur Anwendung zurückkehren und ihre Altersgruppe und den Status der Zustimmung durch die Erziehungsberechtigten angeben. Azure AD B2C kann Minderjährige ohne elterliche Zustimmung sperren. Außerdem kann Azure AD B2C so eingerichtet werden, dass von der Anwendung entschieden werden kann, wie mit Minderjährigen verfahren wird.
 
 Nachdem Sie die Altersbeschränkung in Ihrem [Benutzerflow](active-directory-b2c-reference-policies.md) aktiviert haben, werden die Benutzer gefragt, wann sie geboren wurden und in welchem Land / welcher Region sie leben. Wenn sich ein Benutzer anmeldet, der diese Informationen noch nicht eingegeben hat, muss dies bei der nächsten Anmeldung erfolgen. Die Regeln werden jedes Mal angewendet, wenn sich ein Benutzer anmeldet.
 
@@ -70,11 +70,11 @@ Die Altersbeschränkung umfasst zwei Alterswerte: das Alter, in dem eine Person 
 | SK | Slowakei | 16 | 18 |
 | TD | Tschad | Keine | 21 |
 | TH | Thailand | Keine | 20 |
-| TW | Taiwan | Keine | 20 | 
+| TW | Taiwan | Keine | 20 |
 | US | USA | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Optionen für die Altersbeschränkung
- 
+
 ### <a name="allowing-minors-without-parental-consent"></a>Zulassen von Minderjährigen ohne Zustimmung eines Erziehungsberechtigten
 
 Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides zulassen, können Sie wählen, ob Minderjährige ohne Zustimmung Ihre Anwendung verwenden dürfen. Minderjährige ohne Zustimmung eines Erziehungsberechtigten können sich normal anmelden oder registrieren. Dann stellt Azure AD B2C ein ID-Token mit dem Anspruch **legalAgeGroupClassification** aus. Mit diesem Anspruch wird die Benutzeroberfläche definiert, die Benutzern angezeigt wird, z.B. für das Einholen der Zustimmung eines Erziehungsberechtigten und das Aktualisieren des Felds **consentProvidedForMinor**.
@@ -90,7 +90,7 @@ Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides z
 
 Um die Altersbeschränkung in einem Benutzerflow zu verwenden, müssen Sie für Ihren Mandanten zusätzliche Eigenschaften konfigurieren.
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken. Wählen Sie das Verzeichnis aus, das den Mandanten enthält. 
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen. Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
 2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie diesen Eintrag aus.
 3. Wählen Sie für Ihren Mandanten im Menü auf der linken Seite die Option **Eigenschaften**.
 2. Klicken Sie unter dem Abschnitt **Altersbeschränkung** auf **Konfigurieren**.
@@ -103,7 +103,7 @@ Nachdem Ihr Mandant für die Nutzung der Altersbeschränkung eingerichtet wurde,
 1. Erstellen Sie einen Benutzerflow, für den die Altersbeschränkung aktiviert ist.
 2. Wählen Sie nach dem Erstellen des Benutzerflows im Menü die Option **Eigenschaften**.
 3. Wählen Sie im Abschnitt **Altersbeschränkung** die Option **Aktiviert**.
-4. Sie können dann wählen, wie Sie Benutzer verwalten möchten, die sich als Minderjährige identifizieren. Wählen Sie unter **Registrieren oder anmelden** die Option `Allow minors to access your application` oder `Block minors from accessing your application`. Wenn Sie die Option zum Ausschließen von Minderjährigen gewählt haben, wählen Sie anschließend `Send a JSON back to the application` oder `Show an error message`. 
+4. Sie können dann wählen, wie Sie Benutzer verwalten möchten, die sich als Minderjährige identifizieren. Wählen Sie unter **Registrieren oder anmelden** die Option `Allow minors to access your application` oder `Block minors from accessing your application`. Wenn Sie die Option zum Ausschließen von Minderjährigen gewählt haben, wählen Sie anschließend `Send a JSON back to the application` oder `Show an error message`.
 
 
 

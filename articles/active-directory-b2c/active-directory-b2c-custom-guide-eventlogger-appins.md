@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227231"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066182"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Bei Verwendung von Azure Active Directory (Azure AD) B2C zusammen mit Azure Application Insights können Sie detaillierte und angepasste Ereignisprotokolle für Ihre User Journeys abrufen. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Wenn Sie Azure Active Directory B2C (Azure AD B2C) in Verbindung mit Azure Application Insights verwenden, können Sie detaillierte und angepasste Ereignisprotokolle für Ihre User Journeys erhalten. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Gewinnen von Einblicken in Benutzerverhalten.
 * Beheben von Problemen mit eigenen Richtlinien in der Entwicklung oder in der Produktion.
@@ -45,7 +45,7 @@ Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlini
 Wenn Sie Application Insights mit Azure AD B2C verwenden, müssen Sie lediglich eine Ressource erstellen und den Instrumentierungsschlüssel abrufen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihr Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen und dann das Verzeichnis auswählen, das Ihr Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
 3. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus, und suchen Sie dann nach **Application Insights**, und wählen Sie dann diese Option aus.
 4. Klicken Sie auf **Create**.
 5. Geben Sie einen **Namen** für die Ressource ein.
@@ -111,10 +111,10 @@ Technische Profile können im Azure AD B2C-Framework für die Identitätsfunktio
 
 | Technisches Profil | Aufgabe |
 | ----------------- | -----|
-| AzureInsights-Common | Erstellt einen gemeinsamer Satz von Parametern, die in alle technischen Profile von AzureInsights einbezogen werden sollen. | 
-| AzureInsights-SignInRequest | Erstellt ein „SignIn“-Ereignis mit einem Satz von Ansprüchen, wenn eine Anmeldeanforderung empfangen wird. | 
-| AzureInsights-UserSignup | Erstellt ein „UserSignup“-Ereignis, wenn der Benutzer die Registrierungsoption in einer Registrierungs-/Anmeldungsjourney auslöst. | 
-| AzureInsights-SignInComplete | Zeichnet den erfolgreichen Abschluss einer Authentifizierung auf, wenn ein Token an die Anwendung der vertrauenden Seite gesendet wurde. | 
+| AzureInsights-Common | Erstellt einen gemeinsamer Satz von Parametern, die in alle technischen Profile von AzureInsights einbezogen werden sollen. |
+| AzureInsights-SignInRequest | Erstellt ein „SignIn“-Ereignis mit einem Satz von Ansprüchen, wenn eine Anmeldeanforderung empfangen wird. |
+| AzureInsights-UserSignup | Erstellt ein „UserSignup“-Ereignis, wenn der Benutzer die Registrierungsoption in einer Registrierungs-/Anmeldungsjourney auslöst. |
+| AzureInsights-SignInComplete | Zeichnet den erfolgreichen Abschluss einer Authentifizierung auf, wenn ein Token an die Anwendung der vertrauenden Seite gesendet wurde. |
 
 Fügen Sie die Profile zur Datei *TrustFrameworkExtensions.xml* aus dem Starter Pack hinzu. Fügen Sie diese Elemente dem Element **ClaimsProviders** hinzu:
 
@@ -230,11 +230,11 @@ Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie sie hoch. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie Ihrer User Journey entsprechend Ihren Anforderungen Anspruchstypen und Ereignisse hinzu. Sie können [Anspruchskonfliktlöser](claim-resolver-overview.md) oder einen beliebigen Zeichenfolgenanspruchstyp verwenden, die Ansprüche hinzufügen, indem Sie dem Application Insights-Ereignis oder dem technischen Profil „AzureInsights-Common“ ein **Eingabeanspruch**-Element hinzufügen. 
+Fügen Sie Ihrer User Journey entsprechend Ihren Anforderungen Anspruchstypen und Ereignisse hinzu. Sie können [Anspruchskonfliktlöser](claim-resolver-overview.md) oder einen beliebigen Zeichenfolgenanspruchstyp verwenden, die Ansprüche hinzufügen, indem Sie dem Application Insights-Ereignis oder dem technischen Profil „AzureInsights-Common“ ein **Eingabeanspruch**-Element hinzufügen.
 
 - **ClaimTypeReferenceId** ist der Verweis auf einen Anspruchstyp.
-- **PartnerClaimType** ist der Name der Eigenschaft, die in Azure Insights angezeigt wird. Verwenden Sie die Syntax von `{property:NAME}`, wobei `NAME` die Eigenschaft ist, die dem Ereignis hinzugefügt wird. 
-- **DefaultValue** verwendet einen beliebigen Zeichenfolgenwert oder den Anspruchskonfliktlöser. 
+- **PartnerClaimType** ist der Name der Eigenschaft, die in Azure Insights angezeigt wird. Verwenden Sie die Syntax von `{property:NAME}`, wobei `NAME` die Eigenschaft ist, die dem Ereignis hinzugefügt wird.
+- **DefaultValue** verwendet einen beliebigen Zeichenfolgenwert oder den Anspruchskonfliktlöser.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

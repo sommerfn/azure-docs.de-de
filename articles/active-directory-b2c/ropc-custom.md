@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164851"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063706"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-In Azure Active Directory (Azure AD) B2C ist der Flow für Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC) ein OAuth-Standardauthentifizierungsflow. Bei diesem Flow tauscht eine Anwendung, die auch als die vertrauende Seite bezeichnet wird, gültige Anmeldeinformationen gegen Token aus. Die Anmeldeinformationen enthalten eine Benutzer-ID und ein Kennwort. Die zurückgegebenen Token sind ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken.
+In Azure Active Directory B2C (Azure AD B2C) ist der Flow für Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC) ein OAuth-Standardauthentifizierungsflow. Bei diesem Flow tauscht eine Anwendung, die auch als die vertrauende Seite bezeichnet wird, gültige Anmeldeinformationen gegen Token aus. Die Anmeldeinformationen enthalten eine Benutzer-ID und ein Kennwort. Die zurückgegebenen Token sind ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken.
 
 Die folgenden Optionen werden im ROPC-Flow unterstützt:
 
@@ -88,7 +88,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -140,7 +140,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
     </TechnicalProfile>
     ```
 
-    Ersetzen Sie **DefaultValue** von **client_id** durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie im Tutorial unter den Voraussetzungen erstellt haben. Ersetzen Sie **DefaultValue** von **resource_id** durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie ebenfalls im Tutorial unter den Voraussetzungen erstellt haben.  
+    Ersetzen Sie **DefaultValue** von **client_id** durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie im Tutorial unter den Voraussetzungen erstellt haben. Ersetzen Sie **DefaultValue** von **resource_id** durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie ebenfalls im Tutorial unter den Voraussetzungen erstellt haben.
 
 5. Fügen Sie die folgenden **ClaimsProvider**-Elemente mit ihren technischen Profilen dem **ClaimsProviders**-Element hinzu:
 
@@ -245,7 +245,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, die die User J
 2. Öffnen Sie die neue Datei, und ändern Sie den Wert des **PolicyId**-Attributs für **TrustFrameworkPolicy** in einen eindeutigen Wert. Die Richtlinien-ID ist der Name Ihrer Richtlinie. Beispiel: **B2C_1A_ROPC_Auth**.
 3. Ändern Sie den Wert des **ReferenceId**-Attributs unter **DefaultUserJourney** in `ResourceOwnerPasswordCredentials`.
 4. Ändern Sie das **OutputClaims**-Element so, dass es nur die folgenden Ansprüche enthält:
-    
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -269,7 +269,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 
 | Schlüssel | Wert |
 | --- | ----- |
-| userName | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |

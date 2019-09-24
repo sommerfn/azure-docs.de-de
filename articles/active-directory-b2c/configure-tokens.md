@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846930"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064386"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
-In diesem Artikel erfahren Sie, wie Sie die [Lebensdauer und Kompatibilität eines Token](active-directory-b2c-reference-tokens.md) in Azure Active Directory (Azure AD) B2C konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie die [Lebensdauer und Kompatibilität eines Tokens](active-directory-b2c-reference-tokens.md) in Azure Active Directory B2C (Azure AD B2C) konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

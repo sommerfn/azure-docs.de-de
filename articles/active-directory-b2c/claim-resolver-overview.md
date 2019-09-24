@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511608"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064399"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
-Anspruchskonfliktlöser in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) von Azure Active Directory (Azure AD) B2C bieten Kontextinformationen über eine Autorisierungsanforderung, z. B. den Namen der Richtlinie, die Korrelations-ID der Anforderung, die Sprache der Benutzeroberfläche und mehr.
+Anspruchskonfliktlöser in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) von Azure Active Directory B2C (Azure AD B2C) bieten Kontextinformationen über eine Autorisierungsanforderung, z. B. den Namen der Richtlinie, die Korrelations-ID der Anforderung, die Sprache der Benutzeroberfläche und mehr.
 
-Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden, definieren Sie eine Zeichenfolge **ClaimType**unter dem [ClaimsSchema](claimsschema.md)-Element, und dann Sie legen Sie den **DefaultValue** auf den Anspruchskonfliktlöser in dem Ein- oder Ausgabeanspruchselement fest. Azure AD B2C liest den Wert des Anspruchskonfliktlösers und verwendet den Wert in dem technischen Profil. 
+Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden, definieren Sie eine Zeichenfolge **ClaimType**unter dem [ClaimsSchema](claimsschema.md)-Element, und dann Sie legen Sie den **DefaultValue** auf den Anspruchskonfliktlöser in dem Ein- oder Ausgabeanspruchselement fest. Azure AD B2C liest den Wert des Anspruchskonfliktlösers und verwendet den Wert in dem technischen Profil.
 
-Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mit einem **DataType** von `string`.  
+Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mit einem **DataType** von `string`.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -107,7 +107,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 
 ### <a name="restful-technical-profile"></a>Technisches Profil „RESTful“
 
-In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie die Sprache des Benutzers, den Richtliniennamen, den Bereich und die Client-ID senden. Basierend auf diesen Ansprüchen kann die REST-API eine benutzerdefinierte Geschäftslogik ausführen und bei Bedarf eine lokalisierte Fehlermeldung auslösen. 
+In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie die Sprache des Benutzers, den Richtliniennamen, den Bereich und die Client-ID senden. Basierend auf diesen Ansprüchen kann die REST-API eine benutzerdefinierte Geschäftslogik ausführen und bei Bedarf eine lokalisierte Fehlermeldung auslösen.
 
 Das folgende Beispiel zeigt ein technisches RESTful-Profil:
 

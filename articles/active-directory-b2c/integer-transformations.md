@@ -10,26 +10,26 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 976cf55dd8f1c11d1ea605b25086fa644afec980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d82f7fecfb35c63d586993fed73a83209782a890
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510802"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064213"
 ---
 # <a name="integer-claims-transformations"></a>Transformationen von Integer-Ansprüchen
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Dieser Artikel enthält Beispiele für die Verwendung von Integer-Anspruchstransformationen des Schemas des Frameworks für die Identitätsfunktion von Azure Active Directory (Azure AD) B2C. Weitere Informationen finden Sie unter [Anspruchstransformationen](claimstransformations.md).
+Dieser Artikel enthält Beispiele für die Verwendung von Integer-Anspruchstransformationen des Identity Experience Framework-Schemas in Azure Active Directory B2C (Azure AD B2C). Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
 
-## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim 
+## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
 
 Konvertiert einen long-Datentyp in einen string-Datentyp.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | lang | Der Anspruchstyp, der in eine Zeichenfolge konvertiert werden soll. |
+| InputClaim | inputClaim | long | Der Anspruchstyp, der in eine Zeichenfolge konvertiert werden soll. |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 In diesem Beispiel wird der Anspruch `numericUserId` mit dem Werttyp long in einen `UserId`-Anspruch mit dem Werttyp string konvertiert.
@@ -49,6 +49,6 @@ In diesem Beispiel wird der Anspruch `numericUserId` mit dem Werttyp long in ein
 
 - Eingabeansprüche:
     - **inputClaim:** 12334 (long)
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
     - **outputClaim:** 12334 (string)
 

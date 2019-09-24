@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835203"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066225"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel fügen Sie der User Journey für die Registrierung in Azure Active Directory (Azure AD) B2C eine neue Benutzereingabe (einen Anspruch) hinzu.  Sie konfigurieren die Eingabe als Dropdownliste und legen fest, ob sie erforderlich ist.
+In diesem Artikel fügen Sie der User Journey für die Registrierung in Azure Active Directory B2C (Azure AD B2C) eine neue Benutzereingabe (einen Anspruch) hinzu.  Sie konfigurieren die Eingabe als Dropdownliste und legen fest, ob sie erforderlich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -261,7 +261,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 ## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
 3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Identity Experience Framework (Preview)** aus.
 5. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die beiden geänderten Richtliniendateien hoch.

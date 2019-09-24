@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 246e00418c784ee463170d78543e4a9aae3d7da8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509052"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065395"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sitzungsverwaltung für einmaliges Anmelden in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe der Sitzungsverwaltung für einmaliges Anmelden (SSO) in Azure Active Directory (Azure AD) B2C kann ein Administrator die Interaktion mit einem Benutzer steuern, nachdem dieser bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird, oder ob lokale Kontodetails erneut eingegeben werden müssen. In diesem Artikel wird das Konfigurieren der Einstellungen für einmaliges Anmelden für Azure AD B2C beschrieben.
+Mithilfe der Sitzungsverwaltung für einmaliges Anmelden (Single Sign-On, SSO) in Azure Active Directory B2C (Azure AD B2C) kann ein Administrator die Interaktion mit einem Benutzer steuern, nachdem dieser bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird, oder ob lokale Kontodetails erneut eingegeben werden müssen. In diesem Artikel wird das Konfigurieren der Einstellungen für einmaliges Anmelden für Azure AD B2C beschrieben.
 
 Die SSO-Sitzungsverwaltung besteht aus zwei Teilen. Der erste Teil befasst sich mit den direkten Benutzerinteraktionen mit Azure AD B2C und der zweite Teil behandelt Benutzerinteraktionen mit externen Parteien, z. B. mit Facebook. Azure AD B2C setzt SSO-Sitzungen nicht außer Kraft oder umgeht diese, die von externen Parteien abgehalten werden. Stattdessen wird die Route über Azure AD B2C zur externen Partei „gespeichert“, wodurch vermieden wird, dass der Benutzer erneut aufgefordert werden muss, seinen Identitätsanbieter auszuwählen. Die ultimative SSO-Entscheidung verbleibt der externen Partei.
 
@@ -63,7 +63,7 @@ Verwenden Sie das `<PersistedClaims>`-Element des technischen Profils, um Anspr�
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Dieser Anbieter wird dazu verwendet, um den Bildschirm „Identitätsanbieter auswählen“ zu unterdrücken. Er wird in der Regel in einem technischen Profil für einen externen Identitätsanbieter referenziert, z. B. Facebook. 
+Dieser Anbieter wird dazu verwendet, um den Bildschirm „Identitätsanbieter auswählen“ zu unterdrücken. Er wird in der Regel in einem technischen Profil für einen externen Identitätsanbieter referenziert, z. B. Facebook.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">

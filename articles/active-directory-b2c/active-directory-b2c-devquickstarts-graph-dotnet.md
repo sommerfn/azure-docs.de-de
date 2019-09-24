@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880093"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065940"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
 >[!NOTE]
 > Sie müssen die [Azure AD-Graph-API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) verwenden, um Benutzer in einem Azure AD B2C-Verzeichnis zu verwalten. Dies unterscheidet sich von der Microsoft Graph-API. [Hier](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)erhalten Sie weitere Informationen.
 
-Azure Active Directory (Azure AD) B2C-Mandanten sind normalerweise sehr groß. Das bedeutet, dass viele allgemeine Aufgaben zur Mandantenverwaltung programmgesteuert durchgeführt werden müssen. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten im Azure AD B2C-Verzeichnis im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die Azure AD Graph-API verwenden.
+Azure Active Directory B2C-Mandanten (Azure AD B2C-Mandanten) sind normalerweise sehr groß. Das bedeutet, dass viele allgemeine Aufgaben zur Mandantenverwaltung programmgesteuert durchgeführt werden müssen. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten im Azure AD B2C-Verzeichnis im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die Azure AD Graph-API verwenden.
 
 Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Graph-API.
 
@@ -43,10 +43,10 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
 3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, klicken Sie auf **App-Registrierungen** und dann auf **Neue Registrierung**.
-4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
+4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung.
     1. Hinzufügen eines geeigneten Namens
     2. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
-    3. Wählen Sie **Web** als „Anwendungstyp“ aus, und geben Sie **eine beliebige Anmelde- URL** an (z.B. `https://B2CGraphAPI`), da sie für dieses Beispiel nicht relevant ist.  
+    3. Wählen Sie **Web** als „Anwendungstyp“ aus, und geben Sie **eine beliebige Anmelde- URL** an (z.B. `https://B2CGraphAPI`), da sie für dieses Beispiel nicht relevant ist.
     4. Klicken Sie auf „Registrieren“.
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
 6. Klicken Sie im Menü „Einstellungen“ auf **Zertifikate & Geheimnisse**.
@@ -65,8 +65,8 @@ Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Les
 
 > [!NOTE]
 > Die Berechtigungserteilung dauert unter Umständen einige Minuten.
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Konfigurieren der Berechtigungen für das Löschen oder Aktualisieren des Kennworts für Ihre Anwendung
 Derzeit schließt die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* **NICHT** die Möglichkeit ein, Benutzer zu löschen oder Benutzerkennwörter zu ändern. Wenn Ihre Anwendung die Möglichkeit erhalten soll, Benutzer zu löschen oder Kennwörter zu ändern, müssen Sie diese zusätzlichen Schritte mit PowerShell ausführen, andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
@@ -132,8 +132,8 @@ Alle Anforderungen an die Graph-API erfordern ein Zugriffstoken für die Authent
 
 > [!NOTE]
 > In diesem Codebeispiel wird ADAL v2 verwendet, um mit der Graph-API zu kommunizieren.  Sie müssen ADAL v2 oder v3 nutzen, um Zugriffstoken zu erhalten, die mit der Azure AD Graph-API verwendet werden können.
-> 
-> 
+>
+>
 
 Bei der Ausführung von `B2CGraphClient` wird eine Instanz der `B2CGraphClient`-Klasse erstellt. Mit dem Konstruktor für diese Klasse wird das Authentifizierungsgerüst für ADAL eingerichtet:
 
@@ -260,8 +260,8 @@ Sie sehen, wie die POST-Anforderung in `B2CGraphClient.SendGraphPostRequest(...)
 
 > [!NOTE]
 > Wenn die Konten, die Sie aus einem vorhandenen Benutzerspeicher migrieren möchten, über eine geringere Kennwortsicherheit als die [hohe Kennwortsicherheit unter Azure AD B2C](/previous-versions/azure/jj943764(v=azure.100)) verfügen, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Verwenden Sie hierfür den Wert `DisableStrongPassword` in der `passwordPolicies`-Eigenschaft. Beispielsweise können Sie die oben angegebene Anforderung zum Erstellen eines Benutzers wie folgt ändern: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>Aktualisieren von Benutzerkonten für Consumer
 Die Aktualisierung von Benutzerobjekten ähnelt dem Prozess zum Erstellen von Benutzerobjekten. Dieser Prozess verwendet jedoch die HTTP `PATCH` -Methode:

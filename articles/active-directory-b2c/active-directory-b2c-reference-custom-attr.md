@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9ac3800d60b063c620cfc774d7a0c642f6f6821
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e6b0eac0b8cf7f61d76f90a4f769ba11abab6999
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835395"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065672"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
- Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure Active Directory (Azure AD) B2C-Mandant umfasst einen integrierten Satz von in Attributen gespeicherten Informationen, z.B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern.
+ Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Ihr Azure Active Directory B2C-Mandant (Azure AD B2C-Mandant) umfasst einen integrierten Satz von in Attributen gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern.
 
  Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und sie in den Benutzerflows für die Registrierung, den Benutzerflows für Registrierung und Anmeldung und den Benutzerflows für die Profilbearbeitung verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben. Benutzerdefinierte Attribute in Azure AD B2C verwenden die [Verzeichnisschemaerweiterungen der Azure AD Graph-API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 

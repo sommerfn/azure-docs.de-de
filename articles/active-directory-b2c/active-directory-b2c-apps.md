@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369400"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066146"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
 
-Azure Active Directory (Azure AD) B2C unterstützt die Authentifizierung für eine Vielzahl von modernen Anwendungsarchitekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](active-directory-b2c-reference-protocols.md) oder [OpenID Connect](active-directory-b2c-reference-protocols.md). In diesem Artikel werden die Anwendungstypen beschrieben, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarios, bevor Sie mit dem Erstellen von Anwendungen beginnen.
+Azure Active Directory B2C (Azure AD B2C) unterstützt die Authentifizierung für eine Vielzahl moderner Anwendungsarchitekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](active-directory-b2c-reference-protocols.md) oder [OpenID Connect](active-directory-b2c-reference-protocols.md). In diesem Artikel werden die Anwendungstypen beschrieben, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarios, bevor Sie mit dem Erstellen von Anwendungen beginnen.
 
 Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](https://portal.azure.com/) in Ihrem [Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
 
@@ -132,12 +132,12 @@ Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anme
 
 Azure AD B2C-Anwendungen dürfen nicht auf folgende Weise bearbeitet werden:
 
-- In anderen Portalen für die Anwendungsverwaltung, z.B. im  [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/)
+- In anderen Portalen für die Anwendungsverwaltung, z.B. im  [Anwendungsregistrierungsportal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
 - Verwenden der Graph-API oder PowerShell
 
 Wenn Sie die Azure AD B2C-Anwendung außerhalb des Azure-Portals bearbeiten, entsteht eine fehlerhafte Anwendung, die nicht mehr mit Azure AD B2C verwendet werden kann. Löschen Sie die Anwendung, und erstellen Sie die Anwendung neu.
 
-Um die Anwendung zu löschen, rufen Sie das [App-Registrierungsportal](https://apps.dev.microsoft.com/) auf und löschen dort die Anwendung. Damit die Anwendung angezeigt wird, müssen Sie der Besitzer der Anwendung sein (und nicht nur Administrator des Mandanten).
+Um die Anwendung zu löschen, rufen Sie das [App-Registrierungsportal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) auf und löschen dort die Anwendung. Damit die Anwendung angezeigt wird, müssen Sie der Besitzer der Anwendung sein (und nicht nur Administrator des Mandanten).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

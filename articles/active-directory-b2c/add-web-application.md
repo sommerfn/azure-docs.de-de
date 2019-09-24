@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a1d098550c6fb733e088f8ad211d29f48f55d2d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a4ead58cc70524ec464e52ce546b36f9685df5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511707"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064532"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Hinzufügen einer Web-API-Anwendung zu Ihrem Azure Active Directory B2C-Mandanten
 
- Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie auf Anforderungen Clientanwendungen reagieren können, die ein Zugriffstoken bereitstellen. In diesem Artikel wird das Registrieren einer Anwendung in Azure Active Directory (Azure AD) B2C veranschaulicht.
+ Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie auf Anforderungen Clientanwendungen reagieren können, die ein Zugriffstoken bereitstellen. In diesem Artikel wird beschrieben, wie Sie eine Anwendung in Azure Active Directory B2C (Azure AD B2C) registrieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
 5. Geben Sie einen Namen für die Anwendung ein. Beispiel: *webapi1*.

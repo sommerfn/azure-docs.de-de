@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716821"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065776"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory (Azure AD) B2C-Mandanten definieren. Im Azure AD B2C-Portal sind Benutzerflows für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory B2C-Mandanten (Azure AD B2C-Mandanten) definieren. Im Azure AD B2C-Portal sind Benutzerflows für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Vergleichen von Benutzerflows mit benutzerdefinierten Richtlinien
 
@@ -55,7 +55,7 @@ Der Kundenidentitäts- und Zugriffsverwaltungsdienst (Customer Identity and Acce
 
 Azure AD B2C interagiert der Reihe nach mit Identitätsanbietern, Benutzern, anderen Systemen und dem lokalen Benutzerverzeichnis, um eine Identitätsaufgabe auszuführen. Beispiel: Anmelden eines Benutzers, Registrieren eines neuen Benutzers oder Zurücksetzen eines Kennworts. Das Identity Experience Framework und eine Richtlinie (auch als „User Journey“ oder „Vertrauensframeworkrichtlinie“ bezeichnet) stellen die Vertrauensstellung zwischen mehreren Seiten her und definieren explizit die Akteure, Aktionen, Protokolle und die Abfolge der auszuführenden Schritte.
 
-Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML, WSFed sowie einigen nicht standardmäßigen Formaten (z.B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
+Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML sowie einigen nicht standardmäßigen Formaten (z. B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
 
 Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. Die XML-Elemente definieren u.a. das Anspruchsschema, Anspruchstransformationen, Inhaltsdefinitionen, Anspruchsanbieter, technische Profile und Schritte zur Orchestrierung von User Journeys. Eine benutzerdefinierte Richtlinie kann als eine oder mehrere XML-Dateien aufgerufen werden, die vom Identity Experience Framework beim Aufrufen durch eine vertrauende Seite ausgeführt wird/werden. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
 

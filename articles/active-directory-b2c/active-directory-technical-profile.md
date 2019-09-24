@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8b8bbe540d9e296b0f6a0c11a62d3b861e0115d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507444"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064623"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für die Benutzerverwaltung von Azure Active Directory. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Azure Active Directory-Benutzerverwaltung. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt.
 
 ## <a name="protocol"></a>Protocol
 
@@ -31,7 +31,7 @@ Alle technischen Azure AD-Profile enthalten das technische Profil **AAD-Common**
 
 - **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserReadUsingAlternativeSecurityId-NoError**: Suchen eines Social Media-Kontos im Verzeichnis.
 - **AAD-UserWriteUsingAlternativeSecurityId:** Erstellen eines neuen Social Media-Kontos.
-- **AAD-UserReadUsingEmailAddress:** Suchen eines lokalen Kontos im Verzeichnis. 
+- **AAD-UserReadUsingEmailAddress:** Suchen eines lokalen Kontos im Verzeichnis.
 - **AAD-UserWriteUsingLogonEmail:** Erstellen eines neuen lokalen Kontos.
 - **AAD-UserWritePasswordUsingObjectId:** Aktualisieren des Kennworts eines lokalen Kontos.
 - **AAD-UserWriteProfileUsingObjectId:** Aktualisieren eines Benutzerprofils eines lokalen oder Social Media-Kontos.
@@ -91,7 +91,7 @@ Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt z.B. ein lokales
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-Das **PersistedClaims**-Element enthält alle Werte, die von Azure AD beibehalten werden sollen, zusammen mit möglichen Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt ClaimsSchema in der Richtlinie definiert ist, und dem Azure AD-Attributnamen. 
+Das **PersistedClaims**-Element enthält alle Werte, die von Azure AD beibehalten werden sollen, zusammen mit möglichen Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt ClaimsSchema in der Richtlinie definiert ist, und dem Azure AD-Attributnamen.
 
 Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt ein lokales Konto und behält die folgenden Ansprüche bei:
 
@@ -113,7 +113,7 @@ Der Name des Anspruchs ist der Name des Azure AD-Attributs, sofern nicht das **P
 
 ## <a name="requirements-of-an-operation"></a>Anforderungen für einen Vorgang
 
-- Es muss genau ein **InputClaim**-Element im Anspruchsbehälter für alle technischen Azure AD-Profile vorhanden sein. 
+- Es muss genau ein **InputClaim**-Element im Anspruchsbehälter für alle technischen Azure AD-Profile vorhanden sein.
 - Wenn der Vorgang `Write` oder `DeleteClaims` ist, muss er auch im **PersistedClaims**-Element enthalten sein.
 - Der Wert des **userPrincipalName**-Anspruchs muss das Format `user@tenant.onmicrosoft.com` aufweisen.
 - Der **displayName**-Anspruch ist erforderlich und darf keine leere Zeichenfolge sein.
@@ -122,7 +122,7 @@ Der Name des Anspruchs ist der Name des Azure AD-Attributs, sofern nicht das **P
 
 ### <a name="read"></a>Lesen
 
-Der **Read**-Vorgang liest die Daten zu einem einzelnen Benutzerkonto. Für das Lesen von Benutzerdaten müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames** (beliebiger Typ, Benutzername und E-Mail-basiertes Konto) oder **alternativeSecurityId**.  
+Der **Read**-Vorgang liest die Daten zu einem einzelnen Benutzerkonto. Für das Lesen von Benutzerdaten müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames** (beliebiger Typ, Benutzername und E-Mail-basiertes Konto) oder **alternativeSecurityId**.
 
 Das folgende technische Profil liest Daten über ein Benutzerkonto mithilfe der Objekt-ID des Benutzers:
 
@@ -154,7 +154,7 @@ Das folgende technische Profil liest Daten über ein Benutzerkonto mithilfe der 
 
 ### <a name="write"></a>Schreiben
 
-Der **Write**-Vorgang erstellt oder aktualisiert ein einzelnes Benutzerkonto. Für das Schreiben in einem Benutzerkonto müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.  
+Der **Write**-Vorgang erstellt oder aktualisiert ein einzelnes Benutzerkonto. Für das Schreiben in einem Benutzerkonto müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
 
 Das folgende technische Profil erstellt neues Social Media-Konto:
 
@@ -196,7 +196,7 @@ Das folgende technische Profil erstellt neues Social Media-Konto:
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-Der **DeleteClaims**-Vorgang löscht die Informationen aus einer angegebenen Liste von Ansprüchen. Für das Löschen von Informationen aus Ansprüchen müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.  
+Der **DeleteClaims**-Vorgang löscht die Informationen aus einer angegebenen Liste von Ansprüchen. Für das Löschen von Informationen aus Ansprüchen müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
 
 Das folgende technische Profil löscht Ansprüche:
 
@@ -219,7 +219,7 @@ Das folgende technische Profil löscht Ansprüche:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-Der **DeleteClaimsPrincipal**-Vorgang löscht ein einzelnes Benutzerkonto aus dem Verzeichnis. Für das Löschen eines Benutzerkontos müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.  
+Der **DeleteClaimsPrincipal**-Vorgang löscht ein einzelnes Benutzerkonto aus dem Verzeichnis. Für das Löschen eines Benutzerkontos müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
 
 Das folgende technische Profil löscht ein Benutzerkonto anhand des Benutzerprinzipalnamens aus dem Verzeichnis:
 
@@ -254,13 +254,13 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. | 
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. | 
-| UserMessageIfClaimsPrincipalDoesNotExist | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.| 
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.| 
-| UserMessageIfClaimsPrincipalAlreadyExists | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalAlreadyExists-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt bereits vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.| 
-| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
-| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
+| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.|
+| UserMessageIfClaimsPrincipalAlreadyExists | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalAlreadyExists-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt bereits vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
+| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
 
 
 

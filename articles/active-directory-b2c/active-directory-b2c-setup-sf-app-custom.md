@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7cbde2beb03c174facbd145954387a31f6158a9a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0bc373649b19b75a8f137e82bf839ac5b27b8692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654190"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064995"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer aus einer Salesforce-Organisation mithilfe [benutzerdefinierter Richtlinien](active-directory-b2c-overview-custom.md) in Azure Active Directory (Azure AD) B2C aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie ein [technisches SAML-Profil](saml-technical-profile.md) hinzufügen.
+In diesem Artikel wird beschrieben, wie Sie die Anmeldung für Benutzer einer Salesforce-Organisation mithilfe [benutzerdefinierter Richtlinien](active-directory-b2c-overview-custom.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie ein [technisches SAML-Profil](saml-technical-profile.md) hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
