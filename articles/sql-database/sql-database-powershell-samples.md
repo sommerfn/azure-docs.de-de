@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567064"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059255"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-Beispiele für Azure SQL-Datenbank
 
@@ -27,7 +27,7 @@ Azure SQL-Datenbank ermöglicht Ihnen das Konfigurieren Ihrer Datenbanken, Insta
 
 Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 1.4.0 von Azure PowerShell verwenden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="single-database-and-elastic-pools"></a>Einzeldatenbank und Pools für elastische Datenbanken
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[Einzeldatenbank und Pools für elastische Datenbanken](#tab/single-database)
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure SQL-Datenbank.
 
@@ -58,7 +58,7 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azu
 
 Erfahren Sie mehr über die [Azure PowerShell-API für Einzeldatenbanken](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>Verwaltete Instanz
+## <a name="managed-instancetabmanaged-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für verwaltete Azure SQL-Datenbank-Instanzen.
 
@@ -73,6 +73,8 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für ver
 |||
 
 Erfahren Sie mehr über die [Azure PowerShell-API für verwaltete Instanzen](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
+
+---
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

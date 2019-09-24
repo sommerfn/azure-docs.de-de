@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200054"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102628"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern
 
@@ -44,7 +44,7 @@ Sie müssen Benutzern keine Lizenzen zuweisen, damit sie Mitglieder in dynamisch
 
 Zunächst erstellen Sie eine Gruppe für Ihre Gastbenutzer, die alle aus einem Partnerunternehmen stammen. Für sie ist eine spezielle Lizenzierung erforderlich, daher ist es häufig effizienter, zu diesem Zweck eine Gruppe zu erstellen.
 
-1. Melden Sie sich beim https://portal.azure.com)Azure-Portal über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
+1. Melden Sie sich beim https://portal.azure.com) Azure-Portal über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Neue Gruppe**.
    ![Befehl auswählen, um eine neue Gruppe zu starten](./media/groups-dynamic-tutorial/new-group.png)
 3. Auf dem Blatt **Gruppe**:
@@ -52,11 +52,23 @@ Zunächst erstellen Sie eine Gruppe für Ihre Gastbenutzer, die alle aus einem P
    * Wählen Sie als Gruppentyp die Option **Sicherheit** aus.
    * Geben Sie `Guest users Contoso` als Name und Beschreibung für die Gruppe ein.
    * Ändern Sie **Mitgliedschaftstyp** in **Dynamischer Benutzer**.
-   * Klicken Sie auf **Dynamische Abfrage hinzufügen**.
-  
-4. Klicken Sie auf **Erweiterte Regel**, und geben Sie im Feld **Erweiterte Regel** Folgendes ein: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
-5. Klicken Sie auf **Abfrage hinzufügen**, um das Blatt zu schließen.
-6. Klicken Sie auf dem Blatt **Gruppe** auf **Erstellen**, um die Gruppe zu erstellen.
+   
+4. Wählen Sie **Besitzer** aus, und suchen Sie auf dem Blatt **Besitzer hinzufügen** nach gewünschten Besitzern. Klicken Sie auf die gewünschten Besitzer, um Sie der Auswahl hinzuzufügen.
+5. Klicken Sie auf **Auswählen**, um das Blatt **Besitzer hinzufügen** zu schließen.  
+6. Wählen Sie im Feld **Dynamische Mitglieder** die Option **Dynamische Abfrage bearbeiten** aus.
+7. Auf dem Blatt **Dynamische Mitgliedschaftsregeln**:
+
+   * Klicken Sie im Feld **Eigenschaften** auf den vorhandenen Wert, und wählen Sie **userType** aus. 
+   * Vergewissern Sie sich, dass für das Feld **Operator** die Option **Ist gleich** ausgewählt ist.  
+   * Wählen Sie das Feld **Wert**, und geben Sie **Gast** ein. 
+   * Klicken Sie auf den Hyperlink **Ausdruck hinzufügen**, um eine weitere Zeile hinzuzufügen.
+   * Wählen Sie im Feld **Und/Oder** die Option **Und** aus.
+   * Wählen Sie im Feld **Eigenschaft** die Option **companyName** aus.
+   * Vergewissern Sie sich, dass für das Feld **Operator** die Option **Ist gleich** ausgewählt ist.
+   * Geben Sie im Feld **Wert** den Wert **Contoso** ein.
+   * Klicken Sie auf **Speichern**, um das Blatt **Dynamische Mitgliedschaftsregeln** zu schließen.
+   
+8. Klicken Sie auf dem Blatt **Gruppe** auf **Erstellen**, um die Gruppe zu erstellen.
 
 ## <a name="assign-licenses"></a>Zuweisen von Lizenzen
 

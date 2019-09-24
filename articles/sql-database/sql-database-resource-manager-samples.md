@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566896"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037436"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank
 
 Mit Azure Resource Manager-Vorlagen können Sie Ihre Infrastruktur als Code definieren und Ihre Lösungen in der Azure-Cloud bereitstellen.
 
-## <a name="single-database--elastic-pool"></a>Einzeldatenbank und Pool für elastische Datenbanken
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Einzeldatenbank und Pool für elastische Datenbanken](#tab/single-database)
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azure SQL-Datenbank:
 
@@ -41,7 +41,7 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 | [HDInsight-Cluster mit einer SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Mit dieser Vorlage können Sie einen HDInsight-Cluster, einen SQL-Datenbank-Server, eine SQL-Datenbank und zwei Tabellen erstellen. Diese Vorlage wird im Artikel [Verwenden von Apache Sqoop mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) verwendet. |
 | [Azure-Logik-App, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Mit dieser Vorlage können Sie eine Logik-App zu erstellen, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt. Argumente für die Prozedur können bei Bedarf im Textabschnitt der Vorlage platziert werden.|
 
-## <a name="managed-instance"></a>Verwaltete Instanz
+## <a name="managed-instancetabmanaged-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für verwaltete Azure SQL-Datenbank-Instanzen:
 
@@ -51,3 +51,5 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für verw
 | [Netzwerkumgebung für die verwaltete Instanz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Diese Bereitstellung erstellt ein konfiguriertes virtuelles Azure-Netzwerk mit zwei Subnetzen: eins für Ihre verwalteten Instanzen und eins für andere Ressourcen (virtuelle Computer, App Service-Umgebungen und Ähnliches). Diese Vorlage erstellt eine ordnungsgemäß konfigurierte Netzwerkumgebung, in der Sie verwaltete Instanzen bereitstellen können. |
 | [Verwaltete Instanz mit P2S-Verbindung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Diese Bereitstellung erstellt ein virtuelles Azure-Netzwerk mit zwei Subnetzen: `ManagedInstance` und `GatewaySubnet`. Die verwaltete Instanz wird im Subnetz „ManagedInstance“ bereitgestellt. Das Gateway für virtuelle Netzwerke wird im Subnetz `GatewaySubnet` erstellt und für eine Point-to-Site-VPN-Verbindung konfiguriert. |
 | [Verwaltete Instanz mit virtuellem Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Diese Bereitstellung erstellt ein virtuelles Azure-Netzwerk mit zwei Subnetzen: `ManagedInstance` und `Management`. Die verwaltete Instanz wird im Subnetz `ManagedInstance` bereitgestellt. Der virtuelle Computer mit der neuesten Version von SQL Server Management Studio (SSMS) wird im Subnetz `Management` bereitgestellt. |
+
+---

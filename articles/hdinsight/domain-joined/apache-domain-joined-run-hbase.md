@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885159"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037266"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -88,7 +88,8 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![Ausgabe der HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
 
@@ -96,7 +97,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<Clustername>_hbase**.
 
-   ![Apache Ranger-Administratoroberfläche](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen**.
 
@@ -202,14 +203,14 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
    kinit marketing_user1
    ```
 
-2. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an:
+1. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Beachten Sie, dass der Marketingbenutzer nur die fünf Spalten der Spaltenfamilie `Contact` anzeigen kann.
+1. Beachten Sie, dass der Marketingbenutzer nur die fünf Spalten der Spaltenfamilie `Contact` anzeigen kann.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
     2 row(s) in 0.0730 seconds
     ```
 
-9. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
+1. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
-   ![Ranger-Benutzeroberfläche – Richtlinienüberwachung](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Ranger-Benutzeroberfläche in HDInsight – Richtlinienüberwachung](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

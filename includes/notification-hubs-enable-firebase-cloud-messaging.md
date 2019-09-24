@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 02/05/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fef6122eceda213fb6353ada53033d0d1e27fd7e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509118"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935102"
 ---
 1. Melden Sie sich bei der [Firebase-Konsole](https://firebase.google.com/console/) an. Erstellen Sie ein neues Firebase-Projekt, falls Sie noch keins besitzen.
 2. Klicken Sie nach der Erstellung Ihres Projekts auf **Add Firebase to your Android app** (Firebase der Android-App hinzufügen). 
@@ -33,10 +33,11 @@ ms.locfileid: "67509118"
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. Fügen Sie der Datei „build.gradle“ auf App-Ebene (&lt;Projekt&gt;/&lt;App-Modul&gt;/build.gradle) im Abschnitt **dependencies** die folgende Anweisung hinzu. 
+    2. Fügen Sie der Datei „build.gradle“ auf App-Ebene (&lt;Projekt&gt;/&lt;App-Modul&gt;/build.gradle) im Abschnitt **dependencies** die folgenden Anweisungen hinzu. 
 
         ```
-        implementation 'com.google.firebase:firebase-core:16.0.1'
+        implementation 'com.google.firebase:firebase-core:16.0.8'
+        implementation 'com.google.firebase:firebase-messaging:17.3.4'
         ```
 
     3. Fügen Sie am Ende der Datei „build.gradle“ auf App-Ebene hinter dem Abschnitt „dependenices“ die folgende Zeile hinzu. 

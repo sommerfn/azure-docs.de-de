@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (Node.js) | Microsoft-Dokumentation'
+title: 'Schnellstart: Steuern eines Geräts über Azure IoT (Node.js)'
 description: In dieser Schnellstartanleitung führen Sie zwei Node.js-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Back-End-Anwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: ba49709e6cab2d3e6a752fb7b529da7edb9f642e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ab064798d21dd6d6ba87f2f2d093dfc0849c1cb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877146"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967173"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Node.js)
 

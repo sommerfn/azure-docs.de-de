@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443844"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074141"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python
 
@@ -38,7 +38,7 @@ Zunächst benötigen Sie Trainingsdaten in einem Azure Storage-Blobcontainer. Al
 
 Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **Trainings**-API auf, indem Sie den folgenden Python-code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
 
-1. Ersetzen Sie `<Endpoint>` durch die Endpunkt-URL für die Formularerkennungsressource in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben.
+1. Ersetzen Sie `<Endpoint>` durch die Endpunkt-URL für Ihre Formularerkennungsressource.
 1. Ersetzen Sie `<Subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `<SAS URL>` mit der Shared Access Signature-URL (SAS) des Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
 

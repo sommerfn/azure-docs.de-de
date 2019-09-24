@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991112"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105006"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten des plastischen Readers (Node.js)
 
@@ -85,7 +85,7 @@ Committen Sie diese Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse 
 require('dotenv').config();
 ```
 
-Öffnen Sie die Datei _routes\index.js_, und fügen Sie am Anfang der Datei Folgendes hinzu:
+Öffnen Sie die Datei _routes\index.js_, und fügen Sie am Anfang der Datei den folgenden Code hinzu:
 
 ```javascript
 var request = require('request');

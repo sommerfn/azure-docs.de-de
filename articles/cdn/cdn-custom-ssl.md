@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114497"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996920"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -130,7 +130,7 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
     ![Zugriffsrichtlinieneinstellungen](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Wählen Sie **Get Secret permissions** (Berechtigungen für Geheimnis abrufen) und anschließend Berechtigungen zum Abrufen und Auflisten von Zertifikaten aus, um CDN diese Berechtigungen zu erteilen und das Abrufen und Auflisten der **Zertifikate** zu ermöglichen. 
+3. Wählen Sie **Zertifikatberechtigungen** aus, und aktivieren Sie dann die Kontrollkästchen für das **Abrufen** und **Auflisten**, um CDN diese Berechtigungen zu erteilen und das Abrufen und Auflisten der Zertifikate zu ermöglichen.
 
 4. Klicken Sie auf **OK**. 
 

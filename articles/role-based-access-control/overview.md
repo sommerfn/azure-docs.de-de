@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e7113508ff7fe5d3471b193bb8dadb7cdab5a7ca
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275923"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995329"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?
 
@@ -98,7 +98,7 @@ Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Be
 
 ![Rollenzuweisung zum Steuern des Zugriffs](./media/overview/rbac-overview.png)
 
-Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. In jedem Abonnement können Sie über bis zu 2.000 Rollenzuweisungen verfügen. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
+Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen und **500** Rollenzuweisungen in jeder Verwaltungsgruppe festlegen. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
 
 ## <a name="multiple-role-assignments"></a>Mehrere Rollenzuweisungen
 

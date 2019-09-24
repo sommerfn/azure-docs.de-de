@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491408"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057695"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
 Für die meisten Abonnements können Sie die Rechnung aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen oder per E-Mail zugeschickt bekommen. Wenn Sie Azure-Kunde mit einem Enterprise Agreement (EA-Kunde) sind, können Sie die Rechnungen Ihrer Organisation nicht herunterladen. Rechnungen werden an den Benutzer gesendet, der für den Empfang von Rechnungen für die Registrierung festgelegt wurde.
 
-Wenn Sie EA-Kunde sind oder über eine [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) verfügen, können Sie im [Azure-Portal](https://portal.azure.com/) die Nutzung herunterladen. Wenn Sie Nutzungsdaten für andere Abonnements herunterladen möchten, navigieren Sie zum [Azure-Kontocenter](https://account.azure.com/Subscriptions).
+Wenn Sie EA-Kunde sind oder über eine [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) verfügen, können Sie im [Azure-Portal](https://portal.azure.com/) die Nutzung herunterladen.
 
 Nur bestimmte Rollen, z.B. der Konto- oder Unternehmensadministrator, verfügen über die Berechtigung zum Abrufen von Abrechnungs- und Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
@@ -46,11 +46,13 @@ Für die meisten Abonnements können Sie die Rechnung aus dem Azure-Portal herun
 
     ![Screenshot mit der Option „Abrechnung und Nutzung“](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Klicken Sie auf **Rechnung herunterladen**, um eine Kopie Ihrer PDF-Rechnung anzuzeigen. Falls **Nicht verfügbar** angezeigt wird, siehe [Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?](#noinvoice)
+3. Klicken Sie auf die Schaltfläche „Herunterladen“, um eine Kopie Ihrer PDF-Rechnung herunterzuladen, und wählen Sie dann **Rechnung herunterladen** aus. Falls **Nicht verfügbar** angezeigt wird, siehe [Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?](#noinvoice)
 
-    ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
-4. Sie können Ihre Daten zur tägliche Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen.
+4. Sie können auch eine tägliche Aufschlüsselung der verbrauchten Mengen und geschätzten Gebühren herunterladen, indem Sie auf **CSV herunterladen** klicken.
+
+    ![Screenshot mit der Option „Rechnung herunterladen“ und Nutzungsseite](./media/billing-download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
 Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
@@ -62,8 +64,8 @@ Rechnungen werden für jedes [Abrechnungsprofil](billing-mca-overview.md#billing
 2. Wählen Sie ein Abrechnungsprofil aus.
 3. Wählen Sie **Rechnungen** aus.
 4. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die Sie herunterladen möchten.
-5. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
-6. Klicken Sie im Kontextmenü für den Download auf **Rechnung**.
+5. Klicken Sie am Ende der Zeile auf die Schaltfläche „Herunterladen“.
+6. Wählen Sie im Kontextmenü für den Download **Rechnung** aus.
 
 Wenn keine Rechnung für den letzten Abrechnungszeitraum angezeigt wird, finden Sie unter **Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?** weitere Informationen. <!-- Fix this -->
 ### <a name="noinvoice"></a> Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?
@@ -119,37 +121,19 @@ Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, können Sie Ihre
 
 Sie können den Erhalt von Rechnungen per E-Mail kündigen, indem Sie die oben aufgeführten Schritte befolgen und auf **Deaktivieren** klicken. Alle Benutzer mit den Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ und „Rechnungs-Manager“ erhalten dann ebenfalls keine Rechnungen mehr per E-Mail. Als Leseberechtigter können Sie die Einstellungen für den Empfang der Rechnungen per E-Mail nicht bearbeiten.
 
-## <a name="download-usage"></a>Herunterladen von Nutzungsdaten
+## <a name="download-usage-in-azure-portal"></a>Herunterladen von Nutzungsdaten im Azure-Portal
 
- Für die meisten Abonnements finden Sie Ihre tägliche Nutzungsdatei im [Azure-Kontocenter](https://account.azure.com/Subscriptions). Wenn Sie EA-Kunde sind oder über eine Microsoft-Kundenvereinbarung verfügen, können Sie im [Azure-Portal](https://portal.azure.com/) die Nutzung herunterladen. <!-- TO DO: update PayG experience to Ibiza once it ships-->
+ Für die meisten Abonnements lässt sich die tägliche Nutzung mit den folgenden Schritten ermitteln:
 
-### <a name="download-usage-from-the-account-center-csv"></a>Herunterladen der Nutzungsdaten aus dem Kontocenter (CSV)
+1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](billing-manage-access.md) aus.
 
-1. Melden Sie sich als Kontoadministrator im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
+2. Wählen Sie **Rechnungen** aus.
 
-2. Wählen Sie das Abonnement, für das Sie die Rechnung und Nutzungsinformationen abrufen möchten.
+    ![Screenshot mit der Option „Abrechnung und Nutzung“](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Klicken Sie auf **ABRECHNUNGSVERLAUF**.
+3. Klicken Sie auf die Schaltfläche „Herunterladen“ eines Rechnungszeitraums, den Sie überprüfen möchten.
 
-    ![Screenshot mit Abrechnungsverlaufsoption](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. Sie können Ihre Aufstellungen für die letzten sechs Abrechnungszeiträume sowie den aktuellen, nicht berechneten Zeitraum anzeigen.
-
-    ![Screenshot, der Abrechnungszeiträume, Optionen zum Herunterladen von Rechnungen und Daten zur täglichen Nutzung sowie Gesamtgebühren für jeden Abrechnungszeitraum anzeigt](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. Wählen Sie **Aktuelle Abrechnung anzeigen** , um eine Schätzung der Kosten zum Zeitpunkt der Erstellung der Schätzung anzuzeigen. Diese Informationen werden nur einmal täglich aktualisiert und umfassen möglicherweise nicht die gesamte Nutzung. Ihre monatliche Abrechnung kann von dieser Schätzung abweichen.
-
-    ![Screenshot mit der Option „Aktuelle Erklärung anzeigen“](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![Screenshot mit der Schätzung der aktuellen Gebühren](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. Wählen Sie **Nutzung herunterladen**, um die täglichen Nutzungsdaten als CSV-Datei herunterzuladen. Wenn zwei Versionen verfügbar sind, laden Sie Version 2 herunter.
-
-    ![Screenshot mit der Option „Nutzung herunterladen“](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Nur der Kontoadministrator hat Zugriff auf das Azure-Kontocenter. Andere Abrechnungsadministratoren, z.B. Besitzer, erhalten mithilfe der [Abrechnungs-APIs](billing-usage-rate-card-overview.md) Informationen zur Nutzung.
-
-Weitere Informationen über Ihre Daten zur täglichen Nutzung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
+4. Laden Sie eine tägliche Aufschlüsselung der verbrauchten Mengen und geschätzten Gebühren herunter, indem Sie auf **CSV herunterladen** klicken.  Die Vorbereitung der CSV-Datei kann einige Minuten dauern.
 
 ### <a name="download-usage-for-ea-customers"></a>Herunterladen von Nutzungsdaten für EA-Kunden
 

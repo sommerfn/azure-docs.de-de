@@ -3,16 +3,16 @@ title: 'Beispiel: Blaupause „Canada Federal PBMM“ – Steuerungszuordnung'
 description: Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“ zu Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 068e3253dbcb7ef8d0a5c0191ac1a0b75bd8c0e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: baafb0fbcf1dba1cadfff1d5f5e02e2df4f34a25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918768"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002908"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel 
 Die folgenden Zuordnungen gelten für die Steuerungen für **Canada Federal PBMM**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: Audit Canada Federal PBMM controls** ([Vorschauversion] Überwachen von Canada Federal PBMM-Steuerungen).
 
 > [!IMPORTANT]
-> Jede Steuerung unten ist mindestens einer [Azure Policy](../../../policy/overview.md)-Definition zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1-Übereinstimmung oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlauf finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md).
+> Jede Steuerung unten ist mindestens einer [Azure Policy](../../../policy/overview.md)-Definition zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlauf finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md).
 
 ## <a name="location-constraints"></a>Standorteinschränkungen
 
@@ -310,6 +310,12 @@ Diese Blaupause hilft Ihnen bei der Überwachung Ihres Systems, indem sie die Pr
 > Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Sie haben sich die Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“ angesehen. Lesen Sie als Nächstes die folgenden Artikel, um sich mit der Übersicht und der Bereitstellung dieses Beispiels vertraut zu machen:
+
+> [!div class="nextstepaction"]
+> [Blaupause „Canada Federal PBMM“ – Übersicht](./control-mapping.md)
+> [Blaupause „Canada Federal PBMM“ – Bereitstellungsschritte](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

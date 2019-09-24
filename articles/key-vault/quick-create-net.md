@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b61dab28ff3fb6710e59e6209282c71a8f52f674
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914873"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996642"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET
 
@@ -26,7 +26,6 @@ Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnis
 - Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
 
 [API-Referenzdokumentation](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -118,26 +117,14 @@ Daraufhin wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben.
 }
 ```
 
-Notieren Sie sich die Client-ID (clientId), das Clientgeheimnis (clientSecret), die Abonnement-ID (subscriptionId) und die Mandanten-ID (tenantId). Sie werden weiter unten im Schritt [Authentifizieren bei Ihrem Schlüsseltresor](#authenticate-to-your-key-vault) benötigt.
-
-Außerdem benötigen Sie die App-ID (appID) des Dienstprinzipals. Führen Sie zum Ermitteln dieses Werts den Befehl [az ad sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) mit dem Parameter `--show-mine` aus:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-Die App-ID (`appID`) ist im zurückgegebenen JSON-Code enthalten:
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
+Notieren Sie sich die Client-ID (clientId) und das Clientgeheimnis (clientSecret). Sie werden weiter unten im Schritt [Authentifizieren bei Ihrem Schlüsseltresor](#authenticate-to-your-key-vault) benötigt.
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor für den Dienstprinzipal
 
-Erstellen Sie für Ihren Schlüsseltresor eine Zugriffsrichtlinie, die Ihrem Dienstprinzipal Berechtigungen erteilt. Verwenden Sie hierzu den Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy). In diesem Beispiel erteilen wir dem Dienstprinzipal Berechtigungen zum Abrufen, Auflisten und Festlegen von Schlüsseln und Geheimnissen.
+Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die dem Dienstprinzipal Berechtigungen erteilt, indem Sie die Client-ID an den Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) übergeben. Erteilen Sie dem Dienstprinzipal Berechtigungen zum Abrufen, Auflisten und Festlegen von Schlüsseln und Geheimnissen.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Objektmodell
@@ -164,10 +151,6 @@ Legen Sie vor dem Erstellen und Ausführen Ihrer App mithilfe des Befehls `setx`
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Bei jedem Aufruf von `setx` sollte eine Erfolgsmeldung mit dem Hinweis angezeigt werden, dass der angegebene Wert gespeichert wurde.

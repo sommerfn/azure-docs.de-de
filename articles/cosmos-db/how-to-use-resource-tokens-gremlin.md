@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB-Ressourcentoken mit Gremlin
+title: Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
 description: Hier erfahren Sie, wie Sie Ressourcentoken erstellen und damit auf die Graphdatenbank zugreifen.
 author: olignat
 ms.service: cosmos-db
@@ -7,31 +7,33 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: olignat
-ms.openlocfilehash: fcb18fb14cf787713735da07ca2048d0853fa46c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70807011"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105031"
 ---
-# <a name="azure-cosmos-db-resource-tokens-with-gremlin"></a>Azure Cosmos DB-Ressourcentoken mit Gremlin
-In diesem Artikel wird erläutert, wie Sie mithilfe von [Cosmos DB-Ressourcentoken](secure-access-to-data.md) über das Gremlin SDK auf die Graphdatenbank zugreifen.
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
+
+In diesem Artikel wird erläutert, wie Sie mithilfe von [Azure Cosmos DB-Ressourcentoken](secure-access-to-data.md) über das Gremlin SDK auf die Graphdatenbank zugreifen.
 
 ## <a name="create-a-resource-token"></a>Erstellen eines Ressourcentoken
 
-Das TinkerPop Gremlin SDK enthält keine API zum Erstellen von Ressourcentoken. Das Ressourcentoken ist ein Konzept von Cosmos DB. Laden Sie zum Erstellen von Ressourcentoken das [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) herunter. Muss Ihre Anwendung Ressourcentoken erstellen und damit auf die Graphdatenbank zugreifen, benötigen Sie zwei separate SDKs.
+Das Apache TinkerPop Gremlin SDK enthält keine API zum Erstellen von Ressourcentoken. Der Begriff *Ressourcentoken* ist ein Azure Cosmos DB-Konzept. Laden Sie zum Erstellen von Ressourcentoken das [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) herunter. Wenn Ihre Anwendung Ressourcentoken erstellen und damit auf die Graphdatenbank zugreifen muss, werden zwei separate SDKs benötigt.
 
-Objektmodellhierarchie über Ressourcentoken:
-- **Cosmos DB-Konto**: Entität der höchsten Ebene, der DNS zugeordnet ist, etwa `contoso.gremlin.cosmos.azure.com`
-  - **Cosmos DB-Datenbank**
+Die Objektmodellhierarchie über Ressourcentoken ist in der folgenden Gliederung dargestellt:
+
+- **Azure Cosmos DB-Konto**: Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
+  - **Azure Cosmos DB-Datenbank**
     - **Benutzer**
       - **Berechtigung**
-        - *Token*: Eine Eigenschaft des **Permission**-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
+        - **Token**: Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
 
-Das Ressourcentoken hat das Format `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Diese Zeichenfolge ist für die Clients nicht transparent und sollte unverändert verwendet werden.
+Ein Ressourcentoken verwendet das folgende Format: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Diese Zeichenfolge ist für die Clients nicht transparent und muss unverändert verwendet werden.
 
 ```csharp
-// Notice that document client is created against .NET SDK end-point rather than Gremlin.
+// Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
   "<master key>", 
@@ -42,10 +44,10 @@ DocumentClient client = new DocumentClient(
   });
 
   // Read specific permission to obtain a token.
-  // Token will not be returned during ReadPermissionReedAsync() call.
-  // This call will succeed only if database id, user id and permission id already exist. 
-  // Note that <database id> is not a database name, it is a base64 string that represents database identifier, for example "KalVAA==".
-  // Similar comment applies to <user id> and <permission id>
+  // The token isn't returned during the ReadPermissionReedAsync() call.
+  // The call succeeds only if database id, user id, and permission id already exist. 
+  // Note that <database id> is not a database name. It is a base64 string that represents the database identifier, for example "KalVAA==".
+  // Similar comment applies to <user id> and <permission id>.
   Permission permission = await client.ReadPermissionAsync(UriFactory.CreatePermissionUri("<database id>", "<user id>", "<permission id>"));
 
   Console.WriteLine("Obtained token {0}", permission.Token);
@@ -53,21 +55,21 @@ DocumentClient client = new DocumentClient(
 ```
 
 ## <a name="use-a-resource-token"></a>Verwenden eines Ressourcentoken
-Ressourcentoken können beim Erstellen der Klasse `GremlinServer` direkt als Eigenschaft „password“ verwendet werden.
+Beim Erstellen der GremlinServer-Klasse können Sie Ressourcentoken direkt als password-Eigenschaft verwenden.
 
 ```csharp
-// Gremlin application needs to be given a resource token. It can't discover the token on its own.
-// Token can be obtained for a given permission using Cosmos DB SDK or passed into the application as command line argument or configuration value.
+// The Gremlin application needs to be given a resource token. It can't discover the token on its own.
+// You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure gremlin servier to use resource token rather than master key
+// Configure the Gremlin server to use a resource token rather than a master key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
   enableSsl: true,
   username: "/dbs/<database name>/colls/<collection name>",
 
-  // Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+  // The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
   password: resourceToken);
 
   using (GremlinClient gremlinClient = new GremlinClient(server, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType))
@@ -85,7 +87,7 @@ AuthProperties authenticationProperties = new AuthProperties();
 authenticationProperties.with(AuthProperties.Property.USERNAME,
     String.format("/dbs/%s/colls/%s", "<database name>", "<collection name>"));
 
-// Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+// The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
 authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 
 builder.authProperties(authenticationProperties);
@@ -93,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Begrenzung
 
-Ein einzelnes Gremlin-Konto kann eine unbegrenzte Anzahl von Token ausgeben. Innerhalb **einer Stunde** können jedoch nur bis zu **100** Token gleichzeitig verwendet werden. Wenn die Anwendung das Tokenlimit pro Stunde überschreitet, wird die Authentifizierungsanforderung mit der Fehlermeldung `"Exceeded allowed resource token limit of 100 that can be used concurrently"` verweigert. Das Schließen aktiver Verbindungen mit bestimmten Token zum Freigeben von Slots für neue Token ist nicht hilfreich. Die Cosmos DB-Gremlin-Datenbank-Engine erfasst individuelle Token in der Stunde vor der Authentifizierungsanforderung.
+Mit einem einzelnen Gremlin-Konto können Sie eine unbegrenzte Anzahl von Token ausgeben. Sie können jedoch innerhalb von 1 Stunde nur bis zu 100 Token gleichzeitig verwenden. Wenn eine Anwendung das stündliche Tokenlimit überschreitet, wird eine Authentifizierungsanforderung verweigert, und Sie erhalten die folgende Fehlermeldung: „Exceeded allowed resource token limit of 100 that can be used concurrently.“ (Das zulässige Ressourcentokenlimit von 100 für die gleichzeitige Verwendung wurde überschritten.) Das Schließen aktiver Verbindungen mit bestimmten Token zum Freigeben von Slots für neue Token funktioniert nicht. Die Cosmos DB-Gremlin-Datenbank-Engine erfasst eindeutige Token in der Stunde vor der Authentifizierungsanforderung.
 
 ## <a name="permission"></a>Berechtigung
 
-Bei der Verwendung von Ressourcentoken tritt bei Anwendungen häufig der Fehler `"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header."` auf. Dieser Fehler wird zurückgegeben, wenn beim Gremlin-Durchlauf versucht wird, eine Kante oder einen Scheitelpunkt zu schreiben, das Ressourcentoken jedoch nur Berechtigungen vom Typ `Read` erteilt. Überprüfen Sie, ob der Durchlauf einen der folgenden Schritte enthält: `.addV()`, `.addE()`, `.drop()` oder `.property()`.
+Ein häufiger Fehler, der in Anwendungen bei der Verwendung von Ressourcentoken auftritt, ist „Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header.“ (Unzureichende Berechtigungen im Autorisierungsheader für die entsprechende Anforderung. Versuchen Sie es mit einem anderen Autorisierungsheader erneut.). Dieser Fehler wird zurückgegeben, wenn bei einem Gremlin-Durchlauf versucht wird, eine Kante oder einen Scheitelpunkt zu schreiben, das Ressourcentoken jedoch nur *Leseberechtigungen* erteilt. Überprüfen Sie, ob der Durchlauf einen der folgenden Schritte enthält: *.addV()* , *.addE()* , *.drop()* oder *.property()* .
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Rollenbasierte Zugriffssteuerung in Azure Cosmos DB](role-based-access-control.md)

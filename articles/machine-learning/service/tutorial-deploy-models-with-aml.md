@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial zur Bildklassifizierung: Bereitstellen von Modellen'
-titleSuffix: Azure Machine Learning service
-description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
+titleSuffix: Azure Machine Learning
+description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036222"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003067"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 
@@ -23,7 +23,7 @@ Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen
 
 Nun können Sie das Modell als Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall: ein Docker-Image). Es kapselt die Bewertungslogik und das eigentliche Modell. 
 
-In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning-Dienst für Folgendes:
+In diesem Teil des Tutorials verwenden Sie Azure Machine Learning für Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Weitere Informationen zu den Bereitstellungsoptionen für den Azure Machine Learning-Dienst finden Sie [hier](how-to-deploy-and-where.md).
++ Weitere Informationen zu den Bereitstellungsoptionen für Azure Machine Learning finden Sie [hier](how-to-deploy-and-where.md).
 + Erfahren Sie, wie [Clients für den Webdienst erstellt werden](how-to-consume-web-service.md).
 +  [Treffen Sie asynchron Vorhersagen für große Datenmengen](how-to-run-batch-predictions.md).
 + [Überwachen Sie Ihre Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md).

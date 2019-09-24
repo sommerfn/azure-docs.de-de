@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952084"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010320"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Vorbereiten auf die Bewertung und Migration von virtuellen Hyper-V-Computern zu Azure
 
@@ -99,7 +99,7 @@ Führen Sie zur Vorbereitung der Hyper-V-Bewertung die folgenden Schritte aus:
 1. Überprüfen Sie die Hyper-V-Hosteinstellungen.
 2. Richten Sie auf jedem Host PowerShell-Remoting ein, sodass die Azure Migrate-Appliance über eine WinRM-Verbindung PowerShell-Befehle auf dem Host ausführen kann.
 3. Falls der SMB-Remotespeicher VM-Datenträger enthält, ist eine Delegierung von Anmeldeinformationen erforderlich. 
-    - Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann. T
+    - Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann.
     - Sie ermöglichen es jedem Host wie nachfolgend beschrieben, als Delegat für die Appliance zu fungieren.
     - Wenn Sie später die Appliance einrichten, aktivieren Sie die Delegierung für sie.
 4. Überprüfen Sie die Applianceanforderungen und den für die Appliance erforderlichen URL-/Portzugriff.
@@ -113,7 +113,7 @@ Sie können diese Einstellungen anhand der nachfolgenden Verfahren manuell konfi
 
 Das Skript überprüft Hyper-V-Hosts und konfiguriert die Einstellungen, die Sie zum Ermitteln und Bewerten virtueller Hyper-V-Computer benötigen. Dies funktioniert folgendermaßen:
 
-- Das Skript überprüft, ob es unter einer unterstützten PowerShell-Version ausgeführt wird.
+- Es wird überprüft, ob das Skript unter einer unterstützten PowerShell-Version ausgeführt wird.
 - Es wird überprüft, ob Sie (der Benutzer, der das Skript ausführt) über Administratorberechtigungen auf dem Hyper-V-Host verfügen.
 - Das Skript ermöglicht die Erstellung eines lokalen Benutzerkontos (kein Administratorkonto), das vom Azure Migrate-Dienst für die Kommunikation mit dem Hyper-V-Host verwendet wird. Dieses Benutzerkonto wird den folgenden Gruppen auf dem Host hinzugefügt:
     - Remoteverwaltungsbenutzer
@@ -129,7 +129,7 @@ Führen Sie das Skript wie folgt aus:
 
 1. Vergewissern Sie sich, dass mindestens PowerShell-Version 4.0 auf dem Hyper-V-Host installiert ist.
 2. Laden Sie das Skript aus dem [Microsoft Download Center](https://aka.ms/migrate/script/hyperv) herunter. Das Skript wird von Microsoft kryptografisch signiert.
-3. Überprüfen Sie die Skriptintegrität mithilfe von MD5-oder SHA256-Hashdateien. Führen Sie den folgenden Befehl aus, um den Hash für das Skript zu generieren:
+3. Überprüfen Sie die Skriptintegrität mithilfe von MD5-oder SHA256-Hashdateien. Die Hashtagwerte sind unten aufgeführt. Führen Sie den folgenden Befehl aus, um den Hash für das Skript zu generieren:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -138,19 +138,20 @@ Führen Sie das Skript wie folgt aus:
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
     ```
-    
-    Hashwerte:
-    Hash | Wert
-    --- | ---
-    **MD5** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
-
 
 4.  Führen Sie nach der Überprüfung der Skriptintegrität das Skript mit dem folgenden PowerShell-Befehl auf jedem Hyper-V-Host aus:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
+#### <a name="hashtag-values"></a>Hashtagwerte
+
+Hashwerte:
+
+| **Hash** | **Wert** |
+| --- | --- |
+| **MD5** | 0ef418f31915d01f896ac42a80dc414e |
+| **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 ### <a name="verify-hyper-v-host-settings"></a>Überprüfen der Hyper-V-Hosteinstellungen
 

@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165253"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105260"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -71,7 +71,7 @@ Füllen Sie schließlich den Abschnitt **Manifestdetails** aus. Dadurch wird ein
   - **Azure AD-Objekt-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder Anwendung, dem bestimmte Berechtigungen (wie in der Rollendefinition beschrieben) für die Ressourcen Ihrer Kunden gewährt werden.
   - **Azure AD-Objektanzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
   - **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Weitere Informationen zu diesen Rollen finden Sie unter [Integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Zuweisbare Rollen**: Wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben, können Sie hier eine oder mehrere zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen** [verwalteten Identitäten](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity) zuweisen. Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
+  - **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen** [verwalteten Identitäten](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity) zuweisen. Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
 
 > [!TIP]
 > In den meisten Fällen sollten Sie einer Azure AD-Benutzergruppe oder einem Dienstprinzipal Berechtigungen zuzuweisen, anstatt eine Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern.

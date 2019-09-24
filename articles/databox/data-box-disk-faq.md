@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076899"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098825"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -88,6 +88,24 @@ A.  Sie können den Status des Auftrags für Data Box-Datenträger im Azure-Port
 
 ### <a name="q-how-do-i-return-the-disks"></a>F: Wie kann ich die Datenträger zurücksenden? 
 A.  Microsoft fügt dem Versandpaket für die Data Box-Datenträger ein Versandetikett bei. Befestigen Sie das Etikett am Versandpaket, und geben Sie das sicher verschlossene Paket beim Paketdienst ab. Falls das Etikett beschädigt oder nicht mehr vorhanden ist, können Sie unter **Übersicht > Versandetikett herunterladen** ein neues Versandetikett erhalten.
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Kann ich meine Data Box Disk-Bestellung selbst abholen? Kann ich die Datenträger über einen Netzbetreiber meiner Wahl zurückgeben?
+A. Ja. Microsoft bietet auch selbstverwalteten Versand in der Region „Gov (US)“ an. Beim Aufgeben der Data Box Disk-Bestellung können Sie die Option für selbstverwalteten Versand auswählen. Führen Sie die folgenden Schritte aus, um Ihre Data Box Disk-Bestellung abzuholen:
+    
+1. Nachdem Sie die Bestellung aufgegeben haben, wird die Bestellung verarbeitet, und die Datenträger werden vorbereitet. Sie werden per E-Mail benachrichtigt, dass Ihre Bestellung zur Abholung bereit ist. 
+2. Wenn die Bestellung bereit für die Abholung ist, rufen Sie im Azure-Portal Ihre Bestellung auf, und navigieren Sie zum Blatt **Übersicht**. 
+3. Im Azure-Portal wird eine Benachrichtigung mit einem Code angezeigt. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Das Team gibt den Standort bekannt und plant ein Abholdatum und eine Uhrzeit. Sie müssen das Team innerhalb von fünf Werktagen nach Erhalt der E-Mail-Benachrichtigung anrufen.
+
+Führen Sie nach Abschluss der Datenkopie und der Überprüfung die folgenden Schritte aus, um den Datenträger zurückzugeben:
+
+1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
+2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
+
+    - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung. Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
+    - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
+3. Rufen Sie das **Übersichtsblatt** für Ihre Bestellung im Azure-Portal auf. Eine Benachrichtigung mit einem Code sollte angezeigt werden.
+4. Verwenden Sie diesen Code, und senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Sie erhalten die Informationen darüber, wo und wann Sie die Datenträger ablegen müssen.
+
 
 ## <a name="migrate-data"></a>Migrieren von Daten
 

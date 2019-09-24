@@ -1,28 +1,27 @@
 ---
-title: Verwenden von Smart Contracts für den Azure Blockchain Service
-description: Tutorial zur Verwendung des Azure Blockchain Service zum Bereitstellen eines Smart Contracts und Ausführen einer Funktion per Transaktion.
+title: Erstellen und Bereitstellen von Smart Contracts mit Azure Blockchain Service mithilfe von Visual Studio Code
+description: Tutorial zur Verwendung des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 09/10/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705132"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935002"
 ---
-# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Tutorial: Verwenden von Smart Contracts für den Azure Blockchain Service
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Tutorial: Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code
 
-In diesem Tutorial verwenden Sie das Azure Blockchain Development Kit für Ethereum, um einen Smart Contract zu erstellen und bereitzustellen, und führen dann eine Smart Contract-Funktion per Transaktion in einem Blockchainnetzwerk für Konsortien aus.
+In diesem Tutorial verwenden Sie das Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service. Außerdem verwenden Sie Truffle zum Ausführen einer Smart Contract-Funktion per Transaktion.
 
 Sie verwenden das Azure Blockchain Development Kit für Ethereum für folgende Zwecke:
 
 > [!div class="checklist"]
-> * Herstellen einer Verbindung mit einem Konsortium-Blockchainmitglied per Azure Blockchain Service
 > * Erstellen eines Smart Contracts
 > * Bereitstellen eines Smart Contracts
 > * Ausführen einer Smart Contract-Funktion per Transaktion
@@ -32,52 +31,11 @@ Sie verwenden das Azure Blockchain Development Kit für Ethereum für folgende Z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit für Ethereum-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js](https://nodejs.org)
-* [Git-Client](https://git-scm.com)
-* [Python](https://www.python.org/downloads/release/python-2715/). Fügen Sie Ihrem Pfad „python. exe“ hinzu. Python ist in Ihrem Pfad für das Azure Blockchain Development Kit erforderlich.
-* [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
-
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Überprüfen der Azure Blockchain Development Kit-Umgebung
-
-Mit dem Azure Blockchain Development Kit wird überprüft, ob die Voraussetzungen für Ihre Entwicklungsumgebung erfüllt wurden. Bereiten Sie Ihre Entwicklungsumgebung wie folgt vor:
-
-Wählen Sie in der VS Code-Befehlspalette die Option **Azure Blockchain: Show Welcome Page** (Azure Blockchain: Willkommensseite anzeigen).
-
-Das Azure Blockchain Development Kit führt ein Überprüfungsskript mit einer Dauer von ca. einer Minute aus. Sie können die Ausgabe anzeigen, indem Sie **Terminal > New Terminal** (Terminal > Neues Terminal) wählen. Wählen Sie in der Menüleiste des Terminals die Registerkarte **Output** (Ausgabe) und in der Dropdownliste dann **Azure Blockchain**. Eine erfolgreiche Überprüfung sieht in etwa wie in der folgenden Abbildung aus:
-
-![Gültige Entwicklungsumgebung](./media/send-transaction/valid-environment.png)
-
- Falls ein benötigtes Tool fehlt, können Sie eine neue Registerkarte mit dem Namen **Azure Blockchain Development Kit – Preview** (Azure Blockchain Development Kit: Vorschauversion) verwenden. Darauf sind die erforderlichen Apps, die installiert werden müssen, und die Links zum Herunterladen der Tools aufgeführt.
-
-![Development Kit: Erforderliche Apps](./media/send-transaction/required-apps.png)
-
-## <a name="connect-to-consortium-member"></a>Herstellen einer Verbindung mit dem Konsortiumsmitglied
-
-Sie können eine Verbindung mit Konsortiumsmitgliedern herstellen, indem Sie die VS Code-Erweiterung für das Azure Blockchain Development Kit verwenden. Nachdem die Verbindung mit einem Konsortium hergestellt wurde, können Sie Smart Contracts kompilieren, erstellen und für ein Azure Blockchain Service-Konsortiumsmitglied bereitstellen.
-
-Falls Sie keinen Zugriff auf ein Azure Blockchain Service-Konsortiumsmitglied haben, müssen Sie als Voraussetzung [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md) durcharbeiten.
-
-1. Erweitern Sie im VS Code-Explorer-Bereich (Visual Studio Code) die Erweiterung **Azure Blockchain**.
-1. Wählen Sie die Option **Connect to Consortium** (Verbindung mit Konsortium herstellen).
-
-   ![Herstellen einer Verbindung mit einem Konsortium](./media/send-transaction/connect-consortium.png)
-
-    Befolgen Sie die Anweisungen zum Authentifizieren per Browser, wenn Sie zum Durchführen der Azure-Authentifizierung aufgefordert werden.
-1. Wählen Sie in der Dropdownliste der Befehlspalette die Option **Connect to Azure Blockchain Service consortium** (Verbindung mit Azure Blockchain Service-Konsortium herstellen).
-1. Wählen Sie das Abonnement und die Ressourcengruppe aus, das bzw. die Ihrem Azure Blockchain Service-Konsortiumsmitglied zugeordnet ist.
-1. Wählen Sie Ihr Konsortium in der Liste aus.
-
-Die Konsortiums- und Blockchainmitglieder sind im Visual Studio Explorer in der Seitenleiste aufgeführt.
-
-![Anzeige des Konsortiums im Explorer](./media/send-transaction/consortium-node.png)
+* [Quickstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Erstellen eines Smart Contracts
 
-Im Azure Blockchain Development Kit für Ethereum werden Projektvorlagen und Truffle-Tools verwendet, die als Hilfe beim Vorbereiten, Erstellen und Bereitstellen von Contracts dienen.
+Im Azure Blockchain Development Kit für Ethereum werden Projektvorlagen und Truffle-Tools verwendet, die als Hilfe beim Vorbereiten, Erstellen und Bereitstellen von Contracts dienen. Bevor Sie beginnen, führen Sie die erforderlichen Schritte in [Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) aus. Der Schnellstart führt Sie durch die Installation und Konfiguration des Azure Blockchain Development Kit für Ethereum.
 
 1. Wählen Sie in der VS Code-Befehlspalette die Option **Azure Blockchain: New Solidity Project** (Azure Blockchain: Neues Solidity-Projekt).
 1. Wählen Sie **Create basic project** (Einfaches Projekt erstellen).
@@ -107,7 +65,7 @@ Vom Azure Blockchain Development Kit wird Truffle verwendet, um Smart Contracts 
 Für Truffle werden Migrationsskripts verwendet, um Ihre Contracts in einem Ethereum-Netzwerk bereitzustellen. Migrationen sind JavaScript-Dateien, die im Verzeichnis **migrations** des Projekts enthalten sind.
 
 1. Klicken Sie zum Bereitstellen Ihres Smart Contracts mit der rechten Maustaste auf **HelloBlockchain.sol**, und wählen Sie im Menü die Option **Deploy Contracts** (Contracts bereitstellen).
-1. Wählen Sie Ihr Azure Blockchain-Konsortiumsnetzwerk unter **From truffle-config.js** (Aus truffle-config.js) aus. Das Blockchainnetzwerk für Konsortien wurde der Truffle-Konfigurationsdatei des Projekts hinzugefügt, als Sie das Projekt erstellt haben.
+1. Wählen Sie Ihr Azure Blockchain-Konsortiumsnetzwerk in der Befehlspalette. Das Blockchainnetzwerk für Konsortien wurde der Truffle-Konfigurationsdatei des Projekts hinzugefügt, als Sie das Projekt erstellt haben.
 1. Wählen Sie **Generate mnemonic** (Mnemonisches Zeichen generieren). Wählen Sie einen Dateinamen aus, und speichern Sie die Datei im Projektordner. Beispiel: `myblockchainmember.env`. Die Datei mit dem mnemonischen Zeichen wird verwendet, um einen privaten Ethereum-Schlüssel für Ihr Blockchainmitglied zu generieren.
 
 Für das Azure Blockchain Development Kit wird Truffle zum Ausführen des Migrationsskripts verwendet, um die Contracts für die Blockchain bereitzustellen.
@@ -173,7 +131,7 @@ Smart Contract-Funktionen können den aktuellen Wert von Zustandsvariablen zurü
     Die Funktion gibt die in einer Zustandsvariablen gespeicherte Nachricht basierend auf dem aktuellen Zustand des Contracts zurück.
 
 1. Klicken Sie mit der rechten Maustaste auf **HelloBlockchain.sol**, und wählen Sie im Menü die Option **Build Contracts** (Contracts erstellen), um die Änderungen am Smart Contract zu kompilieren.
-1. Klicken Sie zum Bereitstellen mit der rechten Maustaste auf **HelloBlockchain.sol**, und wählen Sie im Menü die Option **Deploy Contracts** (Contracts bereitstellen).
+1. Klicken Sie zum Bereitstellen mit der rechten Maustaste auf **HelloBlockchain.sol**, und wählen Sie im Menü die Option **Deploy Contracts** (Contracts bereitstellen). Wählen Sie Ihr Azure Blockchain-Konsortiumsnetzwerk in der Befehlspalette, wenn Sie dazu aufgefordert werden.
 1. Erstellen Sie als Nächstes ein Skript, um die Funktion **getMessage** aufzurufen. Erstellen Sie im Stammverzeichnis Ihres Truffle-Projekts eine neue Datei, und geben Sie ihr den Namen `getmessage.js`. Fügen Sie der Datei den folgenden Web3-JavaScript-Code hinzu.
 
     ```javascript

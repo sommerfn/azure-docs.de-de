@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347911"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076328"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App
 
@@ -36,9 +36,9 @@ Die .NET Core-Bibliotheken für die Featureverwaltung erweitern das Framework u
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Feature-Manager** >  **+Erstellen** aus, um die folgenden Featureflags hinzuzufügen:
+6. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um die folgenden Featureflags hinzuzufügen:
 
-    | Schlüssel | Zustand |
+    | Schlüssel | State |
     |---|---|
     | Beta | Aus |
 
@@ -81,10 +81,11 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
-1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Azure.AppConfiguration.AspNetCore` hinzu, indem Sie den folgenden Befehl ausführen:
+1. Führen Sie die folgenden Befehle aus, um Verweise auf die NuGet-Pakete `Microsoft.Azure.AppConfiguration.AspNetCore` und `Microsoft.FeatureManagement.AspNetCore` hinzuzufügen:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
@@ -262,9 +263,11 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
 1. Wählen Sie **Feature-Manager** aus, und ändern Sie den Status des **Beta**-Schlüssels zu **Ein**:
 
-    | Schlüssel | Zustand |
+    | Schlüssel | State |
     |---|---|
     | Beta | Andererseits |
+
+1. Starten Sie die Anwendung neu, indem Sie zur Eingabeaufforderung zurückkehren und `Ctrl-C` drücken, um den laufenden `dotnet`-Prozess abzubrechen, und führen Sie dann `dotnet run`erneut aus.
 
 1. Aktualisieren Sie die Browserseite, um die neuen Konfigurationseinstellungen anzuzeigen.
 
@@ -281,3 +284,4 @@ In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher
 - Weitere Informationen über die [Featureverwaltung](./concept-feature-management.md)
 - [Verwalten von Featureflags](./manage-feature-flags.md)
 - [Verwenden von Featureflags in einer ASP.NET Core-App](./use-feature-flags-dotnet-core.md)
+- [Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App](./enable-dynamic-configuration-aspnet-core.md)

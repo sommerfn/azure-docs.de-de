@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885939"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037167"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -36,7 +36,7 @@ Ein [HDInsight-Kafka-Cluster mit dem Enterprise-Sicherheitspaket](./apache-domai
 
 2. Melden Sie sich mit Ihren Administratoranmeldeinformationen für Azure Active Directory (AD) an. Die Azure AD-Administratoranmeldeinformationen sind nicht identisch mit HDInsight-Clusteranmeldeinformationen oder Linux-HDInsight-Knoten-SSH-Anmeldeinformationen.
 
-   ![Apache Ranger-Administratoroberfläche](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
 
@@ -183,7 +183,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
 
 9. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
-   ![Ranger-Benutzeroberfläche – Richtlinienüberwachung](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Richtlinienüberwachung auf der Ranger-Benutzeroberfläche – Zugriffsereignisse ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

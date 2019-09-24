@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen Ihres ersten ML-Experiments: Einrichtung'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: In dieser Tutorialreihe erfahren Sie Schritt für Schritt, wie Sie die ersten Schritte mit dem in Jupyter Notebook-Instanzen ausgeführten Azure Machine Learning Python SDK ausführen.  In Teil 1 wird die Erstellung einer Cloudumgebung für Notebook-Server sowie eines Arbeitsbereichs für das Verwalten Ihrer Experimente und Machine Learning-Modelle erläutert.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: d968d6e799b75940d1fb73aa31c22eb84068df7d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860426"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004058"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 
@@ -27,11 +27,11 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Erstellen eines [Azure Machine Learning-Arbeitsbereichs](concept-workspace.md) für das nächste Tutorial
 > * Erstellen einer cloudbasierten Jupyter Notebook-VM, auf der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen. Er verknüpft Ihr Azure-Abonnement und Ihre Ressourcengruppe mit einem einfach nutzbaren Objekt im SDK. Falls Sie bereits über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie direkt mit dem [nächsten Abschnitt](#azure) fort. Andernfalls erstellen Sie jetzt einen Arbeitsbereich.
+Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen. Er verknüpft Ihr Azure-Abonnement und Ihre Ressourcengruppe mit einem einfach nutzbaren Objekt im SDK. Falls Sie bereits über einen Azure Machine Learning-Arbeitsbereich verfügen, fahren Sie direkt mit dem [nächsten Abschnitt](#azure) fort. Andernfalls erstellen Sie jetzt einen Arbeitsbereich.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -39,7 +39,7 @@ Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource z
 
 In diesem Beispiel wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](how-to-configure-environment.md#local), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
 
-Erstellen Sie in Ihrem Arbeitsbereich eine Cloudressource, um erste Schritte mit Jupyter-Notebooks auszuführen. Bei dieser Ressource handelt es sich um einen cloudbasierten virtuellen Linux-Computer, der mit allem vorkonfiguriert ist, was Sie für die Ausführung von Azure Machine Learning Service benötigen.
+Erstellen Sie in Ihrem Arbeitsbereich eine Cloudressource, um erste Schritte mit Jupyter-Notebooks auszuführen. Bei dieser Ressource handelt es sich um einen cloudbasierten virtuellen Linux-Computer, der mit allem vorkonfiguriert ist, was Sie für die Ausführung von Azure Machine Learning benötigen.
 
 1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  Wenn Sie sich nicht sicher sind, wie Sie Ihren Arbeitsbereich im Portal finden können, lesen Sie [Suchen nach Ihren Arbeitsbereich](how-to-manage-workspace.md#view).
 
@@ -69,7 +69,7 @@ Erstellen Sie in Ihrem Arbeitsbereich eine Cloudressource, um erste Schritte mit
 
 In diesem Tutorial haben Sie folgende Aufgaben ausgeführt:
 
-* Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
+* Erstellen eines Azure Machine Learning-Arbeitsbereichs.
 * Erstellen und Konfigurieren eines cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich
 
 In **Teil 2** des Tutorials führen Sie den Code in `tutorial-1st-experiment-sdk-train.ipynb` aus, um ein Machine Learning-Modell zu trainieren. 

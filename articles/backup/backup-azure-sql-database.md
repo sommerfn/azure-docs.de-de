@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534222"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934430"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -24,7 +24,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 
 * Nachdem Sie die SQL Server-VM angegeben haben, die Sie schützen und deren Datenbanken Sie abfragen möchten, installiert der Azure Backup-Dienst eine Erweiterung zur Workloadsicherung mit dem Namen `AzureBackupWindowsWorkload` auf dem virtuellen Computer.
 * Diese Erweiterung besteht aus einem Koordinator und einem SQL-Plug-In. Während der Koordinator für das Auslösen von Workflows für verschiedene Vorgänge wie Konfigurieren der Sicherung, Sicherung und Wiederherstellung zuständig ist, ist das Plug-In für den tatsächlichen Datenfluss verantwortlich.
-* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](backup-azure-sql-database.md):
+* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](#set-vm-permissions):
 * Sobald Sie die Konfiguration des Schutzes der ausgewählten Datenbanken auslösen, richtet der Sicherungsdienst den Koordinator mit den Sicherungszeitplänen und anderen Richtliniendetails ein, die die Erweiterung lokal auf dem virtuellen Computer zwischenspeichert.
 * Zum geplanten Zeitpunkt kommuniziert der Koordinator mit dem Plug-In, und es startet das Streaming der Sicherungsdaten von der SQL Server-Instanz mit VDI.  
 * Das Plug-In sendet die Daten direkt an den Recovery Services-Tresor, sodass kein Stagingspeicherort erforderlich ist. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
@@ -58,8 +58,7 @@ Vor Kurzem wurde verlautbart, dass Azure Backup Unterstützung für [SQL Server-
 2. .NET Framework 4.5.2 und höher muss auf dem virtuellen Computer installiert sein.
 3. Sicherungen für FCI und gespiegelte Datenbanken werden nicht unterstützt.
 
-Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008- und 2008 R2-Instanzen konfigurieren. Dazu gehört das Festlegen des [Registrierungsschlüssels](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration). (Dieser Schritt ist nicht mehr erforderlich, sobald das Feature allgemein verfügbar ist.)
-
+Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008 und 2008 R2 konfigurieren.
 
 ## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242737"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984904"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -49,8 +49,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     | ---                     | ---                                                |
     | NAME                    | myVirtualNetwork                                   |
     | Adressraum           | 10.0.0.0/16                                        |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
     | Location                | Wählen Sie **USA, Osten** aus.                                |
     | Subnetzname            | mySubnet                                           |
     | Subnetzadressbereich  | 10.0.0.0/24                                        |
@@ -66,18 +66,18 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | Einstellung        | Wert                                                         |
     | ---            | ---                                                           |
     | NAME           | myAsgWebServers                                               |
-    | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
-    | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Location       | USA (Ost)                                                       |
+    | Subscription   | Wählen Sie Ihr Abonnement aus.                                     |
+    | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
+    | Location       | East US                                                       |
 
 4. Führen Sie Schritt 3 erneut aus, und geben Sie dabei die folgenden Werte an:
 
     | Einstellung        | Wert                                                         |
     | ---            | ---                                                           |
     | NAME           | myAsgMgmtServers                                              |
-    | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
-    | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Location       | USA (Ost)                                                       |
+    | Subscription   | Wählen Sie Ihr Abonnement aus.                                     |
+    | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -88,9 +88,9 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     |Einstellung|Wert|
     |---|---|
     |NAME|myNsg|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
-    |Location|USA (Ost)|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz
 
@@ -111,7 +111,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
 
     | Einstellung                 | Wert                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgWebServers** aus.  |
+    | Destination             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgWebServers** aus.  |
     | Zielportbereiche | Geben Sie 80,443 ein.                                                                                                    |
     | Protocol                | Wählen Sie TCP aus.                                                                                                      |
     | NAME                    | Allow-Web-All                                                                                                   |
@@ -120,10 +120,10 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
 
     | Einstellung                 | Wert                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgMgmtServers** aus. |
+    | Destination             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgMgmtServers** aus. |
     | Zielportbereiche | Geben Sie 3389 ein.                                                                                                      |
     | Protocol                | Wählen Sie TCP aus.                                                                                                      |
-    | Priorität                | Geben Sie 110 ein.                                                                                                       |
+    | Priority                | Geben Sie 110 ein.                                                                                                       |
     | NAME                    | Allow-RDP-All                                                                                                   |
 
     In diesem Tutorial wird RDP (Port 3389) für den virtuellen Computer, der der Anwendungssicherheitsgruppe *myAsgMgmtServers* zugewiesen ist, im Internet verfügbar gemacht. In Produktionsumgebungen empfiehlt es sich, eine VPN-basierte oder private Netzwerkverbindung mit den Azure-Ressourcen herzustellen, die Sie verwalten möchten, anstatt den Port 3389 für das Internet verfügbar zu machen.
@@ -140,27 +140,29 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und übernehmen Sie die Standardwerte für die übrigen Einstellungen:
 
     |Einstellung|Wert|
     |---|---|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
     |NAME|myVmWeb|
+    |Location| Wählen Sie **USA, Osten** aus.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+
+   
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
-5. Wählen Sie unter **Einstellungen** die folgenden Werte aus, übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie dann **OK** aus:
+5. Wählen Sie unter **Netzwerk** die folgenden Werte aus, und übernehmen Sie die restlichen Standardeinstellungen:
 
     |Einstellung|Wert|
     |---|---|
     |Virtuelles Netzwerk |Wählen Sie **myVirtualNetwork** aus.|
-    |Netzwerksicherheitsgruppen (NSG) | Wählen Sie **Advanced** (Erweitert).|
-    |Netzwerksicherheitsgruppe (Firewall)| Wählen Sie **(new) myVmWeb-nsg** aus. Wählen Sie anschließend unter **Netzwerksicherheitsgruppe auswählen** die Option **Keine** aus. |
+    |NIC-Netzwerksicherheitsgruppe |Wählen Sie **Advanced** (Erweitert).|
+    |Öffentliche Eingangsports|Wählen Sie **Keine**. |
 
-6. Wählen Sie auf der Seite **Zusammenfassung** unter **Erstellen** die Option **Erstellen**, um die Bereitstellung des virtuellen Computers zu starten.
+6. Klicken Sie unten links auf **Überprüfen und erstellen**, und wählen Sie **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
 
 ### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 

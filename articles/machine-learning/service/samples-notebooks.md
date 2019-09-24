@@ -1,7 +1,7 @@
 ---
 title: Jupyter-Beispiel-Notebooks
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie Beispiele für Jupyter-Notebooks finden und verwenden, um sich mit dem Python-SDK für Azure Machine Learning Service vertraut zu machen.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie Beispiele für Jupyter-Notebooks finden und verwenden, um sich mit dem Python-SDK für Azure Machine Learning vertraut zu machen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860380"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997063"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning Service mit Jupyter-Notebooks
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning mit Jupyter-Notebooks
 
 Das [Repository mit Beispielnotebooks für Azure Machine Learning](https://github.com/azure/machinelearningnotebooks) enthält die neuesten Python-SDK-Beispiele für Azure Machine Learning. Diese Juypter-Notebooks helfen Ihnen dabei, sich mit dem SDK vertraut zu machen, und fungieren als Modelle für Ihre eigenen Machine Learning-Projekte.
 
@@ -55,7 +55,7 @@ Data Science Virtual Machine (DSVM) ist ein benutzerdefiniertes VM-Image, das sp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie anhand der [Beispielnotebooks](https://aka.ms/aml-notebooks), welche Möglichkeiten Ihnen Azure Machine Learning Service bietet, oder probieren Sie die folgenden Tutorials aus:
+Erkunden Sie anhand der [Beispielnotebooks](https://aka.ms/aml-notebooks), welche Möglichkeiten Ihnen Azure Machine Learning bietet, oder probieren Sie die folgenden Tutorials aus:
 
 - [Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)
 

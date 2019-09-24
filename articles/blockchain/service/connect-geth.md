@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0716a9326a54ae31d4f355fe5f4c88488339b390
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029978"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931771"
 ---
 # <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>Schnellstart: Herstellen einer Verbindung mit einem Transaktionsknoten mithilfe von Geth
 
@@ -26,7 +26,7 @@ Geth ist ein Go Ethereum-Client, mit dem Sie eine Geth-Instanz an einen Azure Bl
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Installieren Sie [Geth](https://github.com/ethereum/go-ethereum/wiki/geth).
-* [Erstellen Sie ein Azure Blockchain-Mitglied](create-member.md)
+* [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
 
 ## <a name="get-the-geth-connection-string"></a>Abrufen der Geth-Verbindungszeichenfolge
 
@@ -67,7 +67,7 @@ Die Geth-Verbindungszeichenfolge finden Sie im Azure-Portal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie den Geth-Client verwendet, um eine Anfügung an eine Geth-Instanz auf einem Azure Blockchain-Transaktionsknoten durchzuführen. Im nächsten Tutorial erfahren Sie, wie Sie eine Transaktion mithilfe von Truffle bereitstellen und senden.
+In diesem Schnellstart haben Sie den Geth-Client verwendet, um eine Anfügung an eine Geth-Instanz auf einem Azure Blockchain-Transaktionsknoten durchzuführen. Im nächsten Tutorial erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum und Truffle verwenden, um eine Smart Contract-Funktion über eine Transaktion zu erstellen, bereitstellen und auszuführen.
 
 > [!div class="nextstepaction"]
-> [Senden einer Transaktion](send-transaction.md)
+> [Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md)

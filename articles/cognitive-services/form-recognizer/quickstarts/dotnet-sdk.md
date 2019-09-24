@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142816"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057656"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Schnellstart: Formularerkennungs-Clientbibliothek für .NET
 
@@ -22,9 +22,11 @@ Erste Schritte mit der Formularerkennungs-Clientbibliothek für .NET. Die Formul
 
 Führen Sie mit der Formularerkennungs-Clientbibliothek für .NET die folgenden Aktionen aus:
 
-* Trainieren eines benutzerdefinierten Formularerkennungsmodells
-* Analysieren von Formularen mit einem benutzerdefinierten Modell
-* Abrufen einer Liste mit benutzerdefinierten Modellen
+* [Trainieren eines benutzerdefinierten Formularerkennungsmodells](#train-a-custom-model)
+* [Abrufen einer Liste der extrahierten Schlüssel](#get-a-list-of-extracted-keys)
+* [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
+* [Abrufen einer Liste mit benutzerdefinierten Modellen](#get-a-list-of-custom-models)
+* [Löschen eines benutzerdefinierten Modells](#delete-a-custom-model)
 
 [Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 Öffnen Sie aus dem Projektverzeichnis die Datei _Program.cs_ in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Fügen Sie die folgenden `using` -Anweisungen ein:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Fügen Sie anschließend den folgenden Code in der **Main**-Methode der Anwendung hinzu. Diese asynchrone Aufgabe definieren Sie später.
 
@@ -115,10 +110,12 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Trainieren eines benutzerdefinierten Formularerkennungsmodells](#train-a-custom-model)
+* [Abrufen einer Liste der extrahierten Schlüssel](#get-a-list-of-extracted-keys)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Abrufen einer Liste mit benutzerdefinierten Modellen](#get-a-list-of-custom-models)
+* [Löschen eines benutzerdefinierten Modells](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Definieren von Variablen
+## <a name="define-variables"></a>Definieren von Variablen
 
 Fügen Sie vor dem Definieren von Methoden die folgenden Variablendefinitionen am Anfang der **Program**-Klasse hinzu. Sie müssen einige der Variablen selbst ausfüllen. 
 
@@ -127,13 +124,13 @@ Fügen Sie vor dem Definieren von Methoden die folgenden Variablendefinitionen a
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>Authentifizieren des Clients
+## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 Definieren Sie unterhalb der Methode `Main` die Aufgabe, auf die in `Main` verwiesen wird. Hier authentifizieren Sie das Clientobjekt mithilfe der oben definierten Abonnementvariablen. Die anderen Methoden definieren Sie später.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
+## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 
 Bei der folgenden Methode wird das Formularerkennungs-Clientobjekt verwendet, um ein neues Erkennungsmodell für die im Azure-Blobcontainer gespeicherten Dokumente zu trainieren. Mithilfe einer Hilfsmethode werden Informationen zum neu trainierten Modell (dargestellt durch ein Objekt vom Typ [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview)) angezeigt, und die Modell-ID wird zurückgegeben.
 
@@ -143,9 +140,18 @@ Die folgende Hilfsmethode zeigt Informationen zu einem Formularerkennungsmodell 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Analysieren von Formularen mit einem benutzerdefinierten Modell
+## <a name="get-a-list-of-extracted-keys"></a>Abrufen einer Liste der extrahierten Schlüssel
+
+Nach Abschluss des Trainings behält das benutzerdefinierte Modell eine Liste der Schlüssel bei, die es aus den Trainingsdokumenten extrahiert hat. Es wird erwartet, dass diese Schlüssel in künftigen Formulardokumenten enthalten sind, und die entsprechenden Werte werden im Analysevorgang extrahiert. Verwenden Sie die folgende Methode, um die Liste der extrahierten Schlüssel abzurufen und sie in der Konsole auszugeben. Dies ist eine gute Möglichkeit, um zu überprüfen, ob der Trainingsprozess wirksam war.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Analysieren von Formularen mit einem benutzerdefinierten Modell
 
 Diese Methode verwendet den Formularerkennungsclient und eine Modell-ID, um ein PDF-Formulardokument zu analysieren und Schlüssel-Wert-Daten zu extrahieren. Zum Anzeigen der Ergebnisse (dargestellt durch ein Objekt vom Typ [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview)) wird eine Hilfsmethode verwendet.
+
+> [!NOTE]
+> Mit der folgenden Methode wird ein PDF-Formular analysiert. Informationen zu ähnlichen Methoden, die JPEG- und PNG-Formulare analysieren, finden Sie im vollständigen Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ Die folgende Hilfsmethode zeigt Informationen zu einem Analysevorgang an:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Abrufen einer Liste mit benutzerdefinierten Modellen
+## <a name="get-a-list-of-custom-models"></a>Abrufen einer Liste mit benutzerdefinierten Modellen
 
 Sie können eine Liste aller trainierten Modelle zurückgeben, die zu Ihrem Konto gehören, und Informationen zum Erstellungszeitpunkt abrufen. Die Liste der Modelle wird durch ein Objekt vom Typ [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) dargestellt.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Löschen eines benutzerdefinierten Modells
+
+Wenn Sie das benutzerdefinierte Modell aus Ihrem Konto löschen möchten, verwenden Sie die folgende Methode:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
@@ -174,9 +186,7 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Verwenden Sie außerdem die folgende Methode, wenn Sie ein benutzerdefiniertes Modell trainiert haben, das Sie aus Ihrem Konto löschen möchten:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Wenn Sie ein benutzerdefiniertes Modell trainiert haben, das Sie aus Ihrem Konto löschen möchten, führen Sie außerdem die Methode in [Löschen eines benutzerdefinierten Modells](#delete-a-custom-model) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

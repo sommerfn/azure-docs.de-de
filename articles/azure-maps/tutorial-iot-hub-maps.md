@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d355ec1784b3b613369e90cd5fac99d3d69a6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916402"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933205"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -167,7 +167,7 @@ Wir nutzen die [Postman-Anwendung](https://www.getpostman.com) zum [Hochladen de
     
     Der „geojson“-Wert für den Parameter `dataFormat` im URL-Pfad gibt das Format der hochzuladenden Daten an.
 
-3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren Azure Maps-Abonnementschlüssel.
+3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren primären Azure Maps-Abonnementschlüssel.
    
     ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions ist ein serverloser Computedienst, mit dem wir Code bedarfsgeste
 6. Kopieren Sie den [C#-Code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in Ihre Funktion, und klicken Sie auf **Speichern**.
  
 7. Ersetzen Sie im C#-Skript die folgenden Parameter:
-    * Ersetzen Sie **SUBSCRIPTION_KEY** durch den Abonnementschlüssel Ihres Azure Maps-Kontos.
+    * Ersetzen Sie **SUBSCRIPTION_KEY** durch den primären Abonnementschlüssel Ihres Azure Maps-Kontos.
     * Ersetzen Sie **UDID** durch die udId des hochgeladenen Geofencebereichs. 
     * Mit der Funktion **CreateBlobAsync** im Skript wird im Datenspeicherkonto ein Blob pro Ereignis erstellt. Ersetzen Sie **ACCESS_KEY**, **ACCOUNT_NAME** und **STORAGE_CONTAINER_NAME** durch den Zugriffsschlüssel bzw. Kontonamen Ihres Speicherkontos und durch den Datenspeichercontainer.
 

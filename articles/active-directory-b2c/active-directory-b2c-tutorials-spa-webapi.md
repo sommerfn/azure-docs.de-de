@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369297"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064692"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C
 
-In diesem Tutorial erfahren Sie, wie Sie eine durch Azure Active Directory (Azure AD) B2C geschützte ASP.NET Core-Web-API-Ressource über eine Single-Page-Webanwendung aufrufen.
+In diesem Tutorial erfahren Sie, wie Sie eine durch Azure Active Directory B2C (Azure AD B2C) geschützte ASP.NET Core-Web-API-Ressource über eine Single-Page-Webanwendung aufrufen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

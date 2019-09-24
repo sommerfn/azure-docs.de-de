@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b4e9b72be5d03e0b3441983ca991a16688f5f4cd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916459"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934183"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
 
@@ -56,7 +56,7 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
     
     Der Parameter GEOJSON im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
 
-3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren Azure Maps-Abonnementschlüssel.
+3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren primären Azure Maps-Abonnementschlüssel.
    
     ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-geofence/postman-key-vals.png)
 

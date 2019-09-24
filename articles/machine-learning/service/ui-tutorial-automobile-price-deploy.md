@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning Service eine Vorhersageanalyselösung (Predictive Analytics-Lösung) erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning eine Vorhersageanalyselösung (Predictive Analytics-Lösung) erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858636"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997007"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche
 
@@ -105,7 +105,7 @@ Navigieren Sie zur Registerkarte **API Doc** (API-Dok), um weitere API-Details a
 
 ## <a name="manage-models-and-deployments"></a>Verwalten von Modellen und Bereitstellungen
 
-Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können auch im Azure Machine Learning Service-Arbeitsbereich verwaltet werden.
+Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können auch im Azure Machine Learning-Arbeitsbereich verwaltet werden.
 
 1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  
 

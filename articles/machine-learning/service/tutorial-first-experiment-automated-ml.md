@@ -1,6 +1,6 @@
 ---
 title: Erstellen Ihres ersten automatisierten Machine Learning-Experiments
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie ein Klassifizierungsmodell mit automatisiertem Machine Learning auf der Angebotsseite (Vorschauversion) des Arbeitsbereichs von Azure Machine Learning trainieren und bereitstellen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910223"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092005"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 
@@ -26,7 +26,7 @@ Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben autom
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
+> * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
 > * Ausführen eines automatisierten Machine Learning-Experiments
 > * Anzeigen von Details zum Experiment
 > * Bereitstellen des Modells.
@@ -67,7 +67,7 @@ Da dies Ihr erstes Experiment mit automatisiertem maschinellem Lernen ist, wird 
 
 1. Geben Sie **my-1st-automl-experiment** als Experimentnamen ein.
 
-1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus. 
+1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus. „Compute“ bezeichnet eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
 
     1. Konfigurieren Sie den Computekontext für dieses Experiment.
         
@@ -99,7 +99,8 @@ Da dies Ihr erstes Experiment mit automatisiertem maschinellem Lernen ist, wird 
         Dateiformat| Durch Trennzeichen getrennt
         Trennzeichen| Komma
         Codieren| UTF-8
-        Spaltenüberschriften| Alle Dateien haben dieselben Header            Zeilen überspringen | Keine
+        Spaltenüberschriften| Alle Dateien weisen dieselben Header auf.
+        Zeilen überspringen | Keine
 
         >[!NOTE]
         > Wenn eine der Einstellungen in diesem Formular aktualisiert wird, wird auch die Vorschau entsprechend aktualisiert.
@@ -146,9 +147,9 @@ Während der Experimentausführung aktualisiert der Bildschirm das **Iterationsd
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
-Durch die Verwendung von automatisiertem maschinellem Lernen auf der Angebotsseite des Arbeitsbereichs können wir das beste Modell als Webdienst bereitstellen, um neue Daten vorherzusagen und potenzielle Chancen zu identifizieren. In diesem Experiment bedeutet Bereitstellung, dass das Finanzinstitut nun über eine iterative und skalierbare Lösung zur Identifizierung potenzieller Festgeldkunden verfügt.
+Durch die Verwendung von automatisiertem maschinellem Lernen auf der Angebotsseite des Arbeitsbereichs können wir das beste Modell in einigen Schritten als Webdienst bereitstellen. Bei der Bereitstellung handelt es sich um die Integration des Modells, sodass neue Daten vorhergesagt und potenzielle Verkaufschancen identifiziert werden können. In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
 
-Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten.
+Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
 
 1. Wählen Sie auf der Seite **Run Detail** (Ausführungsdetail) oben rechts die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) aus.
 
@@ -161,7 +162,7 @@ Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_wei
     „Scoring script“ (Bewertungsskript)| Automatisch generiert
     Environment script (Umgebungsskript)| Automatisch generiert
     
-1. Klicken Sie auf **Bereitstellen**.
+1. Klicken Sie auf **Bereitstellen**.  
 
     Wenn die Bereitstellung erfolgreich abgeschlossen wurde, wird eine entsprechende Meldung angezeigt.
     

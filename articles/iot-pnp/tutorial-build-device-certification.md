@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858859"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932676"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Erstellen eines Azure IoT Plug & Play Preview-Geräts für die Zertifizierung
 
@@ -84,6 +84,18 @@ So zeigen Sie die Schnittstelle **Geräteinformationen** in VS Code an:
 1. Wählen Sie im öffentlichen Modellrepository die Registerkarte **Schnittstellen** aus, und geben Sie **Geräteinformationen** in das Feld „Filter“ ein.
 
 1. Wählen Sie in der gefilterten Liste die Schnittstelle **Geräteinformationen** aus, um eine lokale Kopie davon zu erstellen, und wählen Sie dann **Download** aus. VS Code zeigt die Schnittstellendatei an.
+
+Anzeigen der Schnittstelle **Geräteinformationen** mithilfe der Azure CLI:
+
+1. [Installieren Sie die Erweiterung für die Azure IoT-Befehlszeilenschnittstelle (Azure CLI)](howto-install-pnp-cli.md).
+
+1. Verwenden Sie den folgenden Azure CLI-Befehl, um eine Schnittstelle mit der ID der Schnittstelle „Geräteinformationen“ anzuzeigen:
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+Weitere Informationen finden Sie unter [Installieren und Verwenden der Azure IoT-Erweiterung für Azure CLI](howto-install-pnp-cli.md).
 
 ## <a name="update-device-code"></a>Aktualisieren des Gerätecodes
 

@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 1649fefda5073761d616fc48c602cab84d293ed0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3eee34f594cb23a8b64f6fd10837c9a641eda62d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799089"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075966"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Core-App
 
@@ -44,9 +44,14 @@ Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microso
 
 ## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
 
-Öffnen Sie *Program.cs*, und aktualisieren Sie die Datei, um die Aktualisierung der Konfiguration in der `AddAzureAppConfiguration`-Methode anzugeben und die manuelle Aktualisierung mit der `Refresh`-Methode auszulösen.
+Öffnen Sie *Program.cs*, und aktualisieren Sie die Datei, um einen Verweis auf den `System.Threading.Tasks`-Namespace hinzuzufügen, um die Aktualisierung der Konfiguration in der `AddAzureAppConfiguration`-Methode anzugeben und die manuelle Aktualisierung mit der `Refresh`-Methode auszulösen.
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+
+namespace TestConsole
+{
 class Program
 {
     private static IConfiguration _configuration = null;
@@ -83,6 +88,7 @@ class Program
         await _refresher.Refresh();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
+}
 }
 ```
 

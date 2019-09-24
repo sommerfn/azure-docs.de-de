@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cdd43f6892f1932803bb965897d4af8c4cab481e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227783"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934116"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Anwendungsbenutzer mit Azure Notification Hubs
 
@@ -470,7 +470,14 @@ Aktualisieren Sie als Nächstes die Android-Anwendung, die Sie in [Tutorial: Sen
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Erstellen Sie das Projekt.
+13. Wenn Ihre App auf API-Ebene 28 (Android 9.0) oder höher ausgerichtet ist, schließen Sie die folgende Deklaration in das `<application>`-Element von `AndroidManifest.xml` ein.
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. Erstellen Sie das Projekt.
 
 ## <a name="test-the-app"></a>Testen der App
 

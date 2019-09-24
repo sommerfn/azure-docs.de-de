@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551529"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067001"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -111,14 +111,7 @@ Bei diesem Prozess werden Sie per E-Mail über alle Statusänderungen informiert
 
 Data Box kann Daten basierend auf der Region, in der der Dienst bereitgestellt wird, dem Land/der Region, in das/die das Gerät versendet wird, und dem Azure Storage-Zielkonto übertragen, in das Sie die Daten übertragen. 
 
-- **Verfügbarkeit des Diensts**: Bei dieser Version ist der Data Box-Dienst in den folgenden Regionen verfügbar:
-    - Alle Regionen in den USA: USA, Westen-Mitte; USA, Westen 2; USA, Westen; USA, Süden-Mitte; USA, Mitte; USA, Norden-Mitte; USA, Osten 2.
-    - Europa: Europa, Westen und Europa, Norden.
-    - Vereinigtes Königreich: Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen.
-    - Frankreich: Frankreich, Mitte und Frankreich, Süden.
-    - Japan: Japan, Osten und Japan, Westen.
-    - Australien: Australien, Osten und Australien, Südosten.
-    - Kanada: Kanada, Osten und Kanada, Mitte.
+- **Dienstverfügbarkeit**: Informationen zur regionalen Verfügbarkeit finden Sie unter [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box kann auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (Was ist Azure Government?).
 
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar, in denen der Dienst verfügbar ist.  
 

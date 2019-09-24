@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227172"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065706"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C ist ein Dienst für die Business-to-Consumer-Identitätsverwaltung. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
+Azure Active Directory B2C (Azure AD B2C) ist ein Dienst für die Business-to-Consumer-Identitätsverwaltung. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
 
 Eine *User Journey* ist eine Anforderung, die eine Richtlinie angibt, um zu steuern, wie der Benutzer und Ihre Anwendung mit Azure AD B2C interagieren. User Journeys können in Azure AD B2C auf zwei Arten definiert werden:
 

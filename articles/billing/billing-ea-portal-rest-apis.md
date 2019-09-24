@@ -4,16 +4,16 @@ description: In diesem Artikel werden die REST-APIs beschrieben, die Sie mit Ihr
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900861"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105453"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise-REST-APIs
 
@@ -31,7 +31,7 @@ Microsoft Enterprise Azure-Kunden erhalten über REST-APIs Verwendungs- und Abre
 
 **Marketplace-Gebühren**: Die [API für Marketplace-Gebühren](billing-enterprise-api-marketplace-storecharge.md) gibt eine Aufschlüsselung der nutzungsbasierten Marketplace-Gebühren pro Tag für den angegebenen Abrechnungszeitraum oder für festgelegte Start- und Enddaten zurück. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Marketplace-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
-**Preisblatt**: Die [Preisblatt-API](/billing-enterprise-api-pricesheet.md) stellt den zutreffenden Tarif pro Verbrauchseinheit für einen Registrierungs- und Abrechnungszeitraum bereit. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Preisblatt](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
+**Preisblatt**: Die [Preisblatt-API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) stellt den zutreffenden Tarif pro Verbrauchseinheit für einen Registrierungs- und Abrechnungszeitraum bereit. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Preisblatt](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
 **Abrechnungszeiträume**: Die [API für Abrechnungszeiträume](billing-enterprise-api-billing-periods.md) gibt eine Liste von Abrechnungszeiträumen zurück, die Verbrauchsdaten für eine Registrierung in umgekehrter chronologischer Reihenfolge enthalten. Jeder Zeitraum enthält eine Eigenschaft, die auf die API-Route für die vier Sätze von Daten verweist: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet. Weitere Informationen finden Sie unter [Berichterstellungs-APIs für Unternehmenskunden – Abrechnungszeiträume](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
@@ -81,7 +81,7 @@ Ein Swagger-Endpunkt ist unter [Enterprise Reporting V3 APIs](https://consumptio
 
 Wenn Sie eine API verwenden, werden die Antwortstatuscodes angezeigt. Sie sind in der folgenden Tabelle beschrieben.
 
-| Statuscode der Antwort | `Message` | BESCHREIBUNG |
+| Antwortstatuscode | `Message` | BESCHREIBUNG |
 | --- | --- | --- |
 | 200 | OK | Kein Fehler |
 | 401 | Nicht autorisiert | API-Schlüssel nicht gefunden, ungültig, abgelaufen usw. |

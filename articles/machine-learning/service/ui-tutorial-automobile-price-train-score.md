@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie ein Machine Learning-Modell mithilfe einer grafischen Drag & Drop-Benutzeroberfläche trainieren, bewerten und bereitstellen. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
 ms.author: peterlu
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891633"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996780"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche
 
@@ -45,7 +45,7 @@ Zum Erstellen eines Experiments für eine grafische Benutzeroberfläche benötig
 
 ### <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
-Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem nächsten Abschnitt fort.
+Wenn Sie über einen Azure Machine Learning-Arbeitsbereich verfügen, fahren Sie mit dem nächsten Abschnitt fort.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 

@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811599"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076357"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Interactive Query in Azure HDInsight
 
@@ -28,6 +28,9 @@ Sie können im Interactive Query-Cluster nur über die Apache Ambari-Hive-Ansich
 ## <a name="create-an-interactive-query-cluster"></a>Erstellen eines Interactive Query-Clusters
 
 Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](../hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie den Clustertyp „Interactive Query“ aus.
+
+> [!IMPORTANT]
+> Die minimale Hauptknotengröße für interaktive Abfragecluster ist Standard_D13_v2. Weitere Informationen finden Sie im [Größentabelle für virtuelle Azure-Computer](../../cloud-services/cloud-services-sizes-specs.md#dv2-series).
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Ausführen von Apache Hive-Abfragen über Interactive Query
 

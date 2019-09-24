@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310440"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057493"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -75,7 +75,7 @@ Die Befehle in dieser Tutorialreihe sind für die Bash-Shell formatiert. Falls S
 
 Nachdem Sie den Quellcode auf Ihren Computer heruntergeladen haben, können Sie mit den folgenden Schritten eine Containerregistrierung und anschließend das Containerimage mit ACR Tasks erstellen.
 
-In den Tutorials dieser Reihe werden Shell-Umgebungsvariablen verwendet, um das Ausführen der Beispielbefehle zu vereinfachen. Führen Sie den folgenden Befehl aus, um die Variable `ACR_NAME` festzulegen. Ersetzen Sie **\<registry-name\>** durch einen eindeutigen Namen für Ihre neue Containerregistrierung. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Da die anderen Ressourcen, die Sie in diesem Tutorial erstellen, auf diesem Namen basieren, sollte die Änderung dieser ersten Variablen ausreichend sein.
+In den Tutorials dieser Reihe werden Shell-Umgebungsvariablen verwendet, um das Ausführen der Beispielbefehle zu vereinfachen. Führen Sie den folgenden Befehl aus, um die Variable `ACR_NAME` festzulegen. Ersetzen Sie **\<registry-name\>** durch einen eindeutigen Namen für Ihre neue Containerregistrierung. Der Registrierungsname muss innerhalb von Azure eindeutig sein, darf nur Kleinbuchstaben enthalten und muss aus zwischen 5 und 50 alphanumerischen Zeichen bestehen. Da die anderen Ressourcen, die Sie in diesem Tutorial erstellen, auf diesem Namen basieren, sollte die Änderung dieser ersten Variablen ausreichend sein.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>

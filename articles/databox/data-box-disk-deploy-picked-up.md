@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910116"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128688"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 3. Bringen Sie das Etikett am Box-Gerät an. 
 4. Reservieren Sie online unter https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference einen Abholtermin. 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[In Japan und Korea](#tab/in-japan-korea)
-
-Hier finden Sie die Abholanweisungen für Japan und Korea.
-
-#### <a name="pick-up-in-japan"></a>Abholung in Japan
+### <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan)
 
 1. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
 2. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
@@ -118,9 +114,9 @@ Hier finden Sie die Abholanweisungen für Japan und Korea.
 Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanische Sprache): 
 
 - E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
-- Telefon：03-5755-0150 
+- Telefonnummer: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Abholung in Korea
+### <a name="in-koreatabin-korea"></a>[In Korea](#tab/in-korea)
 
 1. Legen Sie den Rücksendeschein bei.
 2. Gehen Sie zum Anfordern der Abholung wie folgt vor, wenn der Rücksendeschein vorliegt:

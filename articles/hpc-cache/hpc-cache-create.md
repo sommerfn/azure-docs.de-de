@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774623"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037042"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -21,7 +21,7 @@ Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
 
 ## <a name="define-basic-details"></a>Definieren grundlegender Informationen
 
-![Screenshot: Projektdetailseite im Azure-Portal](media/create-1.png)
+![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
 
 Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten der Azure HPC Cache-Instanz aus. Achten Sie darauf, dass sich das Abonnement in der Liste für den [Vorschauzugriff](hpc-cache-prereqs.md#azure-subscription) befindet.
 
@@ -47,7 +47,7 @@ Beachten Sie, dass die tatsächliche Datenübertragungsrate von der Arbeitsausla
 
 Für den Cachespeicher verwaltet Azure HPC Cache, welche Dateien zwischengespeichert und vorab geladen werden, um die Cachetrefferraten zu maximieren. Der Cacheinhalt wird kontinuierlich bewertet, und seltener verwendete Dateien werden in den langfristigen Speicher verschoben. Wählen Sie eine Cachespeichergröße, die problemlos den aktiven Satz von Arbeitsdateien aufnehmen kann und Speicherplatz für Metadaten und andere Zusatzdaten bietet.
 
-![Screenshot: Seite zum Festlegen der Cachegröße](media/create-cache-iops.png)
+![Screenshot: Seite zum Festlegen der Cachegröße](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -55,19 +55,21 @@ Bei Speicherzielen handelt es sich um den langfristigen Back-End-Speicher für d
 
 Speicherziele können im Rahmen der Cacheerstellung definiert oder nachträglich im Portal auf der Seite Ihres Caches über den Link im Abschnitt **Konfigurieren** hinzugefügt werden.
 
-![Screenshot: Seite „Speicherziele“](media/create-targets.png)
+![Screenshot: Seite „Speicherziele“](media/hpc-cache-storage-targets-pop.png)
 
 Klicken Sie auf den Link **Speicherziel hinzufügen**, um Ihre Back-End-Speichersysteme zu definieren. Bei dem Speicher kann es sich um Azure-Blobcontainer oder um lokale NFS-Systeme handeln.
 
 Sie können bis zu zehn verschiedene Speicherziele definieren.
 
-Eine Schritt-für-Schritt-Anleitung zum Hinzufügen eines Speicherziels finden Sie unter [Hinzufügen von Speicher](hpc-cache-add-storage.md). Für Blobspeicher und NFS-Exporte müssen jeweils unterschiedliche Schritte ausgeführt werden.
+Schritt-für-Schritt-Anleitungen zum Hinzufügen eines Speicherziels sind in [Hinzufügen von Speicher](hpc-cache-add-storage.md) enthalten. Für Blobspeicher und NFS-Exporte müssen jeweils unterschiedliche Schritte ausgeführt werden.
 
-Bei beiden Speichertypen müssen Sie den Ort des Back-End-Speichersystems (entweder eine NFS-Adresse oder einen Blobcontainernamen) sowie den clientseitigen Namespacepfad angeben.
+Hier einige Tipps: 
 
-Achten Sie beim Erstellen eines Blobspeicherziels darauf, dass der Cache über Zugriffsberechtigungen für das Speicherkonto verfügt, wie unter [Hinzufügen der Zugriffssteuerungsrollen zu Ihrem Konto](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) beschrieben. Sollten Sie nicht sicher sein, ob die Rollenkonfiguration erfolgreich sein wird, erstellen Sie zuerst den Cache, und fügen Sie dann den Blobspeicher hinzu.
+* Bei beiden Speichertypen müssen Sie den Ort des Back-End-Speichersystems (entweder eine NFS-Adresse oder einen Blobcontainernamen) sowie den clientseitigen Namespacepfad angeben.
 
-Geben Sie bei Erstellung eines NFS-Speicherziels ein [Nutzungsmodell](hpc-cache-add-storage.md#choose-a-usage-model) an. Auf der Grundlage der Nutzungsmodelleinstellung kann der Cache Ihren Workflow optimieren.
+* Achten Sie beim Erstellen eines Blobspeicherziels darauf, dass der Cache über Zugriffsberechtigungen für das Speicherkonto verfügt, wie unter [Hinzufügen der Zugriffssteuerungsrollen zu Ihrem Konto](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) beschrieben. Sollten Sie nicht sicher sein, ob die Rollenkonfiguration erfolgreich sein wird, erstellen Sie zuerst den Cache, und fügen Sie dann den Blobspeicher hinzu.
+
+* Geben Sie bei Erstellung eines NFS-Speicherziels ein [Nutzungsmodell](hpc-cache-add-storage.md#choose-a-usage-model) an. Auf der Grundlage der Nutzungsmodelleinstellung kann der Cache Ihren Workflow optimieren.
 
 ## <a name="add-resource-tags-optional"></a>Hinzufügen von Ressourcentags (optional)
 
@@ -77,11 +79,13 @@ Auf der Seite **Tags** können Sie Ihrer Azure HPC Cache-Instanz [Ressourcenta
 
 Nachdem Sie den neuen Cache konfiguriert haben, klicken Sie auf die Registerkarte **Überprüfen + erstellen**. Das Portal überprüft Ihre Auswahl und ermöglicht es Ihnen, die gewählten Optionen selbst noch einmal zu überprüfen. Ist alles korrekt, klicken Sie auf **Erstellen**. 
 
-Die Cacheerstellung dauert ungefähr zehn Minuten. Sie können den Status über den Benachrichtigungsbereich des Azure-Portals nachverfolgen. Nach Abschluss des Vorgangs wird eine Benachrichtigung mit einem Link zu der neuen Azure HPC Cache-Instanz angezeigt. 
+Die Cacheerstellung dauert ungefähr zehn Minuten. Sie können den Status über den Benachrichtigungsbereich des Azure-Portals nachverfolgen. 
 
-Der Cache wird außerdem in der Liste **Ressourcen** Ihres Abonnements angezeigt. 
+![Screenshot der Cache-Erstellungsseiten „Bereitstellung wird ausgeführt“ und „Benachrichtigungen“ im Portal](media/hpc-cache-deploy-status.png)
 
-![Screenshot: Azure HPC Cache-Instanz im Azure-Portal](media/finished-hpc-cache.png)
+Wenn die Erstellung abgeschlossen ist, wird eine Benachrichtigung mit einem Link zur neuen Azure HPC Cache-Instanz angezeigt, und der Cache wird in der Liste **Ressourcen** Ihres Abonnements angezeigt. 
+
+![Screenshot: Azure HPC Cache-Instanz im Azure-Portal](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

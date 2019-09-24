@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019184"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965133"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Skalieren von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Das folgende Beispiel verwendet den Befehl [kubectl autoscale][kubectl-autoscale], um die Anzahl von Pods in der Bereitstellung *azure-vote-front* automatisch zu skalieren. Wenn die CPU-Nutzung 50% übersteigt, erhöht die automatische Skalierungsfunktion die Anzahl von Pods auf maximal *10* Instanzen. Mindestens *3* Instanzen werden dann für die Bereitstellung festgelegt:
+Das folgende Beispiel verwendet den Befehl [kubectl autoscale][kubectl-autoscale], um die Anzahl von Pods in der Bereitstellung *azure-vote-front* automatisch zu skalieren. Wenn die durchschnittliche CPU-Auslastung aller Pods 50 % der angeforderten Nutzung überschreitet, erhöht die Autoskalierung die Pods auf maximal *10* Instanzen. Mindestens *3* Instanzen werden dann für die Bereitstellung festgelegt:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

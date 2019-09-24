@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Trainieren Ihres ersten ML-Modells'
-titleSuffix: Azure Machine Learning service
-description: In diesem Tutorial werden die grundlegenden Entwurfsmuster in Azure Machine Learning Service vorgestellt, und es wird ein einfaches Scikit-learn-Modell auf der Grundlage des Diabetes-Datasets trainiert.
+titleSuffix: Azure Machine Learning
+description: In diesem Tutorial werden die grundlegenden Entwurfsmuster in Azure Machine Learning vorgestellt, und es wird ein einfaches Scikit-learn-Modell auf der Grundlage des Diabetes-Datasets trainiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241293"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004037"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
-Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im vorherigen Tutorial haben Sie [einen Arbeitsbereich erstellt und eine Entwicklungsumgebung ausgewählt](tutorial-1st-experiment-sdk-setup.md). In diesem Tutorial werden die grundlegenden Entwurfsmuster in Azure Machine Learning Service vorgestellt, und es wird ein einfaches Scikit-learn-Modell auf der Grundlage des Diabetes-Datasets trainiert. Nach Abschluss dieses Tutorials verfügen Sie über die praktischen Kenntnisse für das SDK, die Sie für komplexere Experimente und Workflows benötigen.
+Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im vorherigen Tutorial haben Sie [einen Arbeitsbereich erstellt und eine Entwicklungsumgebung ausgewählt](tutorial-1st-experiment-sdk-setup.md). In diesem Tutorial werden die grundlegenden Entwurfsmuster in Azure Machine Learning vorgestellt, und es wird ein einfaches Scikit-learn-Modell auf der Grundlage des Diabetes-Datasets trainiert. Nach Abschluss dieses Tutorials verfügen Sie über die praktischen Kenntnisse für das SDK, die Sie für komplexere Experimente und Workflows benötigen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Überspringen Sie diesen Abschnitt, wenn Sie weitere Azure Machine Learning Service-Tutorials absolvieren möchten.
+Überspringen Sie diesen Abschnitt, wenn Sie weitere Azure Machine Learning-Tutorials absolvieren möchten.
 
 ### <a name="stop-the-notebook-vm"></a>Beenden der Notebook-VM
 

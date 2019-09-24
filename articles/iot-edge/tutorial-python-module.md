@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839550"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001108"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Linux-Geräte
 
@@ -33,6 +33,9 @@ Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Ges
 Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene trägt zur Verringerung der Datenmenge bei, die an die Cloud übermittelt und dort gespeichert wird. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> Das folgende Handbuch gilt für das V1-Python SDK, das mittlerweile veraltet ist. Wir arbeiten derzeit daran, dieses Handbuch mit V2 kompatibel zu machen. Künftige Aktualisierungen finden Sie hier.
 
 ## <a name="solution-scope"></a>Projektmappenbereich
 
