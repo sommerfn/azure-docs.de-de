@@ -138,6 +138,8 @@
           href: 'functions-reference-node.md#typescript'
     - name: Diagnose
       href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Kosten des Verbrauchstarifs
+      href: functions-consumption-costs.md
     - name: Überlegungen zur Leistung
       href: functions-best-practices.md
     - name: Functions-Proxys

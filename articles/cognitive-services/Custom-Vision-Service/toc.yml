@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: Lernprogramme
   items:
+    - name: App für visuelle IoT-Warnungen
+      href: iot-visual-alerts-tutorial.md
     - name: Logoerkennung für mobile Geräte
       href: logo-detector-mobile.md
 - name: Anleitungen
