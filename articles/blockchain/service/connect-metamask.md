@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: db029cee6edcd14d29c83964e5bf75aa45077e7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029948"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966525"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts
 
@@ -25,7 +25,7 @@ In diesem Schnellstart verwenden Sie MetaMask, um eine Verbindung mit einem Azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Erstellen eines Azure Blockchain-Mitglieds](create-member.md)
+* [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
 * Installieren Sie die Browsererweiterung [MetaMask](https://metamask.io).
 * Generieren Sie ein [MetaMask-Wallet](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time).
 
@@ -39,7 +39,7 @@ Sie benötigen die Adresse des Azure Blockchain-Endpunkts, um eine Verbindung mi
     ![Standardtransaktionsknoten auswählen](./media/connect-metamask/transaction-nodes.png)
 
 1. Klicken Sie auf **Verbindungszeichenfolgen > Zugriffsschlüssel**.
-1. Kopieren Sie die Endpunktadresse von **HTTP (Zugriffsschlüssel 1)**. Diese Adresse benötigen Sie im nächsten Abschnitt.
+1. Kopieren Sie die Endpunktadresse von **HTTP (Zugriffsschlüssel 1)** . Diese Adresse benötigen Sie im nächsten Abschnitt.
 
     ![Verbindungszeichenfolge](./media/connect-metamask/connection-string.png)
 
@@ -62,20 +62,13 @@ Sie benötigen die Adresse des Azure Blockchain-Endpunkts, um eine Verbindung mi
 Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask und Remix zusammen verwenden, können Sie Smart Contracts bereitstellen und Smart Contract-Aktionen durchführen.
 
 1. Navigieren Sie in Ihrem Browser zu `https://remix.ethereum.org`.
-1. Klicken Sie auf **Run** (Ausführen). 
-
-    MetaMask legt Ihre **Umgebung** auf **Injected Web3** (Web3 (injiziert)) und das **Konto** auf Ihr Netzwerk fest.
-
-    ![Registerkarte „Run“ (Ausführen)](./media/connect-metamask/injected-web3.png)
-
-1. Klicken Sie auf **Create new file** (Neue Datei erstellen).
+1. Wählen Sie auf der Registerkarte **Start** unter **Datei** die Option **Neue Datei** aus.
 
     Geben Sie der neuen Datei den Namen `simple.sol`.
 
     ![Datei erstellen](./media/connect-metamask/create-file.png)
 
     Klicken Sie auf **OK**.
-
 1. Fügen Sie im Remix-Editor folgenden einfachen **Smart Contract-Code** ein.
 
     ```solidity
@@ -99,14 +92,18 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
     ```
 
     Unter **contract simple** wird eine statische Variable namens **balance** deklariert. Zudem werden zwei Funktionen definiert. Die **add**-Funktion fügt eine Zahl zu **balance** hinzu. Die **get**-Funktion gibt den Wert von **balance** zurück.
-
-1. Klicken Sie auf **Compile > Start to compile** (Kompilieren > Kompilieren starten), um den Smart Contract zu kompilieren. Bei Erfolg wird ein grünes Feld mit dem Namen des Smart Contracts angezeigt.
+1. Zum Kompilieren des Vertrags wählen Sie zuerst den Bereich „Solidity Compiler“ aus und dann die Option **Compile simple.sol**. 
 
     ![Kompilieren](./media/connect-metamask/compile.png)
 
-1. Klicken Sie auf die Registerkarte **Run** (Ausführen), um den Smart Contract auszuführen. Wählen Sie den Smart Contract **simple** aus, und klicken Sie dann auf **Deploy** (Bereitstellen).
+1. Wählen Sie den Bereich **Bereitstellen und ausführen** aus, und legen Sie dann **Umgebung** auf **Web3 (injiziert)** fest, um über MetaMask eine Verbindung mit Ihrem Blockchainmitglied herzustellen.
 
-    ![RPC (benutzerdefiniert)](./media/connect-metamask/deploy.png)
+    ![Registerkarte „Run“ (Ausführen)](./media/connect-metamask/injected-web3.png)
+
+1. Wählen Sie den Smart Contract **simple** aus, und klicken Sie dann auf **Deploy** (Bereitstellen).
+
+    ![Bereitstellen](./media/connect-metamask/deploy.png)
+
 
 1. Es wird eine MetaMask-Benachrichtigung angezeigt, dass nicht genügend Mittel vorhanden sind, um die Transaktion auszuführen.
 
@@ -125,13 +122,13 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 
     Die beiden Aktionen **add** und **get** entsprechen den Funktionen, die für den Smart Contract definiert wurden.
 
-1. Wenn Sie eine **add**-Transaktion in der Blockchain durchführen möchten, geben Sie die hinzuzufügende Zahl ein, und klicken Sie auf **add**.
+1. Wenn Sie eine **add**-Transaktion in der Blockchain durchführen möchten, geben Sie die hinzuzufügende Zahl ein, und klicken Sie auf **add**. Möglicherweise erhalten Sie eine Fehlermeldung zur Gasschätzung von Remix. Sie senden die Transaktion an eine private Blockchain, die kein Gas erfordert. Wählen Sie **Transaktion senden** aus, um die Transaktion zu erzwingen.
 1. Ähnlich wie bei der Bereitstellung des Smart Contracts wird eine MetaMask-Benachrichtigung angezeigt, dass nicht genügend Mittel vorhanden sind, um die Transaktion auszuführen.
 
     Da es sich um ein privates Netzwerk in einem Konsortium handelt, können Sie den Gaspreis auf 0 (null) festlegen.
 
 1.  Klicken Sie auf **Gas Fee > Edit > Advanced** (Gasgebühr > Bearbeiten > Erweitert), und legen Sie **Gas Price** (Gaspreis) auf 0 fest. Klicken Sie dann auf **Save** (Speichern).
-1. Klicken Sie auf **Confirm** (Bestätigen), um die Transaktion in der Blockchain auszuführen.
+1. Klicken Sie auf **Bestätigen**, um die Transaktion für die Blockchain auszuführen.
 1. Klicken Sie auf die **get**-Aktion. Dadurch werden die Knotendaten abgefragt. Es ist keine Transaktion erforderlich.
 1. Im Debugbereich von Remix werden Details zu den Transaktionen in der Blockchain angezeigt.
 
@@ -144,7 +141,7 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie die MetaMask-Browsererweiterung verwendet, um eine Verbindung mit einem Azure Blockchain-Transaktionsknoten herzustellen, einen Smart Contract bereitzustellen und eine Transaktion an die Blockchain zu senden. Im nächsten Tutorial wird die Bereitstellung und das Senden einer Transaktion mithilfe von Truffle behandelt.
+In diesem Schnellstart haben Sie die MetaMask-Browsererweiterung verwendet, um eine Verbindung mit einem Azure Blockchain-Transaktionsknoten herzustellen, einen Smart Contract bereitzustellen und eine Transaktion an die Blockchain zu senden. Im nächsten Tutorial erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum und Truffle verwenden, um eine Smart Contract-Funktion über eine Transaktion zu erstellen, bereitstellen und auszuführen.
 
 > [!div class="nextstepaction"]
-> [Senden einer Transaktion](send-transaction.md)
+> [Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md)

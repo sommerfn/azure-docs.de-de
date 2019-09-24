@@ -41,7 +41,7 @@ Sie können die zweistufige Überprüfung für viele Konten aktivieren, die Sie 
 | Kontotyp | BESCHREIBUNG |
 | ------------ | ----------- |
 | Geschäfts-, Schul- oder Unikonten | Das Konto, das Sie von Ihrer Schule oder Universität oder Ihrer Organisation erhalten haben, z. B. alain@contoso.com. |
-| Persönliche Konten | Die Microsoft-Konten und nicht von Microsoft stammenden Konten, die Sie persönlich eingerichtet haben, z. B. Outlook.com, Xbox LIVE, Google, Facebook usw. |
+| Persönliche Konten | Die Microsoft-Konten und die nicht von Microsoft stammenden Konten, die Sie persönlich eingerichtet haben, z. B. Outlook.com, Xbox LIVE, Google, Facebook usw. |
 
 ## <a name="in-this-section"></a>Inhalt dieses Abschnitts
 

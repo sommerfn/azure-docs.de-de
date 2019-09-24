@@ -24,13 +24,13 @@ Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist 
 
 SSPR ermöglicht es Mitarbeitern, die Blockierung schnell aufzuheben und die Arbeit fortzusetzen, unabhängig von Aufenthaltsort und Uhrzeit. Indem sie ihren Benutzern erlaubt, die Blockierung selbst aufzuheben, kann Ihre Organisation die unproduktive Zeit und die hohen Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern verringern.
 
-Unterstützen Sie Benutzer bei der schnellen Registrierung, indem Sie SSPR zusammen mit einer anderen Anwendung oder einem anderen Dienst in Ihrer Organisation einrichten. Diese Aktion wird zu einer großen Anzahl Anmeldungen führen und fördert die Registrierung.
+Unterstützen Sie Benutzer bei der schnellen Registrierung, indem Sie SSPR zusammen mit einer anderen Anwendung oder einem anderen Dienst in Ihrer Organisation einrichten. Diese Aktion wird zu einer großen Anzahl von Anmeldungen führen und fördert die Registrierung.
 
-Vor der Bereitstellung von SSPR kann es für Organisationen sinnvoll sein, zu bestimmen, wie viele Helpdeskanrufe im Zusammenhang mit Kennwörtern im Lauf der Zeit anfallen und welche Kosten sie im Mittel verursachen. Sie können diese Daten nach der Bereitstellung verwenden, um den Wert von SSPR für die Organisation zu demonstrieren.  
+Vor der Bereitstellung von SSPR kann es für Organisationen sinnvoll sein, zu bestimmen, wie viele Helpdeskanrufe im Zusammenhang mit Kennwörtern im Lauf der Zeit anfallen und welche Kosten sie im Mittel verursachen. Sie können diese Daten nach der Bereitstellung verwenden, um den Mehrwert von SSPR für Ihre Organisation darzustellen.  
 
 ## <a name="how-sspr-works"></a>Funktionsweise von SSPR
 
-1. Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen, muss er seine zuvor registrierte Authentifizierungsmethode oder -methoden bestätigen, um seine Identität zu beweisen.
+1. Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen, muss er seine zuvor registrierte Authentifizierungsmethode oder -methoden bestätigen, um seine Identität nachzuweisen.
 1. Anschließend gibt der Benutzer ein neues Kennwort ein.
    1. Für reine Cloudbenutzer wird das neue Kennwort in Azure Active Directory gespeichert. Weitere Informationen finden Sie im Artikel [Funktionsweise von SSPR](concept-sspr-howitworks.md#how-does-the-password-reset-portal-work).
    1. Für Hybridbenutzer wird das Kennwort über den Azure AD Connect-Dienst zurück in das lokale Active Directory geschrieben. Weitere Informationen finden Sie im Artikel [Was ist Kennwortrückschreiben](concept-sspr-writeback.md#how-password-writeback-works).

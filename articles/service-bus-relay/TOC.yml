@@ -32,12 +32,14 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Konzepte
   items:
-    - name: Authentifizierung und Autorisierung
-      href: relay-authentication-and-authorization.md
+    - name: Sicherheit
+      items:
+        - name: Authentifizierung und Autorisierung
+          href: relay-authentication-and-authorization.md
+        - name: Integrierte Sicherheitskontrollen
+          href: service-bus-relay-security-controls.md
     - name: Hybridverbindungsprotokoll
       href: relay-hybrid-connections-protocol.md
-    - name: Integrierte Sicherheitskontrollen
-      href: service-bus-relay-security-controls.md
 - name: Anleitung
   items:
     - name: Planen und Entwerfen
