@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019030"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934807"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -140,6 +140,32 @@ Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz
 4. Klicken Sie mit der rechten Maustaste auf den geschützten Server, und wählen Sie **Registrierung aufheben** aus.
 
    ![Auswählen von „Löschen“](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>Ändern der Richtlinie
+Bearbeiten Sie die Richtlinie, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
+
+> [!NOTE]
+> Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
+
+Navigieren Sie im Tresordashboard zu **Verwalten** > **Sicherungsrichtlinien**, und wählen Sie die Richtlinie aus, die Sie bearbeiten möchten.
+
+  ![Verwalten von Sicherungsrichtlinien](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Ändern der Sicherungsrichtlinie](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus. 
+
+#### <a name="inconsistent-policy"></a>Inkonsistente Richtlinie 
+
+Manchmal kann ein Vorgang zum Ändern einer Richtlinie zu einer **inkonsistenten** Richtlinienversion für einige Sicherungselemente führen. Dies geschieht, wenn der entsprechende Auftrag zum **Konfigurieren des Schutzes** für das Sicherungselement fehlschlägt, nachdem ein Vorgang zum Ändern der Richtlinie ausgelöst wurde. Es wird in der Ansicht „Sicherungselement“ folgendermaßen angezeigt:
+ 
+  ![Inkonsistente Richtlinie](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+Sie können die Richtlinienversion für alle betroffenen Elemente mit einem Mausklick korrigieren:
+
+  ![Korrigieren einer inkonsistenten Richtlinie](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Erneutes Registrieren einer Erweiterung auf der SQL Server-VM
 

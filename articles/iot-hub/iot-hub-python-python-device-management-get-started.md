@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 5bd34edd07622af90bd897b6640c2c16da5c9ac0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147667"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000443"
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -57,14 +57,14 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 
 * Verwenden der gemeldeten Eigenschaften, um Gerätezwillingsabfragen zu ermöglichen, die Geräte und den Zeitpunkt ihres letzten Neustarts ermitteln
 
-1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device-client** zu installieren:
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device** zu installieren:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
    > [!NOTE]
-   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   > Die PIP-Pakete für „azure-iothub-service-client“ sind nur für das Betriebssystem Windows verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
    >
 
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei namens **dmpatterns_getstarted_device.py**.
@@ -72,90 +72,69 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 3. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
 
     ```python
-    import random
-    import time, datetime
-    import sys
-
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
+    import threading
+    import time
+    import datetime
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Fügen Sie Variablen (einschließlich der Variablen **VERBINDUNGSZEICHENFOLGE**) und die Client-Initialisierung hinzu.  Ersetzen Sie den Platzhalterwert `{deviceConnectionString}` durch Ihre Geräteverbindungszeichenfolge. Diese Verbindungszeichenfolge haben Sie zuvor unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert.  
+4. Fügen Sie die Variable **CONNECTION_STRING** hinzu. Ersetzen Sie den Platzhalterwert `{deviceConnectionString}` durch Ihre Geräteverbindungszeichenfolge. Diese Verbindungszeichenfolge haben Sie zuvor unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
-    PROTOCOL = IoTHubTransportProvider.MQTT
-
-    CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-    WAIT_COUNT = 5
-
-    SEND_REPORTED_STATE_CONTEXT = 0
-    METHOD_CONTEXT = 0
-
-    SEND_REPORTED_STATE_CALLBACKS = 0
-    METHOD_CALLBACKS = 0
     ```
 
 5. Fügen Sie die folgenden Funktionsrückrufe hinzu, um die direkte Methode auf dem Gerät zu implementieren.
 
     ```python
-    def send_reported_state_callback(status_code, user_context):
-        global SEND_REPORTED_STATE_CALLBACKS
+    def reboot_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("rebootDevice")  # blocking call
 
-        print ( "Device twins updated." )
-
-    def device_method_callback(method_name, payload, user_context):
-        global METHOD_CALLBACKS
-
-        if method_name == "rebootDevice":
-            print ( "Rebooting device..." )
+            # Act on the method by rebooting the device...
+            print( "Rebooting device" )
             time.sleep(20)
+            print( "Device rebooted")
 
-            print ( "Device rebooted." )
-
+            # ...and patching the reported properties
             current_time = str(datetime.datetime.now())
-            reported_state = "{\"rebootTime\":\"" + current_time + "\"}"
-            CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
+            reported_props = {"rebootTime": current_time}
+            client.patch_twin_reported_properties(reported_props)
+            print( "Device twins updated with latest rebootTime")
 
-            print ( "Updating device twins: rebootTime" )
-
-        device_method_return_value = DeviceMethodReturnValue()
-        device_method_return_value.response = "{ \"Response\": \"This is the response from the device\" }"
-        device_method_return_value.status = 200
-
-        return device_method_return_value
+            # Send a method response indicating the method request was resolved
+            resp_status = 200
+            resp_payload = {"Response": "This is the response from the device"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
 6. Starten Sie den Listener der direkten Methode, und warten Sie.
 
     ```python
     def iothub_client_init():
-        if CLIENT.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
-            CLIENT.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        return client
 
     def iothub_client_sample_run():
         try:
-            iothub_client_init()
+            client = iothub_client_init()
+
+            # Start a thread listening for "rebootDevice" direct method invocations
+            reboot_listener_thread = threading.Thread(target=reboot_listener, args=(client,))
+            reboot_listener_thread.daemon = True
+            reboot_listener_thread.start()
 
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```

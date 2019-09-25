@@ -8,15 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sstein
+ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173432"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934204"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -72,7 +72,8 @@ Zum Erstellen einer Datenbankkopie müssen Sie über die folgenden Rollen verfü
 - Rolle „Mitwirkender von SQL Server“ oder
 - Benutzerdefinierte Rolle für die Quell- und Zieldatenbank mit folgender Berechtigung:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Zum Abbrechen eines Datenbank-Kopiervorgangs müssen Sie über die folgenden Rollen verfügen:
 
@@ -80,7 +81,23 @@ Zum Abbrechen eines Datenbank-Kopiervorgangs müssen Sie über die folgenden Rol
 - Rolle „Mitwirkender von SQL Server“ oder
 - Benutzerdefinierte Rolle für die Quell- und Zieldatenbank mit folgender Berechtigung:
 
-   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+   
+Zum Verwalten der Datenbankkopie über das Azure-Portal benötigen Sie außerdem die folgenden Berechtigungen:
+
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/subscriptions/resources/read   
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/subscriptions/resources/write   
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/deployments/read   
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/deployments/write   
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/deployments/operationstatuses/read    
+
+Wenn Sie die Vorgänge unter Bereitstellungen in der Ressourcengruppe im Portal anzeigen möchten, und zwar Vorgänge über mehrere Ressourcenanbieter hinweg einschließlich SQL-Vorgängen, benötigen Sie diese zusätzlichen RBAC-Rollen: 
+
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read   
+&nbsp; &nbsp; &nbsp; Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopieren einer Datenbank mit Transact-SQL
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: 28d635dc5042799790d032ef4b46bf28118cb326
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 09/12/2019
+ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947169"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962582"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -26,15 +26,15 @@ Azure Database for MySQL unterstützt derzeit die folgenden Versionen:
 
 ## <a name="mysql-version-56"></a>MySQL-Version 5.6
 
-Version zur Fehlerbehebung: 5.6.42
+Version zur Fehlerbehebung: 5.6.44
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.6.42 finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html) für MySQL.
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-44.html) zu MySQL.
 
 ## <a name="mysql-version-57"></a>MySQL-Version 5.7
 
-Version zur Fehlerbehebung: 5.7.24
+Version zur Fehlerbehebung: 5.7.26
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.7.24 finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html) für MySQL.
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-26.html) zu MySQL.
 
 ## <a name="mysql-version-80"></a>MySQL, Version 8.0
 
@@ -43,7 +43,7 @@ Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 5.7.24 fin
 
 Version zur Fehlerbehebung: 8.0.15
 
-Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MySQL 8.0.15 finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) zu MySQL.
+Weitere Informationen zu Verbesserungen und Fehlerbehebungen in dieser Version finden Sie in den [Versionshinweisen](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) zu MySQL.
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 Das Patchen von Versionsupdates zur Fehlerbehebung wird vom Dienst automatisch verwaltet. Beispiel: 5.7.20 bis 5.7.21.  

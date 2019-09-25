@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872893"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71018683"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -158,13 +158,13 @@ Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederh
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern <br/><br/> Unterstützt Datenträgergrößen bis zu 4 TB.<br/><br/>Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Datenträgergröße | Pro Datenträger bis zu 4.095 GB.<br/><br/>Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern <br/><br/> Unterstützt die Sicherung von virtuellen Computern mit einer einzelnen Datenträgergröße bis zu 30 TB und maximal 256 TB für alle Datenträger in einem virtuellen Computer.
+Datenträgergröße | Pro Datenträger bis zu 30 TB.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
 Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
-Sicherung deduplizierter Datenträger | Nicht unterstützt.
+Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
@@ -180,7 +180,7 @@ Mehrere reservierte IP-Adressen |    Unterstützt. <br/><br/> Weitere Informatio
 Virtuelle Computer mit mehreren Netzwerkadaptern  | Unterstützt. <br/><br/> Weitere Informationen zum Wiederherstellen von virtuellen Computern mit spezifischen Netzwerkeinstellungen finden Sie [hier](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations).
 Virtuelle Computer mit öffentlichen IP-Adressen    | Unterstützt.<br/><br/> Ordnen Sie dem Netzwerkadapter eine vorhandene öffentliche IP-Adresse zu, oder erstellen Sie eine Adresse, und ordnen Sie diese nach der Wiederherstellung dem Netzwerkadapter zu.
 Netzwerksicherheitsgruppe (NSG) für Netzwerkadapter oder Subnetz |   Unterstützt.
-Reservierte IP-Adresse (statisch) | Nicht unterstützt.<br/><br/> Eine VM mit einer reservierten IP-Adresse und ohne definierten Endpunkt kann nicht gesichert werden.
+Statische IP-Adresse | Nicht unterstützt.<br/><br/> Einer neuen VM, die aus einem Wiederherstellungspunkt erstellt wird, wird eine dynamische IP-Adresse zugewiesen.<br/><br/> Bei klassischen VMs kann eine VM mit einer reservierten IP-Adresse und ohne definierten Endpunkt nicht gesichert werden.
 Dynamische IP-Adresse |    Unterstützt.<br/><br/> Wenn der Netzwerkadapter auf der Quell-VM dynamische IP-Adressen verwendet, werden diese standardmäßig auch für den Netzwerkadapter auf der wiederhergestellten VM verwendet.
 Azure Traffic Manager   | Unterstützt.<br/><br/>Wenn sich die gesicherte VM in Traffic Manager befindet, müssen Sie die wiederhergestellte VM manuell in derselben Traffic Manager-Instanz hinzufügen.
 Azure DNS | Unterstützt.

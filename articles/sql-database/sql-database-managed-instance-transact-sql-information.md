@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858544"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018989"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -339,14 +339,14 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 - `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Datenbank-E-Mail – (db_mail)
- - `sp_send_dbmail` kann keine Anlagen mithilfe des Parameters @file_attachments senden. Aus dieser Prozedur kann auf das lokale Dateisystem und externe Freigaben oder Azure-BLOB-Speicher nicht zugegriffen werden.
+ - `sp_send_dbmail` kann keine Anlagen mithilfe des Parameters @file_attachments senden. Aus dieser Prozedur kann auf das lokale Dateisystem und externe Freigaben oder Azure Blob Storage nicht zugegriffen werden.
  - Informieren Sie sich zu den bekannten Problemen im Zusammenhang mit dem Parameter `@query` und Authentifizierung.
  
 ### <a name="dbcc"></a>DBCC
 
 Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in verwalteten Instanzen nicht unterstützt.
 
-- Nur eine begrenzte Anzahl von globalen `Trace flags` wird unterstützt. `Trace flags` auf Sitzungsebene werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Es wird nur eine begrenzte Anzahl von globalen Ablaufverfolgungsflags unterstützt. `Trace flags` auf Sitzungsebene werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) und [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) funktionieren mit einer begrenzten Anzahl globaler Ablaufverfolgungsflags.
 - [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) mit den Optionen REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST und REPAIR_REBUILD kann nicht verwendet werden, weil die Datenbank im Modus `SINGLE_USER` nicht festgelegt werden kann. Siehe [ALTER DATABASE-Unterschiede.](#alter-database-statement) Potenzielle Datenbankbeschädigungen werden vom Azure-Supportteam behandelt. Wenden Sie sich an den Azure-Support, wenn Sie bemerken, dass eine Datenbankbeschädigung vorliegt.
 
@@ -479,9 +479,12 @@ Einschränkungen:
 - Die Wiederherstellung der `.BAK`-Datei einer Datenbank, die eine in diesem Dokument beschriebene Einschränkung enthält (z.B. `FILESTREAM`- oder `FILETABLE`-Objekte), kann in der verwalteten Instanz nicht wiederhergestellt werden.
 - `.BAK`-Dateien mit mehreren Sicherungssätzen können nicht wiederhergestellt werden. 
 - `.BAK`-Dateien mit mehreren Protokolldateien können nicht wiederhergestellt werden.
-- Sicherungen, die Datenbanken mit einer Größe von mehr als 8 TB, aktive OLTP-In-Memory-Objekte oder mehr als 280 Dateien enthalten, können in einer universellen Instanz nicht wiederhergestellt werden. 
-- Sicherungen, die Datenbanken mit mehr als 4 TB oder OLTP-In-Memory-Objekte enthalten, deren Gesamtgröße größer ist als die unter [Ressourcenbeschränkungen](sql-database-managed-instance-resource-limits.md) beschriebene Größe, können in der unternehmenskritischen Instanz nicht wiederhergestellt werden.
+- Sicherungen, die Datenbanken von mehr als 8 TB, aktive In-Memory-OLTP-Objekte oder eine Reihe von Dateien enthalten, die das Limit von 280 Dateien pro Instanz überschreiten würden, können auf einer universellen Instanz nicht wiederhergestellt werden. 
+- Sicherungen, die Datenbanken mit mehr als 4 TB oder In-Memory-OLTP-Objekte enthalten, deren Gesamtgröße größer ist als die unter [Ressourcenlimits](sql-database-managed-instance-resource-limits.md) beschriebene Größe, können auf der unternehmenskritischen Instanz nicht wiederhergestellt werden.
 Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+
+ > [!IMPORTANT]
+ > Die gleichen Einschränkungen gelten für den integrierten Vorgang der Point-in-Time-Wiederherstellung. So kann beispielsweise eine universelle Datenbank, die größer als 4 TB ist, auf einer unternehmenskritischen Instanz nicht wiederhergestellt werden. Eine unternehmenskritische Datenbank mit In-Memory-OLTP-Dateien oder mehr als 280 Dateien kann auf einer universellen Instanz nicht wiederhergestellt werden.
 
 ### <a name="service-broker"></a>Service Broker
 
@@ -541,6 +544,16 @@ Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen 
 
 ## <a name="Issues"></a> Bekannte Probleme
 
+### <a name="missing-validations-in-restore-process"></a>Fehlende Überprüfungen im Wiederherstellungsprozess
+
+**Datum:** September 2019
+
+Die Anweisung `RESTORE` und die integrierte Point-in-Time-Wiederherstellung führen einige erforderliche Überprüfungen in der wiederhergestellten Datenbank nicht aus:
+- Die Anweisung **DBCC CHECKDB** - `RESTORE` führt `DBCC CHECKDB` in der wiederhergestellten Datenbank nicht aus. Wenn eine ursprüngliche Datenbank beschädigt wird oder wenn die Sicherungsdatei während ihres Kopierens in Azure Blob Storage beschädigt wird, werden keine automatischen Sicherungen erstellt, und der Azure-Support kontaktiert den Kunden. 
+- Der integrierte Vorgang der Point-in-Time-Wiederherstellung überprüft nicht, ob die automatisierte Sicherung aus der unternehmenskritischen Instanz die [In-Memory-OLTP-Objekte](sql-database-in-memory.md#in-memory-oltp) enthält. 
+
+**Problemumgehung**: Stellen Sie sicher, dass Sie `DBCC CHECKDB` in der Quelldatenbank ausführen, bevor Sie eine Sicherung erstellen, und vermeiden Sie mithilfe der Option `WITH CHECKSUM` bei der Sicherung mögliche Beschädigungen, die auf einer verwalteten Instanz wiederhergestellt werden könnten. Stellen Sie sicher, dass Ihre Quelldatenbank keine [In-Memory-OLTP-Objekte](sql-database-in-memory.md#in-memory-oltp) enthält, wenn Sie sie auf der Dienstebene „Universell“ wiederherstellen.
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor auf Dienstebene „Unternehmenskritisch“ muss möglicherweise nach einem Failover neu konfiguriert werden
 
 **Datum:** September 2019
@@ -549,7 +562,7 @@ Die Funktion [Resource Governor](https://docs.microsoft.com/sql/relational-datab
 
 **Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) verwenden.
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externem E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich.
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externen E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich
 
 **Datum:** August 2019
 
@@ -561,7 +574,7 @@ Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfigur
 
 **Datum:** August 2019
 
-Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Jeder `DIALOG`, der mit der [BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)-Anweisung erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
+Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
 
 **Problemumgehung:** Beenden Sie alle Aktivitäten, die datenbankübergreifende Dialogkonversationen des Service Brokers verwenden, bevor Sie die Dienstebene aktualisieren, und initialisieren Sie sie danach neu. Wenn es noch Nachrichten gibt, die nach dem Ändern der Dienstebene nicht zugestellt werden, lesen Sie die Nachrichten aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
 
@@ -609,7 +622,7 @@ Die Datenbank `tempdb` ist immer in 12 Datendateien aufgeteilt, und die Dateist
 
 Jede verwaltete Instanz in der Dienstebene „Universell“ reserviert bis zu 35 TB Speicherplatz für Azure Premium-Datenträger. Jede Datenbankdatei wird auf einem separaten physischen Datenträger platziert. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
 
-Ein Beispiel: In einer verwalteten Instanz der Dienstebene „Universell“ ist eine große Datei vorhanden, die 1,2 TB groß und auf einem 4-TB-Datenträger platziert ist. Es sind auch 248 Dateien mit jeweils 1 GB möglich, die jeweils auf separaten 128-GB-Datenträgern platziert sind. In diesem Beispiel:
+Ein Beispiel: In einer verwalteten Instanz der Dienstebene „Universell“ gibt es eine große Datei (1,2 TB), die auf einem 4-TB-Datenträger gespeichert ist. Es kann auch 248 Dateien mit einer Größe von jeweils 1 GB geben, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel:
 
 - Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -626,7 +639,7 @@ Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehl
 
 ### <a name="error-logs-arent-persisted"></a>Fehlerprotokolle werden nicht persistent gespeichert
 
-Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespeichert, und ihre Größe wird im Speicherlimit nicht berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers möglicherweise automatisch gelöscht. Möglicherweise gibt es Lücken im Fehlerprotokollverlauf, da die verwaltete Instanz auf mehreren virtuellen Computern mehrmals verschoben wurde.
+Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespeichert, und ihre Größe wird im Speicherlimit nicht berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers möglicherweise automatisch gelöscht. Möglicherweise gibt es Lücken im Fehlerprotokollverlauf, weil die verwaltete Instanz auf mehreren virtuellen Computern mehrmals verschoben wurde.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Ein Transaktionsbereich in zwei Datenbanken in derselben Instanz wird nicht unterstützt
 

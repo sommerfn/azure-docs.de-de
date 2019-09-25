@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436175"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983668"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Verwenden von Azure Batch mit Renderfarm-Managern
 
@@ -26,9 +26,15 @@ Die folgenden Render-Manager werden unterstützt:
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
+## <a name="azure-render-hub"></a>Azure Render Hub
+
+Azure Render Hub vereinfacht die Erstellung und Verwaltung von Azure-Renderfarmen.  Render Hub bietet native Unterstützung für PipelineFx Qube und Deadline 10.  Weitere Informationen und detaillierte Anweisungen finden Sie im [GitHub-Repository](https://github.com/Azure/azure-render-hub).
+
 ## <a name="using-azure-with-pipelinefx-qube"></a>Verwenden von Azure mit PipelineFX Qube
 
-Skripts und eine Anleitung zum Aktivieren von Azure Batch-Pool-VMs als Qube-Worker finden Sie im entsprechenden [GitHub-Repository](https://github.com/Azure/azure-qube).
+Azure Render Hub unterstützt beliebte Render-Manager einschließlich Deadline.  Anweisungen zum Bereitstellen und Verwenden von Render Hub finden Sie im [GitHub-Repository](https://github.com/Azure/azure-render-hub).
+
+Skripts und Anleitungen zum Aktivieren von Azure Batch-Pool-VMs als Qube-Worker sind im [GitHub-Repository](https://github.com/Azure/azure-qube) ebenfalls verfügbar.
 
 ## <a name="using-azure-with-royal-render"></a>Verwenden von Azure mit Royal Render
 
@@ -38,7 +44,7 @@ Ein Beispiel für einen Royal Render-Kunden, der die Azure-Integration nutzt, fi
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>Verwenden von Azure mit Thinkbox Deadline
 
-Skripts und eine Anleitung zum Aktivieren von Azure Batch-Pool-VMs als Deadline-Slaves finden Sie im entsprechenden [GitHub-Repository](https://github.com/Azure/azure-deadline).
+Azure Render Hub unterstützt beliebte Render-Manager einschließlich Deadline.  Anweisungen zum Bereitstellen und Verwenden von Render Hub finden Sie im [GitHub-Repository](https://github.com/Azure/azure-render-hub).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

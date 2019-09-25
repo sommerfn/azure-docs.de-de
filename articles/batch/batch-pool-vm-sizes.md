@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094666"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983750"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -47,14 +47,16 @@ Für alle nicht aufgeführten Vorschauversionen von VM-Größen oder VM-Größen
 | DC-Serie | Keine | Nicht verfügbar |
 | Dv2/DSv2-Serie | Alle Größen | Any |
 | Dv3/DSv3-Serie | Alle Größen | Any |
-| [Arbeitsspeicheroptimierte Größen](../virtual-machines/linux/sizes-memory.md) | Keine | Nicht verfügbar |
+| Ev3/ESv3-Serie | Alle Größen | Any |
 | Fsv2-Serie | Alle Größen | Any |
 | H-Reihe | Alle Größen | Any |
 | HB-Serie<sup>2</sup> | Alle Größen | Any |
 | HC-Serie<sup>2</sup> | Alle Größen | Any |
 | Ls-Serie | Alle Größen | Any |
 | Lsv2-Reihe | Keine | Nicht verfügbar |
-| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Any |  
+| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Any |
+| Mv2-Serie | Keine | Nicht verfügbar |
+| NC-Serie | Alle Größen | Any |
 | NCv2-Serie<sup>2</sup> | Alle Größen | Any |
 | NCv3-Serie<sup>2</sup> | Alle Größen | Any |
 | ND-Serie<sup>2</sup> | Alle Größen | Any |

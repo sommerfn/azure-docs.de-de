@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806605"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103200"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -172,9 +172,6 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
   > Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Bewährte Methoden für die Verwendung von Failovergruppen für verwaltete Instanzen
-
-> [!IMPORTANT]
-> Autofailover-Gruppen für verwaltete Instanzen befinden sich in der Phase der öffentlichen Vorschau.
 
 Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und stellt eine Verbindung zur sekundären Instanz in einer anderen Azure-Region her.  Alle Datenbanken in der Instanz werden in der sekundären Instanz repliziert. 
 
@@ -365,7 +362,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 | [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualisiert eine Failovergruppe. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST-API: Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST-API: Verwalten von Failovergruppen mit verwalteten Instanzen
 
 | API | BESCHREIBUNG |
 | --- | --- |

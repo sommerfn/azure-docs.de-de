@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951848"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018691"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -140,48 +140,13 @@ Datenträger 2 | 4095 GB | 0 GB
 Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47GB) dient als Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Eingeschränkte Public Preview: Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB
 
-Azure Backup unterstützt nun größere und leistungsfähigere [verwaltete Azure-Datenträger](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) mit einer Größe von bis zu 30 TB im Rahmen einer eingeschränkten Public Preview. Diese Vorschauversion unterstützt verwaltete virtuelle Computer auf Produktionsebene.
+Azure Backup unterstützt nun größere und leistungsfähigere [verwaltete Azure-Datenträger](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) mit einer Größe von bis zu 30 TB im Rahmen einer Public Preview. Diese Vorschauversion unterstützt verwaltete virtuelle Computer auf Produktionsebene.
 
-Sie können sich nahtlos und ohne Auswirkungen auf Ihre laufenden Sicherungen für die Vorschauversion registrieren. Nachdem das Abonnement für die Vorschauversion registriert wurde, werden alle virtuellen Computer mit Datenträgergrößen bis zu 30 TB gesichert. So registrieren Sie sich für die Vorschauversion:
- 
-Führen Sie die folgenden Cmdlets in einem PowerShell-Terminal mit erhöhten Rechten aus:
+Die Sicherungen für Ihre virtuellen Computer mit einer einzelnen Datenträgergröße bis zu 30 TB und maximal 256 TB für alle Datenträger in einem virtuellen Computer sollten nahtlos – ohne Auswirkung auf Ihre vorhandenen Sicherungen – funktionieren. Wenn der virtuelle Computer bereits mit Azure Backup konfiguriert wurde, ist für die Ausführung der Sicherungen bei großen Datenträgern keine Benutzeraktion erforderlich.
 
-1. Melden Sie sich beim Azure-Konto an.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Wählen Sie das Abonnement aus, das Sie für das Upgrade registrieren möchten:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Registrieren Sie dieses Abonnement im Vorschauprogramm: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Warten Sie 30 Minuten, bis das Abonnement in der Vorschauversion registriert wurde. 
-
- 4. Führen Sie die folgenden Cmdlets aus, um den Status zu überprüfen:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Führen Sie den folgenden Befehl aus, sobald das Abonnement als registriert angezeigt wird:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> Verschlüsselte virtuelle Computer mit Datenträgern, deren Größe 4 TB übersteigt, werden in dieser Vorschauversion nicht unterstützt.
-
-
+Alle virtuellen Azure-Computer mit großen Datenträgern und konfigurierter Sicherung sollten erfolgreich gesichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

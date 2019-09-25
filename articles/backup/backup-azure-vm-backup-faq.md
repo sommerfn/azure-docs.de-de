@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909797"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098380"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -126,6 +126,10 @@ Die [Funktion zur sofortigen Wiederherstellung](backup-instant-restore-capabilit
 Nachdem Sie die KeyVault-Einstellungen für die verschlüsselte VM geändert haben, funktionieren Sicherungen weiterhin mit den neuen Details. Nach der Wiederherstellung von einem Wiederherstellungspunkt aus vor der Änderung müssen Sie jedoch die geheimen Schlüssel in einem KeyVault wiederherstellen, bevor Sie daraus den virtuellen Computer erstellen können. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret).
 
 Für Vorgänge wie Geheimnis/Schlüssel-Rollover ist dieser Schritt nicht erforderlich, und nach der Wiederherstellung kann derselbe KeyVault verwendet werden.
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>Kann ich auf den virtuellen Computer nach dessen Wiederherstellung zugreifen, die erforderlich war, weil ein virtueller Computer die Beziehung zum Domänencontroller unterbrochen hat?
+
+Ja, dieser Zugriff ist möglich. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps).
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

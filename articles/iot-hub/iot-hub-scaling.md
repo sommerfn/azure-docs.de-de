@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891995"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999963"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -33,7 +33,7 @@ Jeder IoT Hub-Tarif ist in drei Größen verfügbar. Die Größe richtet sich da
 
 Im Standard-Tarif von IoT Hub können alle Features genutzt werden. Er ist für alle IoT-Lösungen erforderlich, für die die Funktionen für die bidirektionale Kommunikation verwendet werden sollen. Im Basic-Tarif ist ein Teil der Features aktiviert. Dieser Tarif ist für IoT-Lösungen bestimmt, für die nur die unidirektionale Kommunikation von Geräten in die Cloud erforderlich ist. Beide Tarife verfügen über die gleichen Sicherheits- und Authentifizierungsfeatures.
 
-Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/pricing/details/iot-hub/) in einem Tarif ausgewählt werden. Beispielsweise können Sie eine IoT Hub-Instanz mit mehreren S1-Einheiten erstellen- Allerdings ist keine Kombination aus Einheiten verschiedener Editionen möglich, z.B. S1 und B3 oder S1 und S2.
+Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/pricing/details/iot-hub/) in einem Tarif ausgewählt werden. Beispielsweise können Sie eine IoT Hub-Instanz mit mehreren S1-Einheiten erstellen, aber keine Kombination aus Einheiten verschiedener Editionen, z.B. S1 und S2.
 
 | Funktion | Basic-Tarif | Tarif Free und Standard |
 | ---------- | ---------- | ------------- |
@@ -86,6 +86,10 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 | Modulereignis senden | Nur AMQP und MQTT | Nur AMQP und MQTT |
 | [Dateiuploadstatus aktualisieren](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
 | [Massenvorgang für Geräte](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja |
+| [Import-/Exportauftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Ja | Ja |
+| [Import-/Exportauftrag erstellen](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Ja | Ja |
+| [Import-/Exportauftrag abrufen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Ja | Ja |
+| [Import-/Exportaufträge abrufen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Ja | Ja |
 | [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ja |
 | [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ja |
 | [Modulzwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Ja |
@@ -107,17 +111,17 @@ Die beste Methode zum Skalieren einer IoT Hub-Lösung ist die Auswertung des Dat
 * C2D-Nachrichten
 * Identitätsregistrierungsvorgänge
 
-Datenverkehr wird pro Einheit gemessen, nicht pro Hub. Einer IoT Hub-Instanz der Ebene 1 oder 2 können bis zu 200 Einheiten zugeordnet sein. Einer IoT Hub-Instanz der Ebene 3 können bis zu zehn Einheiten zugeordnet sein. Nachdem Sie Ihren IoT Hub erstellt haben, können Sie die Anzahl von Einheiten ändern oder zwischen den Größen 1, 2 und 3 eines bestimmten Tarifs wechseln, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub).
+Der Datenverkehr wird für Ihre IoT Hub-Instanz pro Einheit gemessen. Wenn Sie einen IoT Hub erstellen, wählen Sie den Tarif und die Edition aus und legen die Anzahl der verfügbaren Einheiten fest. Sie können bis zu 200 Einheiten für die Editionen B1, B2, S1 oder S2 oder aber bis zu 10 Einheiten für die Edition B3 oder S3 erwerben. Nachdem Ihr IoT Hub erstellt wurde, können Sie die Anzahl der in der zugehörigen Edition verfügbaren Einheiten ändern, zwischen Editionen innerhalb des Tarifs (B1 auf B2) upgraden oder downgraden oder aber vom Basic- auf den Standard-Tarif (B1 auf S1) upgraden, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub).  
 
 Als Beispiel für die Datenverkehrsfunktionen der einzelnen Tarife sind hier die geltenden Durchsatzrichtlinien für Gerät-zu-Cloud-Nachrichten angegeben:
 
-| Tarif | Anhaltender Durchsatz | Anhaltende Senderate |
+| Tarifedition | Anhaltender Durchsatz | Anhaltende Senderate |
 | --- | --- | --- |
 | B1, S1 |Bis zu 1111 KB/Minute pro Einheit<br/>(1,5 GB/Tag/Einheit) |Durchschnittlich 278 Nachrichten/Minute pro Einheit<br/>(400.000 Nachrichten/Tag pro Einheit) |
 | B2, S2 |Bis zu 16 MB/Minute pro Einheit<br/>(22,8 GB/Tag/Einheit) |Durchschnittlich 4.167 Nachrichten/Minute pro Einheit<br/>(6 Millionen Nachrichten/Tag pro Einheit) |
 | B3, S3 |Bis zu 814 MB/Minute pro Einheit<br/>(1.144,4 GB/Tag/Einheit) |Durchschnittlich 208.333 Nachrichten/Minute pro Einheit<br/>(300 Millionen Nachrichten/Tag pro Einheit) |
 
-Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontingente und -Drosselungen](iot-hub-devguide-quotas-throttling.md) an und entwerfen Sie Ihre Lösung entsprechend.
+Der Gerät-zu-Cloud-Durchsatz ist nur eine der Metriken, die Sie beim Entwerfen einer IoT-Lösung beachten müssen. Umfassendere Informationen finden Sie unter [IoT Hub quotas and throttles](iot-hub-devguide-quotas-throttling.md) (IoT Hub – Kontingente und Drosselungen).
 
 ### <a name="identity-registry-operation-throughput"></a>Durchsatz von Identitätsregistrierungsvorgängen
 
@@ -127,7 +131,7 @@ Genaue Zahlen zur Burst-Leistung finden Sie unter [IoT Hub-Kontingente und -Dros
 
 ## <a name="auto-scale"></a>Automatische Skalierung
 
-Wenn Sie sich dem zulässigen Nachrichtenlimit der IoT Hub-Instanz nähern, können Sie eine IoT Hub-Einheit in demselben IoT Hub-Tarif mithilfe [dieser Anweisungen automatisch zentral hochskalieren](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/).
+Wenn Sie sich dem zulässigen Nachrichtenlimit der IoT Hub-Instanz nähern, können Sie eine IoT Hub-Einheit in demselben IoT Hub-Tarif mit diesen [Schritten automatisch hochskalieren](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

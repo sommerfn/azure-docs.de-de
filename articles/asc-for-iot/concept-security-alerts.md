@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597247"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933911"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center für IoT – Sicherheitswarnungen
 
@@ -85,8 +85,8 @@ Weitere Details finden Sie unter [Create custom alerts](quickstart-create-custom
 | Mittel   | Zertifikat von einem IoT Hub gelöscht                                    | Ein Zertifikat mit dem Namen \'%{DescCertificateName}\' wurde vom IoT-Hub \'%{DescIoTHubName}\' gelöscht. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.| 1. Stellen Sie sicher, dass das Zertifikat von einer autorisierten Partei entfernt wurde. <br> 2. Wenn das Zertifikat nicht von einer autorisierten Partei entfernt wurde, fügen Sie das Zertifikat erneut hinzu, und eskalieren Sie die Warnung an das Sicherheitsteam Ihrer Organisation. |
 | Mittel   | Nicht erfolgreicher Versuch erkannt, ein Zertifikat zu einem IoT Hub hinzuzufügen     | Es wurde erfolglos versucht, dem IoT-Hub \'%{DescIoTHubName}\' das Zertifikat \'%{DescCertificateName}\' hinzuzufügen. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.|   Stellen Sie sicher, dass die Berechtigungen zum Ändern von Zertifikaten nur autorisierten Parteien gewährt werden.  |
 | Mittel   | Nicht erfolgreicher Versuch erkannt, ein Zertifikat von einem IoT Hub zu löschen | Es wurde erfolglos versucht, das Zertifikat \'%{DescCertificateName}\' vom IoT-Hub \'%{DescIoTHubName}\' zu löschen. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen. |Stellen Sie sicher, dass die Berechtigungen zum Ändern von Zertifikaten nur autorisierten Parteien gewährt werden.
-| Niedrig      | Versuch erkannt, eine Diagnoseeinstellung für einen IoT Hub hinzuzufügen oder zu bearbeiten    | Ein Versuch wurde erkannt, eine Diagnoseeinstellung für einen IoT Hub hinzuzufügen oder zu bearbeiten. Mit Diagnoseeinstellungen können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.  |
-| Niedrig      | Versuch erkannt, eine Diagnoseeinstellung von einen IoT Hub zu löschen       | Es wurde versucht (%{DescAttemptStatusMessage}\'), die Diagnoseeinstellung \'%{DescDiagnosticSettingName}\' auf dem IoT-Hub \'%{DescIoTHubName}\' hinzuzufügen oder zu bearbeiten. Mit der Diagnoseeinstellung können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. Wenn diese Aktion nicht durch eine autorisierte Partei erfolgt ist, kann dies auf eine schädliche Aktivität hinweisen. |1. Stellen Sie sicher, dass das Zertifikat von einer autorisierten Partei entfernt wurde.<br> 2. Wenn das Zertifikat nicht von einer autorisierten Partei entfernt wurde, fügen Sie das Zertifikat erneut hinzu, und eskalieren Sie die Warnung an das IT-Sicherheitsteam.
+| Niedrig      | Versuch erkannt, eine Diagnoseeinstellung für einen IoT Hub hinzuzufügen oder zu bearbeiten    | Ein Versuch wurde erkannt, eine Diagnoseeinstellung für einen IoT Hub hinzuzufügen oder zu bearbeiten. Mit Diagnoseeinstellungen können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.  |1. Stellen Sie sicher, dass das Zertifikat von einer autorisierten Partei entfernt wurde.<br> 2. Wenn das Zertifikat nicht von einer autorisierten Partei entfernt wurde, fügen Sie das Zertifikat erneut hinzu, und eskalieren Sie die Warnung an das IT-Sicherheitsteam.
+| Niedrig      | Versuch erkannt, eine Diagnoseeinstellung von einen IoT Hub zu löschen       | Es wurde versucht (%{DescAttemptStatusMessage}\'), die Diagnoseeinstellung \'%{DescDiagnosticSettingName}\' auf dem IoT-Hub \'%{DescIoTHubName}\' hinzuzufügen oder zu bearbeiten. Mit der Diagnoseeinstellung können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. Wenn diese Aktion nicht durch eine autorisierte Partei erfolgt ist, kann dies auf eine schädliche Aktivität hinweisen. |Stellen Sie sicher, dass die Berechtigungen zum Ändern von Diagnoseeinstellungen nur für eine autorisierte Partei erteilt werden.
 |
 
 ## <a name="next-steps"></a>Nächste Schritte

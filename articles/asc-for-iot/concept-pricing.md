@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596520"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933801"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
 
@@ -66,9 +66,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 | **Log Analytics-Speicher** |  |
 | Geräteempfehlungen und -warnungen| Vom Dienst generierte Sicherheitsempfehlungen und -warnungen | Nicht optional |
 | Sicherheitsrohdaten| Sicherheitsrohdaten von IoT-Geräten, erfasst von Sicherheits-Agents | Deaktivieren von _Store raw device security events_ (Sicherheitsrohereignisse für Geräte speichern) |
+|
 
 >[!Important]
-> Die Deaktivierung hat schwerwiegende Auswirkungen auf die verfügbaren Sicherheitsfunktionen.
+> Die Deaktivierung hat schwerwiegende Auswirkungen auf die Verfügbarkeit von Azure Security Center für IoT-Sicherheitsfunktionen. 
   
 | Deaktivierung | Auswirkungen |
 | --- | --- |

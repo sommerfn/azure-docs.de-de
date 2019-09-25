@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845384"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010187"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
-Dieser Artikel bietet eine Übersicht zu den Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung dieser Grenzwerte erstellen.
+Dieser Artikel bietet eine Übersicht über die technischen Eigenschaften und Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung dieser Grenzwerte erstellen.
 
 > [!NOTE]
-> Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
+> Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden. Allgemeine Unterschiede zwischen Dienstebenen in Einzeldatenbanken und verwalteten Instanzen finden Sie unter [Vergleich der Dienstebenen](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="instance-level-resource-limits"></a>Ressourceneinschränkungen auf Instanzebene
 
@@ -43,11 +43,11 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen b
 
 > [!IMPORTANT]
 > - Gen4-Hardware wird eingestellt. Es wird empfohlen, neue verwaltete Instanzen auf Gen5-Hardware bereitzustellen.
-> - Gen4-Hardware ist zu diesem Zeitpunkt in den folgenden Regionen verfügbar: „Europa, Norden“, „Europa, Westen“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen 2“, „USA, Mitte“, „Kanada, Mitte“, „Indien, Süden“, „Asien, Südosten“ und „Südkorea, Mitte“.
+> - Gen4-Hardware ist zu diesem Zeitpunkt weiterhin nur in den folgenden Regionen verfügbar: „Europa, Norden“, „Europa, Westen“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen 2“, „USA, Mitte“, „Kanada, Mitte“, „Indien, Süden“, „Asien, Südosten“ und „Südkorea, Mitte“.
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
+Die verwaltete Instanz besitzt zwei Dienstebenen: [Universell](sql-database-service-tier-general-purpose.md) und [Unternehmenskritisch](sql-database-service-tier-business-critical.md). Diese Tarife bieten [verschiedene Funktionen](sql-database-service-tiers-general-purpose-business-critical.md), die in der folgenden Tabelle beschrieben sind:
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
@@ -58,6 +58,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Untern
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
 | Max. Dateigröße | 8 TB | 4 TB |
+| Maximale Protokolldateigröße | 2 TB | 2 TB |
 | Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 K - 110 K (1.375/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
 | Grenzwert für den Schreibdurchsatz für Protokolle | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. pro Instanz | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
@@ -66,13 +67,14 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Untern
 | In-Memory-OLTP | Nicht unterstützt | Verfügbar |
 | Max. Sitzungen | 30000 | 30000 |
 | [Schreibgeschützte Replikate](sql-database-read-scale-out.md) | 0 | 1 (im Preis inbegriffen) |
-| Preise/Abrechnung | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | 
-| Rabattmodelle | [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Entwicklungs-/Testabonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements|
 
 > [!NOTE]
 > - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 > - Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
 > Sie können ein weiteres lesbares Replikat in einer anderen Azure-Region mithilfe von Autofailover-Gruppen erstellen.
+
+> [!NOTE]
+> Lesen Sie weitere Informationen zu den [Ressourceneinschränkungen in verwalteten Instanzenpools in diesem Artikel.](sql-database-instance-pools.md#instance-pools-resource-limitations)
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -94,7 +96,7 @@ Für eine verwaltete Instanz wird derzeit nur die Bereitstellung bei folgenden A
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Eine verwaltete Instanz weist zwei Standardbeschränkungen pro Azure-Region je nach Abonnementtyp auf:
 
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen bei Bereitstellung verwalteter Instanzen in einer einzelnen Region.
-- **vCore Limit** (Limit für virtuelle Kerne): Die maximale Anzahl von virtuellen Kernen, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können.
+- **vCore Limit** (Limit für virtuelle Kerne): Die maximale Anzahl von virtuellen Kernen, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Die Gesamtanzahl der Instanzen ist nicht beschränkt, solange sie innerhalb des vCore Limits liegt.
 
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.

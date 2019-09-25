@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698626"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999405"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -170,10 +170,9 @@ Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Jav
 
 Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Python-Geräteclients mit einem IoT Edge-Gateway vor. 
 
-1. Rufen Sie das Beispiel für **edge_downstream_client** aus [den Beispielen für das Azure IoT-Geräte-SDK für Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples) ab. 
-2. Stellen Sie sicher, dass alle Voraussetzungen zum Ausführen des Beispiels erfüllt sind, indem Sie die Datei **readme.md** überprüfen. 
-3. Aktualisieren Sie in der Datei „edge_downstream_client.py“ die Variablen **CONNECTION_STRING** und **TRUSTED_ROOT_CA_CERTIFICATE_PATH**. 
-4. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät. 
+1. Rufen Sie das Beispiel für **send_message** aus den [Beispielen zum Azure IoT-Geräte-SDK für Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios) ab. 
+2. Stellen Sie sicher, dass Sie es entweder in einem Edge-Container oder in einem Debugszenario mit den festgelegten Umgebungsvariablen `EdgeHubConnectionString` und `EdgeModuleCACertificateFile` ausführen.
+3. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät. 
 
 
 ## <a name="test-the-gateway-connection"></a>Testen der Gatewayverbindung

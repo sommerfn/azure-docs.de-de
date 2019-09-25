@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: a1b206b3be4cf012d7d0cd399cf2a67d853537b1
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147389"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999521"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planen und Übertragen von Aufträgen (Python)
 
@@ -69,14 +69,14 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Apps:
 
 In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet. Dadurch wird eine simulierte **lockDoor**-Methode ausgelöst.
 
-1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device-client** zu installieren:
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device** zu installieren:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
    > [!NOTE]
-   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   > Die PIP-Pakete für „azure-iothub-service-client“ sind zurzeit nur für das Betriebssystem Windows verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
    >
 
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis die Datei **simDevice.py**.
@@ -84,41 +84,37 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der
 3. Fügen Sie am Anfang der Datei **simDevice.py** die folgenden `import`-Anweisungen und Variablen hinzu. Ersetzen Sie `deviceConnectionString` durch die Verbindungszeichenfolge des Geräts, das Sie oben erstellt haben:
 
     ```python
+    import threading
     import time
-    import sys
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubError, DeviceMethodReturnValue
-
-    METHOD_CONTEXT = 0
-    TWIN_CONTEXT = 0
-    WAIT_COUNT = 10
-
-    PROTOCOL = IoTHubTransportProvider.MQTT
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
 4. Fügen Sie den folgenden Funktionsrückruf zur Behandlung der **lockDoor**-Methode hinzu:
 
     ```python
-    def device_method_callback(method_name, payload, user_context):
-        if method_name == "lockDoor":
-            print ( "Locking Door!" )
+    def lockdoor_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("lockDoor")  # blocking call
+            print( "Locking Door!" )
 
-            device_method_return_value = DeviceMethodReturnValue()
-            device_method_return_value.response = "{ \"Response\": \"lockDoor called successfully\" }"
-            device_method_return_value.status = 200
-            return device_method_return_value
+            resp_status = 200
+            resp_payload = {"Response": "lockDoor called successfully"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
 5. Fügen Sie einen weiteren Funktionsrückruf hinzu, um Updates von Gerätezwillingen zu behandeln:
 
     ```python
-    def device_twin_callback(update_state, payload, user_context):
-        print ( "")
-        print ( "Twin callback called with:")
-        print ( "payload: %s" % payload )
+    def twin_update_listener(client):
+        while True:
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print ("")
+            print ("Twin desired properties patch received:")
+            print (patch)
     ```
 
 6. Fügen Sie den folgenden Code hinzu, um den Handler für die **lockDoor**-Methode zu registrieren. Schließen Sie auch die Routine `main` ein:
@@ -126,30 +122,28 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der
     ```python
     def iothub_jobs_sample_run():
         try:
-            client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-            client.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
-            client.set_device_twin_callback(device_twin_callback, TWIN_CONTEXT)
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            print ( "Direct method initialized." )
-            print ( "Device twin callback initialized." )
-            print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+            print( "Beginning to listen for 'lockDoor' direct method invocations...")
+            lockdoor_listener_thread = threading.Thread(target=lockdoor_listener, args=(client,))
+            lockdoor_listener_thread.daemon = True
+            lockdoor_listener_thread.start()
 
+            # Begin listening for updates to the Twin desired properties
+            print ( "Beginning to listen for updates to Twin desired properties...")
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
+            
             while True:
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
+                time.sleep(1000)
 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python jobs sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_jobs_sample_run()
     ```

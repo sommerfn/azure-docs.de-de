@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858503"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993469"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -132,7 +132,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Überwachung|Anzeigen von Überwachungsdatensätzen.<br>Aktualisieren oder Anzeigen von Überwachungsrichtlinien.|
 |Datenmaskierung|Hinzufügen, Ändern, Löschen oder Anzeigen von Datenmaskierungsregeln|
 |Transparent Data Encryption|Anzeigezustand oder Status der transparenten Datenverschlüsselung|
-|Abfragedatenspeicher (Leistung)|Ändern oder Anzeigen von Abfragespeichereinstellungen; automatische Optimierung|
+|Abfragedatenspeicher (Leistung)|Ändern oder Anzeigen von Abfragespeichereinstellungen|
 |Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für die automatische Optimierung, z.B. die automatische Indizierung|
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie.<br>Exportieren in eine BACPAC-Datei.|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|

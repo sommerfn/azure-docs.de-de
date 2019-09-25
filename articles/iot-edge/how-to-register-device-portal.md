@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 16660fbed465cc70f16cde430024f33b8aa4350e
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7f3d0037bcf0fd33ae23c298679e3157046247cb
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495357"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983527"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Registrieren eines neuen Azure IoT Edge-Geräts über das Azure-Portal
 

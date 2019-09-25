@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600333"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933900"
 ---
 # <a name="security-agent-event-aggregation"></a>Ereignisaggregation des Sicherheits-Agents
 
@@ -59,6 +59,7 @@ Nach der Analyse erstellt Azure Security Center für IoT Sicherheitswarnungen f�
 
 Die Start- und Endzeit für die Aggregation sowie die Trefferanzahl für jedes Ereignis werden im Ereignisfeld **ExtraDetails** in Log Analytics zur Verwendung während Untersuchungen protokolliert. 
 
+Jedes aggregierte Ereignis stellt einen 24-Stunden-Zeitraum von gesammelten Warnungen dar. Über das Menü der Ereignisoptionen oben links in jedem Ereignis können Sie jedes einzelne aggregierte Ereignis **schließen**.    
 
 ## <a name="event-aggregation-twin-configuration"></a>Konfiguration der Ereignisaggregation von Modulzwillingen
 Nehmen Sie Änderungen an der Konfiguration der Ereignisaggregation von Azure Security Center für IoT im [Agentkonfigurationsobjekt](how-to-agent-configuration.md) der Modulzwillingsidentität des Moduls **azureiotsecurity** vor.

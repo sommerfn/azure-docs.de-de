@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019822"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066333"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -43,13 +43,27 @@ Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unte
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-In Ihrer Azure IoT Central-Anwendung können Sie über die Seite **Geräte-Explorer** ein echtes Gerät aus der Gerätevorlage **Windows 10 IoT Core** hinzufügen. Notieren Sie sich die Geräteverbindungsdetails (**Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**). Weitere Informationen finden Sie unter [Abrufen der Verbindungsinformationen](howto-generate-connection-string.md#get-connection-information).
+In Ihrer Azure IoT Central-Anwendung können Sie über die Seite **Geräte-Explorer** ein echtes Gerät aus der Gerätevorlage **Windows 10 IoT Core** hinzufügen. Notieren Sie sich die Geräteverbindungsdetails (**Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**).
 
 ## <a name="prepare-the-device"></a>Vorbereiten des Geräts
 
-Damit das Gerät eine Verbindung mit IoT Central herstellen kann, benötigt es eine Verbindungszeichenfolge.
+Damit das Gerät eine Verbindung mit IoT Central herstellen kann, benötigt es eine Verbindungszeichenfolge:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Verwenden Sie das `dps-keygen`-Befehlszeilen-Hilfsprogramm, um eine Verbindungszeichenfolge zu generieren:
+
+    Führen Sie zum Installieren des [Schlüsselgenerator-Hilfsprogramms](https://github.com/Azure/dps-keygen) den folgenden Befehl aus:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Um eine Verbindungszeichenfolge zu generieren, führen Sie den folgenden Befehl mit den Details der Verbindung aus, die Sie zuvor notiert haben:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Kopieren Sie die Verbindungszeichenfolge aus der `dps-keygen`-Ausgabe, um sie in Ihrem Gerätecode zu verwenden.
 
 Damit der Gerätecode auf die Verbindungszeichenfolge zugreifen kann, speichern Sie ihn auf Ihrem Windows 10 IoT Core-Gerät in der Datei **connection.string.iothub** im Ordner `C:\Data\Users\DefaultAccount\Documents\`.
 

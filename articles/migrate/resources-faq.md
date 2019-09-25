@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279497"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934916"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Von der Azure Häufig gestellte Fragen (FAQ)
 
@@ -26,6 +26,37 @@ Weitere Informationen finden Sie in den Listen für [VMware](https://docs.micros
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Was ist der Unterschied zwischen Azure Migrate und Azure Site Recovery?
 
 Azure Migrate bietet einen zentralisierten Hub zum Starten der Migration, Ausführen und Nachverfolgen der Ermittlung, Bewerten von Computern und Workloads sowie Ausführen und Nachverfolgen der Migration von Computern und Workloads zu Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) ist eine Lösung für die Notfallwiederherstellung. Die Azure Migrate-Servermigration nutzt Azure Site Recovery am Back-End, um Migrationsszenarien für die Lift & Shift-Migration von lokalen Computern zu ermöglichen.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Wie lösche ich ein Azure Migrate-Projekt?
+
+Zum Löschen eines Azure Migrate-Projekts und der zugehörigen Ressourcen, z. B. Websites, Recovery Services-Tresore, Migrationstresore, Schlüsseltresore, Bewertungsprojekte usw., verwenden Sie im Azure-Portal die Seite „Ressourcengruppen“. Wählen Sie die Ressourcengruppe aus, in der das Migrationsprojekt erstellt wurde, und wählen Sie die Option „Ausgeblendete Typen anzeigen“ aus. Wählen Sie dann das Migrationsprojekt und die unten aufgeführten zugehörigen Ressourcen aus, und löschen Sie sie. Falls die Ressourcengruppe ausschließlich vom Migrationsprojekt und den zugehörigen Ressourcen genutzt wird, können Sie die gesamte Ressourcengruppe löschen. Beachten Sie, dass dies eine vollständige Liste sämtlicher Ressourcentypen ist, die für alle Szenarien (Ermittlung, Bewertung und Migration) erstellt wurden. Sie finden in der Ressourcengruppe nur die Ressourcen, die für Ihr Szenario erstellt wurden.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>Ressourcen, die für ermittelte, bewertete oder migrierte Server auf VMware- oder physischen Servern erstellt wurden [Resource (Type)]:
+
+- „Appliancename“kv (Key vault)
+- „Appliancename“site (Microsoft.OffAzure/VMwareSites)
+- „ProjectName“ (Microsoft.Migrate/migrateprojects)
+- „ProjectName“project (Microsoft.Migrate/assessmentProjects)
+- „ProjectName“rsvault (Recovery Services vault)
+- „ProjectName“-MigrateVault-* (Recovery Services vault)
+- migrateappligwsa* (Storage account)
+- migrateapplilsa* (Storage account)
+- migrateapplicsa* (Storage account)
+- migrateapplikv* (Key vault)
+- migrateapplisbns16041 (Service Bus Namespace)
+
+Hinweis: Seien Sie beim Löschen von Speicherkonten und Schlüsseltresoren vorsichtig, da sie Anwendungsdaten bzw. Sicherheitsschlüssel enthalten können.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Ressourcen, die für ermittelte, bewertete oder migrierte Server auf Hyper-V [resource (Type)] erstellt wurden:
+
+- „ProjectName“ (Microsoft.Migrate/migrateprojects)
+- „ProjectName“project (Microsoft.Migrate/assessmentProjects)
+- HyperV*kv (Key vault)
+- HyperV*site (Microsoft.OffAzure/HyperVSites)
+- „ProjectName“-MigrateVault-* (Recovery Services vault) 
+
+Hinweis: Seien Sie beim Löschen des Schlüsseltresors vorsichtig, da er Sicherheitsschlüssel enthalten kann.
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 

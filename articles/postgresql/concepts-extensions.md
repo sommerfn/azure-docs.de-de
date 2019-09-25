@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: 04b17d2e3acba7f003325ca7fdef2107108aea4d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 09/10/2019
+ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013411"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091143"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Einzelserver
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Bei Erweiterungen werden mehrere zusammengehörige SQL-Objekte zu einem Paket gebündelt und mit nur einem Befehl in die Datenbank geladen oder daraus entfernt. Nach dem Laden in die Datenbank funktionieren Erweiterungen genauso wie integrierte Features.
@@ -44,6 +44,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -88,6 +89,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -133,6 +135,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -178,6 +181,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -212,6 +216,9 @@ Derzeit werden ausgehende Verbindungen von Azure Database for PostgreSQL nicht u
 ## <a name="uuid"></a>uuid
 Wenn Sie beabsichtigen, `uuid_generate_v4()` aus der uuid-ossp-Erweiterung zu verwenden, lassen sich durch einen Vergleich mit `gen_random_uuid()` aus der pgcrypto-Erweiterung u. U. Leistungsvorteile erzielen.
 
+
+## <a name="pgaudit"></a>pgAudit
+Die pgAudit-Erweiterung bietet Sitzungs- und Objektüberwachungsprotokollierung. Informationen zur Verwendung dieser Erweiterung in Azure Database for PostgreSQL finden Sie im [Artikel zu Überwachungskonzepten](concepts-audit.md). 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB ist eine Zeitreihendatenbank, die als eine Erweiterung für PostgreSQL verpackt wird. TimescaleDB bietet zeitlich orientierte Analysefunktionen, Optimierungen, und es skaliert Postgres für Zeitreihenworkloads.

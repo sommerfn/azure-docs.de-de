@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147280"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091360"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte
 
@@ -110,7 +110,7 @@ Eine Möglichkeit zum Erstellen dieser Vertrauensstellung wird in den folgenden 
 
 ## <a name="specify-dns-servers"></a>Angeben von DNS-Servern 
 
-Zur Verbesserung der Stabilität empfiehlt es sich dringend, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Sehen Sie sich die zwei Möglichkeiten zum [Festlegen des DNS-Servers im Artikel zur Problembehandlung](troubleshoot.md#resolution-7) an.
+Zur Verbesserung der Stabilität empfiehlt es sich dringend, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Wenn Sie Ihren DNS-Server für IoT Edge festlegen möchten, lesen Sie die Lösung zu [Edge-Agent-Modul meldet ständig „empty config file“, und es werden keine Module auf dem Gerät gestartet](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) im Artikel zur Problembehandlung.
 
 ## <a name="optional-offline-settings"></a>Optionale Offlineeinstellungen
 

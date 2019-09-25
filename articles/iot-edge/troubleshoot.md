@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 61c75c011ce25c3c7238ec75cf5ed579e677531f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707086"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091370"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -212,12 +212,14 @@ Beispielprotokolle von „edgeAgent“:
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket... 
 ```
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Eine Netzwerkkonfiguration im Hostnetzwerk hindert den IoT Edge-Agent daran, das Netzwerk zu erreichen. Der Agent versucht zuerst, eine Verbindung über AMQP (Port 5671) herzustellen. Wenn ein Verbindungsfehler auftritt, verwendet er WebSockets (Port 443).
 
 Die IoT Edge-Runtime richtet ein Netzwerk für die Kommunikation der einzelnen Module ein. Unter Linux ist dieses Netzwerk ein Bridgenetzwerk. Unter Windows wird NAT verwendet. Dieses Problem tritt häufiger auf Windows-Geräten mit Windows-Containern auf, die das NAT-Netzwerk verwenden. 
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Stellen Sie sicher, dass für die diesem Bridge-/NAT-Netzwerk zugewiesenen IP-Adressen eine Route zum Internet besteht. In einigen Fällen hat eine VPN-Konfiguration auf dem Host Vorrang vor dem IoT Edge-Netzwerk. 
 
 ## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge-Hub kann nicht gestartet werden.
@@ -231,19 +233,23 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n) 
 ```
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Ein anderer Prozess auf dem Hostcomputer hat Port 443 gebunden. IoT Edge-Hub ordnet Ports 5671 und 443 für Szenarien im Gateway zu. Bei dieser Portzuordnung tritt ein Fehler auf, wenn ein anderer Prozess diesen Port bereits gebunden hat. 
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Suchen Sie den Prozess, der Port 443 verwendet, und beenden Sie ihn. Dieser Prozess ist in der Regel ein Webserver.
 
 ## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>Der IoT Edge-Agent kann nicht auf das Image eines Moduls (403) zugreifen.
 Ein Container kann nicht ausgeführt werden, und die edgeAgent-Protokolle weisen einen Fehler 403 auf. 
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Der IoT Edge-Agent hat keine Zugriffsberechtigungen für das Image eines Moduls. 
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Stellen Sie sicher, dass Ihre Anmeldeinformationen für die Registrierung im Bereitstellungsmanifest richtig angegeben sind.
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Fehler für den Daemon für die IoT Edge-Sicherheit aufgrund eines ungültigen Hostnamens
@@ -254,10 +260,12 @@ Bei dem Befehl `sudo journalctl -u iotedge` tritt ein Fehler auf, und die folgen
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Die IoT-Edge-Runtime unterstützt nur Hostnamen, die kürzer als 64 Zeichen sind. Physische Computer weisen in der Regel keine langen Hostnamen auf, das Problem ist eher bei virtuellen Computern üblich. Die automatisch generierten Hostnamen für in Azure gehostete virtuelle Windows-Computer sind tendenziell lang sein. 
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Wenn dieser Fehler angezeigt wird, können Sie ihn durch Konfigurieren des DNS-Namens des virtuellen Computers und anschließendes Festlegen des DNS-Namens als Hostname im Setupbefehl beheben.
 
 1. Navigieren Sie im Azure-Portal zur Übersichtsseite Ihrer VM. 
@@ -284,10 +292,12 @@ Wenn dieser Fehler angezeigt wird, können Sie ihn durch Konfigurieren des DNS-N
 ## <a name="stability-issues-on-resource-constrained-devices"></a>Stabilitätsprobleme für Geräte mit Ressourceneinschränkungen 
 Auf eingeschränkten Geräten wie dem Raspberry Pi kann es zu Stabilitätsproblemen kommen, vor allem bei der Verwendung als Gateway. Zu den Symptomen gehören Speicherausnahmen im Edge-Hub-Modul; nachgeschaltete Geräte können sich nicht verbinden, oder das Gerät sendet nach einigen Stunden keine Telemetrienachrichten mehr.
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Der zur IoT Edge-Runtime gehörige IoT Edge-Hub ist standardmäßig für die Leistungserbringung optimiert und versucht, große Blöcke des Speichers zuzuordnen. Diese Optimierung ist für eingeschränkte Edge-Geräte nicht ideal und kann zu Stabilitätsproblemen führen.
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Legen Sie für den IoT Edge-Hub eine Umgebungsvariable **OptimizeForPerformance** auf **false** fest. Dies kann auf zwei Arten erreicht werden:
 
 In der Benutzeroberfläche: 
@@ -316,10 +326,12 @@ Im Bereitstellungsmanifest:
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>IoT Edge-Daemonprotokolle in Windows können nicht abgerufen werden.
 Wenn Sie bei Verwendung von `Get-WinEvent` unter Windows eine EventLogException-Meldung erhalten, überprüfen Sie Ihre Registrierungseinträge.
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Damit der PowerShell-Befehl `Get-WinEvent` Protokolle anhand eines bestimmten `ProviderName` suchen kann, muss ein Registrierungseintrag vorhanden sein.
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Legen Sie einen Registrierungseintrag für den IoT Edge-Daemon fest. Erstellen Sie eine Datei vom Typ **iotedge.reg** mit dem folgenden Inhalt, und importieren Sie sie in die Windows-Registrierung, indem Sie auf die Datei doppelklicken oder den Befehl `reg import iotedge.reg` ausführen:
 
 ```
@@ -339,10 +351,12 @@ Beim Versuch eines benutzerdefinierten IoT Edge-Moduls, eine Nachricht an edgeHu
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
 ```
 
-### <a name="root-cause"></a>Grundursache
+**Grundursache**
+
 Der IoT Edge-Daemon erzwingt aus Sicherheitsgründen die Prozessidentifizierung für alle Module, die eine Verbindung mit edgeHub herstellen. Dadurch wird sichergestellt, dass alle von einem Modul gesendeten Nachrichten von der Hauptprozess-ID des Moduls stammen. Sendet ein Modul eine Nachricht, die nicht von der anfangs festgelegten Prozess-ID stammt, wird die Nachricht mit dem Fehlercode 404 abgelehnt.
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 Ab Version 1.0.7 dürfen alle Modulprozesse eine Verbindung herstellen. Wenn ein Upgrade auf Version 1.0.7 nicht möglich ist, führen Sie die folgenden Schritte aus. Weitere Informationen finden Sie im [Änderungsprotokoll zum Release 1.0.7](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
 Stellen Sie sicher, dass das benutzerdefinierte IoT Edge-Modul beim Senden von Nachrichten an den Edge-Hub immer die gleiche Prozess-ID verwendet. Verwenden Sie in Ihrer Docker-Datei z. B. `ENTRYPOINT` anstelle des Befehls `CMD`, weil `CMD` zu einer Prozess-ID für das Modul und zu einer anderen Prozess-ID für den Bash-Befehl zum Ausführen des Hauptprogramms führt, während `ENTRYPOINT` nur zu einer einzigen Prozess-ID führt.
@@ -363,10 +377,12 @@ IoT Edge bietet zwar erweiterte Konfigurationsmöglichkeiten zum Schutz der Azur
 
 Auf dem Gerät treten Probleme beim Starten von in der Bereitstellung definierten Modulen auf. Nur der Edge-Agent wird ausgeführt, dieser meldet jedoch kontinuierlich „empty config file ...“.
 
-### <a name="potential-root-cause"></a>Mögliche Ursache
+**Grundursache**
+
 Standardmäßig werden Module in IoT Edge in ihrem eigenen isolierten Containernetzwerk gestartet. Möglicherweise liegt auf dem Gerät ein Problem mit der DNS-Namensauflösung in diesem privaten Netzwerk vor.
 
-### <a name="resolution"></a>Lösung
+**Lösung**
+
 
 **Option 1: Festlegen des DNS-Servers in den Einstellungen der Containerengine**
 
