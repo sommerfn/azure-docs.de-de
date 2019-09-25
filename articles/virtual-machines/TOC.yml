@@ -7,15 +7,7 @@
 - name: Dokumentation zu VM-Erweiterungen
   href: extensions/overview.md
 - name: Workloads
-  items:
-    - name: Oracle
-      href: workloads/oracle/oracle-considerations.md
-    - name: SAP
-      href: workloads/sap/get-started.md
-    - name: High Performance Computing
-      href: workloads/hpc/overview.md
-    - name: Erneutes Hosten von Mainframes
-      href: workloads/mainframe-rehosting/overview.md
+  href: ./workloads/workloads.md
 - name: Klassische Bereitstellungen
   items:
     - name: Linux-VMs mit klassischer Bereitstellung
