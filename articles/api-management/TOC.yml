@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: Richtlinienreferenz – Index
           href: api-management-policies.md
+    - name: Sicherheit
+      items:
+        - name: Integrierte Sicherheitskontrollen
+          href: api-management-security-controls.md
     - name: Abonnements
       href: api-management-subscriptions.md
     - name: Verwalten mithilfe von Automatisierung
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: API-Importbeschränkungen
       href: api-management-api-import-restrictions.md
-    - name: Integrierte Sicherheitskontrollen
-      href: api-management-security-controls.md
 - name: Anleitungen
   items:
     - name: Definieren von APIs
