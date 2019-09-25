@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384005"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097575"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -28,11 +28,11 @@ Zum Überprüfen der Integrität des Back-End-Pools können Sie die Seite „Bac
 
 Der Status, der von einer der oben erwähnten Methoden abgerufen wird, kann einer von drei Typen sein:
 
-1.  Healthy (Fehlerfrei)
+1.  Healthy
 
-2.  Unhealthy (Fehlerhaft)
+2.  Fehlerhaft
 
-3.  Unknown (Unbekannt)
+3.  Unknown
 
 Wenn der Back-End-Integritätsstatus für einen Server fehlerfrei ist, bedeutet dies, dass Application Gateway die Anforderungen an diesen Server weiterleitet. Wenn jedoch die Back-End-Integrität für alle Server in einem Back-End-Pool fehlerhaft oder unbekannt ist, kann es zu Problemen beim Anwendungszugriff kommen. Dieses Dokument beschreibt das Symptom, die Ursache und die Lösung jedes der angezeigten Fehler, wenn die Integrität der Back-End-Server fehlerhaft oder unbekannt sein könnte.
 
@@ -81,10 +81,10 @@ Nachdem der Back-End-Serverstatus für alle Server in einem Back-End-Pool als fe
 Die in der Spalte „Details“ der Registerkarte „Backend health“ (Back-End-Integrität) angezeigte Meldung bietet ausführlichere Einblicke in das Problem. Basierend auf diesen Informationen kann mit der Problembehandlung begonnen werden.
 
 > [!NOTE]
-> Die standardmäßige Testanforderung wird im Format <protocol>://127.0.0.0.1:<port>/ gesendet, z.B. <http://127.0.0.1/> für einen HTTP-Test an Port 80. Nur eine Antwort mit den HTTP-Statuscodes 200 bis 399 wird als fehlerfreie Antwort betrachtet. Das Protokoll und der Zielport werden von den HTTP-Einstellungen geerbt. Wenn Application Gateway auf ein anderes Protokoll, einen anderen Hostnamen oder einen anderen Pfad testen und einen anderen Statuscode als fehlerfrei akzeptieren soll, konfigurieren Sie einen benutzerdefinierten Test, und ordnen Sie ihn den HTTP-Einstellungen zu.
+> Die standardmäßige Testanforderung wird im Format \<Protokoll\>://127.0.0.1:\<Port\>/ gesendet, z. B. <http://127.0.0.1/> für einen HTTP-Test an Port 80. Nur eine Antwort mit den HTTP-Statuscodes 200 bis 399 wird als fehlerfreie Antwort betrachtet. Das Protokoll und der Zielport werden von den HTTP-Einstellungen geerbt. Wenn Application Gateway auf ein anderes Protokoll, einen anderen Hostnamen oder einen anderen Pfad testen und einen anderen Statuscode als fehlerfrei akzeptieren soll, konfigurieren Sie einen benutzerdefinierten Test, und ordnen Sie ihn den HTTP-Einstellungen zu.
 
-### <a name="error-messages"></a>Fehlermeldungen
-
+<a name="error-messages"></a>Fehlermeldungen
+------------------------
 #### <a name="backend-server-timeout"></a>Timeout des Back-End-Servers
 
 **Nachricht:** Time taken by the backend to respond to application gateway\'s health probe is more than the time-out threshold in the probe setting. (Die Zeit, die das Back-End für die Reaktion auf den Application Gateway-Integritätstest benötigt, liegt über dem Timeoutschwellenwert in der Testeinstellung.)

@@ -1,81 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Freihanderkennung
+### YamlMime:Landing
+title: Dokumentation zur Freihanderkennungs-API
+summary: Hier erfahren Sie, wie Sie mithilfe der Freihanderkennungs-API digitale Freihanderkennung in Ihren Apps und Diensten nutzen können. Die API ist ein cloudbasierter Dienst, der maschinelles Lernen verwendet, um handschriftliche Formen und Texte in jedem Kontext zu erkennen.
 metadata:
-  title: 'Dokumentation zur Freihanderkennung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie die Textübersetzung zum Übersetzen von Text in mehreren Sprachen verwenden.'
+  title: 'Freihanderkennungs-API: Tutorials, Schnellstarts, API-Referenz'
+  titleSuffix: Azure Cognitive Services
+  description: Digitale Freihandeingabe bezieht sich auf Technologien, die digitale Darstellungen von Eingaben wie Handschrift und Zeichnungen ermöglichen. Mit der zunehmenden Bereitstellung funktionsreicher digitaler Freihandeingabeerfahrungen durch die Geräte ermöglichen künstliche Intelligenz und maschinelles Lernen die Erkennung von geschriebene Formen und Text in jedem Kontext. Die Freihanderkennungs-API ist ein cloudbasierter Dienst, der es Ihnen ermöglicht, Freihandstriche zu senden und detaillierte Informationen über diese zu erhalten.
   services: cognitive-services
-  author: erhopf
+  author: aahill
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: ink-recognizer
   ms.topic: landing-page
-  ms.date: 05/02/2019
-  ms.author: erhopf
-abstract:
-  description: 'Digitale Freihandeingabe bezieht sich auf Technologien, die digitale Darstellungen von Eingaben wie Handschrift und Zeichnungen ermöglichen. Mit der zunehmenden Bereitstellung funktionsreicher digitaler Freihandeingabeerfahrungen durch die Geräte ermöglichen künstliche Intelligenz und maschinelles Lernen die Erkennung von geschriebene Formen und Text in jedem Kontext. Die Freihanderkennungs-API ist ein cloudbasierter Dienst, der es Ihnen ermöglicht, Freihandstriche zu senden und detaillierte Informationen über diese zu erhalten.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/ink-recognizer/overview
-            html: <p>Erfahren Sie mehr über die Freihanderkennung und wie sie in Ihre Produkte integriert wird.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Was ist die Freihanderkennungs-API?
-          - href: concepts/send-ink-data.md
-            html: <p>Erfahren Sie mehr über empfohlene Aufrufmuster bei der Verwendung der API.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Senden von Freihanddaten an die Freihanderkennungs-API
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erste Schritte mit der Freihanderkennungs-API:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo-csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo-java.svg
-            title: Java
-          - image:
-              src: media/index/logo-js.svg
-            title: JavaScript
-        rows:
-          - title: Erkennen von Freihandstrichen
-            values:
-              - href: quickstarts/csharp.md
-              - href: quickstarts/java.md
-              - href: quickstarts/javascript.md
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: 'Diese Beispielprogramme veranschaulichen, wie sich die Freihanderkennungs-API in Ihre Anwendungen integrieren lässt:'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089803">C# und universelle Windows-Plattform (UWP)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# und Windows Presentation Foundation (WPF)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">JavaScript-Webbrowser-App</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Mobile Java- und Android-App</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Mobile Swift- und iOS-App</a>'
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">REST-API-Referenz</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Befehlszeilenschnittstelle (CLI)
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure-Befehlszeilenschnittstelle</a></p>'
+  ms.date: 09/23/2019
+  ms.author: aahi
+  ms.openlocfilehash: 985cdb6492445c89462e79cc2931d28bc34abb58
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219531"
+landingContent:
+- title: Informationen zur Freihanderkennungs-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Freihanderkennungs-API?
+      url: overview.md
+- title: Erkennen von Freihandstrichen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden von C#
+      url: quickstarts/csharp.md
+    - text: Verwenden von Java
+      url: quickstarts/java.md
+    - text: Verwenden von JavaScript
+      url: quickstarts/javascript.md
+  - linkListType: concept
+    links:
+    - text: Senden von Freihandstrichdaten an die API
+      url: concepts/send-ink-data.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://go.microsoft.com/fwlink/?linkid=2089907
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-Befehlszeilenschnittstelle
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+- title: Beispiele
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# und universelle Windows-Plattform (UWP)
+      url: https://go.microsoft.com/fwlink/?linkid=2089803
+    - text: C# und Windows Presentation Foundation (WPF)
+      url: https://go.microsoft.com/fwlink/?linkid=2089804
+    - text: JavaScript-Webbrowser-App
+      url: https://go.microsoft.com/fwlink/?linkid=2089908
+    - text: Mobile Java- und Android-App
+      url: https://go.microsoft.com/fwlink/?linkid=2089906
+    - text: Mobile Swift- und iOS-App
+      url: https://go.microsoft.com/fwlink/?linkid=2089805

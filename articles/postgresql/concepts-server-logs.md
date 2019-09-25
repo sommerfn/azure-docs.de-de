@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/18/2019
+ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067392"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091118"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Serverprotokolle in Azure Database for PostgreSQL (Einzelserver)
 Azure Database for PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
@@ -28,10 +28,19 @@ Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure 
 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie auswählen, dass sie an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben werden sollen. Weitere Informationen zum Aktivieren von Diagnoseprotokollen finden Sie im Gewusst-wie-Abschnitt der [Dokumentation zu Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Azure Database for PostgreSQL ist in Azure Monitor-Diagnoseprotokolle integriert. Nachdem Sie Protokolle auf Ihrem PostgreSQL-Server aktiviert haben, können Sie auswählen, dass sie an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md), Event Hubs oder Azure Storage ausgegeben werden sollen. 
 
 > [!IMPORTANT]
 > Dieses Diagnosefeature für Serverprotokolle steht nur in den [Tarifen](concepts-pricing-tiers.md) „Universell“ und „Arbeitsspeicheroptimiert“ zur Verfügung.
+
+So aktivieren Sie Diagnoseprotokolle über das Azure-Portal:
+
+   1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen*.
+   2. Wählen Sie *Diagnoseeinstellung hinzufügen*  aus.
+   3. Benennen Sie die Einstellung. 
+   4. Wählen Sie Ihren bevorzugten Downstreamspeicherort aus (Speicherkonto, Event Hub, Log Analytics). 
+   5. Wählen Sie die gewünschten Datentypen aus.
+   6. Speichern Sie die Einstellungen.
 
 In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. Je nach dem ausgewählten Ausgabeendpunkt können die enthaltenen Felder und ihre Reihenfolge variieren. 
 
@@ -40,7 +49,7 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | TenantId | Ihre Mandanten-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
-| Type | Typ des Protokolls Immer `AzureDiagnostics` |
+| type | Typ des Protokolls Immer `AzureDiagnostics` |
 | SubscriptionId | GUID für das Abonnement, zu dem der Server gehört |
 | ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
 | ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORPOSTGRESQL` |
@@ -58,6 +67,9 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | DatatypeName | Name des Datentyps (falls zutreffend) |
 | LogicalServerName | Name des Servers | 
 | _ResourceId | Ressourcen-URI |
+| Präfix | Präfix der Protokollzeile |
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über den Zugriff auf Protokolle über das [Azure-Portal](howto-configure-server-logs-in-portal.md) oder die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md).

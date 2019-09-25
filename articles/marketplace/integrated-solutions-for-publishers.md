@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860310"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993678"
 ---
-# <a name="publishing-integrated-solutions"></a>Veröffentlichen: Integrierte Lösungen
+# <a name="publishing-integrated-solutions"></a>Veröffentlichen integrierter Lösungen
 
 Eine integrierte Lösung kombiniert mehrere ISV-Punktlösungstechnologien zusammen mit der Bereitstellung und den Diensten eines Systemintegrators (SI) in einem einzigen gebündelten Angebot, das vom Systemintegrator als ein [Beratungsdienstangebot](https://docs.microsoft.com/azure/marketplace/consulting-services) im Marketplace aufgeführt wird.
 
@@ -89,5 +89,9 @@ Es stehen zwar fünf Diensttypen für Beratungsdienste zur Verfügung, doch muss
 ## <a name="going-to-market-with-your-integrated-solution"></a>Markteinführung der integrierten Lösung 
 
 Sobald Ihre Lösung im Azure Marketplace oder in AppSource live geschaltet ist, sollten Sie durch Marketingaktivitäten die Aufmerksamkeit und Nachfrage steigern. Überprüfen Sie die im [Projekt- und Zeitplan](https://aka.ms/AA5qiuc) aufgeführten Aktivitäten, einschließlich der Aktivitäten, die Partner innerhalb ihrer eigenen Teams und untereinander durchführen können. Greifen Sie dann auf die [Vorteile bei der Markteinführung](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) zu, die für Partner bereitgestellt werden, die ein Angebot im Marketplace veröffentlicht haben. Für alle Angebote einer integrierten Lösung können Vorteile auf Testebene angeboten werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zum Erwerb einer integrierten Lösung im Marketplace finden Sie unter [Integrierte Lösungen](https://docs.microsoft.com/azure/marketplace/integrated-solutions).
 
 ---

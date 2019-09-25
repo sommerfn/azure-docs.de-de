@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5194bdcd5b77b0527ccdefc1af85bf03bdac2cab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938177"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962755"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Marketplace
 
 Azure Marketplace und AppSource verfügen über Abschnitte für **ausgewählte Apps**, in denen Ihre App präsentiert werden kann:
 
-* Erstens: Wenn Sie über ein TEST- oder TRANSAKTIONSANGEBOT verfügen, können Sie Ihren Vorteil der „Kategoriehöherstufung“ durch Vorteile bei der Markteinführung nutzen.
+* Erstens: Wenn Sie über ein TEST- oder TRANSAKTIONSANGEBOT verfügen, können Sie Ihren Vorteil der „Kategoriehöherstufung“ durch [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits) nutzen.
 * Zweitens: Schauen Sie sich unten die Liste der bewährten Methoden und Kriterien an, um einen Platz zu erhalten.
 
 Der „Ausgewählte Apps“-Auswahlalgorithmus erzeugt eine Punktzahl von Microsoft für eine App, ganz ähnlich der Kreditwürdigkeit einer Person in den USA.  Die wöchentliche Auswahl der ausgewählten Apps basiert auf der Berechnung der Leistung von App und Dienst.
@@ -44,7 +44,7 @@ Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-Diensten zu erhalten.
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
 Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 

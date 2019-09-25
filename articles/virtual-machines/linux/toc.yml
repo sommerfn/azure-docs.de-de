@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
+        - name: Erstellen einer inkrementellen Momentaufnahme
+          href: disks-incremental-snapshots.md
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
         - name: Migration und Konvertierung

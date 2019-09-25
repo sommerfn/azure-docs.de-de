@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879263"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097568"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -78,6 +78,13 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 [Das Ende ist nahe für FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
+Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, muss die Domäne vor der Installation des Azure AD-Kennwortschutzes für die Verwendung von DFSR migriert werden. Weitere Informationen finden Sie unter dem folgenden Link:
+
+[Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Die DC-Agent-Software für den Azure AD-Kennwortschutz wird derzeit auf Domänencontrollern in Domänen installiert, von denen noch FRS für die SYSVOL-Replikation verwendet wird. Die Software funktioniert in dieser Umgebung allerdings NICHT ordnungsgemäß. Dies macht sich unter anderem durch nicht erfolgreich replizierte Einzeldateien sowie durch scheinbar erfolgreiche SYSVOL-Wiederherstellungsprozeduren bemerkbar, bei denen jedoch nicht alle Dateien repliziert werden. Es empfiehlt sich, die Domäne baldmöglichst für die Verwendung von DFSR zu migrieren, um von den DFSR-Vorteilen zu profitieren und die Blockierung der Bereitstellung des Azure AD-Kennwortschutzes aufzuheben. Zukünftige Versionen der Software werden automatisch deaktiviert, wenn sie in einer Domäne ausgeführt werden, die noch FRS verwendet.
+
 **F: Wie viel Datenträger-Speicherplatz benötigt das Feature auf der Systemvolumefreigabe der Domäne?**
 
 Die genaue Speicherplatznutzung variiert, da sie von verschiedenen Faktoren abhängig ist, z.B. von der Anzahl und Länge der gesperrten Token in der globalen Sperrliste von Microsoft und der kundenspezifischen Sperrliste jedes Mandanten sowie vom Verschlüsselungsoverhead. Diese Listen werden im Lauf der Zeit wahrscheinlich erweitert. Angesichts dieser Tatsache ist es eine sinnvolle Annahme, dass das Feature mindestens fünf (5) Megabytes Speicherplatz auf der Systemvolumefreigabe der Domäne benötigen wird.
@@ -129,6 +136,10 @@ Nein.
 **F: Warum lehnt Azure AD unsichere (oder schwache) Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
 
 Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure AD implizit immer im Modus „Erzwingen“.
+
+**F: Meinen Benutzern wird die herkömmliche Windows-Fehlermeldung angezeigt, wenn ein Kennwort durch den Azure AD-Kennwortschutz abgelehnt wird. Kann diese Fehlermeldung angepasst werden, damit die Benutzer wissen, was wirklich passiert ist?**
+
+Nein. Die Fehlermeldung, die Benutzern angezeigt wird, wenn ein Kennwort von einem Domänencontroller abgelehnt wird, wird nicht vom Domänencontroller gesteuert, sondern vom Clientcomputer. Dieses Verhalten tritt auf, wenn ein Kennwort aufgrund der standardmäßigen Active Directory-Kennwortrichtlinien oder durch eine kennwortfilterbasierte Lösung wie den Azure AD-Kennwortschutz abgelehnt wird.
 
 ## <a name="additional-content"></a>Zusätzliche Inhalte
 

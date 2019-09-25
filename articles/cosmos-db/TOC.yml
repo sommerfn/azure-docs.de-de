@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Lambda-Architektur
           href: lambda-architecture.md
+    - name: "Integrierte Analysen mit Jupyter\_Notebook-Instanzen"
+      items:
+        - name: "Übersicht über Jupyter\_Notebook-Instanzen"
+          href: cosmosdb-jupyter-notebooks.md
     - name: Serverseitige Programmierung
       items:
         - name: 'Gespeicherte Prozeduren, Trigger und UDFs'
@@ -675,6 +679,10 @@
         - name: Streaming mit Apache Kafka und Cosmos DB
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: "Integrierte Jupyter\_Notebook-Instanzen"
+      items:
+        - name: Aktivieren von Notebooks
+          href: enable-notebooks.md
     - name: Serverseitige Programmierung
       items:
         - name: 'Schreiben von gespeicherten Prozeduren, Triggern und UDFs'

@@ -8,85 +8,85 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: e1ba09f459152616941071c23f7a6545ec2a8b73
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210508"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962131"
 ---
-# <a name="process-fixed-length-text-files-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge mithilfe von Data Factory Mapping Data Flows
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge unter Verwendung von Data Factory-Mappingdatenflüssen
 
-Data Factory Mapping Data Flows unterstützt die Transformation von Daten aus Textdateien mit fester Breite. Sie definieren ein Dataset für eine Textdatei ohne Trennzeichen und richten dann Unterteilungen in Teilzeichenfolgen basierend auf der Ordinalposition ein.
+Mithilfe von Mappingdatenflüssen in Microsoft Azure Data Factory können Sie Daten aus Textdateien mit fester Breite transformieren. In der folgenden Aufgabe definieren Sie ein Dataset für eine Textdatei ohne Trennzeichen und richten dann Unterteilungen in Teilzeichenfolgen basierend auf der Ordinalposition ein.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
-1. Wechseln Sie zu **+Neue Pipeline**, um eine neue Pipeline zu starten.
+1. Wählen Sie **+Neue Pipeline** aus, um eine neue Pipeline zu erstellen.
 
-2. Fügen Sie eine Datenflussaktivität hinzu, die zum Verarbeiten von Dateien mit fester Breite verwendet wird.
+2. Fügen Sie eine Datenflussaktivität für die Verarbeitung von Dateien mit fester Breite hinzu:
 
-  ![Pipeline mit fester Breite](media/data-flow/fwpipe.png)
+    ![Pipeline mit fester Breite](media/data-flow/fwpipe.png)
 
-3. Wählen Sie in der Datenflussaktivität die Option für eine neue Mapping Data Flow-Instanz aus.
+3. Wählen Sie in der Datenflussaktivität die Option **New Mapping Data Flow** (Neuer Mappingdatenfluss) aus.
 
-4. Fügen Sie eine Transformation für Quelle, abgeleitete Spalte, Auswahl und Senke hinzu.
+4. Fügen Sie eine Transformation für Quelle, abgeleitete Spalte, Auswahl und Senke hinzu:
 
-  ![Datenfluss mit fester Breite](media/data-flow/fw2.png)
+    ![Datenfluss mit fester Breite](media/data-flow/fw2.png)
 
-5. Konfigurieren Sie die Quellentransformation so, dass ein neues Dataset vom Typ „durch Trennzeichen getrennter Text“ verwendet wird.
+5. Konfigurieren Sie die Quellentransformation so, dass ein neues Dataset vom Typ „Durch Trennzeichen getrennter Text“ verwendet wird.
 
-6. Legen Sie kein Spaltentrennzeichen und keine Header fest.
+6. Legen Sie keine Spaltentrennzeichen oder -überschriften fest.
 
-Es werden nun einfach die Ausgangspunkte und Längen der Felder für den Inhalt dieser Datei festgelegt:
+   Als Nächstes werden die Ausgangspunkte und Längen für die Inhalte dieser Datei festgelegt:
 
-```
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-```
+    ```
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    ```
 
-7. Auf der Registerkarte „Projektion“ der Quellentransformation wird eine Zeichenfolgenspalte mit dem Namen „Column_1“ angezeigt.
+7. Auf der Registerkarte **Projektion** der Quellentransformation wird eine Zeichenfolgenspalte namens *Column_1* angezeigt.
 
-8. Erstellen Sie nun unter „Abgeleitete Spalte“ eine neue Spalte.
+8. Erstellen Sie in der abgeleiteten Spalte eine neue Spalte.
 
-9. Geben Sie den Spalten einfache Namen wie „Col1“.
+9. Geben Sie den Spalten einfache Namen wie etwa *col1*.
 
-10. Geben Sie dann im Ausdrucks-Generator Folgendes ein:
+10. Geben Sie im Ausdrucks-Generator Folgendes ein:
 
-  ```substring(Column_1,1,4)```
+    ```substring(Column_1,1,4)```
 
-  ![Abgeleitete Spalte](media/data-flow/fwderivedcol1.png)
+    ![Abgeleitete Spalte](media/data-flow/fwderivedcol1.png)
 
-10. Wiederholen Sie diesen Schritt für alle Spalten, die Sie analysieren müssen.
+11. Wiederholen Sie Schritt 10 für alle zu analysierenden Spalten.
 
-12. Klicken Sie auf die Registerkarte „Untersuchen“, um die neuen Spalten anzuzeigen, die generiert werden.
+12. Wählen Sie die Registerkarte **Untersuchen** aus, um die neuen Spalten anzuzeigen, die generiert werden:
 
-  ![Untersuchen](media/data-flow/fwinspect.png)
+    ![Untersuchen](media/data-flow/fwinspect.png)
 
-13. Verwenden Sie die Auswahltransformation, um alle Spalten zu entfernen, die Sie nicht für die Transformation benötigen.
+13. Verwenden Sie die Auswahltransformation, um alle Spalten zu entfernen, die Sie nicht für die Transformation benötigen:
 
-  ![Auswahltransformation](media/data-flow/fwselect.png)
+    ![Auswahltransformation](media/data-flow/fwselect.png)
 
-14. Zum Schluss verwenden Sie „Senke“, um die Daten in einem Ordner auszugeben:
+14. Verwenden Sie „Senke“, um die Daten in einen Ordner auszugeben:
 
-  ![Senke mit fester Breite](media/data-flow/fwsink.png)
+    ![Senke mit fester Breite](media/data-flow/fwsink.png)
 
-  Die Ausgabe sieht wie folgt aus:
+    Die Ausgabe sieht wie folgt aus:
 
-  ![Ausgabe mit fester Breite](media/data-flow/fxdoutput.png)
+    ![Ausgabe mit fester Breite](media/data-flow/fxdoutput.png)
 
-  Die Daten mit fester Breite sind nun in jeweils vier Zeichen unterteilt und „Col1“, „Col2“, „Col3“, „Col4“ usw. zugeordnet. Basierend auf dem obigen Beispiel werden die Daten in vier Spalten aufgeteilt.
+  Die Daten mit fester Breite sind nun in jeweils vier Zeichen unterteilt und „Col1“, „Col2“, „Col3“, „Col4“ usw. zugeordnet. Basierend auf dem vorherigen Beispiel werden die Daten auf vier Spalten aufgeteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen der restlichen Datenflusslogik mithilfe von Mapping Data Flow-[Transformationen](concepts-data-flow-overview.md)
+* Erstellen Sie Ihre restliche Datenflusslogik mithilfe von [Mappingdatenfluss-Transformationen](concepts-data-flow-overview.md).

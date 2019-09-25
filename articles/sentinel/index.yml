@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zur Vorschauversion von Azure Sentinel
+title: Dokumentation zu Azure Sentinel
 metadata:
-  title: 'Dokumentation zur Vorschauversion von Azure Sentinel: Tutorials, Schnellstartanleitungen | Microsoft-Dokumentation'
+  title: 'Dokumentation zu Azure Sentinel: Tutorials, Schnellstartanleitungen | Microsoft-Dokumentation'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: "Bei Azure Sentinel (Vorschauversion) handelt es sich um eine cloudnative SIEM-Lösung mit intelligenten Sicherheitsanalysen für Ihr gesamtes Unternehmen in der Cloud. Profitieren Sie von unbegrenzter Cloudgeschwindigkeit und Skalierung, um sich auf die wirklich wichtigen Dinge konzentrieren zu können. Sie können einfach Daten aus allen Ihren cloudbasierten oder lokalen Ressourcen, aus Office\_365, Azure-Ressourcen und anderen Clouds sammeln. Azure Sentinel ermöglicht die effektive Bedrohungserkennung mit integrierten Funktionen für maschinelles Lernen von den Microsoft-Experten für Sicherheitsanalysen. Automatisieren Sie mithilfe der integrierten Orchestrierungs- und Automatisierungsplaybooks die Reaktion auf Bedrohungen."
+  description: "Bei Azure Sentinel handelt es sich um eine cloudnative SIEM-Lösung mit intelligenten Sicherheitsanalysen für Ihr gesamtes Unternehmen in der Cloud. Profitieren Sie von unbegrenzter Cloudgeschwindigkeit und Skalierung, um sich auf die wirklich wichtigen Dinge konzentrieren zu können. Sie können einfach Daten aus allen Ihren cloudbasierten oder lokalen Ressourcen, aus Office\_365, Azure-Ressourcen und anderen Clouds sammeln. Azure Sentinel ermöglicht die effektive Bedrohungserkennung mit integrierten Funktionen für maschinelles Lernen von den Microsoft-Experten für Sicherheitsanalysen. Automatisieren Sie mithilfe der integrierten Orchestrierungs- und Automatisierungsplaybooks die Reaktion auf Bedrohungen."
 sections:
   - title: Fünfminütige Schnellstarts
     items:

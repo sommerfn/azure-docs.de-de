@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087737"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173541"
 ---
 # <a name="terraform-cloud-shell-development"></a>Entwicklung mit Terraform und Cloud Shell 
 
@@ -33,7 +33,7 @@ Terraform ist nach der Installation sofort in Cloud Shell verfügbar. Terraform-
 
 Azure-Terraform-Module benötigen Anmeldeinformationen, um auf die Ressourcen in Ihrem Azure-Abonnement zugreifen und Änderungen an den Ressourcen vornehmen zu können. In Cloud Shell können Sie Ihren Skripts den folgenden Code hinzufügen, um Azure-Terraform-Module in Cloud-Shell zu verwenden:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

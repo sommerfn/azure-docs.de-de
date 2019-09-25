@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: c4a3fc20e806ec91ed2646e6131f682bf5c80e38
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140834"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091978"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -56,7 +56,7 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
     -   Kopieren aus \<Quelle\> in \<Ziel\>
 
-        -   Aus Amazon S3 in Azure Data Lake Store Gen 2
+        -   [Aus Amazon S3 in Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
         -   Aus Google Big Query in Azure Data Lake Store Gen 2
 

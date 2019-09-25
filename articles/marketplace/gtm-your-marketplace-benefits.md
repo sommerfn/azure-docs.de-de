@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309034"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962679"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -74,7 +74,7 @@ Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten E
 
 Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
-Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dynamics-Angeboten, die bei Microsoft AppSource veröffentlicht werden, über [ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview) weitere Programmbereiche zur Verfügung. Diese umfassen Support bei Technik, Marketing und Vertrieb, der auf die Anforderungen von Geschäftsanwendungspartnern spezialisiert ist.
+Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dynamics-Angeboten, die bei Microsoft AppSource veröffentlicht werden, über [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) weitere Programmbereiche zur Verfügung. Diese umfassen Support bei Technik, Marketing und Vertrieb, der auf die Anforderungen von Geschäftsanwendungspartnern spezialisiert ist.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Anforderungen und Einschränkungen für Marketplace-Prämien
 
@@ -101,9 +101,9 @@ Transaktionen, die sich als betrügerisch erweisen, werden nicht zur [Ebene des 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Ihr Angebot im Cloud-Partnerportal erstellt haben, melden Sie sich an, um Ihr Angebot zu erstellen oder zu konfigurieren.
+Wenn Sie Ihr Angebot im [Cloud-Partnerportal](https://cloudpartner.azure.com) erstellt haben, melden Sie sich an, um Ihr Angebot zu erstellen oder zu konfigurieren.
 
-Wenn Sie Ihr Angebot in Partner Center erstellt haben, melden Sie sich an, um Ihr Angebot zu erstellen oder zu konfigurieren.
+Wenn Sie Ihr Angebot in [Partner Center](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) erstellt haben, melden Sie sich an, um Ihr Angebot zu erstellen oder zu konfigurieren.
 
 Sehen Sie sich [die für Sie verfügbaren Self-Service-Ressourcen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) an.
 

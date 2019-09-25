@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172305"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959182"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -43,7 +43,7 @@ Inhaltsvertrauen wird durch die Verwendung einer Gruppe von kryptografischen Sig
 
 Der erste Schritt ist das Aktivieren des Inhaltsvertrauens auf Ebene der Registrierung. Nachdem Sie das Inhaltsvertrauen aktiviert haben, können Clients (Benutzer oder Dienste) signierte Image per Push in Ihre Registrierung übertragen. Durch Aktivieren des Inhaltsvertrauens in Ihrer Registrierung wird die Registrierungsnutzung nicht auf Consumer beschränkt, bei denen das Inhaltsvertrauen ebenfalls aktiviert ist. Consumer ohne aktiviertes Inhaltsvertrauen können Ihre Registrierung weiterhin wie gewohnt verwenden. Consumer, in deren Clients das Inhaltsvertrauen aktiviert ist, sehen jedoch *nur* signierte Images in Ihrer Registrierung.
 
-Zum Aktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie zunächst im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Aktiviert** > **Speichern** aus.
+Zum Aktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie zunächst im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Aktiviert** > **Speichern** aus. Sie können auch den Azure CLI-Befehl [az acr config content-trust update][az-acr-config-content-trust-update] verwenden.
 
 ![Aktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>Gewähren von Berechtigungen zum Signieren von Images
 
 Nur Benutzer oder Systeme, denen Sie die entsprechende Berechtigung erteilt haben, können vertrauenswürdige Images per Push an Ihre Registrierung übertragen. Um einem Benutzer (oder ein System mit einem Dienstprinzipal) die Berechtigung zur Pushübertragung von Images zu gewähren, teilen Sie dessen Azure Active Directory-Identitäten die Rolle `AcrImageSigner` zu. Dies erfolgt zusätzlich zur Rolle `AcrPush` (oder einer ähnlichen Rolle), die für die Pushübertragung von Images an die Registrierung erforderlich ist. Ausführliche Informationen hierzu finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](container-registry-roles.md).
+
+> [!NOTE]
+> Dem [Administratorkonto](container-registry-authentication.md#admin-account) einer Azure-Containerregistrierung kann keine Pushberechtigung für vertrauenswürdige Images erteilt werden.
 
 Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure CLI folgen.
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 Die `<service principal ID>` kann das **appId**- oder **objectId**-Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames**-Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
 
-Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können.
+> [!IMPORTANT]
+> Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](../role-based-access-control/role-assignments-cli.md) sowie unter [Problembehandlung von RBAC für Azure-Ressourcen](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Pushübertragung eines vertrauenswürdigen-Images
 
@@ -214,3 +218,4 @@ Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

@@ -425,7 +425,7 @@
       href: hyper-v-azure-powershell-resource-manager.md
     - name: Einrichten der Notfallwiederherstellung von virtuellen Hyper-V-Computern (mit VMM) in Azure mithilfe von PowerShell
       href: hyper-v-vmm-powershell-resource-manager.md
-    - name: Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen zum Orchestrieren eines Failovers
+    - name: Hinzufügen von Automation-Runbooks zu Wiederherstellungsplänen
       href: site-recovery-runbook-automation.md
 - name: Überwachung
   items:

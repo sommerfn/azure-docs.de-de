@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6fef64bae6462923da67fc41945871f5dcde3094
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 49723a80bb198e8151c7e85a90453183068c9d2b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450053"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962817"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass durch die Auswahl von Veröffentlichungsoption und Angebotstyp definiert wird, wie Benutzer mit Ihrem Marketplace-Angebot interagieren.
@@ -47,7 +47,7 @@ Die Storefront, in der Ihr Angebot präsentiert wird (Azure Marketplace bzw. App
 
 ## <a name="choose-a-publishing-option"></a>Auswählen einer Veröffentlichungsoption
 
-Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Markteinführungsvorteilen](https://partner.microsoft.com/reach-customers/gtm). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
+Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).  Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

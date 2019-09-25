@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 85dc0476da12bea64610b6910b0682fef00f4b5a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064734"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122224"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -48,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * **Ein GitHub-Konto** zum Erstellen eines Repositorys für Ihre Vorlagen. Sollten Sie über kein Konto verfügen, können Sie [ein kostenloses Konto erstellen](https://github.com). Weitere Informationen zur Verwendung von GitHub-Repositorys finden Sie unter [Build GitHub repositories](/azure/devops/pipelines/repos/github) (Erstellen von GitHub-Repositorys).
-* **Git-Installation.** In diesem Tutorial wird *Git Bash* oder *Git Shell* verwendet. Eine entsprechende Anleitung finden Sie unter [Install Git]( https://www.atlassian.com/git/tutorials/install-git) (Installieren von Git).
+* **Git installieren**. In diesem Tutorial wird *Git Bash* oder *Git Shell* verwendet. Eine entsprechende Anleitung finden Sie unter [Install Git]( https://www.atlassian.com/git/tutorials/install-git) (Installieren von Git).
 * **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
 * **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
@@ -159,7 +159,7 @@ Erstellen Sie eine Dienstverbindung für die Projektbereitstellung in Azure.
     * **Bereichsebene**: Wählen Sie **Abonnement** aus.
     * **Abonnement**: Wählen Sie Ihr Abonnement aus.
     * **Ressourcengruppe**: Lassen Sie dieses Feld leer.
-    * **Hiermit wird allen Pipelines die Verwendung dieser Dienstverbindung gestattet.** Aktiviert
+    * **Hiermit wird allen Pipelines die Verwendung dieser Dienstverbindung gestattet.** (aktiviert)
 1. Klicken Sie auf **OK**.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
@@ -264,4 +264,4 @@ Falls gewünscht, können Sie auch das GitHub-Repository und das Azure DevOps-P
 In diesem Tutorial haben Sie eine Azure DevOps-Pipeline unter Verwendung einer Azure Resource Manager-Vorlage erstellt. Im folgenden Tutorial erfahren Sie, wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungsverfahren verwenden:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden des Azure-Bereitstellungs-Manager mit Resource Manager-Vorlagen (Public Preview)](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Verwenden von sicheren Bereitstellungsmethoden](./deployment-manager-tutorial.md)

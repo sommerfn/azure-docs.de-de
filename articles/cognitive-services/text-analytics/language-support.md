@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305479"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097141"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
 
@@ -48,17 +48,18 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabisch      | `ar`          |           |             | ✔ \*                     | |
 | Tschechisch       | `cs`          |           |             | ✔ \*                     | |
-| Chinesisch (vereinfacht) | `zh-CN`|           |             | ✔         |    |
+| Chinesisch (vereinfacht) | `zh-hans`| ✔ \***     |             | ✔         |    |
+| Chinesisch (traditionell) | `zh-hant`| ✔ \***     |             | ✔         |    |
 | Dänisch      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Niederländisch       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Englisch     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Englisch     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Finnisch     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Französisch      | `fr`          | ✔        | ✔           |  ✔            |     |
+| Französisch      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
 | Deutsch      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Griechisch       | `el`          | ✔ \*     |             |            |     |
 | Ungarisch   | `hu`          |           |             |  ✔ \*          |     | 
-| Italienisch     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Japanisch    | `ja`          |          | ✔           |  ✔ \*          |     |
+| Italienisch     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
+| Japanisch    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Koreanisch      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norwegisch (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | Polnisch      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +72,9 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 
 \* Die Sprachunterstützung befindet sich in der Vorschauversion.
 
-\*\*Die [Erkennung der bekannten Entität](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) und die [Entitätsverknüpfung](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) sind jeweils für diese Sprache verfügbar.    
+\*\*Die [Erkennung der bekannten Entität](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) und die [Entitätsverknüpfung](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) sind jeweils für diese Sprache verfügbar.  
+
+\*** Verfügbar in der [öffentlichen Vorschau der Standpunktanalyse v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
 
 ## <a name="see-also"></a>Weitere Informationen
 

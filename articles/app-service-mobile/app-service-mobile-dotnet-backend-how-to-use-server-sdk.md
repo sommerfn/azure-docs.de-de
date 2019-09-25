@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d277786fd08e1448b3d5ccf4fd45055fe069e4c0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119509"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097773"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -28,20 +28,20 @@ ms.locfileid: "62119509"
 In diesem Thema wird das Verwenden des .NET-Back-End-Server-SDKs in Azure App Service Mobile Apps-Szenarien veranschaulicht. Das Azure-SDK für Mobile Apps erleichtert Ihnen die Arbeit mit mobilen Clients aus der ASP.NET-Anwendung.
 
 > [!TIP]
-> Das [.NET-Server-SDK für Azure Mobile Apps][2] ist als Open Source auf GitHub verfügbar. Das Repository enthält sämtlichen Quellcode, z.B. die gesamte SDK-Komponententest-Suite und einige Beispielprojekte.
+> Das [.NET-Server-SDK für Azure Mobile Apps][2] ist als Open-Source-Lösung auf GitHub verfügbar. Das Repository enthält sämtlichen Quellcode, z.B. die gesamte SDK-Komponententest-Suite und einige Beispielprojekte.
 >
 >
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
-Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile Apps – .NET-Referenz][1]
+Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile Apps – .NET-Referenz][1].
 
-## <a name="create-app"></a>Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends
+## <a name="create-app"></a>Gewusst wie: Erstellen eines .NET Mobile App-Back-Ends
 Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure-Portal] oder mit Visual Studio eine App Service-Anwendung erstellen. Sie können die App Service-Anwendung lokal ausführen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
 
 Wenn Sie einem vorhandenen Projekt mobile Funktionen hinzufügen, helfen Ihnen die Informationen im Abschnitt [Herunterladen und Initialisieren des SDK](#install-sdk) weiter.
 
 ### <a name="create-a-net-backend-using-the-azure-portal"></a>Erstellen eines .NET-Back-Ends mithilfe des Azure-Portals
-Folgen Sie zum Erstellen eines mobilen App Service-Back-Ends entweder der Anleitung im [Schnellstart-Tutorial][3], oder führen Sie diese Schritte aus:
+Folgen Sie zum Erstellen eines mobilen App Service-Back-Ends entweder dem [Schnellstarttutorial][3], oder führen Sie die folgenden Schritte aus:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -62,7 +62,7 @@ Installieren Sie die Azure-Workload über den Visual Studio-Installer, um im Azu
 
 ### <a name="create-a-net-backend-using-visual-studio-2015"></a>Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2015
 
-Installieren Sie das [Azure SDK für .NET][4] (Version 2.9.0 oder höher), um in Visual Studio ein Azure Mobile Apps-Projekt zu erstellen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
+Installieren Sie das [Azure SDK für .NET][4] (ab Version 2.9.0), um in Visual Studio ein Azure Mobile Apps-Projekt zu erstellen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
 
 1. Öffnen Sie das Dialogfeld **Neues Projekt** (über **Datei** > **Neu** > **Projekt...** ).
 2. Erweitern Sie **Vorlagen** > **Visual C#** , und wählen Sie **Web** aus.
@@ -410,9 +410,9 @@ Der Zugriff auf die Installations-ID ist über die **installationId**-Eigenschaf
 
 Alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, werden vom Back-End beim Erstellen der Installation ignoriert. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt.
 
-Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
+Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
 
-## <a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
+## <a name="push-user"></a>Gewusst wie: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird, wird der Registrierung automatisch ein Tag mit der Benutzer-ID hinzugefügt. Mit diesem Tag können Sie Pushbenachrichtigungen an alle Geräte senden, die von dieser Person registriert wurden. Mit dem folgenden Code wird die SID des Benutzers abgerufen, der die Anforderung stellt, und an jede Geräteregistrierung für diese Person wird eine Pushbenachrichtigungsvorlage gesendet:
 
     // Get the current user SID and create a tag for the current user.
@@ -426,7 +426,7 @@ Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Push to users][6] (Push an Benutzer).
+Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter „App Service Mobile Apps completed quickstart for .NET backend“ (Abgeschlossenes Schnellstartbeispiel für Mobile App Service-Apps für .NET-Back-Ends) im Abschnitt [Push to users][6] (Pushen an Benutzer).
 
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Gewusst wie: Debuggen und Problembehandlung für das .NET Server SDK
 Azure App Service stellt mehrere Debug- und Problembehandlungsverfahren für ASP.NET-Anwendungen bereit.
@@ -440,7 +440,7 @@ Zum Schreiben in App Service-Diagnoseprotokolle kann das standardmäßige Schre
 
 Gehen Sie wie folgt vor, um die Diagnose zu aktivieren und in die Protokolle zu schreiben:
 
-1. Führen Sie die unter [Aktivieren der Diagnose](../app-service/troubleshoot-diagnostic-logs.md#enablediag)angegebenen Schritte aus.
+1. Führen Sie die unter [Aktivieren der Anwendungsprotokollierung (Windows)](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows) angegebenen Schritte aus.
 2. Fügen Sie Ihrer Codedatei folgende using-Anweisung hinzu:
 
         using System.Web.Http.Tracing;
@@ -449,7 +449,7 @@ Gehen Sie wie folgt vor, um die Diagnose zu aktivieren und in die Protokolle zu 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. Veröffentlichen Sie Ihr Serverprojekt neu, und greifen Sie auf das Mobile App-Back-End zu, um den Codepfad mit der Protokollierung auszuführen.
-5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Vorgehensweise: Herunterladen von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#download) beschrieben vor.
+5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Zugreifen auf Protokolldateien](../app-service/troubleshoot-diagnostic-logs.md#access-log-files) beschrieben vor.
 
 ### <a name="local-debug"></a>Lokales Debuggen mit Authentifizierung
 Sie können zum Testen von Änderungen Ihre Anwendung vor der Veröffentlichung in der Cloud lokal ausführen. Für die meisten Azure Mobile Apps-Back-Ends drücken Sie in Visual Studio die Taste *F5* . Bei der Verwendung der Authentifizierung gibt es jedoch einige zusätzliche Aspekte zu berücksichtigen.

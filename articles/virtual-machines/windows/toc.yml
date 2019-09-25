@@ -46,10 +46,96 @@
       href: tutorial-secure-web-server.md
 - name: Beispiele
   items:
-    - name: PowerShell
+    - name: PowerShell-Index
       href: powershell-samples.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: PowerShell
+      items:
+        - name: Erstellen
+          items:
+            - name: Schnell
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
+            - name: Vollständig konfigurierter virtueller Computer
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
+            - name: Hochverfügbarer virtueller Computer
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
+            - name: Beispiel eines benutzerdefinierten Skripts
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
+            - name: Verwenden von DSC
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
+            - name: VM aus VHD-Upload
+              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
+            - name: Anfügen eines Betriebssystem-Datenträgers
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+            - name: VM aus Momentaufnahme
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
+        - name: Verwalten von Speicher
+          items:
+            - name: Erstellen eines verwalteten Datenträgers aus einer VHD
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+            - name: Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+            - name: Kopieren eines verwalteten Datenträgers
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Exportieren einer Momentaufnahme als VHD in ein Speicherkonto
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+            - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+            - name: Erstellen einer Momentaufnahme aus einer VHD
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+            - name: Kopieren einer Momentaufnahme
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Schützen
+          items:
+            - name: Verschlüsseln eines virtuellen Computers und der Datenträger
+              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
+        - name: Überwachen
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
+            - name: Sammeln von Informationen zu allen virtuellen Computern in einem Abonnement
+              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
+    - name: Azure CLI-Index
       href: cli-samples.md
+    - name: Befehlszeilenschnittstelle (CLI)
+      items:
+        - name: Erstellen
+          items:
+            - name: Schnell
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
+            - name: Vollständig konfigurierter virtueller Computer
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
+            - name: Hochverfügbarer virtueller Computer
+              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
+            - name: Beispiel eines benutzerdefinierten Skripts
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
+            - name: Verwenden einer DSC-Konfiguration
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
+        - name: Verwalten von Speicher
+          items:
+            - name: Erstellen verwalteter Datenträger aus einer VHD
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+            - name: Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+            - name: Kopieren verwalteter Datenträger
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Exportieren einer Momentaufnahme als VHD-Datei in ein Speicherkonto
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+            - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+            - name: Kopieren einer Momentaufnahme
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Netzwerk
+          items:
+            - name: Schützen des Netzwerkdatenverkehrs zwischen virtuellen Computern
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
+        - name: Schützen
+          items:
+            - name: Verschlüsseln eines virtuellen Computers und der Datenträger
+              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
+            - name: Überwachen
+              items:
+                - name: Azure Monitor
+                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Konzepte
   items:
     - name: Azure Resource Manager
@@ -388,6 +474,8 @@
           href: expand-os-disk.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
+        - name: Erstellen einer inkrementellen Momentaufnahme
+          href: disks-incremental-snapshots.md
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
         - name: Migration und Konvertierung

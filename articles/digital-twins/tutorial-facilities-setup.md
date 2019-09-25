@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622967"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219742"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen
 
@@ -43,15 +43,11 @@ In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](
 
 - [Visual Studio Code](https://code.visualstudio.com/) zum Untersuchen des Beispielcodes. 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Bereitstellen von Azure Digital Twins
 
 Erstellen Sie anhand der Schritte in diesem Abschnitt eine neue Instanz des Azure Digital Twins-Diensts. Pro Abonnement kann nur eine Instanz erstellt werden. Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie bereits über eine Instanz verfügen. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Gewähren von Berechtigungen für Ihre App
 
@@ -76,7 +72,7 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
 
 Öffnen Sie im extrahierten Ordner die Datei **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Das Beispiel umfasst zwei Projekte:
 
-* Mit dem Bereitstellungsbeispiel **occupancy-quickstart** können Sie einen [Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md#graph) konfigurieren und bereitstellen. Bei diesem Graphen handelt es sich um das digitalisierte Abbild Ihrer physischen Gebäudebereiche und der darin enthaltenen Ressourcen. Im Beispiel wird ein [Objektmodell](concepts-objectmodel-spatialgraph.md#model) verwendet, das Objekte für ein intelligentes Gebäude definiert. Eine vollständige Liste der Digital Twins-Objekte und -REST-APIs finden Sie in der [REST-API-Dokumentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) oder unter der Verwaltungs-API-URL, die für [Ihre Instanz](#deploy) erstellt wurde.
+* Mit dem Bereitstellungsbeispiel **occupancy-quickstart** können Sie einen [Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) konfigurieren und bereitstellen. Bei diesem Graphen handelt es sich um das digitalisierte Abbild Ihrer physischen Gebäudebereiche und der darin enthaltenen Ressourcen. Im Beispiel wird ein [Objektmodell](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) verwendet, das Objekte für ein intelligentes Gebäude definiert. Eine vollständige Liste der Digital Twins-Objekte und -REST-APIs finden Sie in der [REST-API-Dokumentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) oder unter der Verwaltungs-API-URL, die für [Ihre Instanz](#deploy-digital-twins) erstellt wurde.
 
    Um die Beispielanwendung zu untersuchen und herauszufinden, wie sie mit Ihrer Digital Twins-Instanz kommuniziert, können Sie mit dem Ordner **src\actions** beginnen. Die Dateien in diesem Ordner implementieren die Befehle, die Sie in diesen Tutorials verwenden werden:
     - Die Datei **provisionSample.cs** zeigt, wie Sie Ihren Raumgraphen bereitstellen.
@@ -84,7 +80,7 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
     - Die Datei **getAvailableAndFreshSpaces.cs** ruft die Ergebnisse einer benutzerdefinierten Funktion ab.
     - Die Datei **createEndpoints.cs** erstellt Endpunkte für die Interaktion mit anderen Diensten.
 
-* Das Simulationsbeispiel **device-connectivity** simuliert Sensordaten und sendet diese an den für Ihre Digital Twins-Instanz bereitgestellten IoT-Hub. Sie verwenden dieses Beispiel im [nächsten Tutorial, nachdem Sie den Raumgraphen bereitgestellt haben](tutorial-facilities-udf.md#simulate). Die zum Konfigurieren des Beispiels verwendeten Sensor- und Gerätebezeichner sollten mit den Bezeichnern identisch sein, die Sie zum Bereitstellen Ihres Graphen verwenden.
+* Das Simulationsbeispiel **device-connectivity** simuliert Sensordaten und sendet diese an den für Ihre Digital Twins-Instanz bereitgestellten IoT-Hub. Sie verwenden dieses Beispiel im [nächsten Tutorial, nachdem Sie den Raumgraphen bereitgestellt haben](tutorial-facilities-udf.md#simulate-sensor-data). Die zum Konfigurieren des Beispiels verwendeten Sensor- und Gerätebezeichner sollten mit den Bezeichnern identisch sein, die Sie zum Bereitstellen Ihres Graphen verwenden.
 
 ### <a name="configure-the-provisioning-sample"></a>Konfigurieren des Bereitstellungsbeispiels
 
@@ -101,17 +97,15 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
     ```
 
 1. Öffnen Sie in Visual Studio Code die Datei [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) des Projekts **occupancy-quickstart**. Aktualisieren Sie die folgenden Werte:
-   * **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
-   * **Tenant**: Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
-   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/** .
+   * **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
+   * **Tenant**: Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
+   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy-digital-twins) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/** .
 
 1. Zeigen Sie eine Liste der Digital Twins-Funktionen an, die Sie mithilfe des Beispiels erkunden können. Führen Sie den folgenden Befehl aus:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Grundlegendes zum Bereitstellungsprozess
 

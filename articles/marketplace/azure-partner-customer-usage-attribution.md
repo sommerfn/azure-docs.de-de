@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977149"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105612"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -166,43 +166,28 @@ Sie können GUIDs auch auf einer differenzierteren Ebene (z. B. pro SKU) nachve
 
 Die GUIDs müssen registriert werden, damit die Zuordnung der Nutzung durch Kunden aktiviert wird.
 
-Alle Registrierungen für Vorlagen-GUIDs erfolgen über das Azure Marketplace-Cloud-Partnerportal (CPP).
+Alle Registrierungen für Vorlagen-GUIDs werden innerhalb von Partner Center durchgeführt.
 
-Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die GUID im CPP registriert haben, werden alle Bereitstellungen nachverfolgt.
+Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die GUID im Partner Center registriert haben, werden alle Bereitstellungen nachverfolgt.
 
-1. Stellen Sie beim [Azure Marketplace](https://aka.ms/listonazuremarketplace) einen Antrag, damit Sie Zugriff auf das Cloud-Partnerportal (CPP) erhalten.
+1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://aka.ms/JoinMarketplace).
 
-   * Partner müssen [ein Profil im CPP](https://docs.microsoft.com/azure/marketplace/become-publisher) haben. Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
+   * Partner müssen [über ein Profil im Partner Center verfügen](https://docs.microsoft.com/azure/marketplace/become-publisher). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
    * Partner können mehrere GUIDs registrieren.
    * Partner können auch eine GUID für die nicht im Marketplace verfügbaren Lösungsvorlagen und Angebote registrieren.
 
-1. Melden Sie sich beim [Cloudpartnerportal](https://cloudpartner.azure.com/) an.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
 
-1. Wählen Sie oben rechts Ihr Kontosymbol und dann **Herausgeberprofil** aus.
+1. Wählen Sie oben rechts „Einstellungen“ (Zahnradsymbol) und anschließend **Entwicklereinstellungen** aus.
 
-   ![Herausgeberprofil auswählen](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. Wählen Sie auf der Seite **Kontoeinstellungen** die Option **Nachverfolgungs-GUID hinzufügen** aus.
 
-1. Wählen Sie auf der Seite **Profil** die Option **Nachverfolgungs-GUID hinzufügen** aus.
-
-   ![„Nachverfolgungs-GUID hinzufügen“ auswählen](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. Geben Sie im Feld **Nachverfolgungs-GUID** Ihre Nachverfolgungs-GUID ein. Geben Sie nur die GUID ohne das Präfix **pid-** ein. Geben Sie im Feld **Benutzerdefinierte Beschreibung** den Angebotsnamen oder eine Beschreibung ein.
-
-   ![Seite „Profil“](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![GUID und Angebotsbeschreibung eingeben](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. Geben Sie im Feld **GUID** Ihre Nachverfolgungs-GUID ein. Geben Sie nur die GUID ohne das Präfix **pid-** ein. Geben Sie im Feld **Beschreibung** den Angebotsnamen oder eine Beschreibung ein.
 
 1. Wenn Sie mehrere GUIDs registrieren möchten, klicken Sie erneut auf **Nachverfolgungs-GUID hinzufügen**. Auf der Seite werden weitere Felder angezeigt.
 
-   ![„Nachverfolgungs-GUID hinzufügen“ erneut auswählen](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Weitere GUID und Angebotsbeschreibung eingeben](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. Wählen Sie **Speichern** aus.
 
-   ![„Speichern“ auswählen](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die GUID im CPP registriert haben, werden alle Bereitstellungen nachverfolgt.
 
 ## <a name="verify-the-guid-deployment"></a>Überprüfen der GUID-Bereitstellung
 
@@ -247,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Bericht
 
-Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie Dashboard „Analyse“ im Partner Center ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn Sie Probleme mit dem Bericht oder der Anmeldung haben, erstellen Sie eine Supportanfrage gemäß der Anleitung im Abschnitt „Support“.
+Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie Dashboard „Analyse“ im Partner Center ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn Sie Probleme mit dem Bericht oder der Anmeldung haben, erstellen Sie eine Supportanfrage gemäß der Anleitung im Abschnitt „Support“.
 
 Wählen Sie in der Dropdownliste für den Partnerzuordnungstyp „Tracked Template“ (Nachverfolgte Vorlage) aus, um den Bericht anzuzeigen.
 
@@ -269,7 +254,7 @@ Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation 
 
 Es gibt zwei Supportkanäle, abhängig vom Problem, mit dem Sie sich befassen.
 
-Wenn Probleme im Partner Center auftreten, z.B. beim Anzeigen des Berichts über die Zuordnung der Nutzung durch Kunden oder beim Anmelden, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Wenn Probleme im Partner Center auftreten, z.B. beim Anzeigen des Berichts über die Zuordnung der Nutzung durch Kunden oder beim Anmelden, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

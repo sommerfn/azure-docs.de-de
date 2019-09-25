@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141773"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105497"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Getaktete Abrechnung mit dem Marketplace-Messungsdienst
 
@@ -55,7 +55,7 @@ In diesem Beispiel ist Contoso ein Herausgeber mit einem SaaS-Dienst namens Cont
     * Über 50.000 E-Mails: 0,5 USD pro 100 E-Mails
     * Über 10.000 SMS: 0,01 USD pro SMS
 
-Ein Azure-Kunde, der den CNS-Dienst abonniert, kann die Menge an SMS und E-Mails versenden, die pro Monat im ausgewählten Plan enthalten ist.  Wenn Kunden mehr als die enthaltene Menge beanspruchen, müssen sie nicht zu einem anderen Plan wechseln oder ihr Verhalten ändern.  Contoso misst die Nutzung, die über die enthaltene Menge hinausgeht, und beginnt damit, über die [Marketplace-Messungsdienst-API](./marketplace-metering-service-apis.md) Nutzungsereignisse für die zusätzliche Nutzung an Microsoft zu senden.  Microsoft berechnet dem Kunden wiederum die zusätzliche Nutzung gemäß Angabe des Herausgebers.
+Ein Azure-Kunde, der den CNS-Dienst abonniert, kann die Menge an SMS und E-Mails versenden, die pro Monat im ausgewählten Plan enthalten ist.  Die Nutzung bis zur enthaltenen Menge wird von Contoso gemessen, ohne dass Verwendungsereignisse an Microsoft gesendet werden.  Wenn Kunden mehr als die enthaltene Menge beanspruchen, müssen sie nicht zu einem anderen Plan wechseln oder ihr Verhalten ändern.  Contoso misst die Nutzung, die über die enthaltene Menge hinausgeht, und beginnt damit, über die [Marketplace-Messungsdienst-API](./marketplace-metering-service-apis.md) Nutzungsereignisse für die zusätzliche Nutzung an Microsoft zu senden.  Microsoft berechnet dem Kunden wiederum die zusätzliche Nutzung gemäß Angabe des Herausgebers.
 
 ## <a name="billing-dimensions"></a>Abrechnungsdimensionen
 
@@ -73,7 +73,7 @@ Abrechnungsdimensionen werden in allen Plänen für ein Angebot verwendet.  Manc
 Die Attribute, die die Dimension selbst definieren, werden über alle Pläne zu einem Angebot hinweg gemeinsam genutzt.  Vor der Angebotsveröffentlichung wirkt sich eine Änderung dieser Attribute im Kontext eines beliebigen Plans auf die Dimensionsdefinition für alle Pläne aus.  Nachdem Sie das Angebot veröffentlicht haben, können diese Attribute nicht mehr bearbeitet werden.  Zu diesen Attributen zählen folgende:
 
 * Bezeichner
-* Name
+* NAME
 * Unit of measure
 
 Die anderen Attribute einer Dimension sind planspezifisch und können von Plan zu Plan unterschiedliche Werte haben.  Vor dem Veröffentlichen des Plans können Sie diese Werte bearbeiten, und nur dieser Plan ist betroffen.  Nachdem Sie den Plan veröffentlicht haben, können diese Attribute nicht mehr bearbeitet werden.  Zu diesen Attributen zählen folgende:
@@ -103,7 +103,7 @@ Da eine mit dem Marketplace-Messungsdienst verwendete Dimension bestimmt, wie ei
 Sobald ein Angebot mit einer Dimension veröffentlicht wurde, können die Details der Angebotsebene für diese Dimension nicht mehr geändert werden:
 
 * Bezeichner
-* Name
+* NAME
 * Unit of measure
 
 Nachdem ein Plan veröffentlicht wurde, können die Details auf der Planebene nicht mehr geändert werden:

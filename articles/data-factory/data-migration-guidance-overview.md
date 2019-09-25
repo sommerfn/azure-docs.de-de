@@ -12,49 +12,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258999"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931133"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure 
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure
 
-Azure Data Factory kann das Tool für die Datenmigration sein, wenn Sie Ihren Data Lake oder Ihr Enterprise Data Warehouse (EDW) zu Azure migrieren möchten. Die Data Lake- und Data Warehouse-Migration bezieht sich auf die folgenden Szenarien: 
+Wenn Sie Ihren Data Lake oder Ihr Enterprise Data Warehouse (EDW) zu Microsoft Azure migrieren möchten, können Sie Azure Data Factory verwenden. Azure Data Factory eignet sich für folgende Szenarien:
 
-- Migration von Big Data-Workloads aus AWS S3, einem lokalen Hadoop-Dateisystem zu Azure. 
-- EDW-Migration aus Oracle Exadata, Netezza, Teradata, AWS Redshift zu Azure. 
+- Migration von Big Data-Workloads aus Amazon Simple Storage Service (AWS S3) oder einem lokalen Hadoop Distributed File System (HDFS) zu Azure
+- EDW-Migration aus Oracle Exadata, Netezza, Teradata oder Amazon Redshift zu Azure
 
-Azure Data Factory kann PB an Daten für die Data Lake-Migration und Dutzende TB an Daten für die Data Warehouse-Migration verschieben. 
+Mit Azure Data Factory können bei der Data Lake-Migration Daten im Petabyte-Bereich (PB) und bei der Data Warehouse-Migration mehrere Terabytes (TB) an Daten verschoben werden.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Warum Azure Data Factory für die Datenmigration verwendet werden kann 
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Warum Azure Data Factory für die Datenmigration verwendet werden kann
 
-- Azure Data Factory kann leicht die Leistung erhöhen, um Daten serverlos mit Hochleistung, Ausfallsicherheit und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie verwenden.  
-  - Azure Data Factory weist keine Einschränkung hinsichtlich der Datenmenge und der Anzahl von Dateien auf.
-  - Azure Data Factory kann Ihr Netzwerk und Ihre Speicherbandbreite zu 100 % nutzen, um den höchsten Datenverschiebungsdurchsatz in Ihrer Umgebung zu erreichen.   
-  - Azure Data Factory folgt der Strategie der nutzungsbasierten Bezahlung, damit Sie nur für die Zeit bezahlen müssen, in der Sie Azure Data Factory verwenden, um die Datenmigration zu Azure durchzuführen.  
-- Azure Data Factory ist in der Lage, einen einmaligen historischen Ladevorgang sowie einen geplanten inkrementellen Ladevorgang auszuführen. 
-- Azure Data Factory verwendet Azure IR zum Verschieben von Daten zwischen öffentlich zugänglichen Data Lake-/Warehouse-Endpunkten, oder verwenden Sie alternativ die selbstgehostete IR zum Verschieben von Daten für Data Lake/Warehouse-Endpunkte innerhalb des VNETs oder hinter der Firewall. 
-- Azure Data Factory bietet Sicherheit auf Unternehmensniveau: Verwenden Sie MSI oder die Dienstidentität für eine sichere Dienst-zu-Dienst-Integration, oder nutzen Sie alternativ Azure Key Vault für die Verwaltung von Anmeldeinformationen. 
-- Azure Data Factory bietet codefreie Dokumenterstellung und ein umfangreiches integriertes Überwachungsdashboard.  
+- Mit Azure Data Factory kann die Verarbeitungsleistung problemlos zentral hochskaliert werden, um Daten serverlos mit hoher Leistung, Resilienz und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie tatsächlich nutzen. Beachten Sie darüber hinaus Folgendes: 
+  - Datenmenge und Dateianzahl sind bei Azure Data Factory unbegrenzt.
+  - Azure Data Factory kann Ihre Netzwerk- und Speicherbandbreite vollständig ausnutzen, um in Ihrer Umgebung den höchstmöglichen Datenverschiebungsdurchsatz zu erzielen.
+  - Dank des nutzungsbasierten Zahlungsmodells von Azure Data Factory zahlen Sie nur für die Zeit, die tatsächlich für die Datenmigration zu Azure beansprucht wurde.  
+- Azure Data Factory kann sowohl einen einmaligen historischen Ladevorgang als auch geplante inkrementelle Ladevorgänge durchführen.
+- Azure Data Factory nutzt Azure Integration Runtime (IR), um Daten zwischen öffentlich zugänglichen Data Lake- und Data Warehouse-Endpunkten zu verschieben. Von Azure Data Factory kann auch eine selbstgehostete IR verwendet werden, um Daten für Data Lake- und Data Warehouse-Endpunkte innerhalb von Azure Virtual Network (VNET) oder hinter einer Firewall zu verschieben.
+- Azure Data Factory bietet Sicherheit auf Unternehmensniveau: Sie können den Windows Installer (MSI) oder die Dienstidentität für eine sichere Dienst-zu-Dienst-Integration verwenden oder Anmeldeinformationen mithilfe von Azure Key Vault verwalten.
+- Azure Data Factory bietet eine codefreie Erstellungsumgebung sowie ein umfangreiches integriertes Überwachungsdashboard.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online- im Vergleich zu Offlinedatenmigration
 
-Azure Data Factory ist ein typisches Online-Datenmigrationstool für die Übertragung von Daten über ein Netzwerk (Internet, ER oder VPN), wohingegen im Rahmen der Offlinedatenmigration Personen physisch Datenübertragungsgeräte aus Ihrer Organisation an das Azure-Rechenzentrum versenden.  
+Azure Data Factory ist ein Standardtool für die Onlinedatenmigration und ermöglicht die Übertragung von Daten über ein Netzwerk (Internet, ER oder VPN). Bei der Offlinemigration versenden Benutzer dagegen physische Datenübertragungsgeräte von ihrer Organisation an ein Azure-Rechenzentrum.  
 
-Es gibt drei wichtige Überlegungen bei der Auswahl eines Online-oder Offlinemigrationsansatzes:  
+Bei der Entscheidung zwischen Online- und Offlinemigration gibt es drei wichtige Kriterien:  
 
-- Die Größe der zu migrierenden Daten. 
-- Die Netzwerkbandbreite. 
-- Das Migrationsfenster.   
+- Größe der zu migrierenden Daten
+- Netzwerkbandbreite
+- Migrationszeitfenster
 
-Wenn Sie die Datenmigration innerhalb von zwei Wochen (Migrationsfenster) abschließen möchten, sehen Sie in der folgenden Abbildung eine Schnittlinie, die zeigt, wann es sinnvoll ist, ein Onlinemigrationstool (Azure Data Factory) mit unterschiedlichen Datengrößen und Netzwerkbandbreiten einzusetzen.   
+Ein Beispiel: Angenommen, Sie möchten Ihre Datenmigration mithilfe von Azure Data Factory innerhalb von zwei Wochen (Ihr *Migrationszeitfenster*) abwickeln. Beachten Sie die rosafarbene/blaue Markierung in der folgenden Tabelle. Die unterste rosafarbene Zelle einer Spalte gibt jeweils die Kombination aus Datengröße/Netzwerkbandbreite an, deren Migrationszeitfenster den zwei Wochen am nächsten kommt, ohne es zu übersteigen. (Bei den blau eingefärbten Kombinationen aus Größe/Bandbreite wird das zweiwöchige Zeitfenster für die Onlinemigration jeweils überschritten.) 
 
-![Online im Vergleich zu offline](media/data-migration-guidance-overview/online-offline.png)
+![Online oder offline](media/data-migration-guidance-overview/online-offline.png) Anhand dieser Tabelle können Sie auf der Grundlage der Größe Ihrer Daten und Ihrer verfügbaren Netzwerkbandbreite ermitteln, ob Sie Ihr gewünschtes Migrationszeitfenster bei einer Onlinemigration (Azure Data Factory) einhalten können. Beträgt das Zeitfenster für die Onlinemigration mehr als zwei Wochen, empfiehlt sich eine Offlinemigration.
 
 > [!NOTE]
-> Der Vorteil des Onlinemigrationsansatzes besteht darin, dass Sie sowohl das historische Laden von Daten als auch inkrementelle Feeds durch ein einziges Tool in einem End-to-End-Vorgang erreichen können.  Auf diese Weise können die Daten während des gesamten Migrationsfensters zwischen vorhandenem und neuem Speicher synchron gehalten werden, sodass Sie Ihre ETL-Logik auf dem neuen Speicher mit aktualisierten Daten erneut erstellen können. 
+> Bei der Onlinemigration können Sie mithilfe eines einzigen Tools im Rahmen eines End-to-End-Vorgangs sowohl historische Daten laden als auch inkrementelle Feeds nutzen.  Dadurch bleiben Ihre Daten während des gesamten Migrationszeitfensters zwischen dem vorhandenen Speicher und dem neuen Speicher synchronisiert. Somit können Sie Ihre ETL-Logik im neuen Speicher mit aktualisierten Daten neu erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

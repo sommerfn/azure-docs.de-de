@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956745"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962620"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 
@@ -52,7 +52,7 @@ Nutzen Sie Upselling und Cross-Selling für Ihre Lösungen, indem Sie auf Kunden
 
 Erhalten Sie Einblicke in die Performance Ihrer Auflistungen durch Ihnen über den Marketplace zur Verfügung gestellte Einblicke und Analysen. Erhalten Sie weitere Informationen zu Kampagnenleistung, Bestellungen und Auszahlungen und darüber, wie Sie das Beste aus Ihren Kampagnenaktivitäten für Ihre Lösung herausholen.
 
-### <a name="marketplace-go-to-market-benefits"></a>Vorteile bei der Markteinführung im Marketplace 
+### <a name="commercial-marketplace-benefits"></a>Vorteile des kommerziellen Marketplace 
 
 Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angebot an kostenlosen Vorteilen, um Partner dabei zu unterstützen, ihr Geschäft im Marketplace auszubauen. Diese Vorteile lassen sich in folgende Kategorien einteilen: 
 
@@ -64,7 +64,7 @@ Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angeb
 
 Nachdem Sie Ihre Lösung an den Marketplace [übermittelt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) haben, kontaktiert Sie unser Onboardingteam, um Sie bei der Veröffentlichung zu unterstützen.  Weitere Informationen finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
 
-Weitere Informationen zu den Microsoft-Markteinführungsvorteilen und zu Möglichkeiten, das Wachstum Ihres Geschäfts im Marketplace zu steigern, finden Sie auf unter [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
