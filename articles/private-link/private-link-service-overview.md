@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 27e927425faec045c4f304ae6de155f2337307d9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104673"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265553"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -68,7 +68,7 @@ Ein Private Link-Dienst legt die folgenden Eigenschaften fest:
  
 - Auf einen einzelnen Private Link-Dienst kann von mehreren privaten Endpunkten zugegriffen werden, die zu verschiedenen VNets, Abonnements und/oder Active Directory-Mandanten gehören. Die Verbindung wird über einen Verbindungsworkflow hergestellt. 
  
-- Mehrere Private Link-Dienste können auf demselben Load Balancer Standard mit unterschiedlichen Front-End-IP-Konfigurationen erstellt werden. Die Anzahl der Private Link-Dienste, die Sie pro Load Balancer Standard und pro Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Mehrere Private Link-Dienste können auf demselben Load Balancer Standard mit unterschiedlichen Front-End-IP-Konfigurationen erstellt werden. Die Anzahl der Private Link-Dienste, die Sie pro Load Balancer Standard und pro Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
 - Der Private Link-Dienst kann mit mehr als einer NAT-IP-Konfiguration verknüpft sein. Die Auswahl von mehreren NAT-IP-Konfigurationen kann Dienstanbietern bei der Skalierung helfen. Heute können Dienstanbieter bis zu acht NAT-IP-Adressen pro Private Link-Dienst zuweisen. Mit jeder NAT-IP-Adresse können Sie mehr Ports für Ihre TCP-Verbindungen zuweisen und auf diese Weise horizontal hochskalieren. Nachdem Sie mehrere NAT-IP-Adressen zu einem Private Link-Dienst hinzugefügt haben, können Sie die NAT-IP-Adressen nicht mehr löschen. Dadurch wird sichergestellt, dass beim Löschen der NAT-IP-Adressen die aktiven Verbindungen nicht beeinträchtigt werden.
 

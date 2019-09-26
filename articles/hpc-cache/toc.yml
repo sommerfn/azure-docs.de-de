@@ -23,12 +23,15 @@
             - name: Vorabladen des neuen Blobspeichers
               href: hpc-cache-ingest.md
             - name: Alternative Datenerfassungsmethoden
-            - name: Auffüllen des Caches mit parallelem Kopieren
-              href: hpc-cache-ingest-parallelcp.md
-            - name: Auffüllen des Caches mit msrsync
-              href: hpc-cache-ingest-msrsync.md
-            - name: Auffüllen des Caches per manuellem Dateikopiervorgang
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: Auffüllen des Caches mit parallelem Kopieren
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: Auffüllen des Caches mit msrsync
+                  href: hpc-cache-ingest-msrsync.md
+                - name: Auffüllen des Caches per manuellem Dateikopiervorgang
+                  href: hpc-cache-ingest-manual.md
+    - name: Herstellen einer Verbindung mit dem Cache
+      href: hpc-cache-mount.md
 - name: Ressourcen
   items:
     - name: Öffnen eines Supporttickets
