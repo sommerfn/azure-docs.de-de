@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744087"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172060"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -90,7 +90,7 @@ Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installi
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen.
 
-An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [die Datei „function.json“ ändern](#javascript-2) oder indem Sie [einer C#-Klassenbibliotheksfunktion einen Parameter hinzufügen](#c-class-library-2).
+An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [die Datei „function.json“ ändern](#add-a-function-to-your-project) oder indem Sie [einer C#-Klassenbibliotheksfunktion einen Parameter hinzufügen](#add-a-function-to-your-project).
 
 Ferner können Sie [Ihrem Projekt eine neue Funktion hinzufügen](#add-a-function-to-your-project).
 
@@ -98,11 +98,11 @@ Ferner können Sie [Ihrem Projekt eine neue Funktion hinzufügen](#add-a-functio
 
 Mit Ausnahme von HTTP- und Timertriggern werden Bindungen in Erweiterungspaketen implementiert. Sie müssen die Erweiterungspakete für die Trigger und Bindungen installieren, die sie benötigen. Der Vorgang der Installation der Bindungserweiterungen hängt von der Sprache Ihres Projekts ab.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>C\#-Klassenbibliothek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Führen Sie den Befehl [dotnet add package](/dotnet/core/tools/dotnet-add-package) im Terminalfenster aus, um die Erweiterungspakete zu installieren, die Sie in Ihrem Projekt benötigen. Der folgende Befehl installiert die Azure Storage-Erweiterung, die Bindungen für Blob, Queue und Table Storage implementiert.
 
@@ -110,19 +110,23 @@ Führen Sie den Befehl [dotnet add package](/dotnet/core/tools/dotnet-add-packag
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>Hinzufügen einer Funktion zu Ihrem Projekt
 
 Sie können einem Projekt eine neue Funktion hinzufügen, indem Sie eine der vordefinierten Functions-Triggervorlagen verwenden. Um einen neuen Funktionstrigger hinzuzufügen, drücken Sie F1, um die Befehlspalette zu öffnen. Suchen Sie dann nach dem Befehl **Azure Functions: Funktion erstellen**. Befolgen Sie die Anweisungen, um Ihren Triggertyp auszuwählen und die erforderlichen Attribute des Triggers zu definieren. Wenn eine Zugriffstaste oder eine Verbindungszeichenfolge erforderlich ist, damit Ihr Trigger eine Verbindung mit einem Dienst herstellen kann, bereiten Sie dies vor, bevor Sie den Funktionstrigger erstellen.
 
 Die Ergebnisse dieser Aktion hängen von Ihrer Projektsprache ab:
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Im Projekt wird ein neuer Ordner erstellt. Er enthält eine neue Datei „function.json“ und die neue JavaScript-Codedatei.
 
-### <a name="c-class-library"></a>C\#-Klassenbibliothek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Eine neue C#-Klassenbibliotheksdatei (CS) wird Ihrem Projekt hinzugefügt.
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>Hinzufügen von Eingabe- und Ausgabebindungen
 
@@ -130,7 +134,7 @@ Sie können Ihre Funktion erweitern, indem Sie Eingabe- und Ausgabebindungen hin
 
 Stellen Sie in den folgenden Beispielen eine Verbindung mit einer Speicherwarteschlange mit dem Namen `outqueue` her, wobei die Verbindungszeichenfolge für das Speicherkonto in der Anwendungseinstellung `MyStorageConnection` in „local.settings.json“ festgelegt wird.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufügen, indem Sie auf eine Folge komfortabler Aufforderungen reagieren. Klicken Sie zum Erstellen einer Bindung mit der rechten Maustaste (STRG+Mausklick unter macOS) auf die Datei **function.json** in Ihrem Funktionsordner, und wählen Sie dann **Bindung hinzufügen** aus:
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output---javascript-example).
 
-### <a name="c-class-library"></a>C\#-Klassenbibliothek
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Aktualisieren Sie die Funktionsmethode, um der `Run`-Methodendefinition den folgenden Parameter hinzuzufügen:
 
@@ -181,6 +185,8 @@ Für diesen Code müssen Sie die folgende `using`-Anweisung hinzufügen:
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nachrichten dar, die in eine Ausgabebindung geschrieben werden, wenn die Funktion abgeschlossen wird. Sie fügen der Sammlung mindestens eine Nachricht hinzu. Diese Nachrichten werden an die Warteschlange gesendet, wenn die Funktion abgeschlossen ist.
 
@@ -336,7 +342,7 @@ Anzeigen der vorhandenen App-Einstellungen im Bereich **Azure: Functions** durch
 
 ### <a name="download-settings-from-azure"></a>Herunterladen der Einstellungen von Azure
 
-Wenn Sie Anwendungseinstellungen in Azure erstellt haben, können Sie sie in Ihre Datei „local.settings.json“ herunterladen, indem Sie den Befehl **Azure Functions: Remoteeinstellungen herunterladen** verwenden.
+Wenn Sie Anwendungseinstellungen in Azure erstellt haben, können Sie sie in Ihre Datei „local.settings.json“ herunterladen, indem Sie den Befehl **Azure Functions: Remoteeinstellungen herunterladen** auszuwählen.
 
 Wie beim Hochladen wird die lokale Datei, wenn sie verschlüsselt ist, entschlüsselt, veröffentlicht und erneut verschlüsselt. Wenn Einstellungen vorhanden sind, bei denen die Werte an den beiden Speicherorten einen Konflikt verursachen, werden Sie aufgefordert, die Vorgehensweise auszuwählen.
 

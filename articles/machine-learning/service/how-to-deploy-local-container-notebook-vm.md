@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Modellen auf Notebook-VMs
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning Service-Modelle mithilfe von Notebook-VMs als Webdienst bereitstellen.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe von Notebook-VMs als Webdienst bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947901"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002825"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Bereitstellen eines Modells auf Notebook-VMs
 
-Hier erfahren Sie, wie Sie mit Azure Machine Learning Service ein Modell als Webdienst auf einer Notebook-VM bereitstellen. Verwenden Sie Notebook-VMs, wenn eine der folgenden Bedingungen zutrifft:
+Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf einer Notebook-VM bereitstellen. Verwenden Sie Notebook-VMs, wenn eine der folgenden Bedingungen zutrifft:
 
 - Sie müssen Ihr Modell schnell bereitstellen und überprüfen.
 - Sie testen ein Modell in der Entwicklungsphase.
 
 > [!TIP]
-> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Notebook-VM in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der lokale Computer die Notebook-VM. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning Service](how-to-deploy-and-where.md).
+> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Notebook-VM in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der lokale Computer die Notebook-VM. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning Service-Arbeitsbereich mit ausgeführter Notebook-VM. Weitere Informationen finden Sie unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
+- Ein Azure Machine Learning-Arbeitsbereich mit einer Notebook-VM, die ausgeführt wird. Weitere Informationen finden Sie unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-notebook-vms"></a>Bereitstellen auf den Notebook-VMs
 

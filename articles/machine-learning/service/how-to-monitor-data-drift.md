@@ -1,7 +1,7 @@
 ---
 title: Erkennen von Datenabweichungen (Vorschauversion) in AKS-Bereitstellungen
-titleSuffix: Azure Machine Learning service
-description: Erkennen von Datenabweichungen bei in Azure Kubernetes Service bereitgestellten Modellen im Azure Machine Learning-Dienst
+titleSuffix: Azure Machine Learning
+description: Erkennen von Datenabweichungen bei in Azure Kubernetes Service bereitgestellten Modellen in Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 07/08/2019
-ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/13/2019
+ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858709"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034354"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
-In diesem Artikel erfahren Sie, wie Datenabweichungen zwischen dem Trainingsdataset und den Rückschlussdaten eines bereitgestellten Modells überwacht werden. Im Kontext des maschinellen Lernens kann es für trainierte Machine Learning-Modelle aufgrund von Datenabweichungen zu einer Beeinträchtigung der Vorhersageleistung kommen. Mit dem Azure Machine Learning-Dienst können Sie Datenabweichungen überwachen, und der Dienst kann eine E-Mail-Benachrichtigung an Sie senden, wenn eine Abweichung festgestellt wird.
+In diesem Artikel erfahren Sie, wie Datenabweichungen zwischen dem Trainingsdataset und den Rückschlussdaten eines bereitgestellten Modells überwacht werden. Im Kontext des maschinellen Lernens kann es für trainierte Machine Learning-Modelle aufgrund von Datenabweichungen zu einer Beeinträchtigung der Vorhersageleistung kommen. Mit Azure Machine Learning können Sie Datenabweichungen überwachen, und der Dienst kann eine E-Mail-Benachrichtigung an Sie senden, wenn eine Abweichung festgestellt wird.
 
 ## <a name="what-is-data-drift"></a>Was sind Datenabweichungen?
 
@@ -27,7 +27,7 @@ Datenabweichungen treten auf, wenn sich die Daten, die ein Modell in der Produkt
 
 ## <a name="what-can-i-monitor"></a>Was kann ich überwachen?
 
-Mit Azure Machine Learning Service können Sie die Eingaben in ein auf AKS bereitgestelltes Modell überwachen und diese Daten mit dem Trainingsdataset für das Modell vergleichen. In regelmäßigen Abständen werden [Schnappschüsse und Profile](how-to-explore-prepare-data.md) der Rückschlussdaten erstellt, und dann erfolgt eine Berechnung gegen den Basisdatensatz, um eine Datenabweichungsanalyse zu erstellen, die Folgendes umfasst: 
+Mit Azure Machine Learning können Sie die Eingaben in ein auf AKS bereitgestelltes Modell überwachen und diese Daten mit dem Trainingsdataset für das Modell vergleichen. In regelmäßigen Abständen werden [Schnappschüsse und Profile](how-to-explore-prepare-data.md) der Rückschlussdaten erstellt, und dann erfolgt eine Berechnung gegen den Basisdatensatz, um eine Datenabweichungsanalyse zu erstellen, die Folgendes umfasst: 
 
 + Messen des Ausmaßes der Datenabweichung, das als Abweichungskoeffizient bezeichnet wird.
 + Messen des Beitrags zur Datenabweichung nach Feature und Informieren, welche Features Datenabweichungen verursacht haben.
@@ -38,20 +38,20 @@ Mit Azure Machine Learning Service können Sie die Eingaben in ein auf AKS berei
 > [!Note]
 > Dieser Dienst ist als (Vorschauversion) verfügbar, und die Konfigurationsoptionen sind beschränkt. Details und Updates finden Sie in unserer [API-Dokumentation](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) und den [Versionshinweisen](azure-machine-learning-release-notes.md). 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Überwachen von Datenabweichungen in Azure Machine Learning Service
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Überwachen von Datenvariationen in Azure Machine Learning
 
-Mit Azure Machine Learning Service werden Datenabweichungen anhand von Datasets oder Bereitstellungen überwacht. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein zweites Dataset – normalerweise gesammelte Modelleingabedaten einer Bereitstellung – wird basierend auf dem Baseline-Dataset getestet. Für beide Datasets wird eine Profilerstellung durchgeführt, und sie werden in den Dienst für die Überwachung von Datenabweichungen eingegeben. Ein Machine Learning-Modell wird trainiert, um Unterschiede zwischen den beiden Datasets zu ermitteln. Die Leistung des Modells wird in den Abweichungskoeffizienten konvertiert, mit dem die Größenordnung der Abweichung zwischen den beiden Datasets gemessen wird. Mit der [Modellinterpretierbarkeit](machine-learning-interpretability-explainability.md) werden die Features berechnet, die zum Abweichungskoeffizienten beigetragen haben. Über das Datasetprofil werden statistische Informationen zu jedem Feature nachverfolgt. 
+Mit Azure Machine Learning werden Datenvariationen (Datenabweichungen) anhand von Datasets oder Bereitstellungen überwacht. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein zweites Dataset – normalerweise gesammelte Modelleingabedaten einer Bereitstellung – wird basierend auf dem Baseline-Dataset getestet. Für beide Datasets wird eine Profilerstellung durchgeführt, und sie werden in den Dienst für die Überwachung von Datenabweichungen eingegeben. Ein Machine Learning-Modell wird trainiert, um Unterschiede zwischen den beiden Datasets zu ermitteln. Die Leistung des Modells wird in den Abweichungskoeffizienten konvertiert, mit dem die Größenordnung der Abweichung zwischen den beiden Datasets gemessen wird. Mit der [Modellinterpretierbarkeit](machine-learning-interpretability-explainability.md) werden die Features berechnet, die zum Abweichungskoeffizienten beigetragen haben. Über das Datasetprofil werden statistische Informationen zu jedem Feature nachverfolgt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 - Installiertes Azure Machine Learning SDK für Python. Verwenden Sie die Anleitungen unter [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) für Folgendes:
 
     - Erstellen einer Miniconda-Umgebung
     - Installieren des Azure Machine Learning SDK für Python
 
-- Ein [Azure Machine Learning Service-Arbeitsbereich](how-to-manage-workspace.md).
+- Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
 - Eine [Konfigurationsdatei](how-to-configure-environment.md#workspace) für den Arbeitsbereich.
 
@@ -133,7 +133,6 @@ Es gibt mehrere Möglichkeiten, Metriken für Datenabweichungen anzuzeigen:
 
 * Verwenden Sie das [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`.
 * Verwenden Sie die [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)-Funktion für jedes `datadrift`-Ausführungsobjekt.
-* Zeigen Sie die Metriken für Ihr Modell im Azure-Portal an.
 * Zeigen Sie die Metriken aus dem **Modelle**-Abschnitt der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) an.
 
 Das folgende Python-Beispiel veranschaulicht das Plotten von relevanten Datenabweichungsmetriken. Sie können die zurückgegebenen Metriken verwenden, um benutzerdefinierte Visualisierungen zu erstellen:
@@ -159,23 +158,22 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Die Konfiguration der Datenabweichungserkennung ist auf der Modelldetailseite im Azure-Portal oder auf der Landing Page Ihres Arbeitsbereichs (Vorschau) zu sehen.
+Die Konfiguration der Datenabweichungserkennung wird unter **Modelle** auf der Registerkarte **Details** auf der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) angezeigt.
 
-![Konfiguration der Datenabweichung im Azure-Portal](media/how-to-monitor-data-drift/drift_config.png)
+![Datenabweichungen im Azure-Portal](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-azure-portal"></a>Anzeigen von Ergebnissen im Azure-Portal
+## <a name="view-results-in-your-workspace-landing-page"></a>Anzeigen von Ergebnissen auf der Landing Page Ihres Arbeitsbereichs
 
-Zum Anzeigen von Ergebnissen in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Registerkarte „Datenvariation (Vorschauversion)“ mit der Visualisierung der Datenabweichungsmetriken ist jetzt verfügbar. 
+Um Ergebnisse in Ihrem Arbeitsbereich auf der [Landing Page des Arbeitsbereichs (Vorschau)](https://ml.azure.com) anzuzeigen, navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Es ist nun die Registerkarte **Datenvariation** verfügbar, auf der Datenvariationsmetriken visualisiert werden. 
 
-![Datenabweichungen im Azure-Portal](media/how-to-monitor-data-drift/drift_ui.png)
+[![Landing Page des Arbeitsbereichs, „Datenvariation“](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
-Die Ergebnisse sind auch in den Modelldetails auf der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) verfügbar.
 
 ## <a name="receiving-drift-alerts"></a>Empfangen von Benachrichtigungen zu Abweichungen
 
 Wenn Sie den Abweichungskoeffizienten für den Benachrichtigungsschwellenwert festlegen und eine E-Mail-Adresse angeben, wird automatisch eine [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)-E-Mail-Benachrichtigung gesendet, wenn der Abweichungskoeffizient über dem Schwellenwert liegt. 
 
-Damit Sie benutzerdefinierte Benachrichtigungen und Aktionen einrichten können, werden alle Datenabweichungsmetriken in der [Application Insights](how-to-enable-app-insights.md)-Ressource gespeichert, die zusammen mit dem Azure Machine Learning Service-Arbeitsbereich erstellt wurde. Über den Link in der E-Mail-Benachrichtigung gelangen Sie zur Application Insights-Abfrage.
+Damit Sie benutzerdefinierte Benachrichtigungen und Aktionen einrichten können, werden alle Datenabweichungsmetriken in der [Application Insights](how-to-enable-app-insights.md)-Ressource gespeichert, die zusammen mit dem Azure Machine Learning-Arbeitsbereich erstellt wurde. Über den Link in der E-Mail-Benachrichtigung gelangen Sie zur Application Insights-Abfrage.
 
 ![E-Mail-Benachrichtigung über Datenabweichungen](media/how-to-monitor-data-drift/drift_email.png)
 

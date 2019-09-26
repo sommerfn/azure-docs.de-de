@@ -1,7 +1,7 @@
 ---
 title: Optimieren von Hyperparametern für Ihr Modell
-titleSuffix: Azure Machine Learning service
-description: Mit dem Azure Machine Learning-Dienst können Sie die Hyperparameter für Ihr Deep Learning-/Machine Learning-Modell effizient optimieren. Im Folgenden erfahren Sie, wie Sie den Suchbereich für Parameter definieren, eine zu optimierende primäre Metrik festlegen und Läufe mit schlechter Leistung vorzeitig beenden.
+titleSuffix: Azure Machine Learning
+description: Mit Azure Machine Learning können Sie die Hyperparameter für Ihr Deep Learning-/Machine Learning-Modell effizient optimieren. Im Folgenden erfahren Sie, wie Sie den Suchbereich für Parameter definieren, eine zu optimierende primäre Metrik festlegen und Läufe mit schlechter Leistung vorzeitig beenden.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873061"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999384"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning Service
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning
 
-Mit dem Azure Machine Learning-Dienst können Sie die Hyperparameter für Ihr Modell effizient optimieren.  Die Optimierung von Hyperparametern umfasst die folgenden Schritte:
+Mit Azure Machine Learning können Sie die Hyperparameter für Ihr Modell effizient optimieren.  Die Optimierung von Hyperparametern umfasst die folgenden Schritte:
 
 * Definieren des Suchbereichs für Parameter
 * Festlegen einer zu optimierenden primären Metrik  
@@ -94,7 +94,7 @@ Dieser Code definiert einen Suchbereich mit zwei Parametern: `learning_rate` und
 
 ### <a name="sampling-the-hyperparameter-space"></a>Stichprobenentnahme im Hyperparameterraum
 
-Sie können außerdem die für die Definition des Hyperparameterbereichs zu verwendende Parametersamplingmethode (Stichprobenentnahme) festlegen. Der Azure Machine Learning-Dienst unterstützt Zufallssampling, Rastersampling und Bayessches Sampling.
+Sie können außerdem die für die Definition des Hyperparameterbereichs zu verwendende Parametersamplingmethode (Stichprobenentnahme) festlegen. Azure Machine Learning unterstützt Zufallssampling, Rastersampling und Bayessches Sampling.
 
 #### <a name="random-sampling"></a>Zufallssampling
 
@@ -186,7 +186,7 @@ Bei der Verwendung einer Richtlinie für vorzeitige Beendigung können Sie die f
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie. Jede Protokollierung der primären Metrik durch das Trainingsskript zählt als ein Intervall. Also wird beim Wert 1 für `evaluation_interval` die Richtlinie jedes Mal angewendet, wenn das Trainingsskript die primäre Metrik meldet. Beim Wert 2 für `evaluation_interval` wird die Richtlinie bei jeder zweiten Meldung der primären Metrik durch das Trainingsskript angewendet. Wenn kein Intervall angegeben wird, wird `evaluation_interval` standardmäßig auf 1 festgelegt.
 * `delay_evaluation`: Verzögert die erste Auswertung der Richtlinie für eine angegebene Anzahl Intervalle. Dies ist ein optionaler Parameter, der die Ausführung aller Konfigurationen für eine anfängliche Mindestanzahl von Intervallen ermöglicht, um die vorzeitige Beendigung von Trainingsläufen zu verhindern. Wenn er angegeben wird, wird dir Richtlinie bei jedem Vielfachen von evaluation_interval angewendet, das größer als oder gleich groß wie delay_evaluation ist.
 
-Der Azure Machine Learning-Dienst unterstützt die folgenden Richtlinien für vorzeitige Beendigung.
+Azure Machine Learning unterstützt die folgenden Richtlinien für vorzeitige Beendigung.
 
 ### <a name="bandit-policy"></a>Banditenrichtlinie
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` ist der Name, den Sie Ihrem Experiment zur Hyperparameteroptimierung zuweisen, und `workspace` ist der Arbeitsbereich, in dem Sie das Experiment erstellen möchten (weitere Informationen zu Experimenten finden Sie unter [Wie funktioniert der Azure Machine Learning-Dienst?](concept-azure-machine-learning-architecture.md)).
+`experiment_name` ist der Name, den Sie Ihrem Experiment zur Hyperparameteroptimierung zuweisen, und `workspace` ist der Arbeitsbereich, in dem Sie das Experiment erstellen möchten (weitere Informationen zu Experimenten finden Sie unter [Wie funktioniert Azure Machine Learning?](concept-azure-machine-learning-architecture.md)).
 
 ## <a name="visualize-experiment"></a>Visualisieren des Experiments
 

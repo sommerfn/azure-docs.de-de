@@ -1,6 +1,6 @@
 ---
 title: Trainieren eines neuronalen Deep Learning-Netz mit Chainer
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Ihre PyTorch-Trainingsskripts im Unternehmensumfang mit der Chainer-Estimator-Klasse von Azure Machine Learning ausführen.  Das Beispielskript klassifiziert Bilder von handschriftlichen Ziffern, um ein neuronales Deep Learning-Netz zu erzeugen, wobei die Python-Bibliothek von Chainer verwendet wird, die auf numpy ausgeführt wird.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966827"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076418"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Trainieren und Registrieren von Chainer-Modellen nach Maß mit Azure Machine Learning Service
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie Ihre [Chainer](https://chainer.org/)-Trainingsskripts im Unternehmensumfang mit der [Chainer-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. Das Beispieltrainingsskript in diesem Artikel verwendet das beliebte [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/), um handschriftliche Ziffern mithilfe eines DNN (Deep Neural Network) zu klassifizieren, das mit der Python-Bibliothek von Chainer erstellt wurde, die auf [numpy](https://www.numpy.org/) ausgeführt wird.
 
@@ -25,7 +25,7 @@ Unabhängig davon, ob Sie ein Chainer-Deep Learning-Modell von Grund auf trainie
 
 Weitere Informationen zu [Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Initialisieren eines Arbeitsbereichs
 
-Der [Azure Machine Learning Service-Arbeitsbereich](concept-workspace.md) ist für den Dienst die Ressource der obersten Ebene. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
+Der [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für den Dienst. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
 
 Erstellen Sie ein Arbeitsbereichsobjekt mithilfe der Datei `config.json`, die im [Abschnitt Voraussetzungen](#prerequisites) erstellt wurde:
 
@@ -84,7 +84,7 @@ In diesem Tutorial ist das Trainingsskript **chainer_mnist.py** bereits bereitge
 
 Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie mit dem Objekt `Run` innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
 
-Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#upload-dataset-and-scripts)) ausführen, um Daten während des Trainings verfügbar zu machen.
+Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md)) ausführen, um Daten während des Trainings verfügbar zu machen.
 
 Kopieren Sie das Trainingsskript **chainer_mnist.py** in Ihr Projektverzeichnis.
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von Chainer im Azure Machine Learning Service trainiert und registriert. Um zu erfahren, wie Sie ein Modell implementieren, fahren Sie mit unserem Artikel zur [Modellimplementierung](how-to-deploy-and-where.md) fort.
+In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von Chainer in Azure Machine Learning trainiert und registriert. Um zu erfahren, wie Sie ein Modell implementieren, fahren Sie mit unserem Artikel zur [Modellimplementierung](how-to-deploy-and-where.md) fort.
 
 * [Optimieren von Hyperparametern](how-to-tune-hyperparameters.md)
 

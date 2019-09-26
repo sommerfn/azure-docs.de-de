@@ -1,7 +1,7 @@
 ---
 title: Sichern von Webdiensten mit SSL
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie einen mit Azure Machine Learning Service bereitgestellten Webdienst schützen, indem Sie HTTPS aktivieren. HTTPS schützt die von Clients übertragenen Daten mithilfe von TLS (Transport Layer Security), einem Ersatz für SSL (Secure Sockets Layer). Clients verwenden auch HTTPS zum Überprüfen der Identität des Webdiensts verwendet.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie einen über Azure Machine Learning bereitgestellten Webdienst schützen, indem Sie HTTPS aktivieren. HTTPS schützt die von Clients übertragenen Daten mithilfe von TLS (Transport Layer Security), einem Ersatz für SSL (Secure Sockets Layer). Clients verwenden auch HTTPS zum Überprüfen der Identität des Webdiensts verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772522"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034382"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie einen mit Azure Machine Learning Service bereitgestellten Webdienst schützen.
+In diesem Artikel erfahren Sie, wie Sie einen über Azure Machine Learning bereitgestellten Webdienst schützen.
 
 Verwenden Sie [HTTPS](https://en.wikipedia.org/wiki/HTTPS), um den Zugriff auf Webdienste zu beschränken und Daten zu sichern, die Clients übermitteln. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
 
@@ -151,7 +151,7 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   Aktualisieren Sie das DNS der öffentlichen IP-Adresse des AKS-Clusters im linken Bereich auf der Registerkarte **Konfiguration** unter **Einstellungen**. (Siehe folgende Abbildung.) Die öffentliche IP-Adresse ist ein Ressourcentyp, der unter der Ressourcengruppe erstellt wird, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
-  [![Azure Machine Learning Service: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualisieren des SSL-Zertifikats
 

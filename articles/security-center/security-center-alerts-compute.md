@@ -3,9 +3,8 @@ title: Bedrohungserkennung für Cloud Native Compute in Azure Security Center | 
 description: In diesem Thema werden die in Azure Security Center verfügbaren Warnungen für Cloud Native Compute vorgestellt.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 5aa5efcf-9f6f-4aa1-9f72-d651c6a7c9cd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 78f7633af1631eab8fdfb21fb8ff94eafc0247a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.author: memildin
+ms.openlocfilehash: c3fcbadf93ff72f7d2a1dca3b25ace81c9d4f1ae
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013361"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202626"
 ---
 # <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Bedrohungserkennung für Cloud Native Compute in Azure Security Center
 
@@ -38,7 +37,7 @@ Security Center hat auch Zugriff auf die zugrunde liegenden Sandboxes und virtue
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Suspicious WordPress theme invocation detected** (Verdächtigen Aufruf eines WordPress-Designs erkannt)|Das App Service-Aktivitätsprotokoll von enthält einen Hinweis auf eine mögliche Codeinjektionsaktivität für Ihre App Service-Ressource.<br/> Diese verdächtige Aktivität ähnelt einer Aktivität, die dazu dient, ein WordPress-Design zu verändern, sodass die serverseitige Ausführung von Code möglich wird – gefolgt von einer direkten Webanforderung zum Aufrufen der veränderten Designdatei. Diese Art von Aktivität kann Teil eines Angriffs über WordPress sein.|
 |**Connection to web page from anomalous IP address detected** (Verbindung mit einer Webseite über eine anomale IP-Adresse erkannt)|Das App Service-Aktivitätsprotokoll enthält einen Hinweis auf eine Verbindung mit einer sensiblen Webseite von einer Quelladresse, von der aus noch nie eine Verbindung mit dieser Seite hergestellt wurde. Dies deutet möglicherweise auf einen Brute-Force-Angriff auf Ihre Web-App-Verwaltungsseiten hin. Es ist aber auch denkbar, dass ein berechtigter Benutzer eine neue IP-Adresse verwendet.|

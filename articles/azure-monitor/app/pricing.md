@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277005"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067014"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -151,7 +151,7 @@ In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Dat
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
 > [!NOTE]
-> Diese Funktion wurde vorübergehend entfernt, weil ein mögliches Problem behoben werden soll.  Ab Mitte September 2019 soll sie wieder verfügbar sein.
+> Diese Funktion wurde vorübergehend entfernt, weil ein mögliches Problem behoben werden soll.  Sie wird ab der ersten Woche im Oktober 2019 wieder zur Verfügung stehen.
 
 Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tage. 
 

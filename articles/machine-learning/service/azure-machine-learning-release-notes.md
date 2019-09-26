@@ -1,7 +1,7 @@
 ---
 title: Neuerungen im Release
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie mehr über die neuesten Updates des Azure Machine Learning Service und Python SDKs für maschinelles Lernen und Datenaufbereitung.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie mehr über die neuesten Updates für Azure Machine Learning und Python SDKs für maschinelles Lernen und Datenaufbereitung.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,22 +10,71 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900446"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067729"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
+# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
-Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). 
+In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). 
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2019-09-16"></a>16.09.2019
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK für Python v1.0.62
+
++ **Neue Features**
+  + Zeitreihenmerkmal für TabularDataset eingeführt. Dieses Merkmal ermöglicht eine einfache Zeitstempelfilterung für Daten in einem TabularDataset, wie z. B. das Verwenden aller Daten aus einem Zeitbereich oder der neuesten Daten. Um mehr über dieses Zeitreihenmerkmal für TabularDataset zu erfahren, konsultieren Sie für Dokumentation zu https://aka.ms/azureml-data oder für ein Beispielnotebook https://aka.ms/azureml-tsd-notebook. 
+  + Training mit TabularDataset und FileDataset aktiviert. Unter https://aka.ms/dataset-tutorial finden Sie ein Beispielnotebook. 
+  
+  + **azureml-train-core**
+    + Unterstützung für Nccl und Gloo in PyTorch-Estimator hinzugefügt
+  
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + AutoML-Einstellung „lag_length“ und LaggingTransformer sind veraltet.
+    + Validierung der Eingabedaten korrigiert, wenn sie in einem Dataflow-Format angegeben sind.
+    + „it_pipeline.py“ so geändert, dass der JSON-Code für den Graphen generiert und in Artefakte hochgeladen wird. 
+    + Graph unter „userrun“ mithilfe von Cytoscape gerendert.
+  + **azureml-core**
+    + Überprüfen Sie die Ausnahmebehandlung im ADB-Code, und nehmen Sie Änderungen gemäß der neuen Fehlerbehandlung vor.
+    + Automatische MSI-Authentifizierung für Notebook-VMs hinzugefügt.
+    + Fehler korrigiert, aufgrund dessen beschädigte oder leere Modelle aufgrund fehlgeschlagener Wiederholungen hochgeladen werden konnten.
+    + Fehler korrigiert, bei dem sich der `DataReference`-Name ändert, wenn sich der `DataReference`-Modus ändert (z. B. beim Aufrufen von `as_upload`, `as_download` oder `as_mount`).
+    + `mount_point` und `target_path` für `FileDataset.mount` und `FileDataset.download` als optional festgelegt.
+    + Ausnahme bei Nichtauffindbarkeit der Zeitstempelspalte wird ausgelöst, wenn die auf Zeitreihen bezogene API ohne Zuweisung einer differenzierten Zeitstempelspalte aufgerufen wird oder die zugewiesenen Zeitstempelspalten gelöscht werden.
+    + Zeitserienspalten müssen einer Spalte zugewiesen werden, deren Typ „Datum“ ist, sonst wird eine Ausnahme erwartet.
+    + Zeitreihenspalten, die die API „with_timestamp_columns“ zuweisen, können den Wert „None“ bei einem differenzierten/undifferenzierten Namen einer Zeitstempelspalte annehmen, wodurch zuvor zugewiesene Zeitstempelspalten gelöscht werden.
+    + Eine Ausnahme wird ausgelöst, wenn entweder eine differenzierte oder undifferenzierte Zeitstempelspalte mit dem Hinweis für den Benutzer gelöscht wird, dass das Löschen entweder nach dem Ausschließen der Zeitstempelspalte aus der Löschliste oder dem Aufruf von with_time_stamp mit dem Wert „None“ zur Freigabe von Zeitstempelspalten erfolgen kann.
+    + Eine Ausnahme wird ausgelöst, wenn entweder eine differenzierte oder undifferenzierte Zeitstempelspalte mit dem Hinweis nicht der Liste zur Beibehaltung von Spalten hinzugefügt wird, dass das Beibehalten entweder nach dem Ausschließen der Zeitstempelspalte aus der Liste zur Beibehaltung von Spalten oder dem Aufruf von with_time_stamp mit dem Wert „None“ zur Freigabe von Zeitstempelspalten erfolgen kann.
+    + Protokollierung für die Größe eines registrierten Modells hinzugefügt.
+  + **azureml-explain-model**
+    + In der Konsole ausgegebene Warnung korrigiert, wenn das Python-Paket „packaging“ nicht installiert ist: „Sie verwenden eine ältere als die unterstützte Version von lightgbm. Aktualisieren Sie auf eine Version höher als 2.2.1.“
+    + Erklärung zum Downloadmodell mit Sharding für globale Erklärungen mit vielen Features korrigiert.
+    + Fehlende Initialisierungsbeispiele zur Erläuterung der Ausgabe von Mimic Explainer korrigiert.
+    + Unveränderlicher Fehler bei festgelegten Eigenschaften korrigiert, wenn beim Hochladen mit dem Erklärungsclient zwei verschiedene Arten von Modellen verwendet wurden.
+    + get_raw-Parameter zu Bewertungs-Explainer .explain() hinzugefügt, sodass ein Bewertungs-Explainer sowohl bearbeitete als auch Rohwerte zurückgeben kann.
+  + **azureml-train-automl**
+    + Öffentliche APIs aus AutoML zur Unterstützung von Erklärungen aus AutoML Explain SDK eingeführt – Neuere Art der Unterstützung von AutoML-Erklärungen durch Entkopplung der AutoML-Featurisierung und Erklärung des SDK – Integrierte Roherklärungsunterstützung aus AutoML Explain SDK für AutoML-Modelle.
+    + azureml-defaults aus Remotetrainingsumgebungen entfernt.
+    + Standardspeicherort des Caches von FileCacheStore basierend auf AzureFileCacheStore geändert, um AutoML im AzureDatabricks-Codepfad zu ermöglichen.
+    + Validierung der Eingabedaten korrigiert, wenn sie in einem Dataflow-Format angegeben sind.
+  + **azureml-train-core**
+    + Veraltung von source_directory_data_store aufgehoben.
+    + Möglichkeit zum Überschreiben installierter azureml-Paketversionen hinzugefügt. 
+    + Dockerfile-Unterstützung im `environment_definition`-parameter in Estimators hinzugefügt.
+    + Verteilte Trainingsparameter in Estimators vereinfacht.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
+
 ## <a name="2019-09-09"></a>09.09.2019
 
-### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Neue Weboberfläche für Azure Machine Learning-Arbeitsbereiche (Vorschau)
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Neue Weboberfläche (Vorschau) für Azure Machine Learning-Arbeitsbereiche 
 Die neue Weboberfläche ermöglicht Data Scientists und Datentechnikern, ihren End-to-End-Lebenszyklus für Machine Learning vom Vorbereiten und Visualisieren von Daten bis hin zu Trainings- und Bereitstellungsmodellen an einem einzigen Ort abzuschließen. 
 
 ![Benutzeroberfläche des Azure Machine Learning-Arbeitsbereichs (Vorschau)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
@@ -557,7 +606,7 @@ Im Azure-Portal haben Sie jetzt folgende Möglichkeiten:
 + Liveupdates von Diagrammen und Metriken auf Seiten mit Ausführungsberichten und -details
 + Aktualisierte Dateianzeige für Protokolle, Ausgaben und Snapshots auf den Detailseiten der Ausführung
 + Neue und verbesserte Berichterstellung auf der Registerkarte „Experimente“ 
-+ Neue Möglichkeit zum Herunterladen der Datei „config.json“ von der Übersichtsseite des Azure Machine Learning Service-Arbeitsbereichs
++ Neue Möglichkeit zum Herunterladen der Datei „config.json“ von der Übersichtsseite des Azure Machine Learning-Arbeitsbereichs
 + Unterstützung der Erstellung von Machine Learning Service-Arbeitsbereichen über den Azure Databricks-Arbeitsbereich 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +625,7 @@ Verwenden Sie einen virtuellen Notebook-Computer als sichere, unternehmensgerech
 + [Schnelles Starten eines vorkonfigurierten virtuellen Notebook-Computers](tutorial-1st-experiment-sdk-setup.md)  mit der aktuellen Version des Azure Machine Learning-SDK und zugehörigen Paketen.
 + Der Zugriff wird durch bewährte Technologien wie HTTPS, Azure Active Directory-Authentifizierung und Autorisierung gesichert.
 + Zuverlässige Cloudspeicherung von Notebooks und Code im Blob-Speicherkonto Ihres Azure Machine Learning-Arbeitsbereichs. Sie können Ihre virtuellen Notebook-Computer sicher löschen, ohne Ihre Arbeit zu verlieren.
-+ Vorinstallierte Beispielnotebooks zum Erkunden und Experimentieren mit Azure Machine Learning Service-Funktionen.
++ Vorinstallierte Beispielnotebooks zum Erkunden und Experimentieren mit Azure Machine Learning-Features.
 + Umfassende Anpassungsfunktionen für virtuelle Azure-Computer, virtuelle Computer jedes Typs, alle Pakete, alle Treiber. 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +922,7 @@ Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht m
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: Allgemeine Verfügbarkeit
 
-Der Azure Machine Learning Service ist jetzt allgemein verfügbar.
+Azure Machine Learning ist jetzt allgemein verfügbar.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 Mit diesem Release kündigen wir eine neue verwaltete Compute-Umgebung über [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) an. Dieses Computeziel ersetzt das Azure Batch KI-Computeziel für Azure Machine Learning. 
@@ -985,7 +1034,7 @@ Erfahren Sie mehr zum Data Prep SDK, indem Sie die [Referenzdokumente](https://a
 ## <a name="2018-11-05"></a>05.11.2018
 
 ### <a name="azure-portal"></a>Azure-Portal 
-Im Azure-Portal für den Azure Machine Learning-Dienst wurden folgende Updates vorgenommen:
+Im Azure-Portal für Azure Machine Learning wurden folgende Updates vorgenommen:
   * Neue Registerkarte namens **Pipelines** für veröffentlichte Pipelines
   * Unterstützung für das Anfügen eines vorhandenen HDInsight-Clusters als Computeziel hinzugefügt
 
@@ -1098,4 +1147,4 @@ Neues, aktualisiertes Release von Azure Machine Learning: Weitere Informationen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die Übersicht zum [Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).
+Lesen Sie die Übersicht für [Azure Machine Learning](../service/overview-what-is-azure-ml.md).

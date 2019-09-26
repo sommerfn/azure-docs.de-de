@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899940"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967960"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Übermitteln von Aufträgen über R Tools für Visual Studio
 
@@ -55,7 +55,8 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 5. Öffnen Sie die Datei `1-Getting Started with R.R` im Projektmappenordner `A first look at R`.
 6. Beginnen Sie am Anfang der Datei, und senden Sie die einzelnen Zeilen durch Drücken von STRG+EINGABETASTE nacheinander an das R Interactive-Fenster. Bei einigen Zeilen dauert der Vorgang unter Umständen etwas, da sie Pakete installieren.
     * Alternativ können Sie alle Zeilen in der R-Datei durch Drücken von STRG+A markieren und dann entweder alle ausführen (STRG+EINGABETASTE) oder auf der Symbolleiste auf das Symbol für die interaktive Ausführung klicken.
-        ![Interaktives Ausführen](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Interaktives Ausführen](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Nach dem Ausführen aller Zeilen des Skripts sollte die Ausgabe in etwa wie folgt aussehen:
 
@@ -82,20 +83,20 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![Festlegen des Spark-Kontexts](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![Festlegen des Spark-Kontexts](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. Führen Sie im R Interactive-Fenster die folgenden Befehle aus:
 
@@ -107,13 +108,12 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
 
     Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 
-    ![Erfolgreiche rx-Befehlsausführung](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Erfolgreiche rx-Befehlsausführung](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. Vergewissern Sie sich, dass `rxHadoopCopy` die Datei `people.json` erfolgreich aus dem Beispieldatenordner in den neu erstellten Ordner `/user/RevoShare/newUser` kopiert hat:
 
     1. Klicken Sie in Azure im Bereich Ihres HDInsight-ML Services-Clusters im linken Menü auf **Speicherkonten**.
 
-        ![Speicherkonten](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Speicherkonten](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Wählen Sie das Standardspeicherkonto für Ihren Cluster aus, und notieren Sie sich den Container-/Verzeichnisnamen.
 
@@ -123,7 +123,7 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
 
     4. Wählen Sie den Containernamen Ihres Clusters aus, navigieren Sie zum Ordner **user** (hierzu müssen Sie ggf. am Listenende auf *Weitere laden* klicken), und wählen Sie dann *RevoShare* > **newUser** aus. Die Datei `people.json` sollte im Ordner `newUser` angezeigt werden.
 
-        ![Kopierte Datei](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Kopierte Datei](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Der aktuelle Apache Spark-Kontext muss nach der Verwendung wieder beendet werden. Es können nicht gleichzeitig mehrere Kontexte ausgeführt werden.
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233164"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933119"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs
 
@@ -36,49 +36,52 @@ Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enab
 
 In diesem Abschnitt werden die standardmäßig angewendeten Integritätskriterien für die Überwachung von Azure-VMs mit Windows und Linux beschrieben. Alle Integritätskriterien sind dafür vorkonfiguriert, eine Warnung zu senden, wenn ein fehlerhafter Zustand erkannt wird.
 
-### <a name="windows-vms"></a>Virtuelle Windows-Computer
+| Überwachungsname | Häufigkeit (Minuten) | Rückschaudauer (Minuten) | Operator | Schwellenwert | Benachrichtigung bei Status | Schweregrad | Workloadkategorie | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| Logischer Datenträger – online | 5 | 15 | <> | 1 (wahr) | Kritisch | Sev1 | Linux | 
+| Logischer Datenträger – verfügbarer Speicherplatz | 5 | 15 | < | 200 MB (Warnung)<br> 100 MB (Kritisch) | Warnung | Sev1<br> Sev2 | Linux | 
+| Logischer Datenträger – freie I-Knoten (%) | 5 | 15 | < | 5 % | Kritisch | Sev1 | Linux | 
+| Logischer Datenträger – verfügbarer Speicherplatz (%) | 5 | 15 | < | 5 % | Kritisch | Sev1 | Linux | 
+| Netzwerkadapterstatus | 5 | 15 | <> | 1 (wahr) | Warnung | Sev2 | Linux | 
+| Betriebssystem – verfügbare Megabyte Arbeitsspeicher | 5 | 10 | < | 2,5 MB | Kritisch | Sev1 | Linux | 
+| Datenträger Durchschn. Datenträger s/gelesen | 5 | 25 | > | 0,05 s | Kritisch | Sev1 | Linux | 
+| Datenträger Durchschn. Datenträger s/übertragen | 5 | 25 | > | 0,05 s | Kritisch | Sev1 | Linux | 
+| Datenträger Durchschn. Datenträger s/geschrieben | 5 | 25 | > | 0,05 s | Kritisch | Sev1 | Linux | 
+| Datenträgerstatus | 5 | 25 | <> | 1 (wahr) | Kritisch | Sev1 | Linux | 
+| Betriebssystem – Prozessorzeit (%) gesamt | 5 | 10 | >= | 95 % | Kritisch | Sev1 | Linux | 
+| CPU-Auslastung (%) gesamt | 5 | 10 | >= | 95 % | Kritisch | Sev1 | Windows | 
+| Fehler oder Beschädigung im Dateisystem | 60 | 60 | <> | 4 | Kritisch | Sev1 | Windows | 
+| Logischer Datenträger – mittlere Dauer pro Lesevorgang | 1 | 15 | > | 0,04 s | Warnung | Sev2 | Windows | 
+| Logischer Datenträger – mittlere Dauer pro Übertragung | 1 | 15 | > | 0,04 s | Warnung | Sev2 | Windows | 
+| Logischer Datenträger – mittlere Dauer pro Schreibvorgang (logischer Datenträger) | 1 | 15 | > | 0,04 s | Warnung | Sev2 | Windows | 
+| Aktuelle Länge der Datenträgerwarteschlange (Logischer Datenträger) | 5 | 60 | >= | 32 | Warnung | Sev2 | Windows | 
+| Logischer Datenträger – verfügbarer Speicherplatz (MB) | 15 | 60 | > | 500 MB – Warnung<br> 300 MB – Kritisch | Kritisch | Sev1<br> Sev2 | Windows | 
+| Logischer Datenträger – verfügbarer Speicherplatz (%) | 15 | 60 | > | 10 % – Warnung<br> 5 % – Kritisch | Kritisch | Sev1<br> Sev2 | Windows |
+| Logischer Datenträger – Leerlaufzeit (%) | 15 | 360 | <= | 20% | Warnung | Sev2 | Windows | 
+| Genutzte Bandbreite (%) beim Lesen | 5 | 60 | >= | 60 % | Warnung | Sev2 | Windows | 
+| Genutzte Bandbreite (%) gesamt | 5 | 60 | >= | 75 % | Warnung | Sev2 | Windows | 
+| Genutzte Bandbreite (%) beim Schreiben | 5 | 60 | >= | 60 % | Warnung | Sev2 | Windows | 
+| Integrität des DHCP-Clientdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des DNS-Clientdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des Windows-Ereignisprotokolldiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des Windows-Firewalldiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des RPC-Diensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des Serverdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Integrität des Windows-Remoteverwaltungsdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
+| Verfügbare Megabyte Arbeitsspeicher | 5 | 10 | < | 100 MB | Kritisch | Sev1 | Windows | 
+| Freie Tabelleneinträge auf Systemseite | 5 | 10 | <= | 5\.000 | Kritisch | Sev1 | Windows | 
+| Speicherseiten pro Sekunde | 5 | 10 | >= | 5000/s | Warnung | Sev1 | Windows | 
+| Verwendeter Prozentsatz des zugesicherten Speichers | 5 | 10 | > | 80 % | Kritisch | Sev1 | Windows | 
+| Datenträger – mittlere Dauer pro Übertragung | 1 | 15 | > | 0,04 s | Warnung | Sev2 | Windows | 
+| Datenträger – mittlere Dauer pro Schreibvorgang | 1 | 15 | > | 0,04 s | Warnung | Sev2 | Windows | 
+| Aktuelle Warteschlangenlänge | 5 | 60 | >= | 32 | Warnung | Sev2 | Windows | 
+| Datenträger – Leerlaufzeit (%) | 5 | 60 | >= | 20% | Warnung | Sev2 | Windows | 
 
-- Verfügbare Megabyte Arbeitsspeicher
-- Datenträger – mittlere Dauer pro Schreibvorgang (logischer Datenträger)
-- Datenträger – mittlere Dauer pro Schreibvorgang (Datenträger)
-- Logischer Datenträger – mittlere Dauer pro Lesevorgang
-- Logischer Datenträger – mittlere Dauer pro Übertragung
-- Datenträger – mittlere Dauer pro Lesevorgang
-- Datenträger – mittlere Dauer pro Übertragung
-- Aktuelle Länge der Datenträgerwarteschlange (Logischer Datenträger)
-- Aktuelle Länge der Datenträgerwarteschlange (Datenträger)
-- Datenträger – Leerlaufzeit (%)
-- Fehler oder Beschädigung im Dateisystem
-- Logischer Datenträger – wenig Speicherplatz (%)
-- Logischer Datenträger – wenig Speicherplatz (MB)
-- Logischer Datenträger – Leerlaufzeit (%)
-- Speicherseiten pro Sekunde
-- Genutzte Bandbreite (%) beim Lesen
-- Genutzte Bandbreite (%) gesamt
-- Genutzte Bandbreite (%) beim Schreiben
-- Verwendeter Prozentsatz des zugesicherten Speichers
-- Datenträger – Leerlaufzeit (%)
-- Integrität des DHCP-Clientdiensts
-- Integrität des DNS-Clientdiensts
-- Integrität des RPC-Diensts
-- Integrität des Serverdiensts
-- CPU-Auslastung (%) gesamt
-- Integrität des Windows-Ereignisprotokolldiensts
-- Integrität des Windows-Firewalldiensts
-- Integrität des Windows-Remoteverwaltungsdiensts
+>[!NOTE]
+>Die Rückschaudauer gibt an, wie oft das Rückschaufenster die Metrikwerte überprüft, z.B. in den letzten fünf Minuten.  
 
-### <a name="linux-vms"></a>Virtuelle Linux-Computer
-
-- Datenträger Durchschn. Datenträger s/übertragen
-- Datenträger Durchschn. Datenträger s/gelesen
-- Datenträger Durchschn. Datenträger s/geschrieben
-- Datenträgerintegrität
-- Logischer Datenträger – verfügbarer Speicherplatz
-- Logischer Datenträger – verfügbarer Speicherplatz (%)
-- Logischer Datenträger – freie I-Knoten (%)
-- Netzwerkadapterintegrität
-- Prozessor – Prozessorzeit gesamt
-- Betriebssystem – verfügbare Megabyte Arbeitsspeicher
+>[!NOTE]
+>Die Häufigkeit gibt an, wie oft die Metrikwarnung überprüft, ob die Bedingungen erfüllt sind, z.B. jede Minute.  Dies ist die Rate, mit der das Integritätskriterium ausgeführt wird, und die Rückschau ist die Dauer, über die das Integritätskriterium ausgewertet wird. Beispielsweise wird das Integritätskriterium ausgewertet, wenn die Bedingung **CPU-Auslastung** mit einer Häufigkeit von 5 Minuten mehr als 95 Prozent beträgt und 15 Minuten (3 aufeinanderfolgende Evaluierungszyklen) lang bei mehr als 95 % verbleibt. In diesem Fall wird der Status auf den Schweregrad „Kritisch“ aktualisiert, wenn dies bisher noch nicht geschehen ist.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

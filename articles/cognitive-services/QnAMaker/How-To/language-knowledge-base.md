@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876623"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961472"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Sprachunterstützung für Inhalte in QnA Maker-Wissensdatenbanken
 
@@ -29,19 +29,11 @@ Die Sprache wird automatisch aus dem jeweils extrahierten Datenquelleninhalt erk
 
     ![Auswählen der Ressource „Azure Search“](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. Wählen Sie den Index **testkb** aus. Dieser Azure Search-Index wird immer als Erstes erstellt und enthält den gespeicherten Inhalt aller Wissensdatenbanken im jeweiligen Dienst. 
+1. Wählen Sie **Indizes** und dann den Index **testkb** aus. Dieser Azure Search-Index wird als Erstes erstellt und enthält den gespeicherten Inhalt aller Wissensdatenbanken im jeweiligen Dienst. 
 
-    ![Auswählen der Test-Wissensdatenbank](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. Wählen Sie **Felder** aus, um die Felder im Index anzuzeigen.
 
-1. Wählen Sie den Abschnitt **Felder** aus, der die Details von _testkb_ beinhaltet.
-
-    ![Auswählen von „Felder“](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. Aktivieren Sie das Kontrollkästchen für **Analysetool**, um Sprachdetails anzuzeigen.
-
-    ![Auswählen des Analysetools](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. Für das _Analysetool_ sollte eine bestimmte Sprache festgelegt sein. Diese Sprache wird beim Erstellen der Wissensdatenbank in den importierten Dateien und URLs automatisch erkannt. Sie kann nicht mehr geändert werden, nachdem die Ressource erstellt wurde.
+1. Die Spalte _Analyse_ der Felder `questions` und `answer` ist auf eine bestimmte Sprache festgelegt. Diese Sprache wird beim Erstellen der Wissensdatenbank in den importierten Dateien und URLs automatisch erkannt. Sie kann nicht mehr geändert werden, nachdem die Ressource erstellt wurde.
 
     ![Ausgewähltes Analysetool](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 

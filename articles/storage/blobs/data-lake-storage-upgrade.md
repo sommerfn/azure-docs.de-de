@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992238"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130404"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Die Hauptaufgabe besteht hier darin, URIs mit dem Präfix `adl://` in URIs mit d
 
 Das URI-Schema für Data Lake Storage Gen1 wird [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) genauer erläutert, aber im Allgemeinen ist es *adl://mydatalakestore.azuredatalakestore.net/\<file_path\>.*
 
-Das URI-Schema für den Zugriff auf Data Lake Storage Gen2-Dateien wird [hier](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) genauer erläutert, im Allgemeinen ist es jedoch `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
+Das URI-Schema für den Zugriff auf Data Lake Storage Gen2-Dateien wird [hier](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) genauer erläutert, im Allgemeinen ist es jedoch `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`.
 
 Sie müssen Ihre vorhandenen Anwendungen durchlaufen und sicherstellen, dass Sie die URIs entsprechend geändert haben, sodass auf die URIs von Data Lake Storage Gen2 verwiesen wird. Sie müssen ebenso die entsprechenden Anmeldeinformationen hinzufügen. Zuletzt ist die Art und Weise, wie Sie die ursprünglichen Anwendungen außer Betrieb nehmen und durch die neue Anwendung ersetzen, eng mit Ihrer allgemeinen Upgradestrategie verbunden.
 

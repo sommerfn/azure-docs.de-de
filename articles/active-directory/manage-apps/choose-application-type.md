@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424258"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056063"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
 
@@ -124,9 +124,6 @@ Um den Modus für einmaliges Anmelden für eine Anwendung festzulegen, folgen Si
 - **Manuelle Bereitstellung**: Wählen Sie den Bereitstellungsmodus [Manuell](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) aus, wenn Sie bereits über vorhandene Konten verfügen oder Konten für diese Anwendung außerhalb von Azure AD verwalten möchten.
 
 - **Automatische Bereitstellung**: Wählen Sie [Automatisch](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) als **Bereitstellungsmodus** aus, wenn Sie die automatische API-basierte Bereitstellung und/oder Aufhebung der Bereitstellung von Benutzerkonten für diese Anwendung aktivieren möchten. 
-
-  >[!NOTE]
-  >Diese Option ist nur für Anwendungen in der Kategorie **Ausgewählte Apps** des [Azure AD-Anwendungskatalogs](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal) verfügbar.
 
 - **SCIM-basierte automatische Bereitstellung**: Verwenden Sie die [SCIM-basierte automatische Bereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning), wenn Ihre Anwendung das SCIM-Protokoll zum Erkennen von Änderungen an Benutzern und Gruppen unterstützt. Diese werden automatisch ausgegeben, wenn eine in Azure AD integrierte Anwendung geändert wird. 
 

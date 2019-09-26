@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: bd660a2b6ffb96478c3170cc7013ff22518b758f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7baa2adbd615a449c73e70e1b96524fc1e18b25d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702202"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000174"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Verwenden von intelligentem Routing und Canary-Releases mit Istio in Azure Kubernetes Service (AKS)
 
-[Istio][istio-github] ist ein Open Source-Service Mesh, das eine Reihe wichtiger Funktionen für Microservices in einem Kubernetes-Cluster bietet. Zu diesen Funktionen gehören: Verwaltung des Datenverkehrs, Dienstidentität und -sicherheit, Richtlinienerzwingung und Telemetrie. Weitere Informationen zu Istio finden Sie in der offiziellen Dokumentation [What is Istio? (Was ist Istio)][istio-docs-concepts].
+[Istio][istio-github] ist ein Open-Source-Dienstmesh, das eine Reihe wichtiger Funktionen für Microservices in einem Kubernetes-Cluster bereitstellt. Zu diesen Funktionen gehören: Verwaltung des Datenverkehrs, Dienstidentität und -sicherheit, Richtlinienerzwingung und Telemetrie. Weitere Informationen zu Istio finden Sie in der offiziellen Dokumentation [What is Istio?][istio-docs-concepts] (Was ist Istio?).
 
 In diesem Artikel wird die Verwendung der Funktion zur Verwaltung des Datenverkehrs von Istio beschrieben. Um intelligentes Routing und Canary-Releases zu untersuchen, wird eine als Beispiel dienende AKS-Abstimmungs-App verwendet.
 
@@ -35,7 +35,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Bei den in diesem Artikel beschriebenen Schritten wird vorausgesetzt, dass Sie einen AKS-Cluster (Kubernetes `1.11` und höher mit aktivierter rollenbasierter Zugriffssteuerung [RBAC]) erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Ferner muss Istio in Ihrem Cluster installiert sein.
 
-Wenn Sie Hilfe bei einem dieser Elemente benötigen, konsultieren Sie den [AKS-Schnellstart][aks-quickstart] und die Anleitung [Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)][istio-install].
+Wenn Sie Hilfe bei einem dieser Elemente benötigen, lesen Sie den [AKS-Schnellstart][aks-quickstart] und die Anleitung [Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)][istio-install].
 
 ## <a name="about-this-application-scenario"></a>Informationen zu diesem Anwendungsszenario
 
@@ -55,7 +55,7 @@ Wir beginnen mit der Bereitstellung der Anwendung in Ihrem AKS-Cluster (Azure Ku
 
 ![Die Komponenten der AKS-Abstimmungs-App und das Routing.](media/istio/components-and-routing-01.png)
 
-Die Artefakte, die Sie für diesen Artikel benötigen, finden Sie im GitHub-Repository [Azure-Samples/Aks-voting-app] [ github-azure-sample]. Sie können entweder die Artefakte herunterladen oder das Repository wie folgt klonen:
+Die Artefakte, die Sie für diesen Artikel benötigen, finden Sie im GitHub-Repository [Azure-Samples/aks-voting-app][github-azure-sample]. Sie können entweder die Artefakte herunterladen oder das Repository wie folgt klonen:
 
 ```console
 git clone https://github.com/Azure-Samples/aks-voting-app.git
@@ -97,7 +97,7 @@ service/voting-app created
 ```
 
 > [!NOTE]
-> Istio verfügt über bestimmte Anforderungen für Pods und Dienste. Weitere Informationen hierzu finden Sie in der Dokumentation [Istio Requirements for Pods and Services (Istio-Anforderungen für Pods und Dienste)][istio-requirements-pods-and-services].
+> Istio verfügt über bestimmte Anforderungen für Pods und Dienste. Weitere Informationen finden Sie in der [Dokumentation zu Istio-Anforderungen für Pods und Dienste][istio-requirements-pods-and-services].
 
 Um die erstellten Pods anzuzeigen, verwenden Sie wie folgt den Befehl [kubectl get pods][kubectl-get]:
 
@@ -135,7 +135,7 @@ Containers:
 [...]
 ```
 
-Sie können erst dann eine Verbindung zu der Abstimmungs-App herstellen, nachdem Sie das [Gateway][istio-reference-gateway] und den [virtuellen Dienst][istio-reference-virtualservice] für Istio erstellt haben. Diese Istio-Ressourcen leiten Datenverkehr vom Standard-Istio-Eingangsgateway an Ihre Anwendung weiter.
+Sie können erst dann eine Verbindung mit der Abstimmungs-App herstellen, nachdem Sie das [Gateway][istio-reference-gateway] und den [virtuellen Dienst][istio-reference-virtualservice] für Istio erstellt haben. Diese Istio-Ressourcen leiten Datenverkehr vom Standard-Istio-Eingangsgateway an Ihre Anwendung weiter.
 
 > [!NOTE]
 > Ein **Gateway** ist eine Komponente am Rand des Service Mesh, die eingehenden oder ausgehenden HTTP- und TCP-Datenverkehr empfängt.
@@ -175,7 +175,7 @@ Aus den Informationen am unteren Bildschirmrand geht hervor, dass die App Versio
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
 
-Nun stellen wir eine neue Version der Analysekomponente bereit. Diese neue Version `1.1` zeigt zusätzlich zum Zähler für jede Kategorie auch Summen und Prozentwerte an.
+Nun wird eine neue Version der Analysekomponente bereitgestellt. Diese neue Version `1.1` zeigt zusätzlich zum Zähler für jede Kategorie auch Summen und Prozentwerte an.
 
 Das folgende Diagramm zeigt, was am Ende dieses Abschnitts ausgeführt wird. Nur an Version `1.1` unserer Komponente `voting-analytics` wird Datenverkehr von Komponente `voting-app` geleitet. Zwar wird Version `1.0` unserer Komponente `voting-analytics` weiterhin ausgeführt und vom Dienst `voting-analytics` referenziert, doch die Istio-Proxys erlauben keinen Datenverkehr von und zu dieser Komponente.
 

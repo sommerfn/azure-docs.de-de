@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615440"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097862"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers und Verwenden Ihrer eigenen TLS-Zertifikate in Azure Kubernetes Service (AKS)
 
@@ -133,7 +133,7 @@ Beide Anwendungen werden nun in Ihrem Kubernetes-Cluster ausgeführt, wurden jed
 Im folgenden Beispiel wird der Datenverkehr an die Adresse `https://demo.azure.com/` an den Dienst mit dem Namen `aks-helloworld` weitergeleitet. Datenverkehr an die Adresse `https://demo.azure.com/hello-world-two` wird an den Dienst `ingress-demo` weitergeleitet. Für diesen Artikel müssen Sie diese Demohostnamen nicht ändern. In der Produktion geben Sie die Namen an, die im Rahmen der Zertifikatanforderung und des Generierungsvorgangs angegeben wurden.
 
 > [!TIP]
-> Wenn der beim Zertifikatanforderungsvorgang angegebene Hostname (CN-Name) nicht dem Host entspricht, der in Ihrer Eingangsroute definiert wurde, zeigt der Eingangscontroller die Meldung *Kubernetes Ingress Controller Fake Certificate* an. Stellen Sie sicher, dass der Name Ihres Zertifikats mit dem des Eingangsroutenhosts übereinstimmt.
+> Wenn der beim Zertifikatanforderungsvorgang angegebene Hostname (CN-Name) nicht dem Host entspricht, der in Ihrer Eingangsroute definiert wurde, zeigt der Eingangscontroller die Warnung *Kubernetes Ingress Controller Fake Certificate* an. Stellen Sie sicher, dass der Name Ihres Zertifikats mit dem des Eingangsroutenhosts übereinstimmt.
 
 Im Abschnitt *tls* wird die Eingangsroute dazu aufgefordert, das Geheimnis namens *aks-ingress-tls* für den Host *demo.azure.com* zu verwenden. Geben Sie in Ihrer Produktionsumgebung Ihre eigene Hostadresse an.
 

@@ -1,7 +1,7 @@
 ---
 title: Leitfaden zur Problembehandlung bei der Bereitstellung
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Kubernetes Service und Azure Container Instances mit Azure Machine Learning Service umgehen, lösen und beheben können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Kubernetes Service und Azure Container Instances mit Azure Machine Learning umgehen, lösen und beheben können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183545"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997172"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning Service, Azure Kubernetes Service und Azure Container Instances
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
-Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning Service umgehen oder beheben können.
+Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Container Instances (ACI) und Azure Kubernetes Service (AKS) mit Azure Machine Learning umgehen oder beheben können.
 
-Bei der Bereitstellung eines Modells im Azure Machine Learning-Dienst führt das System eine Reihe von Aufgaben aus. Dies sind die Aufgaben bei der Bereitstellung:
+Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System eine Reihe von Aufgaben aus. Dies sind die Aufgaben bei der Bereitstellung:
 
 1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
 
@@ -346,7 +346,7 @@ In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Pytho
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ In diesem Textbeispiel lautet der Registrierungsname `myregistry`, und das Image
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Um VS Code an PTVSD im Container anzufügen, öffnen Sie VS Code, und verwenden Sie die Taste F5, oder wählen Sie __Debuggen__ aus. Wenn Sie dazu aufgefordert werden, wählen Sie die Konfiguration __Azure Machine Learning Service: Docker debuggen__ aus. Sie können auch das Debugsymbol aus der Seitenleiste auswählen, den Eintrag __Azure Machine Learning Service: Docker debuggen__ aus dem Debugdropdownmenü und dann den grünen Pfeil zum Anfügen des Debuggers verwenden.
+1. Um VS Code an PTVSD im Container anzufügen, öffnen Sie VS Code, und verwenden Sie die Taste F5, oder wählen Sie __Debuggen__ aus. Wenn Sie dazu aufgefordert werden, wählen Sie die Konfiguration __Azure Machine Learning: Docker debuggen__ aus. Sie können auch das Debugsymbol auf der Seitenleiste auswählen, den Eintrag __Azure Machine Learning: Docker debuggen__ aus dem Debugdropdownmenü und dann den grünen Pfeil zum Anfügen des Debuggers verwenden.
 
     ![Das Symbol „Debuggen“, die Schaltfläche „Debuggen starten“ und die Konfigurationsauswahl](media/how-to-troubleshoot-deployment/start-debugging.png)
 

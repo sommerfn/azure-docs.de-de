@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914754"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146286"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Herunterladen einer Liste von Gruppen in einem Massenvorgang (Vorschau) in Azure Active Directory
 
@@ -26,10 +26,6 @@ Im Azure Active Directory-Portal (Azure AD) können Sie die Liste aller Gruppen 
 
 > [!NOTE]
 > Azure AD-Massenvorgänge sind eine öffentliche Previewfunktion von Azure AD und bei jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Weitere Informationen zu Nutzungsbedingungen für Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
-
-Jede Massenaktivität zum Herunterladen einer Gruppenliste kann bis zu einer Stunde dauern. Auf diese Weise können Sie eine Liste von mindestens 300.000 Gruppen herunterladen.
 
 ## <a name="to-download-a-list-of-groups"></a>So laden Sie eine Liste von Gruppen herunter
 
@@ -44,6 +40,10 @@ Jede Massenaktivität zum Herunterladen einer Gruppenliste kann bis zu einer Stu
 Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen (Vorschau)** anzeigen.
 
    ![Die Seite „Ergebnisse von Massenvorgängen“ zeigt Ihnen den Status von Massenanforderungen.](./media/groups-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
+
+Jede Massenaktivität zum Herunterladen einer Gruppenliste kann bis zu einer Stunde dauern. Auf diese Weise können Sie eine Liste von mindestens 300.000 Gruppen herunterladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

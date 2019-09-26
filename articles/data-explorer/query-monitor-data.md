@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172701"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933998"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)
 
@@ -107,7 +107,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ![Clusterübergreifende Abfrage über den Azure Data Explorer-Proxy](media/adx-proxy/cross-query-adx-proxy.png)
 
-Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/kusto/query/joinoperator) verwenden, ist möglicherweise ein Hinweis erforderlich, um die Abfrage für den nativen Azure Data Explorer-Cluster (und nicht für den Proxy) auszuführen. 
+Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/kusto/query/joinoperator) verwenden, ist möglicherweise ein [`hint`](/azure/kusto/query/joinoperator#join-hints) erforderlich, um die Abfrage für den nativen Azure Data Explorer-Cluster (und nicht für den Proxy) auszuführen. 
 
 ## <a name="additional-syntax-examples"></a>Zusätzliche Syntaxbeispiele
 

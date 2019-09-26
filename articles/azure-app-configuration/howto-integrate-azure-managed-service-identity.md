@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393655"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076537"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 
@@ -49,11 +49,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zuerst eine Anwendung und aktivieren dann das Feature.
 
-1. Erstellen Sie wie gewohnt im [Azure-Portal](https://portal.azure.com) eine App. Wechseln Sie im Portal zu dieser App.
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) wie gewohnt eine App Services-Instanz. Wechseln Sie im Portal zu dieser App.
 
 2. Scrollen Sie im linken Bereich nach unten zur Gruppe **Einstellungen**, und wählen Sie **Identität**.
 
 3. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**, und wählen Sie **Speichern** aus.
+
+4. Antworten Sie mit **Ja**, wenn Sie gefragt werden, ob Sie die systemseitig zugewiesene verwaltete Identität aktivieren möchten.
 
     ![Festlegen der verwalteten Identität in App Service](./media/set-managed-identity-app-service.png)
 
@@ -75,7 +77,9 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 ## <a name="use-a-managed-identity"></a>Verwenden einer verwalteten Identität
 
-1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL zu Ihrem App-Konfigurationsspeicher:
+1. Suchen Sie nach der URL für Ihren App-Konfigurationsspeicher. Klicken Sie hierzu im Azure-Portal auf dem zugehörigen Konfigurationsbildschirm auf die Registerkarte **Zugriffsschlüssel**.
+
+2. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App-Konfigurationsspeicher. 
 
     ```json
     "AppConfig": {
@@ -83,7 +87,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
     }
     ```
 
-2. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode ersetzen.
+3. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode ersetzen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -110,6 +114,13 @@ Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Aktivieren von lokalem Git mit Kudu
+Sollten Sie noch nicht über ein lokales Git-Repository für Ihre App verfügen, müssen Sie eines initialisieren. Führen Sie hierzu im Projektverzeichnis Ihrer App die folgenden Befehle aus:
+
+```cmd
+git init
+git add .
+git commit -m "Initial version"
+```
 
 Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) in Cloud Shell aus.
 

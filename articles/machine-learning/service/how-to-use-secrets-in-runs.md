@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Geheimnissen in Trainingsausführungen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Übergeben Sie Geheimnisse an Trainingsausführungen auf sichere Weise mit dem Schlüsseltresor des Arbeitsbereichs.
 services: machine-learning
 author: rastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777818b74f935a560047d1eea20e0d0e657efcac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019338"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996574"
 ---
 # <a name="use-secrets-in-training-runs"></a>Verwenden von Geheimnissen in Trainingsausführungen
 
@@ -69,4 +69,4 @@ Für die set- und die get-Methode gibt es auch die Batchversionen [set_secrets](
 ## <a name="next-steps"></a>Nächste Schritte
 
  * [Beispielnotebook anzeigen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Informationen über Unternehmenssicherheit mit Azure Machine Learning Service](concept-enterprise-security.md)
+ * [Informationen über Unternehmenssicherheit mit Azure Machine Learning](concept-enterprise-security.md)

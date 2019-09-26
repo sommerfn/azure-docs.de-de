@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277605"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984363"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -87,6 +87,8 @@ Sie können Ihre Abonnementschlüssel in dem Azure-Portal anzeigen und zurückse
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Suchen von Endpunktschlüsseln im QnA Maker-Portal
 
+Der Endpunkt befindet sich in demselben Bereich wie die Ressource, da die Endpunktschlüssel verwendet werden, um einen Aufruf an die Wissensdatenbank zu senden.
+
 Endpunktschlüssel können im [QnA Maker-Portal](https://qnamaker.ai) verwaltet werden.
 
 1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an, wechseln Sie zu Ihrem Profil, und wählen Sie **Diensteinstellungen** aus:
@@ -111,6 +113,8 @@ QnA Maker erstellt verschiedene Azure-Ressourcen. Wenn Sie den Verwaltungsaufwan
 |App Service|X|Programmbedingt nicht möglich.|
 |Application Insights|✔|Gemeinsame Nutzung möglich.|
 |Suchdienst|✔|1. `testkb` ist ein reservierter Name für den QnAMaker-Dienst, der von anderen Benutzern nicht verwendet werden kann.<br>2. Eine Synonymzuordnung nach dem Namen `synonym-map` ist für den QnAMaker-Dienst reserviert.<br>3. Die Anzahl von veröffentlichten Wissensdatenbanken wird durch den Suchdiensttarif begrenzt. Wenn freie Indizes verfügbar sind, können sie von anderen Diensten genutzt werden.|
+
+Erfahren Sie mehr über den [App-Dienst](../../../app-service/index.yml) und den [Suchdienst](../../../search/index.yml).
 
 ### <a name="using-a-single-search-service"></a>Verwenden eines einzelnen Suchdiensts
 
@@ -202,6 +206,8 @@ Sehen Sie sich die aktuelle Version unter https://www.qnamaker.ai/UserSettings a
 Der Verwaltungsdienst von QnA Maker wird nur für das QnA Maker-Portal und für die anfängliche Datenverarbeitung genutzt. Dieser Dienst steht nur in der Region „USA, Westen“ zur Verfügung. In diesem Dienst (USA, Westen) werden keine Kundendaten gespeichert.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [App-Dienst](../../../app-service/index.yml) und den [Suchdienst](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
 > [Erstellen und Veröffentlichen einer Wissensdatenbank](../Quickstarts/create-publish-knowledge-base.md)

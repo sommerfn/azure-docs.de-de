@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 07af07463381e319b018baf44aa0b3a79b6d6bf8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b8c3bdfc05e855139b595cd0ba7bd723cdeaee45
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051327"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966746"
 ---
-### <a name="run-container-example-of-docker-run-command"></a>Beispiel zum Ausführen eines Containers mit dem „docker run“-Befehl
+Zum Ausführen des Containers für die *Schlüsselbegriffserkennung* führen Sie den folgenden `docker run`-Befehl aus.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

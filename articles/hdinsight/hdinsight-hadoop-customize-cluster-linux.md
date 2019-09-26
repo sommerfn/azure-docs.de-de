@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885431"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098791"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -45,11 +45,11 @@ Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie hier:
 Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird. Skriptaktionen verfügen über folgende Merkmale und Features:
 
 * Sie müssen als URI gespeichert werden, der für den HDInsight-Cluster zugänglich ist. Dies sind zwei mögliche Speicherorte:
-    
+
     * Für normale Cluster:
-    
+
       * ADLS Gen1: Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen. Für in Data Lake Storage Gen1 gespeicherte Skripts wird das folgende URI-Format verwendet: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-      
+
       * Ein Blob in einem Azure Storage-Konto, das entweder das primäre oder ein zusätzliches Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
 
         > [!IMPORTANT]  
@@ -60,9 +60,9 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
         Beispiel-URIs finden Sie unter [Beispielskripts für Skriptaktionen](#example-script-action-scripts).
 
      * Für Cluster mit ESP:
-         
+
          * URIs vom Typ „wasb://“ oder „wasbs://“ oder „http[s]://“ werden unterstützt.
-            
+
 * Die Ausführung kann auf bestimmte Knotentypen beschränkt werden. Beispiele wären etwa Hauptknoten und Workerknoten.
 
 * Sie können permanent oder ad-hoc sein.
@@ -107,14 +107,12 @@ Das Skript wird ausgeführt, während HDInsight konfiguriert wird. Das Skript wi
 > [!NOTE]  
 > Sie können Dienste beenden und starten, einschließlich Diensten in Zusammenhang mit Apache Hadoop. Achten Sie beim Beenden von Diensten darauf, dass der Ambari-Dienst und andere Hadoop-bezogene Dienste ausgeführt werden, bevor die Ausführung des Skripts abgeschlossen ist. Diese Dienste werden benötigt, um die Integrität und den Zustand des Clusters erfolgreich zu ermitteln, während dieser erstellt wird.
 
-
 Während der Clustererstellung können mehrere Skriptaktionen gleichzeitig verwendet werden. Diese Skripts werden in der Reihenfolge aufgerufen, in der sie angegeben wurden.
 
 > [!IMPORTANT]  
 > Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen werden. Andernfalls tritt ein Timeout auf. Während der Clusterbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 >
 > Um die Ausführungsdauer des Skripts zu minimieren, vermeiden Sie Aufgaben wie das Herunterladen und Kompilieren von Anwendungen aus der Quelle. Kompilieren Sie Anwendungen vor, und speichern Sie die Binärdateien in Azure Storage.
-
 
 ### <a name="script-action-on-a-running-cluster"></a>Skriptaktion in einem ausgeführten Cluster
 
@@ -161,15 +159,15 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
 1. Beginnen Sie mit der Erstellung eines Clusters, wie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md) beschrieben. Im Rahmen der Clustererstellung gelangen Sie zur Seite __Clusterzusammenfassung__. Wählen Sie auf der Seite __Clusterübersicht__ für __Erweiterte Einstellungen__ den Link __Bearbeiten__ aus.
 
-    ![Link „Erweiterte Einstellungen“](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
+    ![Erweiterte Einstellungen für Azure-Portalcluster](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
-3. Wählen Sie im Abschnitt __Erweiterte Einstellungen__ die Option __Skriptaktionen__ aus. Wählen Sie im Abschnitt __Skriptaktionen__ die Option __+ Neue übermitteln__ aus.
+1. Wählen Sie im Abschnitt __Erweiterte Einstellungen__ die Option __Skriptaktionen__ aus. Wählen Sie im Abschnitt __Skriptaktionen__ die Option __+ Neue übermitteln__ aus.
 
-    ![Skriptaktion „Neue übermitteln“](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Skriptaktionen des Portals – Neue übermitteln](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
-4. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
+1. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
 
-    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Die folgende Tabelle beschreibt die Elemente des Formulars:
 
@@ -183,13 +181,13 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
-5. Wählen Sie __Erstellen__ aus, um das Skript zu speichern. Anschließend können Sie __+ Neue übermitteln__ verwenden, um ein weiteres Skript hinzufügen.
+1. Wählen Sie __Erstellen__ aus, um das Skript zu speichern. Anschließend können Sie __+ Neue übermitteln__ verwenden, um ein weiteres Skript hinzufügen.
 
-    ![Mehrere Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![HDInsight – Mehrere Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Wenn Sie das Hinzufügen von Skripts abgeschlossen haben, gelangen Sie über die Schaltflächen __Auswählen__ und __Weiter__ wieder zum Abschnitt __Clusterübersicht__.
 
-3. Wählen Sie im Abschnitt __Clusterübersicht__ die Option __Erstellen__ aus, um den Cluster zu erstellen.
+1. Wählen Sie im Abschnitt __Clusterübersicht__ die Option __Erstellen__ aus, um den Cluster zu erstellen.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Verwenden einer Skriptaktion über Azure Resource Manager-Vorlagen
 
@@ -249,9 +247,9 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
 
     ![Hinzufügen eines Skripts zu einem ausgeführten Cluster](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-4. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
+1. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
 
-    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Die folgende Tabelle beschreibt die Elemente des Formulars:
 
@@ -265,7 +263,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
-5. Wählen Sie abschließend die Schaltfläche **Erstellen** aus, um das Skript auf den Cluster anzuwenden.
+1. Wählen Sie abschließend die Schaltfläche **Erstellen** aus, um das Skript auf den Cluster anzuwenden.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster mit Azure PowerShell
 
@@ -346,17 +344,17 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 1. Klicken Sie in der Standardansicht unter **Einstellungen** auf **Script actions** (Skriptaktionen).
 
-4. Im Abschnitt mit den Skriptaktionen wird ein Verlauf der Skripts für diesen Cluster angezeigt. Zu diesen Informationen gehört auch eine Liste der gespeicherten Skripts. Der folgende Screenshot zeigt, dass das Solr-Skript für diesen Cluster ausgeführt wurde. Auf dem Screenshot sind keine permanenten Skripts zu sehen.
+1. Im Abschnitt mit den Skriptaktionen wird ein Verlauf der Skripts für diesen Cluster angezeigt. Zu diesen Informationen gehört auch eine Liste der gespeicherten Skripts. Der folgende Screenshot zeigt, dass das Solr-Skript für diesen Cluster ausgeführt wurde. Auf dem Screenshot sind keine permanenten Skripts zu sehen.
 
-    ![Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![Skriptaktionen des Portals – Übermittlungsverlauf](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-5. Wählen Sie ein Skript aus dem Verlauf aus, um den Abschnitt **Eigenschaften** für dieses Skript anzuzeigen. Oben im Fenster können Sie das Skript erneut ausführen oder höherstufen.
+1. Wählen Sie ein Skript aus dem Verlauf aus, um den Abschnitt **Eigenschaften** für dieses Skript anzuzeigen. Oben im Fenster können Sie das Skript erneut ausführen oder höherstufen.
 
-    ![Skriptaktionen, Eigenschaften](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+    ![Skriptaktionen – Eigenschaften höherstufen](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-6. Sie können im Abschnitt mit den Skriptaktionen auch die Auslassungspunkte ( **...** ) rechts neben den Einträgen auswählen, um Aktionen auszuführen.
+1. Sie können im Abschnitt mit den Skriptaktionen auch die Auslassungspunkte ( **...** ) rechts neben den Einträgen auswählen, um Aktionen auszuführen.
 
-    ![Skriptaktionen, Auslassungspunkte](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+    ![Permanente Skriptaktionen – Löschen](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -414,7 +412,7 @@ Im HDInsight-Dienst sind zwei Arten von Open-Source-Komponenten verfügbar:
 > [!WARNING]  
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden vollständig unterstützt. Der Microsoft-Support unterstützt Sie beim Isolieren und Beheben von Problemen im Zusammenhang mit diesen Komponenten.
 >
-> Für benutzerdefinierte Komponenten steht wirtschaftlich angemessener Support für eine weiterführende Behandlung des Problems zur Verfügung. Unter Umständen kann Ihnen der Microsoft-Support bei der Lösung des Problems helfen. Möglicherweise werden Sie auch gebeten, verfügbare Kanäle für die Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. Hierzu kommen zahlreiche Communitywebsites in Frage. Beispiele wären etwa das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com). 
+> Für benutzerdefinierte Komponenten steht wirtschaftlich angemessener Support für eine weiterführende Behandlung des Problems zur Verfügung. Unter Umständen kann Ihnen der Microsoft-Support bei der Lösung des Problems helfen. Möglicherweise werden Sie auch gebeten, verfügbare Kanäle für die Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. Hierzu kommen zahlreiche Communitywebsites in Frage. Beispiele wären etwa das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com).
 >
 > Für Apache-Projekte stehen auf der [Apache-Website](https://apache.org) auch Projektwebsites zur Verfügung. Ein Beispiel hierfür ist [Hadoop](https://hadoop.apache.org/).
 
@@ -438,11 +436,11 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 2. Wählen Sie in der Leiste oben auf der Seite die Option **ops** aus. Daraufhin wird eine Liste mit aktuellen und vorherigen Vorgängen angezeigt, die über Ambari für den Cluster ausgeführt wurden.
 
-    ![Ambari-Webbenutzeroberfläche mit ausgewählter Option "ops"](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Ambari-Webbenutzeroberfläche mit ausgewählter Option "ops"](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. Suchen Sie nach den Einträgen, die **run\_customscriptaction** in der Spalte **Vorgänge** enthalten. Diese Einträge werden erstellt, wenn die Skriptaktionen ausgeführt werden.
 
-    ![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
+    ![Apache Ambari – Vorgänge für Skriptaktion](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Wählen Sie den Eintrag **run\customscriptaction** aus, und navigieren Sie durch die Links, um die Ausgabe für **STDOUT** und **STDERR** anzuzeigen. Diese Ausgabe wird beim Ausführen des Skripts generiert und kann hilfreiche Informationen enthalten.
 
@@ -520,4 +518,4 @@ Hierfür gelten zwei Ausnahmen:
 * [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
 * [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Phasen während der Clustererstellung"

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860282"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075499"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -403,6 +403,8 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
 >Die Funktion **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die zweistufige Überprüfung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.
 >
 >Wenn Ihre Benutzer in AD FS **Angemeldet bleiben** auswählen und ihr Gerät außerdem als für Multi-Factor Authentication vertrauenswürdig markieren, werden sie nach Ablauf der Anzahl von Tagen, die unter **Multi-Factor Authentication speichern** angegeben wurde, nicht automatisch überprüft. Azure AD fordert eine neue zweistufige Überprüfung an, aber AD FS gibt ein Token mit dem ursprünglichen Multi-Factor Authentication-Anspruch und Datum zurück, statt die zweistufige Überprüfung erneut durchzuführen. **Durch diese Reaktion entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS.**
+>
+>Das Feature **Multi-Factor Authentication speichern** ist nicht mit B2B-Benutzern kompatibel und wird B2B-Benutzer nicht angezeigt, wenn sie sich bei den eingeladenen Mandanten anmelden.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Aktivieren der Speicherung von Multi-Factor Authentication

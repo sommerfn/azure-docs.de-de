@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545401"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056320"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)
 
@@ -42,7 +42,7 @@ Sie müssen Ihren Kunden erklären, wie diese Vorgänge durchgeführt werden. We
 
 Im Folgenden finden Sie Links zu weiteren Informationen:
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 - Sehen Sie sich den [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App](./quickstart-v2-netcore-daemon.md) an, sofern Sie es noch nicht getan haben.
 - In der Dokumentation finden Sie Informationen zum:
@@ -61,10 +61,13 @@ Im Folgenden finden Sie Links zu weiteren Informationen:
 
     ![Topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python befindet sich derzeit in der Public Preview. Weitere Informationen finden Sie im [Repository-Beispiel für MSAL Python-Clientanmeldeinformationen](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/client_credentials_sample.py).
+MSAL Python befindet sich derzeit in der Public Preview.
+Weitere Informationen finden Sie in den [Beispielen im MSAL Python-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL Python befindet sich derzeit in der Public Preview. Weitere Informationen finden Sie in den [Beispielen im MSAL Java-Repository](https://github.com/AzureAD/azure-activedirectory-library-for-java/tree/dev/src/samples).
+msal4j (MSAL.Java) ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar. Weitere Informationen finden Sie in den [Beispielen im MSAL Java-Repository](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+
+---

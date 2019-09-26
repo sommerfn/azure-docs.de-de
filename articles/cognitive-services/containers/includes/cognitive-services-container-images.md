@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/06/2019
 ms.author: dapine
-ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 181f4acd86dfacb15592ded6f2df3287e3dc13bf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775855"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130151"
 ---
 ### <a name="container-repositories-and-images"></a>Containerrepositorys und -images
 
@@ -38,6 +38,7 @@ Die Vorschauversion der Containerregistrierung hostet alle öffentlich verfügba
 |--|--|--|
 | [Anomalieerkennung](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomalieerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [Maschinelles Sehen](../../Computer-vision/computer-vision-how-to-install-containers.md) | Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text` |
+| [Maschinelles Sehen](../../Computer-vision/computer-vision-how-to-install-containers.md) | Lesen | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Gesichtserkennung](../../face/face-how-to-install-containers.md) | Gesicht | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Formularerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Spracherkennungsdienst-API](../../speech-service/speech-container-howto.md) | Spracherkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |

@@ -3,23 +3,19 @@ title: Bedrohungserkennung für Datendienste in Azure Security Center | Microsof
 description: Dieses Thema stellt die Warnungen der Datendienste vor, die in Azure Security Center verfügbar sind.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: da960861-0b6c-4d80-932d-898cdebb4f83
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 25f691d972b208b517f92752e2a9c30b016ec62a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/24/2019
+ms.author: memildin
+ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013348"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202580"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
@@ -33,7 +29,7 @@ ms.locfileid: "70013348"
 
 Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen. Security Center analysiert die SQL-Überwachungsprotokolle und wird nativ in der SQL-Engine ausgeführt.
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Anfälligkeit für die Einschleusung von SQL-Befehlen**|Eine Anwendung hat eine fehlerhafte SQL-Anweisung in der Datenbank generiert. Dies kann ein Hinweis auf ein mögliches Sicherheitsrisiko in Bezug auf Angriffe mit Einschleusung von SQL-Befehlen sein. Es gibt zwei mögliche Gründe für eine fehlerhafte Anweisung. Ein Fehler im Anwendungscode, der zu der fehlerhaften SQL-Anweisung geführt hat. Oder: Anwendungscode oder gespeicherte Prozeduren, die bei der Erstellung der fehlerhaften SQL-Anweisung keine Bereinigung der Benutzereingabe durchgeführt haben, was zur Einschleusung von SQL-Befehlen ausgenutzt werden kann.|
 |**Potenzielle Einschleusung von SQL-Befehlen**|Es ist ein aktiver Missbrauch für eine identifizierte Anwendung aufgetreten, die für die Einschleusung von SQL-Befehlen anfällig ist. Das bedeutet, dass ein Angreifer versucht, schädliche SQL-Anweisungen einzuschleusen, indem er den anfälligen Anwendungscode bzw. die gespeicherten Prozeduren verwendet.|
@@ -55,7 +51,7 @@ Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanfo
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Anomalie: Zugriff von einem ungewöhnlichen Ort**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität ist für die Umgebung unnormal. Dies kann darauf hindeuten, dass Ihre Ressource kompromittiert wurde und jetzt für Brute-Force-Angriffe auf einen externen RDP-Endpunkt verwendet wird. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Stellen als schädlich gekennzeichnet wird.|
 |**Anomalie beim Anwendungszugriff**|Gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursache: Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.|
@@ -77,7 +73,7 @@ Weitere Informationen zu den Warnungen für Storage finden Sie im Artikel [Advan
 
 Die folgenden Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Azure Cosmos DB-Konten generiert:
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Zugriff von einem ungewöhnlichen Ort**|Gibt an, dass sich das Zugriffsmuster für ein Azure Cosmos DB-Konto geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand von einer unbekannten IP-Adresse aus auf dieses Konto zugegriffen. Entweder hat ein Angreifer auf das Konto zugegriffen, oder ein berechtigter Benutzer hat von einem neuen, ungewöhnlichen geografischen Standort aus darauf zugegriffen. Ein Beispiel für Letzteres wäre etwa eine Remotewartung durch eine neue Anwendung oder einen neuen Entwickler.|
 |**Ungewöhnliche Datenexfiltration**|Gibt an, dass sich das Datenextraktionsmuster eines Azure Cosmos DB-Kontos geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand eine ungewöhnliche Datenmenge extrahiert. Ein Angreifer hat möglicherweise eine große Datenmenge aus einer Azure Cosmos DB-Datenbank extrahiert (beispielsweise Datenexfiltration/-leck oder eine nicht autorisierte Datenübertragung). Oder: Ein berechtigter Benutzer oder eine berechtigte Anwendung hat eine ungewöhnliche Datenmenge aus einem Container extrahiert (beispielsweise für eine Sicherung bei einer Wartungsaktivität).|

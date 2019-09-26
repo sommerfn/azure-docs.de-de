@@ -1,6 +1,6 @@
 ---
 title: Deep Learning im Vergleich zu maschinellem Lernen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie mehr über Deep Learning im Vergleich zu maschinellem Lernen und die Beziehung beider Konzepte zur künstlichen Intelligenz. Deep Learning kann in Szenarien wie Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen angewendet werden.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240958"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035507"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -45,7 +45,7 @@ Nachdem Sie sich einen Überblick über maschinelles Lernen und Deep Learning ve
 
 In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 
-| |Vollständig maschinelles Lernen |Nur Deep Learning|
+| |Vollständig Machine Learning |Nur Deep Learning|
 |---|---|---|
 |  **Anzahl von Datenpunkten** | Kann kleine Datenmengen verwenden, die von Benutzern bereitgestellt werden. | Erfordert eine große Menge Trainingsdaten, um präzise Schlussfolgerungen zu treffen. |
 |  **Hardwareabhängigkeiten** | Kann auf Low-End-Computern ausgeführt werden. Erfordert keine hohe Rechenleistung. | Hängt von High-End-Computern ab. Grundsätzlich wird eine große Zahl von Matrixmultiplikationsvorgängen durchgeführt. Eine GPU kann diese Vorgänge effizient optimieren. |
@@ -60,7 +60,7 @@ Aufgrund der Struktur des künstlichen neuronalen Netzes zeichnet sich Deep Lear
 
 Einige der häufigsten Anwendungen für Deep Learning werden in den folgenden Abschnitten beschrieben.
 
-### <a name="named-entity-recognition"></a>Named-Entity Recognition (NER)
+### <a name="named-entity-recognition"></a>Named-entity recognition (NER)
 
 Ein Einsatzbereich von Deep-Learning-Netzwerken ist NER (Named-Entity Recognition): eine Möglichkeit, bestimmte Arten von Informationen aus unstrukturierten und nicht bezeichneten Daten zu extrahieren. Diese Informationen können Personen, Orte, Unternehmen oder Dinge sein. Die Informationen können dann in einem strukturierten Schema gespeichert werden, um eine Liste von Adressen zu erstellen oder als Benchmark für eine Engine zur Identitätsüberprüfung verwendet zu werden.
 
@@ -86,13 +86,13 @@ Eine wichtige Aufgabe, die mit Deep Learning ausgeführt werden kann, ist eDisco
 
 ## <a name="artificial-neural-networks"></a>Künstliche neuronale Netze
 
-Künstliche neuronale Netze setzen sich aus Schichten verbundener Knoten zusammen. Deep Learning-Modelle verwenden neuronale Netze mit einer sehr großen Anzahl von Schichten. 
+Künstliche neuronale Netze setzen sich aus Ebenen verbundener Knoten zusammen. Deep Learning-Modelle verwenden neuronale Netze mit einer sehr großen Anzahl von Schichten. 
 
 Die gängigsten Typologien künstlicher neuronaler Netze werden in den folgenden Abschnitten erläutert.
 
-### <a name="feedforward-neural-network"></a>Neuronales Feedforward-Netz
+### <a name="feedforward-neural-network"></a>Neuronales feedforward-Netz
 
-Das neuronale Feedforward-Netz ist die grundlegendste Art von künstlichen neuronalen Netzen. In einem Feedforward-Netz werden Informationen nur in einer Richtung von der Eingabeschicht an die Ausgabeschicht übertragen. In neuronalen Feedforward-Netzen werden Eingaben transformiert, indem sie eine Reihe von Zwischenschichten durchlaufen. Jede Schicht besteht aus einer Reihe von Neuronen, wobei jede Schicht vollständig mit allen Neuronen in der vorherigen Schicht verbunden ist. Die letzte vollständig verbundene Schicht (die Ausgabeschicht) stellt die generierten Vorhersagen dar.
+Das neuronale Feedforward-Netz ist die grundlegendste Art von künstlichen neuronalen Netzen. In einem Feedforward-Netz werden Informationen nur in einer Richtung von der Eingabeschicht an die Ausgabeschicht übertragen. In neuronalen feedforward-Netzen werden Eingaben transformiert, indem sie eine Reihe von Zwischenschichten durchlaufen. Jede Schicht besteht aus einer Reihe von Neuronen, wobei jede Schicht vollständig mit allen Neuronen in der vorherigen Schicht verbunden ist. Die letzte vollständig verbundene Schicht (die Ausgabeschicht) stellt die generierten Vorhersagen dar.
 
 ### <a name="recurrent-neural-network"></a>Recurrent Neural Network
 
@@ -106,9 +106,9 @@ Convolutional Neural Networks werden in Bereichen wie Bilderkennung und -klassif
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) verwenden:
+In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) verwenden:
 
 - [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [Klassifizieren von handschriftlichen Ziffern mithilfe einer TensorFlow-Schätzung und Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Klassifizieren von Bildern mit einem Pytorch-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

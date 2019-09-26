@@ -9,23 +9,23 @@ keywords: Azure-Funktionen, Funktionen, serverlose Architektur
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/28/2019
+ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 09bcce6daf519c7d5e99c7c120064f5c8bb92475
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375998"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996870"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
 Azure Functions unterstützt das Softwareentwurfsmuster „Abhängigkeitsinjektion“ (Dependency Injection, DI). Damit kann eine [Umkehrung der Steuerung (Inversion of Control, IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) zwischen Klassen und ihren Abhängigkeiten erreicht werden.
 
-Azure Functions basiert auf den Abhängigkeitsinjektionsfunktionen von ASP.NET Core. Wir empfehlen Ihnen, sich mit den Diensten, Lebensdauern und Entwurfsmustern der [ASP.NET Core-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) vertraut zu machen, bevor Sie DI-Features in einer Azure Functions-App nutzen.
+- Die Abhängigkeitsinjektion in Azure Functions basiert auf den .NET Core-Features für die Abhängigkeitsinjektion. Vertrautheit mit der [.NET Core- Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) wird empfohlen. Es bestehen jedoch Unterschiede darin, wie Sie Abhängigkeiten überschreiben und wie Konfigurationswerte mit Azure Functions im Verbrauchstarif gelesen werden.
 
-Die Unterstützung der Abhängigkeitsinjektion beginnt mit Azure Functions 2.x.
+- Die Unterstützung der Abhängigkeitsinjektion beginnt mit Azure Functions 2.x.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,13 +35,11 @@ Bevor Sie die Abhängigkeitsinjektion verwenden können, müssen Sie die folgend
 
 - [Microsoft.NET.Sdk.Functions-Paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/), Version 1.0.28 oder höher
 
-- Optional: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) – nur für die Registrierung von HttpClient beim Starten erforderlich
-
 ## <a name="register-services"></a>Registrieren von Diensten
 
-Sie können eine Methode zum Konfigurieren und Hinzufügen von Komponenten zu einer `IFunctionsHostBuilder`-Instanz erstellen.  Der Azure Functions-Host erstellt eine Instanz von `IFunctionsHostBuilder` und übergibt diese direkt an Ihre Methode.
+Um Dienste zu registrieren, erstellen Sie eine Methode zum Konfigurieren und Hinzufügen von Komponenten zu einer `IFunctionsHostBuilder`-Instanz.  Der Azure Functions-Host erstellt eine Instanz von `IFunctionsHostBuilder` und übergibt diese direkt an Ihre Methode.
 
-Fügen Sie zum Registrieren der Methode das `FunctionsStartup`-Assembly-Attribut hinzu, mit dem der Typname angegeben wird, der beim Starten verwendet wird. Auch Code verweist auf eine Vorabversion von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) auf Nuget.
+Fügen Sie zum Registrieren der Methode das `FunctionsStartup`-Assembly-Attribut hinzu, mit dem der Typname angegeben wird, der beim Starten verwendet wird.
 
 ```csharp
 using System;
@@ -49,7 +47,6 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Cosmos;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -60,18 +57,30 @@ namespace MyNamespace
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddHttpClient();
+
             builder.Services.AddSingleton((s) => {
-                return new CosmosClient(Environment.GetEnvironmentVariable("COSMOSDB_CONNECTIONSTRING"));
+                return new MyService();
             });
+
             builder.Services.AddSingleton<ILoggerProvider, MyLoggerProvider>();
         }
     }
 }
 ```
 
+### <a name="caveats"></a>Einschränkungen
+
+Eine Reihe von Registrierungsschritten wird vor und nach dem Verarbeiten der Startup-Klasse ausgeführt. Berücksichtigen Sie daher die folgenden Punkte:
+
+- *Die Startup-Klasse ist nur für Setup und Registrierung vorgesehen.* Vermeiden Sie die Verwendung von Diensten, die beim Start während des Startvorgangs registriert werden. Versuchen Sie beispielsweise nicht, eine Nachricht in einer Protokollierung zu protokollieren, die während des Starts registriert wird. Dieser Zeitpunkt des Registrierungsprozesses ist zu früh, damit ihre Dienste zur Verwendung verfügbar sind. Nachdem die `Configure`-Methode ausgeführt wurde, registriert die Azure Functions-Laufzeit weiterhin zusätzliche Abhängigkeiten, die sich den Betrieb ihrer Dienste auswirken können.
+
+- *Der Container für die Abhängigkeitsinjektion enthält nur explizit registrierte Typen*. Die einzigen Dienste, die als injizierbare Typen verfügbar sind, sind diejenigen, die in der `Configure`-Methode eingerichtet werden. Folglich sind Azure Functions-spezifische Typen wie `BindingContext` und `ExecutionContext` während des Setups oder als injizierbare Typen nicht verfügbar.
+
 ## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
 
-Für ASP.NET Core wird die Konstruktorinjektion verwendet, um Ihre Abhängigkeiten für Ihre Funktion verfügbar zu machen. Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden. 
+Die Konstruktorinjektion wird verwendet, um Ihre Abhängigkeiten in einer Funktion verfügbar zu machen. Die Verwendung der Konstruktorinjektion erfordert den Verzicht auf statische Klassen.
+
+Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden. In diesem Beispiel wird das Paket [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) verwendet, das beim Start `HttpClient` registrieren muss.
 
 ```csharp
 using System;
@@ -82,7 +91,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace MyNamespace
 {
@@ -112,24 +120,23 @@ namespace MyNamespace
 }
 ```
 
-Die Verwendung der Konstruktorinjektion bedeutet, dass Sie nicht die statischen Funktionen nutzen sollten, wenn Sie die Abhängigkeitsinjektion einsetzen möchten. Informationen zum Cosmos-Client finden Sie [hier](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs).
-
 ## <a name="service-lifetimes"></a>Dienstlebensdauer
 
-Azure Functions-Apps verfügen über dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): Sie sind kurzlebig, bereichsbezogen und „Singleton“.
+Azure Functions-Apps bieten dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Bei einer Funktions-App weisen die verschiedenen Dienstlebensdauern die folgenden Verhalten auf:
 
-In einer Funktions-App entspricht eine bereichsbezogene Lebensdauer der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet. Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet.
-
-Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `SqlConnection`, `CloudBlobClient` oder `HttpClient`.
+- **Vorübergehend**: Bei jeder Anforderung des Diensts werden vorübergehende Dienste erstellt.
+- **Bereichsbezogen**: Die bereichsbezogene Lebensdauer eines Diensts entspricht der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet.
+- **Singleton**: Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet. Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `SqlConnection` oder `HttpClient`.
 
 Sie können auf GitHub ein [Beispiel für verschiedene Dienstlebensdauern](https://aka.ms/functions/di-sample) anzeigen bzw. herunterladen.
 
 ## <a name="logging-services"></a>Protokollierungsdienste
 
-Wenn Sie Ihren eigenen Protokollanbieter benötigen, ist die empfohlene Vorgehensweise die Registrierung einer `ILoggerProvider`-Instanz. Application Insights wird von Azure Functions automatisch hinzugefügt.
+Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie einen benutzerdefinierten Typ als `ILoggerProvider`-Instanz. Application Insights wird von Azure Functions automatisch hinzugefügt.
 
 > [!WARNING]
-> Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
+> - Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
+> - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden.
 
 ## <a name="function-app-provided-services"></a>Dienste, die von Funktions-App bereitgestellt werden
 
@@ -145,6 +152,51 @@ Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienst
 ### <a name="overriding-host-services"></a>Überschreiben von Hostdiensten
 
 Das Überschreiben der vom Host bereitgestellten Dienste wird derzeit nicht unterstützt.  [Erstellen Sie ein Issue, und schlagen Sie es auf GitHub vor](https://github.com/azure/azure-functions-host), falls andere Dienste vorhanden sind, die Sie überschreiben möchten.
+
+## <a name="working-with-options-and-settings"></a>Arbeiten mit Optionen und Einstellungen
+
+Werte, die in [App-Einstellungen](./functions-how-to-use-azure-function-app-settings.md#settings) definiert sind, sind in einer `IConfiguration`-Instanz verfügbar, die es Ihnen ermöglicht, App-Einstellungswerte in der Startup-Klasse zu lesen.
+
+Sie können Werte aus der `IConfiguration`-Instanz in einen benutzerdefinierten Typ extrahieren. Wenn Sie App-Einstellungswerte in einen benutzerdefinierten Typ kopieren, können Sie Ihre Dienste mühelos testen, indem Sie diese Werte injizierbar gestalten. Beachten Sie die folgende Klasse, die eine Eigenschaft mit dem Namen „consistent“ mit einer App-Einstellung enthält.
+
+```csharp
+public class MyOptions
+{
+    public string MyCustomSetting { get; set; }
+}
+```
+
+Innerhalb der `Startup.Configure`-Methode können Sie Werte aus der `IConfiguration`-Instanz mit dem folgenden Code in Ihren benutzerdefinierten Typ extrahieren:
+
+```csharp
+builder.Services.AddOptions<MyOptions>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                                           {
+                                                configuration.Bind(settings);
+                                           });
+```
+
+Durch den Aufruf von `Bind` werden Werte mit übereinstimmenden Eigenschaftsnamen aus der Konfiguration in die benutzerdefinierte Instanz kopiert. Die Optionsinstanz ist nun im IoC-Container zum Injizieren in eine Funktion verfügbar.
+
+Das Optionsobjekt wird als Instanz der generischen `IOptions`-Schnittstelle in die Funktion injiziert. Verwenden Sie die `Value`-Eigenschaft, um auf die in Ihrer Konfiguration gefundenen Werte zuzugreifen.
+
+```csharp
+using System;
+using Microsoft.Extensions.Options;
+
+public class HttpTrigger
+{
+    private readonly MyOptions _settings;
+
+    public HttpTrigger(IOptions<MyOptions> options)
+    {
+        _service = service;
+        _settings = options.Value;
+    }
+}
+```
+
+Weitere Informationen zum Arbeiten mit Optionen finden Sie unter [Optionsmuster in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

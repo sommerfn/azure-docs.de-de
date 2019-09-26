@@ -1,7 +1,7 @@
 ---
 title: Zugriffsschlüssel für Speicherkonten ändern
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie die Zugriffsschlüssel für das von Ihrem Arbeitsbereich verwendete Azure Storage-Konto ändern können. Der Azure Machine Learning Service verwendet ein Azure Storage-Konto, um Daten und Modelle zu speichern. Wenn Sie den Zugriffsschlüssel für das Speicherkonto neu generieren, müssen Sie den Dienst Azure Machine Learning aktualisieren, um die neuen Schlüssel zu verwenden.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie die Zugriffsschlüssel für das von Ihrem Arbeitsbereich verwendete Azure Storage-Konto ändern können. Azure Machine Learning verwendet ein Azure Storage-Konto, um Daten und Modelle zu speichern. Wenn Sie den Zugriffsschlüssel für das Speicherkonto neu generieren, müssen Sie Azure Machine Learning aktualisieren, um die neuen Schlüssel zu verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558227"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034969"
 ---
-# <a name="regenerate-storage-account-access-keys"></a>Zugriffsschlüssel für Speicherkonten neu generieren
+# <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 
-Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, die vom Azure Machine Learning-Dienst verwendet werden. Azure Machine Learning kann Speicherkonten verwenden, um Daten oder trainierte Modelle zu speichern.
+Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, die von Azure Machine Learning verwendet werden. Azure Machine Learning kann Speicherkonten verwenden, um Daten oder trainierte Modelle zu speichern.
 
 Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für ein Azure Storage-Konto ändern. Wenn Sie den Zugriffsschlüssel neu generieren, muss Azure Machine Learning aktualisiert werden, um den neuen Schlüssel zu verwenden. Azure Machine Learning kann das Speicherkonto sowohl für die Modellspeicherung als auch als Datenspeicher verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Workspace](how-to-manage-workspace.md)-Artikels.
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Die [CLI-Erweiterung Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
 <a id="whattoupdate"></a> 
 
 ## <a name="what-needs-to-be-updated"></a>Was aktualisiert werden muss
 
-Speicherkonten können vom Azure Machine Learning Service-Arbeitsbereich (Speichern von Protokollen, Modellen, Snapshots usw.) und als Datenspeicher verwendet werden. Der Prozess zur Aktualisierung des Arbeitsbereichs ist ein einzelner Azure CLI-Befehl und kann nach der Aktualisierung des Speicherschlüssels ausgeführt werden. Der Prozess der Aktualisierung von Datenspeichern ist aufwändiger und erfordert es, herauszufinden, welche Datenspeicher derzeit das Speicherkonto verwenden und sie dann neu zu registrieren.
+Speicherkonten können vom Azure Machine Learning-Arbeitsbereich (Speichern von Protokollen, Modellen, Snapshots usw.) und als Datenspeicher verwendet werden. Der Prozess zur Aktualisierung des Arbeitsbereichs ist ein einzelner Azure CLI-Befehl und kann nach der Aktualisierung des Speicherschlüssels ausgeführt werden. Der Prozess der Aktualisierung von Datenspeichern ist aufwändiger und erfordert es, herauszufinden, welche Datenspeicher derzeit das Speicherkonto verwenden, und sie dann neu zu registrieren.
 
 > [!IMPORTANT]
 > Aktualisieren Sie den Arbeitsbereich mit der Azure CLI und die Datenspeicher mit Python gleichzeitig. Die Aktualisierung nur des einen oder anderen ist nicht ausreichend und kann zu Fehlern führen, bis beide aktualisiert werden.
@@ -64,32 +64,32 @@ for name, ds in datastores.items():
 
 Dieser Code sucht nach allen registrierten Datenspeichern, die Azure Storage verwenden, und listet die folgenden Informationen auf:
 
-* Datenspeicher: Der Name des Datenspeichers, unter dem das Speicherkonto registriert ist.
+* Datenspeichername: Der Name des Datenspeichers, unter dem das Speicherkonto registriert ist.
 * Azure Storage-Kontoname: Der Name des Azure Storage-Kontos.
-* Container: Der Container im Speicherkonto, der bei dieser Registrierung verwendet wird.
+* Container: Der Container im Speicherkonto, der für diese Registrierung verwendet wird.
 
 Außerdem wird angegeben, ob der Datenspeicher für ein Azure-Blob oder eine Azure-Dateifreigabe gedacht ist, da verschiedene Methoden zum erneuten Registrieren der einzelnen Datenspeichertypen vorhanden sind.
 
 Wenn ein Eintrag für das Speicherkonto existiert, für das Sie eine Neugenerierung der Zugriffsschlüssel planen, speichern Sie den Namen des Datenspeichers, den Namen des Speicherkonto-Namens und den Containernamen.
 
-## <a name="update-the-access-key"></a>Aktualisieren Sie den Zugriffsschlüssel
+## <a name="update-the-access-key"></a>Aktualisieren des Zugriffsschlüssels
 
-Um den Azure Machine Learning-Dienst auf die Verwendung des neuen Schlüssels zu aktualisieren, gehen Sie wie folgt vor:
+Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwendet wird, gehen Sie wie folgt vor:
 
 > [!IMPORTANT]
 > Führen Sie alle Schritte aus, indem Sie sowohl den Arbeitsbereich über die CLI als auch die Datenspeicher über Python aktualisieren. Die Aktualisierung nur des einen oder anderen kann zu Fehlern führen, bis beide aktualisiert werden.
 
-1. Wiederherstellung des Schlüssels. Informationen zur Neugenerierung eines Zugriffsschlüssels finden Sie im Artikel [Verwaltung eines Lagerkontos](/azure/storage/common/storage-account-manage#access-keys). Speichern Sie den neuen Schlüssel.
+1. Generieren Sie den Schlüssel neu. Informationen zur Neugenerierung eines Zugriffsschlüssels finden Sie im Artikel [Verwaltung eines Lagerkontos](/azure/storage/common/storage-account-manage#access-keys). Speichern Sie den neuen Schlüssel.
 
-1. Um den Arbeitsbereich auf die Verwendung des neuen Schlüssels zu aktualisieren, gehen Sie wie folgt vor:
+1. Um den Arbeitsbereich so zu aktualisieren, dass der neue Schlüssel verwendet wird, gehen Sie wie folgt vor:
 
-    1. Um sich bei dem Azure-Abonnement anzumelden, das Ihren Arbeitsbereich enthält, verwenden Sie den folgenden Befehl Azure CLI:
+    1. Um sich bei dem Azure-Abonnement anzumelden, das Ihren Arbeitsbereich enthält, verwenden Sie den folgenden Azure CLI-Befehl:
 
         ```azurecli-interactive
         az login
         ```
 
-    1. Um den Arbeitsbereich auf die Verwendung des neuen Schlüssels zu aktualisieren, verwenden Sie den folgenden Befehl. Ersetzen `myworkspace` Sie durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs und ersetzen Sie `myresourcegroup` durch den Namen der Azure-Ressourcengruppe, die den Arbeitsbereich enthält.
+    1. Um den Arbeitsbereich so zu aktualisieren, dass der neue Schlüssel verwendet wird, verwenden Sie den folgenden Befehl. Ersetzen Sie `myworkspace` durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs, und ersetzen Sie `myresourcegroup` durch den Namen der Azure-Ressourcengruppe, die den Arbeitsbereich enthält.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -119,8 +119,8 @@ Um den Azure Machine Learning-Dienst auf die Verwendung des neuen Schlüssels zu
     
     ```
 
-    Da `overwrite=True` spezifiziert ist, überschreibt dieser Code die bestehende Registrierung und aktualisiert sie, um den neuen Schlüssel zu verwenden.
+    Da `overwrite=True` angegeben ist, überschreibt dieser Code die bestehende Registrierung und aktualisiert sie, um den neuen Schlüssel zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Registrierung von Datenspeichern finden Sie in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) Klassenreferenz.
+Weitere Informationen zur Registrierung von Datenspeichern finden Sie in der Referenz der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse.

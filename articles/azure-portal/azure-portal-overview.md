@@ -9,12 +9,12 @@ ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e176a8b16129cd35fc011e14fcb36038f7c0144
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244198"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000338"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
 
@@ -69,6 +69,12 @@ Wir haben Ihre Favoriten auf der Randleiste vorab mit Links zu häufig genutzten
 > [!TIP]
 > Der schnellste Weg, eine Ressource, einen Dienst oder Dokumentation zu finden, ist die *Suche* in der globalen Kopfzeile. Verwenden Sie die Breadcrumb-Links, um zu vorherigen Seiten zurückzukehren.
 >
+Sehen Sie sich dieses Video an, um zu erfahren, wie die globale Suche im Azure-Portal verwendet wird.
+
+
+> [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
+
+[Verwenden der globalen Suche im Azure-Portal](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

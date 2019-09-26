@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 432d81b4282e45bc2f33d098e618f2edd152628b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697063"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098026"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
 
-## <a name="sentiment-analysis-v3-public-preview---july-2019"></a>Public Preview der Standpunktanalyse v3 – Juli 2019
+## <a name="sentiment-analysis-v3-public-preview---september-2019"></a>Public Preview der Standpunktanalyse v3 – September 2019
 
 Die nächste Version der Standpunktanalyse ist jetzt als Public Preview verfügbar und bietet erhebliche Verbesserungen bei Genauigkeit und Detailgrad der Textkategorisierung und -bewertung der API. Außerdem bietet sie Folgendes:
 
 * Automatische Bezeichnung für verschiedene Stimmungen im Text
 * Standpunktanalyse und Ausgabe auf Dokument- und Satzebene 
 
-Unterstützung für Englisch und Verfügbarkeit in drei Regionen: „Kanada, Mitte“, „Asien, Osten“ und „USA, Mitte“. Weitere Sprachen und Regionen werden in zukünftigen Releases hinzugefügt.
+Sie unterstützt Englisch, Französisch, Italienisch, Japanisch, vereinfachtes Chinesisch und Chinesisch (traditionell) und ist in den folgenden Regionen verfügbar: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe` und `West US 2`.
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Standpunktanalyse v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

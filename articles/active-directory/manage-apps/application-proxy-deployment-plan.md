@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812839"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033644"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -292,11 +292,11 @@ Benutzer müssen aber weiterhin die täglichen Vorgänge durchführen, für die 
 
 ### <a name="reporting-and-monitoring"></a>Berichterstellung und Überwachung
 
-Azure AD liefert Ihrer Organisation in [Überwachungsprotokollen und Berichten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) zusätzliche Erkenntnisse zur Anwendungsnutzung und betrieblichen Integrität. Der Anwendungsproxy erleichtert auch das Überwachen von Connectors im Azure AD-Portal und in Windows-Ereignisprotokollen.
+Azure AD liefert Ihrer Organisation in [Überwachungsprotokollen und Berichten](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) zusätzliche Erkenntnisse zur Anwendungsnutzung und betrieblichen Integrität. Der Anwendungsproxy erleichtert auch das Überwachen von Connectors im Azure AD-Portal und in Windows-Ereignisprotokollen.
 
 #### <a name="application-audit-logs"></a>Überwachungsprotokolle für Anwendungen
 
-Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. [Überwachungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) stehen im Azure-Portal und in der [Überwachungs-API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) zum Export bereit. Außerdem sind [Nutzungs- und Insights-Berichte](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) für Ihre Anwendung verfügbar.
+Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. [Überwachungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) stehen im Azure-Portal und in der [Überwachungs-API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) zum Export bereit. Außerdem sind [Nutzungs- und Insights-Berichte](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) für Ihre Anwendung verfügbar.
 
 #### <a name="application-proxy-connector-monitoring"></a>Überwachung des Anwendungsproxyconnectors
 

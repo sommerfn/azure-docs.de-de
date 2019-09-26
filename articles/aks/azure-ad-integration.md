@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542891"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103785"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -86,7 +86,7 @@ Die erste Azure AD-Anwendung wird verwendet, um eine Azure AD-Gruppenmitgliedsch
 
     e. Wählen Sie **Berechtigungen hinzufügen** aus, um die Änderungen zu speichern.
 
-    f. Wählen Sie unter **Einwilligung erteilen** die Option **Administratoreinwilligung erteilen** aus. Diese Schaltfläche ist nur verfügbar, wenn das aktuelle Konto ein Mandantenadministrator ist.
+    f. Wählen Sie unter **Einwilligung erteilen** die Option **Administratoreinwilligung erteilen** aus. Diese Schaltfläche ist nicht verfügbar, da das aktuell verwendete Konto nicht als Mandantenadministrator aufgeführt ist.
 
     Wenn Berechtigungen erfolgreich gewährt wurden, wird die folgende Benachrichtigung im Portal angezeigt:
 
@@ -282,7 +282,7 @@ error: You must be logged in to the server (Unauthorized)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwendung von Azure AD-Benutzern und -Gruppen für die Zugriffskontrolle auf Cluster-Ressourcen finden Sie unter [Zugriffskontrolle auf Cluster-Ressourcen mit rollenbasierter Zugriffskontrolle und Azure AD-Identitäten in AKS][azure-ad-rbac].
+Informationen zur Verwendung von Azure AD-Benutzern und -Gruppen für die Zugriffskontrolle auf Clusterressourcen finden Sie unter [Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service][azure-ad-rbac].
 
 Weitere Informationen zum Schutz von Kubernetes-Clustern finden Sie unter [Zugriffs- und Identitätsoptionen für AKS][rbac-authorization].
 

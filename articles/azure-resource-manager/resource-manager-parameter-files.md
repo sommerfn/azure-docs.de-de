@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892531"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983929"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
@@ -204,6 +204,6 @@ Wenn Ihre Vorlage einen Parameter enthält, der den gleichen Namen besitzt wie e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).
 - Weitere Informationen zur Verwendung von Werten aus einem Schlüsseltresor finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](resource-manager-keyvault-parameter.md).
-
+- Weitere Informationen zu Parametern finden Sie unter [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).

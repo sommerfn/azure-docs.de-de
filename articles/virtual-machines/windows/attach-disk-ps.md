@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 615eedc66d1c4ac931067ffccdace5d161b18384
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 81d0469645281f63527db5cf600f157d8d6b29d7
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699881"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968360"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell
 
@@ -119,4 +119,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen einer [Momentaufnahme](snapshot-copy-managed-disk.md)
+Sie können verwaltete Datenträger auch über Vorlagen bereitstellen. Weitere Informationen finden Sie unter [Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen](using-managed-disks-template-deployments.md) oder in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) (quickstart-template) zum Bereitstellen mehrerer Datenträger.

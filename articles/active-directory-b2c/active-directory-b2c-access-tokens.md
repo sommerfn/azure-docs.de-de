@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874094"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066121"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
-Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory B2C (Azure AD B2C) die gewährten Berechtigungen für Ihre APIs identifizieren können. Beim Aufrufen eines Ressourcenservers muss ein Zugriffstoken in der HTTP-Anforderung vorhanden sein. Zugriffstoken werden in den Antworten von Azure AD B2C als **access_token** angegeben.
+Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory B2C (Azure AD B2C) die gewährten Berechtigungen für Ihre APIs identifizieren können. Beim Aufrufen eines Ressourcenservers muss ein Zugriffstoken in der HTTP-Anforderung vorhanden sein. Zugriffstoken werden in den Antworten von Azure AD B2C als **access_token** angegeben.
 
 In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwendung und eine Web-API anfordern. Weitere Informationen zu Token in Azure AD B2C finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 

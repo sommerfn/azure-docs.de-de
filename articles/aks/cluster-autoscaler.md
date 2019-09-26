@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914863"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097911"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Vorschau: Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -53,7 +53,7 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 Für eine Anpassung an sich ändernde Anwendungsanforderungen, z.B. zwischen Arbeitstag und Abend oder an einem Wochenende, benötigen Cluster oft eine Möglichkeit zur automatischen Skalierung. AKS-Cluster können auf zwei Arten skaliert werden:
 
 * Die **Autoskalierung für Cluster** überprüft auf Pods, die aufgrund von Ressourceneinschränkungen nicht auf Knoten geplant werden können. Der Cluster erhöht in diesem Fall automatisch die Anzahl von Knoten.
-* Bei der **horizontalen automatischen Podskalierung** überwacht der Metrikserver in einem Kubernetes-Cluster die Ressourcenanforderungen der Pods. Wenn ein Dienst mehr Ressourcen benötigt, wird die Anzahl von Pods automatisch erhöht, um den Bedarf zu decken.
+* Bei der **horizontalen automatischen Podskalierung** überwacht der Metrikserver in einem Kubernetes-Cluster die Ressourcenanforderungen der Pods. Wenn eine Anwendung mehr Ressourcen benötigt, wird die Anzahl von Pods automatisch erhöht, um den Bedarf zu decken.
 
 ![Die Autoskalierung für Cluster und die horizontale automatische Podskalierung arbeiten häufig zusammen, um die Anwendungsanforderungen zu erfüllen.](media/autoscaler/cluster-autoscaler.png)
 
@@ -67,7 +67,7 @@ Weitere Informationen dazu, warum ein zentrales Herunterskalieren über die Auto
 
 Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Diese Parameter werden über die Azure-Plattform definiert und können aktuell nicht von Ihnen angepasst werden. Weitere Informationen zu den von der Autoskalierung für Cluster verwendeten Parametern finden Sie unter [What are the cluster autoscaler parameters?][autoscaler-parameters] (Welche Parameter verwendet die Autoskalierung für Cluster?).
 
-Die automatische Clusterskalierung und die horizontale automatische Podskalierung können zusammenarbeiten und werden häufig gemeinsam in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
+Die automatische Clusterskalierung und die horizontale automatische Podskalierung können zusammenarbeiten und werden häufig beide in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
 
 > [!NOTE]
 > Bei Verwendung der Autoskalierung für Cluster ist die manuelle Skalierung deaktiviert. Überlassen Sie der Autoskalierung für Cluster das Bestimmen der erforderlichen Anzahl von Knoten. Wenn Sie Ihren Cluster manuell skalieren möchten, [deaktivieren Sie die Autoskalierung für Cluster](#disable-the-cluster-autoscaler).
@@ -104,7 +104,7 @@ Die Erstellung des Clusters und die Konfiguration der Einstellungen für die Aut
 ## <a name="change-the-cluster-autoscaler-settings"></a>Ändern der Einstellungen zur Autoskalierung für Cluster
 
 > [!IMPORTANT]
-> Wenn Sie das Feature *Mehrere Agent-Pools* in Ihrem Abonnement aktiviert haben, fahren Sie mit dem Abschnitt [Automatische Skalierung mit mehreren Agent-Pools](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled) fort. Für Cluster, für die mehrere Agent-Pools aktiviert sind, ist die Verwendung des `az aks nodepool`-Befehlssatzes anstelle von `az aks` zum Ändern von Knotenpool-spezifischen Eigenschaften erforderlich. In den folgenden Anweisungen wird davon ausgegangen, dass Sie nicht mehrere Knotenpools aktiviert haben. Um zu überprüfen, ob diese aktiviert sind, führen Sie `az feature  list -o table` aus, und suchen Sie nach `Microsoft.ContainerService/multiagentpoolpreview`.
+> Wenn Sie das Feature *Mehrere Agent-Pools* in Ihrem Abonnement aktiviert haben, fahren Sie mit dem Abschnitt [Automatische Skalierung mit mehreren Agent-Pools](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled) fort. Für Cluster, für die mehrere Agent-Pools aktiviert sind, ist die Verwendung des `az aks nodepool`-Befehlssatzes anstelle von `az aks` zum Ändern von Knotenpool-spezifischen Eigenschaften erforderlich. In den folgenden Anweisungen wird davon ausgegangen, dass Sie nicht mehrere Knotenpools aktiviert haben. Um zu überprüfen, ob diese aktiviert sind, führen Sie `az feature  list -o table` aus, und suchen Sie nach `Microsoft.ContainerService/multiagentpoolpreview`.
 
 Im vorherigen Schritt zum Erstellen eines AKS-Clusters oder Aktualisieren eines vorhandenen Knotenpools wurde die Mindestanzahl von Knoten zur automatischen Clusterskalierung auf *1* und die maximale Knotenanzahl auf *3* festgelegt. Wenn sich die Anforderungen Ihrer Anwendung ändern, müssen Sie möglicherweise die Knotenanzahl für die Autoskalierung für Cluster anpassen.
 

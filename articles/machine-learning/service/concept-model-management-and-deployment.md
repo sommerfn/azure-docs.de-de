@@ -1,7 +1,7 @@
 ---
 title: 'MLOps: Verwalten, Bereitstellen und Überwachen von ML-Modellen'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit Azure Machine Learning Services für MLOps Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning Services trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
+titleSuffix: Azure Machine Learning
+description: 'Erfahren Sie, wie Sie Azure Machine Learning für MLOps verwenden: Bereitstellen, Verwalten und Überwachen Ihrer Modelle, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,25 +11,25 @@ author: jpe316
 ms.author: jordane
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f3c3532637bef041ad1983b7573837dd0f29211
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860616"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035470"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie den Azure Machine Learning Service verwenden, um den Lebenszyklus Ihrer Modelle zu verwalten. Azure Machine Learning verwendet MLOps (Machine Learning Operations, Machine Learning-Vorgänge), wodurch sich die Qualität und Konsistenz Ihrer Machine Learning-Lösungen verbessern. 
+In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning verwenden, um den Lebenszyklus Ihrer Modelle zu verwalten. Azure Machine Learning verwendet MLOps (Machine Learning Operations, Machine Learning-Vorgänge), wodurch sich die Qualität und Konsistenz Ihrer Machine Learning-Lösungen verbessern. 
 
-Der Azure Machine Learning Service bietet die folgenden MLOps-Features:
+Azure Machine Learning bietet die folgenden MLOps-Features:
 
 - **Bereitstellen von ML-Projekten von jedem Ort aus**
 - **Überwachen von ML-Anwendungen auf betriebs- und ML-bezogene Probleme**: Vergleichen Sie Modelleingaben für Training und Rückschlüsse, untersuchen Sie modellspezifische Metriken, und stellen Sie Überwachungsfunktionen und Warnungen für Ihre ML-Infrastruktur bereit.
 - **Erfassen der erforderlichen Daten zur Einrichtung eines umfassenden Überwachungspfads des ML-Lebenszyklus**: Sie können beispielsweise überwachen, wer Modelle veröffentlicht, warum Änderungen vorgenommen werden und wann Modelle in der Produktion bereitgestellt oder verwendet wurden.
 - **Automatisieren des End-to-End-ML-Lebenszyklus mit Azure Machine Learning und Azure DevOps**: Ermöglicht das häufige Aktualisieren von Modellen, Testen neuer Modelle und Durchführen fortlaufender Rollouts von neuen ML-Modellen zusätzlich zu Ihren anderen Anwendungen und Diensten.
 
-Weitere Informationen zu den Konzepten von MLOps und der Anwendung dieser Vorgänge auf den Azure Machine Learning Service erhalten Sie in folgendem Video.
+Weitere Informationen zu den Konzepten von MLOps und der Anwendung dieser Vorgänge auf Azure Machine Learning erhalten Sie in folgendem Video.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
@@ -47,10 +47,10 @@ Die Modellregistrierung ermöglicht es Ihnen, Ihre Modelle in der Azure-Cloud in
 > [!TIP]
 > Ein registriertes Modell ist ein logischer Container für eine oder mehrere Dateien, aus denen Ihr Modell besteht. Wenn Sie beispielsweise ein Modell verwenden, das in mehreren Dateien gespeichert ist, können Sie diese als einzelnes Modell in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Nach der Registrierung können Sie das registrierte Modell dann herunterladen oder bereitstellen und alle Dateien empfangen, die registriert wurden.
  
-Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Azure Machine Learning Service unterstützt Modelle, die mit Python 3.5.2 oder höher geladen werden können.
+Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Azure Machine Learning unterstützt Modelle, die mit Python 3.5.2 oder höher geladen werden können.
 
 > [!TIP]
-> Sie können auch Modelle registrieren, die außerhalb von Azure Machine Learning Service trainiert wurden.
+> Sie können auch Modelle registrieren, die außerhalb von Azure Machine Learning trainiert wurden.
 
 Sie können kein registriertes Modell löschen, das in einer aktiven Bereitstellung verwendet wird.
 Weitere Informationen finden Sie im Abschnitt „Registrieren eines Modells“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#registermodel).
@@ -65,13 +65,13 @@ Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deplo
 
 ### <a name="validate-and-profile-models"></a>Validierung und Profilerstellung von Modellen
 
-Der Azure Machine Learning Service kann die Profilerstellung verwenden, um die idealen CPU- und Arbeitsspeichereinstellungen für die Bereitstellung Ihres Modells zu ermitteln. Die Modellvalidierung erfolgt im Rahmen dieses Prozesses unter Verwendung von Daten, die Sie für den Profilerstellungsvorgang bereitstellen.
+Azure Machine Learning kann die Profilerstellung verwenden, um die idealen CPU- und Arbeitsspeichereinstellungen für die Bereitstellung Ihres Modells zu ermitteln. Die Modellvalidierung erfolgt im Rahmen dieses Prozesses unter Verwendung von Daten, die Sie für den Profilerstellungsvorgang bereitstellen.
 
 ### <a name="convert-and-optimize-models"></a>Konvertieren und Optimieren von Modellen
 
 Die Konvertierung Ihres Modells zu [Open Neural Network Exchange](https://onnx.ai) (ONNX) kann die Leistung verbessern. Im Durchschnitt lässt sich durch eine Konvertierung zu ONNX eine 2-fache Leistungssteigerung erzielen.
 
-Weitere Informationen zu ONNX mit Azure Machine Learning Service finden Sie im Artikel [Erstellen und Beschleunigen von ML-Modellen](concept-onnx.md).
+Weitere Informationen zu ONNX mit Azure Machine Learning finden Sie im Artikel [Erstellen und Beschleunigen von ML-Modellen](concept-onnx.md).
 
 ### <a name="use-models"></a>Verwenden von Modellen
 
@@ -90,14 +90,14 @@ Optional können Sie die folgenden Parameter verwenden, um die Bereitstellung we
 
 * GPU aktivieren: Wird verwendet, um die GPU-Unterstützung im Docker-Image zu aktivieren. Das Image muss in Microsoft Azure-Diensten wie Azure Container Instances, Azure Kubernetes Service, Azure Machine Learning Compute oder Azure Virtual Machines verwendet werden.
 * Docker-Datei für zusätzliche Schritte: Eine Datei, die zusätzliche Docker-Schritte enthält, die beim Erstellen des Docker-Images ausgeführt werden sollen.
-* Basisimage: Ein benutzerdefiniertes Image, das als Basisimage verwendet werden soll. Wenn Sie kein benutzerdefiniertes Image verwenden, wird das Basisimage vom Azure Machine Learning Service bereitgestellt.
+* Basisimage: Ein benutzerdefiniertes Image, das als Basisimage verwendet werden soll. Wenn Sie kein benutzerdefiniertes Image verwenden, wird das Basisimage von Azure Machine Learning bereitgestellt.
 
 Sie stellen auch die Konfiguration der Zielbereitstellungsplattform bereit. Beispielsweise den Typ der VM-Familie, den verfügbaren Arbeitsspeicher und die Anzahl von Kernen bei der Bereitstellung in Azure Kubernetes Service.
 
-Wenn das Image erstellt wird, werden auch die Komponenten hinzugefügt, die vom Azure Machine Learning Service benötigt werden. Beispielsweise die Ressourcen, die erforderlich sind, um den Webdienst auszuführen und mit IoT Edge zu interagiere.
+Wenn das Image erstellt wird, werden auch die Komponenten hinzugefügt, die von Azure Machine Learning benötigt werden. Beispielsweise die Ressourcen, die erforderlich sind, um den Webdienst auszuführen und mit IoT Edge zu interagiere.
 
 > [!NOTE]
-> Sie können die im Docker-Image verwendeten Webserver- oder IoT Edge-Komponenten nicht ändern. Der Azure Machine Learning Service verwendet Webserverkonfigurationen und IoT Edge-Komponenten, die von Microsoft getestet wurden und unterstützt werden.
+> Sie können die im Docker-Image verwendeten Webserver- oder IoT Edge-Komponenten nicht ändern. Azure Machine Learning verwendet Webserverkonfigurationen und IoT Edge-Komponenten, die von Microsoft getestet wurden und unterstützt werden.
 
 #### <a name="web-service"></a>Webdienst
 
@@ -153,11 +153,11 @@ Die [Azure Machine Learning-Erweiterung](https://marketplace.visualstudio.com/it
 * Ermöglicht beim Definieren einer Dienstverbindung die Auswahl eines Arbeitsbereichs.
 * Ermöglicht das Auslösen von Releasepipelines durch trainierte Modelle, die in einer Trainingspipeline erstellt wurden.
 
-Weitere Informationen zum Verwenden von Azure Pipelines mit Azure Machine Learning finden Sie im Artikel [Continuous Integration und Continuous Deployment von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) und im Repository [Azure Machine Learning Service MLOps](https://aka.ms/mlops).
+Weitere Informationen zum Verwenden von Azure Pipelines mit Azure Machine Learning finden Sie im Artikel [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning) und im Repository [Azure Machine Learning MLOps](https://aka.ms/mlops).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr darüber [wie und auf welchen Instanzen Modelle mit dem Azure Machine Learning-Dienst bereitgestellt werden können](how-to-deploy-and-where.md). Ein Bereitstellungsbeispiel finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Erfahren Sie mehr darüber, [wie und wo Modelle mit Azure Machine Learning bereitgestellt werden können](how-to-deploy-and-where.md). Ein Bereitstellungsbeispiel finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 Erfahren Sie, wie Sie [durchgängige Integration und Bereitstellung von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) erstellen. 
 

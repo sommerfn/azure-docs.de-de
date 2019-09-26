@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767155"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983393"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
@@ -35,7 +35,7 @@ Sie können dieses Feature mit der Einstellung „ShowPeoplePickerSuggestionsFor
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>Einladungen wurden für das Verzeichnis deaktiviert.
 
-Wenn Sie darüber informiert werden, dass Sie nicht über die Berechtigung verfügen, Benutzer einzuladen, überprüfen Sie unter „Benutzereinstellungen“, ob Ihr Benutzerkonto für die Einladung externer Benutzer autorisiert ist.
+Wenn Sie darüber informiert werden, dass Sie nicht über die Berechtigung verfügen, Benutzer einzuladen, überprüfen Sie unter „Azure Active Directory > Benutzereinstellungen > Externe Benutzer > Externe Einstellungen zur Zusammenarbeit verwalten“, ob Ihr Benutzerkonto für die Einladung externer Benutzer autorisiert ist:
 
 ![Screenshot mit Einstellungen für externe Benutzer](media/troubleshoot/external-user-settings.png)
 

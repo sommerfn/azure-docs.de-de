@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844770"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932825"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -35,7 +35,8 @@ Wenn Sie beispielsweise zwei Arten von LUIS-Apps haben, die Sie mit unterschiedl
 
 Migration umfasst:
 
-* **Alle** Apps des Besitzers
+* Alle Benutzer von LUIS, Besitzer und Mitwirkende.
+* **Alle** Apps.
 * Eine **unidirektionale** Migration
 
 Der Besitzer kann keine Teilmenge zu migrierender Apps auswählen, und der Prozess kann nicht rückgängig gemacht werden. 
@@ -87,13 +88,17 @@ Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im _Az
 
 ## <a name="migration-for-the-app-contributor"></a>Migration für den App-Mitwirkenden
 
+Jeder Benutzer von LUIS muss die Migration durchführen, einschließlich der Projektmitarbeiter/Mitwirkenden. 
+
 ### <a name="before-the-app-is-migrated"></a>Vor dem Migrieren der App
 
 Sie können so vorgehen, dass Sie eine App, für die Sie ein Projektmitarbeiter sind, exportieren und dann wieder in LUIS importieren. Beim Importvorgang wird eine neue App mit einer neuen App-ID erstellt, deren Besitzer Sie sind.
 
 ### <a name="after-the-app-is-migrated"></a>Nach dem Migrieren der App
 
-Wenn Sie nach dem Migrationsvorgang auf die Original-App zugreifen müssen, müssen Sie der Azure-Erstellungsressource vom App-Besitzer als Projektmitarbeiter hinzugefügt werden.  
+Der App-Besitzer muss [Ihre E-Mail-Adresse als Projektmitarbeiter zur Azure-Erstellungsressource hinzufügen](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+
+Nach dem Migrationsvorgang sind alle Apps, die Sie besitzen, auf der Seite **Meine Apps** des LUIS-Portals verfügbar.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

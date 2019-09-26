@@ -1,7 +1,7 @@
 ---
 title: Erstellen von Arbeitsbereichen mit der Azure CLI
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen neuen Azure Machine Learning Service-Arbeitsbereich zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen neuen Azure Machine Learning-Arbeitsbereich zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873499"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002634"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning Service mit der Azure CLI
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 
-In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mit der Azure CLI. Die Azure CLI bietet Befehle zum Verwalten von Azure-Ressourcen. Die Erweiterung der CLI für maschinelles Lernen unterstützt Befehle für die Arbeit mit Azure Machine Learning Service-Ressourcen.
+In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning-Arbeitsbereichs mit der Azure CLI. Die Azure CLI bietet Befehle zum Verwalten von Azure-Ressourcen. Die Erweiterung der CLI für maschinelles Lernen unterstützt Befehle für die Arbeit mit Azure Machine Learning-Ressourcen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
 * Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Der Azure Machine Learning Service-Arbeitsbereich basiert auf den folgenden Azure-Diensten oder -Entitäten:
+Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Diensten oder -Entitäten:
 
 > [!IMPORTANT]
 > Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben.
@@ -68,10 +68,10 @@ Der Azure Machine Learning Service-Arbeitsbereich basiert auf den folgenden Azur
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Der Azure Machine Learning Service-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
+Der Azure Machine Learning-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 
 > [!TIP]
-> Wählen Sie eine Region aus, in der der Azure Machine Learning Service verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Wählen Sie eine Region aus, in der Azure Machine Learning verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Für die Containerregistrierung muss das [Administratorkonto](/azure/container-registry/container-registry-authentication#admin-account) aktiviert sein, bevor sie mit einem Azure Machine Learning Service-Arbeitsbereich verwendet werden kann.
+    > Für die Containerregistrierung muss das [Administratorkonto](/azure/container-registry/container-registry-authentication#admin-account) aktiviert sein, bevor sie mit einem Azure Machine Learning-Arbeitsbereich verwendet werden kann.
 
 Sobald Sie über die IDs für die Ressourcen verfügen, die Sie mit dem Arbeitsbereich verwenden möchten, verwenden Sie den grundlegenden `az workspace create -w <workspace-name> -g <resource-group-name>`-Befehl, und fügen Sie die Parameter und IDs für die vorhandenen Ressourcen hinzu. Beispielsweise wird mit dem folgenden Befehl ein Arbeitsbereich erstellt, in dem eine vorhandene Containerregistrierung verwendet wird:
 
@@ -302,7 +302,7 @@ Verwenden Sie den folgenden Befehl, um einen Arbeitsbereich mit einem anderen Be
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung (Roles-Based Access Control, RBAC) mit dem Azure Machine Learning Service finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung (Roles-Based Access Control, RBAC) mit Azure Machine Learning finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share).
 

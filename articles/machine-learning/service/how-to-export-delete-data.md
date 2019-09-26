@@ -1,6 +1,6 @@
 ---
 title: Exportieren oder Löschen von Arbeitsbereichsdaten
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit dem Azure-Portal, der CLI, dem SDK und authentifizierten REST-APIs exportieren oder löschen können.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023975"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002841"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst 
 
@@ -27,9 +27,9 @@ In Azure Machine Learning können Sie Ihre Arbeitsbereichsdaten mit der authenti
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Steuern Ihrer Arbeitsbereichsdaten
-Im Produkt enthaltene und von Azure Machine Learning Services gespeicherte Daten stehen über das Azure-Portal, die CLI, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
+Im Produkt enthaltene und von Azure Machine Learning gespeicherte Daten stehen über das Azure-Portal, die CLI, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
 
-In Azure Machine Learning Services bestehen personenbezogene Daten aus Benutzerinformationen in Ausführungsverlaufsdokumenten und Telemetriedatensätzen einiger Benutzerinteraktionen mit dem Dienst.
+In Azure Machine Learning bestehen personenbezogene Daten aus Benutzerinformationen in Laufverlaufsdokumenten und Telemetriedatensätzen einiger Benutzerinteraktionen mit dem Dienst.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Löschen von Arbeitsbereichsdaten mit der REST-API 
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084324"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958837"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Erweiterungen und Features für virtuelle Azure-Computer
 Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, mit denen die Erfüllung von Aufgaben zur Konfiguration und Automatisierung nach der Bereitstellung auf virtuellen Azure-Computern ermöglicht wird. Sie können vorhandene Bilder verwenden und diese dann als Teil Ihrer Bereitstellungen anpassen, sodass Sie keine benutzerdefinierten Images mehr erstellen müssen.
@@ -49,6 +49,30 @@ Sie müssen keine direkte Verbindung mit einer VM herstellen, um die Erweiterung
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Was muss in Bezug auf Erweiterungen sonst noch bedacht werden?
 Für Erweiterungen werden Anwendungen installiert, und wie für alle anderen Anwendungen auch, gelten einige bestimmte Anforderungen. Es ist eine Liste mit unterstützten Windows- und Linux-Betriebssystemen vorhanden, und Sie müssen die Azure-VM-Agents installieren. Einige einzelne VM-Erweiterungsanwendungen verfügen ggf. über eigene Umgebungsvoraussetzungen, z.B. den Zugriff auf einen Endpunkt.
+
+## <a name="troubleshoot-extensions"></a>Problembehandlung bei Erweiterungen
+
+Informationen zur Problembehandlung für jede Erweiterung finden Sie im Abschnitt **Problembehandlung und Support** in der Übersicht für die jeweilige Erweiterung. Es folgt eine Liste der verfügbaren Problembehandlungsinformatonen:
+
+| Namespace | Problembehandlung |
+|-----------|-----------------|
+| microsoft.azure.monitoring.dependencyagent.dependencyagentlinux | [Azure Monitor Dependency-VM-Erweiterung für Linux](agent-dependency-linux.md#troubleshoot-and-support) |
+| microsoft.azure.monitoring.dependencyagent.dependencyagentwindows | [Azure Monitor Dependency-VM-Erweiterung für Windows](agent-dependency-windows.md#troubleshoot-and-support) |
+| microsoft.azure.security.azurediskencryptionforlinux | [Azure Disk Encryption für Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| microsoft.azure.security.azurediskencryption | [Azure Disk Encryption für Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| microsoft.compute.customscriptextension | [CustomScript-Erweiterung für Windows](custom-script-windows.md#troubleshoot-and-support) |
+| microsoft.ostcextensions.customscriptforlinux | [DSC-Erweiterung für Linux](dsc-linux.md#troubleshoot-and-support) |
+| microsoft.powershell.dsc | [DSC-Erweiterung für Windows](dsc-windows.md#troubleshoot-and-support) |
+| microsoft.hpccompute.nvidiagpudriverlinux | [NVIDIA-GPU-Treibererweiterung für Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| microsoft.hpccompute.nvidiagpudriverwindows | [NVIDIA-GPU-Treibererweiterung für Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| microsoft.azure.security.iaasantimalware | [Microsoft Antimalware-Erweiterung für Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| microsoft.enterprisecloud.monitoring.omsagentforlinux | [Azure Monitor für Linux](oms-linux.md#troubleshoot-and-support)
+| microsoft.enterprisecloud.monitoring.microsoftmonitoringagent | [Azure Monitor für Windows](oms-windows.md#troubleshoot-and-support) |
+| stackify.linuxagent.extension.stackifylinuxagentextension | [Stackify Retrace-Agent-Erweiterung für Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux.microsoft.ostcextensions | [Zurücksetzen des Kennworts (VMAccess) für Linux](vmaccess.md#troubleshoot-and-support) |
+| microsoft.recoveryservices.vmsnapshot | [Momentaufnahme für Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
+| microsoft.recoveryservices.vmsnapshot | [Momentaufnahme für Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur Funktionsweise des Linux-Agents und der Erweiterungen finden Sie unter [Virtual machine extensions and features for Linux](features-linux.md) (Informationen zu Erweiterungen und Features für virtuelle Computer für Linux).

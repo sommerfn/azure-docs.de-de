@@ -3,9 +3,8 @@ title: Umsetzen von Empfehlungen in Azure Security Center | Microsoft-Dokumentat
 description: In diesem Dokument wird erläutert, wie Sie Sicherheitsempfehlungen in Azure Security Center umsetzen und so Ihre Azure-Ressourcen schützen und Sicherheitsrichtlinien einhalten können.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a32e344ffe33f411bae85763ae3b919040c1109b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: memildin
+ms.openlocfilehash: 9bd1586193d2e36c370217e37b77409298821a67
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575610"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201001"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -80,12 +79,12 @@ Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufr
 |Advanced Data Security für SQL-Server aktivieren|Durch diese Aktion wird Advanced Data Security (ADS) für diese ausgewählten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Server wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Server abgerechnet.</li></ul>||
 |Bewertung von Sicherheitsrisiken für SQL-Server aktivieren|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für diese ausgewählten verwalteten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für den SQL-Server aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Server wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Server abgerechnet.</li></ul>||
 |Transparent Data Encryption für SQL-Datenbanken aktivieren|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet. 
-|Sichere Übertragung in Speicherkonten aktivieren|Durch diese Aktion wird die Sicherheit des Speicherkontos so aktualisiert, dass nur Anforderungen von sicheren Verbindungen (HTTPS) zugelassen werden. <br>**Hinweis**:<ul><li>Alle Anforderungen, die HTTP verwenden, werden abgelehnt.</li><li>Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl. Dies schließt auch Szenarien ein, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden.  Weitere Informationen</li></ul>|
+|Sichere Übertragung in Speicherkonten sollte aktiviert werden.|Durch diese Aktion wird die Sicherheit des Speicherkontos so aktualisiert, dass nur Anforderungen von sicheren Verbindungen (HTTPS) zugelassen werden. <br>**Hinweis**:<ul><li>Alle Anforderungen, die HTTP verwenden, werden abgelehnt.</li><li>Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl. Dies schließt auch Szenarien ein, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden.  Weitere Informationen</li></ul>|
 |Zugriff auf Webanwendung nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
 |Zugriff auf Funktions-App nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
-|Zugriff auf API-App nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
-|Remotedebuggen für Webanwendung deaktivieren|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
-|Remotedebuggen für Funktions-App deaktivieren|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
+|Auf API-Apps sollte nur über HTTPS zugegriffen werden können|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
+|Remotedebuggen muss für Webanwendung deaktiviert werden|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
+|Remotedebuggen sollte für Funktions-Apps deaktiviert werden|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
 |Remotedebuggen für API-App deaktivieren|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
 |Nicht jeder Ressource den Zugriff auf Ihre Webanwendung über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre Webanwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
 |Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre Funktionsanwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|

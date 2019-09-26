@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142926"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098804"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -180,8 +180,19 @@ A.  Ja. Data Box unterstützt maximal 10 Speicherkonten (universell, klassisch o
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>F: Mein Gerät wurde zugestellt, aber es scheint beschädigt zu sein. Wie sollte ich vorgehen?
 A. Wenn Ihr Gerät beschädigt zugestellt wurde oder es Anzeichen von Manipulationen gibt, verwenden Sie das Gerät nicht. [Wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md), und senden Sie das Gerät schnellstmöglich zurück. Sie können auch einen neuen Data Box-Auftrag für ein Ersatzgerät erstellen. In diesem Fall wird Ihnen das Ersatzgerät nicht in Rechnung gestellt.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>F: Kann ich für den Versand der Data Box meinen eigenen Zustelldienst nutzen?
-A. Beim Data Box-Dienst übernimmt Microsoft den Versand zum und aus dem Azure Rechenzentrum. Wenn Sie Ihren eigenen Zustelldienst nutzen möchten, können Sie den Azure Import/Export-Dienst verwenden. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../storage/common/storage-import-export-service.md)
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>F: Kann ich meine Data Box-Bestellung selbst abholen? Kann ich die Data Box über einen Zustelldienst meiner Wahl zurückgeben?
+A. Ja. Microsoft bietet auch selbstverwalteten Versand in der Region „Gov (US)“ an. Beim Aufgeben der Data Box-Bestellung können Sie die Option für selbstverwalteten Versand auswählen. Führen Sie die folgenden Schritte aus, um Ihr Data Box-Gerät abzuholen:
+    
+1. Nachdem Sie die Bestellung aufgegeben haben, wird die Bestellung verarbeitet, und die Data Box wird vorbereitet. Sie werden per E-Mail benachrichtigt, dass Ihre Bestellung zur Abholung bereit ist. 
+2. Wenn die Bestellung bereit für die Abholung ist, rufen Sie im Azure-Portal Ihre Bestellung auf, und navigieren Sie zum Blatt **Übersicht**. 
+3. Im Azure-Portal wird eine Benachrichtigung mit einem Code angezeigt. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Das Team gibt den Standort bekannt und plant ein Abholdatum und eine Uhrzeit. Sie müssen das Team innerhalb von fünf Werktagen nach Erhalt der E-Mail-Benachrichtigung anrufen.
+
+Führen Sie nach dem Kopieren der Daten die folgenden Schritte aus, um das Gerät zurückzugeben:
+
+1. Sobald das Kopieren der Daten fehlerfrei abgeschlossen ist, können Sie das **Vorbereiten auf den Versand** durchführen. Nach Abschluss der Vorbereitung erhalten Sie einen Code auf der lokalen Webbenutzeroberfläche des Geräts. Kopieren und speichern Sie den Code.
+2. Schalten Sie das Gerät aus, und entfernen Sie die Verbindungskabel.
+3. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
+4. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den zuvor gespeicherten Code an. Sie erhalten Informationen darüber, wo und wann Sie das Gerät abgeben müssen.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>F: Überqueren meine Data Box-Geräte beim Versand Ländergrenzen?
 A. Alle Data Box-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Geräte in und aus beliebigen EU-Länder(n) gesendet werden können. Dies gilt sowohl für Data Box- als auch für Data Box Heavy-Geräte.

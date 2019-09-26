@@ -1,7 +1,7 @@
 ---
-title: Aktivieren der Protokollierung im Azure Machine Learning Service
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie die Protokollierung in Azure Machine Learning Service unter Verwendung sowohl des Python-Standardpakets für die Protokollierung als auch der SDK-spezifischen Funktionen aktivieren.
+title: Aktivieren der Protokollierung in Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie die Protokollierung in Azure Machine Learning unter Verwendung sowohl des Python-Standardpakets für die Protokollierung als auch der SDK-spezifischen Funktionen aktivieren.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847923"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002752"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Aktivieren der Protokollierung im Azure Machine Learning Service
+# <a name="enable-logging-in-azure-machine-learning"></a>Aktivieren der Protokollierung in Azure Machine Learning
 
 Das Python-SDK für Azure Machine Learning gestattet Ihnen die Aktivierung der Protokollierung unter Verwendung sowohl des Python-Standardpakets für die Protokollierung als auch der SDK-spezifischen Funktionen für die lokale Protokollierung sowie die Protokollierung in Ihrem Arbeitsbereich im Portal. Protokolle bieten Entwicklern Echtzeitinformationen zum Anwendungszustand und können bei der Diagnose von Fehlern oder Warnungen helfen. In diesem Artikel lernen Sie verschiedene Möglichkeiten kennen, um die Protokollierung in den folgenden Bereichen zu aktivieren:
 
@@ -27,7 +27,7 @@ Das Python-SDK für Azure Machine Learning gestattet Ihnen die Aktivierung der P
 > * Bereitgestellte Modelle
 > * Python-Einstellungen für `logging`
 
-[Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md). Weitere Informationen zum SDK finden Sie im [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+[Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md). Weitere Informationen zum SDK finden Sie im [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 ## <a name="training-models-and-compute-target-logging"></a>Protokollierung für das Trainieren von Modellen und Computeziele
 

@@ -3,23 +3,22 @@ title: Azure Security Center-Einstellungen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Azure Security Center-Einstellungen konfigurieren.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703522"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201609"
 ---
 # <a name="security-center-settings"></a>Security Center-Einstellungen
 Dieser Artikel enthält eine Übersicht über die Einstellungen in Security Center.

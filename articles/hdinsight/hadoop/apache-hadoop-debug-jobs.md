@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882430"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059218"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analysieren von Apache Hadoop-Protokollen in Azure HDInsight
 
@@ -110,7 +110,7 @@ Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Vereinfachen de
 ### <a name="access-the-ambari-ui"></a>Zugreifen auf die Ambari-Benutzeroberfläche
 Klicken Sie im Azure-Portal auf den Namen eines HDInsight-Clusters, um den Clusterbereich zu öffnen. Klicken Sie im Clusterbereich auf **Dashboard**.
 
-![Clusterdashboard starten](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight: Starten des Cluster-Dashboards](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Öffnen der YARN-Benutzeroberfläche
@@ -120,7 +120,7 @@ Klicken Sie im Azure-Portal auf den Namen eines HDInsight-Clusters, um den Clust
 
 * **Abrufen des Clusterstatus**. Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Info**. Der aktuelle Clusterstatus enthält Informationen zu den Bereichen insgesamt zugeordneter Arbeitsspeicher, verwendete Kerne, Cluster Resource Manager-Status, Clusterversion usw.
   
-    ![Starten des Cluster-Dashboards, Yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Starten des Cluster-Dashboards, Yarn")
+    ![HDInsight: Starten des Cluster-Dashboards (Yarn)](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight: Starten des Cluster-Dashboards (Yarn)")
 * **Abrufen des Knotenstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie auf **Knoten**. Hiermit werden alle Knoten im Cluster, die HTTP-Adresse der einzelnen Knoten, die jeweils zugewiesenen Ressourcen usw. aufgeführt.
 * **Überwachen des Auftragsstatus** Erweitern Sie im linken Bereich **Cluster**, und klicken Sie dann auf **Anwendungen**, um alle Aufträge im Cluster aufzulisten. Wenn Sie nur Aufträge in einem bestimmten Zustand betrachten möchten (z.B. neu, übermittelt, ausgeführt usw.), klicken Sie auf den entsprechenden Link unter **Anwendungen**. Sie können außerdem auf den Auftragsnamen klicken, um weitere Informationen zum Auftrag abzurufen, z. B. Ausgabe, Protokolle usw.
 

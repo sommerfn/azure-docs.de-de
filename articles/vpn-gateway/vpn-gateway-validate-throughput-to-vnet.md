@@ -3,18 +3,18 @@ title: Überprüfen des VPN-Durchsatzes zu einem Microsoft Azure Virtual Network
 description: Dieses Dokument ist dafür vorgesehen, einen Benutzer beim Überprüfen des Netzwerkdurchsatzes von seinen lokalen Ressourcen zu einem virtuellen Azure-Computer zu helfen.
 services: vpn-gateway
 author: cherylmc
-manager: jasmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 1531bbe97c842fbae2ffe7df41f19a3a7be689d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228340"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058801"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -29,10 +29,10 @@ In diesem Artikel wird die Überprüfung des Netzwerkdurchsatzes von lokalen Res
 
 Die VPN-Gateway-Verbindung umfasst die folgenden Komponenten:
 
-* Lokales VPN-Gerät (Liste von [überprüften VPN-Geräten anzeigen](vpn-gateway-about-vpn-devices.md#devicetable)).
+* Lokales VPN-Gerät (eine Liste [überprüfter VPN-Geräte](vpn-gateway-about-vpn-devices.md#devicetable) anzeigen)
 * Öffentliches Internet
 * Azure VPN Gateway
-* Azure-VM
+* Azure VM
 
 Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk mit einem Azure Virtual Network über VPN.
 
@@ -118,21 +118,21 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
 1. Führen Sie nach Abschluss der vorherigen Schritte dieselben Schritte mit den vertauschten Rollen aus, damit der Serverknoten jetzt zum Clientknoten wird und umgekehrt.
 
 > [!Note]
-> Iperf ist nicht das einzige Tool. [NTTTCP ist eine alternative Lösung für den Test.](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)
+> Iperf ist nicht das einzige Tool. [NTTTCP ist eine alternative Lösung für Tests](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
 
-## <a name="test-vms-running-windows"></a>Test-VMs unter Windows
+## <a name="test-vms-running-windows"></a>Testen von virtuellen Computern unter Windows
 
-### <a name="load-latteexe-onto-the-vms"></a>Laden von „Latte. exe“ auf die VMs
+### <a name="load-latteexe-onto-the-vms"></a>Laden von „Latte.exe“ auf die virtuellen Computer
 
 Laden Sie die neueste Version von [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) herunter.
 
-Erwägen Sie, Latte.exe in einen separaten Ordner zu legen, z. B. `c:\tools`
+Erwägen Sie, „Latte.exe“ in einem separaten Ordner abzulegen, z. B. `c:\tools`.
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Lassen Sie Latte.exe über die Windows-Firewall zu
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Zulassen von „Latte.exe“ durch die Windows-Firewall
 
-Erstellen Sie auf dem Empfänger eine Zulassungsregel für die Windows-Firewall, damit der Latte-exe-Datenstrom zugelassen wird. Am einfachsten ist es, das gesamte Latte.exe-Programm nach Namen anstatt nach bestimmten eingehenden TCP-Ports zuzulassen.
+Erstellen Sie auf dem Empfänger eine „Zulassen“-Regel für die Windows-Firewall, damit der „Latte.exe“-Datenstrom empfangen werden kann. Am einfachsten ist es, das gesamte „Latte.exe“-Programm nach Name anstatt nach bestimmten eingehenden TCP-Ports zuzulassen.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Lassen Sie Latte.exe über die Windows-Firewall zu, wie folgt:
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Zulassen von „Latte.exe“ durch die Windows-Firewall
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
@@ -142,7 +142,7 @@ Angenommen, Sie haben „latte.exe“ in den Ordner „C:\tools“ kopiert, dann
 
 ### <a name="run-latency-tests"></a>Durchführen von Latenztests
 
-Starten Sie latte.exe beim EMPFÄNGER (Ausführen über CMD und nicht über PowerShell):
+Starten Sie „latte.exe“ auf dem EMPFÄNGER (Ausführen über CMD, nicht über PowerShell):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -154,7 +154,7 @@ Wenn der virtuelle Computer die IP-Adresse 10.0.0.4 aufweist, würde es folgende
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Starten Sie latte.exe beim SENDER (Ausführen über CMD und nicht über PowerShell)
+Starten Sie „latte.exe“ auf dem SENDER (Ausführen über CMD, nicht über PowerShell):
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -162,17 +162,17 @@ Der resultierende Befehl ist derselbe wie beim Empfänger, abgesehen davon, dass
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Warten Sie auf die Ergebnisse. Je nachdem, wie weit die VMs voneinander entfernt sind, kann die Fertigstellung einige Minuten dauern. Erwägen Sie, mit weniger Iterationen zu beginnen, um den Erfolg zu testen, bevor Sie längere Tests durchführen.
+Warten Sie auf die Ergebnisse. Je nachdem, wie weit die VMs voneinander entfernt sind, kann es einige Minuten dauern, bis der Vorgang abgeschlossen ist. Erwägen Sie, mit weniger Iterationen zu beginnen, um den Erfolg zu testen, bevor Sie längere Tests durchführen.
 
-## <a name="test-vms-running-linux"></a>Test-VMs unter Linux
+## <a name="test-vms-running-linux"></a>Testen von virtuellen Computern unter Linux
 
-Verwenden Sie [SockPerf](https://github.com/mellanox/sockperf), um VMs zu testen.
+Verwenden Sie [SockPerf](https://github.com/mellanox/sockperf), um virtuelle Computer zu testen.
 
-### <a name="install-sockperf-on-the-vms"></a>Installieren von SockPerf auf den VMS
+### <a name="install-sockperf-on-the-vms"></a>Installieren von SockPerf auf den virtuellen Computern
 
 Führen Sie diese Befehle zum Vorbereiten von SockPerf auf Ihren virtuellen Computern (jeweils SENDER und EMPFÄNGER) auf den Linux-VMs aus:
 
-#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS/RHEL – Git und andere hilfreiche Tools installieren
+#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS/RHEL: Installieren von Git und anderen nützlichen Tools
 
 `sudo yum install gcc -y -q`
 `sudo yum install git -y -q`
@@ -180,14 +180,14 @@ Führen Sie diese Befehle zum Vorbereiten von SockPerf auf Ihren virtuellen Comp
 `sudo yum install ncurses-devel -y`
 `sudo yum install -y automake`
 
-#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu – Git und andere hilfreiche Tools installieren
+#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu: Installieren von Git und anderen nützlichen Tools
 
 `sudo apt-get install build-essential -y`
 `sudo apt-get install git -y -q`
 `sudo apt-get install -y autotools-dev`
 `sudo apt-get install -y automake`
 
-#### <a name="bash---all"></a>Bash – alle
+#### <a name="bash---all"></a>Bash: alle
 
 Von der bash-Befehlszeile (sofern Git installiert ist)
 
@@ -196,29 +196,29 @@ Von der bash-Befehlszeile (sofern Git installiert ist)
 `./autogen.sh`
 `./configure --prefix=`
 
-Dieser Vorgang ist langsamer und kann mehrere Minuten dauern
+„make“ ist langsamer und kann mehrere Minuten dauern.
 
 `make`
 
-Dieser Vorgang beschleunigt die Installation
+„make install“ ist schnell.
 
 `sudo make install`
 
-### <a name="run-sockperf-on-the-vms"></a>Ausführen von SockPerf auf den VMS
+### <a name="run-sockperf-on-the-vms"></a>Ausführen von SockPerf auf den virtuellen Computern
 
-#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Beispielsbefehle nach der Installation. Server/Empfänger – geht davon aus, dass die IP-Adresse des Servers 10.0.0.4 ist
+#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Beispielsbefehle nach der Installation. Server/Empfänger: IP-Adresse des Servers wird als „10.0.0.4“ angenommen
 
 `sudo sockperf sr --tcp -i 10.0.0.4 -p 12345 --full-rtt`
 
-#### <a name="client---assumes-servers-ip-is-10004"></a>Client – geht davon aus, dass die IP-Adresse des Servers 10.0.0.4 ist
+#### <a name="client---assumes-servers-ip-is-10004"></a>Client: IP-Adresse des Servers wird als „10.0.0.4“ angenommen
 
 `sockperf ping-pong -i 10.0.0.4 --tcp -m 1400 -t 101 -p 12345  --full-rtt`
 
 > [!Note]
-> Stellen Sie sicher, dass es während des Durchsatztests zwischen VM und Gateway keine Zwischenschritte (z. B. virtuelle Geräte) gibt.
+> Stellen Sie sicher, dass es während des Durchsatztests zwischen VM und Gateway keine Zwischenhops (z. B. virtuelle Geräte) gibt.
 > Wenn die Ergebnisse der obigen iPERF/NTTTCP-Tests (in Bezug auf den Gesamtdurchsatz) nicht zufriedenstellend sind, lesen Sie bitte den folgenden Artikel, um die Schlüsselfaktoren hinter den möglichen Ursachen des Problems zu verstehen: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
-Insbesondere die Analyse von Paketerfassungsverfolgungen (Wireshark/Netzwerkmonitor), die während dieser Tests parallel vom Client und Server gesammelt werden, wird bei der Beurteilung schlechter Leistung helfen. Diese Ablaufverfolgung können Paketverlust, hohe Latenzzeiten und MTU-Größe beinhalten. Fragmentierung, TCP 0 Window, Out-of-Order-Fragmente, und so weiter.
+Insbesondere die Analyse von Paketerfassungsverfolgungen (Wireshark/Netzwerkmonitor), die während dieser Tests parallel vom Client und Server gesammelt werden, wird bei der Beurteilung schlechter Leistung helfen. Diese Ablaufverfolgungen können Paketverlust, hohe Latenzzeiten, MTU-Größe, Fragmentierung, TCP 0 Window, Fragmente in falscher Reihenfolge usw. beinhalten.
 
 ## <a name="address-slow-file-copy-issues"></a>Behandeln von Problemen durch langsames Kopieren von Dateien
 
@@ -242,11 +242,11 @@ Es wurden die Subnetze der lokalen Bereiche erwähnt, die Azure über VPN am lok
 
 * **Richtlinienbasiertes Gateway**: Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind Kombinationen aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure-VNet. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Konfiguration definiert.
 
-* **UsePolicyBasedTrafficSelector**-Verbindungen: (Wenn „UsePolicyBasedTrafficSelectors“ für eine Verbindung auf „$True“ festgelegt wird, wird das Azure-VPN-Gateway zum Herstellen einer Verbindung mit einer richtlinienbasierten VPN-Firewall an einem lokalen Standort konfiguriert.) Wenn Sie „PolicyBasedTrafficSelectors“ aktivieren, müssen für Ihr VPN-Gerät die entsprechenden Datenverkehrsselektoren mit allen Präfixkombinationen zwischen Ihrem lokalen Netzwerk (lokalen Netzwerkgateway) und den Präfixen des virtuellen Azure-Netzwerks definiert sein (anstelle von Any-to-Any).
+* **UsePolicyBasedTrafficSelector**-Verbindungen: Wenn „UsePolicyBasedTrafficSelectors“ für eine Verbindung auf „$True“ festgelegt wird, wird das Azure-VPN-Gateway zum Herstellen einer Verbindung mit einer richtlinienbasierten VPN-Firewall an einem lokalen Standort konfiguriert. Wenn Sie „PolicyBasedTrafficSelectors“ aktivieren, müssen für Ihr VPN-Gerät die entsprechenden Datenverkehrsselektoren mit allen Präfixkombinationen zwischen Ihrem lokalen Netzwerk (lokalen Netzwerkgateway) und den Präfixen des virtuellen Azure-Netzwerks definiert sein (anstelle von Any-to-Any).
 
-Eine unsachgemäße Konfiguration kann zu häufigen Verbindungsabbrüchen innerhalb des Tunnels, Paketausfällen, schlechtem Durchsatz und Latenzzeiten führen.
+Eine ungeeignete Konfiguration kann zu häufigen Verbindungsabbrüchen innerhalb des Tunnels, Paketausfällen, schlechtem Durchsatz und Latenzzeiten führen.
 
-## <a name="check-latency"></a>Überprüfung der Latenzzeit
+## <a name="check-latency"></a>Überprüfen der Latenzzeit
 
 Sie können die Latenzzeit mithilfe der folgenden Tools überprüfen:
 
@@ -254,14 +254,14 @@ Sie können die Latenzzeit mithilfe der folgenden Tools überprüfen:
 * TCPTraceroute
 * `ping` und `psping` (Diese Tools können eine gute Einschätzung der RTT liefern, aber sie können nicht in allen Fällen verwendet werden.)
 
-![Überprüfung der Latenzzeit](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
+![Latenzzeit überprüfen](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-Wenn Sie vor dem Zugriff auf das MS Network-Backbone eine hohe Latenzspitzenbildung bei einem der Hops feststellen, sollten Sie eventuell weitere Untersuchungen bei Ihrem Internetanbieter durchführen.
+Wenn Sie eine hohe Latenzspitzenbildung bei einem der Hops feststellen, bevor der Netzwerkbackbone von Microsoft erreicht wird, sollten Sie eventuell weitere Untersuchungen bei Ihrem Internetanbieter durchführen.
 
 Wenn innerhalb von „msn.net“ ein großer, ungewöhnlicher Latenzanstieg von Hops erkannt wird, wenden Sie sich bitte an den MS-Support für weitere Untersuchungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen oder Hilfe finden Sie unter dem folgenden Link:
+Weitere Informationen oder Hilfe finden Sie über den folgenden Link:
 
 * [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

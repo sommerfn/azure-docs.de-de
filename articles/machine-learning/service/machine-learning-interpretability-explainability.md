@@ -1,6 +1,6 @@
 ---
 title: Interpretierbarkeit von Modellen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe des Azure Machine Learning SDK erklären können, warum Ihr Modell Vorhersagen trifft. Es kann während des Trainings und der Herleitung von Rückschlüssen verwendet werden, um zu verstehen, wie Ihr Modell Vorhersagen trifft.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872386"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002360"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>Modellinterpretierbarkeit mit Azure Machine Learning Service
+# <a name="model-interpretability-with-azure-machine-learning"></a>Modellinterpretierbarkeit mit Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der verschiedenen Interpretierbarkeitspakete des Python-SDK für Azure Machine Learning erklären können, wie Ihr Modell zu den getroffenen Vorhersagen gelangt.
 
@@ -219,7 +219,7 @@ Das Paket `explain` funktioniert mit lokalen und Remotecomputezielen. Bei lokale
 
 ### <a name="train-and-explain-remotely"></a>Remotetraining und -Erklärung
 
-Sie können auf den verschiedenen von Azure Machine Learning Service unterstützten Computezielen trainieren. Das Beispiel in diesem Abschnitt zeigt, wie Sie dies mit einem Azure Machine Learning-Computeziel erfolgt.
+Sie können auf den verschiedenen von Azure Machine Learning unterstützten Computezielen trainieren. Das Beispiel in diesem Abschnitt zeigt, wie dies mit einem Azure Machine Learning Compute-Ziel erfolgt.
 
 1. Erstellen Sie ein Trainingsskript in einem lokalen Jupyter-Notebook (Beispiel: run_explainer.py).
 
@@ -474,7 +474,7 @@ Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden
 
 1. Bereitstellen des Images für ein Computeziel:
 
-   1. Erstellen einer Bewertungsdatei (führen Sie vor diesem Schritt die Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) zum Registrieren Ihres ursprünglichen Vorhersagemodells aus)
+   1. Erstellen einer Bewertungsdatei (führen Sie vor diesem Schritt die Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) zum Registrieren Ihres ursprünglichen Vorhersagemodells aus)
 
         ```python
         %%writefile score.py

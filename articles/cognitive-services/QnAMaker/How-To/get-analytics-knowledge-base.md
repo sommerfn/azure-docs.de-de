@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206833"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961529"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Abrufen von Analysen zu Ihrer Wissensdatenbank
 
@@ -26,9 +26,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
     ![Auswählen Ihrer Application Insights-Ressource](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Wählen Sie **Analytics** aus. Daraufhin wird ein neues Fenster geöffnet, in dem Sie QnA Maker-Telemetriedaten abfragen können.
-
-    ![Auswählen von Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. Wählen Sie **Protokoll (Analytics)** aus. Daraufhin wird ein neues Fenster geöffnet, in dem Sie QnA Maker-Telemetriedaten abfragen können.
 
 3. Fügen Sie die folgende Abfrage ein, und führen Sie sie aus.
 
@@ -48,7 +46,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
     Wählen Sie **Ausführen** aus, um die Abfrage auszuführen.
 
-    ![Abfrage ausführen](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![Ausführen einer Abfrage zum Ermitteln von Fragen, Antworten und Bewertungen von Benutzern](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Ausführen von Abfragen für andere Analysen zu Ihrer QnA Maker-Wissensdatenbank
 

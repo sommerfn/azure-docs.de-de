@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Modellen mit einem benutzerdefinierten Docker-Basisimage
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning Service-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Beim Bereitstellen eines trainierten Modells wird ein Basiscontainerimage bereitgestellt, um Ihr Modell für einen Rückschluss auszuführen. Azure Machine Learning Service stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Beim Bereitstellen eines trainierten Modells wird ein Basiscontainerimage bereitgestellt, um Ihr Modell für einen Rückschluss auszuführen. Azure Machine Learning stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,20 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 04d81f8e16a3f34f7abf15c9606833002fafb39c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183559"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034531"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 
-Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Basisimage verwenden können, wenn Sie trainierte Modelle mit dem Azure Machine Learning Service einsetzen.
+Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Basisimage verwenden können, wenn Sie trainierte Modelle mit Azure Machine Learning bereitstellen.
 
 Wenn Sie ein trainiertes Modell für einen Webdienst oder ein IoT Edge-Gerät bereitstellen, wird ein Paket erstellt, das einen Webserver enthält, der eingehende Anforderungen verarbeitet.
 
-Azure Machine Learning Service stellt ein standardmäßiges Docker-Basisimage bereit, sodass es nicht erforderlich ist, dass Sie ein solches Image erstellen. Sie können auch auf dem Azure Machine Learning Service basierende __Umgebungen__ nutzen, um ein bestimmtes Basisimage auszuwählen, oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image verwenden.
+Azure Machine Learning stellt ein standardmäßiges Docker-Basisimage bereit, sodass es nicht erforderlich ist, dass Sie ein solches Image erstellen. Sie können auch Azure Machine Learning-__Umgebungen__ verwenden, um ein bestimmtes Basisimage auszuwählen oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image zu verwenden.
 
 Ein Basisimage wird als Ausgangspunkt verwendet, wenn ein Image für eine Bereitstellung erstellt wird. Es stellt das zugrunde liegende Betriebssystem und die Komponenten zur Verfügung. Der Bereitstellungsprozess fügt dann dem Image zusätzliche Komponenten wie Ihr Modell, Ihre Conda-Umgebung und andere Objekte hinzu, bevor es bereitgestellt wird.
 
@@ -42,7 +42,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine Azure Machine Learning Service-Arbeitsgruppe. Weitere Informationen finden Sie im Artikel [Erstellen eines Workspace](how-to-manage-workspace.md).
+* Eine Azure Machine Learning-Arbeitsgruppe. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 * Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -51,9 +51,9 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 
 ## <a name="create-a-custom-base-image"></a>Erstellen eines benutzerdefinierten Basisimages
 
-Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Container Registry verwenden, um Docker-Images zu speichern. Verwenden Sie die folgende Checkliste, wenn Sie planen, benutzerdefinierte Images für den Azure Machine Learning Service zu erstellen:
+Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Container Registry verwenden, um Docker-Images zu speichern. Verwenden Sie die folgende Checkliste, wenn Sie planen, benutzerdefinierte Images für Azure Machine Learning zu erstellen:
 
-* Werden Sie die Azure Container Registry, die für den Azure Machine Learning Service-Arbeitsbereich erstellt wurde, oder eine eigenständige Azure Container Registry verwenden?
+* Werden Sie die Azure-Containerregistrierung, die für den Azure Machine Learning-Arbeitsbereich erstellt wurde, oder eine eigenständige Azure-Containerregistrierung verwenden?
 
     Wenn Sie Images verwenden, die in der __Container-Registrierung für den Arbeitsbereich__ gespeichert sind, müssen Sie sich nicht bei der Registrierung authentifizieren. Authentifizierung erfolgt über den Arbeitsbereich.
 
@@ -70,7 +70,7 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
 
 * Azure Container Registry und Imageinformationen: Geben Sie den Imagenamen an jeden weiter, der ihn verwenden muss. Beispielsweise wird ein Image namens `myimage`, das in einer Registrierung namens `myregistry` gespeichert ist, als `myregistry.azurecr.io/myimage` referenziert, wenn das Image für die Modellimplementierung verwendet wird.
 
-* Anforderungen an Images: Azure Machine Learning Service unterstützt nur Docker-Images, die die folgende Software enthalten:
+* Anforderungen an Images: Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
 
     * Ubuntu 16.04 oder höher.
     * Conda 4.5.# oder höher.
@@ -80,12 +80,12 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
 
 ### <a name="get-container-registry-information"></a>Abrufen von Informationen aus der Container Registry
 
-In diesem Abschnitt erfahren Sie, wie Sie den Namen der Azure Container Registry für Ihren Azure Machine Learning Service-Arbeitsbereich erhalten.
+In diesem Abschnitt erfahren Sie, wie Sie den Namen der Azure Container Registry für Ihren Azure Machine Learning-Arbeitsbereich erhalten.
 
 > [!WARNING]
 > Die Azure Container Registry für Ihren Arbeitsbereich wird __erstellt, wenn Sie ein Modell zum ersten Mal über den Arbeitsbereich trainieren oder bereitstellen__. Wenn Sie einen neuen Arbeitsbereich, aber kein Training oder Modell erstellt haben, existiert für den Arbeitsbereich keine Azure Container Registry.
 
-Wenn Sie bereits Modelle mit dem Azure Machine Learning Service trainiert oder bereitgestellt haben, wurde eine Containerregistrierung (Container Registry) für Ihren Arbeitsbereich erstellt. Um den Namen dieser Containerregistrierung zu finden, führen Sie die folgenden Schritte aus:
+Wenn Sie bereits Modelle mit Azure Machine Learning trainiert oder bereitgestellt haben, wurde eine Containerregistrierung für Ihren Arbeitsbereich erstellt. Um den Namen dieser Containerregistrierung zu finden, führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie eine neue Shell oder Eingabeaufforderung, und verwenden Sie den folgenden Befehl, um sich bei Ihrem Azure-Abonnement zu authentifizieren:
 
@@ -95,7 +95,7 @@ Wenn Sie bereits Modelle mit dem Azure Machine Learning Service trainiert oder b
 
     Folgen Sie den Anweisungen, um sich beim Abonnement zu authentifizieren.
 
-2. Verwenden Sie den folgenden Befehl, um die Containerregistrierung für den Arbeitsbereich aufzulisten. Ersetzen Sie `<myworkspace>` durch Ihren Azure Machine Learning Service-Arbeitsbereich. Ersetzen Sie `<resourcegroup>` durch die Azure-Ressourcengruppe, die Ihren Arbeitsbereich enthält:
+2. Verwenden Sie den folgenden Befehl, um die Containerregistrierung für den Arbeitsbereich aufzulisten. Ersetzen Sie `<myworkspace>` durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs. Ersetzen Sie `<resourcegroup>` durch die Azure-Ressourcengruppe, die Ihren Arbeitsbereich enthält:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -182,7 +182,7 @@ Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Reposi
 
 | Image | BESCHREIBUNG |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basisimage für den Azure Machine Learning Service |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basisimage für Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Enthält die ONNX-Runtime. |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Enthält die ONNX-Runtime und die CUDA-Komponenten. |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Enthält die ONNX-Runtime und TensorRT. |
@@ -193,7 +193,7 @@ Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Reposi
 > [!IMPORTANT]
 > Microsoft-Images, die CUDA oder TensorRT verwenden, dürfen nur für Microsoft Azure-Dienste verwendet werden.
 
-Weitere Informationen finden Sie unter [Azure Machine Learning service containers](https://github.com/Azure/AzureML-Containers) (Azure Machine Learning Service-Container).
+Weitere Informationen finden Sie in [Azure Machine Learning service containers](https://github.com/Azure/AzureML-Containers).
 
 > [!TIP]
 >__Wenn Ihr Modell auf Azure Machine Learning Compute__ mit __Version 1.0.22 oder höher__ des Azure Machine Learning SDK trainiert wird, wird während des Trainings ein Image erstellt. Um den Namen dieses Images zu ermitteln, verwenden Sie `run.properties["AzureML.DerivedImageName"]`. Die Verwendung dieses Images wird im folgenden Beispiel veranschaulicht:
@@ -248,7 +248,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Weitere Informationen zur Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning Service](how-to-deploy-and-where.md).
+Weitere Informationen zur Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Verwenden eines Images mit der Machine Learning-CLI
 
@@ -276,7 +276,7 @@ Diese Datei wird mit dem `az ml model deploy`-Befehl verwendet. Der `--ic`-Param
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
 ```
 
-Weitere Informationen zur Bereitstellung eines Modells mit der ML-CLI finden Sie im Abschnitt „Modellregistrierung, Profilerstellung und Bereitstellung“ des Artikels [Verwenden der CLI-Erweiterung für Azure Machine Learning Service](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment).
+Weitere Informationen zur Bereitstellung eines Modells mit der ML-CLI finden Sie im Abschnitt „Modellregistrierung, Profilerstellung und Bereitstellung“ des Artikels [Verwenden der CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

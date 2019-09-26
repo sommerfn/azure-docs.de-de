@@ -1,7 +1,7 @@
 ---
-title: Protokollieren von Metriken während Trainingsausführungen
-titleSuffix: Azure Machine Learning service
-description: Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. Erfahren Sie, wie Sie Ihrem Trainingsskript Protokollierung hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die protokollierten Ergebnisse eines Durchlaufs anzeigen.
+title: Protokollieren von ML-Experimenten und -Metriken
+titleSuffix: Azure Machine Learning
+description: Überwachen Sie Ihre ML-Experimente, und überwachen Sie Ausführungsmetriken, um den Modellerstellungsprozess zu verbessern. Fügen Sie Ihrem Trainingsskript Protokollierung hinzu, und zeigen Sie die protokollierten Ergebnisse einer Ausführung an.  Verwenden Sie „run.log“, „Run.start_logging“ oder „ScriptRunConfig“.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,21 +10,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858720"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002712"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Nachverfolgen von Machine Learning-Trainingsmetriken mit Azure Machine Learning
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 
-Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierungscode zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, diese Ausführung überwachen und die Ergebnisse untersuchen.
+Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente nachverfolgen und Ausführungsmetriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Protokollierungscode zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, diese Ausführung überwachen und die Ergebnisse untersuchen.
 
 > [!NOTE]
-> Azure Machine Learning Service kann während des Trainings auch Informationen aus anderen Quellen protokollieren, etwa aus automatisierten Machine Learning-Ausführungen oder aus dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
+> Azure Machine Learning kann während des Trainings auch Informationen aus anderen Quellen protokollieren, etwa aus automatisierten Machine Learning-Ausführungen oder aus dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
 
 ## <a name="available-metrics-to-track"></a>Zur Nachverfolgung verfügbare Metriken
 
@@ -65,7 +65,7 @@ Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müss
 
 **Start_logging** erstellt eine interaktive Ausführung für die Verwendung in Szenarien wie z.B. Notebooks. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt.
 
-Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in einem lokalen Jupyter-Notebook. Weitere Informationen zur Übermittlung von Experimenten in verschiedenen Umgebungen finden Sie unter [Einrichtung von Computezielen zum Trainieren von Modellen mit dem Azure Machine Learning-Dienst](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in einem lokalen Jupyter-Notebook. Weitere Informationen zur Übermittlung von Experimenten in verschiedenen Umgebungen finden Sie unter [Einrichten und Verwenden von Computezielen für das Modelltraining](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
 1. Erstellen Sie ein Trainingsskript in einem lokalen Jupyter-Notebook. 
 
@@ -91,7 +91,7 @@ Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in eine
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Fügen Sie die Experimentnachverfolgung mit dem Azure Machine Learning Service SDK hinzu und laden Sie ein persistentes Modell in die Ausführungsaufzeichnung des Experiments hoch. Der folgende Code fügt Tags und Protokolle hinzu und lädt eine Modelldatei in die Ausführung des Experiments hoch.
+2. Fügen Sie die Experimentnachverfolgung mit dem Azure Machine Learning SDK hinzu und laden Sie ein persistentes Modell in die Ausführungsaufzeichnung des Experiments hoch. Der folgende Code fügt Tags und Protokolle hinzu und lädt eine Modelldatei in die Ausführung des Experiments hoch.
 
    ```python
     # Get an experiment object from Azure Machine Learning

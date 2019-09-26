@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816522"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996599"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -85,6 +85,7 @@ Eine mögliche Ursache ist, dass SMB-Multikanalübertragung nicht unterstützt w
 
 - Durch Bereitstellen eines virtuellen Computers mit einem größeren Kern lässt sich der Durchsatz möglicherweise erhöhen.
 - Durch Ausführen der Clientanwendung auf mehreren virtuellen Computern wird der Durchsatz erhöht.
+
 - Verwenden Sie nach Möglichkeit REST-APIs.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Durchsatz auf Linux-Clients ist deutlich geringer im Vergleich zu Windows-Clients
@@ -97,6 +98,7 @@ Dies ist ein bekanntes Problem mit der Implementierung des SMB-Clients unter Lin
 
 - Verteilen Sie die Last auf mehrere virtuelle Computer.
 - Verwenden Sie auf einem virtuellen Computer mehrere Bereitstellungspunkte mit der **nosharesock**-Option, und verteilen Sie die Last auf diese Bereitstellungspunkte.
+- Versuchen Sie die Bereitstellung unter Linux mit der Option **nostrictsync**, um eine SMB-Leerung bei jedem Aufruf von „fsync“ zu vermeiden. Für Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz, kann jedoch zu veralteten Dateimetadaten in der Verzeichnisauflistung (Befehl **ls-l**) führen. Durch direktes Abfragen von Metadaten der Datei (Befehl **stat**) werden die aktuellsten Dateimetadaten zurückgegeben.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hohe Latenzen bei metadatenorientierten hohen Arbeitslasten, die sich aus umfangreichen Öffnen-/Schließen-Vorgängen ergeben.
 

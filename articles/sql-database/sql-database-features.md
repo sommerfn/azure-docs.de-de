@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873513"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103155"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL-Datenbank – Funktionen
 
@@ -32,7 +32,7 @@ Azure SQL-Datenbank verwaltet Ihre Datenbanken und garantiert ihre Hochverfügb
 
 Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt Aufschluss darüber, ob die einzelnen Features in der verwalteten Instanz oder der Einzeldatenbank und Pools für elastische Datenbanken teilweise oder vollständig unterstützt werden. Darüber hinaus enthält die Tabelle jeweils einen Link zu weiteren Featureinformationen.
 
-| **SQL-Feature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen** |
+| **SQL-Feature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen und Instanzpools** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) |
 | [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten und [kann nicht vom Benutzer verwaltet werden](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
@@ -112,10 +112,10 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 
 Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatures für Datenbanken als zusätzliche Werte hinzugefügt werden. Es gibt außerdem eine Reihe externer Dienste, die mit Azure SQL-Datenbank verwendet werden können. 
 
-| **Plattformfeature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen** |
+| **Plattformfeature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen und Instanzpools** |
 | --- | --- | --- |
-| [Aktive Georeplikation](sql-database-active-geo-replication.md) | Ja – alle Dienstebenen außer Hyperscale | Nein, siehe [Autofailover-Gruppen (Vorschau)](sql-database-auto-failover-group.md) als Alternative |
-| [Autofailover-Gruppen](sql-database-auto-failover-group.md) | Ja – alle Dienstebenen außer Hyperscale | Ja, in der [Public Preview](sql-database-auto-failover-group.md)|
+| [Aktive Georeplikation](sql-database-active-geo-replication.md) | Ja – alle Dienstebenen außer Hyperscale | Nein. Alternative: [Autofailover-Gruppen](sql-database-auto-failover-group.md) |
+| [Autofailover-Gruppen](sql-database-auto-failover-group.md) | Ja – alle Dienstebenen außer Hyperscale | Ja. siehe [Autofailover-Gruppen](sql-database-auto-failover-group.md)|
 | Automatische Skalierung | Ja, aber nur im [serverlosen Modell](sql-database-serverless.md). Im nicht serverlosen Modell wird die Änderung der Dienstebene (Änderung von virtuellen Kernen, Speicher oder DTU) schnell und online durchgeführt. Die Änderung der Dienstebene erfordert nur minimale oder keine Downtime. | Nein, Sie müssen reservierte Compute- und Speicheroptionen auswählen. Die Änderung der Dienstebene (virtuelle Kerne oder maximaler Speicher) erfolgt online und erfordert minimale oder keine Downtime. |
 | [Automatische Sicherungen](sql-database-automated-backups.md) | Ja. Vollständige Sicherungen erfolgen alle 7 Tage, differenzielle Sicherungen alle 12 Stunden und Protokollsicherungen alle 5 bis 10 Minuten. | Ja. Vollständige Sicherungen erfolgen alle 7 Tage, differenzielle Sicherungen alle 12 Stunden und Protokollsicherungen alle 5 bis 10 Minuten. |
 | [Automatische Optimierung (Indizes)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ja](sql-database-automatic-tuning.md)| Nein |
@@ -131,7 +131,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [Richtlinienbasierte Verwaltung](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nein | Nein |
 | Öffentliche IP-Adresse | Ja. Der Zugriff kann durch die Firewall oder Dienstendpunkte beschränkt werden.  | Ja. Muss explizit aktiviert sein, außerdem muss Port 3342 in NSG-Regeln aktiviert sein. Öffentliche IP-Adresse kann bei Bedarf deaktiviert werden. Für weitere Details siehe [öffentlicher Endpunkt](sql-database-managed-instance-public-endpoint-securely.md). | 
 | [Point-in-Time-Wiederherstellung einer Datenbank](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja – alle Dienstebenen außer Hyperscale – siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja: siehe [Wiederherstellung der SQL-Datenbank](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Ressourcenpools | Ja, als [Pools für elastische Datenbanken](sql-database-elastic-pool.md) | Nein. Eine einzelne verwaltete Instanz kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. Verwaltete Instanzen können keine Ressourcen gemeinsam nutzen. |
+| Ressourcenpools | Ja, als [Pools für elastische Datenbanken](sql-database-elastic-pool.md) | Ja. Eine einzelne verwaltete Instanz kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. Darüber hinaus können Sie mehrere verwaltete Instanzen in [Instanzpools (Vorschauversion)](sql-database-instance-pools.md) bereitstellen, die sich die Ressourcen teilen können. |
 | Zentrales Hoch- oder Herunterskalieren (online) | Ja, Sie können bei minimaler Downtime entweder die DTU, die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. | Ja, Sie können bei minimaler Downtime die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. |
 | SQL-Alias | Ja, siehe [DNS-Alias](dns-alias-overview.md) | Nein |
 | [Azure SQL-Analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
@@ -146,7 +146,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 ## <a name="tools"></a>Tools
 Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Verwaltung Ihrer Daten helfen können.
 
-| **Tool** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen** |
+| **Tool** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen und Instanzpools** |
 | --- | --- | --- |
 | Azure-Portal | Ja | Ja |
 | Azure-Befehlszeilenschnittstelle | Ja | Ja|
@@ -167,7 +167,7 @@ Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Ver
 
 Sie können verschiedene Migrationsmethoden verwenden, um Ihre Daten zwischen SQL Server, einer Einzeldatenbank und verwalteten Azure SQL-Datenbank-Instanzen zu verschieben. Bei einigen Methoden handelt es sich um **Online**-Methoden, die alle an der Quelle vorgenommenen Änderungen erkennen, während Sie die Migration ausführen. Bei **Offline**-Methoden müssen Sie Ihre Workload, mit der Daten auf der Quelle geändert werden, dagegen anhalten, während der Migrationsvorgang ausgeführt wird.
 
-| **Quelle** | **Einzeldatenbank und Pool für elastische Datenbanken** | **Verwaltete Instanz** |
+| **Quelle** | **Einzeldatenbank und Pool für elastische Datenbanken** | **Verwaltete Instanz und Instanzpools** |
 | --- | --- | --- |
 | SQL Server (lokal, Azure-VM, Amazon RDS) | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Native Sicherung/Wiederherstellung, [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
 | Einzeldatenbank | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
@@ -183,3 +183,4 @@ Microsoft fügt Azure SQL-Datenbank ständig weitere Features hinzu. Besuchen Si
 Weitere Informationen zu den Varianten von Azure SQL-Datenbank:
 - [Was ist SQL-Datenbank?](sql-database-technical-overview.md)
 - [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
+- [Was sind SQL-Datenbank-Instanzenpools (Vorschau)?](sql-database-instance-pools.md)

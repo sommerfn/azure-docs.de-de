@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982720"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967106"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -182,6 +182,8 @@ Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md
 Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern. Um auf diese Features zugreifen zu können, benötigen Sie die Rolle [Mitwirkender](built-in-roles.md#contributor).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
-* [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen](change-history-report.md)
+
+- [Problembehandlung für Gastbenutzer](role-assignments-external-users.md#troubleshoot)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
+- [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen](change-history-report.md)
 

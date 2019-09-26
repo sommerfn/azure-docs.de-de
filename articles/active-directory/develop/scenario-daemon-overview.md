@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852720"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056384"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Szenario: Daemon-App zum Aufrufen von Web-APIs
 
@@ -60,7 +60,7 @@ Für Anwendungen, die ein Token für ihre eigenen Identitäten abrufen, gilt Fol
 Für Entwickler umfasst die End-to-End-Umgebung für dieses Szenario die folgenden Aspekte:
 
 - Daemonanwendungen funktionieren nur in Azure AD-Mandanten. Es wäre nicht sinnvoll, eine Daemonanwendung zu erstellen, die persönliche Microsoft-Konten zu bearbeiten versucht. Wenn Sie Entwickler für eine branchenspezifische App sind, erstellen Sie Ihre Daemon-App in Ihrem Mandanten. Wenn Sie ein ISV sind, empfiehlt sich die Erstellung einer mehrinstanzenfähigen Daemonanwendung. Sie müssen sich von jedem Mandantenadministrator eine Einwilligung einholen.
-- Während der [Anwendungsregistrierung](./scenario-daemon-app-registration.md) ist der **Antwort-URI** nicht erforderlich. Sie müssen Geheimnisse oder Zertifikate für Azure AD freigeben sowie Anwendungsberechtigungen anfordern und die Administratoreinwilligung zur Verwendung dieser App-Berechtigungen erteilen.
+- Während der [Anwendungsregistrierung](./scenario-daemon-app-registration.md) ist der **Antwort-URI** nicht erforderlich. Sie müssen Geheimnisse, Zertifikate oder signierte Assertionen für Azure AD freigeben sowie Anwendungsberechtigungen anfordern und die Administratoreinwilligung zur Verwendung dieser App-Berechtigungen erteilen.
 - Die [Anwendungskonfiguration](./scenario-daemon-app-configuration.md) muss Clientanmeldeinformationen bereitstellen, die während der Anwendungsregistrierung für Azure AD freigegeben werden.
 - Der [Bereich](scenario-daemon-acquire-token.md#scopes-to-request) zum Abrufen eines Tokens über den Clientanmeldeinformations-Flow muss statisch sein.
 

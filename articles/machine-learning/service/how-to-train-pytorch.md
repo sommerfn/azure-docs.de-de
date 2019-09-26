@@ -1,6 +1,6 @@
 ---
 title: Trainieren eines neuronalen Deep Learning-Netz mit PyTorch
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Ihre PyTorch-Trainingsskripts im Unternehmensumfang mit der PyTorch-Estimator-Klasse von Azure Machine Learning ausführen.  Die Beispielskripts klassifizieren Hühner- und Truthahnbilder, um ein neuronales Deep Learning-Netz aufzubauen, basierend auf dem Tutorial zum Transferlernen von PyTorch.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966791"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002570"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning
 
@@ -39,7 +39,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
  
  - Ihr eigener Jupyter Notebook-Server
 
-    - [Installieren Sie das Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Installieren Sie das Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
     - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
     - [Herunterladen der Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>Initialisieren eines Arbeitsbereichs
 
-Der [Azure Machine Learning Service-Arbeitsbereich](concept-workspace.md) ist für den Dienst die Ressource der obersten Ebene. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
+Der [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für den Dienst. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
 
 Erstellen Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im [Abschnitt „Voraussetzungen“](#prerequisites) erstellt wurde.
 
@@ -93,7 +93,7 @@ Das Dataset besteht aus etwa 120 Trainingsbildern, jeweils von Puten und Hühner
 
 ### <a name="prepare-training-scripts"></a>Vorbereiten von Trainingsskripts
 
-In diesem Tutorial ist das Trainingsskript `pytorch_train.py` bereits bereitgestellt. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript, wie es ist, verwenden und mit dem Azure Machine Learning Service ausführen.
+In diesem Tutorial ist das Trainingsskript `pytorch_train.py` bereits bereitgestellt. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript, wie es ist, verwenden und mit Azure Machine Learning ausführen.
 
 Laden Sie das Pytorch-Trainingsskript `pytorch_train.py` hoch.
 
@@ -101,7 +101,7 @@ Laden Sie das Pytorch-Trainingsskript `pytorch_train.py` hoch.
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Wenn Sie jedoch die Nachverfolgungs- und Metrikfunktionen von Azure Machine Learning Service nutzen möchten, müssen Sie Ihr Trainingsskript mit ein wenig Code ergänzen. Beispiele für die Metrikennachverfolgung finden Sie in `pytorch_train.py`.
+Wenn Sie jedoch die Nachverfolgungs- und Metrikfunktionen von Azure Machine Learning nutzen möchten, müssen Sie Ihr Trainingsskript mit ein wenig Code ergänzen. Beispiele für die Metrikennachverfolgung finden Sie in `pytorch_train.py`.
 
 ## <a name="create-a-compute-target"></a>Erstellen eines Computeziels
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Verteiltes Training
 
-Der [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-Estimator unterstützt auch verteiltes Training für CPU- und GPU-Cluster. Sie können ganz einfach verteilte PyTorch-Aufträge ausführen. Azure Machine Learning Service verwaltet die Orchestrierung für Sie.
+Der [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-Estimator unterstützt auch verteiltes Training für CPU- und GPU-Cluster. Sie können ganz einfach verteilte PyTorch-Aufträge ausführen. Azure Machine Learning verwaltet die Orchestrierung für Sie.
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) ist ein Open-Source-Allreduce-Framework, das von Uber für verteiltes Training entwickelt wurde. Es ermöglicht die einfache Erstellung von verteilten GPU-PyTorch-Aufträgen.
@@ -222,11 +222,11 @@ Um Rückschlüsse mit der [ONNX-Runtime](concept-onnx.md) zu optimieren, konvert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von PyTorch im Azure Machine Learning Service trainiert und registriert. Um zu erfahren, wie Sie ein Modell bereitstellen, fahren Sie mit unserem Artikel zur Modellbereitstellung fort.
+In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von PyTorch in Azure Machine Learning trainiert und registriert. Um zu erfahren, wie Sie ein Modell bereitstellen, fahren Sie mit unserem Artikel zur Modellbereitstellung fort.
 
 > [!div class="nextstepaction"]
 > [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md)
 * [Erfassen einer Ausführungsmetrik während des Trainings](how-to-track-experiments.md)
 * [Optimieren von Hyperparametern](how-to-tune-hyperparameters.md)
 * [Bereitstellen eines trainierten Modells](how-to-deploy-and-where.md)
-* [Referenzarchitektur für das verteilte Trainieren von Deep Learning-Modellen in Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Verteiltes Trainieren von Deep Learning-Modellen in Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

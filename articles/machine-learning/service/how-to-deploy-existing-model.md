@@ -1,7 +1,7 @@
 ---
 title: Verwenden und Bereitstellen vorhandener Modelle
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie den Azure Machine Learning Service mit Modellen nutzen können, die außerhalb des Diensts trainiert wurden. Sie können Modelle registrieren, die außerhalb von Azure Machine Learning Service erstellt wurden, und diese dann als Webdienst oder Azure IoT Edge-Modul bereitstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie den Azure Machine Learning mit Modellen nutzen können, die außerhalb des Diensts trainiert wurden. Sie können Modelle registrieren, die außerhalb von Azure Machine Learning erstellt wurden, und diese dann als Webdienst oder Azure IoT Edge-Modul bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0de9284896900cb7430f42e1d0266a1c02fab20e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182544"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034438"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning Service
+# <a name="use-an-existing-model-with-azure-machine-learning"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning
 
-Erfahren Sie, wie Sie ein vorhandenes Modell für maschinelles Lernen mit Azure Machine Learning Service nutzen können.
+Erfahren Sie, wie Sie ein vorhandenes Modell für maschinelles Lernen mit Azure Machine Learning nutzen können.
 
-Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure Machine Learning Service trainiert wurde, können Sie den Dienst weiterhin verwenden, um das Modell als Webdienst oder auf einem IoT Edge-Gerät bereitzustellen. 
+Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure Machine Learning trainiert wurde, können Sie den Dienst weiterhin verwenden, um das Modell als Webdienst oder auf einem IoT Edge-Gerät bereitzustellen. 
 
 > [!TIP]
-> Dieser Artikel enthält grundlegende Informationen zur Registrierung und Bereitstellung eines vorhandenen Modells. Nach der Bereitstellung stellt Azure Machine Learning Service die Überwachung Ihres Modells bereit. Es ermöglicht auch die Speicherung von Eingabedaten, die an die Bereitstellung gesendet werden, die für die Analyse von Datenabweichungen oder das Training neuer Versionen des Modells verwendet werden können.
+> Dieser Artikel enthält grundlegende Informationen zur Registrierung und Bereitstellung eines vorhandenen Modells. Nach der Bereitstellung stellt Azure Machine Learning die Überwachung Ihres Modells bereit. Es ermöglicht auch die Speicherung von Eingabedaten, die an die Bereitstellung gesendet werden, die für die Analyse von Datenabweichungen oder das Training neuer Versionen des Modells verwendet werden können.
 >
 > Weitere Informationen zu den hier verwendeten Konzepten und Begriffen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
 >
-> Allgemeine Informationen zum Bereitstellungsprozess finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning Service](how-to-deploy-and-where.md).
+> Allgemeine Informationen zum Bereitstellungsprozess finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 
     > [!TIP]
-    > Die Python-Beispiele in diesem Artikel gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning Service-Arbeitsbereich festgelegt ist.
+    > Die Python-Beispiele in diesem Artikel gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning-Arbeitsbereich festgelegt ist.
     >
     > Die CLI-Beispiele verwenden einen Platzhalter von `myworkspace` und `myresourcegroup`. Ersetzen Sie diese durch den Namen Ihres Arbeitsbereichs und die Ressourcengruppe, die ihn enthält.
 
@@ -46,7 +46,7 @@ Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure 
 * Ein trainiertes Modell. Das Modell muss dauerhaft in mindestens eine Datei in Ihrer Entwicklungsumgebung gespeichert werden.
 
     > [!NOTE]
-    > Um die Registrierung eines Modells zu veranschaulichen, das außerhalb des Azure Machine Learning Service trainiert wurde, verwenden die exemplarischen Codeausschnitte in diesem Artikel die Modelle, die vom Twitter-Stimmungsanalyseprojekt von Paolo Ripamonti erstellt wurden: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
+    > Um die Registrierung eines Modells zu veranschaulichen, das außerhalb des Azure Machine Learning trainiert wurde, verwenden die exemplarischen Codeausschnitte in diesem Artikel die Modelle, die vom Twitter-Stimmungsanalyseprojekt von Paolo Ripamonti erstellt wurden: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
 
 ## <a name="register-the-models"></a>Registrieren der Modelle
 
@@ -58,7 +58,7 @@ from azureml.core.model import Model
 #      only some of the files from the directory
 model = Model.register(model_path = "./models",
                        model_name = "sentiment",
-                       description = "Sentiment analysis model trained outside Azure Machine Learning service",
+                       description = "Sentiment analysis model trained outside Azure Machine Learning",
                        workspace = ws)
 ```
 
@@ -79,7 +79,7 @@ Weitere Informationen zur Modellregistrierung im Allgemeinen finden Sie unter [V
 Die Rückschlusskonfiguration definiert die Umgebung, in der das bereitgestellte Modell ausgeführt wird. Die Rückschlusskonfiguration verweist auf die folgenden Entitäten, die zum Ausführen des Modells verwendet werden, wenn es bereitgestellt wird:
 
 * Ein Eingabeskript. Diese Datei (namens `score.py`) lädt das Modell, wenn der bereitgestellte Dienst gestartet wird. Sie ist auch dafür verantwortlich, Daten zu empfangen, sie an das Modell weiterzugeben und dann eine Antwort zurückzugeben.
-* Eine Azure Machine Learning Service-[Umgebung](how-to-use-environments.md). Mit einer Umgebung werden die Softwareabhängigkeiten definiert, die zum Ausführen des Modells und Eingabeskripts benötigt werden.
+* Eine Azure Machine Learning-[Umgebung](how-to-use-environments.md). Mit einer Umgebung werden die Softwareabhängigkeiten definiert, die zum Ausführen des Modells und Eingabeskripts benötigt werden.
 
 Im folgenden Beispiel wird veranschaulicht, wie das SDK genutzt wird, um eine Umgebung zu erstellen und dann mit einer Rückschlusskonfiguration zu verwenden:
 
@@ -135,7 +135,7 @@ dependencies:
     - keras
 ```
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="entry-script"></a>Eingabeskript
 
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definieren der Bereitstellung
 

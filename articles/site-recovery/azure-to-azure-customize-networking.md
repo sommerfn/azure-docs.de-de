@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886541"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087703"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 
@@ -23,13 +23,16 @@ Dieser Artikel bietet eine Anleitung zum Anpassen der Netzwerkkonfigurationen au
 
 Erfahren Sie, wie Site Recovery die Notfallwiederherstellung für [dieses Szenario](azure-to-azure-architecture.md) bereitstellt.
 
-## <a name="support-networking-resources"></a>Unterstützung von Netzwerkressourcen
+## <a name="supported-networking-resources"></a>Unterstützte Netzwerkressourcen
 
 Für das Failover beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurationen für Schlüsselressourcen für den virtuellen Failovercomputer bereitgestellt werden.
 
 - [Interner Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) für das Subnetz und für die NIC
+
+ > [!IMPORTANT]
+  > Diese Einstellungen werden derzeit nur beim Failovervorgang und nicht für den Testfailover unterstützt.
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/10/2019
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516126"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074350"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -28,16 +28,16 @@ Azure Storage überprüft regelmäßig die Integrität der gespeicherten Daten m
 
 Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Redundanzoptionen auswählen:
 
-* [Lokal redundanter Speicher (LRS)](storage-redundancy-lrs.md)
-* [Zonenredundanter Speicher (ZRS)](storage-redundancy-zrs.md)
-* [Georedundanter Speicher (GRS)](storage-redundancy-grs.md)
-* [Georedundanter Speicher mit Lesezugriff (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-* [Geozonenredundanter Speicher (GZRS)](storage-redundancy-gzrs.md)
-* [Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)](storage-redundancy-gzrs.md)
+- [Lokal redundanter Speicher (LRS)](storage-redundancy-lrs.md)
+- [Zonenredundanter Speicher (ZRS)](storage-redundancy-zrs.md)
+- [Georedundanter Speicher (GRS)](storage-redundancy-grs.md)
+- [Georedundanter Speicher mit Lesezugriff (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Geozonenredundanter Speicher (GZRS)](storage-redundancy-gzrs.md)
+- [Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)](storage-redundancy-gzrs.md)
 
 Die folgende Tabelle zeigt in einer kurzen Übersicht, in welchem Umfang die jeweilige Replikationsstrategie bei einem bestimmten Ereignistyp (oder einem Ereignis ähnlicher Auswirkung) Dauerhaftigkeit und Verfügbarkeit bietet.
 
-| Szenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                               |
+| Szenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (Vorschauversion)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Nichtverfügbarkeit von Knoten innerhalb eines Rechenzentrums                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
 | Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                              | Ja                              | Ja                                  | Ja                                  |
@@ -45,7 +45,7 @@ Die folgende Tabelle zeigt in einer kurzen Übersicht, in welchem Umfang die jew
 | Lesezugriff auf Ihre Daten (in einer georeplizierten Remoteregion) bei regionsweiter Nichtverfügbarkeit | Nein                              | Nein                               | Ja (mit RA-GRS)                                   | Ja (mit RA-GZRS)                                 |
 | Konzipiert zum Bereitstellen von \_\_ Dauerhaftigkeit von Objekten über ein bestimmtes Jahr                                          | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
 | Unterstützte Speicherkontotypen                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2                     |
-| Verfügbarkeits-SLA für Leseanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) |
+| Verfügbarkeits-SLA für Leseanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GRS | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GZRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GZRS |
 | Verfügbarkeits-SLA für Schreibanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) |
 
 Alle Daten in Ihrem Speicherkonto werden repliziert, einschließlich der Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien. Alle Arten von Speicherkonten werden repliziert, obwohl der ZRS ein universelles v2 Storage-Konto erfordert.
@@ -61,9 +61,9 @@ Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfü
 
 Sie können die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der [Azure Storage-Clientbibliotheken](https://docs.microsoft.com/azure/index#pivot=sdkstools) ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.
 
-   > [!NOTE]
-   > Derzeit können Sie das-Azure-Portal oder die Azure Storage-Clientbibliotheken nicht verwenden, um Ihr Konto in ZRS, GZRS oder RA-GZRS zu konvertieren. Weitere Informationen zum Migrieren Ihres Kontos zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen](storage-redundancy-zrs.md). Weitere Informationen zum Migrieren von GZRS oder RA-GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](storage-redundancy-zrs.md).
-    
+> [!NOTE]
+> Derzeit können Sie das-Azure-Portal oder die Azure Storage-Clientbibliotheken nicht verwenden, um Ihr Konto in ZRS, GZRS oder RA-GZRS zu konvertieren. Weitere Informationen zum Migrieren Ihres Kontos zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen](storage-redundancy-zrs.md). Weitere Informationen zum Migrieren von GZRS oder RA-GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](storage-redundancy-zrs.md).
+
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Entstehen mir Kosten für die Änderung der Replikationsstrategie meines Kontos?
 
 Es hängt von Ihrem Konvertierungspfad ab. Die Reihenfolge der Azure Storage-Redundanzangebote vom kostengünstigsten bis zum kostenintensivsten: LRS, ZRS, GRS, RA-GRS, GZRS und RA-GZRS. Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Replikationstyp zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Beim Wechsel *zu* GRS oder RA-GRS fallen Kosten für eine ausgehende Bandbreite an, da Ihre Daten (in Ihrer primären Region) in Ihre sekundäre Remoteregion repliziert werden. Dies sind einmalige Kosten bei der ersten Einrichtung. Nachdem die Daten kopiert sind, fallen keine weiteren Kosten für die Migration an. Ihnen werden nur ggf. die Replikation neuer oder die Aktualisierung vorhandener Daten in Rechnung gestellt. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).

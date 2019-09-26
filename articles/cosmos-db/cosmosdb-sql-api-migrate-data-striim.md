@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981831"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003280"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim
  
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 * Wenn Sie kein [Azure-Abonnement](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
 
-* Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten
+* Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Bereitstellen der Striim-Lösung aus dem Marketplace
 
@@ -193,7 +193,7 @@ In diesem Abschnitt konfigurieren Sie das Azure Cosmos DB-SQL-API-Konto als Zie
 
    ![Überprüfen der migrierten Daten in Azure](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Durch Verwendung der Striim-Lösung in Azure können Sie Daten fortlaufend aus verschiedenen Quellen zu Azure Cosmos DB migrieren – etwa aus Oracle, Cassandra, MongoDB und aus verschiedenen anderen Quellen. Sollten Sie Probleme bei der Einrichtung des Migrationspfads mit Striim haben, erstellen Sie eine Supportanfrage auf der [Striim-Website](https://go2.striim.com/request-support-striim).
+Durch Verwendung der Striim-Lösung in Azure können Sie Daten fortlaufend aus verschiedenen Quellen zu Azure Cosmos DB migrieren – etwa aus Oracle, Cassandra, MongoDB und aus verschiedenen anderen Quellen. Weitere Informationen finden Sie auf der [Striim-Website](https://www.striim.com/). [Laden Sie eine kostenlose 30-Tage-Testversion von Striim herunter](https://go2.striim.com/download-free-trial), und stellen Sie im Fall von Problemen bei der Einrichtung des Migrationspfads mit Striim eine [Supportanfrage](https://go2.striim.com/request-support-striim).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,23 +6,25 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552415"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931842"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Hyper-V-Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Sie sollten vorher unbedingt die Informationen zu den [verschiedenen Typen von Failbacks](concepts-types-of-failback.md) und den entsprechenden Einschränkungen lesen.
-1. Stellen Sie sicher, dass der VMM-Server oder Hyper-V-Hostserver am primären Standort mit Azure verbunden ist.
-2. Sie sollten auf dem virtuellen Computer einen **Commit** ausgeführt haben.
+
+- Sie sollten vorher unbedingt die Informationen zu den [verschiedenen Typen von Failbacks](concepts-types-of-failback.md) und den entsprechenden Einschränkungen lesen.
+- Stellen Sie sicher, dass der VMM-Server oder Hyper-V-Hostserver am primären Standort mit Azure verbunden ist.
+- Sie sollten auf dem virtuellen Computer einen **Commit** ausgeführt haben.
+- Stellen Sie sicher, dass Sie ein Speicherkonto und keine verwalteten Datenträger für die Replikation verwenden. Ein Failback von virtuellen Hyper-V-Computer, die über verwaltete Datenträger repliziert werden, wird nicht unterstützt.
 
 ## <a name="perform-failback"></a>Durchführen von Failbacks
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Für ein Failback virtueller Computer in einem Wiederherstellungsplan führen Sie wie nachfolgend beschrieben ein geplantes Failover vom sekundären Standort zum primären Standort aus. 

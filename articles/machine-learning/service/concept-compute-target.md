@@ -1,7 +1,7 @@
 ---
 title: 'Computeziele: Ort zum Trainieren und Bereitstellen von Modellen'
-titleSuffix: Azure Machine Learning service
-description: Legen Sie fest, wo Sie Ihr Modell mit Azure Machine Learning Service trainieren oder bereitstellen möchten.
+titleSuffix: Azure Machine Learning
+description: Legen Sie fest, wo Sie Ihr Modell mit Azure Machine Learning trainieren oder bereitstellen möchten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860592"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035518"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Was sind Computeziele in Azure Machine Learning Service? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
 Ein **Computeziel** ist eine festgelegte Computeressource/-Umgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Hierbei kann es sich um Ihren lokalen Computer oder eine cloudbasierte Computeressource handeln. Mithilfe von Computezielen können Sie Ihre Compute-Umgebung später problemlos ändern, ohne den Code anpassen zu müssen.  
 
@@ -29,7 +29,7 @@ Die Computeressourcen, die Sie für Ihre Computeziele verwenden, werden an einen
 
 ## <a name="train"></a> Trainieren von Computezielen
 
-Azure Machine Learning Service bietet unterschiedliche Unterstützung für die verschiedenen Computeressourcen.  Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien kann jedoch variieren.
+Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeressourcen.  Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien kann jedoch variieren.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](ho
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning-Computeressource (verwaltet)
 
-Eine verwaltete Computeressource wird von Azure Machine Learning Service erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning Compute ist ab dem 30. Mai 2019 die einzige verwaltete Computeressource. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
+Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning Compute ist ab dem 30. Mai 2019 die einzige verwaltete Computeressource. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
 
 Sie können Azure Machine Learning Compute für das Training und für Batchrückschlüsse (Vorschau) verwenden.  Diese Computeressource bietet Folgendes:
 
@@ -59,7 +59,7 @@ Sie können Azure Machine Learning Compute-Instanzen im Azure-Portal, über die 
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 
-Ein nicht verwaltetes Computeziel wird *nicht* von Azure Machine Learning Service verwaltet. Sie erstellen diese Art von Computeziel außerhalb von Azure Machine Learning und fügen es anschließend an Ihren Arbeitsbereich an. Für nicht verwaltete Computeressourcen sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern.
+Ein nicht verwaltetes Computeziel wird *nicht* von Azure Machine Learning verwaltet. Sie erstellen diese Art von Computeziel außerhalb von Azure Machine Learning und fügen es anschließend an Ihren Arbeitsbereich an. Für nicht verwaltete Computeressourcen sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

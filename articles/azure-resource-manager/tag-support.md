@@ -4,14 +4,14 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194718"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996826"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt.
@@ -21,7 +21,6 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
-> - [Microsoft.AADDomainServices](#microsoftaaddomainservices)
 > - [Microsoft.Addons](#microsoftaddons)
 > - [Microsoft.ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
@@ -29,6 +28,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppPlatform](#microsoftappplatform)
 > - [Microsoft.Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
@@ -62,14 +62,12 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -112,7 +110,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.ManagedLab](#microsoftmanagedlab)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
@@ -154,6 +151,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -179,13 +177,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | DomainServices | Ja |Ja |
 > | DomainServices/oucontainer | Nein |Nein |
 > | DomainServices/ReplicaSets | Ja |Ja |
-
-## <a name="microsoftaaddomainservices"></a>Microsoft.AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | domains | Nein |Nein |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -232,7 +223,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | alertsSummary | Nein |Nein |
 > | alertsSummaryList | Nein |Nein |
 > | feedback | Nein |Nein |
-> | smartDetectorAlertRules | Nein |Nein |
+> | smartDetectorAlertRules | Ja |Ja |
 > | smartDetectorRuntimeEnvironments | Nein |Nein |
 > | smartGroups | Nein |Nein |
 
@@ -259,6 +250,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | configurationStores | Ja |Ja |
 > | configurationStores/eventGridFilters | Nein |Nein |
+
+## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | Spring | Ja |Ja |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -328,6 +326,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | hybridDataManagers | Ja |Ja |
+> | postgresInstances | Ja |Ja |
+> | sqlBigDataClusters | Ja |Ja |
+> | sqlInstances | Ja |Ja |
 > | sqlServerRegistrations | Ja |Ja |
 > | sqlServerRegistrations/sqlServers | Nein |Nein |
 
@@ -354,11 +356,28 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | billingAccounts | Nein |Nein |
 > | billingAccounts/agreements | Nein |Nein |
+> | billingAccounts/billingPermissions | Nein |Nein |
 > | billingAccounts/billingProfiles | Nein |Nein |
+> | billingAccounts/billingProfiles/billingPermissions | Nein |Nein |
+> | billingAccounts/billingProfiles/billingRoleAssignments | Nein |Nein |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Nein |Nein |
 > | billingAccounts/billingProfiles/billingSubscriptions | Nein |Nein |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | Nein |Nein |
+> | billingAccounts/billingProfiles/customers | Nein |Nein |
 > | billingAccounts/billingProfiles/invoices | Nein |Nein |
 > | billingAccounts/billingProfiles/invoices/pricesheet | Nein |Nein |
 > | billingAccounts/billingProfiles/invoiceSections | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/products | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/products/transfer | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/transactions | Nein |Nein |
+> | billingAccounts/billingProfiles/invoiceSections/transfers | Nein |Nein |
 > | billingAccounts/BillingProfiles/patchOperations | Nein |Nein |
 > | billingAccounts/billingProfiles/paymentMethods | Nein |Nein |
 > | billingAccounts/billingProfiles/policies | Nein |Nein |
@@ -366,10 +385,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nein |Nein |
 > | billingAccounts/billingProfiles/products | Nein |Nein |
 > | billingAccounts/billingProfiles/transactions | Nein |Nein |
+> | billingAccounts/billingRoleAssignments | Nein |Nein |
+> | billingAccounts/billingRoleDefinitions | Nein |Nein |
 > | billingAccounts/billingSubscriptions | Nein |Nein |
+> | billingAccounts/createBillingRoleAssignment | Nein |Nein |
 > | billingAccounts/createInvoiceSectionOperations | Nein |Nein |
 > | billingAccounts/customers | Nein |Nein |
 > | billingAccounts/customers/billingSubscriptions | Nein |Nein |
+> | billingAccounts/customers/initiateTransfer | Nein |Nein |
+> | billingAccounts/customers/products | Nein |Nein |
+> | billingAccounts/customers/transactions | Nein |Nein |
+> | billingAccounts/customers/transfers | Nein |Nein |
 > | billingAccounts/departments | Nein |Nein |
 > | billingAccounts/enrollmentAccounts | Nein |Nein |
 > | billingAccounts/invoices | Nein |Nein |
@@ -404,6 +430,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | transfers/acceptTransfer | Nein |Nein |
 > | transfers/declineTransfer | Nein |Nein |
 > | transfers/operationStatus | Nein |Nein |
+> | transfers/validateTransfer | Nein |Nein |
 > | validateAddress | Nein |Nein |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -570,12 +597,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | publicImages | Nein |Nein |
 > | quotas | Nein |Nein |
 > | storageAccounts | Ja |Ja |
+> | storageAccounts/blobServices | Nein |Nein |
+> | storageAccounts/fileServices | Nein |Nein |
 > | storageAccounts/metricDefinitions | Nein |Nein |
 > | storageAccounts/metrics | Nein |Nein |
+> | storageAccounts/queueServices | Nein |Nein |
 > | storageAccounts/services | Nein |Nein |
 > | storageAccounts/services/diagnosticSettings | Nein |Nein |
 > | storageAccounts/services/metricDefinitions | Nein |Nein |
 > | storageAccounts/services/metrics | Nein |Nein |
+> | storageAccounts/tableServices | Nein |Nein |
 > | storageAccounts/vmImages | Nein |Nein |
 > | vmImages | Nein |Nein |
 
@@ -747,25 +778,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | showbackRules | Nein |Nein |
 > | Ansichten | Nein |Nein |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | hubs | Ja |Ja |
-> | hubs/authorizationPolicies | Nein |Nein |
-> | hubs/connectors | Nein |Nein |
-> | hubs/connectors/mappings | Nein |Nein |
-> | hubs/interactions | Nein |Nein |
-> | hubs/kpi | Nein |Nein |
-> | hubs/links | Nein |Nein |
-> | hubs/profiles | Nein |Nein |
-> | hubs/roleAssignments | Nein |Nein |
-> | hubs/roles | Nein |Nein |
-> | hubs/suggestTypeSchema | Nein |Nein |
-> | hubs/views | Nein |Nein |
-> | hubs/widgetTypes | Nein |Nein |
-
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
 > [!div class="mx-tableFixed"]
@@ -810,15 +822,12 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | catalogs | Ja |Ja |
 > | datacatalogs | Ja |Ja |
+> | datacatalogs/datasources | Nein |Nein |
+> | datacatalogs/datasources/scans | Nein |Nein |
+> | datacatalogs/datasources/scans/datasets | Nein |Nein |
+> | datacatalogs/datasources/scans/triggers | Nein |Nein |
 > | datacatalogs/scantargets | Nein |Nein |
 > | datacatalogs/scantargets/datasets | Nein |Nein |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | connectionManagers | Ja |Ja |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -936,7 +945,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | applicationgroups | Ja |Ja |
 > | applicationgroups/applications | Nein |Nein |
-> | applicationgroups/assignedusers | Nein |Nein |
 > | applicationgroups/startmenuitems | Nein |Nein |
 > | hostpools | Ja |Ja |
 > | hostpools/sessionhosts | Nein |Nein |
@@ -1081,6 +1089,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | autoManagedVmConfigurationProfiles | Ja |Ja |
 > | guestConfigurationAssignments | Nein |Nein |
 > | software | Nein |Nein |
 > | softwareUpdateProfile | Nein |Nein |
@@ -1207,6 +1216,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | hostingEnvironments | Ja |Ja |
 > | integrationAccounts | Ja |Ja |
 > | integrationServiceEnvironments | Ja |Ja |
+> | integrationServiceEnvironments/managedApis | Ja |Ja |
 > | isolatedEnvironments | Ja |Ja |
 > | workflows | Ja |Ja |
 
@@ -1234,13 +1244,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | Identities | Nein |Nein |
 > | userAssignedIdentities | Ja |Ja |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | labaccounts | Ja |Ja |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -1348,8 +1351,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | holographicsBroadcastAccounts | Ja |Ja |
+> | objectUnderstandingAccounts | Ja |Ja |
 > | remoteRenderingAccounts | Ja |Ja |
 > | spatialAnchorsAccounts | Ja |Ja |
+> | surfaceReconstructionAccounts | Ja |Ja |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1475,6 +1481,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | clusters | Ja |Ja |
 > | devices | Nein |Nein |
 > | linkTargets | Nein |Nein |
 > | storageInsightConfigs | Nein |Nein |
@@ -1501,6 +1508,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | legacyPeerings | Nein |Nein |
 > | peerAsns | Nein |Nein |
 > | peerings | Ja |Ja |
+> | peeringServiceProviders | Nein |Nein |
+> | peeringServices | Ja |Ja |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1596,21 +1605,18 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
-> | deployments | Nein |Nein |
+> | deployments | Ja |Nein |
 > | deployments/operations | Nein |Nein |
 > | links | Nein |Nein |
 > | notifyResourceJobs | Nein |Nein |
 > | providers | Nein |Nein |
-> | resourceGroups | Nein |Nein |
+> | resourceGroups | Ja |Nein |
 > | ressourcen | Nein |Nein |
 > | subscriptions | Nein |Nein |
 > | subscriptions/providers | Nein |Nein |
-> | subscriptions/resourceGroups | Nein |Nein |
-> | subscriptions/resourcegroups/resources | Nein |Nein |
 > | subscriptions/resources | Nein |Nein |
 > | subscriptions/tagnames | Nein |Nein |
 > | subscriptions/tagNames/tagValues | Nein |Nein |
-> | tags | Nein |Nein |
 > | tenants | Nein |Nein |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1626,7 +1632,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
-> | flows | Ja |Ja |
 > | jobcollections | Ja |Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1661,6 +1666,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nein |Nein |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nein |Nein |
 > | jitNetworkAccessPolicies | Nein |Nein |
+> | networkData | Nein |Nein |
 > | playbookConfigurations | Ja |Ja |
 > | Richtlinien | Nein |Nein |
 > | pricings | Nein |Nein |
@@ -1693,6 +1699,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | aggregations | Nein |Nein |
 > | alertRules | Nein |Nein |
+> | alertRuleTemplates | Nein |Nein |
 > | bookmarks | Nein |Nein |
 > | cases | Nein |Nein |
 > | dataConnectors | Nein |Nein |
@@ -1814,6 +1821,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/restorableDroppedDatabases | Nein | Nein |
 > | servers/serviceobjectives | Nein | Nein |
 > | servers/tdeCertificates | Nein | Nein |
+> | virtualClusters | Nein | Nein |
 
 <a id="sqlnote" />
 
@@ -1919,6 +1927,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | cancel | Nein |Nein |
 > | CreateSubscription | Nein |Nein |
+> | enable | Nein |Nein |
 > | rename | Nein |Nein |
 > | SubscriptionDefinitions | Nein |Nein |
 > | SubscriptionOperations | Nein |Nein |

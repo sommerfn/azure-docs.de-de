@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics 
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517351"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101508"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
 
@@ -54,7 +54,17 @@ Experimentieren Sie, und beobachten Sie die Ressourcennutzung Ihres Auftrags, um
 
 ## <a name="repartitions-for-sql-output"></a>Neupartitionierungen für SQL-Ausgaben
 
-Wenn Ihr Auftrag SQL-Datenbank für die Ausgabe verwendet, nutzen Sie die explizite Neupartitionierung, um die optimale Partitionsanzahl zum Maximieren des Durchsatzes zuzuordnen. Da SQL am besten mit acht Writern funktioniert, kann die Neupartitionierung des Flows auf acht vor dem Leeren (oder früher) die Auftragsleistung steigern. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).
+Wenn Ihr Auftrag SQL-Datenbank für die Ausgabe verwendet, nutzen Sie die explizite Neupartitionierung, um die optimale Partitionsanzahl zum Maximieren des Durchsatzes zuzuordnen. Da SQL am besten mit acht Writern funktioniert, kann die Neupartitionierung des Flows auf acht vor dem Leeren (oder früher) die Auftragsleistung steigern. 
+
+Wenn mehr als acht Eingabepartitionen vorliegen, ist das Erben des Eingabepartitionierungsschemas möglicherweise keine geeignete Option. Erwägen Sie die Verwendung von [INTO](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) in Ihrer Abfrage, um die Zahl der Ausgabeschreiber explizit anzugeben. 
+
+Das folgende Beispiel liest aus der Eingabe, unabhängig davon, ob sie natürlich partitioniert ist, und partitioniert den Datenstrom zehnfach entsprechend der DeviceID-Dimension neu und leert die Daten für die Ausgabe. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

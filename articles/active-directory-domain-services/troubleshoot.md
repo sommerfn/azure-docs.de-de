@@ -1,84 +1,78 @@
 ---
-title: 'Azure Active Directory Domain Services: Handbuch zur Problembehandlung | Microsoft-Dokumentation'
-description: Leitfaden zur Problembehandlung für die Azure AD Domain Services
+title: Problembehandlung für Azure Active Directory Domain Services | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie häufige Fehler beim Erstellen oder Verwalten von Azure Active Directory Domain Services beheben.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/13/2019
 ms.author: iainfou
-ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5c2a8c8cfa2425985a22b93d4ade509320c48564
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617064"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998731"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
-Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
+# <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Häufige Fehler und Schritte zur Problembehandlung für Azure Active Directory Domain Services
+
+Als zentraler Bestandteil der Identität und Authentifizierung für Anwendungen treten bei Azure Active Directory Domain Services (Azure AD DS) manchmal Probleme auf. Wenn das der Fall ist, können Sie mithilfe einiger häufiger Fehlermeldungen und zugehöriger Schritte zur Problembehandlung diese Fehler beheben. Sie können auch jederzeit [eine Azure-Supportanfrage öffnen][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
+
+Dieser Artikel enthält Schritte zur Behandlung von häufig auftretenden Problemen in Azure AD DS.
 
 ## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Sie können Azure AD Domain Services für Ihr Azure AD-Verzeichnis nicht aktivieren
-Dieser Abschnitt bietet Hilfe bei der Problembehandlung, wenn beim Versuch einer Aktivierung von Azure AD Domain Services für Ihr Verzeichnis ein Fehler auftritt.
 
-Führen Sie die Schritte zur Problembehandlung aus, die der angezeigten Fehlermeldung entspricht.
+Wenn Probleme beim Aktivieren von Azure AD DS auftreten, sehen Sie sich die folgenden häufigen Fehler und die Schritte zu deren Lösung an:
 
-| **Fehlermeldung** | **Lösung** |
+| **Beispielfehlermeldung** | **Lösung** |
 | --- |:--- |
 | *Der Name contoso.com wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.* |[Domänennamenskonflikt im virtuellen Netzwerk](troubleshoot.md#domain-name-conflict) |
-| *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Der Dienst verfügt nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“. Löschen Sie die Anwendung „Azure AD Domain Services Sync“, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Domänendienste verfügen nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“.](troubleshoot.md#inadequate-permissions) |
-| *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Domänendiensteanwendung in Ihrem Azure AD-Mandanten verfügt nicht über die erforderlichen Berechtigungen zum Aktivieren der Domänendienste. Löschen Sie die Anwendung mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Domänendiensteanwendung in Ihrem Mandanten ist nicht ordnungsgemäß konfiguriert.](troubleshoot.md#invalid-configuration) |
+| *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Der Dienst verfügt nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“. Löschen Sie die Anwendung „Azure AD Domain Services Sync“, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Domänendienste verfügen nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“](troubleshoot.md#inadequate-permissions) |
+| *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Domänendiensteanwendung in Ihrem Azure AD-Mandanten verfügt nicht über die erforderlichen Berechtigungen zum Aktivieren der Domänendienste. Löschen Sie die Anwendung mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Domänendiensteanwendung ist in Ihrem Azure AD-Mandanten nicht ordnungsgemäß konfiguriert](troubleshoot.md#invalid-configuration) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Microsoft Azure AD-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert. Aktivieren Sie die Anwendung mit dem Anwendungsbezeichner 00000002-0000-0000-c000-000000000000, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Microsoft Graph-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert.](troubleshoot.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Domänennamenskonflikt
-**Fehlermeldung**:
+
+**Fehlermeldung**
 
 *Der Name contoso.com wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.*
 
-**Problembehandlung**:
+**Lösung**
 
-Vergewissern Sie sich, dass im gleichen virtuellen Netzwerk keine Domäne mit dem gleichen Domänennamen besteht. Angenommen, im ausgewählten virtuellen Netzwerk befindet sich eine Domäne namens „contoso.com“. Später versuchen Sie, in diesem virtuellen Netzwerk eine verwaltete Domäne der Azure AD Domain Services mit dem gleichen Domänennamen (also „contoso.com“) zu aktivieren. Beim Aktivieren der Azure AD Domain Services tritt daraufhin ein Fehler auf.
+Vergewissern Sie sich, dass im virtuellen Netzwerk keine AD DS-Umgebung mit dem gleichen Domänennamen vorhanden ist. Sie können beispielsweise über eine AD DS-Domäne namens *contoso.com* verfügen, die auf Azure-VMs ausgeführt wird. Wenn Sie versuchen, im virtuellen Netzwerk eine durch Azure AD DS verwaltete Domäne mit dem gleichen Domänennamen *contoso.com* zu aktivieren, tritt beim angeforderten Vorgang ein Fehler auf.
 
-Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen in diesem virtuellen Netzwerk. In dem Fall müssen Sie einen anderen Namen verwenden, um die verwaltete Domäne der Azure AD Domain Services einzurichten. Alternativ können Sie auch die Bereitstellung der bestehenden Domäne aufheben und mit der Aktivierung der Azure AD Domain Services fortfahren.
+Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen im virtuellen Netzwerk. Mit einem DNS-Lookup wird geprüft, ob eine vorhandene AD DS-Umgebung auf den angeforderten Domänennamen antwortet. Zur Behebung dieses Fehlers verwenden Sie einen anderen Namen beim Einrichten der durch Azure AD DS verwalteten Domäne, oder heben Sie die Bereitstellung der vorhandenen AD DS-Domäne auf, und versuchen Sie dann erneut, Azure AD DS zu aktivieren.
 
 ### <a name="inadequate-permissions"></a>Ungeeignete Berechtigungen
-**Fehlermeldung**:
+
+**Fehlermeldung**
 
 *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Der Dienst verfügt nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“. Löschen Sie die Anwendung „Azure AD Domain Services Sync“, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.*
 
-**Problembehandlung**:
+**Lösung**
 
-Überprüfen Sie, ob sich in Ihrem Azure AD-Verzeichnis eine Anwendung namens „Azure AD Domain Services Sync“ befindet. Falls diese Anwendung vorhanden ist, müssen Sie sie löschen und die Azure AD Domain Services erneut aktivieren.
+Prüfen Sie, ob sich in Ihrem Azure AD-Verzeichnis eine Anwendung namens *Azure AD Domain Services Sync* befindet. Falls diese Anwendung vorhanden ist, löschen Sie sie, und versuchen Sie dann erneut, Azure AD DS zu aktivieren. Führen Sie die folgenden Schritte aus, um nach einer vorhandenen Anwendung zu suchen und sie bei Bedarf zu löschen:
 
-Führen Sie die folgenden Schritte aus, um zu prüfen, ob diese Anwendung vorhanden ist, und sie ggf. zu löschen:
-
-1. Navigieren Sie zum Abschnitt **Anwendungen** in Ihrem Azure AD-Verzeichnis im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/).
-2. Wählen Sie **Alle Anwendungen** in der Dropdownliste **Anzeigen** aus. Wählen Sie **Alle** in der Dropdownliste **Anwendungsstatus** aus. Wählen Sie **Alle** in der Dropdownliste **Anwendungssichtbarkeit** aus.
-3. Geben Sie im Suchfeld **Synchronisierung der Azure AD Domain Services** ein. Wenn die Anwendung vorhanden ist, klicken Sie darauf, und klicken Sie dann in der Symbolleiste auf die Schaltfläche **Löschen**, um sie zu löschen.
-4. Aktivieren Sie die Azure AD Domain Services erneut, sobald Sie die Anwendung gelöscht haben.
+1. Wählen Sie im Azure-Portal im linken Navigationsmenü die Option **Azure Active Directory** aus.
+1. Wählen Sie **Unternehmensanwendungen**. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option *Alle Anwendungen* und dann **Anwenden** aus.
+1. Geben Sie im Suchfeld *Azure AD Domain Services Sync* ein. Wenn die Anwendung vorhanden ist, wählen Sie die Anwendung und dann **Löschen** aus.
+1. Sobald Sie die Anwendung gelöscht haben, versuchen Sie erneut, Azure AD DS zu aktivieren.
 
 ### <a name="invalid-configuration"></a>Ungültige Konfiguration
-**Fehlermeldung**:
+
+**Fehlermeldung**
 
 *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Domänendiensteanwendung in Ihrem Azure AD-Mandanten verfügt nicht über die erforderlichen Berechtigungen zum Aktivieren der Domänendienste. Löschen Sie die Anwendung mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.*
 
-**Problembehandlung**:
+**Lösung**
 
-Überprüfen Sie, ob eine Anwendung mit dem Namen „AzureActiveDirectoryDomainControllerServices“ (mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64) in Ihrem Azure AD-Verzeichnis vorliegt. In diesem Fall müssen Sie die Anwendung löschen und die Azure AD Domain Services erneut aktivieren.
+Prüfen Sie, ob eine Anwendung namens *AzureActiveDirectoryDomainControllerServices* mit dem Anwendungsbezeichner *d87dcbc6-a371-462e-88e3-28ad15ec4e64* in Ihrem Azure AD-Verzeichnis vorhanden ist. Falls diese Anwendung vorhanden ist, löschen Sie sie, und versuchen Sie dann erneut, Azure AD DS zu aktivieren.
 
-Verwenden Sie das folgende PowerShell-Skript, um die Anwendung zu finden und zu löschen.
-
-> [!NOTE]
-> Dieses Skript verwendet **Azure AD PowerShell Version 2**-Cmdlets. Eine vollständige Liste der verfügbaren Cmdlets und Hinweise zum Download des Moduls finden Sie in der [Azure AD PowerShell-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt757189.aspx).
->
->
+Verwenden Sie das folgende PowerShell-Skript, um nach einer vorhandenen Anwendungsinstanz zu suchen und diese bei Bedarf zu löschen.
 
 ```powershell
 $InformationPreference = "Continue"
@@ -111,57 +105,78 @@ if ($sp -ne $null)
     Write-Information "Deleted the Azure AD Domain Services Sync service principal."
 }
 ```
-<br>
 
 ### <a name="microsoft-graph-disabled"></a>Microsoft Graph ist deaktiviert
-**Fehlermeldung**:
 
-Die Domänendienste konnte in diesen Azure AD-Mandanten nicht aktiviert werden. Die Microsoft Azure AD-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert. Aktivieren Sie die Anwendung mit dem Anwendungsbezeichner 00000002-0000-0000-c000-000000000000, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.
+**Fehlermeldung**
 
-**Problembehandlung**:
+*Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Microsoft Azure AD-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert. Aktivieren Sie die Anwendung mit dem Anwendungsbezeichner 00000002-0000-0000-c000-000000000000, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.*
 
-Überprüfen Sie, ob Sie eine Anwendung mit dem Bezeichner 00000002-0000-0000-c000-000000000000 deaktiviert haben. Diese Anwendung ist die Microsoft Azure AD-Anwendung und stellt den Graph-API-Zugriff für Ihren Azure AD-Mandanten bereit. Die Azure AD Domain Services benötigen diese Anwendung, um für die Synchronisierung Ihres Azure AD-Mandanten mit der verwalteten Domäne aktiviert werden zu können.
+**Lösung**
 
-Um diesen Fehler zu beheben, aktivieren Sie diese Anwendung, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.
+Prüfen Sie, ob Sie eine Anwendung mit dem Bezeichner *00000002-0000-0000-c000-000000000000* deaktiviert haben. Diese Anwendung ist die Microsoft Azure AD-Anwendung und stellt den Graph-API-Zugriff für Ihren Azure AD-Mandanten bereit. Diese Anwendung muss aktiviert sein, um Ihren Azure AD-Mandanten zu synchronisieren.
 
+Führen Sie die folgenden Schritte aus, um den Status dieser Anwendung zu prüfen und sie bei Bedarf zu aktivieren:
+
+1. Wählen Sie im Azure-Portal im linken Navigationsmenü die Option **Azure Active Directory** aus.
+1. Wählen Sie **Unternehmensanwendungen**. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option *Alle Anwendungen* und dann **Anwenden** aus.
+1. Geben Sie im Suchfeld *00000002-0000-0000-c000-00000000000* ein. Wählen Sie die Anwendung und dann **Eigenschaften** aus.
+1. Wenn **Aktiviert für die Benutzeranmeldung?** auf *Nein* festgelegt ist, ändern Sie den Wert in *Ja*, und wählen Sie dann **Speichern** aus.
+1. Sobald Sie die Anwendung aktiviert haben, versuchen Sie erneut, Azure AD DS zu aktivieren.
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Benutzer können sich nicht bei der verwalteten Domäne der Azure AD Domain Services anmelden
-Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der neu erstellten verwalteten Domäne anmelden kann, führen Sie die folgenden Problembehandlungsschritte aus:
 
-* **Mit UPN-Format anmelden:** Versuchen Sie, sich unter Verwendung des UPN-Formats (z.B. „joeuser@contoso.com“) statt mit dem SAMAccountName-Format („CONTOSO\joeuser“) anzumelden. Der SAMAccountName wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das UPN-Format ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
+Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der durch Azure AD DS verwalteten Domäne anmelden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
-> [!NOTE]
-> Es wird empfohlen, das UPN-Format zu verwenden, um sich bei der verwalteten Azure AD Domain Services-Domäne anzumelden.
->
->
+* **Format der Anmeldeinformationen**: Geben Sie die Anmeldeinformationen im UPN-Format an, z.B. als `dee@contoso.onmicrosoft.com`. Das UPN-Format wird zur Angabe von Anmeldeinformationen in Azure AD DS empfohlen. Stellen Sie sicher, dass dieser UPN in Azure AD ordnungsgemäß konfiguriert ist.
 
-* Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) in Übereinstimmung mit den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
-* **Externe Konten:** Vergewissern Sie sich, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten (z.B. „joe@live.com“) oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Da die Azure AD Domain Services nicht über Anmeldeinformationen für diese Benutzerkonten verfügen, können sich diese Benutzer nicht an der verwalteten Domäne anmelden.
-* **Synchronisierte Konten:** Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, prüfen Sie Folgendes:
+    Der *SAMAccountName* für Ihr Konto (z.B. *CONTOSO\driley*) wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format *SAMAccountName* für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 
-  * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
-  * Sie haben Azure AD Connect so konfiguriert, dass [eine vollständige Synchronisierung ausgeführt wird](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
-  * Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in den Azure AD Domain Services verfügbar sind. Achten Sie darauf, dass Sie lange genug warten, bevor Sie erneut versuchen, die Authentifizierung durchzuführen.
-  * Wenn das Problem nach Überprüfung der oben genannten Schritte weiterhin auftritt, starten Sie den Microsoft Azure AD Sync-Dienst neu. Öffnen Sie auf Ihrem Synchronisierungscomputer eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus:
+* **Kennwortsynchronisierung**: Stellen Sie sicher, dass Sie die Kennwortsynchronisierung für [reine Cloudbenutzer][cloud-only-passwords] oder für [Hybridumgebungen mit Azure AD Connect][hybrid-phs] aktiviert haben.
+    * **Hybride synchronisierte Konten:** Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, überprüfen Sie Folgendes:
+    
+      * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
+      * Sie haben Azure AD Connect so konfiguriert, dass [eine vollständige Synchronisierung ausgeführt wird][hybrid-phs].
+      * Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in Azure AD DS verfügbar sind. Vergewissern Sie sich, dass Sie lange genug warten, bevor Sie versuchen, sich bei der verwalteten Domäne zu authentifizieren.
+      * Wenn das Problem nach Überprüfung der vorherigen Schritte weiterhin auftritt, starten Sie den *Microsoft Azure AD Sync-Dienst* neu. Öffnen Sie auf der [Verwaltungs-VM][management-vm] eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus:
+    
+        ```console
+        net stop 'Microsoft Azure AD Sync'
+        net start 'Microsoft Azure AD Sync'
+        ```
 
-    1. net stop 'Microsoft Azure AD Sync'
-    2. net start 'Microsoft Azure AD Sync'
-* **Reine Cloudkonten**: Falls es sich bei dem betroffenen Benutzerkonto um ein reines Cloudbenutzerkonto handelt, vergewissern Sie sich, dass der Benutzer sein Kennwort geändert hat, nachdem Sie Azure AD Domain Services aktiviert haben. Dieser Schritt führt dazu, dass die Anmeldeinformationshashes für die Azure AD Domain Services generiert werden.
-* **Vergewissern Sie sich, dass das Benutzerkonto aktiv ist**: Wenn das Konto eines Benutzers gesperrt ist, kann sich der Benutzer erst anmelden, wenn das Konto wieder aktiv ist. Wenn innerhalb von 2 Minuten fünf erfolglose Kennworteingaben in der verwalteten Domäne vorgenommen werden, wird das Benutzerkonto für 30 Minuten gesperrt. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt.
-  * Ungültige Kennworteingaben in der verwalteten Domäne sperren das Benutzerkonto in Azure AD nicht. Das Benutzerkonto wird nur in Ihrer verwalteten Azure AD Domain Services-Domäne gesperrt. Überprüfen Sie den Status des Benutzerkontos mithilfe der Active Directory-Verwaltungskonsole (Active Directory Administrative Console, ADAC) für die verwaltete Azure AD DS-Domäne und nicht in Azure AD.
-  * Sie können auch [differenzierte Kennwortrichtlinien konfigurieren](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy), mit denen der Standardschwellenwert und die entsprechende Dauer geändert werden.
+    * **Reine Cloudkonten**: Falls es sich bei dem betroffenen Benutzerkonto um ein reines Cloudbenutzerkonto handelt, vergewissern Sie sich, dass der [Benutzer sein Kennwort geändert hat, nachdem Sie Azure AD DS aktiviert haben][cloud-only-passwords]. Durch diese Kennwortzurücksetzung werden die erforderlichen Anmeldeinformationshashes für Azure AD Domain Services generiert.
+
+* **Vergewissern Sie sich, dass das Benutzerkonto aktiv ist**: Standardmäßig bewirken fünf erfolglose Kennworteingaben in der verwalteten Domäne innerhalb von zwei Minuten, dass das Benutzerkonto für 30 Minuten gesperrt wird. Der Benutzer kann sich nicht anmelden, während das Konto gesperrt ist. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt.
+  * Durch ungültige Kennworteingaben in der durch Azure AD DS verwalteten Domäne wird das Benutzerkonto in Azure AD nicht gesperrt. Das Benutzerkonto wird nur in der verwalteten Domäne gesperrt. Überprüfen Sie den Status des Benutzerkontos in der *Active Directory-Verwaltungskonsole (Active Directory Administrative Console, ADAC)* über die [Verwaltungs-VM][management-vm] und nicht in Azure AD.
+  * Sie können auch [differenzierte Kennwortrichtlinien konfigurieren][password-policy], um den Standardsperrschwellenwert und die entsprechende Dauer zu ändern.
+
+* **Externe Konten**: Stellen Sie sicher, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten wie `dee@live.com` oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Azure AD DS speichert keine Anmeldeinformationen für externe Benutzerkonten, sodass sich diese nicht bei der verwalteten Domäne anmelden können.
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Es gibt mindestens eine Warnung zu Ihrer verwalteten Domäne
 
-Weitere Informationen zum Beheben von Warnungen zu Ihrer verwalteten Domäne finden Sie im Artikel [Problembehandlung für Warnungen](troubleshoot-alerts.md).
+Wenn aktive Warnungen für die durch Azure AD DS verwaltete Domäne vorhanden sind, funktioniert der Authentifizierungsprozess möglicherweise nicht ordnungsgemäß.
+
+[Überprüfen Sie den Integritätsstatus einer durch Azure AD DS verwalteten Domäne][check-health], um festzustellen, ob aktive Warnungen vorhanden sind. Wenn Warnungen angezeigt werden, [behandeln und lösen Sie die Probleme][troubleshoot-alerts].
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Aus Ihrem Azure AD-Mandanten entfernte Benutzer werden nicht aus Ihrer verwalteten Domäne entfernt
-Azure AD schützt Sie vor dem versehentlichen Löschen von Benutzerobjekten. Wenn Sie ein Benutzerkonto aus Ihrem Azure AD-Mandanten löschen, wird das zugehörige Benutzerobjekt in den Papierkorb verschoben. Wenn dieser Löschvorgang mit Ihrer verwalteten Domäne synchronisiert wird, wird das zugehörige Benutzerkonto als deaktiviert markiert. Dieses Feature unterstützt Sie dabei, das Benutzerkonto zu einem späteren Zeitpunkt wiederherzustellen oder den Löschvorgang rückgängig zu machen.
 
-Das Benutzerkonto behält in Ihrer verwalteten Domäne auch dann den deaktivierten Status bei, wenn Sie im Azure AD-Verzeichnis ein Benutzerkonto mit demselben UPN neu erstellen. Um das Benutzerkonto aus Ihrer verwalteten Domäne zu entfernen, müssen Sie die Löschung aus Ihrem Azure AD-Mandanten erzwingen.
+Azure AD schützt vor versehentlichem Löschen von Benutzerobjekten. Wenn Sie ein Benutzerkonto aus einem Azure AD-Mandanten löschen, wird das zugehörige Benutzerobjekt in den Papierkorb verschoben. Wenn dieser Löschvorgang mit Ihrer durch Azure AD DS verwalteten Domäne synchronisiert wird, wird das zugehörige Benutzerkonto als deaktiviert markiert. Dieses Feature unterstützt Sie dabei, das Benutzerkonto wiederherzustellen oder den Löschvorgang rückgängig zu machen.
 
-Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten. Verwenden Die das PowerShell-Cmdlet `Remove-MsolUser` mit der Option `-RemoveFromRecycleBin`, wie in diesem [MSDN-Artikel](/previous-versions/azure/dn194132(v=azure.100)) beschrieben wird.
+Das Benutzerkonto behält in der durch Azure AD DS verwalteten Domäne auch dann den deaktivierten Status bei, wenn Sie im Azure AD-Verzeichnis ein Benutzerkonto mit demselben UPN neu erstellen. Um das Benutzerkonto aus der durch Azure AD DS verwalteten Domäne zu entfernen, müssen Sie die Löschung aus dem Azure AD-Mandanten erzwingen.
 
+Um ein Benutzerkonto vollständig aus einer durch Azure AD DS verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten, indem Sie das PowerShell-Cmdlet [Remove-MsolUser][Remove-MsolUser] mit dem Parameter `-RemoveFromRecycleBin` verwenden.
 
-## <a name="contact-us"></a>Kontakt
-Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](contact-us.md).
+## <a name="next-steps"></a>Nächste Schritte
+
+Falls weiterhin Probleme auftreten, [öffnen Sie eine Azure-Supportanfrage][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
+
+<!-- INTERNAL LINKS -->
+[cloud-only-passwords]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
+[hybrid-phs]: tutorial-configure-password-hash-sync.md
+[management-vm]: tutorial-create-management-vm.md
+[password-policy]: password-policy.md
+[check-health]: check-health.md
+[troubleshoot-alerts]: troubleshoot-alerts.md
+[Remove-MsolUser]: /powershell/module/MSOnline/Remove-MsolUser
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
