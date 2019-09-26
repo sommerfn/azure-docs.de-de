@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775070"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036872"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -22,7 +22,7 @@ Stellen Sie sicher, dass Ihre Umgebung diese Anforderungen erfüllt, bevor Sie d
 Ein kostenpflichtiges Abonnement wird empfohlen.
 
 > [!NOTE]
-> Während der öffentlichen Vorschauversion muss das Azure HPC Cache-Team Ihr Abonnement zur Zugriffsliste hinzufügen, damit es zum Erstellen einer Cache-Instanz verwendet werden kann. Dieses Vorgehen hilft, sicherzustellen, dass jeder Kunde gute Reaktionszeiten von seinen Testcaches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
+> Während der Vorschau muss das Azure HPC Cache-Team Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cache-Instanz verwendet werden kann. Dieses Vorgehen hilft, sicherzustellen, dass jeder Kunde gute Reaktionszeiten von seinen Testcaches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
 
 ## <a name="network-infrastructure"></a>Netzwerkinfrastruktur
 

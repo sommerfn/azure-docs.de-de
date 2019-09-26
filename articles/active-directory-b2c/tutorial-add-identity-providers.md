@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622792"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063247"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
-Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory (Azure AD) B2C unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](active-directory-b2c-reference-policies.md) hinzufügen.
+Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](active-directory-b2c-reference-policies.md) hinzufügen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -45,7 +45,7 @@ Identitätsanbieteranwendungen stellen die ID und den Schlüssel für die Kommun
 Um die Anmeldung für Benutzer von Azure AD zu aktivieren, müssen Sie eine Anwendung im Azure AD-Mandanten registrieren. Der Azure AD-Mandant ist nicht mit Ihrem Azure AD B2C-Mandanten identisch.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie einen Namen für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
@@ -82,7 +82,7 @@ Um ein Facebook-Konto als Identitätsanbieter in Azure AD B2C verwenden zu könn
 1. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com/`. Die Datenschutzrichtlinien-URL ist eine von Ihnen verwaltete Seite mit Datenschutzinformationen für Ihre Anwendung.
 1. Klicken Sie auf **Save changes** (Änderungen speichern).
 1. Notieren Sie sich im oberen Bereich der Seite den Wert von **App ID** (App-ID).
-1. Wählen Sie neben **App Secret** (App-Geheimnis) die Option **Show** (Anzeigen) aus, und notieren Sie sich den Wert. Sie benötigen sowohl die App-ID als auch das App-Geheimnis, um Facebook als Identitätsanbieter in Ihrem Mandanten konfigurieren zu können. Das App-Geheimnis **** ist eine wichtige Sicherheitsanmeldeinformation, die sicher aufbewahrt werden muss.
+1. Wählen Sie neben **App Secret** (App-Geheimnis) die Option **Show** (Anzeigen) aus, und notieren Sie sich den Wert. Sie benötigen sowohl die App-ID als auch das App-Geheimnis, um Facebook als Identitätsanbieter in Ihrem Mandanten konfigurieren zu können. Das **App-Geheimnis** ist eine wichtige Sicherheitsanmeldeinformation, die sicher aufbewahrt werden muss.
 1. Wählen Sie das Pluszeichen neben **PRODUCTS** (PRODUKTE) und dann unter **Facebook Login** (Facebook-Anmeldung) die Option **Set up** (Einrichten) aus.
 1. Wählen Sie im linken Menü unter **Facebook Login** (Facebook-Anmeldung) die Option **Settings** (Einstellungen) aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Wählen Sie unten auf der Seite die Option **Save Changes** (Änderungen speichern) aus.

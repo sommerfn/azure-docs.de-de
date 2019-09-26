@@ -4,42 +4,27 @@ description: Öffnen einer Hilfeanforderung für Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775158"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036915"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Öffnen eines Supporttickets für Azure HPC Cache
 
 Verwenden Sie das Azure-Portal, um ein Supportticket zu öffnen. Navigieren Sie zu Ihrer Cache-Instanz, und klicken Sie dann auf den Link **Neue Supportanfrage**, die unten in der Seitenleiste angezeigt wird.
 
-> [!NOTE]
-> Während des Vorschauzeitraums können Sie außerdem [diesen Link](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>) verwenden, um eine Supportanfrage für das Produkt Azure HPC Cache (Vorschauversion) zu öffnen.
+Wenn Sie über keinen aktiven Cache verfügen, verwenden Sie zum Erstellen eines Tickets die Hauptseite für **Hilfe und Support** im Azure-Portal. Klicken Sie auf **Neue Supportanfrage**, und wählen Sie **Technisch** aus, um Hilfe zu Azure HPC Cache zu erhalten.
 
-<!-- add screenshot of form with thing to select product etc. -->
+Wählen Sie Ihr Abonnement in der Liste aus.
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+Um den Azure HPC Cache-Vorschaudienst zu finden, klicken Sie auf die Schaltfläche **Alle Dienste**, und suchen Sie nach „HPC“.
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+![Screenshot der Registerkarte „Grundlagen“ für Supportanfragen, teilweise ausgefüllt wie beschrieben](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+Füllen Sie die restlichen Felder mit Ihren Informationen und Einstellungen aus, und übermitteln Sie das Ticket, wenn Sie fertig sind.
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+Nachdem Sie die Anforderung übermittelt haben, erhalten Sie eine Bestätigungs-E-Mail mit einer Ticketnummer. Ein Supportmitarbeiter wird Sie zu der Anfrage kontaktieren.

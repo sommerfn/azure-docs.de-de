@@ -1,7 +1,7 @@
 ---
-title: Verwenden von automatisiertem ML zum Erstellen und Bereitstellen von Machine Learning-Modellen
-titleSuffix: Azure Machine Learning service
-description: Erstellen, Verwalten und Bereitstellen automatisierter Experimente mit maschinellem Lernen im Azure-Portal
+title: Verwenden der automatisierten ML-Schnittstelle von Azure, um Modelle zu trainieren und bereitzustellen
+titleSuffix: Azure Machine Learning
+description: Erstellen, Verwalten und Bereitstellen von automatisierten Machine Learning-Experimenten auf der Landing Page des Arbeitsbereichs von Azure Machine Learning (Vorschau)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,43 +10,48 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/02/2019
-ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 09/09/2019
+ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990582"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034833"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Erstellen, Untersuchen und Bereitstellen automatisierter Experimente mit maschinellem Lernen im Azure-Portal (Vorschauversion)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten über die Landing Page des Arbeitsbereichs von Azure Machine Learning (Vorschau)
 
- In diesem Artikel erfahren Sie, wie Sie automatisierte Experimente mit maschinellem Lernen im Azure-Portal ohne eine einzige Zeile Code erstellen, untersuchen und bereitstellen. Automatisiertes Machine Learning automatisiert den Prozess der Auswahl des besten Algorithmus für Ihre spezifischen Daten, sodass Sie schnell ein Modell für Machine Learning erstellen können. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
+ In diesem Artikel erfahren Sie, wie Sie automatisierte Machine Learning-Experimente über die Landing Page des Arbeitsbereichs von Azure Machine Learning ohne eine einzige Zeile Code erstellen, untersuchen und bereitstellen. Automatisiertes Machine Learning automatisiert den Prozess der Auswahl des besten Algorithmus für Ihre spezifischen Daten, sodass Sie schnell ein Modell für Machine Learning erstellen können. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
 
  Wenn Sie eine eher codebasierte Erfahrung bevorzugen, können Sie auch [Ihre automatisierten Machine Learning-Experimente in Python](how-to-configure-auto-train.md) mit dem [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-* Ein Azure Machine Learning-Dienstbereich. Siehe [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md).
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>Erste Schritte
 
-Navigieren Sie zum linken Bereich des Arbeitsbereichs. Wählen Sie „Automated Machine Learning“ (Automatisiertes Machine Learning) im Abschnitt „Authoring (Preview)“ (Erstellen (Vorschau)) aus.
 
-![Navigationsbereich im Azure-Portal](media/how-to-create-portal-experiments/nav-pane.png)
+1. Melden Sie sich für [die Landing Page des Arbeitsbereichs](https://ml.azure.com/workspaceportal/) an. 
 
- Wenn Sie zum ersten Mal mit automatisiertem Machine Learning experimentieren, wird der Bildschirm **Welcome to Automated Machine Learning** (Willkommen beim automatisierten maschinellen Lernen) angezeigt. 
+1. Wählen Sie Ihr Abonnement und Ihren Arbeitsbereich aus. 
+
+1. Navigieren Sie zum linken Bereich. Wählen Sie im Abschnitt **Erstellung** die Option **Automatisiertes ML** aus.
+
+[![Navigationsbereich im Azure-Portal](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+
+ Wenn Sie zum ersten Mal mit automatisiertem Machine Learning experimentieren, wird der **Erste Schritte**-Bildschirm angezeigt. 
 
 Andernfalls wird das Dashboard für **automatisiertes maschinelles Lernen** mit einer Übersicht über alle Ihre automatisierten Experimente mit maschinellem Lernen angezeigt (einschließlich der mit dem SDK erstellten). Hier können Sie Ihre Ausführungen nach Datum, Experimentname und Ausführungsstatus filtern und untersuchen.
 
-## <a name="create-an-experiment"></a>Erstellen eines Experiments
+## <a name="create-and-run-experiment"></a>Erstellen und Ausführen eines Experiments
 
-Wählen Sie **Experiment erstellen** aus, und füllen Sie das Formular **Create a new automated machine learning experiment** (Neues Experiment mit automatisiertem maschinellem Lernen erstellen) aus.
+1. Wählen Sie **Experiment erstellen** aus, und füllen Sie das Formular aus.
 
 1. Geben Sie einen eindeutigen Namen für das Experiment ein.
 
-1. Wählen Sie einen Compute für den Datenprofilerstellungs- und Trainingsauftrag aus. Eine Liste Ihrer vorhandenen Computes ist in der Dropdownliste verfügbar. Folgen Sie den Anweisungen in Schritt 3, um einen neuen Compute zu erstellen.
+1. Wählen Sie einen Compute für den Datenprofilerstellungs- und Trainingsauftrag aus. Eine Liste Ihrer vorhandenen Computes ist in der Dropdownliste verfügbar. Folgen Sie den Anweisungen in Schritt 4, um einen neuen Compute zu erstellen.
 
 1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus, um den Computekontext für dieses Experiment zu konfigurieren.
 
@@ -55,32 +60,40 @@ Wählen Sie **Experiment erstellen** aus, und füllen Sie das Formular **Create 
     Computename| Geben Sie einen eindeutigen Namen ein, der Ihren Computekontext identifiziert.
     Größe des virtuellen Computers| Wählen Sie die Größe für Ihren Computes aus.
     Zusätzliche Einstellungen| *Min node* (Mindestanzahl von Knoten): Geben Sie die Mindestanzahl von Knoten für Ihren Compute ein. Die Mindestanzahl von Knoten für AML-Compute ist 0. Zum Aktivieren der Datenprofilerstellung müssen Sie über mindestens einen Knoten verfügen. <br> *Max node* (Maximale Anzahl von Knoten): Geben Sie die maximale Anzahl von Knoten für Ihren Compute ein. Der Standardwert ist 6 Knoten für einen AML-Compute.
+    
+    Klicken Sie auf **Erstellen**. Das Erstellen einer neuen Computeressource kann einige Minuten dauern.
 
-      Klicken Sie auf **Erstellen**. Das Erstellen einer neuen Computeressource kann einige Minuten dauern.
+    >[!NOTE]
+    > Ihr Computename gibt an, ob für den von Ihnen ausgewählten/erstellten Compute *Profilerstellung aktiviert* ist. (Weitere Informationen finden Sie im Abschnitt [Datenprofilerstellung](#profile).)
 
-      >[!NOTE]
-      > Ihr Computename gibt an, ob für den von Ihnen ausgewählten/erstellten Compute *Profilerstellung aktiviert* ist. (Weitere Informationen zur Datenprofilerstellung finden Sie unter 7 b).
+1. Wählen Sie ein Dataset in Ihrem Speichercontainer aus, oder erstellen Sie ein Dataset, indem Sie eine Datei von Ihrem lokalen Computer in den Container hochladen. Die öffentliche Vorschau unterstützt nur lokale Dateiuploads und Azure Blob Storage-Konten.
 
-1. Wählen Sie ein Speicherkonto für Ihre Daten aus. 
-
-1. Wählen Sie einen Speichercontainer aus.
-
-1. Wählen Sie eine Datendatei aus Ihrem Speichercontainer aus, oder laden Sie eine Datei von Ihrem lokalen Computer in den Container hoch. Die öffentliche Vorschau unterstützt nur lokale Dateiuploads und Azure Blob Storage-Konten.
     >[!Important]
     > Anforderungen für Trainingsdaten:
     >* Die Daten müssen in Tabellenform vorliegen.
     >* Der Wert, den Sie vorhersagen möchten (Zielspalte), muss in den Daten vorhanden sein.
 
-    [![Auswählen einer Datendatei](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
+    1. Um ein neues Dataset aus einer Datei auf Ihrem lokalen Compute zu erstellen, wählen Sie **Durchsuchen** aus, und wählen Sie dann die Datei aus. 
 
-1. Verwenden Sie die Vorschau- und Profilregisterkarten, um Ihre Daten für dieses Experiment weiter zu konfigurieren.
+    1. Weisen Sie Ihrem Dataset einen eindeutigen Namen zu, und geben Sie eine optionale Beschreibung ein. 
 
-    1. Geben Sie auf der Registerkarte **Vorschau** an, ob Ihre Daten Header enthalten, und wählen Sie die Features (Spalten) für das Training mit den Umschaltflächen **Eingeschlossen** in den einzelnen Featurespalten aus.
+    1. Wählen Sie **Weiter** aus, um die Datei in den Standardspeichercontainer hochzuladen, der automatisch mit Ihrem Arbeitsbereich erstellt wird, oder wählen Sie einen Speichercontainer aus, den Sie für das Experiment verwenden möchten. 
 
-    1. Auf der Registerkarte **Profil** können Sie das [Datenprofil](#profile) nach Feature sowie die Verteilungs-, Typ- und Zusammenfassungsstatistiken (Mittelwert, Median, Maximum/Minimum usw.) der einzelnen Features anzeigen.
+    1. Überprüfen Sie das Formular **Einstellungen und Vorschau** auf Genauigkeit. Das Formular wird ausgehend vom Dateityp intelligent aufgefüllt. 
 
-        >[!NOTE]
-        > Die folgende Fehlermeldung wird angezeigt, wenn für den Computekontext **keine** Profilerstellung aktiviert ist: *Data profiling is only available for compute targets that are already running* (Datenprofilerstellung ist nur für Computeziele verfügbar, die bereits ausgeführt werden).
+        Feld| BESCHREIBUNG
+        ----|----
+        Dateiformat| Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.
+        Trennzeichen| Mindestens ein Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text- oder anderen Datenströmen.
+        Codieren| Gibt an, welche Bit-zu-Zeichen-Schematabelle verwendet werden soll, um Ihr Dataset zu lesen.
+        Spaltenüberschriften| Gibt an, wie die Header des Datasets, sofern vorhanden, behandelt werden.
+        Zeilen überspringen | Gibt an, wie viele Zeilen im Dataset übersprungen werden.
+    
+        Klicken Sie auf **Weiter**.
+
+    1. Das Formular **Schema** wird auf intelligente Weise entsprechend den auf dem Formular **Einstellungen und Vorschau** ausgewählten Optionen aufgefüllt. Konfigurieren Sie hier den Datentyp für jede Spalte, überprüfen Sie die Spaltennamen, und wählen Sie für die Spalten, die nicht in Ihr Experiment eingeschlossen werden sollen, die Option **Nicht einschließen** aus. 
+            
+        Wählen Sie **Weiter** aus.
 
 1. Wählen Sie den Trainingsauftragstyp aus: Klassifizierung, Regression oder Vorhersage.
 
@@ -91,7 +104,7 @@ Wählen Sie **Experiment erstellen** aus, und füllen Sie das Formular **Create 
 
     1. Wählen Sie den Vorhersagehorizont aus: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
-1. (Optional) Erweiterte Einstellungen: Zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können.
+1. (Optional) Erweiterte Einstellungen: Zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 
     Erweiterte Einstellungen|BESCHREIBUNG
     ------|------
@@ -134,7 +147,7 @@ Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleic
 
 Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `Preprocess` aktivieren. Dies bedeutet, dass die folgenden Schritte der Datenvorverarbeitung und Featurisierung automatisch durchgeführt werden.
 
-|Vorverarbeitungsschritte| BESCHREIBUNG |
+|Vorverarbeitungsschritte&nbsp;| BESCHREIBUNG |
 | ------------- | ------------- |
 |Löschen von Funktionen mit hoher Kardinalität oder ohne Varianz|Löscht diese aus Trainings- und Validierungssets. Dazu gehören Funktionen, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z.B. Hashwerte, IDs oder GUIDs) aufweisen.|
 |Imputieren von fehlenden Werten|Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
@@ -162,7 +175,7 @@ Bei Trainingsaufträgen kann es eine Weile dauern, bis die Ausführung jeder Pip
 
 Führen Sie einen Drilldown der Ausgabemodelle aus, um Details zur Trainingsausführung anzuzeigen, z.B. Leistungsmetriken und Verteilungsdiagramme. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
 
-![Details zur Iteration](media/how-to-create-portal-experiments/iteration-details.png)
+[![Details zur Iteration](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Bereitstellen Ihres Modells
 
@@ -175,6 +188,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     + Option 1: Um das beste Modell (entsprechend den definierten Metrikkriterien) bereitzustellen, wählen Sie „Deploy Best Model“ (Bestes Modell bereitstellen) auf der Seite „Ausführungsdetails“ aus.
 
     + Option 2: Um eine bestimmte Modelliteration aus diesem Experiment bereitzustellen, führen Sie einen Drilldown für das Modell aus, um dessen Seite mit Ausführungsdetails zu öffnen, und wählen Sie „Modell bereitstellen“ aus.
+
 1. Füllen Sie den Bereich **Modell bereitstellen** aus.
 
     Feld| Wert

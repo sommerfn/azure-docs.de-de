@@ -2,18 +2,18 @@
 title: Apache Phoenix in HDInsight – Azure HDInsight
 description: Übersicht über Apache Phoenix
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: ashishth
-ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811899"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105387"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in Azure HDInsight
 
@@ -129,11 +129,11 @@ Ein HDInsight HBase-Cluster enthält die [Ambari-Benutzeroberfläche](hdinsight-
 
 2. Wählen Sie im Menü auf der linken Seite in der Liste mit den Diensten den Eintrag **HBase** und dann die Registerkarte **Configs** (Konfigurationen).
 
-    ![Ambari HBase-Konfiguration](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari – HBase-Konfigurationen](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Suchen Sie nach dem Abschnitt für die Konfiguration von **Phoenix SQL**, um Phoenix zu aktivieren bzw. zu deaktivieren und das Abfragetimeout festzulegen.
 
-    ![Ambari-Konfigurationsabschnitt „Phoenix SQL“](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari-Konfigurationsabschnitt „Phoenix SQL“](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775046"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037212"
 ---
 # <a name="add-storage"></a>Hinzufügen von Speicher
 
@@ -27,13 +27,15 @@ Sie können Speicherziele beim Erstellen Ihres Azure HPC Caches hinzufügen oder
 
 Verwenden Sie die Registerkarte **Speicherziele** des Assistenten zur Cache-Erstellung, um Speicher zu definieren, während Sie die Cache-Instanz erstellen.
 
-![Screenshot der Seite „Speicherziele“](media/create-targets.png)
+![Screenshot der Seite „Speicherziele“](media/hpc-cache-storage-targets-pop.png)
 
 Klicken Sie auf den Link **Speicherziel hinzufügen**, um Speicher hinzuzufügen.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Hinzufügen von Speicherzielen aus dem Cache
 
 Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**. Auf der Seite „Speicherziel“ werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
+
+![Screenshot des Links „Speicherziele“ in der Randleiste unter der Überschrift „Konfigurieren“, die sich zwischen den Kategorieüberschriften „Einstellungen“ und „Überwachung“ befindet](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Hinzufügen eines neuen Azure Blobspeicherziels
 
@@ -51,8 +53,6 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 * **Speichercontainer**: Wählen Sie den Blobcontainer für dieses Ziel aus.
 
 * **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
-
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 

@@ -1,18 +1,18 @@
 ---
-title: Neue Funktionen in Azure Site Recovery | Microsoft-Dokumentation
+title: Neuerungen in Azure Site Recovery
 description: Hier finden Sie eine Zusammenfassung der neuen Features in Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146900"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010246"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -24,16 +24,56 @@ Sie können Site Recovery-Updatebenachrichtigungen im Kanal für [Azure-Updates]
 
 Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zuletzt veröffentlichte Version ist. Eine Zusammenfassung finden Sie in der folgenden Tabelle:
 
-**Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent** 
---- | --- | --- | --- | ---
+**Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
+--- | --- | --- | --- | --- | ---
+[Rollup 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Rollup 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Rollup 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Rollup 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [Rollup 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[Rollup 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
+
+
+## <a name="updates-september-2019"></a>Updates (September 2019)
+
+### <a name="update-rollup-40"></a>Updaterollup 40
+
+Das [Updaterollup 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) umfasst folgende Updates.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+
+Die neuen Features für die Notfallwiederherstellung von virtuellen Azure-Computern sind in der Tabelle zusammengefasst.
+
+**Feature** | **Details**
+--- | ---
+**Bereinigung nach Failback** | Nach dem Failover zum sekundären Azure und dem anschließenden Failback zur primären Region, bereinigt Site Recovery automatisch Computer in der sekundären Region. Es ist nicht erforderlich, VMs und NICs manuell zu löschen.
+**Testfailover behält die IP-Adresse bei** | Sie können jetzt die IP-Adresse der Quell-VM während einer Notfallwiederherstellungsübgung beibehalten und eine statische IP-Adresse für einen Testfailover auswählen.
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
+**Feature** | **Details**
+--- | ---
+Neue Warnungen zum Prozessserver | Wir haben neue Warnungen für Prozessserver hinzugefügt. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md) 
+
+### <a name="hyper-v-disaster-recovery"></a>Hyper-V-Notfallwiederherstellung
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
+**Feature** | **Details**
+--- | ---
+Speicherkonto | Site Recovery unterstützt jetzt die Verwendung von Speicherkonten mit einer Firewall, die für die Notfallwiederherstellung von Hyper-V zu Azure aktiviert ist.  Sie können firewallfähige Speicherkonten als Zielkonto oder für den Cachespeicher auswählen. Wenn Sie ein firewallfähiges Konto verwenden, stellen Sie sicher, dass Sie die Option zum Zulassen vertrauenswürdiger Microsoft-Dienste aktivieren.
 
 
 ## <a name="updates-august-2019"></a>Updates (August 2019)

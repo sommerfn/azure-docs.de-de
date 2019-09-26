@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: b9db5cbb9e65fc7bc8aa306a69a0889f29b61be3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101348"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066865"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -121,12 +121,12 @@ ms.locfileid: "70101348"
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Herunterladen, Installieren und Aktivieren des Azure-VM-Agents)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP)
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Bereitschaftsüberprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP)
-[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Integritätsprüfung für die Azure-Überwachungsinfrastruktur)
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Problembehandlung für die Azure-Überwachung für SAP)
+[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Konfigurieren der Azure-Erweiterung für SAP)
+[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Bereitschaftsprüfung für die Azure-Erweiterung für SAP)
+[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Integritätsprüfung für die Azure-Erweiterung für die SAP-Konfiguration)
+[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Problembehandlung für die Azure-Erweiterung für SAP)
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Konfigurieren der Überwachung)
+[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Konfigurieren der VM-Erweiterung)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Konfigurieren des Proxys)
 [deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
@@ -150,7 +150,7 @@ ms.locfileid: "70101348"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Überprüfungen und Problembehandlung für die Einrichtung der End-to-End-Überwachung)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Überprüfungen und Problembehandlung für die End-to-End-Datensammlung für den SAP-Host-Agent)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -327,7 +327,7 @@ Zum Verwalten von Windows- oder Linux-VMs können Sie ein PowerShell-Skript und 
 
 ### <a name="internet-connection"></a>Internetverbindung
 
-Zum Herunterladen und Ausführen der Tools und Skripts, die für die Bereitstellung von SAP-Software erforderlich sind, muss eine Internetverbindung bestehen. Für die Azure-VM, auf der die Azure-Erweiterung zur verbesserten Überwachung für SAP ausgeführt wird, wird ebenfalls Zugriff auf das Internet benötigt. Falls die Azure-VM Teil eines virtuellen Azure-Netzwerks oder einer lokalen Domäne ist, sollten Sie auf eine korrekte Einrichtung der entsprechenden Proxyeinstellungen achten. Diese werden unter [Konfigurieren des Proxys][deployment-guide-configure-proxy] beschrieben.
+Zum Herunterladen und Ausführen der Tools und Skripts, die für die Bereitstellung von SAP-Software erforderlich sind, muss eine Internetverbindung bestehen. Für die Azure-VM, auf der die Azure-Erweiterung für SAP ausgeführt wird, wird ebenfalls Zugriff auf das Internet benötigt. Falls die Azure-VM Teil eines virtuellen Azure-Netzwerks oder einer lokalen Domäne ist, sollten Sie auf eine korrekte Einrichtung der entsprechenden Proxyeinstellungen achten. Diese werden unter [Konfigurieren des Proxys][deployment-guide-configure-proxy] beschrieben.
 
 ### <a name="microsoft-azure-subscription"></a>Microsoft Azure-Abonnement
 
@@ -440,7 +440,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
      * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
      * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
      * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
-   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterungen hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
+   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterungen hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] in diesem Handbuch.
    * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
    * **Überwachung**
      * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
@@ -508,19 +508,19 @@ Der Azure-VM-Agent wird bei Verwendung eines Images vom Azure Marketplace standa
 
 #### <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM per VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und die erforderlichen Erweiterungen nicht herunterladen und auch keine Überwachungsdaten erfassen. Weitere Informationen finden Sie unter [Konfigurieren von Proxys][deployment-guide-configure-proxy].
+Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM über VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und kann weder die erforderlichen Erweiterungen herunterladen noch die SAP-Erweiterung für Azure verwenden, um Azure-Infrastrukturinformationen für den SAP-Host-Agent zu erfassen. Weitere Informationen finden Sie unter [Konfigurieren von Proxys][deployment-guide-configure-proxy].
 
 #### <a name="join-a-domain-windows-only"></a>Beitreten zu einer Domäne (nur Windows)
 
 Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder ExpressRoute-Verbindung besteht (unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM einer lokalen Domäne beitritt. Weitere Informationen zu den Aspekten dieser Aufgabe finden Sie unter [Einbinden virtueller Computer in die lokale Domäne (nur Windows)][deployment-guide-4.3].
 
-#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurieren der Überwachung
+#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurieren der VM-Erweiterung
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, richten Sie die Azure-Erweiterung für SAP so ein, wie dies unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben ist. Überprüfen Sie die Voraussetzungen für die SAP und die erforderlichen Mindestversionen des SAP-Kernels und des SAP-Host-Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
 
-#### <a name="monitoring-check"></a>Überprüfen der Überwachung
+#### <a name="vm-extension-for-sap-check"></a>VM-Erweiterung für SAP-Überprüfung
 
-Überprüfen Sie die richtige Funktionsweise der Überwachung wie unter [Überprüfungen und Problembehandlung für die Einrichtung der End-to-End-Überwachung für SAP in Azure][deployment-guide-troubleshooting-chapter] beschrieben.
+Überprüfen Sie, ob die VM-Erweiterung für SAP funktioniert. Gehen Sie dazu so vor, wie dies unter [Überprüfungen und Problembehandlung für die End-to-End-Datensammlung für den SAP-Host-Agent][deployment-guide-troubleshooting-chapter] beschrieben ist.
 
 #### <a name="post-deployment-steps"></a>Schritte nach der Bereitstellung
 
@@ -579,7 +579,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
      * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
      * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
      * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
-   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterung hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
+   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterung hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] in diesem Handbuch.
    * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
    * **Überwachung**
      * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
@@ -654,22 +654,22 @@ Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Dir
 
 #### <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM per VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und die erforderlichen Erweiterungen nicht herunterladen und auch keine Überwachungsdaten erfassen. Weitere Informationen finden Sie unter [Konfigurieren von Proxys][deployment-guide-configure-proxy].
+Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM über VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und kann weder die erforderlichen Erweiterungen herunterladen noch die SAP-Erweiterung für Azure verwenden, um Azure-Infrastrukturinformationen für den SAP-Host-Agent zu erfassen. Weitere Informationen hierzu finden Sie unter [Konfigurieren des Proxys][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurieren der Überwachung
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurieren der Azure-VM-Erweiterung für SAP
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, richten Sie die Azure-Erweiterung für SAP so ein, wie dies unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben ist. Überprüfen Sie die Voraussetzungen für die SAP und die erforderlichen Mindestversionen des SAP-Kernels und des SAP-Host-Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
 
-#### <a name="monitoring-check"></a>Überprüfen der Überwachung
+#### <a name="sap-vm-extension-check"></a>Überprüfung der SAP-VM-Erweiterung
 
-Überprüfen Sie die richtige Funktionsweise der Überwachung wie unter [Überprüfungen und Problembehandlung für die Einrichtung der End-to-End-Überwachung für SAP in Azure][deployment-guide-troubleshooting-chapter] beschrieben.
+Überprüfen Sie, ob die VM-Erweiterung für SAP funktioniert. Gehen Sie dazu so vor, wie dies unter [Überprüfungen und Problembehandlung für die End-to-End-Datensammlung für den SAP-Host-Agent][deployment-guide-troubleshooting-chapter] beschrieben ist.
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Szenario 3: Verschieben einer lokalen VM mit einer nicht generalisierten virtuellen Azure-Festplatte mit SAP
 
 In diesem Szenario planen Sie die Verschiebung eines bestimmten SAP-Systems aus einer lokalen Umgebung in Azure. Hierfür können Sie die VHD mit dem Betriebssystem und den SAP- und DBMS-Binärdateien sowie die VHDs mit den Daten- und Protokolldateien des DBMS in Azure hochladen. Im Gegensatz zum Szenario unter [Szenario 2: Bereitstellen eines virtuellen Computers mit einem benutzerdefinierten Image für SAP][deployment-guide-3.3] behalten Sie hier den Hostnamen, die SAP-SID und die SAP-Benutzerkonten auf der Azure-VM bei, weil sie in der lokalen Umgebung konfiguriert wurden. Es ist nicht erforderlich, das Betriebssystem zu generalisieren. Dieser Fall gilt am häufigsten für standortübergreifende Szenarien, bei denen ein Teil der SAP-Landschaft lokal und ein anderer Teil in Azure ausgeführt wird.
 
-In diesem Szenario wird der VM-Agent während der Bereitstellung **nicht** automatisch installiert. Da der VM-Agent und die Azure-Erweiterung zur verbesserten Überwachung für SAP Voraussetzungen für die Ausführung von SAP NetWeaver in Azure sind, müssen Sie beide Komponenten nach dem Erstellen des virtuellen Computers manuell herunterladen, installieren und aktivieren.
+In diesem Szenario wird der VM-Agent während der Bereitstellung **nicht** automatisch installiert. Da der VM-Agent und die Azure-Erweiterung für SAP Voraussetzungen für die Ausführung von SAP NetWeaver in Azure sind, müssen Sie beide Komponenten nach dem Erstellen des virtuellen Computers manuell herunterladen, installieren und aktivieren.
 
 Weitere Informationen zum Azure-VM-Agent finden Sie in den folgenden Ressourcen.
 
@@ -744,26 +744,26 @@ Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Dir
 
 #### <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM per VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und die erforderlichen Erweiterungen nicht herunterladen und auch keine Überwachungsdaten erfassen. Weitere Informationen finden Sie unter [Konfigurieren von Proxys][deployment-guide-configure-proxy].
+Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den Proxy für Ihre VM einrichten. Wenn Ihre VM über VPN oder ExpressRoute mit Ihrem lokalen Netzwerk verbunden ist, kann die VM unter Umständen nicht auf das Internet zugreifen und kann weder die erforderlichen Erweiterungen herunterladen noch die SAP-Erweiterung für Azure verwenden, um Azure-Infrastrukturinformationen für den SAP-Host-Agent zu erfassen. Weitere Informationen hierzu finden Sie unter [Konfigurieren des Proxys][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurieren der Überwachung
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurieren der Azure-VM-Erweiterung für SAP
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, richten Sie die Azure-Erweiterung für SAP so ein, wie dies unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben ist. Überprüfen Sie die Voraussetzungen für die SAP und die erforderlichen Mindestversionen des SAP-Kernels und des SAP-Host-Agents in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
 
-#### <a name="monitoring-check"></a>Überprüfen der Überwachung
+#### <a name="sap-vm-check"></a>SAP-VM-Überprüfung
 
-Überprüfen Sie die richtige Funktionsweise der Überwachung wie unter [Überprüfungen und Problembehandlung für die Einrichtung der End-to-End-Überwachung für SAP in Azure][deployment-guide-troubleshooting-chapter] beschrieben.
+Überprüfen Sie, ob die VM-Erweiterung für SAP funktioniert. Gehen Sie dazu so vor, wie dies unter [Überprüfungen und Problembehandlung für die End-to-End-Datensammlung für den SAP-Host-Agent][deployment-guide-troubleshooting-chapter] beschrieben ist.
 
-## <a name="update-the-monitoring-configuration-for-sap"></a>Aktualisieren der Überwachungskonfiguration für SAP
+## <a name="update-the-configuration-of-azure-extension-for-sap"></a>Aktualisieren der Konfiguration der Azure-Erweiterung für SAP
 
-Aktualisieren Sie die SAP-Überwachungskonfiguration in einem der folgenden Szenarien:
-* Das gemeinsame Team von Microsoft und SAP erweitert die Überwachungsfunktionen und fordert mehr oder weniger Leistungsindikatoren an.
-* Microsoft führt eine neue Version der zugrunde liegenden Azure-Infrastruktur für die Bereitstellung der Überwachungsdaten ein, und die Azure-Erweiterung zur verbesserten Überwachung für SAP muss an diese Änderungen angepasst werden.
-* Sie binden zusätzliche Datenträger für Daten in den virtuellen Azure-Computer oder entfernen einen Datenträger für Daten. In diesem Fall muss die Sammlung mit den speicherbezogenen Daten aktualisiert werden. Wenn die Konfiguration durch Hinzufügen oder Löschen von Endpunkten oder Zuweisen von IP-Adressen zu einem virtuellen Computer geändert wird, wirkt sich dies nicht auf die Konfiguration die Überwachung aus.
+Aktualisieren Sie die Konfiguration der Azure-Erweiterung für SAP, wenn eines der folgenden Szenarien zutrifft:
+* Das gemeinsame Team von Microsoft und SAP hat die Funktionalität der VM-Erweiterung ausgeweitet, wodurch mehr oder weniger Leistungsindikatoren erforderlich sind.
+* Microsoft führt eine neue Version der zugrunde liegenden Azure-Infrastruktur ein, die die Daten bereitstellt, und die Azure-Erweiterung für SAP muss an diese Änderungen angepasst werden.
+* Sie binden zusätzliche Datenträger für Daten in den virtuellen Azure-Computer oder entfernen einen Datenträger für Daten. In diesem Fall muss die Sammlung mit den speicherbezogenen Daten aktualisiert werden. Wenn die Konfiguration durch Hinzufügen oder Löschen von Endpunkten oder Zuweisen von IP-Adressen zu einem virtuellen Computer geändert wird, wirkt sich dies nicht auf die Konfiguration der Erweiterung aus.
 * Beispielsweise ändern Sie die Größe Ihrer Azure-VM von A5 in eine andere VM-Größe.
 * Dem virtuellen Azure-Computer werden neue Netzwerkschnittstellen hinzugefügt.
 
-Zum Aktualisieren der Überwachungseinstellungen aktualisieren Sie die Überwachungsinfrastruktur anhand der Schritte unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5].
+Um die Einstellungen zu aktualisieren, aktualisieren Sie die Konfiguration der Azure-Erweiterung für SAP, indem Sie die Schritte ausführen, die unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] aufgeführt sind.
 
 ## <a name="detailed-tasks-for-sap-software-deployment"></a>Ausführliche Aufgaben der Bereitstellung von SAP-Software
 
@@ -925,15 +925,15 @@ Die Proxyeinstellungen in „\\etc\\waagent.conf“ gelten auch für die erforde
 
 Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung][virtual-networks-udr-overview].
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP
+### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurieren der Azure-Erweiterung für SAP
 
-Wenn Sie die VM wie unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Azure][deployment-guide-3] beschrieben vorbereitet haben, ist der Azure-VM-Agent auf dem virtuellen Computer installiert. Der nächste Schritt ist das Bereitstellen der Azure-Erweiterung zur verbesserten Überwachung für SAP, die im Repository für Azure-Erweiterungen in den globalen Azure-Datencentern verfügbar ist. Weitere Informationen finden Sie unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide-9.1].
+Wenn Sie die VM wie unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Azure][deployment-guide-3] beschrieben vorbereitet haben, ist der Azure-VM-Agent auf dem virtuellen Computer installiert. Der nächste Schritt ist das Bereitstellen der Azure-Erweiterung für SAP, die im Repository für Azure-Erweiterungen in den globalen Azure-Datencentern verfügbar ist. Weitere Informationen finden Sie unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide-9.1].
 
-Zum Installieren und Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP können Sie PowerShell oder die Azure-CLI verwenden. Informationen zum Installieren der Erweiterung auf einer Windows- oder Linux-VM mit einem Windows-Computer finden Sie unter [Azure PowerShell][deployment-guide-4.5.1]. Informationen zum Installieren der Erweiterung auf einer Linux-VM über einen Linux-Desktop finden Sie unter [Azure-Befehlszeilenschnittstelle][deployment-guide-4.5.2].
+Zum Installieren und Konfigurieren der Azure-Erweiterung für SAP können Sie PowerShell oder die Azure CLI verwenden. Informationen zum Installieren der Erweiterung auf einer Windows- oder Linux-VM mit einem Windows-Computer finden Sie unter [Azure PowerShell][deployment-guide-4.5.1]. Informationen zum Installieren der Erweiterung auf einer Linux-VM über einen Linux-Desktop finden Sie unter [Azure-Befehlszeilenschnittstelle][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell für virtuelle Linux- und Windows-Computer
 
-Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit PowerShell zu installieren:
+Gehen Sie wie folgt vor, um die Azure-Erweiterung für SAP mit PowerShell zu installieren:
 
 1. Achten Sie darauf, dass Sie die aktuelle Version der Azure PowerShell-Cmdlets verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Azure PowerShell-Cmdlets][deployment-guide-4.1].  
 1. Führen Sie das folgende PowerShell-Cmdlet aus.
@@ -952,21 +952,21 @@ Weitere Informationen zu `Set-AzVMAEMExtension` finden Sie unter [Set-AzVMAEMExt
 
 ![Erfolgreiche Ausführung des SAP-spezifischen Azure-Cmdlets „Set-AzVMAEMExtension“][deployment-guide-figure-900]
 
-Bei der `Set-AzVMAEMExtension`-Konfiguration werden alle Schritte zum Konfigurieren der Hostüberwachung für SAP ausgeführt.
+Bei der `Set-AzVMAEMExtension`-Konfiguration werden alle Schritte zum Konfigurieren der Hostdatensammlung für SAP ausgeführt.
 
 Die Skriptausgabe enthält die folgenden Informationen:
 
-* Bestätigung, dass die Überwachung für den Betriebssystemdatenträger und alle weiteren Datenträger für Daten konfiguriert wurde.
+* Bestätigung, dass die Datensammlung für den Betriebssystemdatenträger und alle weiteren Datenträger für Daten konfiguriert wurde.
 * Mit den nächsten beiden Meldungen wird die Konfiguration der Speichermetriken für ein bestimmtes Speicherkonto bestätigt.
-* Eine Zeile der Ausgabe zeigt den Zustand der laufenden Aktualisierung für die Überwachungskonfiguration an.
+* Eine Zeile der Ausgabe gibt den Zustand der laufenden Aktualisierung der Konfiguration der VM-Erweiterung für SAP an.
 * In einer anderen Zeile der Ausgabe wird bestätigt, dass die Konfiguration bereitgestellt oder aktualisiert wurde.
-* Die letzte Zeile der Ausgabe dient nur zu Informationszwecken. Sie enthält die Optionen zum Testen der Überwachungskonfiguration.
-* Um zu überprüfen, ob alle Schritte für die verbesserte Azure-Überwachung erfolgreich ausgeführt wurden und die Azure-Infrastruktur die notwendigen Daten bereitstellt, fahren Sie mit der Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP fort. Dies ist unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] beschrieben.
+* Die letzte Zeile der Ausgabe dient nur zu Informationszwecken. Sie enthält Ihre Optionen für ein Testen der Konfiguration der VM-Erweiterung für SAP.
+* Um zu überprüfen, ob alle Schritte der Konfiguration der VM-Erweiterung für SAP erfolgreich ausgeführt wurden und die Azure-Infrastruktur die notwendigen Daten bereitstellt, fahren Sie mit der Bereitschaftsprüfung für die Azure-Erweiterung für SAP fort. Dies ist unter [Bereitschaftsprüfung für die Azure-Erweiterung für SAP][deployment-guide-5.1] beschrieben.
 * Warten Sie 15 bis 30 Minuten, bis die relevanten Daten mit der Azure-Diagnose erfasst wurden.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure-CLI für virtuelle Linux-Computer
 
-Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit der Azure-Befehlszeilenschnittstelle zu installieren:
+Gehen Sie wie folgt vor, um die Azure-Erweiterung für SAP über die Azure-Befehlszeilenschnittstelle zu installieren:
 
    1. Installieren Sie die klassische Azure-Befehlszeilenschnittstelle (Azure CLI), wie unter [Installieren der klassischen Azure CLI][azure-cli] beschrieben.
    1. Melden Sie sich mit Ihrem Azure-Konto an:
@@ -981,7 +981,7 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung 
       azure config mode arm
       ```
 
-   1. Aktivieren Sie die erweiterte Azure-Überwachung:
+   1. Aktivieren Sie die Azure-Erweiterung für SAP:
 
       ```
       azure vm enable-aem <resource-group-name> <vm-name>
@@ -1008,7 +1008,7 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung 
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Stellen Sie sicher, dass die Azure-Erweiterung für die verbesserte Überwachung auf dem virtuellen Azure Linux-Computer aktiv ist. Vergewissern Sie sich, dass die Datei „\\var\\lib\\AzureEnhancedMonitor\\PerfCounters“ vorhanden ist. Wenn ja, können Sie an einer Befehlseingabeaufforderung den folgenden Befehl ausführen, um die mit der Azure-Erweiterung für die verbesserte Überwachung gesammelten Informationen anzuzeigen:
+1. Stellen Sie sicher, dass die Azure-Erweiterung für SAP auf dem virtuellen Azure Linux-Computer aktiv ist. Vergewissern Sie sich, dass die Datei „\\var\\lib\\AzureEnhancedMonitor\\PerfCounters“ vorhanden ist. Ist sie vorhanden, führen Sie an einer Befehlseingabeaufforderung den folgenden Befehl aus, um die mit der Azure-Erweiterung für SAP gesammelten Informationen anzuzeigen:
 
    ```
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1022,25 +1022,25 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung 
    ...
    ```
 
-## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Überprüfungen und Problembehandlung für die End-to-End-Überwachung
+## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Überprüfungen und Problembehandlung für die End-to-End-Datensammlung für den SAP-Host-Agent
 
-Nachdem Sie den virtuellen Azure-Computer bereitgestellt und die entsprechende Azure-Überwachungsinfrastruktur eingerichtet haben, sollten Sie überprüfen, ob alle Komponenten der Azure-Erweiterung für die verbesserte Überwachung wie erwartet funktionieren.
+Nachdem Sie den virtuellen Azure-Computer bereitgestellt und die entsprechende Azure-Erweiterung für SAP eingerichtet haben, sollten Sie überprüfen, ob alle Komponenten der Erweiterung ordnungsgemäß funktionieren.
 
-Führen Sie die Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP wie unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] beschrieben durch. Wenn alle Ergebnisse der Bereitschaftsprüfung positiv ausfallen und alle relevanten Leistungsindikatoren in Ordnung sind, war die Einrichtung der Azure-Überwachung erfolgreich. Sie können mit der Installation des SAP Host Agents fortfahren, wie in den SAP-Hinweisen unter [SAP-Ressourcen][deployment-guide-2.2] beschrieben. Wenn für die Bereitschaftsprüfung das Fehlen von Leistungsindikatoren angezeigt werden, führen Sie den Integritätstest für die Azure-Überwachungsinfrastruktur durch wie unter [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben. Weitere Optionen zum Troubleshooting finden Sie unter [Problembehandlung für die Azure-Überwachung für SAP][deployment-guide-5.3].
+Führen Sie die Bereitschaftsprüfung für die Azure-Erweiterung für SAP so aus, wie dies unter [Bereitschaftsprüfung für die Azure-Erweiterung für SAP][deployment-guide-5.1] beschrieben ist. Wenn alle Ergebnisse der Bereitschaftsprüfung positiv ausfallen und alle relevanten Leistungsindikatoren in Ordnung sind, wurde die Azure-Erweiterung für SAP erfolgreich eingerichtet. Sie können mit der Installation des SAP Host Agents fortfahren, wie in den SAP-Hinweisen unter [SAP-Ressourcen][deployment-guide-2.2] beschrieben. Wenn für die Bereitschaftsprüfung das Fehlen von Leistungsindikatoren angezeigt wird, führen Sie den Integritätstest für die Azure-Erweiterung für SAP so aus, wie dies unter [Integritätsprüfung für die Konfiguration der Azure-Erweiterung für SAP][deployment-guide-5.2] beschrieben ist. Weitere Optionen zum Troubleshooting finden Sie unter [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3].
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP
+### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Bereitschaftsprüfung für die Azure-Erweiterung für SAP
 
-Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihrer SAP-Anwendung angezeigt werden, über die zugrunde liegende Azure-Überwachungsinfrastruktur bereitgestellt werden.
+Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihrer SAP-Anwendung angezeigt werden, über die zugrunde liegende Azure-Erweiterung für SAP bereitgestellt werden.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Ausführen der Bereitschaftsprüfung auf einem virtuellen Windows-Computer
 
 1. Melden Sie sich am virtuellen Azure-Computer an (die Verwendung eines Administratorkontos ist nicht erforderlich).
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
-1. Ändern Sie in der Eingabeaufforderung das Verzeichnis für den Installationsordner der erweiterten Azure-Überwachungserweiterung für SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
+1. Ändern Sie an der Eingabeaufforderung das Verzeichnis für den Installationsordner der Azure-Erweiterung für SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
-   Die *Version* im Pfad zur Überwachungserweiterung kann variieren. Sollten Ordner für mehrere Versionen der Überwachungserweiterung im Installationsordner vorhanden sein, sollten Sie die Konfiguration des Windows-Diensts „AzureEnhancedMonitoring“ überprüfen und dann in den Ordner wechseln, der als *Pfad zur ausführbaren Datei* angegeben ist.
+   Die *Version* im Pfad zur Erweiterung kann variieren. Sollten Ordner für mehrere Versionen der Erweiterung im Installationsordner vorhanden sein, sollten Sie die Konfiguration des Windows-Diensts „AzureEnhancedMonitoring“ überprüfen und dann in den Ordner wechseln, der als *Pfad zur ausführbaren Datei* angegeben ist.
 
-   ![Eigenschaften des Diensts, der die Azure-Erweiterung zur verbesserten Überwachung für SAP ausführt][deployment-guide-figure-1000]
+   ![Eigenschaften des Diensts, der die Azure-Erweiterung für SAP ausführt][deployment-guide-figure-1000]
 
 1. Führen Sie an der Befehlseingabeaufforderung die Datei **azperflib.exe** ohne Parameter aus.
 
@@ -1049,15 +1049,15 @@ Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihr
    >
    >
 
-Wenn die Azure-Erweiterung zur verbesserten Überwachung nicht installiert ist oder der Dienst „AzureEnhancedMonitoring“ nicht ausgeführt wird, wurde die Erweiterung nicht richtig konfiguriert. Ausführliche Informationen zur Bereitstellung der Erweiterung finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
+Wenn die Azure-Erweiterung für SAP nicht installiert ist oder der Dienst „AzureEnhancedMonitoring“ nicht ausgeführt wird, wurde die Erweiterung nicht richtig konfiguriert. Ausführliche Informationen zur Bereitstellung der Erweiterung finden Sie unter [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3].
 
 > [!NOTE]
-> „Azperflib.exe“ kann nicht für eigene Zwecke verwendet werden. Es ist eine Komponente, die Azure-Überwachungsdaten in Bezug auf die VM für den SAP Host Agent bereitstellt.
+> „Azperflib.exe“ kann nicht für eigene Zwecke verwendet werden. Sie ist eine Komponente, die Azure-Infrastrukturdaten in Bezug auf die VM exklusiv für den SAP-Host-Agent bereitstellt.
 > 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Überprüfen der Ausgabe von „azperflib.exe“
 
-Die Ausgabe von „azperflib.exe“ enthält alle ausgefüllten Azure-Leistungsindikatoren für SAP. Am Ende der Liste mit den gesammelten Indikatoren finden Sie eine Übersicht und einen Integritätsindikator, der den Zustand der Azure-Überwachung anzeigt.
+Die Ausgabe von „azperflib.exe“ enthält alle ausgefüllten Azure-Leistungsindikatoren für SAP. Am Ende der Liste mit den gesammelten Indikatoren finden Sie eine Übersicht und einen Integritätsindikator, der den Zustand der Azure-Erweiterung für SAP anzeigt.
 
 ![Ausgabe der Integritätsprüfung durch Ausführen von „azperflib.exe“, wenn keine Probleme bestehen][deployment-guide-figure-1100]
 <a name="figure-11"></a>
@@ -1066,20 +1066,20 @@ Prüfen Sie das Ergebnis unter **Counters total** (Indikatoren gesamt), das als 
 
 Interpretieren Sie die Ergebniswerte wie folgt:
 
-| Ergebniswerte von „azperflib.exe“ | Integritätsstatus der Azure-Überwachung |
+| Ergebniswerte von „azperflib.exe“ | Integritätsstatus der Azure-Erweiterung für SAP |
 | --- | --- |
 | **API-Aufrufe – nicht verfügbar** | Leistungsindikatoren, die nicht verfügbar sind, gelten entweder nicht für die Konfiguration des virtuellen Computers oder sind fehlerhaft. Weitere Informationen finden Sie unter **Integritätsstatus**. |
 | **Indikatoren gesamt – leer** |Die folgenden beiden Azure Storage-Indikatoren dürfen leer sein: <ul><li>Storage Read Op Latency Server msec</li><li>Storage Read Op Latency E2E msec</li></ul>Alle anderen Leistungsindikatoren müssen Werte enthalten. |
 | **Integritätsstatus** |Nur in Ordnung bei Rückgabestatus **OK**. |
 | **Diagnose** |Liefert ausführliche Informationen zum Integritätsstatus. |
 
-Wenn für den Wert **Integritätsstatus** nicht **OK** angezeigt wird, hilft Ihnen die Anleitung unter [Integritätsprüfung der Konfiguration für die Azure-Überwachung][deployment-guide-5.2] weiter.
+Wenn für den Wert **Integritätsstatus** nicht **OK** angezeigt wird, hilft Ihnen die Anleitung unter [Integritätsprüfung für die Konfiguration der Azure-Erweiterung für SAP][deployment-guide-5.2] weiter.
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Ausführen der Bereitschaftsprüfung auf einem virtuellen Linux-Computer
 
 1. Stellen Sie per SSH eine Verbindung mit der Azure-VM her.
 
-1. Überprüfen Sie die Ausgabe der Azure-Erweiterung zur verbesserten Überwachung.
+1. Überprüfen Sie die Ausgabe der Azure-Erweiterung für SAP.
 
    a.  Führen Sie `more /var/lib/AzureEnhancedMonitor/PerfCounters` aus.
 
@@ -1105,11 +1105,11 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
    **Erwartetes Ergebnis**: Zeigt einen Eintrag an, der dem folgenden Text ähnelt: `python /usr/sbin/waagent -daemon`
 
-1. Achten Sie darauf, dass die Azure-Erweiterung zur verbesserten Überwachung installiert ist und ausgeführt wird.
+1. Vergewissern Sie sich, dass die Azure-Erweiterung für SAP installiert ist und ausgeführt wird.
 
    a.  Führen Sie `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` aus.
 
-   **Erwartetes Ergebnis**: Listet den Inhalt des Ordners der Azure-Erweiterung zur verbesserten Überwachung auf.
+   **Erwartetes Ergebnis**: Listet den Inhalt des Verzeichnisses für die Azure-Erweiterung für SAP auf.
 
    b. Führen Sie `ps -ax | grep AzureEnhanced` aus.
 
@@ -1125,11 +1125,11 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
 Wenn bereits ein SAP NetWeaver ABAP-Anwendungsserver installiert ist, öffnen Sie die Transaktion ST06, und überprüfen Sie, ob die verbesserte Überwachung aktiviert ist.
 
-Falls eine dieser Überprüfungen einen Fehler verursacht und Sie ausführliche Informationen zur Bereitstellung der Erweiterung benötigen, lesen Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] nach.
+Falls eine dieser Überprüfungen einen Fehler verursacht und Sie ausführliche Informationen zur Bereitstellung der Erweiterung benötigen, lesen Sie [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3].
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur
+### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Integritätsprüfung für die Azure-Erweiterung für die SAP-Konfiguration
 
-Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] nicht richtig bereitgestellt werden, können Sie das Cmdlet `Test-AzVMAEMExtension` ausführen. Mit diesem Cmdlet können Sie überprüfen, ob die Azure-Überwachungsinfrastruktur und die Überwachungserweiterung für SAP richtig konfiguriert sind.
+Wenn einige Infrastrukturdaten gemäß der Beschreibung des Tests unter [Bereitschaftsprüfung für die Azure-Erweiterung für SAP][deployment-guide-5.1] nicht richtig bereitgestellt werden, führen Sie das Cmdlet `Test-AzVMAEMExtension` aus. Mit diesem Cmdlet können Sie überprüfen, ob die Azure-Infrastruktur und die Azure-Erweiterung für SAP richtig konfiguriert sind.
 
 1. Achten Sie darauf, dass die neueste Version des Azure PowerShell-Cmdlets gemäß [Bereitstellen von Azure PowerShell-Cmdlets][deployment-guide-4.1] installiert ist.
 1. Führen Sie das folgende PowerShell-Cmdlet aus. Führen Sie zum Anzeigen der Liste mit den verfügbaren Umgebungen das `Get-AzEnvironment`-Cmdlet aus. Wählen Sie die Umgebung **AzureCloud** aus, um globales Azure zu verwenden. Wählen Sie für Azure in China die Option **AzureChinaCloud**.
@@ -1146,21 +1146,21 @@ Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereits
 
 1. Mit dem Skript wird die Konfiguration des von Ihnen ausgewählten virtuellen Computers getestet.
 
-   ![Ausgabe eines erfolgreichen Tests der Azure-Überwachungsinfrastruktur für SAP][deployment-guide-figure-1300]
+   ![Ausgabe eines erfolgreichen Tests der Azure-Erweiterung für SAP][deployment-guide-figure-1300]
 
-Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** lautet. Wenn für einige Prüfungen nicht **OK** angezeigt wird, führen Sie das Cmdlet update wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus. Warten Sie 15 Minuten, und wiederholen Sie dann die Tests, die unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] und [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben sind. Falls die Tests weiterhin für einige oder alle Indikatoren Probleme melden, lesen Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] nach.
+Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** lautet. Wenn für einige Prüfungen nicht **OK** angezeigt wird, führen Sie das Aktualisierungs-Cmdlet wie unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben aus. Warten Sie 15 Minuten, und wiederholen Sie dann die Tests, die unter [Bereitschaftsprüfung für die Azure-Erweiterung für SAP][deployment-guide-5.1] und [Integritätsprüfung für die Konfiguration der Azure-Erweiterung für SAP][deployment-guide-5.2] beschrieben sind. Falls die Tests weiterhin für einige oder alle Indikatoren Probleme melden, lesen Sie [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3].
 
 > [!Note]
-> Möglicherweise treten einige Warnungen auf, wenn Sie verwaltete Azure-Standarddatenträger verwenden. Die Tests geben nicht „OK“ zurück, stattdessen werden Warnungen angezeigt. Dies ist normal und im Fall dieses Datenträgertyps beabsichtigt. Weitere Informationen finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
+> Möglicherweise treten einige Warnungen auf, wenn Sie verwaltete Azure-Standarddatenträger verwenden. Die Tests geben nicht „OK“ zurück, stattdessen werden Warnungen angezeigt. Dies ist normal und im Fall dieses Datenträgertyps beabsichtigt. Weitere Informationen finden Sie unter [Problembehandlung für die Azure-Erweiterung für SAP][deployment-guide-5.3].
 > 
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP
+### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problembehandlung für die Azure-Erweiterung für SAP
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Mit dem Windows-Dienst „AzureEnhancedMonitoring“ werden in Azure Leistungsmetriken gesammelt. Wenn der Dienst nicht richtig installiert wurde oder wenn er auf der VM nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Das Installationsverzeichnis der Azure-Erweiterung zur erweiterten Überwachung ist leer.
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Das Installationsverzeichnis der Azure-Erweiterung für SAP ist leer.
 
 ###### <a name="issue"></a>Problem
 
@@ -1170,7 +1170,7 @@ Das Installationsverzeichnis „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureE
 
 Die Erweiterung ist nicht installiert. Ermitteln Sie, ob es sich um ein Proxyproblem handelt (wie weiter oben beschrieben). Unter Umständen müssen Sie den Computer neu starten oder das Konfigurationsskript `Set-AzVMAEMExtension` erneut ausführen.
 
-##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Der Dienst für die verbesserte Azure-Überwachung ist nicht vorhanden.
+##### <a name="service-for-azure-extension-for-sap-does-not-exist"></a>Der Dienst für die Azure-Erweiterung für SAP ist nicht vorhanden.
 
 ###### <a name="issue"></a>Problem
 
@@ -1178,16 +1178,16 @@ Der Windows-Dienst „AzureEnhancedMonitoring“ ist nicht vorhanden.
 
 Mit der Ausgabe von „azperflib.exe“ wird ein Fehler ausgelöst:
 
-![Ausführung von „azperflib.exe“ mit der Angabe, dass die Azure-Erweiterung zur verbesserten Überwachung für SAP nicht ausgeführt wird][deployment-guide-figure-1400]
+![Ausführung von „azperflib.exe“ mit der Angabe, dass der Dienst der Azure-Erweiterung für SAP nicht ausgeführt wird][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Lösung
 
-Wenn der Dienst nicht vorhanden ist, wurde die Azure-Erweiterung zur verbesserten Überwachung für SAP nicht richtig installiert. Stellen Sie die Erweiterung erneut bereit, indem Sie die Schritte für Ihr Bereitstellungsszenario unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Microsoft Azure][deployment-guide-3] ausführen.
+Wenn der Dienst nicht vorhanden ist, wurde die Azure-Erweiterung für SAP nicht richtig installiert. Stellen Sie die Erweiterung erneut bereit, indem Sie die Schritte für Ihr Bereitstellungsszenario unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Microsoft Azure][deployment-guide-3] ausführen.
 
 Überprüfen Sie nach dem Bereitstellen der Erweiterung nach Ablauf einer Stunde erneut, ob die Azure-Leistungsindikatoren in der Azure-VM angegeben werden.
 
-##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Der Dienst für die verbesserte Azure-Überwachung ist vorhanden, startet jedoch nicht.
+##### <a name="service-for-azure-extension-for-sap-exists-but-fails-to-start"></a>Der Dienst für die Azure-Erweiterung für SAP ist vorhanden, startet jedoch nicht.
 
 ###### <a name="issue"></a>Problem
 
@@ -1195,7 +1195,7 @@ Der Windows-Dienst „AzureEnhancedMonitoring“ ist vorhanden und aktiviert, ka
 
 ###### <a name="solution"></a>Lösung
 
-Die Konfiguration ist fehlerhaft. Starten Sie die Überwachungserweiterung für die VM neu, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben.
+Die Konfiguration ist fehlerhaft. Starten Sie die Azure-Erweiterung für SAP auf der VM neu, wie dies unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben ist.
 
 #### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
 
@@ -1207,11 +1207,11 @@ Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` erneut aus, falls di
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst. Wenn der Daemon nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Das Installationsverzeichnis der Azure-Erweiterung zur verbesserten Überwachung ist leer.
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Das Installationsverzeichnis der Azure-Erweiterung für SAP ist leer.
 
 ###### <a name="issue"></a>Problem
 
-Das Verzeichnis „\\var\\lib\\waagent\\“ enthält kein Unterverzeichnis für die Azure-Erweiterung zur verbesserten Überwachung.
+Das Verzeichnis „\\var\\lib\\waagent\\“ enthält kein Unterverzeichnis für die Azure-Erweiterung für SAP.
 
 ###### <a name="solution"></a>Lösung
 
@@ -1233,13 +1233,13 @@ Beim Ausführen von „azperfli.exe“ wie oben beschrieben können Sie ein Erge
 
 ###### <a name="solution"></a>Lösung
 
-Diese Meldungen werden dadurch verursacht, dass verwaltete Standarddatenträger nicht die APIs bereitstellen, die von der Überwachungserweiterung verwendet werden, um die Statistiken der Azure Storage Standard-Konten zu überprüfen. Dies ist kein Grund zur Besorgnis. Der Grund für die Einführung der Überwachung der Storage Standard-Konten war die häufig auftretende Drosselung von E/A-Vorgängen. Verwaltete Datenträger verhindern eine solche Drosselung, indem die Anzahl von Datenträgern in einem Storage-Konto eingeschränkt wird. Daher ist es kein Problem, wenn diese Art Überwachungsdaten nicht verfügbar ist.
+Diese Meldungen werden dadurch verursacht, dass verwaltete Standarddatenträger nicht die APIs bereitstellen, die von der Azure-Erweiterung für SAP verwendet werden, um die Statistiken der Azure Storage-Standardkonten zu überprüfen. Dies ist kein Grund zur Besorgnis. Der Grund für die Einführung des Sammelns von Daten für Disk Storage-Standardkonten war die häufig auftretende Drosselung von E/A-Vorgängen. Verwaltete Datenträger verhindern eine solche Drosselung, indem die Anzahl von Datenträgern in einem Storage-Konto eingeschränkt wird. Daher ist es kein Problem, wenn dieser Typ von Daten nicht verfügbar ist.
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehreren Quellen abruft. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Speicherindikatoren stammen aus den Protokollen in Ihrem Speicherabonnement.
 
-Eine vollständige und aktuelle Liste mit bekannten Problemen finden Sie im SAP-Hinweis [1999351], der zusätzliche Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP enthält.
+Eine vollständige und aktuelle Liste mit bekannten Problemen finden Sie im SAP-Hinweis [1999351], der zusätzliche Informationen zur Problembehandlung für die Azure-Erweiterung für SAP enthält.
 
-Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben erneut aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
+Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` wie unter [Konfigurieren der Azure-Erweiterung für SAP][deployment-guide-4.5] beschrieben erneut aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.

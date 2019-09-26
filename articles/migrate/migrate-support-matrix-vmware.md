@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375312"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067753"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -43,10 +43,13 @@ In der Tabelle sind die unterstützten Szenarien für VMware-VMs zusammengefasst
 Azure Government | US Government, Virginia
 Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
 Australien | „Australien, Osten“ oder „Australien, Südosten“
+Brasilien | Brasilien Süd
 Kanada | „Kanada, Mitte“ oder „Kanada, Osten“
 Europa | „Europa, Norden“ oder „Europa, Westen“
+Frankreich | Frankreich, Mitte
 Indien | „Indien, Mitte“ oder „Indien, Süden“
 Japan |  „Japan, Osten“ oder „Japan, Westen“
+Korea | „Südkorea, Mitte“ oder „Südkorea, Süden“
 Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
 USA | „USA, Mitte“ oder „USA, Westen 2“
 
@@ -73,7 +76,7 @@ Azure Migrate führt eine einfache Appliance aus, die virtuelle VMware-Computer 
 
 **Unterstützung** | **Details**
 --- | ---
-**Bereitstellung einer Appliance** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden. 
+**Bereitstellung einer Appliance** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.
 **Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> Sie können bis zu 35.000 VMs in einem Projekt bewerten.
 **Ermittlung** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
 **Bewertungsgruppe** | Sie können einer einzelnen Gruppe bis zu 35.000 Computer hinzufügen.

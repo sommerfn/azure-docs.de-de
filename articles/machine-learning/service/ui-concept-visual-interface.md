@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996523"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128804"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning? 
 
@@ -95,8 +95,8 @@ Informationen dazu, wie Sie Ihr Modell bereitstellen, finden Sie unter [Tutorial
 
 * Die Grundlagen von Predictive Analytics und maschinellem Lernen werden hier erläutert: [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md)
 * Verwenden Sie eines der Beispiele und passen Sie es an Ihre Anforderungen an:
-    * [Beispiel 1 – Regression: Preisprognose](ui-sample-regression-predict-automobile-price-basic.md)
-    * [Beispiel 2 – Regression: Vorhersagen des Preises und Vergleichen von Algorithmen](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos](ui-sample-classification-predict-credit-risk-basic.md)
-    * [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [Beispiel 5 – Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](ui-sample-classification-predict-churn.md)
+    * [Beispiel 1 – Regression: Preisprognose](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [Beispiel 2 – Regression: Vorhersagen des Preises und Vergleichen von Algorithmen](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Beispiel 5 – Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](how-to-ui-sample-classification-predict-churn.md)

@@ -1,7 +1,7 @@
 ---
 title: Ausführen von Batchvorhersagen für umfangreiche Daten mit Pipelines
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Azure Machine Learning Service asynchron Batchvorhersagen für große Datenmengen erstellen können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit Azure Machine Learning asynchron Batchvorhersagen für große Datenmengen erstellen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128257"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034311"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Ausführen von Batchvorhersagen für große Datasets mit Azure Machine Learning-Pipelines
 
-In diesem Artikel erfahren Sie, wie Sie mit den ML-Pipelines in Azure Machine Learning Service asynchrone Vorhersagen über große Datenmengen treffen können.
+In diesem Artikel erfahren Sie, wie Sie mit den ML-Pipelines in Azure Machine Learning asynchrone Vorhersagen über große Datenmengen treffen können.
 
 Die Batchvorhersage (oder Batchbewertung) bietet kosteneffiziente Rückschlüsse mit beispiellosem Durchsatz für asynchrone Anwendungen. Batchvorhersagepipelines können skaliert werden, um Rückschlüsse auf Terabyte von Produktionsdaten zu ermöglichen. Die Batchvorhersage ist für hohen Durchsatz, Fire-and-Forget-Vorhersagen für große Datenmengen optimiert.
 
@@ -30,7 +30,7 @@ In den folgenden Schritten erstellen Sie eine [Machine Learning-Pipeline](concep
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
 - Konfigurieren Sie Ihre Entwicklungsumgebung für die Installation des Azure Machine Learning-SDKs. Weitere Informationen finden Sie unter [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](how-to-configure-environment.md).
 
@@ -267,7 +267,7 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="specify-the-parameter-for-your-pipeline"></a>Angeben des Parameters für Ihre Pipeline
 
-Erstellen Sie einen Pipelineparameter mit einem [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)-Objekt mit einem Standardwert.
+Erstellen Sie einen Pipelineparameter mit einem [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) -Objekt mit einem Standardwert.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter

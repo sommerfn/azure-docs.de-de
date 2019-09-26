@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744587"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067085"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer AKS-Cluster (Azure Kubernetes Service) aus zwei Perspektiven zu überwachen. Sie können die Überwachung direkt aus einem AKS-Cluster durchführen, oder Sie können alle AKS-Cluster unter einem Abonnement mit Azure Monitor überwachen. Die Anzeige von Azure Container Instances ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -170,9 +170,13 @@ Auf einem erweiterten Knoten können Sie per Drilldown von dem Pod oder Containe
 
 Wählen Sie oben auf der Seite Controller oder Container aus, um den Status und die Ressourcenauslastung für diese Objekte zu überprüfen. Wählen Sie zum Überprüfen der Arbeitsspeicherauslastung in der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar.
 
-Im **Arbeitsspeicher-Arbeitssatz** sind der „residente“ Speicher und der virtuelle Speicher (Cache) enthalten. Dies ist der gesamte Speicher, der von der Anwendung verwendet wird. Unter **Arbeitsspeicher-RSS** wird nur der Hauptspeicher angezeigt (dies ist in anderen Worten nichts anderes als der residente Speicher). Diese Metrik zeigt die tatsächliche Kapazität des verfügbaren Arbeitsspeichers an.
-
 ![Leistungsansicht zu den Containerknoten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+Im **Arbeitsspeicher-Arbeitssatz** sind der „residente“ Speicher und der virtuelle Speicher (Cache) enthalten. Dies ist der gesamte Speicher, der von der Anwendung verwendet wird. Unter **Arbeitsspeicher-RSS** wird nur der Hauptspeicher angezeigt (dies ist in anderen Worten nichts anderes als der residente Speicher). Diese Metrik zeigt die tatsächliche Kapazität des verfügbaren Arbeitsspeichers an. Worin besteht der Unterschied zwischen residentem Speicher und virtuellem Speicher?
+
+- Residenter Speicher oder Hauptspeicher ist die tatsächliche Menge an Arbeitsspeicher, die auf dem Computer für die Knoten des Clusters verfügbar ist.
+
+- Beim virtuellen Speicher handelt es sich um reservierten Festplattenspeicher (Cache), der vom Betriebssystem verwendet wird, um bei hoher Speicherauslastung Daten aus dem Arbeitsspeicher auf den Datenträger auszulagern und bei Bedarf in den Arbeitsspeicher zurückzuholen.
 
 Standardmäßig beziehen sich Leistungsdaten auf die letzten sechs Stunden, aber Sie können den Zeitraum mit der Option **TimeRange** oben links ändern. Außerdem können Sie die Ergebnisse im Zeitbereich filtern, indem Sie im Perzentilselektor die Optionen **Min.** , **Mittelw.** , **50.** , **90.** , **95.** und **Max.** auswählen. 
 

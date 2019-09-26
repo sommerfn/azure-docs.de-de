@@ -8,20 +8,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810767"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066940"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
-Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Apache Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL. 
+Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Apache Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL.
 
 Die Verwendung von HDInsight im ETL-Prozess lässt sich in dieser folgenden Pipeline zusammenfassen:
 
-![HDInsight-ETL-Übersicht](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![HDInsight – Bedarfsorientiertes ETL – Übersicht](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 In den folgenden Abschnitten wird jede der ETL-Phasen mit den jeweils zugehörigen Komponenten eingehender untersucht.
 
@@ -35,11 +35,11 @@ Orchestrierung ist erforderlich, um den geeigneten Auftrag zum richtigen Zeitpun
 
 Apache Oozie ist ein Koordinationssystem für Workflows zur Verwaltung von Hadoop-Aufträgen. Oozie wird innerhalb eines HDInsight-Clusters ausgeführt und ist in den Hadoop-Stapel integriert. Oozie unterstützt Hadoop-Aufträge für Apache Hadoop MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Oozie kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
 
-Weitere Informationen finden Sie unter [Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md). Ausführliche Einblicke in die Verwendung von Oozie zum Nutzen einer End-to-End-Pipeline finden Sie unter [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md). 
+Weitere Informationen finden Sie unter [Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md). Ausführliche Einblicke in die Verwendung von Oozie zum Nutzen einer End-to-End-Pipeline finden Sie unter [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md).
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory bietet Orchestrierungsfunktionen als Platform-as-a-Service. Sie ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren. 
+Azure Data Factory bietet Orchestrierungsfunktionen als Platform-as-a-Service. Sie ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren.
 
 Mithilfe von Azure Data Factory können Sie:
 

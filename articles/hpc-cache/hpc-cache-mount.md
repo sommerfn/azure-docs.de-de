@@ -4,14 +4,14 @@ description: Herstellen einer Verbindung von Clients mit einem Azure HPC Cache-D
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775074"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036951"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
@@ -19,13 +19,13 @@ Nachdem der Cache erstellt wurde, können NFS-Clients mit einem einfachen Einbin
 
 Verwenden Sie die auf der Cache-Übersichtsseite aufgelisteten Einbindungsadressen und den virtuellen Namespacepfad, den Sie beim Erstellen des Speicherziels festgelegt haben. 
 
-![Screenshot der Übersichtsseite einer Azure HPC Cache-Instanz mit einem Hervorhebungskasten um die Einbindungsadressliste rechts unten](media/mount-addresses.png)
+![Screenshot der Übersichtsseite einer Azure HPC Cache-Instanz mit einem Hervorhebungskasten um die Einbindungsadressliste rechts unten](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > Die Cache-Einbindungsadressen entsprechen Netzwerkschnittstellen innerhalb des Cache-Subnetzes. Diese NICs werden in der Ressourcengruppe mit Namen angezeigt, die auf `-cluster-nic-` und einer Zahl enden. Sie dürfen diese Schnittstellen nicht ändern oder löschen, sonst ist der Cache nicht mehr verfügbar.
 
-Die virtuellen Namespacepfade werden auf der Seite **Speicherziele** angezeigt. 
-![Screenshot des Speicherzielfelds des Caches mit einem Hervorhebungskasten, der einen Eintrag in der Spalte „Pfad“ der Tabelle umgibt](media/storage-target-path.png)
+Die virtuellen Namespacepfade werden auf der Seite **Speicherziele** angezeigt. Klicken Sie auf den Zielnamen, um Details anzuzeigen, einschließlich zugeordneter aggregierter Namespacepfade. 
+![Screenshot des Speicherzielfelds des Caches mit einem Hervorhebungskasten, der einen Eintrag in der Spalte „Pfad“ der Tabelle umgibt](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Syntax des Einbindungsbefehls
 

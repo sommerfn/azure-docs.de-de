@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914173"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000328"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -26,10 +26,13 @@ In einigen Fällen ist eventuell sinnvoll, dieses automatische Verhalten besser 
 
 Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 
-- **Konsistent:** Wenn die Indizierungsrichtlinie eines Containers auf „Konsistent“ festgelegt ist, wird der Index synchron aktualisiert, wenn Sie Elemente erstellen, aktualisieren oder löschen. Damit entspricht die Konsistenz Ihrer Leseabfragen der [für das Konto konfigurierten Konsistenz](consistency-levels.md).
-- **Keine:** Wenn die Indizierungsrichtlinie eines Containers auf „Keine“ festgelegt wird, ist die Indizierung für diesen Container praktisch deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Dies kann auch Masseneinfügevorgänge beschleunigen.
+- **Konsistent:** Der Index wird synchron aktualisiert, wenn Sie Elemente erstellen, aktualisieren oder löschen. Damit entspricht die Konsistenz Ihrer Leseabfragen der [für das Konto konfigurierten Konsistenz](consistency-levels.md).
+- **Keine:** Die Indizierung ist für den Container deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Sie kann auch verwendet werden, um die Leistung von Massenvorgängen zu verbessern. Nach Abschluss der Massenvorgänge kann der Indexmodus auf „Konsistent“ festgelegt und dann mit [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) überwacht werden, bis er abgeschlossen ist.
 
-Darüber hinaus empfiehlt es sich, die Eigenschaft **automatic** in der Indizierungsrichtlinie auf **true** festzulegen. Ist diese Eigenschaft auf „true“ festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
+> [!NOTE]
+> Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Außerdem bietet die Verwendung der verzögerten Indizierung anstelle von „Keine“ für Massenvorgänge auch keinen Vorteil, da Änderungen am Indizierungsmodus bewirken, dass der Index gelöscht und neu erstellt wird. Aus diesen Gründen raten wir unseren Kunden von der Verwendung ab. Wenn Sie die Leistung für Massenvorgänge verbessern möchten, legen Sie den Indizierungsmodus auf „Keine“ fest, kehren Sie dann zum konsistenten Modus zurück, und überwachen Sie die `IndexTransformationProgress`-Eigenschaft im Container bis zum Abschluss.
+
+Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
 
 ## <a name="including-and-excluding-property-paths"></a>Ein- und Ausschließen von Eigenschaftenpfaden
 

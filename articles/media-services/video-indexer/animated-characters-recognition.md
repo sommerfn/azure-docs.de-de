@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: d45842a4c61f871a479c91f7b192de8e567f9821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861961"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962632"
 ---
 # <a name="animated-character-detection-preview"></a>Erkennung animierter Figuren (Vorschauversion)
 
@@ -40,10 +40,10 @@ Abhängig von der Art Ihres Video Indexer-Kontos stehen unterschiedliche Featur
 
 ### <a name="trial-vs-paid"></a>Gegenüberstellung von Testkonto und kostenpflichtigem Konto
 
-|Funktion|Testkonto|Kostenpflichtiges Konto|
+|Funktionalität|Testversion|Kostenpflichtig|
 |---|---|---|
 |Custom Vision-Konto|Wird im Hintergrund durch Video Indexer verwaltet. |Ihr Custom Vision-Konto wird mit Video Indexer verbunden.|
-|Anzahl von Animationsmodellen|Eins|Bis zu 100 Modelle pro Konto (Custom Vision-Einschränkung)|
+|Anzahl von Animationsmodellen|Eine|Bis zu 100 Modelle pro Konto (Custom Vision-Einschränkung)|
 |Training des Modells|Video Indexer trainiert das Modell für neue Figuren anhand von zusätzlichen Beispielen vorhandener Figuren.|Der Kontobesitzer trainiert das Modell, wenn er bereit ist, Änderungen vorzunehmen.|
 |Erweiterte Optionen in Custom Vision|Kein Zugriff auf das Custom Vision-Portal|Sie können die Modelle selbst im Custom Vision-Portal anpassen.|
 
@@ -91,8 +91,7 @@ Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie
     1. Nachdem Sie den neuen Namen eingegeben haben, klicken Sie neben dem neuen Namen auf das Prüfsymbol. Dadurch wird der neue Name in dem Modell in Video Indexer gespeichert.
     1. Nachdem Sie alle gewünschten Namen bearbeitet haben, müssen Sie das Modell trainieren.
 
-        * Testkonten: Öffnen Sie die Anpassungsseite, klicken Sie auf die Registerkarte für animierte Figuren, und klicken Sie anschließend für Ihr Modell auf die Schaltfläche **Trainieren**.
-        * Kostenpflichtige Konten: Öffnen Sie die Anpassungsseite, und klicken Sie auf die Registerkarte für animierte Figuren. Klicken Sie für das relevante Modell auf den Link **Edit in Custom Vision** (In Custom Vision bearbeiten). Daraufhin werden Sie zur Seite des Modells in Custom Vision weitergeleitet. Klicken Sie dort auf die Schaltfläche „Trainieren“, um Ihr Modell zu trainieren. 
+        Öffnen Sie die Anpassungsseite, und klicken Sie auf die Registerkarte **Animierte Figuren**. Klicken Sie für das relevante Modell auf den Link **Edit in Custom Vision** (In Custom Vision bearbeiten). Daraufhin werden Sie zur Seite des Modells in Custom Vision weitergeleitet. Klicken Sie auf die Schaltfläche **Trainieren**, um Ihr Modell zu trainieren. 
     1. Nach dem Trainieren werden die trainierten Figuren in allen Videos erkannt, die erstmals oder erneut mit diesem Modell indiziert werden. 
     Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
