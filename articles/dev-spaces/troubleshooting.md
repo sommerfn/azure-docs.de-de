@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019645"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993963"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -456,3 +456,40 @@ Nachstehend finden Sie ein Beispiel für eine „proxy-resources“-Anmerkung, d
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Fehler „Nicht autorisiert: Authentifizierung erforderlich“ beim Versuch, ein Docker-Image aus einer privaten Registrierung zu verwenden.
+
+### <a name="reason"></a>`Reason`
+
+Sie verwenden ein Docker-Image aus einer privaten Registrierung, die eine Authentifizierung erfordert. Sie können Dev Spaces das Authentifizieren und Abrufen von Images aus dieser privaten Registrierung mithilfe von [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) gestatten.
+
+### <a name="try"></a>Testen
+
+[Erstellen Sie ein Kubernetes-Geheimnis](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) in dem Namespace, in dem Sie das Image verwenden, um „imagePullSecrets“ zu verwenden. Geben Sie dann das Geheimnis in `azds.yaml` als „imagePullSecret“ an.
+
+Nachfolgend finden Sie ein Beispiel für die Angabe von „imagePullSecrets“ in `azds.yaml`.
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> Durch das Festlegen von „imagePullSecrets“ in `azds.yaml` wird das „imagePullSecrets“ überschrieben, das in der `values.yaml` angegeben ist.

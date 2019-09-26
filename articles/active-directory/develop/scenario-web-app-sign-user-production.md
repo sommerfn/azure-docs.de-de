@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080078"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086545"
 ---
 # <a name="web-app-that-signs-in-users---move-to-production"></a>Web-App, die Benutzer anmeldet – Übergang in die Produktion
 
@@ -37,12 +37,16 @@ Sobald Ihre Web-App Benutzer anmeldet, kann sie für diese Web-APIs aufrufen. Ge
 > [!div class="nextstepaction"]
 > [Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---web-app-tutorial"></a>Ausführliches Web-App-Tutorial
+### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>Ausführliche Betrachtung: Tutorial zur ASP.NET Core-Web-App
 
-Lernen Sie im ASP.NET Core-Tutorial [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) andere Möglichkeiten kennen, Benutzer anzumelden. Dieses Tutorial richtet sich an fortgeschrittene Leser und enthält Web-App-Code, der in Produktionsumgebungen eingesetzt werden kann. Außerdem wird beschrieben, wie für die App eine Anmeldung konfiguriert wird.
+Lernen Sie im ASP.NET Core-Tutorial [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) andere Möglichkeiten kennen, Benutzer anzumelden. Dieses Beispiel ist ein fortschreitendes Tutorial mit Web-App-Code, der in Produktionsumgebungen eingesetzt werden kann. Außerdem wird beschrieben, wie eine Anmeldung mit Konten hinzugefügt wird, die sich in folgenden Umgebungen befinden:
 
-<!--- Removed the diagram as it's already shown in the above link to GitHub
+- Ihre Organisation
+- Mehrere Organisationen
+- Geschäfts-, Schul- oder Unikonten bzw. persönlichen Microsoft-Konten
+- [Azure AD B2C](https://aka.ms/aadb2c)
+- Nationale Clouds
 
-![Tutorial overview](media/scenarios/aspnetcore-webapp-tutorial.svg)
+### <a name="sample-code---java-web-app"></a>Beispielcode: Java-Web-App
 
---->
+Weitere Informationen zur Java-Web-App aus dem Beispiel auf GitHub: [Eine Java-Webanwendung, die Benutzer bei Microsoft Identity Platform anmeldet und Microsoft Graph aufruft](https://github.com/Azure-Samples/ms-identity-java-webapp)

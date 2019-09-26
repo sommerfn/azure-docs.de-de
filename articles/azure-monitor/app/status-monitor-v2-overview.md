@@ -3,21 +3,21 @@ title: Übersicht über Azure Statusmonitor v2 | Microsoft-Dokumentation
 description: Eine Übersicht über Statusmonitor v2 Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333687"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057833"
 ---
 # <a name="status-monitor-v2"></a>Statusmonitor v2
 
@@ -59,7 +59,15 @@ Den Statusmonitor v2 finden Sie unter folgendem Link: https://www.powershellgall
   *Ja*. Sie haben verschiedene Möglichkeiten, um Statusmonitor v2 herunterzuladen. Wenn Ihr Computer über einen Internetzugang verfügt, können Sie ein Onboarding des PowerShell-Katalogs mithilfe der `-Proxy`-Parameter durchführen.
 Sie können dieses Modul auch manuell herunterladen und es auf Ihrem Computer installieren oder direkt verwenden.
 Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-detailed-instructions.md) beschrieben.
+
+- Werden ASP.NET Core-Anwendungen von Version 2 des Statusmonitors unterstützt?
+
+  *Nein*. Anweisungen zum Aktivieren der Überwachung von ASP.NET Core-Anwendungen finden Sie unter [Application Insights für ASP.NET Core-Anwendungen.](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) Es ist nicht erforderlich, den Statusmonitor für eine ASP.NET Core-Anwendung zu installieren. Dies gilt auch, wenn die ASP.NET Core-Anwendung in IIS gehostet wird.
   
+Werden ASP.NET Core-Anwendungen von Version 2 des Statusmonitors unterstützt? 
+
+  *Nein*. Befolgen Sie [diese](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) Anweisungen, um die Überwachung für ASP.NET Core-Anwendungen zu aktivieren. Es ist nicht erforderlich, den Statusmonitor für eine ASP.NET Core-Anwendung zu installieren. Dies gilt auch, wenn die ASP.NET Core-Anwendung in IIS gehostet wird.
+
 - Wie überprüfe ich, ob die Aktivierung erfolgreich war?
 
   - Mit dem Cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) können Sie überprüfen, ob die Aktivierung erfolgreich war.

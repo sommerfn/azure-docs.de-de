@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6163f1cbf878f4d4678b2b66829522b0dd16ae22
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ecec18945b53711094307162c4aeab2e0580bd5e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835630"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063853"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe der Elemente **Predicates** und **PredicateValidations** können Sie einen Überprüfungsprozess ausführen, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in Ihren Azure Active Directory (Azure AD) B2C-Mandanten eingegeben werden.
+Mithilfe der Elemente **Predicates** und **PredicateValidations** können Sie einen Überprüfungsprozess ausführen, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in Ihren Azure Active Directory B2C-Mandanten (Azure AD B2C) eingegeben werden.
 
 Im folgenden Diagramm ist die Beziehung zwischen den Elementen dargestellt:
 
@@ -41,7 +41,7 @@ Das **Predicate**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
+| Id | Ja | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 | Methode | Ja | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters** oder **IsDateRange**. Mit dem **IsLengthRange**-Wert wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Mit dem **MatchesRegex**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Mit dem **IncludesCharacters**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Mit dem **IsDateRange**-Wert wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. |
 
 Das **Predicate**-Element enthält die folgenden Elemente:
@@ -61,7 +61,7 @@ Das **Parameter**-Element enthält die folgenden Attribute:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| id | 1:1 | Der Bezeichner des Parameters. |
+| Id | 1:1 | Der Bezeichner des Parameters. |
 
 Das folgende Beispiel zeigt eine `IsLengthRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
 
@@ -140,7 +140,7 @@ Das **PredicateValidation**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird. Das **ClaimType**-Element kann diesen Bezeichner in der Richtlinie verwenden. |
+| Id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird. Das **ClaimType**-Element kann diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **PredicateValidation**-Element enthält das folgende Element:
 
@@ -158,7 +158,7 @@ Das **PredicateGroups**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
+| Id | Ja | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
 
 Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
@@ -183,7 +183,7 @@ Das **PredicateReference**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
+| Id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurieren der Kennwortkomplexität

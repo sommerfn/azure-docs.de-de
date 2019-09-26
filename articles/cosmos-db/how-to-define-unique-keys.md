@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie eindeutige Schlüssel für einen Azure Cosmos
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/17/2019
 ms.author: thweiss
-ms.openlocfilehash: 67b6ca1914d1728930c29c4a0bbca6cf86753da9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3b950565e0a44f979c11e3eb67b702c4dcb44769
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093327"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104906"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
 
@@ -43,15 +43,33 @@ Wenn ein neuer Container mit dem [.NET SDK v2](https://www.nuget.org/packages/Mi
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
 {
     Id = "container",
+    PartitionKey = new PartitionKeyDefinition { Paths = new Collection<string>(new List<string> { "/myPartitionKey" }) },
     UniqueKeyPolicy = new UniqueKeyPolicy
     {
         UniqueKeys = new Collection<UniqueKey>(new List<UniqueKey>
         {
-            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "emailAddress" }) },
+            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "/emailAddress" }) },
             new UniqueKey { Paths = new Collection<string>(new List<string> { "/address/zipCode" }) }
         })
     }
 });
+```
+
+## <a name="use-the-net-sdk-v3"></a>Verwenden des .NET SDK V3
+
+Wenn Sie einen neuen Container mit dem [.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) erstellen, bietet die Fluent-API des SDK eine präzise und nachvollziehbare Möglichkeit zum Deklarieren eindeutiger Schlüssel.
+
+```csharp
+await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
+    .WithUniqueKey()
+        .Path("/firstName")
+        .Path("/lastName")
+        .Path("/emailAddress")
+    .Attach()
+    .WithUniqueKey()
+        .Path("/address/zipCode")
+    .Attach()
+    .CreateIfNotExistsAsync();
 ```
 
 ## <a name="use-the-java-sdk"></a>Verwenden des Java SDK

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348697"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105102"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
 
@@ -90,16 +90,17 @@ Ersetzen Sie in der folgenden Tabelle {_argument_name_} durch Ihre eigenen Werte
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|
-|{COMPUTER_VISION_API_KEY}| Der Schlüssel steht im Azure-Portal auf der Seite „Computer Vision API Keys“ (Schlüssel für die Maschinelles Sehen-API) zur Verfügung.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Der Abrechnungsendpunkt. Wenn Sie eine cloudbasierte Ressource für maschinelles Sehen verwenden, steht der Wert für den URI im Azure-Portal auf der Seite „Computer Vision API Overview“ (Maschinelles Sehen-API – Übersicht) zur Verfügung. Bei Verwendung eines *cognitive-services-recognize-text*-Containers verwenden Sie die URL des Abrechnungsendpunkts, die im Befehl `docker run` an den Container übergeben wird.|
+| **{FORM_RECOGNIZER_API_KEY}** | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|
+| **{COMPUTER_VISION_API_KEY}** | Der Schlüssel steht im Azure-Portal auf der Seite „Computer Vision API Keys“ (Schlüssel für die Maschinelles Sehen-API) zur Verfügung.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Der Abrechnungsendpunkt. Wenn Sie eine cloudbasierte Ressource für maschinelles Sehen verwenden, steht der Wert für den URI im Azure-Portal auf der Seite „Computer Vision API Overview“ (Maschinelles Sehen-API – Übersicht) zur Verfügung. Bei Verwendung eines *cognitive-services-recognize-text*-Containers verwenden Sie die URL des Abrechnungsendpunkts, die im Befehl `docker run` an den Container übergeben wird. |
+
+Informationen dazu, wie Sie diese Werte erhalten, finden Sie unter [Ermitteln erforderlicher Parameter](form-recognizer-container-howto.md#gathering-required-parameters).
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Geben Sie zum Ausführen des Containers die Optionen `Eula`, `Billing` und `ApiKey` an. Andernfalls wird der Container nicht gestartet. Weitere Informationen finden Sie unter [Abrechnung](#billing-configuration-setting).
-
-> [!NOTE] 
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure-Ressource für die Formularerkennung.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Beispiele für Docker-Container zur Formularerkennung
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 13eedeb66d826d212b814fac321f920e78758cb8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346769"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063738"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer Sammlung von Eingabeansprüchen und erhält Daten in einer Sammlung von Ausgabeansprüchen zurück. Mit der RESTful-Dienstintegration haben Sie folgende Möglichkeiten:
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer Sammlung von Eingabeansprüchen und erhält Daten in einer Sammlung von Ausgabeansprüchen zurück. Mit der RESTful-Dienstintegration haben Sie folgende Möglichkeiten:
 
 - **Überprüfen von Benutzereingabedaten:** verhindert, dass falsch formatierte Daten in Azure AD B2C beibehalten werden. Wenn der Wert des Benutzers nicht gültig ist, gibt Ihr RESTful-Dienst eine Fehlermeldung zurück, in der der Benutzer angewiesen wird, einen Eintrag anzugeben. Beispielsweise können Sie überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist.
 - **Überschreiben von Eingabeansprüchen:** ermöglicht das Neuformatieren von Werten in Eingabeansprüchen. Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird.
@@ -43,7 +43,7 @@ Das folgende Beispiel zeigt ein technisches RESTful-Profil:
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>Eingabeansprüche
@@ -70,7 +70,7 @@ Im folgenden Beispiel wird der von der REST-API zurückgegebene Anspruch gezeigt
 
 - Der **MembershipId**-Anspruch wird dem Namen des **loyaltyNumber**-Anspruchs zugeordnet.
 
-Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter nicht zurückgegeben werden: 
+Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter nicht zurückgegeben werden:
 
 - Der **loyaltyNumberIsNew**-Anspruch hat den Standardwert `true`.
 
@@ -85,11 +85,11 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ServiceUrl | Ja | Die URL des REST-API-Endpunkts. | 
-| AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic` oder `ClientCertificate`. Der Wert `None` gibt an, dass die REST-API nicht anonym ist. Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe der Authentifizierung mit Clientzertifikat beschränkt. Nur Dienste mit den richtigen Zertifikaten, z.B. Azure AD B2C, erhalten Zugriff auf Ihren Dienst. | 
-| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. | 
-| ClaimsFormat | Nein | Gibt das Format für die Ausgabeansprüche an. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Ausgabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Ausgabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Ausgabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Ausgabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. | 
-| DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Sie finden diese im Abschnitt zur zurückgegebenen Fehlermeldung. | 
+| ServiceUrl | Ja | Die URL des REST-API-Endpunkts. |
+| AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic` oder `ClientCertificate`. Der Wert `None` gibt an, dass die REST-API nicht anonym ist. Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe der Authentifizierung mit Clientzertifikat beschränkt. Nur Dienste mit den richtigen Zertifikaten, z.B. Azure AD B2C, erhalten Zugriff auf Ihren Dienst. |
+| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. |
+| ClaimsFormat | Nein | Gibt das Format für die Ausgabeansprüche an. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Ausgabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Ausgabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Ausgabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Ausgabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. |
+| DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Sie finden diese im Abschnitt zur zurückgegebenen Fehlermeldung. |
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
@@ -111,7 +111,7 @@ Wenn als Typ der Authentifizierung `Basic` festgelegt ist, enthält das **Crypto
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Ja | Der zur Authentifizierung verwendete Benutzername. | 
+| BasicAuthenticationUsername | Ja | Der zur Authentifizierung verwendete Benutzername. |
 | BasicAuthenticationPassword | Ja | Das zur Authentifizierung verwendete Kennwort. |
 
 Das folgende Beispiel zeigt ein technisches Profil mit Standardauthentifizierung:
@@ -136,7 +136,7 @@ Wenn als Typ der Authentifizierung `ClientCertificate` festgelegt ist, enthält 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ClientCertificate | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) für die Authentifizierung. | 
+| ClientCertificate | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) für die Authentifizierung. |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,13 +159,13 @@ Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z.B. „Der 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| version | Ja | 1.0.0 | 
-| status | Ja | 409 | 
-| code | Nein | Ein Fehlercode vom RESTful-Endpunktanbieter, der angezeigt wird, wenn `DebugMode` aktiviert ist. | 
-| requestId | Nein | Eine Anforderungs-ID vom RESTful-Endpunktanbieter, die angezeigt wird, wenn `DebugMode` aktiviert ist. | 
-| userMessage | Ja | Eine Fehlermeldung, die dem Benutzer angezeigt wird. | 
-| developerMessage | Nein | Die ausführliche Beschreibung des Problems und Informationen zur Behebung, die angezeigt werden, wenn `DebugMode` aktiviert ist. | 
-| moreInfo | Nein | Ein URI, der auf zusätzliche Informationen verweist, die angezeigt werden, wenn `DebugMode` aktiviert ist. | 
+| version | Ja | 1.0.0 |
+| status | Ja | 409 |
+| code | Nein | Ein Fehlercode vom RESTful-Endpunktanbieter, der angezeigt wird, wenn `DebugMode` aktiviert ist. |
+| requestId | Nein | Eine Anforderungs-ID vom RESTful-Endpunktanbieter, die angezeigt wird, wenn `DebugMode` aktiviert ist. |
+| userMessage | Ja | Eine Fehlermeldung, die dem Benutzer angezeigt wird. |
+| developerMessage | Nein | Die ausführliche Beschreibung des Problems und Informationen zur Behebung, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
+| moreInfo | Nein | Ein URI, der auf zusätzliche Informationen verweist, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
 
 Das folgende Beispiel zeigt eine REST-API, die eine JSON-formatierte Fehlermeldung zurückgibt:
 
@@ -175,9 +175,9 @@ Das folgende Beispiel zeigt eine REST-API, die eine JSON-formatierte Fehlermeldu
   "status": 409,
   "code": "API12345",
   "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "userMessage": "Message for the user",
+  "developerMessage": "Verbose description of problem and how to fix it.",
+  "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
 
@@ -197,7 +197,7 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>Beispiele:
-- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-custom-rest-api-netfw.md) 
+- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-custom-rest-api-netfw.md)
 - [Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Schützen Ihres RESTful-Diensts mit Clientzertifikaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md)

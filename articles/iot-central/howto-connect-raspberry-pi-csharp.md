@@ -3,17 +3,17 @@ title: Herstellen der Verbindung eines Raspberry Pi-Geräts mit Ihrer Azure IoT 
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung über C# verbinden.
 author: viv-liu
 ms.author: viviali
-ms.date: 09/09/2019
+ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a66925dceee4bf90bc6a5cd155f99347bbd124e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d15e58d53e53779b1db1369c4e698032d524f096
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886005"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067623"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
@@ -34,21 +34,21 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie die
 
 Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften:
 
-- Telemetriedaten, darunter die folgenden vom Gerät gesammelten Messungen:
-  - Luftfeuchtigkeit
-  - Temperatur
-  - Pressure
-  - Magnetometer (X, Y, Z)
-  - Beschleunigungsmesser (X, Y, Z)
-  - Gyroskop (X, Y, Z)
-- Einstellungen
-  - Spannung
-  - Aktuell
-  - Lüfterdrehzahl
-  - IR-Umschalter
-- Properties
-  - Geräteeigenschaft „Nummer“
-  - Cloudeigenschaft „Standort“
+* Telemetriedaten, darunter die folgenden vom Gerät gesammelten Messungen:
+  * Luftfeuchtigkeit
+  * Temperatur
+  * Pressure
+  * Magnetometer (X, Y, Z)
+  * Beschleunigungsmesser (X, Y, Z)
+  * Gyroskop (X, Y, Z)
+* Einstellungen
+  * Spannung
+  * Aktuell
+  * Lüfterdrehzahl
+  * IR-Umschalter
+* Properties
+  * Geräteeigenschaft „Nummer“
+  * Cloudeigenschaft „Standort“
 
 Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Raspberry Pi-Gerätevorlage](#raspberry-pi-device-template-details).
 
@@ -72,6 +72,8 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
    cd pisample
    dotnet new console
    dotnet add package Microsoft.Azure.Devices.Client
+   dotnet add package Microsoft.Azure.Devices.Provisioning.Client
+   dotnet add package Microsoft.Azure.Devices.Provisioning.Transport.Mqtt
    dotnet restore
    ```
 
@@ -81,21 +83,24 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <RootNamespace>pisample</RootNamespace>
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.21.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Client" Version="1.4.0" />
+        <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Transport.Mqtt" Version="1.1.8" />
       </ItemGroup>
     </Project>
     ```
 
     > [!NOTE]
-    > Ihre **Microsoft.Azure.Devices.Client**-Paketversionsnummer ist möglicherweise höher als die angezeigte.
+    > Die Versionsnummern Ihrer Pakete sind möglicherweise höher als die gezeigten.
 
 1. Speichern Sie **pisample.csproj**. Wenn Sie in Visual Studio Code aufgefordert werden, den Wiederherstellungsbefehl auszuführen, wählen Sie **Wiederherstellen**.
 
-1. Öffnen Sie **Program.cs**, und ersetzen Sie den Inhalt durch den folgenden Code:
+1. Öffnen Sie **Program.cs**, und ersetzen Sie den Inhalt durch den folgenden Code. Aktualisieren Sie `{your Scope ID}`, `{your Device ID}` und `{your Device Primary Key}` auf die Werte, die Sie sich zuvor notiert haben:
 
     ```csharp
     using System;
@@ -105,154 +110,161 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
 
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
+    using Microsoft.Azure.Devices.Provisioning.Client;
+    using Microsoft.Azure.Devices.Provisioning.Client.Transport;
+
     using Newtonsoft.Json;
 
     namespace pisample
     {
       class Program
       {
-        static string DeviceConnectionString = "{your device connection string}";
+        static string ScopeID = "{your Scope ID}";
+        static string DeviceID = "{your Device ID}";
+        static string PrimaryKey = "{your Device Primary Key}";
+        static string GlobalDeviceEndpoint = "global.azure-devices-provisioning.net";
         static DeviceClient Client = null;
         static TwinCollection reportedProperties = new TwinCollection();
         static CancellationTokenSource cts;
         static double baseTemperature = 60;
         static double basePressure = 500;
         static double baseHumidity = 50;
-        static void Main(string[] args)
+
+        static async Task Main(string[] args)
         {
-          Console.WriteLine("Raspberry Pi Azure IoT Central example");
+          Console.WriteLine("== Raspberry Pi Azure IoT Central example ==");
 
           try
           {
-            InitClient();
-            SendDeviceProperties();
+
+            using (var security = new SecurityProviderSymmetricKey(DeviceID, PrimaryKey, null))
+            {
+              DeviceRegistrationResult result = await RegisterDeviceAsync(security);
+              if (result.Status != ProvisioningRegistrationStatusType.Assigned) {
+                Console.WriteLine("Failed to register device");
+                return;
+              }
+              IAuthenticationMethod auth = new DeviceAuthenticationWithRegistrySymmetricKey(result.DeviceId, (security as SecurityProviderSymmetricKey).GetPrimaryKey());
+              Client = DeviceClient.Create(result.AssignedHub, auth, TransportType.Mqtt);
+            }
+
+            await SendDevicePropertiesAsync();
+
+            Console.Write("Register settings changed handler...");
+            await Client.SetDesiredPropertyUpdateCallbackAsync(HandleSettingChanged, null);
+            Console.WriteLine("Done");
 
             cts = new CancellationTokenSource();
-            SendTelemetryAsync(cts.Token);
+            Task task = SendTelemetryAsync(cts.Token);
 
-            Console.WriteLine("Wait for settings update...");
-            Client.SetDesiredPropertyUpdateCallbackAsync(HandleSettingChanged, null).Wait();
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             cts.Cancel();
+            await task;
           }
           catch (Exception ex)
           {
             Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
+            Console.WriteLine(ex.Message);
           }
         }
 
-        public static void InitClient()
+        public static async Task<DeviceRegistrationResult> RegisterDeviceAsync(SecurityProviderSymmetricKey security)
         {
-          try
-          {
-            Console.WriteLine("Connecting to hub");
-            Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
-          }
+            Console.WriteLine("Register device...");
+
+            using (var transport = new ProvisioningTransportHandlerMqtt(TransportFallbackType.TcpOnly))
+            {
+              ProvisioningDeviceClient provClient =
+                        ProvisioningDeviceClient.Create(GlobalDeviceEndpoint, ScopeID, security, transport);
+
+              Console.WriteLine($"RegistrationID = {security.GetRegistrationID()}");
+
+
+              Console.Write("ProvisioningClient RegisterAsync...");
+              DeviceRegistrationResult result = await provClient.RegisterAsync();
+
+              Console.WriteLine($"{result.Status}");
+              Console.WriteLine($"ProvisioningClient AssignedHub: {result.AssignedHub}; DeviceID: {result.DeviceId}");
+
+              return result;
+            }
         }
 
-        public static async void SendDeviceProperties()
+        public static async Task SendDevicePropertiesAsync()
         {
-          try
-          {
-            Console.WriteLine("Sending device properties:");
+            Console.WriteLine("Send device properties...");
             Random random = new Random();
             TwinCollection telemetryConfig = new TwinCollection();
             reportedProperties["dieNumber"] = random.Next(1, 6);
             Console.WriteLine(JsonConvert.SerializeObject(reportedProperties));
 
             await Client.UpdateReportedPropertiesAsync(reportedProperties);
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
-          }
         }
 
-        private static async void SendTelemetryAsync(CancellationToken token)
+        private static async Task SendTelemetryAsync(CancellationToken token)
         {
-          try
-          {
-            Random rand = new Random();
+          Random rand = new Random();
 
-            while (true)
+          while (true)
+          {
+            double currentTemperature = baseTemperature + rand.NextDouble() * 20;
+            double currentPressure = basePressure + rand.NextDouble() * 100;
+            double currentHumidity = baseHumidity + rand.NextDouble() * 20;
+
+            var telemetryDataPoint = new
             {
-              double currentTemperature = baseTemperature + rand.NextDouble() * 20;
-              double currentPressure = basePressure + rand.NextDouble() * 100;
-              double currentHumidity = baseHumidity + rand.NextDouble() * 20;
+              humidity = currentHumidity,
+              pressure = currentPressure,
+              temp = currentTemperature
+            };
+            var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
 
-              var telemetryDataPoint = new
-              {
-                humidity = currentHumidity,
-                pressure = currentPressure,
-                temp = currentTemperature
-              };
-              var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-              var message = new Message(Encoding.ASCII.GetBytes(messageString));
+            token.ThrowIfCancellationRequested();
+            await Client.SendEventAsync(message);
 
-              token.ThrowIfCancellationRequested();
-              await Client.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending telemetry: {1}", DateTime.Now, messageString);
 
-              Console.WriteLine("{0} > Sending telemetry: {1}", DateTime.Now, messageString);
-
-              await Task.Delay(1000);
-            }
-          }
-          catch (Exception ex)
-          {
-            Console.WriteLine();
-            Console.WriteLine("Intentional shutdown: {0}", ex.Message);
+            await Task.Delay(1000);
           }
         }
+
 
         private static async Task HandleSettingChanged(TwinCollection desiredProperties, object userContext)
         {
-          try
-          {
-            Console.WriteLine("Received settings change...");
-            Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
+          Console.WriteLine("Received settings change...");
+          Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
 
-            string setting = "fanSpeed";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "setVoltage";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "setCurrent";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            setting = "activateIR";
-            if (desiredProperties.Contains(setting))
-            {
-              // Act on setting change, then
-              AcknowledgeSettingChange(desiredProperties, setting);
-            }
-            await Client.UpdateReportedPropertiesAsync(reportedProperties);
-          }
-
-          catch (Exception ex)
+          string setting = "fanSpeed";
+          if (desiredProperties.Contains(setting))
           {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
           }
+          setting = "setVoltage";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          setting = "setCurrent";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          setting = "activateIR";
+          if (desiredProperties.Contains(setting))
+          {
+            // Act on setting change, then
+            BuildAcknowledgement(desiredProperties, setting);
+          }
+          Console.WriteLine("Send settings changed acknowledgement...");
+          await Client.UpdateReportedPropertiesAsync(reportedProperties);
         }
 
-        private static void AcknowledgeSettingChange(TwinCollection desiredProperties, string setting)
+        private static void BuildAcknowledgement(TwinCollection desiredProperties, string setting)
         {
           reportedProperties[setting] = new
           {
@@ -266,14 +278,9 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
     }
     ```
 
-    > [!NOTE]
-    > Sie aktualisieren den Platzhalter `{your device connection string}` im nächsten Schritt.
-
 ## <a name="run-your-net-application"></a>Ausführen Ihrer .NET-Anwendung
 
-Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authentifizierung bei Azure IoT Central hinzu. Führen Sie diese Anleitungen zum [Generieren der Verbindungszeichenfolge für das Gerät](howto-generate-connection-string.md) aus, und verwenden Sie dazu die zuvor notierten Werte für **Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**.
-
-1. Ersetzen Sie `{your device connection string}` in der Datei **Program.cs** durch die generierte Verbindungszeichenfolge.
+So wird die Beispielanwendung erstellt und ausgeführt:
 
 1. Führen Sie den folgenden Befehl in Ihrer Befehlszeilenumgebung aus:
 

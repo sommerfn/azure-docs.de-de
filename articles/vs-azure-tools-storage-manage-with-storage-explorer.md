@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 2b923a381be9d6cdb1a83f582a541c9e17e117a4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 43e76b9331eb8dbe95265810b9191a10d4caee08
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086626"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272024"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -79,7 +79,7 @@ Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Speicherko
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 > [!NOTE]
-> Um nach der Anmeldung Vollzugriff auf Ressourcen zu haben, benötigt Storage-Explorer Berechtigungen für sowohl die Verwaltung (Azure Resource Manager) als auch Datenebenen. Das bedeutet, dass Sie Azure Active Directory-Berechtigungen (Azure AD) benötigen, die Ihnen Zugriff auf Ihr Speicherkonto, die Container im Konto und Daten in den Containern gewähren. Wenn Sie nur über Berechtigungen auf Datenebene verfügen, erwägen Sie das [Hinzufügen einer Ressource über Azure AD](#add-a-resource-via-azure-ad). Weitere Informationen zu den spezifischen Berechtigungen, die Storage-Explorer benötigt, finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues).
+> Um nach der Anmeldung Vollzugriff auf Ressourcen zu haben, benötigt Storage-Explorer Berechtigungen für sowohl die Verwaltung (Azure Resource Manager) als auch Datenebenen. Das bedeutet, dass Sie Azure Active Directory-Berechtigungen (Azure AD) benötigen, die Ihnen Zugriff auf Ihr Speicherkonto, die Container im Konto und Daten in den Containern gewähren. Wenn Sie nur über Berechtigungen auf Datenebene verfügen, erwägen Sie das [Hinzufügen einer Ressource über Azure AD](#add-a-resource-via-azure-ad). Weitere Informationen zu den spezifischen Berechtigungen, die Storage-Explorer benötigt, finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues).
 
 1. Wählen Sie in Storage-Explorer **Konten verwalten** aus, um zum Panel „Kontoverwaltung“ zu wechseln.
 

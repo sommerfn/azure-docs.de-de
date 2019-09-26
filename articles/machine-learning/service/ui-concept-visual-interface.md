@@ -1,7 +1,7 @@
 ---
 title: Grafische Benutzeroberfläche
-titleSuffix: Azure Machine Learning service
-description: Hier erhalten Sie Informationen zu Terminologie, Konzepten und Workflows der grafischen Benutzeroberfläche (Vorschauversion) für Azure Machine Learning Service.
+titleSuffix: Azure Machine Learning
+description: Hier erhalten Sie Informationen zu Terminologie, Konzepten und Workflows der grafischen Benutzeroberfläche (Vorschauversion) für Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860401"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996523"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning Service? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning? 
 
-Die grafischen Benutzeroberfläche (Vorschauversion) für Azure Machine Learning Service unterstützt Sie bei der Datenaufbereitung für und beim Trainieren, Testen, Bereitstellen, Verwalten und Überwachen von Machine Learning-Modellen, ohne dass Sie dafür Code schreiben müssen.
+Die grafische Benutzeroberfläche (Vorschauversion) für Azure Machine Learning unterstützt Sie bei der Datenaufbereitung für und beim Trainieren, Testen, Bereitstellen, Verwalten und Überwachen von Machine Learning-Modellen – ganz ohne Programmierung.
 
 Für das Erstellen Ihres Modells ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von [Datasets](#dataset) und [Modulen](#module).
 
-Die grafische Benutzeroberfläche verwendet Ihren Azure Machine Learning Service-[Workspace](concept-workspace.md) für die folgenden Zwecke:
+Die grafische Benutzeroberfläche verwendet Ihren Azure Machine Learning-[Arbeitsbereich](concept-workspace.md) zu folgenden Zwecken:
 
 + Schreiben von Artefakten von [Experimentausführungen](#experiment) im Workspace
 + Zugriff auf [Datasets](#dataset)

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060709"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067102"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Sichern einer SAP HANA-Datenbank in Azure
 
@@ -26,8 +26,8 @@ ms.locfileid: "70060709"
 **Unterstützung** | **Details**
 --- | ---
 **Unterstützte geografische Räume** | Australien, Südosten; Australien, Osten <br> Brasilien Süd <br> Kanada, Mitte; Kanada, Osten <br> Asien, Südosten; Asien, Osten <br> USA, Osten; USA, Osten 2; USA, Westen-Mitte; USA, Westen; USA, Westen 2, USA, Norden-Mitte; USA, Mitte; USA, Süden-Mitte<br> Indien, Mitte; Indien, Süden <br> „Japan, Osten“, „Japan, Westen“<br> Korea, Mitte, Korea, Süden <br> „Europa, Norden“, „Europa, Westen“ <br> Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen
-**Unterstützte VM-Betriebssysteme** | SLES 12 mit SP2 oder SP3.
-**Unterstützte HANA-Versionen** | SDC auf HANA 1.x, MDC auf HANA 2.x <= SPS03
+**Unterstützte VM-Betriebssysteme** | SLES 12 mit SP2, SP3 oder SP4.
+**Unterstützte HANA-Versionen** | SDC auf HANA 1.x, MDC auf HANA 2.x <= SPS04 Rev 42
 
 ### <a name="current-limitations"></a>Aktuelle Einschränkungen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476204"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999116"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -355,7 +355,7 @@ A: Nein. Wenn ein Administrator die Details der Nutzungsbedingungen (den Namen, 
 A: Derzeit können Sie ein vorhandenes Dokument mit Nutzungsbedingungen nicht aktualisieren. Um ein Dokument mit Nutzungsbedingungen zu ändern, müssen Sie eine neue Instanz der Nutzungsbedingungen erstellen.
 
 **F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**<br />
-A: Die PDF-Datei wird standardmäßig im JPEG-Format gerendert, damit Benutzer nicht auf Links klicken können. Benutzer haben die Möglichkeit, auf die Option **Probleme mit der Anzeige? Klicken Sie hier** zu klicken. Dadurch wird die PDF-Datei nativ gerendert, und Links werden unterstützt.
+A: Ja, Endbenutzer können Links zu weiteren Seiten auswählen. Links zu Abschnitten innerhalb des Dokuments werden hingegen nicht unterstützt.
 
 **F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**<br />
 A: Ja. Derzeit sind 108 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. Ein Administrator kann mehrere PDF-Dokumente hochladen und diese Dokumente mit einer unterstützten Sprache (bis zu 108) kennzeichnen. Wenn sich Endbenutzer anmelden, wird die Spracheinstellung des Browsers überprüft und das entsprechende Dokument angezeigt. Wenn es keine Übereinstimmung gibt, wird das Standarddokument angezeigt. Dies ist das erste Dokument, das hochgeladen wurde.

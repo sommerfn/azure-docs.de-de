@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Modellen in Azure Container Instances
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie Ihre Azure Machine Learning Service-Modelle mithilfe von Azure Container Instances als Webdienst bereitstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe von Azure Container Instances als Webdienst bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279137"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034647"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 
-Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning Service als Webdienst in Azure Container Instances (ACI) bereitstellen. Verwenden Sie Azure Container Instances, wenn eine der folgenden Bedingungen zutrifft:
+Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Container Instances (ACI) bereitstellen. Verwenden Sie Azure Container Instances, wenn eine der folgenden Bedingungen zutrifft:
 
 - Sie müssen Ihr Modell schnell bereitstellen und überprüfen. Sie müssen vorab keine ACI-Container erstellen. Sie werden im Rahmen des Bereitstellungsprozesses erstellt.
 - Sie testen ein Modell in der Entwicklungsphase. 
@@ -28,7 +28,7 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md).
+- Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 - Ein Machine Learning-Modell, das in Ihrem Arbeitsbereich registriert ist. Wenn Sie über kein registriertes Modell verfügen, finden Sie hier weitere Informationen: [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 

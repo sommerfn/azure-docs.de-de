@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963380"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262172"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Oberfläche für einfache Protokolle in Azure Monitor (Vorschauversion)
 Azure Monitor bietet [umfassende Möglichkeiten](get-started-portal.md) für das Erstellen von [Protokollabfragen](log-query-overview.md) mithilfe der KQL-Sprache. Doch möglicherweise benötigen Sie gar nicht den vollen Funktionsumfang von KQL, sondern bevorzugen eine vereinfachte Oberfläche für grundlegende Abfrageanforderungen. Mithilfe der Oberfläche für einfache Protokolle können Sie grundlegende Abfragen erstellen, ohne direkt mit KQL zu interagieren. Sie können einfache Protokolle auch als Lerntool für KQL verwenden, wenn Sie anspruchsvollere Abfragen benötigen.
@@ -31,7 +31,7 @@ Azure Monitor bietet [umfassende Möglichkeiten](get-started-portal.md) für das
 Die Oberfläche für einfache Protokolle ruft Daten aus den Tabellen *AzureDiagnostics*, *AzureMetrics* und *AzureActivity* für die ausgewählte Ressource ab. 
 
 ## <a name="using-simple-logs"></a>Verwenden der Oberfläche für einfache Protokolle
-Navigieren Sie zu einer beliebigen Cosmos DB- oder Key Vault-Instanz in Ihrem Azure-Abonnement, für das [Diagnoseeinstellungen zum Sammeln von Protokollen in einem Log Analytics-Arbeitsbereich konfiguriert sind](../platform/diagnostic-logs-stream-log-store.md). Klicken Sie im Menü **Überwachung** auf **Protokolle**, um die Oberfläche für einfache Protokolle zu öffnen.
+Navigieren Sie zu einer beliebigen Cosmos DB- oder Key Vault-Instanz in Ihrem Azure-Abonnement, für das [Diagnoseeinstellungen zum Sammeln von Protokollen in einem Log Analytics-Arbeitsbereich konfiguriert sind](../platform/resource-logs-collect-storage.md). Klicken Sie im Menü **Überwachung** auf **Protokolle**, um die Oberfläche für einfache Protokolle zu öffnen.
 
 ![Menü](media/simple-logs/menu.png)
 

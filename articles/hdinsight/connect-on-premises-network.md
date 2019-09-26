@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918538"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034132"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -40,7 +40,7 @@ Diese Konfiguration ermöglicht das folgende Verhalten:
 
 Im folgenden Diagramm werden Anforderungen für Ressourcen, die auf das DNS-Suffix des virtuellen Netzwerks enden, als grüne Linien dargestellt. Die blauen Linien stehen für Anforderungen von Ressourcen im lokalen Netzwerk oder dem öffentlichen Internet.
 
-![Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen für die in diesem Dokument verwendete Konfiguration](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen in der Konfiguration](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -96,7 +96,7 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     |Subnet | Wählen Sie das Standardsubnetz für das zuvor erstellte virtuelle Netzwerk aus. Wählen Sie __nicht__ das Subnetz aus, das vom VPN-Gateway verwendet wird.|
     |Öffentliche IP-Adresse | Verwenden Sie den automatisch ausgefüllten Wert.  |
 
-    ![Einstellungen für das virtuelle Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![Einstellungen für virtuelles HDInsight-Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Übernehmen Sie für alle weitere Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
 

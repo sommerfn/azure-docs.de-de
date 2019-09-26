@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716667"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063321"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ein technisches Profil bietet ein Framework mit einem integrierten Mechanismus für die Kommunikation mit verschiedenen Typen von Parteien mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory (Azure AD) B2C. Technische Profile werden verwendet, um mit Ihrem Azure AD B2C-Mandanten zu kommunizieren, einen Benutzer zu erstellen oder ein Benutzerprofil zu lesen. Ein selbstbestätigtes technisches Profil kann die Interaktion mit dem Benutzer ermöglichen. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung und anschließendes Rendern der Anmeldeseite oder der Seite zum Zurücksetzen des Kennworts.
+Ein technisches Profil bietet ein Framework mit einem integrierten Mechanismus für die Kommunikation mit verschiedenen Typen von Parteien mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C (Azure AD B2C). Technische Profile werden verwendet, um mit Ihrem Azure AD B2C-Mandanten zu kommunizieren, einen Benutzer zu erstellen oder ein Benutzerprofil zu lesen. Ein selbstbestätigtes technisches Profil kann die Interaktion mit dem Benutzer ermöglichen. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung und anschließendes Rendern der Anmeldeseite oder der Seite zum Zurücksetzen des Kennworts.
 
 ## <a name="type-of-technical-profiles"></a>Typen technischer Profile
 
@@ -37,7 +37,6 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [RESTful-Anbieter](restful-technical-profile.md) – Aufrufen von REST-API-Diensten, z. B. Überprüfung von Benutzereingaben, Ergänzung von Benutzerdaten oder Integration von Branchenanwendungen
 - [SAML2](saml-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
-- **WsFed** – Verbund mit einem beliebigen Identitätsanbieter für das WsFed-Protokoll.
 - [Sitzungsverwaltung](active-directory-b2c-reference-sso-custom.md) – Verarbeiten verschiedener Typen von Sitzungen.
 - **Application Insights**
 

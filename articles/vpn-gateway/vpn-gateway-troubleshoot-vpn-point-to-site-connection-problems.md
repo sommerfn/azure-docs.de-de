@@ -4,7 +4,7 @@ description: Informieren Sie sich über die Problembehandlung für Punkt-zu-Stan
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475958"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104817"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Troubleshooting: Azure Point-to-Site-Verbindungsprobleme
 
@@ -48,8 +48,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
     | Zertifikat | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
-    | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
+    | AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
 
 3. Navigieren Sie zu „C:\Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (Datei „*.cer“) im Computerspeicher des Benutzers.
 
@@ -80,12 +79,12 @@ Vorbereitung von Windows 10 oder Server 2016 für IKEv2:
 
    | Betriebssystemversion | Date | Anzahl/Link |
    |---|---|---|---|
-   | Windows Server 2016<br>Windows 10, Version 1607 | 17\. Januar 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10, Version 1703 | 17\. Januar 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10, Version 1709 | 22\. März 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10, Version 1607 | 17. Januar 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, Version 1703 | 17. Januar 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10, Version 1709 | 22. März 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Legen Sie den Registrierungsschlüsselwert fest. Erstellen Sie den REG_DWORD-Schlüssel „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload“, oder legen Sie ihn in der Registrierung auf 1 fest.
+2. Legen Sie den Registrierungsschlüsselwert fest. Erstellen Sie den REG_DWORD-Schlüssel in der Registrierung unter `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`, oder legen Sie ihn auf 1 fest.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-Clientfehler: Das Format der empfangenen Nachricht war unerwartet oder fehlerhaft.
 

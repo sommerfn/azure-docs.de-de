@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846772"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064129"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
-In diesem Artikel wird erläutert, wie Sie den Benutzerzugriff auf Ihre Anwendungen mithilfe von Azure Active Directory (Azure AD) B2C verwalten können. Die Zugriffsverwaltung in Ihrer Anwendung umfasst Folgendes:
+In diesem Artikel wird erläutert, wie Sie den Benutzerzugriff auf Ihre Anwendungen mithilfe von Azure Active Directory B2C (Azure AD B2C) verwalten können. Die Zugriffsverwaltung in Ihrer Anwendung umfasst Folgendes:
 
 - Identifizieren von Minderjährigen und Steuern des Benutzerzugriffs auf Ihre Anwendung
 - Anfordern der Zustimmung durch die Eltern, wenn Minderjährige Ihre Anwendungen nutzen möchten

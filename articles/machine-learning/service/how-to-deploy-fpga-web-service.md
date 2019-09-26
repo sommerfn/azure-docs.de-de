@@ -1,7 +1,7 @@
 ---
 title: Was ist FPGA – wie funktioniert die Bereitstellung?
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie ein Webdienst mit einem Modell bereitgestellt wird, das auf einem FPGA mit Azure Machine Learning Service für Rückschlüsse mit extrem geringen Latenzzeiten ausgeführt wird.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie ein Webdienst mit einem Modell bereitgestellt wird, das auf einem FPGA mit Azure Machine Learning für Rückschlüsse mit extrem geringen Latenzzeiten ausgeführt wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860464"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034466"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
 
-Dieser Artikel enthält eine Einführung in Field-Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit dem Azure Machine Learning Service für ein Azure-FPGA bereitstellen. 
+Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit Azure Machine Learning für ein Azure-FPGA bereitstellen. 
 
 FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung.
 
@@ -28,7 +28,7 @@ FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarch
 
 Der folgende Abbildung und die Tabelle zeigen FPGAs im Vergleich zu anderen Prozessoren.
 
-![Abbildung zu Azure Machine Learning Service: FPGA-Vergleich](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Diagramm zu Azure Machine Learning: FPGA-Vergleich](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Prozessor||BESCHREIBUNG|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Sie können ein Modell als Webdienst auf FPGAs mit hardwarebeschleunigten Azure 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement.  Wenn Sie keins besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement.  Wenn Sie keins besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 - FPGA-Kontingent. Überprüfen Sie mithilfe der Azure CLI, ob Sie über ein Kontingent verfügen:
 
@@ -112,7 +112,7 @@ Sie können ein Modell als Webdienst auf FPGAs mit hardwarebeschleunigten Azure 
 
     Wenn Sie kein Kontingent besitzen, senden Sie das Anforderungsformular auf [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Ein Azure Machine Learning Service-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
+- Ein Azure Machine Learning-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
  
 - Python SDK für hardwarebeschleunigte Modelle:
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: cf276f3a0b14658d6c0bc10a138e814f30561cc9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733487"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104506"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -41,14 +41,14 @@ Die folgende Tabelle zeigt die verschiedenen Methoden, die Sie zum Einrichten ei
 | [Azure-Ressourcen-Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 ## <a name="quick-create-basic-cluster-setup"></a>Schnellerfassung: Grundlegende Clustereinrichtung
-Dieser Artikel enthält die Schritte im [Azure-Portal](https://portal.azure.com) zum Erstellen eines HDInsight-Clusters mithilfe der *Schnellerfassung* oder *benutzerdefiniert*. 
+Dieser Artikel enthält die Schritte im [Azure-Portal](https://portal.azure.com) zum Erstellen eines HDInsight-Clusters mithilfe der *Schnellerfassung* oder *benutzerdefiniert*.
 
 ![HDInsight-Erstellungsoptionen – benutzerdefinierte Schnellerfassung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-options.png)
 
 Befolgen Sie die Anweisungen auf dem Bildschirm, um eine grundlegenden Clustereinrichtung durchzuführen. Sie finden im Folgenden folgende Informationen:
 
 * [Ressourcengruppenname](#resource-group-name)
-* [Clustertypen und Konfiguration](#cluster-types) 
+* [Clustertypen und Konfiguration](#cluster-types)
 * [Clustername](#cluster-name)
 * [Clusteranmeldung und SSH-Benutzername](#cluster-login-and-ssh-username)
 * [Location](#location)
@@ -61,7 +61,7 @@ Befolgen Sie die Anweisungen auf dem Bildschirm, um eine grundlegenden Clusterei
 Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Reihe von Komponenten, um bestimmte Funktionen bereitzustellen.
 
 > [!IMPORTANT]  
-> HDInsight-Cluster sind jeweils für einzelne Workloads oder Technologien in verschiedenen Typen verfügbar. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster. Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network) miteinander verbinden. 
+> HDInsight-Cluster sind jeweils für einzelne Workloads oder Technologien in verschiedenen Typen verfügbar. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster. Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network) miteinander verbinden.
 
 | Clustertyp | Funktionalität |
 | --- | --- |
@@ -72,7 +72,6 @@ Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Rei
 | [ML Services](r-server/r-server-overview.md) |Verschiedene Funktionen für Big Data-Statistiken, Vorhersagemodellierung und Machine Learning |
 | [Spark](spark/apache-spark-overview.md) |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
 | [Storm](storm/apache-storm-overview.md) |Ereignisverarbeitung in Echtzeit |
-
 
 ### <a name="hdinsight-version"></a>HDInsight-Version
 Wählen Sie die Version von HDInsight für diesen Cluster aus. Weitere Informationen finden Sie unter [Unterstützte HDInsight-Versionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
@@ -111,7 +110,17 @@ Sie müssen den Clusterstandort nicht explizit angeben: Der Cluster befindet sic
 
 ## <a name="storage-endpoints-for-clusters"></a>Speicherendpunkte für Cluster
 
-Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (HDFS) für die Speicherung im Cluster verwendet, nutzen Sie in der Cloud Speicherendpunkte, die mit dem Cluster verbunden sind. HDInsight-Cluster verwenden entweder [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) oder [Blobs in Azure Storage](hdinsight-hadoop-use-blob-storage.md). Durch Verwendung von Azure Storage oder Data Lake Storage können Sie die für Berechnungen verwendeten HDInsight-Cluster sicher löschen und gleichzeitig Ihre Daten beibehalten. 
+Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (HDFS) für die Speicherung im Cluster verwendet, nutzen Sie in der Cloud Speicherendpunkte, die mit dem Cluster verbunden sind. Durch Verwendung von Cloudspeicher können Sie die für Berechnungen verwendeten HDInsight-Cluster sicher löschen und gleichzeitig Ihre Daten beibehalten. 
+
+HDInsight-Cluster können die folgenden Speicheroptionen verwenden:
+
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
+* Azure Storage vom Typ „Allgemein v2“
+* Azure Storage vom Typ „Allgemein v1“
+* Azure Storage-Blockblob (**nur als sekundärer Speicher unterstützt**)
+
+Weitere Informationen zu Speicheroptionen mit HDInsight finden Sie unter [Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern](hdinsight-hadoop-compare-storage-options.md).
 
 > [!WARNING]  
 > Die Verwendung eines zusätzlichen Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
@@ -122,9 +131,9 @@ Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blo
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-
 ### <a name="optional-metastores"></a>Optionale Metastores
-Sie können optionale Hive- oder Apache Oozie Metastores erstellen. Allerdings unterstützen nicht alle Clustertypen Metastores, und Azure SQL Data Warehouse ist nicht mit Metastores kompatibel. 
+
+Sie können optionale Hive- oder Apache Oozie Metastores erstellen. Allerdings unterstützen nicht alle Clustertypen Metastores, und Azure SQL Data Warehouse ist nicht mit Metastores kompatibel.
 
 Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeichern in Azure HDInsight](./hdinsight-use-external-metadata-stores.md).
 
@@ -139,11 +148,10 @@ Ein HDInsight-Metastore, der für eine HDInsight-Clusterversion erstellt wurde, 
 
 ### <a name="oozie-metastore"></a>Oozie-Metastore
 
-Verwenden Sie zur Erhöhung der Leistung bei Verwendung von Oozie einen benutzerdefinierten Metastore. Ein Metastore kann auch Zugriff auf Oozie-Auftragsdaten bieten, nachdem Sie Ihren Cluster gelöscht haben. 
+Verwenden Sie zur Erhöhung der Leistung bei Verwendung von Oozie einen benutzerdefinierten Metastore. Ein Metastore kann auch Zugriff auf Oozie-Auftragsdaten bieten, nachdem Sie Ihren Cluster gelöscht haben.
 
 > [!IMPORTANT]  
 > Ein benutzerdefinierter Oozie-Metastore kann nicht wiederverwendet werden. Wenn Sie einen benutzerdefinierten Oozie-Metastore verwenden möchten, müssen Sie beim Erstellen des HDInsight-Clusters eine leere Azure SQL-Datenbank bereitstellen.
-
 
 ## <a name="custom-cluster-setup"></a>Benutzerdefinierte Clustereinrichtung
 Die benutzerdefinierte Clustereinrichtung basiert auf den Einstellungen der Schnellerfassung mit den folgenden zusätzlichen Optionen:
@@ -152,14 +160,14 @@ Die benutzerdefinierte Clustereinrichtung basiert auf den Einstellungen der Schn
 - [Clustergröße](#configure-cluster-size)
 - [Skriptaktionen](#advanced-settings-script-actions)
 - [Virtuelles Netzwerk](#advanced-settings-extend-clusters-with-a-virtual-network)
- 
+
 ## <a name="enterprise-security-package"></a>Sicherheitspaket für Unternehmen
 
 Für Cluster der Typen Hadoop, Spark, HBase, Kafka und Interactive Query können Sie das **Enterprise-Sicherheitspaket** aktivieren. Dieses Paket bietet die Möglichkeit, mithilfe von Apache Ranger und der Integration in Azure Active Directory eine sicherere Clustereinrichtung zu erreichen. Weitere Informationen finden Sie unter [Übersicht über die Unternehmenssicherheit in Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
 
 ![HDInsight-Erstellungsoptionen – Sicherheitspaket für Unternehmen auswählen](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
-Weitere Informationen zum Erstellen eines in eine Domäne eingebundenen HDInsight-Clusters finden Sie unter [Erstellen einer in eine Domäne eingebundenen HDInsight-Sandboxumgebung](./domain-joined/apache-domain-joined-configure.md). 
+Weitere Informationen zum Erstellen eines in eine Domäne eingebundenen HDInsight-Clusters finden Sie unter [Erstellen einer in eine Domäne eingebundenen HDInsight-Sandboxumgebung](./domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>Installieren von HDInsight-Anwendungen in Clustern
 
@@ -172,38 +180,40 @@ Die meisten HDInsight-Anwendungen werden auf einem leeren Edgeknoten installiert
 Die Verwendung der Knoten wird so lange abgerechnet, wie der Cluster vorhanden ist. Die Abrechnung beginnt, sobald ein Cluster erstellt wurde, und sie endet, wenn der Cluster gelöscht wird. Bei Clustern ist kein Aufheben der Zuweisung oder ein Anhalten möglich.
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Anzahl der Knoten für jeden Clustertyp
+
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten, Terminologie für Knoten und eine VM-Standardgröße. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.
 
 | type | Nodes | Diagramm |
 | --- | --- | --- |
 | Hadoop |Hauptknoten (2), Workerknoten (1+) |![HDInsight-Hadoop-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |![HDInsight-HBase-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus-Knoten (2), Supervisor-Server (1+), Zookeeper-Knoten (3) |![HDInsight-Storm-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Hauptknoten (2), Workerknoten (1+), ZooKeeper-Knoten (3) (kostenlos für ZooKeeper-VMs der Größe A1) |![HDInsight-Spark-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |![HDInsight-HBase-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
+| Storm |Nimbus-Knoten (2), Supervisor-Server (1+), Zookeeper-Knoten (3) |![HDInsight-Storm-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Spark |Hauptknoten (2), Workerknoten (1+), ZooKeeper-Knoten (3) (kostenlos für ZooKeeper-VMs der Größe A1) |![HDInsight-Spark-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Weitere Informationen finden Sie unter [Standardknotenkonfiguration und VM-Größen für Cluster](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) in „Welche Hadoop-Komponenten und -Versionen gibt es in HDInsight?“.
 
-Die Kosten von HDInsight-Clustern ergeben sich aus der Anzahl der Knoten und aus der Größe der virtuellen Computer für die Knoten. 
+Die Kosten von HDInsight-Clustern ergeben sich aus der Anzahl der Knoten und aus der Größe der virtuellen Computer für die Knoten.
 
 Unterschiedliche Clustertypen weisen verschiedene Knotentypen, eine unterschiedliche Anzahl von Knoten sowie verschiedene Knotengrößen auf:
-* Hadoop-Standardclustertyp: 
+* Hadoop-Standardclustertyp:
     * Zwei *Hauptknoten*  
     * Vier *Workerknoten*
-* Storm-Standardclustertyp: 
+* Storm-Standardclustertyp:
     * Zwei *Nimbusknoten*
     * Drei *Zookeeper-Knoten*
-    * Vier *Supervisorknoten* 
+    * Vier *Supervisorknoten*
 
 Wenn Sie HDInsight gerade erst testen, empfehlen wir, nur einen Workerknoten zu verwenden. Weitere Informationen zu den Preisen von HDInsight finden Sie unter [HDInsight – Preise](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 > [!NOTE]  
 > Die Begrenzung der Clustergröße variiert je nach Azure-Abonnement. Wenden Sie sich an den [Azure-Abrechnungssupport](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request), um diese Begrenzung zu erhöhen.
 
-Wenn Sie das Azure-Portal zum Konfigurieren des Clusters verwenden, ist die Knotengröße über das Blatt **Knotentarife** verfügbar. Außerdem werden im Portal die Kosten angezeigt, die den unterschiedlichen Knotengrößen zugeordnet sind. 
+Wenn Sie das Azure-Portal zum Konfigurieren des Clusters verwenden, ist die Knotengröße über das Blatt **Knotentarife** verfügbar. Außerdem werden im Portal die Kosten angezeigt, die den unterschiedlichen Knotengrößen zugeordnet sind.
 
-![VM-Größen für HDInsight-Knoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-node-sizes.png)
+![HDInsight – Knotengröße auswählen](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-node-sizes.png)
 
 ### <a name="virtual-machine-sizes"></a>Größen virtueller Computer 
+
 Wählen Sie bei der Bereitstellung von Clustern die Computeressourcen basierend auf der Lösung aus, die Sie bereitstellen möchten. Für HDInsight-Cluster werden die folgenden virtuellen Computer verwendet:
 * VMs der Serien A und D1–4: [Größen universeller Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
 * VMs der Serien D11–14: [Größen speicheroptimierter Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
@@ -213,7 +223,7 @@ Wenn Sie wissen möchten, welchen Wert Sie beim Erstellen eines Clusters mithilf
 > [!IMPORTANT]  
 > Wenn Sie mehr als 32 Workerknoten in einem Cluster benötigen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
 
-Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../virtual-machines/windows/sizes.md). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).   
+Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../virtual-machines/windows/sizes.md). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).
 
 ## <a name="advanced-settings-script-actions"></a>Erweiterte Einstellungen: Skriptaktionen
 
@@ -247,12 +257,12 @@ Es kann vorkommen, dass Sie die folgenden Konfigurationsdateien während des Ers
 Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Erweiterte Einstellungen: Erweitern von Clustern mit einem virtuellen Netzwerk
+
 Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network) miteinander verbinden. Durch diese Konfiguration können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
 
 Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks mit HDInsight finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure-Netzwerk finden Sie unter [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077958"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219997"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Verschieben eines virtuellen Azure-Netzwerks in eine andere Region im Azure-Portal
 
@@ -27,7 +27,7 @@ Sie können zum Verschieben des virtuellen Netzwerks in eine andere Region eine 
 - Damit Sie ein virtuelles Netzwerk exportieren und eine Vorlage bereitstellen können, um ein virtuelles Netzwerk in einer anderen Region zu erstellen, benötigen Sie mindestens die Rolle „Netzwerkmitwirkender“.
 
 - Peerings virtueller Netzwerke werden nicht neu erstellt und schlagen fehl, wenn sie noch in der Vorlage vorhanden sind.  Sie müssen alle Peers virtueller Netzwerke vor dem Export der Vorlage entfernen und Peers nach dem Verschieben des virtuellen Netzwerks erneut einrichten.
-    
+
 - Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout schließt u. a. Load Balancers, Netzwerksicherheitsgruppen (NSGs) und öffentliche IP-Adressen ein.
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement virtuelle Netzwerke in der gewählten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
@@ -40,13 +40,13 @@ In den folgenden Schritten wird gezeigt, wie Sie das virtuelle Netzwerk auf das 
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Exportieren der Vorlage und Bereitstellen im Portal
 
-1. Melden Sie sich bei [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+1. Melden Sie sich bei [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
 2. Wechseln Sie zur Ressourcengruppe, die das virtuelle Netzwerk enthält, und klicken Sie darauf.
 3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
 4. Wählen Sie auf dem Blatt **Vorlage exportieren** die Option **Bereitstellen**.
 5. Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
 6. Um den Parameter für den Namen des virtuellen Netzwerks zu bearbeiten, ändern Sie unter **parameters** die Eigenschaft **value**:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ In den folgenden Schritten wird gezeigt, wie Sie das virtuelle Netzwerk auf das 
 
 8.  Klicken Sie im Editor auf **Speichern**.
 
-9.  Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen. 
+9.  Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
 
 10. Zum Bearbeiten der Zielregion, in die das VNet verschoben wird, ändern Sie unter **resources** die Eigenschaft **location**:
 
@@ -83,11 +83,11 @@ In den folgenden Schritten wird gezeigt, wie Sie das virtuelle Netzwerk auf das 
                         },
 
     ```
- 
-11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **Central US** = **centralus**.
- 
+
+11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
+
 12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
-    
+
     * **Adressraum**: Der Adressraum des VNet kann vor dem Speichern geändert werden, indem der Abschnitt **resources** > **addressSpace** und die Eigenschaft **addressPrefixes** in der Datei **template.json** geändert werden:
 
         ```json
@@ -179,7 +179,7 @@ In den folgenden Schritten wird gezeigt, wie Sie das virtuelle Netzwerk auf das 
 
 14. Klicken Sie auf **GRUNDLAGEN** > **Abonnement**,um das Abonnement auszuwählen, in dem das Ziel-VNet bereitgestellt wird.
 
-15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der das Ziel-VNet bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für das Ziel-VNET zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen VNet übereinstimmt. 
+15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der das Ziel-VNet bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für das Ziel-VNET zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen VNet übereinstimmt.
 
 16. Stellen Sie sicher, dass **GRUNDLAGEN** > **Standort** auf den Zielstandort festgelegt ist, an dem das VNet bereitgestellt werden soll.
 
@@ -189,7 +189,7 @@ In den folgenden Schritten wird gezeigt, wie Sie das virtuelle Netzwerk auf das 
 
 19. Klicken Sie auf die Schaltfläche **Kaufen**, um das virtuelle Zielnetzwerk bereitzustellen.
 
-## <a name="discard"></a>Verwerfen 
+## <a name="discard"></a>Verwerfen
 
 Wenn Sie das virtuelle Netzwerk des Ziels verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Netzwerk des Ziels enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 

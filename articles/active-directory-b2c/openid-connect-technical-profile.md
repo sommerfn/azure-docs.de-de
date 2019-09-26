@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716713"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063944"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C unterstützt den Identitätsanbieter für das [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar. Mit einem technischen OpenID Connect-Profil können Sie einen Verbund mit einem OpenID Connect-basierten Identitätsanbieter wie Azure AD erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
+Azure Active Directory B2C (Azure AD B2C) unterstützt den Identitätsanbieter für das [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar. Mit einem technischen OpenID Connect-Profil können Sie einen Verbund mit einem OpenID Connect-basierten Identitätsanbieter wie Azure AD erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
 ## <a name="protocol"></a>Protocol
 
@@ -73,7 +73,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ## <a name="metadata"></a>Metadaten
 
-| Attribut | Erforderlich | Beschreibung |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob das Token in einem Anspruch, der vom Identitätsanbieter zurückgegeben wurde, enthalten und mit dem angegebenen Token identisch ist. |
@@ -92,7 +92,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | Beschreibung |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |
 

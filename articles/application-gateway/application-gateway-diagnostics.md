@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306187"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057897"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -309,6 +309,8 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |details.data     | Spezifische Daten in der Anforderung, die eine Übereinstimmung mit der Regel ergeben         |
 |details.file     | Konfigurationsdatei, die die Regel enthalten hat        |
 |details.line     | Nummer der Zeile in der Konfigurationsdatei, die das Ereignis ausgelöst hat       |
+|hostname   | Hostname oder IP-Adresse für Application Gateway.    |
+|transactionId  | Eindeutige ID für eine bestimmte Transaktion, die Sie beim Gruppieren mehrerer Regelverstöße innerhalb derselben Anforderung unterstützt.   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

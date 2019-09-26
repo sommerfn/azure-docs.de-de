@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932106"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105184"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurieren von Containern für den Speech-Dienst
 
@@ -94,8 +94,10 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
-|{API_KEY} | Der API-Schlüssel der Speech-Ressource. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Der Endpunktwert, einschließlich der Region.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| **{API_KEY}** | Der Endpunktschlüssel der `Speech`-Ressource auf der Azure `Speech`-Schlüsselseite. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Speech`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing-configuration-setting).

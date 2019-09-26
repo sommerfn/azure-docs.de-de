@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 78b74c1db5f331e7b74a730148d52b1ff7694ec0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813589"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71058996"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie Daten nach und aus Azure SQL Data Wa
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Dieser Azure-BLOB-Connector wird für die folgenden Aktivitäten unterstützt:
+Dieser Connector für Microsoft Azure SQL Data Warehouse wird für die folgenden Aktivitäten unterstützt:
 
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)-Tabelle
 - [Mapping Data Flow](concepts-data-flow-overview.md)
@@ -445,6 +445,9 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 
 3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` in der Kopieraktivität auf „true“ festgelegt werden.
 
+>[!NOTE]
+>Wenn es sich bei der Quelle um einen Ordner handelt, beachten Sie, dass PolyBase Dateien aus dem Ordner und seinen Unterordnern und keine Daten aus Dateien abruft, bei denen der Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt, wie [hier dokumentiert – LOCATION-Argument](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
+
 ```json
 "activities":[
     {
@@ -625,6 +628,14 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
+
+## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>Eigenschaften der GetMetadata-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [GetMetadata-Aktivität](control-flow-get-metadata-activity.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und -formate](copy-activity-overview.md##supported-data-stores-and-formats).

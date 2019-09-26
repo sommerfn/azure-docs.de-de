@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844262"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932666"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -141,3 +141,9 @@ Verwenden Sie in diesem Fall die folgenden Problemumgehungen:
 1. Verwenden Sie einen vorhandenen Dienstprinzipal, der bereits über Regionen weitergegeben wurde und zum Zeitpunkt der Clustererstellung für die Übergabe an AKS vorhanden ist.
 2. Bei Verwendung von Automatisierungsskripts fügen Sie Zeitverzögerungen zwischen der Erstellung des Dienstprinzipals und der Erstellung des AKS-Clusters ein.
 3. Wenn Sie das Azure-Portal verwenden, kehren Sie während der Erstellung zu den Clustereinstellungen zurück, und wiederholen Sie die Überprüfung nach einigen Minuten.
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Ich erhalte Fehler, nachdem mein ausgehender Datenverkehr eingeschränkt wurde.
+
+Wenn Sie von einem AKS-Cluster ausgehenden Datenverkehr einschränken, gibt es für AKS [erforderliche und optionale empfohlene](limit-egress-traffic.md) Regeln für ausgehende Ports/das Netzwerk sowie für den FQDN/die Anwendung. Wenn Ihre Einstellungen mit einer dieser Regeln in Konflikt stehen, können Sie bestimmte `kubectl`-Befehle möglicherweise nicht ausführen. Beim Erstellen eines AKS-Clusters werden eventuell auch Fehler angezeigt.
+
+Stellen Sie sicher, dass Ihre Einstellungen nicht mit den erforderlichen oder optionalen empfohlenen Regeln für ausgehende Ports/das Netzwerk sowie für den FQDN/die Anwendung in Konflikt stehen.

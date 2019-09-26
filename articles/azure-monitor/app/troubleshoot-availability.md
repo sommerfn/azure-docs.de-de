@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 87bc87d7d105d581f0143e87044fb0337c0fd7f6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304754"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067071"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -101,7 +101,7 @@ Die beiden Begriffe sind austauschbar. „Verfügbarkeitstests“ ist ein allgem
    Es gibt zwei mögliche Lösungen:
 
    * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](../../azure-monitor/app/ip-addresses.md) zugelassen werden.
-   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden nicht auf den Blättern der Verfügbarkeitswebtests angezeigt, sondern als Verfügbarkeitsergebnisse in Analytics, Search und Metrik-Explorer.
+   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests angezeigt. Die Funktionalität ist jedoch leicht vereinfacht gegenüber den Funktionen, die für über das Portal erstellte Tests zur Verfügung stehen. Benutzerdefinierte Verfügbarkeitstests werden auch als Verfügbarkeitsergebnisse in Analysen, Suchen und Metriken angezeigt.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Fehler beim Hochladen eines mehrstufigen Webtests
 

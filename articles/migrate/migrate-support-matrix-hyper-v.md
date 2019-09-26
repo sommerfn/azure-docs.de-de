@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376091"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066778"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
 
@@ -27,9 +27,9 @@ Die Tabelle fasst die unterstützten Szenarien für Hyper-V-VMs zusammen.
 **Bereitstellung** | **Details***
 --- | ---
 **Bewertung lokaler Hyper-V-VMs** | [Einrichten](tutorial-prepare-hyper-v.md) Ihrer ersten Bewertung<br/><br/> [Ausführen](scale-hyper-v-assessment.md) einer umfangreichen Bewertung
-**Migrieren von virtuellen Hyper-V-Computern zu Azure** | [Testen ](tutorial-migrate-hyper-v.md) der Migration zu Azure 
+**Migrieren von virtuellen Hyper-V-Computern zu Azure** | [Testen ](tutorial-migrate-hyper-v.md) der Migration zu Azure
 
-Die Migration von Hyper-V-Servern, die mit System Center Virtual Machine Manager (VMM) verwaltet werden, wird von der Azure Migrate-Servermigration nicht unterstützt. 
+Die Migration von Hyper-V-Servern, die mit System Center Virtual Machine Manager (VMM) verwaltet werden, wird von der Azure Migrate-Servermigration nicht unterstützt.
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate-Projekte
 
@@ -44,10 +44,13 @@ Gebiet | Sie können Azure Migrate-Projekte in verschiedenen geografischen Regio
   Azure Government | US Government, Virginia
   Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
   Australien | „Australien, Osten“ oder „Australien, Südosten“
+  Brasilien | Brasilien Süd
   Kanada | „Kanada, Mitte“ oder „Kanada, Osten“
   Europa | „Europa, Norden“ oder „Europa, Westen“
+  Frankreich | Frankreich, Mitte
   Indien | „Indien, Mitte“ oder „Indien, Süden“
   Japan |  „Japan, Osten“ oder „Japan, Westen“
+  Korea | „Südkorea, Mitte“ oder „Südkorea, Süden“
   Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
   USA | „USA, Mitte“ oder „USA, Westen 2“
 

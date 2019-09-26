@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036331"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212011"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -215,6 +215,7 @@ Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In ein
 |East US        |LRS     |Nein    |Noch nicht|
 |Frankreich, Mitte |LRS, ZRS|Nein    |LRS – Ja, ZRS – Noch nicht|
 |Frankreich, Süden   |LRS     |Nein    |Ja|
+|Nordeuropa   |LRS     |Nein    |Noch nicht|
 |Indien (Süden)    |LRS     |Nein    |Noch nicht|
 |Asien, Südosten |LRS, ZRS|Nein    |Ja|
 |USA, Westen-Mitte|LRS     |Nein    |Noch nicht|

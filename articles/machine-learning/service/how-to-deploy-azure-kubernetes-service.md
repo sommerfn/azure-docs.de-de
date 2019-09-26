@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Modellen in Azure Kubernetes Service
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie Ihre Azure Machine Learning Service-Modelle mithilfe von Azure Kubernetes Service als Webdienst bereitstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe von Azure Kubernetes Service als Webdienst bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858732"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034629"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
-Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning Service als Webdienst in Azure Kubernetes Service (AKS) bereitstellen. Azure Kubernetes Service ist gut für umfangreiche Produktionsbereitstellungen geeignet. Verwenden Sie Azure Kubernetes Service, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
+Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Kubernetes Service (AKS) bereitstellen. Azure Kubernetes Service ist gut für umfangreiche Produktionsbereitstellungen geeignet. Verwenden Sie Azure Kubernetes Service, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
 
 - __Schnelle Antwortzeiten__
 - __Autoskalierung__ des bereitgestellten Diensts
@@ -30,15 +30,15 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning Service als Webdiens
 
 Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Es gibt zwei Möglichkeiten, einen AKS-Cluster mit Ihrem Arbeitsbereich zu verbinden:
 
-* Erstellen Sie den AKS-Cluster über das Azure Machine Learning Service SDK, die Machine Learning-CLI, das [Azure-Portal](https://portal.azure.com) oder die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Bei diesem Vorgang wird der Cluster mit dem Arbeitsbereich verbunden.
-* Fügen Sie einen vorhandenen AKS-Cluster an Ihren Azure Machine Learning Service-Arbeitsbereich an. Ein Cluster kann mit dem Azure Machine Learning Service SDK, der Machine Learning-CLI oder dem Azure-Portal angefügt werden.
+* Erstellen Sie den AKS-Cluster über das Azure Machine Learning SDK, die Machine Learning-CLI, das [Azure-Portal](https://portal.azure.com) oder die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Bei diesem Vorgang wird der Cluster mit dem Arbeitsbereich verbunden.
+* Fügen Sie einen vorhandenen AKS-Cluster an Ihren Azure Machine Learning-Arbeitsbereich an. Ein Cluster kann mit dem Azure Machine Learning SDK, der Machine Learning-CLI oder dem Azure-Portal angefügt werden.
 
 > [!IMPORTANT]
 > Die Erstellung bzw. der Anfügevorgang muss nur einmal durchgeführt werden. Nachdem ein AKS-Cluster mit dem Arbeitsbereich verbunden wurde, können sie ihn für Bereitstellungen einsetzen. Wenn Sie den AKS-Cluster nicht mehr benötigen, können Sie ihn trennen oder löschen. Nach dem Trennen oder Löschen ist eine Bereitstellung im Cluster nicht mehr möglich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md).
+- Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 - Ein Machine Learning-Modell, das in Ihrem Arbeitsbereich registriert ist. Wenn Sie über kein registriertes Modell verfügen, finden Sie hier weitere Informationen: [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [az ml computetarget create ask](https://
 Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser die Version 1.12.* hat, können Sie diesen für die Bereitstellung Ihres Image verwenden.
 
 > [!TIP]
-> Der vorhandenen AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning Service-Arbeitsbereich.
+> Der vorhandenen AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning-Arbeitsbereich.
 >
 > Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
 

@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von ML-Modellen in Azure App Service (Vorschauversion)
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning Service ein Modell in einer Web-App in Azure App Service bereitstellen.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning ein Modell in einer Web-App in Azure App Service bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147903"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034599"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
-Hier erfahren Sie, wie Sie ein Modell in Azure Machine Learning Service als Web-App in Azure App Service bereitstellen.
+Hier erfahren Sie, wie Sie ein Modell in Azure Machine Learning als Web-App in Azure App Service bereitstellen.
 
 > [!IMPORTANT]
-> Azure Machine Learning Service und Azure App Service sind zwar allgemein verfügbar, die Funktion zum Bereitstellen eines Modells über Machine Learning Service in App Service befindet sich jedoch in der Vorschauphase.
+> Azure Machine Learning und Azure App Service sind zwar allgemein verfügbar, die Funktion zum Bereitstellen eines Modells über Machine Learning in App Service befindet sich jedoch in der Vorschauphase.
 
-Mit Azure Machine Learning Service können Sie Docker-Images auf der Grundlage trainierter Machine Learning-Modelle erstellen. Dieses Image enthält einen Webdienst, der Daten empfängt und an das Modell übermittelt und anschließend die Antwort zurückgibt. Azure App Service kann zum Bereitstellen des Images verwendet werden und bietet die folgenden Features:
+Mit Azure Machine Learning können Sie Docker-Images auf der Grundlage trainierter Machine Learning-Modelle erstellen. Dieses Image enthält einen Webdienst, der Daten empfängt und an das Modell übermittelt und anschließend die Antwort zurückgibt. Azure App Service kann zum Bereitstellen des Images verwendet werden und bietet die folgenden Features:
 
 * Erweiterte [Authentifizierung](/azure/app-service/configure-authentication-provider-aad) für höhere Sicherheit. Zu den Authentifizierungsmethoden zählen Azure Active Directory und mehrstufige Authentifizierung.
 * [Autoskalierung](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) ohne erneute Bereitstellung
@@ -37,7 +37,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Ein in Ihrem Arbeitsbereich registriertes trainiertes Machine Learning-Modell. Falls Sie kein Modell besitzen, können Sie anhand der Informationen unter [Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning](tutorial-train-models-with-aml.md) ein Modell trainieren und registrieren.
 
@@ -48,7 +48,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
     > * `model`: das registrierte Modell, das bereitgestellt wird
     > * `inference_config`: die Rückschlusskonfiguration für das Modell
     >
-    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
@@ -66,7 +66,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     >
     > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
 
-    Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+    Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 * **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 
@@ -87,9 +87,9 @@ Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die R�
 > myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 > ```
 
-Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwalten von Umgebungen zum Training und zur Bereitstellung](how-to-use-environments.md).
+Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Bei der Bereitstellung in Azure App Service müssen Sie keine __Bereitstellungskonfiguration__ erstellen.
@@ -99,7 +99,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
-> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
+> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     In diesem Beispiel wird der __Basic__-Tarif (`--sku B1`) verwendet.
 
     > [!IMPORTANT]
-    > Die von Azure Machine Learning Service erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.
+    > Die von Azure Machine Learning erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.
 
 1. Verwenden Sie den folgenden Befehl, um die neue Web-App zu erstellen. Ersetzen Sie `<app-name>` durch den Namen, den Sie verwenden möchten. Ersetzen Sie `<acrinstance>` und `<imagename>` durch die zuvor von `package.location` zurückgegebenen Werte:
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 04d81f8e16a3f34f7abf15c9606833002fafb39c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034531"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260745"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 
@@ -58,7 +58,7 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
     Wenn Sie Images verwenden, die in der __Container-Registrierung für den Arbeitsbereich__ gespeichert sind, müssen Sie sich nicht bei der Registrierung authentifizieren. Authentifizierung erfolgt über den Arbeitsbereich.
 
     > [!WARNING]
-    > Die Azure Container Registry für Ihren Arbeitsbereich wird __erstellt, wenn Sie zum ersten Mal ein Modell__ über den Arbeitsbereich trainieren oder bereitstellen. Wenn Sie einen neuen Arbeitsbereich, aber kein Training oder Modell erstellt haben, existiert für den Arbeitsbereich keine Azure Container Registry.
+    > Die Azure Container Registry für Ihren Arbeitsbereich wird __erstellt, wenn Sie ein Modell zum ersten Mal über den Arbeitsbereich trainieren oder bereitstellen__. Wenn Sie einen neuen Arbeitsbereich, aber kein Training oder Modell erstellt haben, existiert für den Arbeitsbereich keine Azure Container Registry.
 
     Informationen zum Abrufen des Namens der Azure Container Registry für Ihren Arbeitsbereich finden Sie im Abschnitt [Abrufen von Informationen aus der Container Registry](#getname) in diesem Artikel.
 
@@ -223,9 +223,9 @@ Um ein Image aus einer __privaten Containerregistrierung__ zu nutzen, die sich n
 
 ```python
 # Set the container registry information
-myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
-myenv.docker.base_image_repository.username = "username"
-myenv.docker.base_image_repository.password = "password"
+myenv.docker.base_image_registry.address = "myregistry.azurecr.io"
+myenv.docker.base_image_registry.username = "username"
+myenv.docker.base_image_registry.password = "password"
 ```
 
 Verwenden Sie die Umgebung nach dem Definieren mit einem [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)-Objekt, um die Rückschlussumgebung festzulegen, in der das Modell und der Webdienst ausgeführt werden.

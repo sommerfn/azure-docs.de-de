@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 462a14d7845c6723a3482e50b01c50e3d913beee
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129058"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71072082"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 ## <a name="summary"></a>Zusammenfassung
 Azure-Kunden können Supportanfragen im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) erstellen und verwalten.
 
 > [!NOTE]
-> Das Azure-Portal für Deutschland befindet sich unter [https://portal.microsoftazure.de](https://portal.microsoftazure.de) .  
-> Das Azure-Portal für die US-Regierung befindet sich unter [https://portal.azure.us](https://portal.azure.us).
+> Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com). Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de) .  
+> Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
 
 
 Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfragen aktualisiert, um drei Hauptziele zu erreichen:

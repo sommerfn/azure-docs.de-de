@@ -1,20 +1,20 @@
 ---
 title: Hochverfügbarkeit für Hadoop – Azure HDInsight
 description: Erfahren Sie, wie HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879763"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104424"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -106,7 +106,7 @@ Die Ambari-Webbenutzeroberfläche kann unter `https://CLUSTERNAME.azurehdinsight
 
 Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgelistet.
 
-![Installierte Dienste](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Apache Ambari – Installierte Dienste](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnungen in Zusammenhang mit einem Dienst können über den Link **Warnungen** oben auf der Seite angezeigt werden.  In Ambari stehen mehrere vordefinierte Warnungen zur Verfügung.
 
@@ -155,11 +155,11 @@ Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
 
 Auf der Dienstseite werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
 
-![Liste der Hosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Apache Ambari – Liste der Hauptknotenhosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Wenn Sie auf den Link für einen der Hauptknoten klicken, werden die auf diesem Knoten ausgeführten Dienste und Komponenten angezeigt.
 
-![Komponentenstatus](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Apache Ambari – Komponentenstatus](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716691"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063811"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das **RelyingParty**-Element legt die User Journey fest, die für die aktuelle Anforderung an Azure Active Directory (Azure AD) B2C erzwungen werden soll. Es legt außerdem die Liste von Ansprüchen fest, die die Anwendung der vertrauenden Seite als Teil des ausgestellten Tokens benötigt. Eine Anwendung der vertrauenden Seite, z.B. eine Web-, mobile oder Desktopanwendung, ruft die Richtliniendatei der vertrauenden Seite auf. Die Richtliniendatei der vertrauenden Seite führt eine bestimmte Aufgabe aus, z.B. eine Anmeldung, das Zurücksetzen eines Kennworts oder eine Profilbearbeitung. Mehrere Anwendungen können die gleiche Anwendung der vertrauenden Seite verwenden, und eine einzelne Anwendung kann mehrere Richtlinien verwenden. Alle Anwendungen der vertrauenden Seite erhalten das gleiche Token mit Ansprüchen, und der Benutzer durchläuft die gleiche User Journey.
+Das **RelyingParty**-Element legt die User Journey fest, die für die aktuelle Anforderung an Azure Active Directory B2C (Azure AD B2C) erzwungen werden soll. Es legt außerdem die Liste von Ansprüchen fest, die die Anwendung der vertrauenden Seite als Teil des ausgestellten Tokens benötigt. Eine Anwendung der vertrauenden Seite, z.B. eine Web-, mobile oder Desktopanwendung, ruft die Richtliniendatei der vertrauenden Seite auf. Die Richtliniendatei der vertrauenden Seite führt eine bestimmte Aufgabe aus, z.B. eine Anmeldung, das Zurücksetzen eines Kennworts oder eine Profilbearbeitung. Mehrere Anwendungen können die gleiche Anwendung der vertrauenden Seite verwenden, und eine einzelne Anwendung kann mehrere Richtlinien verwenden. Alle Anwendungen der vertrauenden Seite erhalten das gleiche Token mit Ansprüchen, und der Benutzer durchläuft die gleiche User Journey.
 
 Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei *B2C_1A_signup_signin* gezeigt:
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742318"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934831"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
@@ -72,7 +72,7 @@ Sobald die Datenbankebene in der Azure-Zielregion ausgeführt wird, stellen Sie 
 Die folgenden Beispiele helfen Ihnen, zu verstehen, wie Sie Anwendungen unter Konnektivitätsaspekten entwickeln können:
 
 * [Entwickeln Sie eine Anwendung für die Cloud-Notfallwiederherstellung](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [Notfallwiederherstellungsstrategien für elastische Pools](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [Notfallwiederherstellungsstrategien für Pool für elastische Datenbanken](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Schritt 3: Interoperabilität mit Always On, aktive Georeplikation und Gruppen für automatisches Failover
 
@@ -111,7 +111,7 @@ Einige BCDR-Technologien wie SQL Always On unterstützten Testfailover nicht nat
 
     ![Screenshot des Fensters mit der Bezeichnung „Content_AG“, das Servernamen und Status anzeigt](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Einrichten eines Load Balancers Erstellen Sie für jeden Verfügbarkeitsgruppenlistener eine IP-Adresse aus dem Front-End-IP-Pool. Fügen Sie auch die SQL Server-VM dem Back-End-Pool hinzu.
+1. Stellen Sie sicher, dass der Lastenausgleich im Failovernetzwerk über eine IP-Adresse aus dem Front-End-IP-Adresspool verfügt, der jedem Verfügbarkeitsgruppenlistener und dem virtuellen SQL Server-Computer im Back-End-Pool entspricht.
 
      ![Screenshot des Fensters mit dem Titel „SQL-AlwaysOn-LB – Frontend-IP-Pool“](./media/site-recovery-sql/create-load-balancer1.png)
 
@@ -135,7 +135,7 @@ Bei einem Cluster mit SQL Server Standard Edition oder SQL Server 2008 R2 empfie
 
 Site Recovery unterstützt bei der Replikation in einer Azure-Region keine Gastcluster. Für die SQL Server Standard Edition steht zudem keine kostengünstige Notfallwiederherstellungslösung zur Verfügung. In diesem Szenario empfiehlt es sich, den SQL Server-Cluster mit einer eigenständigen SQL Server-Instanz am primären Standort zu schützen und die Wiederherstellung am sekundären Standort vorzunehmen.
 
-1. Konfigurieren Sie eine zusätzliche eigenständige SQL Server-Instanz in der primären Azure-Region oder an einem lokalen Standort.
+1. Konfigurieren Sie eine zusätzliche eigenständige SQL Server-Instanz in der primären Azure-Region oder an einem lokalen Standort.
 
 1. Konfigurieren Sie diese Instanz so, dass sie als Spiegelung für die zu schützenden Datenbanken fungiert. Konfigurieren Sie die Spiegelung im Modus für hohe Sicherheit.
 

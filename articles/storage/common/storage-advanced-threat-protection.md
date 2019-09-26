@@ -1,46 +1,44 @@
 ---
 title: Advanced Threat Protection für Azure Storage
-description: Es wird beschrieben, wie Sie die Advanced Threat Protection von Azure Storage zum Erkennen von Anomalien in Bezug auf die Kontoaktivität erkennen und Benachrichtigungen über potenziell schädliche Zugriffsversuche auf Ihr Konto erhalten.
+description: Konfigurieren Sie Advanced Threat Protection für Azure Storage, um Anomalien in Bezug auf die Kontoaktivität zu erkennen und Benachrichtigungen über potenziell schädliche Zugriffsversuche auf Ihr Konto zu erhalten.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 21204a7a2fb5a6907a8af9cb91fe8b018f7a4714
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051490"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076481"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
-Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne dass Sie ein Sicherheitsexperte sein oder Systeme für die Überwachung der Sicherheit verwalten müssen. 
+Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne ein Sicherheitsexperte zu sein oder Systeme für die Überwachung der Sicherheit verwalten zu müssen.
 
-Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.  Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
+Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
 > [!NOTE]
-> * Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar.
-> * Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
-> * ATP für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
+> Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar. Es ist nicht in Azure Government- und Sovereign Cloud-Regionen verfügbar. Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
 
-Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von an Blob Storage gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter [Konfigurieren der Protokollierung](storage-monitor-storage-account.md#configure-logging).
+Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von an Blob Storage gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection 
+## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection
 
-### <a name="using-the-portal"></a>Verwenden des Portals
+Advanced Threat Protection ist für Ihr Speicherkonto standardmäßig aktiviert. Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die in den folgenden Abschnitten beschrieben werden.
 
-1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com/).
+### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-2. Navigieren Sie zur Konfigurationsseite des Azure Storage-Kontos, das Sie schützen möchten. Wählen Sie auf der Seite **Einstellungen** die Option **Advanced Threat Protection**.
+1. Starten Sie das [Azure-Portal](https://portal.azure.com/).
+1. Navigieren Sie zu Ihrem Azure Storage-Konto. Wählen Sie unter **Einstellungen** die Option **Erweiterte Sicherheit** aus.
+1. Wählen Sie den Link **Einstellungen** auf der Seite für die Konfiguration der erweiterten Sicherheit aus.
+1. Legen Sie für **Erweiterte Sicherheit** den Wert **EIN** fest.
+1. Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie zu speichern.
 
-3. Gehen Sie auf dem Konfigurationsblatt **Advanced Threat Protection** wie folgt vor:
-    * Legen Sie *Advanced Threat Protection* auf **EIN** fest.
-    * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern. (Die Preise in der Abbildung dienen nur als Beispiel.)
-
-![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+    ![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Verwenden von Azure Security Center
 
@@ -60,9 +58,9 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced T
 
 ### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
-Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Advanced Threat Protection aktiviert ist, eine Azure Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Storage account with Advanced Threat Protection (Storage-Konto mit Advanced Threat Protection)](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Advanced Threat Protection aktiviert ist, eine Azure Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Storage-Konto mit Advanced Threat Protection](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="using-azure-policy"></a>Verwenden von Azure Policy
+### <a name="using-an-azure-policy"></a>Verwenden von Azure Policy
 
 Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Protection für Speicherkonten unter einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe.
 
@@ -71,7 +69,7 @@ Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Prote
 1. Suchen Sie nach der Richtlinie **Advanced Threat Protection für Speicherkonten bereitstellen**.
 
      ![Richtlinie suchen](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
-  
+
 1. Wählen Sie ein Azure-Abonnement oder eine Ressourcengruppe aus.
 
     ![Wählen Sie „Abonnement“ oder „Gruppe“ aus.](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
@@ -80,7 +78,8 @@ Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Prote
 
     ![Seite „Richtliniendefinitionen“](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-rest-api"></a>Verwenden der REST-API
+### <a name="using-the-rest-api"></a>Verwenden der REST-API
+
 Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Speicherkonto zu erstellen, zu aktualisieren oder abzurufen.
 
 * [Advanced Threat Protection – Create (Erstellen)](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
@@ -90,9 +89,9 @@ Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung f�
 
 Verwenden Sie die folgenden PowerShell-Cmdlets:
 
-  * [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+* [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ## <a name="explore-security-anomalies"></a>Untersuchen von sicherheitsrelevanten Anomalien
 
@@ -102,10 +101,9 @@ Wenn für die Speicheraktivität Anomalien auftreten, erhalten Sie eine E-Mail-B
 * Speicherkontoname
 * Ereigniszeit
 * Speichertyp
-* Mögliche Ursachen 
+* Mögliche Ursachen
 * Untersuchungsschritte
 * Schritte zur Bereinigung
-
 
 Die E-Mail enthält auch Details zu möglichen Ursachen und empfohlenen Aktionen zur Untersuchung und Eindämmung der potenziellen Bedrohung.
 
@@ -117,10 +115,9 @@ Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über d
 
 ## <a name="protection-alerts"></a>Protection-Warnungen
 
-Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Speicherkonten generiert. Eine Liste dieser Warnungen finden Sie unter [Azure Storage-Warnungen](../../security-center/security-center-alerts-data-services.md#azure-storage).
+Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Speicherkonten generiert. Eine Liste der Warnungen für Azure Storage finden Sie im Abschnitt **Speicher** in [Bedrohungserkennung für Datendienste in Azure Security Center-Warnungen](../../security-center/security-center-alerts-data-services.md#azure-storage).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu [Protokollen in Azure Storage-Konten](/rest/api/storageservices/About-Storage-Analytics-Logging)
-
 * Weitere Informationen zu [Azure Security Center](../../security-center/security-center-intro.md)

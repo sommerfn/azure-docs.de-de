@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff70b2f54304c83f70ff578e1947d752aafb34a7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510750"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064161"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel werden Beispiele für die Verwendung von Transformationen von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion in Azure Active Directory B2C veranschaulicht. Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
+In diesem Artikel werden Beispiele für die Verwendung von Transformationen von JSON-Ansprüchen für das Identity Experience Framework-Schema in Azure Active Directory B2C (Azure AD B2C) veranschaulicht. Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
@@ -55,7 +55,7 @@ Im folgenden Beispiel hat die Anspruchstransformation das `emailAddress`-Element
   - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
 - Eingabeparameter:
     - **claimToExtract**: emailAddress
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
   - **extractedClaim**: someone@example.com
 
 
@@ -97,7 +97,7 @@ In diesem Beispiel extrahiert die Anspruchstransformation die folgenden Ansprüc
     <OutputClaim ClaimTypeReferenceId="birthdate" />
   </OutputClaims>
 </ClaimsTransformation>
-```    
+```
 
 - Eingabeansprüche:
   - **jsonSourceClaim**: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
@@ -121,14 +121,14 @@ Abrufen eines angegebenen numerisches JSON-Datenelements (long)
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um den Anspruch abzurufen. |
 | InputParameter | claimToExtract | Zeichenfolge | Der Name des JSON-Elements, das extrahiert werden soll |
-| OutputClaim | extractedClaim | lang | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
+| OutputClaim | extractedClaim | long | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
 
 Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus dem JSON-Datenelement.
 
 ```JSON
 {
-    "emailAddress": "someone@example.com", 
-    "displayName": "Someone", 
+    "emailAddress": "someone@example.com",
+    "displayName": "Someone",
     "id" : 6353399
 }
 ```
@@ -153,7 +153,7 @@ Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus
   - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
 - Eingabeparameter
     - **claimToExtract**:  id
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
     - **extractedClaim**: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
@@ -182,7 +182,7 @@ Im folgenden Beispiel extrahiert die Anspruchstransformation das erste Element (
 
 - Eingabeansprüche:
   - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
   - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString

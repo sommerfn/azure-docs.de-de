@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 09/03/2019
 ms.author: mimart
-ms.reviewer: asteen
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80539181e6614283b6170b9cd9d4db85f812a5f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0562027bb599b596b640e0c1a669447e3fed9680
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879889"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034177"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt
 Nachdem die automatische Bereitstellung für eine Anwendung konfiguriert wurde (einschließlich der Überprüfung, ob die Anmeldeinformationen für die App gültig sind, die Azure AD bereitgestellt wurden, um die Verbindung mit der Anwendung herzustellen), werden Benutzer bzw. Gruppen für die App bereitgestellt. Die Bereitstellung wird durch die folgenden Faktoren bestimmt:
@@ -30,29 +30,29 @@ Nachdem die automatische Bereitstellung für eine Anwendung konfiguriert wurde (
 -   Ob **Attributzuordnungen** aktiviert und so konfiguriert sind, dass gültige Attribute von Azure AD mit der App synchronisiert werden. Weitere Informationen zu Attributzuordnungen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
 -   Ob ein **Bereichsfilter** vorhanden ist, der Benutzer auf Basis bestimmter Attributwerte filtert. Weitere Informationen zu Bereichsfiltern finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](define-conditional-rules-for-provisioning-user-accounts.md).
   
-Falls Sie bemerken, dass Benutzer nicht bereitgestellt werden, können Sie in den Überwachungsprotokollen in Azure AD nachsehen. Suchen Sie nach Protokolleinträgen für einen bestimmten Benutzer.
+Falls Sie bemerken, dass Benutzer nicht bereitgestellt werden, können Sie in den [Bereitstellungsprotokollen (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) in Azure AD nachsehen. Suchen Sie nach Protokolleinträgen für einen bestimmten Benutzer.
 
-Sie können auf die Überwachungsprotokolle für die Bereitstellung im Azure-Portal auf der Registerkarte **Azure Active Directory &gt; Unternehmens-Apps &gt; \[Anwendungsname\] &gt; Überwachungsprotokolle** zugreifen. Filtern Sie die Protokolle nach der Kategorie **Kontobereitstellung**, um nur die Bereitstellungsereignisse für die jeweilige App anzuzeigen. Sie können auf Grundlage der „übereinstimmenden ID“ nach Benutzern suchen, die für die Benutzer in den Attributzuordnungen konfiguriert wurde. Gehen Sie beispielsweise wie folgt vor, wenn Sie den „Benutzerprinzipalnamen“ oder die „E-Mail-Adresse“ als übereinstimmendes Attribut auf der Azure AD-Seite konfiguriert haben und der nicht bereitgestellte Benutzer den Wert „audrey@contoso.com“ aufweist: Durchsuchen Sie die Überwachungsprotokolle nach „audrey@contoso.com“, und überprüfen Sie die zurückgegebenen Einträge.
+Sie können im Azure-Portal auf die Bereitstellungsprotokolle zugreifen. Wählen Sie dazu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** (im Abschnitt **Aktivität**) aus. Sie können die Bereitstellungsdaten anhand des Benutzernamens oder des Bezeichners entweder im Quell- oder im Zielsystem durchsuchen. Einzelheiten hierzu finden Sie unter [Bereitstellungsprotokolle (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
-Die Überwachungsprotokolle für die Bereitstellung zeichnen alle vom Bereitstellungsdienst durchgeführten Vorgänge auf, einschließlich der Abfragen von Azure AD für zugewiesene Benutzer, die sich im Bereitstellungsbereich befinden. Zudem fragen sie die Ziel-App in Bezug auf das Vorkommen dieser Benutzer ab, wobei die Benutzerobjekte zwischen dem System verglichen werden. Fügen Sie dann auf Basis des Vergleichs das Benutzerkonto zum Zielsystem hinzu oder aktualisieren bzw. deaktivieren Sie es.
+Die Bereitstellungsprotokolle zeichnen alle vom Bereitstellungsdienst durchgeführten Vorgänge auf, einschließlich der Abfragen von Azure AD für zugewiesene Benutzer, die sich im Bereitstellungsbereich befinden. Zudem fragen sie die Ziel-App in Bezug auf das Vorkommen dieser Benutzer ab, wobei die Benutzerobjekte zwischen dem System verglichen werden. Fügen Sie dann auf Basis des Vergleichs das Benutzerkonto zum Zielsystem hinzu oder aktualisieren bzw. deaktivieren Sie es.
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Zu berücksichtigende allgemeine Problembereiche bei der Bereitstellung
 Nachfolgend finden Sie eine Liste der allgemeinen Problembereiche, für die Sie Detailinformationen anzeigen können, wenn Sie wissen, wo Sie starten müssen.
 
 - [Bereitstellungsdienst wird anscheinend nicht gestartet](#provisioning-service-does-not-appear-to-start)
-- [Überwachungsprotokolle besagen, dass Benutzer „übersprungen“ und nicht bereitgestellt wurden, obwohl sie zugewiesen sind](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+- [Bereitstellungsprotokolle besagen, dass Benutzer „übersprungen“ und nicht bereitgestellt wurden, obwohl sie zugewiesen sind](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Bereitstellungsdienst wird anscheinend nicht gestartet
-Wenn Sie für **Bereitstellungsstatus** im Abschnitt **Azure Active Directory &gt; Unternehmens-Apps &gt; \[Anwendungsname\] &gt;Bereitstellung** des Azure-Portals die Option **Ein** festlegen. Auf dieser Seite werden jedoch nach anschließendem erneuten Laden keine anderen Statusdetails angezeigt. Es ist wahrscheinlich, dass der Dienst ausgeführt wird, aber noch keine anfängliche Synchronisierung abgeschlossen hat. Überprüfen Sie die oben beschriebenen **Überwachungsprotokolle**, um zu ermitteln, welche Vorgänge der Dienst durchführt und ob Fehler aufgetreten sind.
+Wenn Sie für **Bereitstellungsstatus** im Abschnitt **Azure Active Directory &gt; Unternehmens-Apps &gt; \[Anwendungsname\] &gt;Bereitstellung** des Azure-Portals die Option **Ein** festlegen. Auf dieser Seite werden jedoch nach anschließendem erneuten Laden keine anderen Statusdetails angezeigt. Es ist wahrscheinlich, dass der Dienst ausgeführt wird, aber noch keinen Startzyklus abgeschlossen hat. Überprüfen Sie die oben beschriebenen **Bereitstellungsprotokolle (Vorschau)** , um zu ermitteln, welche Vorgänge der Dienst durchführt und ob Fehler aufgetreten sind.
 
 >[!NOTE]
->Eine anfängliche Synchronisierung kann zwischen 20 Minuten und mehreren Stunden dauern. Dies hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. Nachfolgende Synchronisierungen nach der anfänglichen Synchronisierung werden schneller durchgeführt, da der Bereitstellungsdienst Wasserzeichen speichert, die den Status beider Systeme nach der Erstsynchronisierung darstellen. Mit der Erstsynchronisierung wird die Leistung von nachfolgenden Synchronisierungen verbessert.
+>Ein Startzyklus kann zwischen 20 Minuten und mehreren Stunden dauern. Dies hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. Nachfolgende Synchronisierungen nach dem Startzyklus werden schneller durchgeführt, da der Bereitstellungsdienst Wasserzeichen speichert, die den Status beider Systeme nach dem Startzyklus darstellen. Mit dem Startzyklus wird die Leistung nachfolgender Synchronisierungen verbessert.
 >
 
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Überwachungsprotokolle besagen, dass Benutzer „übersprungen“ und nicht bereitgestellt wurden, obwohl sie zugewiesen sind
+## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Bereitstellungsprotokolle besagen, dass Benutzer „übersprungen“ und nicht bereitgestellt wurden, obwohl sie zugewiesen sind
 
-Wenn ein Benutzer in den Überwachungsprotokollen als „Übersprungen“ angezeigt wird, ist es wichtig, die erweiterten Details in der Protokollmeldung zu lesen, um die Ursache zu ermitteln. Nachfolgend sind häufige Ursachen und Lösungen aufgeführt:
+Wenn ein Benutzer in den Bereitstellungsprotokollen als „übersprungen“ angezeigt wird, ist es wichtig, anhand der Registerkarte **Schritte** des Protokolls die Ursache zu ermitteln. Nachfolgend sind häufige Ursachen und Lösungen aufgeführt:
 
 - **Es wurde ein Bereichsfilter konfiguriert** **, der einen Benutzer basierend auf einem Attributwert herausfiltert**. Weitere Informationen zu Bereichsfiltern finden Sie unter [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md).
 - **Der Benutzer ist „nicht wirklich berechtigt“.** Wenn diese bestimmte Fehlermeldung angezeigt wird, liegt ein Problem mit dem Benutzerzuweisungseintrag vor, der in Azure AD gespeichert wird. Heben Sie die Zuweisung des Benutzers (oder der Gruppe) zur App auf, und weisen Sie ihn bzw. sie erneut zu, um dieses Problem zu beheben. Weitere Informationen zur Zuweisung finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](assign-user-or-group-access-portal.md).

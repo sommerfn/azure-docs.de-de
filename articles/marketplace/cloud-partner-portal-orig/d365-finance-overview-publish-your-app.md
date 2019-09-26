@@ -1,47 +1,23 @@
 ---
 title: Veröffentlichen Ihrer Microsoft Dynamics 365 Business Central-App in Microsoft AppSource
-description: Übersicht über die Veröffentlichung einer Dynamics 365 Business Central-App in Microsoft AppSource
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: 'Veralteter Artikel mit Links zu PC-Artikeln. Bisher: „Übersicht über die Veröffentlichung einer Dynamics 365 Business Central-App in Microsoft AppSource“.'
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 062a16d02f26e3f2f6eb815432bed024d5e3746e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aad59ab0ebcf545c7b688843bbdb4f8c02040e4a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935014"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105099"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>Veröffentlichen Ihrer Microsoft Dynamics 365 Business Central-App in Microsoft AppSource
 
-Die Dynamics 365 Business Central-Plattform bietet Anwendungsentwicklern zahlreiche Vorteile:
-
--   Erweiterung von Dynamics 365 Business Central, einer bewährten Microsoft-Onlinelösung, mit Ihrer Expertise
--   Nutzung der Marke Dynamics 365 – einer Marke, die Millionen von Benutzern kennen und der sie vertrauen
--   Größere Reichweite mit Microsoft AppSource – Gewinnen Sie mehr Kunden für Ihre Geschäftsanwendungen
--   Optimierung dank einer Plattform, die eine moderne Umgebung und Skalierbarkeit bietet
--   Zusammenstellen intelligenter Geschäftsanwendungen wie Microsoft PowerApps, Microsoft Flow, Power BI und Cortana Intelligence
-
-So veröffentlichen Sie Ihre Business Central-App in Microsoft AppSource
-
-1.  Erstellen Sie Ihre Konten.
-2.  Informieren Sie uns über Ihre App-Idee.
-    - Entwickeln Sie die technischen Aspekte Ihrer App.
-    - Entwickeln Sie die Marketingkonzepte für Ihre App.
-4.  *Veröffentlichen Sie Ihre App.*
-
-
-## <a name="application-process-and-timeline"></a>Prozess und Zeitablauf für Anwendungen
-
-Der typische Prozess und Zeitablauf für Anwendungen wird im folgenden Diagramm dargestellt: 
-
-![Ablauf der Veröffentlichung einer Dynamics 365 Business Central-App](./media/d365-financials/image001.png)
-
+Die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu diesem Anwendungstyp finden Sie unter [Ankündigung: Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/finance-and-operations-business-edition-to-business-central/).  Lesen Sie den [Leitfaden zum Veröffentlichen von Office 365-, Dynamics 365-, PowerApps- und Power BI-Angeboten](../appsource-offer-publishing-guide.md), falls Sie dies nicht bereits getan haben.
-
-Nach diesen Vorbereitungen können Sie ein neues [Angebot für Microsoft Dynamics 365 Business Central](./d365-finance-create-new-offer.md) erstellen.
+Bevor Sie mit dem Erstellen von Dynamics 365 Business Central-Angeboten beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer), um Ihr Angebot zu erstellen.

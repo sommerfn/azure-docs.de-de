@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207136"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057776"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegieren von Aufgaben in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -69,7 +69,7 @@ Die Berechtigungsverwaltung hat die folgenden Rollen, die für die Berechtigungs
 
 | Role | BESCHREIBUNG |
 | --- | --- |
-| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann zusätzliche Katalogbesitzer hinzufügen. |
+| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann zusätzliche Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
 | Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer bestimmt hat. |
 | Zugriffspaketmanager | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
 
@@ -139,7 +139,15 @@ Wenn Sie das Erstellen des Katalogs delegieren möchten, fügen Sie Benutzer der
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Hinzufügen eines Katalogbesitzers oder Zugriffspaket-Managers
 
-Wenn Sie die Verwaltung eines Katalogs oder von Zugriffspaketen im Katalog delegieren möchten, fügen Sie der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle Benutzer hinzu. Der Benutzer, der einen Katalog erstellt, ist der erste Katalogbesitzer. Um einen Benutzer der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle zuzuweisen, gehen Sie wie folgt vor.
+Um die Verwaltung eines Katalogs oder von Zugriffspaketen im Katalog zu delegieren, fügen Sie der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle Benutzer hinzu. Der Benutzer, der einen Katalog erstellt, ist der erste Katalogbesitzer. 
+
+Der zugewiesene Katalogbesitzer oder der Zugriffspaket-Manager muss mit dem Projekt vertraut sein. Der Katalogersteller sollte das Zugriffspaket erstellen, sofern er an den täglichen Vorgängen des Projekts beteiligt ist und die folgenden Informationen kennt:
+- Welche Ressourcen werden benötigt?
+- Wer benötigt Zugriff?
+- Wer muss den Zugriff genehmigen?
+- Wie lange wird das Projekt dauern?
+
+Wenn der Katalogersteller nicht an den täglichen Vorgängen des Projekts beteiligt ist, sollte er die Aufgabe an die Projektleitung delegieren, die das Zugriffspaket erstellt und verwaltet. Um der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle einen Benutzer zuzuweisen, gehen Sie wie folgt vor:
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
 

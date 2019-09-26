@@ -16,22 +16,22 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8622a7bbd913710a2173399048baab7067d2fae7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca2257a46815dd5e685b9cc746a64cede510d10a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783793"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034181"
 ---
 # <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger
 
-Bei der ersten Aktivierung der automatischen Bereitstellung für eine Anwendung kann die anfängliche Synchronisierung zwischen 20 Minuten und mehreren Stunden dauern. Dies hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. 
+Bei der ersten Aktivierung der automatischen Bereitstellung für eine Anwendung kann der Startzyklus zwischen 20 Minuten und mehreren Stunden dauern. Dies hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. 
 
-Nachfolgende Synchronisierungen nach der anfänglichen Synchronisierung werden schneller durchgeführt, da der Bereitstellungsdienst Wasserzeichen speichert, die den Status beider Systeme nach der Erstsynchronisierung darstellen, sodass die Leistung nachfolgender Synchronisierungen verbessert wird.
+Nachfolgende Synchronisierungen nach dem Startzyklus werden schneller durchgeführt, weil der Bereitstellungsdienst Wasserzeichen speichert, die den Status beider Systeme nach dem Startzyklus darstellen. Dadurch verbessert sich die Leistung nachfolgender Synchronisierungen.
 
 ## <a name="how-to-improve-provisioning-performance"></a>Verbessern der Bereitstellungsleistung
 
-Wenn die erste Synchronisierung länger als einige Stunden dauert, haben Sie eine Möglichkeit, die Leistung zu verbessern:
+Wenn der Startzyklus länger als einige Stunden dauert, haben Sie eine Möglichkeit, die Leistung zu verbessern:
 
 -   **Benutzerbereichsfilter** Mit Bereichsfiltern können Sie die Daten, die der Bereitstellungsdienst aus Azure AD extrahiert, fein abstimmen, indem Sie Benutzer anhand bestimmter Attributwerte herausfiltern. Weitere Informationen zu Bereichsfiltern finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters).
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 8e79fd1a839113cad5a3a36c01855d98793d7032
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655308"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104884"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -105,7 +105,7 @@ Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
 
 Application Gateway und WAF können für die Skalierung in zwei Modi konfiguriert werden:
 
-- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung zentral hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, da es nicht erforderlich ist, Gateways mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung auszuführen. Kunden müssen eine minimale und optional eine maximale Anzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Diese Mindestkapazität wird Ihnen auch bei nicht vorhandenem Datenverkehr in Rechnung gestellt. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird weiterhin die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20.
+- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung zentral hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, weil das Gateway nicht mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung ausgeführt werden muss. Sie müssen eine Mindestanzahl und optional eine Höchstanzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Jede Instanz zählt als 10 zusätzliche reservierte Kapazitätseinheiten. Bei 0 wird keine Kapazität reserviert. Dieser Wert dient ausschließlich zur automatischen Skalierung. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird weiterhin die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20. 
 - **Manuell**: Sie können alternativ auch den manuellen Modus auswählen, in dem das Gateway nicht automatisch skaliert wird. Wenn in diesem Modus mehr Datenverkehr vorliegt, als von Application Gateway oder WAF verarbeitet werden kann, kann dies zu einem Datenverlust führen. Beim manuellen Modus ist die Angabe der Anzahl von Instanzen obligatorisch. Die Anzahl der Instanzen kann zwischen 1 und 125 variieren.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Funktionsvergleich zwischen v1 SKU und v2 SKU

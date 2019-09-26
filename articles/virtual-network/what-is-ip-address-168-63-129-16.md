@@ -4,7 +4,7 @@ description: Erfahren Sie mehr zur IP-Adresse 168.63.129.16 und deren Funktionsw
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833123"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067780"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Was ist die IP-Adresse 168.63.129.16?
 
@@ -34,7 +34,7 @@ Die IP-Adresse 168.63.129.16 ist eine virtuelle öffentliche IP-Adresse, die ver
 
 ## <a name="scope-of-ip-address-1686312916"></a>Bereich der IP-Adresse 168.63.129.16
 
-Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Sie ist gemäß der Standard-Netzwerksicherheitsgruppe zulässig. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien zulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen.
+Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Sie ist gemäß der Standard-Netzwerksicherheitsgruppe zulässig. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien sowohl für eingehenden als auch für ausgehenden Datenverkehr zulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen.
 
 [Azure Load Balancer-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) gehen von dieser IP-Adresse aus. Wenn Sie diese IP-Adresse blockieren, treten bei Ihren Tests Fehler auf.
 

@@ -1,7 +1,7 @@
 ---
 title: Was ist ein Arbeitsbereich?
-titleSuffix: Azure Machine Learning service
-description: Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning Service. Der Verlauf aller Trainingsläufe wird gespeichert, z. B. Protokolle, Metriken, Ausgabe und eine Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.
+titleSuffix: Azure Machine Learning
+description: Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning. Der Verlauf aller Trainingsläufe wird gespeichert, z. B. Protokolle, Metriken, Ausgabe und eine Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860504"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035323"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Was ist ein Azure Machine Learning Service-Arbeitsbereich?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
-Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning Service und ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie während der Nutzung von Azure Machine Learning Service erstellen.  Im Arbeitsbereich wird der Verlauf aller Trainingsläufe gespeichert, einschließlich Protokollen, Metriken, Ausgabe und einer Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.  
+Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie während der Nutzung von Azure Machine Learning erstellen.  Im Arbeitsbereich wird der Verlauf aller Trainingsläufe gespeichert, einschließlich Protokollen, Metriken, Ausgabe und einer Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.  
 
 Sobald Sie ein fertiges Modell haben, registrieren Sie es im Arbeitsbereich. Anschließend verwenden Sie das registrierte Modell und die Bewertungsskripts, um das Modell in Azure Container Instances, in Azure Kubernetes Service oder in einem FPGA (Field Programmable Gate Array) als REST-basierten HTTP-Endpunkt bereitzustellen. Sie können das Modell auch als Modul auf einem Azure IoT Edge-Gerät bereitstellen.
 
@@ -103,9 +103,9 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Schritte mit Azure Machine Learning Service finden Sie unter:
+Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unter:
 
-+ [Was ist der Azure Machine Learning-Dienst?](overview-what-is-azure-ml.md)
++ [Azure Machine Learning – Übersicht](overview-what-is-azure-ml.md)
 + [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)

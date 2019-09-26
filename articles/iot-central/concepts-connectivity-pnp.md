@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 26f05e60761af0b8f0db9508488f28613b82293f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81e386be98f9c5684402c376372f43e90fefcb42
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879134"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066749"
 ---
 # <a name="device-connectivity-in-azure-iot-central-preview-features"></a>Gerätekonnektivität in Azure IoT Central (Previewfunktionen)
 
@@ -34,15 +34,18 @@ DPS ermöglicht Folgendes:
 
 In diesem Artikel werden die folgenden Anwendungsfälle beschrieben:
 
-1. [Schnelles Verbinden eines einzelnen Geräts mit SAS](#connect-a-single-device)
-1. [Verbinden von Geräten nach Maß mit SAS](#connect-devices-at-scale-using-sas)
-1. [Verbinden von Geräten nach Maß mit X.509-Zertifikaten](#connect-devices-using-x509-certificates) ist die empfohlene Vorgehensweise für Produktionsumgebungen.
-1. [Verbinden ohne vorherige Registrierung der Geräte](#connect-without-registering-devices)
-1. [Verbinden von Geräten mithilfe von IoT Plug & Play-Funktionen](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+- [Schnelles Verbinden eines einzelnen Geräts mit SAS](#connect-a-single-device)
+- [Verbinden von Geräten nach Maß mit SAS](#connect-devices-at-scale-using-sas)
+- [Verbinden von Geräten nach Maß mit X.509-Zertifikaten](#connect-devices-using-x509-certificates) ist die empfohlene Vorgehensweise für Produktionsumgebungen.
+- [Verbinden ohne vorherige Registrierung der Geräte](#connect-without-registering-devices)
+- [Verbinden von Geräten mithilfe von IoT Plug & Play-Funktionen](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 ## <a name="connect-a-single-device"></a>Verbinden eines einzelnen Geräts
 
-Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen. Sie können die Geräte-Verbindungsinformationen aus Ihrer IoT Central-Anwendung verwenden, um die Verbindungszeichenfolge für ein Gerät zu generieren. Detaillierte Schritte dazu finden Sie unter [Generieren einer Geräte-Verbindungszeichenfolge für die Verbindung mit einer Azure IoT Central-Anwendung](howto-generate-connection-string.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen. Sie können die Geräteverbindungsinformationen aus ihrer IoT Central-Anwendung verwenden, um ein Gerät mithilfe des Device Provisioning Service (DPS) mit ihrer IoT Central-Anwendung zu verbinden. Beispielcode für den DPS-Geräteclient ist für die folgenden Sprachen verfügbar:
+
+- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
+- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Verbinden von Geräten nach Maß mit SAS
 
@@ -190,8 +193,6 @@ Die Azure-Geräte-SDKs bieten Ihnen die einfachste Möglichkeit, Ihren Geräteco
 - [Azure IoT-SDK für Node.js](https://github.com/azure/azure-iot-sdk-node)
 - [Azure IoT-SDK für Java](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT-SDK für .NET](https://github.com/azure/azure-iot-sdk-csharp)
-
-Jedes Gerät stellt eine Verbindung über eine eindeutige Verbindungszeichenfolge her, die das Gerät identifiziert. Ein Gerät kann nur eine Verbindung mit dem IoT-Hub herstellen, bei dem es registriert ist. Wenn Sie ein reales Gerät in Ihrer Azure IoT Central-Anwendung erstellen, generiert die Anwendung die Informationen, die Sie zum Erstellen einer Verbindungszeichenfolge benötigen, mittels `dps-keygen`.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK-Features und IoT Hub-Konnektivität
 

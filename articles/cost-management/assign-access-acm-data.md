@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493756"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105119"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -41,8 +41,8 @@ Zum Anzeigen von Kostendaten für Azure EA-Abonnements muss ein Benutzer mindest
 | Department | [https://ea.azure.com](https://ea.azure.com/) | Abteilungsadministrator | **Gebühren anzeigen** für Abteilungsadministratoren aktiviert | Alle Abonnements, die zu einem Registrierungskonto gehören, das mit der Abteilung verknüpft ist |
 | Registrierungskonto<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kontobesitzer | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Abonnements aus dem Registrierungskonto |
 | Verwaltungsgruppe | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Abonnements unter der Verwaltungsgruppe |
-| Abonnement | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen/Ressourcengruppen im Abonnement |
-| Ressourcengruppe | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen in der Ressourcengruppe |
+| Subscription | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen/Ressourcengruppen im Abonnement |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen in der Ressourcengruppe |
 
 <sup>1</sup> Das Abrechnungskonto wird auch als Enterprise Agreement oder Registrierung bezeichnet.
 
@@ -62,7 +62,7 @@ Zum Anzeigen von Kostendaten für andere Azure-Abonnements muss ein Benutzer min
 
 - Azure-Konto
 - Verwaltungsgruppe
-- Ressourcengruppe
+- Resource group
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Aktivieren des Zugriffs auf Kosten im EA-Portal
 
@@ -129,7 +129,7 @@ Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem 
 
 ## <a name="assign-management-group-scope-access"></a>Zuweisen des Zugriffs auf den Verwaltungsgruppenbereich
 
-Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
+Für den Zugriff zur Anzeige des Verwaltungsgruppenbereichs ist mindestens die Berechtigung „Cost Management-Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Verwaltungsgruppen_, und wählen Sie dann **Verwaltungsgruppen** aus.

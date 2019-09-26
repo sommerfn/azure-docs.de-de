@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918911"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034116"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket
 Lernen Sie die Benutzer und Rollen im Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) von HDInsight kennen, und erfahren Sie, wie ESP-Cluster verwaltet werden.
@@ -21,69 +21,73 @@ Lernen Sie die Benutzer und Rollen im Enterprise-Sicherheitspaket (Enterprise Se
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von VSCode
 
 Sie können einen normalen Cluster mithilfe eines verwalteten Apache Ambari-Benutzernamens oder einen Apache Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen.
+
 1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** drücken, und geben Sie dann **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
 
-   ![Befehl „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-cluster-command.png)
+   ![Befehlspalette, Clusterverknüpfung](./media/apache-domain-joined-manage/link-cluster-command.png)
 
 2. Geben Sie die URL des HDInsight-Clusters ein, geben Sie den Benutzername und das Kennwort ein, und wählen Sie den Clustertyp aus. Es werden Erfolgsinformationen angezeigt, wenn die Überprüfung bestanden wurde.
-   
-   ![Dialogfeld „Cluster verknüpfen“](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   ![Dialogfeld mit den Schritten zur Clusterverknüpfung](./media/apache-domain-joined-manage/link-cluster-process.png)
 
    > [!NOTE]  
-   > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
-   
+   > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
+
 3. Sie können einen verknüpften Cluster mithilfe des Befehls **Cluster auflisten** anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
 
-   ![verknüpfterCluster](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "verknüpfter Cluster")
+   ![Überprüfung der Ausgabe des Befehls zum Auflisten des Clusters](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "Verknüpfter Cluster")
 
 4. Sie können die Verknüpfung eines Clusters auch aufheben, indem Sie in der Befehlspalette **HDInsight: Unlink a Cluster** (HDInsight: Verknüpfung eines Clusters aufheben) eingeben.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von IntelliJ
 
-Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen. 
+Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen.
+
 1. Klicken Sie im **Azure-Explorer** auf **Cluster verknüpfen**.
 
    ![Cluster verknüpfen Kontextmenü IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Geben Sie **Clustername**, **Benutzername** und **Kennwort** ein. Überprüfen Sie im Falle eines Authentifizierungsfehlers den Benutzernamen und das Kennwort. Fügen Sie optional das Speicherkonto und den Speicherschlüssel hinzu, und wählen Sie anschließend unter „Speichercontainer“ einen Container aus. Die Speicherinformationen beziehen sich auf den Speicher-Explorer in der linken Struktur.
-   
-   ![Cluster verknüpfen Dialogfeld IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   ![Azure-Explorer – Dialogfeld zur Clusterverknüpfung in IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
-   > ![Speicher-Explorer in IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+   > 
+   > ![Azure-Explorer – Speicherkonto in IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
-   
 3. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
-   ![verknüpfter Cluster IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "verknüpfter Cluster IntelliJ]")
+   ![Azure-Explorer – Clusterverknüpfung in IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "Clusterverknüpfung in IntelliJ]")
 
 4. Sie können die Verknüpfung eines Clusters im **Azure-Explorer** auch aufheben.
-   
-   ![nicht verknüpfter Cluster IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+
+   ![Azure-Explorer – Nicht verknüpfter Cluster in IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Verknüpfen mit einem in die Domäne eingebundenen Cluster mithilfe von Eclipse
 
 Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. `user1@contoso.com`) verknüpfen.
+
 1. Klicken Sie im **Azure-Explorer** auf **Cluster verknüpfen**.
 
    ![Cluster verknüpfen Kontextmenü Eclipse](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Geben Sie **Clustername**, **Benutzername** und **Kennwort** ein, und klicken Sie anschließend auf „OK“, um den Cluster zu verknüpfen. Geben Sie optional das Speicherkonto und den Speicherschlüssel ein, und wählen Sie anschließend den Speichercontainer aus, damit der Speicher-Explorer in der linken Strukturansicht funktioniert.
-   
-   ![Cluster verknüpfen Dialogfeld Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
-   
+
+   ![Azure-Explorer – Dialogfeld zur Clusterverknüpfung in Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
+
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
-   > ![Speicher-Explorer in Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+   > 
+   > ![Azure-Explorer – Speicherkonto in Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
 3. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, nachdem Sie auf die Schaltfläche „OK“ geklickt haben, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
-   ![verknüpfter Cluster Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![Azure-Explorer – Clusterverknüpfung in Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Sie können die Verknüpfung eines Clusters im **Azure-Explorer** auch aufheben.
    
-   ![nicht verknüpfter Cluster Eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+   ![Azure-Explorer – nicht verknüpfter Cluster in Eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Greifen Sie mit dem Enterprise Security Package auf die Cluster zu.
 
@@ -104,8 +108,8 @@ Die Sicherheit und die Benutzerisolation sind für einen HDInsight-Cluster mit E
 
 Aus Sicht der Sicherheit ist die Verwendung der Standard-APIs hilfreich. Außerdem kommen Sie in den Genuss der folgenden Vorteile:
 
-1.  **Verwaltung**: Sie können Ihren Code verwalten und Aufträge automatisieren, indem Sie Standard-APIs nutzen, z.B. Livy, HS2 usw.
-2.  **Überwachung**: Mit SSH kann nicht überwacht werden, welche Benutzer per SSH auf den Cluster zugegriffen haben. Dies ist nicht der Fall, wenn Aufträge über Standardendpunkte erstellt werden, da sie dann im Kontext des Benutzers ausgeführt werden. 
+- **Verwaltung**: Sie können Ihren Code verwalten und Aufträge automatisieren, indem Sie Standard-APIs nutzen, z.B. Livy, HS2 usw.
+- **Überwachung**: Mit SSH kann nicht überwacht werden, welche Benutzer per SSH auf den Cluster zugegriffen haben. Dies ist nicht der Fall, wenn Aufträge über Standardendpunkte erstellt werden, da sie dann im Kontext des Benutzers ausgeführt werden. 
 
 
 
@@ -183,11 +187,11 @@ Das HDInsight-ESP hat die folgenden Rollen:
 4. Melden Sie sich mit dem Domänenbenutzernamen und dem Kennwort des Clusteradministrators bei Ambari an.
 5. Klicken Sie oben rechts auf das Dropdownmenü **Admin** und dann auf **Manage Ambari** (Ambari verwalten).
 
-    ![ESP-HDInsight – Verwalten von Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP-HDInsight – Verwalten von Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     Die Benutzeroberfläche sieht wie folgt aus:
 
-    ![ESP-HDInsight-Oberfläche zur Verwaltung von Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ESP-HDInsight: Oberfläche zur Verwaltung von Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Auflisten der über Active Directory synchronisierten Domänenbenutzer
 1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).

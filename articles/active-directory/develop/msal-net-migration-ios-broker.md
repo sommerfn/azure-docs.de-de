@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103957"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257774"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrieren von iOS-Anwendungen mit Microsoft Authenticator von ADAL.NET zu MSAL.NET
 
@@ -36,7 +36,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits über eine Xamarin iO
 
 ### <a name="what-are-brokers"></a>Was sind Broker?
 
-Broker sind Anwendungen, die von Microsoft unter Android und iOS bereitgestellt werden. (Siehe hierzu die [Microsoft Authenticator](https://www.microsoft.com/account/authenticator)-App unter iOS und Android und die Unternehmensportal-App von Microsoft Intune unter Android.) 
+Broker sind Anwendungen, die von Microsoft unter Android und iOS bereitgestellt werden. (Siehe hierzu die [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)-App unter iOS und Android und die Unternehmensportal-App von Microsoft Intune unter Android.) 
 
 Sie ermöglichen Folgendes:
 
@@ -51,7 +51,7 @@ Sie ermöglichen Folgendes:
 <table>
 <tr><td>Aktueller ADAL-Code:</td><td>MSAL-Entsprechung:</td></tr>
 <tr><td>
-In ADAL.NET wurde die Brokerunterstützung pro Authentifizierung aktiviert. Sie ist standardmäßig deaktiviert. Sie mussten 
+In ADAL.NET wurde die Brokerunterstützung pro Authentifizierung aktiviert. Standardmäßig ist es deaktiviert. Sie mussten 
 
 im `PlatformParameters`-Konstruktor ein `useBroker`-Flag auf „true“ festlegen, um den Broker aufzurufen:
 
@@ -82,7 +82,7 @@ Fügen Sie dann die Parameter in den Aufruf zum Abrufen eines Tokens (AcquireTok
 ```
 
 </td><td>
-In MSAL.NET wird die Brokerunterstützung wird pro PublicClientApplication aktiviert. Sie ist standardmäßig deaktiviert. Um sie zu aktivieren, verwenden Sie den 
+In MSAL.NET wird die Brokerunterstützung wird pro PublicClientApplication aktiviert. Standardmäßig ist es deaktiviert. Um sie zu aktivieren, verwenden Sie den 
 
 `WithBroker()`-Parameter (standardmäßig auf „true“ festgelegt) zum Aufrufen des Brokers:
 

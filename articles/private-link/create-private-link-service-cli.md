@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104703"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273647"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Private Link-Dienst in Azure erstellen.
@@ -29,13 +29,13 @@ Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie eine Ressourcen
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie mit [az network vnet create](/cli/azure/network/az-network-vnet-create) ein virtuelles Netzwerk. Bei diesem Beispiel wird ein virtuelles Standardnetzwerk mit dem Namen *myVirtualNetwork* und dem Subnetz *mySubnet* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk. Bei diesem Beispiel wird ein virtuelles Standardnetzwerk mit dem Namen *myVirtualNetwork* und dem Subnetz *mySubnet* erstellt:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>Erstellen eines Subnetzes
-Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create) ein Subnetz für das virtuelle Netzwerk. Bei diesem Beispiel wird das Subnetz *mySubnet* im virtuellen Netzwerk *myVirtualNetwork* erstellt:
+Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) ein Subnetz für das virtuelle Netzwerk. Bei diesem Beispiel wird das Subnetz *mySubnet* im virtuellen Netzwerk *myVirtualNetwork* erstellt:
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
@@ -82,7 +82,7 @@ Bei diesem Beispiel wird das Erstellen virtueller Computer nicht behandelt. Sie 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst im Subnetz 
-Der Private Link-Dienst benötigt innerhalb eines virtuellen Netzwerks eine IP-Adresse aus einem beliebigen Subnetz Ihrer Wahl. Derzeit werden für diese IP-Adressen keine Netzwerkrichtlinien unterstützt.  Daher müssen wir die Netzwerkrichtlinien für das Subnetz deaktivieren. Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update), um Netzwerkrichtlinien für den Privat Link-Dienst zu deaktivieren.
+Der Private Link-Dienst benötigt innerhalb eines virtuellen Netzwerks eine IP-Adresse aus einem beliebigen Subnetz Ihrer Wahl. Derzeit werden für diese IP-Adressen keine Netzwerkrichtlinien unterstützt.  Daher müssen wir die Netzwerkrichtlinien für das Subnetz deaktivieren. Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um Netzwerkrichtlinien für den Privat Link-Dienst zu deaktivieren.
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts  
  
-Erstellen Sie mit [az network private-link-service create](/cli/azure/network/az-network-private-link-service-create) einen Private Link-Dienst unter Verwendung der Front-End-IP-Konfiguration von Load Balancer Standard. Bei diesem Beispiel wird ein Private Link-Dienst mit dem Namen *myPLS* unter Verwendung einer Load Balancer Standard-Instanz mit dem Namen *myLoadBalancer* in der Ressourcengruppe *myResourceGroup* erstellt. 
+Erstellen Sie mit [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) einen Private Link-Dienst unter Verwendung der Front-End-IP-Konfiguration von Load Balancer Standard. Bei diesem Beispiel wird ein Private Link-Dienst mit dem Namen *myPLS* unter Verwendung einer Load Balancer Standard-Instanz mit dem Namen *myLoadBalancer* in der Ressourcengruppe *myResourceGroup* erstellt. 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -111,7 +111,7 @@ Als Nächstes veranschaulichen wir, wie dieser Dienst mithilfe der Azure CLI ein
 ## <a name="private-endpoints"></a>Private Endpunkte
 
 ### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks 
-Erstellen Sie mit  [az network vnet create](/cli/azure/network/az-network-vnet-create) ein virtuelles Netzwerk. In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen  *myPEVNet*  in der Ressourcengruppe *myResourcegroup* erstellt: 
+Erstellen Sie mit  [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk. In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen  *myPEVNet*  in der Ressourcengruppe *myResourcegroup* erstellt: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Erstellen des Subnetzes 
-Erstellen Sie mit  [az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create) ein Subnetz im virtuellen Netzwerk. In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen  *mySubnet*  im virtuellen Netzwerk *myPEVnet* in der Ressourcengruppe *myResourcegroup* erstellt: 
+Erstellen Sie mit  [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) ein Subnetz im virtuellen Netzwerk. In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen  *mySubnet*  im virtuellen Netzwerk *myPEVnet* in der Ressourcengruppe *myResourcegroup* erstellt: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -129,7 +129,7 @@ az network vnet subnet create \
 --address-prefixes 10.0.0.0/24 
 ```   
 ## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Deaktivieren von Netzwerkrichtlinien für private Endpunkte im Subnetz 
-Ein privater Endpunkt kann in einem beliebigen Subnetz Ihrer Wahl innerhalb eines virtuellen Netzwerks erstellt werden. Derzeit werden für private Endpunkte keine Netzwerkrichtlinien unterstützt.  Daher müssen wir die Netzwerkrichtlinien für das Subnetz deaktivieren. Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update), um Netzwerkrichtlinien für private Endpunkte zu deaktivieren. 
+Ein privater Endpunkt kann in einem beliebigen Subnetz Ihrer Wahl innerhalb eines virtuellen Netzwerks erstellt werden. Derzeit werden für private Endpunkte keine Netzwerkrichtlinien unterstützt.  Daher müssen wir die Netzwerkrichtlinien für das Subnetz deaktivieren. Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um Netzwerkrichtlinien für private Endpunkte zu deaktivieren. 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ Sie können mit `az network private-link-service show` die *private-connection-r
  
 ## <a name="show-private-link-service-connections"></a>Anzeigen von Private Link-Dienstverbindungen 
  
-Zeigen Sie mit [az network private-link-service show](/cli/azure/network/az-network-private-link-service-show) Verbindungsanforderungen für Ihren Private Link-Dienst an.    
+Zeigen Sie mit [az network private-link-service show](/cli/azure/network/private-link-service#az-network-private-link-service-show) Verbindungsanforderungen für Ihren Private Link-Dienst an.    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```

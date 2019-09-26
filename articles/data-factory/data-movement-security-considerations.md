@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608583"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931271"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -59,7 +59,7 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 
 ### <a name="securing-data-store-credentials"></a>Schützen von Datenspeicher-Anmeldeinformationen
 
-- **Speichern von verschlüsselten Anmeldeinformationen im verwalteten Azure Data Factory-Speicher.** Data Factory schützt Ihre Anmeldeinformationen für den Datenspeicher dadurch, dass sie mit von Microsoft verwalteten Zertifikaten verschlüsselt werden. Diese Zertifikate werden alle zwei Jahre ausgetauscht (wozu Erneuerung der Zertifikate und Migration von Anmeldeinformationen gehören). Diese verschlüsselten Anmeldeinformationen werden sicher in einem von Azure Data Factory-Verwaltungsdienste verwalteten Azure Storage gespeichert. Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../security/fundamentals/storage-overview.md).
+- **Speichern von verschlüsselten Anmeldeinformationen im verwalteten Azure Data Factory-Speicher.** Data Factory schützt Ihre Anmeldeinformationen für den Datenspeicher dadurch, dass sie mit von Microsoft verwalteten Zertifikaten verschlüsselt werden. Diese Zertifikate werden alle zwei Jahre ausgetauscht (wozu Erneuerung der Zertifikate und Migration von Anmeldeinformationen gehören). Weitere Informationen zur Azure Storage-Sicherheit finden Sie unter [Übersicht über die Sicherheit von Azure Storage](../security/fundamentals/storage-overview.md).
 - **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Datenverschlüsselung während der Übertragung
@@ -108,14 +108,15 @@ Hybridszenarien erfordern, dass die selbstgehostete Integration Runtime in einem
 Der Befehlskanal ermöglicht Kommunikation zwischen Datenverschiebungsdiensten in Data Factory und der selbstgehosteten Integration Runtime. Die Kommunikation enthält die Informationen, die sich auf die Aktivität beziehen. Der Datenkanal wird dazu verwendet, Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu übertragen.    
 
 ### <a name="on-premises-data-store-credentials"></a>Anmeldeinformationen für lokale Datenspeicher
-Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind immer verschlüsselt und gespeichert. Sie können entweder lokal auf dem Computer der selbstgehosteten Integration Runtime oder im verwalteten Speicher von Azure Data Factory gespeichert werden (genau wie Anmeldeinformationen für den Cloudstore). 
+Die Anmeldeinformationen können in Data Factory gespeichert oder während der Laufzeit von Azure Key Vault von [Data Factory referenziert](store-credentials-in-key-vault.md) werden. Beim Speichern von Anmeldeinformationen innerhalb von Data Factory werden diese immer verschlüsselt für die selbstgehostete Integration Runtime gespeichert. 
+ 
+- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und für die selbstgehostete Integration Runtime gespeichert.  In diesem Fall verlaufen die Anmeldeinformationen über den extrem sicheren Azure-Back-End-Dienst zum selbstgehosteten Integrationscomputer, wo sie schließlich verschlüsselt und gespeichert werden. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen.
 
-- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integration Runtime verschlüsseln und speichern möchten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen. 
+- **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
+
+- **Speichern Sie Anmeldeinformationen lokal, ohne sie über den Azure-Back-End an die selbstgehostete Integration Runtime zu übermitteln**. Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integration Runtime verschlüsseln und speichern möchten, ohne die Anmeldeinformationen über den Data Factory-Back-End zu leiten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen. 
 
    Verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in der Verbindungszeichenfolge) verwenden, um mit dem Cmdlet **Set-AzDataFactoryV2LinkedService** einen verknüpften Dienst zu erstellen.  
-
-- **Speichern in verwaltetem Azure Data Factory-Speicher**. Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und im verwalteten Speicher von Azure Data Factory gespeichert. Diese vertraulichen Informationen werden weiterhin mithilfe eines Zertifikats verschlüsselt, wobei diese Zertifikate von Microsoft verwaltet werden.
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Beim Verschlüsseln des verknüpften Diensts auf der selbstgehosteten Integration Runtime verwendete Ports

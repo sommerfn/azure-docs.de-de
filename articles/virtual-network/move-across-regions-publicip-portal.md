@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0ee3a386c6044abe834b901ce43795df68bd37c6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059379"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219225"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Region mit dem Azure-Portal
 
@@ -27,7 +27,7 @@ Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen öffentlichen Azur
 - Öffentliche Azure-IP-Adressen können nicht zwischen Regionen verschoben werden.  Sie müssen die neue öffentliche IP-Adresse Ressourcen in der Zielregion zuordnen.
 
 - Damit Sie eine öffentliche IP-Adresse exportieren und eine Vorlage bereitstellen können, um die öffentliche IP-Adresse in einer anderen Region zu erstellen, benötigen Sie mindestens die Rolle „Netzwerkmitwirkender“.
-   
+
 - Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout umfasst Load Balancer, Netzwerksicherheitsgruppen (NSGs) und virtuelle Netzwerke, ohne darauf beschränkt zu sein.
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement öffentliche IP-Adressen in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
@@ -40,13 +40,13 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Exportieren der Vorlage und Bereitstellen über ein Skript
 
-1. Melden Sie sich bei [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+1. Melden Sie sich bei [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
 2. Suchen Sie die Ressourcengruppe, die die öffentliche IP-Adresse der Quelle enthält, und klicken Sie darauf.
 3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
 4. Wählen Sie **Bereitstellen** auf dem Blatt **Vorlage exportieren** aus.
 5. Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
 8. Um den Parameter für den Namen der öffentlichen IP-Adresse zu bearbeiten, ändern Sie die Eigenschaft unter **Parameter** > **Wert** vom Namen der öffentlichen IP-Adresse der Quelle in den Namen der öffentliche IP-Adresse des Ziels. Setzen Sie den Namen unbedingt in Anführungszeichen:
-    
+
     ```json
             {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -61,7 +61,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
     ```
 8.  Klicken Sie im Editor auf **Speichern**.
 
-9.  Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen. 
+9.  Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
 
 10. Zum Bearbeiten der Zielregion, in die die öffentliche IP-Adresse verschoben wird, ändern Sie unter **resources** die Eigenschaft **location**:
 
@@ -86,11 +86,11 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
                 "ipTags": []
                }
                }
-             ]             
+             ]
     ```
-  
-11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **Central US** = **centralus**.
-    
+
+11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
+
 12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
 
     * **SKU**: Sie können die SKU der öffentlichen IP-Adresse in der Konfiguration von „standard“ in „basic“ oder von „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **template.json** ändern:
@@ -131,17 +131,17 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
-        
+
         ```
 
         Weitere Informationen zu den Zuweisungsmethoden und den Werten für das Leerlauftimeout finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
- 
+
 13. Klicken Sie im Online-Editor auf **Speichern**.
 
 14. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Abonnement**, um das Abonnement auszuwählen, in dem die IP-Adresse des Ziels bereitgestellt wird.
 
-15. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Ressourcengruppe**, um die Ressourcengruppe auszuwählen, in der die IP-Adresse des Ziels bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für die IP-Adresse des Ziels zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe der vorhandenen IP-Adresse der Quelle übereinstimmt. 
+15. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Ressourcengruppe**, um die Ressourcengruppe auszuwählen, in der die IP-Adresse des Ziels bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für die IP-Adresse des Ziels zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe der vorhandenen IP-Adresse der Quelle übereinstimmt.
 
 16. Stellen Sie sicher, dass **GRUNDEINSTELLUNGEN** > **Standort** auf den Zielstandort festgelegt ist, an dem die IP-Adresse bereitgestellt werden soll.
 
@@ -151,7 +151,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 19. Klicken Sie auf die Schaltfläche **Erwerben**, um die IP-Adresse des Ziels bereitzustellen.
 
-## <a name="discard"></a>Verwerfen 
+## <a name="discard"></a>Verwerfen
 
 Wenn Sie die öffentliche IP-Adresse des Ziels verwerfen möchten, löschen Sie die Ressourcengruppe, die die öffentliche IP-Adresse des Ziels enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 

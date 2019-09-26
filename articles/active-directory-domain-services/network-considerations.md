@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617330"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086587"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
@@ -36,7 +36,7 @@ Beim Entwerfen des virtuellen Netzwerks für Azure AD DS gelten die folgenden Ü
     * Um die Latenzzeit zu minimieren, belassen Sie Ihre Kernanwendungen in der Nähe oder in derselben Region wie das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne. Sie können das Peering virtueller Netzwerke oder VPN-Verbindungen (Virtual Private Network) zwischen virtuellen Azure-Netzwerken verwenden.
 * Das virtuelle Netzwerk kann sich nicht auf andere als die von Azure AD DS bereitgestellten DNS-Dienste verlassen.
     * Azure AD DS bietet einen eigenen DNS-Dienst. Das virtuelle Netzwerk muss so konfiguriert sein, dass es diese DNS-Dienstadressen verwendet. Die Namensauflösung für weitere Namespaces kann mithilfe von bedingten Weiterleitungen erfolgen.
-    * Sie können keine benutzerdefinierten DNS-Servereinstellungen verwenden, um Abfragen an andere DNS-Server weiterzuleiten, einschließlich VMs. Ressourcen im virtuellen Netzwerk müssen den von Azure AD DS bereitgestellten DNS-Dienst verwenden.
+    * Sie können keine benutzerdefinierten DNS-Servereinstellungen verwenden, um Abfragen von anderen DNS-Servern weiterzuleiten, einschließlich VMs. Ressourcen im virtuellen Netzwerk müssen den von Azure AD DS bereitgestellten DNS-Dienst verwenden.
 
 > [!IMPORTANT]
 > Sie können Azure AD DS nicht in ein anderes virtuelles Netzwerk verschieben, nachdem Sie den Dienst aktiviert haben.

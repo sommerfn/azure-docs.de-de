@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 0bdf04014d7b0382913c0a4094f7474686658441
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150222"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086700"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Web-App für Benutzeranmeldungen – App-Registrierung
 
@@ -28,7 +28,7 @@ Auf dieser Seite werden die Besonderheiten der App-Registrierung für eine Web-A
 
 Für das Registrieren Ihrer Anwendung können Sie Folgendes verwenden:
 
-- Die [Web-App-Schnellstarts](#register-an-app-using-the-quickstarts) – Schnellstarts im Azure-Portal vermitteln nicht nur erste Erfahrungen beim Erstellen einer Anwendung, sondern umfassen auch die Schaltfläche **Make this change for me** (Diese Änderung für mich durchführen). Sie können diese Schaltfläche verwenden, um die benötigten Eigenschaften festzulegen. Dies gilt auch für eine bereits vorhandene App. Sie müssen die Werte dieser Eigenschaften an Ihren konkreten Fall anpassen. Insbesondere wird sich die Web-API-URL für Ihre App wahrscheinlich vom vorgeschlagenen Standardwert unterscheiden, was auch Auswirkungen auf den Abmelde-URI hat.
+- Die [Web-App-Schnellstarts](#register-an-app-using-the-quickstarts) – Schnellstarts im Azure-Portal vermitteln nicht nur erste Erfahrungen beim Erstellen einer Anwendung, sondern umfassen auch die Schaltfläche **Make this change for me** (Diese Änderung für mich durchführen). Sie können diese Schaltfläche verwenden, um die benötigten Eigenschaften festzulegen. Dies gilt auch für eine bereits vorhandene App. Sie müssen die Werte dieser Eigenschaften an Ihren konkreten Fall anpassen. Insbesondere wird sich die Web-API-URL für Ihre App wahrscheinlich vom vorgeschlagenen Standardwert unterscheiden, was sich auch auf den Abmelde-URI auswirkt.
 - Das Azure-Portal für die [manuelle Registrierung Ihrer Anwendung](#register-an-app-using-azure-portal)
 - PowerShell und Befehlszeilentools
 

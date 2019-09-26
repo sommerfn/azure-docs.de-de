@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917745"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077010"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -34,7 +34,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 3. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
-    ![Die ausgewählte Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari – Auswahl der Apache Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Die Seite „Hive-Ansicht“ ähnelt der folgenden Abbildung:
 
@@ -98,25 +98,25 @@ Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Abla
 Klicken Sie auf die Registerkarte **Tez UI** unter dem Arbeitsblatt, um die Tez-Benutzeroberfläche für die Abfrage anzuzeigen.
 
 > [!IMPORTANT]  
-> Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden. 
+> Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden.
 
 ## <a name="view-job-history"></a>Anzeige des Auftragsverlaufs
 
 Die Registerkarte __Jobs__ (Aufträge) zeigt einen Verlauf der Hive-Abfragen an.
 
-![Abbildung des Auftragsverlaufs](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Apache Hive-Ansicht mit Verlauf auf der Registerkarte für Aufträge](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Datenbanktabellen
 
 Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb einer Hive-Datenbank mit Tabellen zu arbeiten.
 
-![Abbildung der Registerkarte „Tabellen“](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Abbildung der Registerkarte mit Apache Hive-Tabellen](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
 In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nachdem Sie eine Abfrage gespeichert haben, können Sie diese von der Registerkarte __Saved Queries__ aus wiederverwenden.
 
-![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive-Ansicht mit Registerkarte für gespeicherte Abfragen](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.
@@ -129,7 +129,7 @@ Sie können Hive über benutzerdefinierte Funktionen (UDF) erweitern. Mit einer 
 
 Deklarieren und speichern Sie eine Gruppe von UDFs mit der Registerkarte **UDF** ganz oben in der Hive-Ansicht. Diese UDFs können im **Abfrage-Editor** verwendet werden.
 
-![Abbildung der Registerkarte „UDF“](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Apache Hive-Ansicht mit Anzeige der UDF-Registerkarte](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben, wird ganz unten im **Abfrage-Editor** die Schaltfläche **Insert udfs** angezeigt. Wenn Sie diesen Eintrag wählen, wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
 

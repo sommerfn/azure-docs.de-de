@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307442"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067616"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
@@ -54,10 +54,10 @@ Der Kalender enthält alle persönliche Besprechungen und Termine, aber KEINE ö
 Name der Absicht | BESCHREIBUNG | Beispiele
 ---------|----------|---------------
  AcceptEventEntry | Akzeptieren eines Termins, einer Besprechung oder eines Ereignisses im Kalender | Akzeptieren eines Termins <br> Akzeptiere die Veranstaltung. <br> Akzeptiere die heutige Besprechung.
- Abbrechen | Abbrechen der laufenden Aktion durch den virtuellen Assistenten, z. B. die Erstellung einer Besprechung <br> ***Hinweis:** Diese Absicht umfasst hauptsächlich die Aktion „Cancel“ im Calendar-Szenario. Wenn Sie einen allgemeinen Ausdruck für „Cancel“ benötigen, nutzen Sie die Absicht „Cancel“ in der Domäne **Utilities**.* | Es ist in Ordnung, sage die Veranstaltung einfach ab. <br> Nein, ich sage den Termin einfach ab.
+ Abbrechen | Abbrechen der laufenden Aktion durch den virtuellen Assistenten, z. B. die Erstellung einer Besprechung <br> _**Hinweis:** Diese Absicht umfasst hauptsächlich die Aktion „Cancel“ im Calendar-Szenario. Wenn Sie einen allgemeinen Ausdruck für „Cancel“ benötigen, nutzen Sie die Absicht „Cancel“ in der Domäne **Utilities**._ | Es ist in Ordnung, sage die Veranstaltung einfach ab. <br> Nein, ich sage den Termin einfach ab.
  ChangeCalendarEntry | Ändern oder Neuplanen eines Kalendereintrags | Verlege den Termin morgen um 6:00 Uhr auf 14:00 Uhr. <br> Verlege den Arzttermin auf 17:00 Uhr. <br> Verlege das Mittagessen mit Jenny Olson auf Freitag. <br> Ändere die Veranstaltungszeit.
  CheckAvailability | Prüfen der Verfügbarkeit für einen Termin oder eine Besprechung im Kalender des Benutzers oder einer anderen Person | Wann ist Klaus für eine Besprechung verfügbar? <br> Zeige, wann Carol morgen verfügbar ist. <br> Ist Chris am Samstag frei?
- Confirm | Bestätigen eines Vorgangs, einer Aktion auf der Grundlage vorheriger Absichten <br> ***Hinweis:** Diese Absicht umfasst hauptsächlich die Aktion „Confirm“ im Calendar-Szenario. Wenn Sie allgemeinere Ausdrücke für „Confirm“ benötigen, verwenden Sie die Absicht „Confirm“ in der Domäne **Utilities**.*| Das ist richtig, erstelle das Meeting. <br> Ja, danke, stelle eine Verbindung mit der Besprechung her.
+ Confirm | Bestätigen eines Vorgangs, einer Aktion auf der Grundlage vorheriger Absichten <br> _**Hinweis:** Diese Absicht umfasst hauptsächlich die Aktion „Confirm“ im Calendar-Szenario. Wenn Sie allgemeinere Ausdrücke für „Confirm“ benötigen, verwenden Sie die Absicht „Confirm“ in der Domäne **Utilities**._| Das ist richtig, erstelle das Meeting. <br> Ja, danke, stelle eine Verbindung mit der Besprechung her.
  ConnectToMeeting | Verbinden mit einer Besprechung | Verbinde mich mit dem 11:00-Uhr-Konferenzanruf mit Andy. <br> Akzeptieren des Aufrufs zur Budgetbesprechung
  ContactMeetingAttendees | Kontaktieren von Besprechungsteilnehmern | Benachrichtige die Besprechungsteilnehmer, dass ich etwas verspätet zum Meeting um 3:00 Uhr komme. <br> Benachrichtige die Kollegen, dass die 8-Uhr-Besprechungen auf 8:30 Uhr verschoben werden muss.
  CreateCalendarEntry | Hinzufügen eines neuen einmaligen Elements zum Kalender | Erstellen einer Besprechung zur Erörterung von Problemen <br> Erstelle eine Besprechung mit abc@microsoft.com.
@@ -69,10 +69,10 @@ Name der Absicht | BESCHREIBUNG | Beispiele
  FindCalendarDetail | Überprüfen und Anzeigen von Details für einen Zeitplan | Ich benötige Details zur Besprechung, die ich mit meinem Kollegen Paul geplant habe.
  FindDuration | Überprüfen der Dauer | Wie viel Zeit habe ich, um Lebensmittel einzukaufen? <br> Wie viel Zeit habe ich für das Mittagessen?
  FindMeetingRoom | Suchen verfügbarer Besprechungsräume | Welche Besprechungsräume stehen mir zur Verfügung? <br> Finde einen neuen Besprechungsort.
- GoBack | Zurücknavigieren zum letzten Schritt oder Element  <br> ***Hinweis:** Weitere allgemeine Äußerungen zu „GoBack“ finden Sie in der Domäne **Utilities**.* | Letzter Eintrag <br> Zurück zur letzten E-Mail
- Reject | Ablehnen des Vorschlags des virtuellen Assistenten <br> ***Hinweis:** Weitere allgemeine Äußerungen zu „Reject“ finden Sie in der Domäne **Utilities**.* | Die Veranstaltung muss nicht eingetragen werden. <br> Zu diesem Zeitpunkt habe ich andere Dinge zu erledigen.
-ShowNext | Überprüfen des nächsten Ereignisses <br> ***Hinweis:** Weitere allgemeine Äußerungen zu „ShowNext“ finden Sie in der Domäne **Utilities**.* | Zeige mit meine nächste Veranstaltung an. <br> Was steht als Nächstes in meinem Kalender?
- ShowPrevious | Überprüfen des letzten Ereignisses <br> ***Hinweis:** Weitere allgemeine Äußerungen zu „ShowPrevious“ finden Sie in der Domäne **Utilities**.* | Wie lautet der Zeitplan vorher?
+ GoBack | Zurücknavigieren zum letzten Schritt oder Element  <br> _**Hinweis:** Weitere allgemeine Äußerungen zu „GoBack“ finden Sie in der Domäne **Utilities**._ | Letzter Eintrag <br> Zurück zur letzten E-Mail
+ Reject | Ablehnen des Vorschlags des virtuellen Assistenten <br> _**Hinweis:** Weitere allgemeine Äußerungen zu „Reject“ finden Sie in der Domäne **Utilities**._ | Die Veranstaltung muss nicht eingetragen werden. <br> Zu diesem Zeitpunkt habe ich andere Dinge zu erledigen.
+ShowNext | Überprüfen des nächsten Ereignisses <br> _**Hinweis:** Weitere allgemeine Äußerungen zu „ShowNext“ finden Sie in der Domäne **Utilities**._ | Zeige mit meine nächste Veranstaltung an. <br> Was steht als Nächstes in meinem Kalender?
+ ShowPrevious | Überprüfen des letzten Ereignisses <br> _**Hinweis:** Weitere allgemeine Äußerungen zu „ShowPrevious“ finden Sie in der Domäne **Utilities**._ | Wie lautet der Zeitplan vorher?
  TimeRemaining | Überprüfen der verbleibenden Zeit bis zur nächsten Veranstaltung. | Zeige mir, wie viel Zeit ich vor meinen Besprechungen habe. <br> Zeige mir die Zeit, die ich vor Beginn der nächsten Besprechung habe.
  
 ### <a name="entities"></a>**Entitäten**

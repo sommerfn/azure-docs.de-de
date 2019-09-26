@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899411"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993385"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -42,7 +42,7 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 **Anbieter**   
 In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen herstellen, verwenden den .NET Framework-Datenanbieter für SQL Server.
 
-## <a name="on-premises-data-sources"></a>Lokale Datenquellen
+## <a name="other-data-sources"></a>Weitere Datenquellen
 
 Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
 
@@ -113,6 +113,10 @@ Für lokale Datenquellen:
 Für Clouddatenquellen:
 
 * Wenn Sie die SQL-Authentifizierung verwenden, sollte das Identitätswechselkonto ein Dienstkonto sein.
+
+## <a name="oauth-credentials"></a>OAuth-Anmeldeinformationen
+
+Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher bieten Azure SQL-Datenbank, Azure SQL Data Warehouse, Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Lokales Gateway](analysis-services-gateway.md)   

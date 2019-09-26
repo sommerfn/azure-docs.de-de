@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915856"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996899"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
 * Mehrere Knotenpools sind nur für Cluster verfügbar, die nach der erfolgreichen Registrierung des Features *MultiAgentpoolPreview* für Ihr Abonnement erstellt wurden. Sie können keine Knotenpools mit einem bestehenden AKS-Cluster hinzufügen oder verwalten, die vor der erfolgreichen Registrierung dieses Features erstellt wurden.
-* Sie können den ersten Knotenpool nicht löschen.
+* Der Standardknotenpool (der erste) kann nicht gelöscht werden.
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
-* Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen/aktualisieren/löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
+* Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen oder löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
 
 Während sich dieses Feature in der Vorschauversion befindet, gelten die folgenden zusätzlichen Einschränkungen:
 
@@ -89,6 +89,8 @@ Während sich dieses Feature in der Vorschauversion befindet, gelten die folgend
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
 Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. *--kubernetes-version* *1.13.10* wird verwendet, um die Aktualisierung eines Knotenpools in einem nachfolgenden Schritt zu veranschaulichen. Sie können eine beliebige [unterstützte Kubernetes-Version][supported-versions] angeben.
+
+Bei Verwendung mehrerer Knotenpools wird dringend empfohlen, den Load Balancer der Standard-SKU zu verwenden. Lesen Sie [dieses Dokument](load-balancer-standard.md), um weitere Informationen zur Verwendung von Load Balancern der Standard-SKU mit AKS zu erhalten.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 Die Erstellung des Clusters dauert einige Minuten.
@@ -578,7 +581,7 @@ Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängi
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool
 
 > [!NOTE]
-> In der Vorschauversion gibt es eine Einschränkung bei der Verwendung dieser Funktion mit *Load Balancer Standard-SKUs in AKS (Vorschauversion)* aufgrund möglicher Lastenausgleichsregeln, die mit der VM-Bereitstellung in Konflikt stehen. Verwenden Sie in der Vorschauversion die *Load Balancer Basic-SKU*, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
+> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. Verwenden Sie in der Vorschauversion die *Load Balancer Basic-SKU*, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
 
 AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel hierfür ist Gaming, bei dem eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dies kann erreicht werden, indem Sie sich für eine separate Previewfunktion für öffentliche IP-Adressen für Knoten (Node Public IP) (Vorschauversion) registrieren.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099439"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202982"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Sicherheitshärtung bei AKS-Hosts für virtuelle Computer 
 
@@ -76,8 +76,6 @@ Die AKS-Engine fördert oder entspricht derzeit keinem bestimmten Sicherheitssta
 |5.4.1.4 |Sicherstellen, dass die Sperre für inaktive Kennwörter höchstens 30 Tage beträgt |
 |5.4.4 |Sicherstellen, dass der Befehl „umask“ für Standardbenutzer 027 oder stärker einschränkend ist |
 |5.6 |Sicherstellen, dass der Zugriff auf den Befehl „su“ eingeschränkt ist|
-
-(*) Muss aktiviert sein. Informationen finden Sie in der [Dokumentation](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md) zur Clusterdefinition.
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
  

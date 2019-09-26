@@ -3,7 +3,7 @@ title: Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitz
 description: Hier erfahren Sie, wie Sie Terraform zum Erstellen von Azure-Ressourcen installieren und konfigurieren
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090739"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168739"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen
  
@@ -37,7 +37,7 @@ Terraform wird standardmäßig in [Cloud Shell](/azure/terraform/terraform-cloud
 
 Überprüfen Sie Ihre Pfadkonfiguration mit dem Befehl `terraform`. Es wird eine Liste der verfügbaren Terraform-Optionen angezeigt, wie in der folgenden Beispielausgabe veranschaulicht:
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -94,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 Erstellen Sie die Datei `test.tf` in einem leeren Verzeichnis, und fügen Sie das folgende Skript ein.
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -111,7 +111,7 @@ terraform init
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -125,7 +125,7 @@ terraform apply
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create

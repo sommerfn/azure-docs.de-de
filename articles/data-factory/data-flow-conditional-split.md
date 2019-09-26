@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795634"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104946"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>Transformation für bedingtes Teilen für den Mappingdatenfluss
 
@@ -31,4 +31,4 @@ Wenn Sie weitere Bedingungen hinzufügen möchten, wählen Sie im unteren Konfig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Allgemeine Datenflusstransformationen, die mit bedingtem Teilen verwendet werden: [Join-Transformation](data-flow-join.md), [Loopup-Transformation](data-flow-lookup.md), [Select-Transformation](data-flow-select.md)
+Allgemeine Datenflusstransformationen, die mit bedingtem Teilen verwendet werden: [Join-Transformation](data-flow-join.md), [Lookup-Transformation](data-flow-lookup.md), [Select-Transformation](data-flow-select.md)

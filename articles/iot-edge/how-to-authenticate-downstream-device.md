@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983016"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003626"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -325,47 +325,32 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-Ein Beispiel für ein Python-Programm, das sich mit X.509-Zertifikaten bei IoT Hub authentifiziert, finden Sie im Beispiel [iothub_client_sample_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) im IoT-SDK für Python. Einige der wichtigsten Zeilen dieses Beispiels sind hier aufgeführt, um den Authentifizierungsprozess zu veranschaulichen.
+Das Python SDK unterstützt zurzeit nur die Verwendung von X509-Zertifikaten und Schlüsseln aus Dateien, keine inline definierten Schlüssel. Im folgenden Beispiel werden relevante Dateipfade in Umgebungsvariablen gespeichert.
 
-Verwenden Sie beim Festlegen der Verbindungszeichenfolge für das nachgeschaltete Gerät den Hostnamen des IoT Edge-Gatewaygeräts für den **HostName**-Parameter. Sie finden den Hostnamen in der Datei „config.yaml“ des Gatewaygeräts. 
+Verwenden Sie beim Definieren des Hostnamens für das nachgeschaltete Gerät den Hostnamen des IoT Edge-Gatewaygeräts für den **HostName**-Parameter. Sie finden den Hostnamen in der Datei „config.yaml“ des Gatewaygeräts. 
 
 ```python
-# String containing Hostname, Device Id in the format:
-# "HostName=<gateway device hostname>;DeviceId=<device_id>;x509=true"
-CONNECTION_STRING = "[Device Connection String]"
+import os
+from azure.iot.device import IoTHubDeviceClient, X509
 
-X509_CERTIFICATE = (
-    "-----BEGIN CERTIFICATE-----""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "...""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXX""\n"
-    "-----END CERTIFICATE-----"
-)
-
-X509_PRIVATEKEY = (
-    "-----BEGIN RSA PRIVATE KEY-----""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "...""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    "-----END RSA PRIVATE KEY-----"
-)
-
+HOSTNAME = "[IoT Edge Gateway Hostname]"
+DEVICE_ID = "[Device ID]"
 
 def iothub_client_init():
-    # prepare iothub client
-    client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
+    x509 = X509(
+        cert_file=os.getenv("X509_CERT_FILE"),
+        key_file=os.getenv("X509_KEY_FILE")
+    )
 
-    # this brings in x509 privateKey and certificate
-    client.set_option("x509certificate", X509_CERTIFICATE)
-    client.set_option("x509privatekey", X509_PRIVATEKEY)
+    client = IoTHubDeviceClient.create_from_x509_certificate(
+        x509=x509,
+        hostname=HOSTNAME,
+        device_id=DEVICE_ID
+    )
+)
 
-    return client
+if __name__ == '__main__':
+    iothub_client_init()
 ```
 
 #### <a name="java"></a>Java

@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Datasets zum Zugreifen auf Daten mit „azureml-datasets“
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Datasets aus verschiedenen Quellen erstellen und Datasets in Ihrem Arbeitsbereich registrieren.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 215660b0f0b8748461849f20e65a3585f939085e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6c3a8d62bd6b3650f834540bd7bb13027792b091
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858784"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076981"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning
 
@@ -34,9 +34,9 @@ Azure Machine Learning-Datasets ermöglichen Folgendes:
 
 Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-* Ein [Azure Machine Learning Service-Arbeitsbereich](how-to-manage-workspace.md)
+* Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
 * Eine [Installation des Azure Machine Learning-SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), in dem das Paket „azureml-datasets“ enthalten ist.
 
@@ -45,8 +45,10 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
 ## <a name="dataset-types"></a>Datasettypen
 
-Datasets werden in verschiedene Typen eingeteilt, je nachdem, wie Benutzer Sie beim Training nutzen. Liste der Datasettypen:
+Datasets werden in zwei Typen eingeteilt, je nachdem, wie Benutzer sie im Training nutzen. 
+
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Dadurch erhalten Sie die Möglichkeit, die Daten in einem pandas-DataFrame zu materialisieren. Ein `TabularDataset`-Objekt kann aus CSV-, TSV- oder parquet-Dateien, SQL-Abfrageergebnissen usw. erstellt werden. Eine vollständige Liste finden Sie in unserer [Dokumentation](https://aka.ms/tabulardataset-api-reference).
+
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Auf diese Weise besteht die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Die Dateien können ein beliebiges Format aufweisen. Dies ermöglicht eine größere Bandbreite an Machine Learning-Szenarien einschließlich Deep Learning.
 
 Weitere Informationen zu bevorstehenden API-Änderungen finden Sie [hier](https://aka.ms/tabular-dataset).
@@ -55,7 +57,7 @@ Weitere Informationen zu bevorstehenden API-Änderungen finden Sie [hier](https:
 
 Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
 
-Damit Azure Machine Learning Service auf die Daten zugreifen kann, müssen Datasets aus Pfaden in [Azure-Datenspeichern](how-to-access-data.md) oder öffentlichen Web-URLs erstellt werden.
+Damit Azure Machine Learning auf die Daten zugreifen kann, müssen Datasets aus Pfaden in [Azure-Datenspeichern](how-to-access-data.md) oder öffentlichen Web-URLs erstellt werden.
 
 Gehen Sie wie folgt vor, um Datasets auf der Grundlage eines [Azure-Datenspeichers](how-to-access-data.md) zu erstellen:
 
@@ -76,9 +78,14 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
+
 ### <a name="create-tabulardatasets"></a>Erstellen von TabularDatasets
 
-Verwenden Sie die `from_delimited_files()`-Methode mit der `TabularDatasetFactory`-Klasse, um Dateien im CSV- oder TSV-Format zu lesen, und erstellen Sie ein nicht registriertes TabularDataset. Wenn Sie aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert.
+TabularDatasets können über das SDK oder mithilfe der Landing Page für den Arbeitsbereich (Vorschauversion) erstellt werden. Ein Zeitstempel kann in einer Datenspalte angegeben werden, oder in dem Pfadmuster, in dem Daten gespeichert werden, um ein Zeitreihenmerkmal zu aktivieren, was eine einfache und effiziente Filterung nach Zeit ermöglicht. 
+
+#### <a name="using-the-sdk"></a>Verwenden des SDK 
+
+Verwenden Sie die [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-)-Methode mit der `TabularDatasetFactory`-Klasse, um Dateien im CSV- oder TSV-Format zu lesen, und erstellen Sie ein nicht registriertes TabularDataset. Wenn Sie aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert.
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -103,8 +110,38 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38,0|1|0|PC 17599|71.2833|C85|C
 2|3|1|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||S
 
+Verwenden Sie die [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)-Methode mit der `TabularDataset`-Klasse, um eine einfache und effiziente Filterung nach Zeit zu ermöglichen. Weitere Beispiele und Details finden Sie [hier](http://aka.ms/azureml-tsd-notebook). 
+
+```Python
+# create a TabularDataset with timeseries trait
+datastore_paths = [(datastore, 'weather/*/*/*/data.parquet')]
+
+# get a coarse timestamp column from the path pattern
+dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_format='weather/{coarse_time:yyy/MM/dd}/data.parquet')
+
+# set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
+dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
+
+# filter with timeseries trait specific methods 
+data_slice = dataset.time_before(datetime(2019, 1, 1))
+data_slice = dataset.time_after(datetime(2019, 1, 1))
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+```
+
+#### <a name="using-the-workspace-landing-page"></a>Verwenden der Landing Page des Arbeitsbereichs 
+
+Melden Sie sich bei der [Landing Page des Arbeitsbereichs](https://ml.azure.com) an, um ein Dataset über die Webbenutzeroberfläche zu erstellen. Derzeit unterstützt die Landing Page des Arbeitsbereichs nur die Erstellung von TabularDatasets.
+
+In der folgenden Animation wird gezeigt, wie ein Dataset auf der Landing Page des Arbeitsbereichs erstellt wird. 
+
+Wählen Sie zuerst **Datasets** im Abschnitt **Assets** im linken Bereich aus. Wählen Sie dann **+ Dataset erstellen** aus, um die Quelle Ihres Datasets auszuwählen. Hierfür kommen lokale Dateien, Datenspeicher oder öffentliche Web-URLs infrage. Die Formulare **Einstellungen und Vorschau** und **Schema** werden auf intelligente Weise auf dem Dateityp basierend aufgefüllt. Wählen Sie **Weiter** aus, um sie zu überprüfen oder das Dataset vor der Erstellung weiter zu konfigurieren. Wählen Sie **Fertig** aus, um die Erstellung des Datasets abzuschließen. 
+
+![Erstellen eines Datasets mithilfe der Benutzeroberfläche](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
 ### <a name="create-filedatasets"></a>Erstellen von FileDatasets
-Verwenden Sie die `from_files()`-Methode für die `FileDatasetFactory`-Klasse, um Dateien in einem beliebigen Format zu laden, und erstellen Sie ein nicht registriertes FileDataset.
+
+Verwenden Sie die [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)-Methode für die `FileDatasetFactory`-Klasse, um Dateien in einem beliebigen Format zu laden, und erstellen Sie ein nicht registriertes FileDataset.
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -122,17 +159,21 @@ web_paths = [
            ]          
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
+
 ## <a name="register-datasets"></a>Registrieren von Datasets
 
 Registrieren Sie Ihre Datasets beim Arbeitsbereich, um den Erstellungsprozess abzuschließen:
 
-Verwenden Sie die `register()`-Methode zum Registrieren von Datasets in Ihrem Arbeitsbereich, damit diese für andere Benutzer freigegeben und für unterschiedliche Experimente wiederverwendet werden können.
+Verwenden Sie die [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)-Methode zum Registrieren von Datasets in Ihrem Arbeitsbereich, damit diese für andere Benutzer freigegeben und für unterschiedliche Experimente wiederverwendet werden können.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
                                  name = 'titanic_ds',
                                  description = 'titanic training data')
 ```
+
+>[!Note]
+> Datasets, die über die Landing Page des Arbeitsbereichs erstellt werden, werden automatisch im Arbeitsbereich registriert. 
 
 ## <a name="version-datasets"></a>Versionsverwaltung von Datasets
 
@@ -141,7 +182,7 @@ Sie können ein neues Dataset unter demselben Namen registrieren, indem Sie eine
 * Wenn Sie verschiedene Ansätze für Datenvorbereitung oder Merkmalsentwicklung anwenden.
 
 ```Python
-# create a TabularDataset from new Titanic training data
+# create a TabularDataset from Titanic training data
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'

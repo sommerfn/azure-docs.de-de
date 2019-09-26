@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059375"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219189"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Region mit dem Azure-Portal
 
@@ -27,7 +27,7 @@ Azure-Sicherheitsgruppen können nicht aus einer Region in eine andere verschobe
 - Azure-Netzwerksicherheitsgruppen können nicht zwischen Regionen verschoben werden.  Sie müssen die neue NSG Ressourcen in der Zielregion zuordnen.
 
 - Damit Sie eine NSG-Konfiguration exportieren und eine Vorlage bereitstellen können, um eine NSG in einer anderen Region zu erstellen, benötigen Sie mindestens die Rolle „Netzwerkmitwirkender“.
-   
+
 - Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout umfasst Load Balancer, Netzwerksicherheitsgruppen, öffentliche IP-Adressen und virtuelle Netzwerke, ohne darauf beschränkt zu sein.
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement NSGs in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
@@ -41,7 +41,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Exportieren der Vorlage und Bereitstellen im Portal
 
-1. Melden Sie sich bei [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+1. Melden Sie sich bei [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
 2. Suchen Sie die Ressourcengruppe, die die Quell-NSG enthält, und klicken Sie darauf.
 3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
 4. Wählen Sie **Bereitstellen** auf dem Blatt **Vorlage exportieren** aus.
@@ -77,19 +77,19 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
-11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **Central US** = **centralus**.
-    
+
+11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
+
 12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
 
     * **Sicherheitsregeln**: Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **template.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 14. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Abonnement**, um das Abonnement auszuwählen, in dem die Ziel-NSG bereitgestellt wird.
 
-15. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Ressourcengruppe**, um die Ressourcengruppe auszuwählen, in der die Ziel-NSG bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für die Ziel-NSG zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe der vorhandenen NSG übereinstimmt. 
+15. Klicken Sie auf **GRUNDEINSTELLUNGEN** > **Ressourcengruppe**, um die Ressourcengruppe auszuwählen, in der die Ziel-NSG bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für die Ziel-NSG zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe der vorhandenen NSG übereinstimmt.
 
 16. Stellen Sie sicher, dass **GRUNDEINSTELLUNGEN** > **Standort** auf den Zielstandort festgelegt ist, an dem die NSG bereitgestellt werden soll.
 
@@ -165,7 +165,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
 
 19. Klicken Sie auf die Schaltfläche **Erwerben**, um die Zielnetzwerksicherheitsgruppe bereitzustellen.
 
-## <a name="discard"></a>Verwerfen 
+## <a name="discard"></a>Verwerfen
 
 Wenn Sie die Ziel-NSG verwerfen möchten, löschen Sie die Ressourcengruppe, die die Ziel-NSG enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 

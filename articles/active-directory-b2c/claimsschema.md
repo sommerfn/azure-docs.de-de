@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847047"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999100"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed oder WsTrust. |
+| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | Der zu verwendende Anspruchstypname. |
 
 Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Identity Experience Frameworks mit einem SAML2-Identitätsanbieter oder einer Anwendung der vertrauenden Seite `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` zugeordnet. Unter Verwendung der Werte „OpenIdConnect“ und „OAuth2“ wird der Anspruch `family_name` zugeordnet.

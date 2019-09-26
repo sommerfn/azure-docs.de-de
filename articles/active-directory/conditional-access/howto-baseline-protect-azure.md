@@ -1,6 +1,6 @@
 ---
 title: 'Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau) – Azure Active Directory'
-description: Conditonal Access Richtlinie erfordert MFA für Azure Resource Manager
+description: Richtlinie für bedingten Zugriff zum Anfordern von MFA für Azure Resource Manager
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532956"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086730"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau)
 
@@ -50,7 +50,7 @@ Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und läd
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
-Die Richtlinie **Anfordern von MFA für die Dienstverwaltung** betrifft alle Benutzer von Azure Resource Manager. Daher sind verschiedene Aspekte zu berücksichtigen, um eine reibungslose Bereitstellung sicherzustellen. Beispielsweise müssen Benutzer und Dienstprinzipale in Azure AD identifiziert werden, die MFA nicht ausführen dürfen oder sollen, sowie die von Ihrer Organisation verwendeten Anwendungen und Clients, die keine moderne Authentifizierung unterstützen.
+Die Richtlinie **MFA für Dienstverwaltung erforderlich** gilt für alle Azure Resource Manager-Benutzer.
 
 ## <a name="enable-the-baseline-policy"></a>Aktivieren der Basisrichtlinie
 
@@ -68,6 +68,6 @@ Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administrato
 
 Weitere Informationen finden Sie unter
 
-* [Conditional Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
+* [Baselineschutzrichtlinien für bedingten Zugriff](concept-baseline-protection.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
-* [Was ist Conditional Access in Azure Active Directory?](overview.md)
+* [Was ist bedingter Zugriff?](overview.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439552"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066676"
 ---
 # <a name="language-support-for-qna-maker"></a>Sprachunterstützung für QnA Maker
 
@@ -42,7 +42,7 @@ Wenn der Benutzer plant, mehrere Sprachen zu unterstützen, muss er für jede Sp
 Überprüfen Sie die primäre Sprache mit den folgenden Schritten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
-1. Suchen und wählen Sie die Azure Search-Ressource, die als Teil Ihrer QnA Maker-Ressource erstellt wurde. Der Name der Azure Search-Ressource beginnt mit demselben Namen wie die QnA Maker-Ressource und hat den Typ **Suchdienst**. 
+1. Suchen und wählen Sie die Azure Search-Ressource, die als Teil Ihrer QnA Maker-Ressource erstellt wurde. Der Name der Azure Search-Ressource beginnt mit demselben Namen wie die QnA Maker-Ressource und hat den Typ **Suchdienst**. Beachten Sie, dass nur eine QnA Maker-Ressource mit genau einer Azure Search-Ressource verknüpft werden kann.
 1. Wählen Sie auf der Seite **Übersicht** der Azure Search-Ressource die Option **Indizes** aus. 
 1. Wählen Sie den Index **testkb** aus.
 1. Wählen Sie die Registerkarte **Felder** aus. 

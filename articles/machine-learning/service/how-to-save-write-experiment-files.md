@@ -1,6 +1,6 @@
 ---
 title: Speicherorte zum Speichern und Schreiben von Experimentdateien
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wo Sie Ihre Experimenteingabedateien speichern sollten und wohin Sie Ausgabedateien schreiben sollten, um Speicherlimits einzuhalten und die Latenz von Experimenten zu minimieren.
 services: machine-learning
 author: rastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114513"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034290"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 
@@ -33,7 +33,7 @@ Azure Machine Learning führt Trainingsskripts durch Kopieren des gesamten Skrip
 
 Aus diesem Grund empfehlen wir Folgendes:
 
-* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning Service verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
 * **Wenn Sie nur wenige Datendateien und Abhängigkeitsskripts benötigen und keinen Datenspeicher verwenden können,** legen Sie die Dateien in demselben Ordnerverzeichnis wie Ihr Trainingsskript ab. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
 

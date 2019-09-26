@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186236"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004015"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Arbeiten mit Projektionen in einem Wissensspeicher in Azure Search
 
@@ -66,6 +66,9 @@ Sie können ein einzelnes Dokument im Index in mehreren Tabellen projizieren und
 ### <a name="defining-a-table-projection"></a>Definieren einer Tabellenprojektion
 
 Beim Definieren einer Tabellenprojektion im Element `knowledgeStore` der Qualifikationsgruppe ordnen Sie zunächst der Tabellenquelle einen Knoten in der Anreicherungsstruktur zu. Dieser Knoten ist normalerweise die Ausgabe einer **Shaper**-Qualifikation, die Sie der Liste der Qualifikationen hinzugefügt haben, um eine bestimmte Form zu generieren, die in Tabellen projiziert werden soll. Der Knoten, der projiziert werden soll, kann so segmentiert werden, dass er in mehreren Tabellen projiziert wird. Die Tabellendefinition ist eine Liste der Tabellen, die projiziert werden sollen. 
+
+#### <a name="projection-slicing"></a>Projektionsslicing
+Wenn Sie eine Tabellenprojektionsgruppe definieren, kann ein einzelner Knoten in der Anreicherungsstruktur per Slicing in mehrere verknüpfte Tabellen aufgeteilt werden. Wenn eine Tabelle mit einem Quellpfad hinzugefügt wird, der einer vorhandenen Tabellenprojektion untergeordnet ist, führt dies dazu, dass der untergeordnete Knoten aus dem übergeordneten Knoten herausgeschnitten und in die neue, noch verknüpfte Tabelle projiziert wird. Hiermit können Sie einen einzelnen Knoten in einem Shaper-Skill als Quelle für all Ihre Tabellenprojektionen definieren.
 
 Für jede Tabelle müssen drei Eigenschaften angegeben werden:
 
