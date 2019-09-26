@@ -17,16 +17,14 @@ ms.date: 07/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25d4dba67bcf38049939ac40437c3668ee988235
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853046"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268496"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwendung persönliche, Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann.
 
@@ -184,7 +182,7 @@ Initialisieren Sie MSAL anschließend mit dem folgenden Code:
         R.raw.auth_config);
 ```
 
-> |Hinweis: ||
+> |Hierbei gilt: ||
 > |---------|---------|
 > |`R.raw.auth_config` | Diese Datei enthält die Konfigurationen für Ihre Anwendung. Dazu zählen unter anderem die App-/Client-ID, die Zielgruppe für die Anmeldung, der Umleitungs-URI sowie verschiedene andere Anpassungsoptionen. |
 
@@ -207,7 +205,7 @@ In einigen Situationen müssen Benutzer mit Microsoft Identity Platform interagi
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 ```
 
-> |Hinweis:||
+> |Hierbei gilt:||
 > |---------|---------|
 > | `SCOPES` | Enthält die angeforderten Bereiche (d.h. `{ "user.read" }` für Microsoft Graph oder `{ "<Application ID URL>/scope" }` für benutzerdefinierte Web-APIs (z.B. `api://<Application ID>/access_as_user`)). |
 > | `getAuthInteractiveCallback` | Der Rückruf wird ausgeführt, wenn die Steuerung nach der Authentifizierung an die Anwendung zurückgegeben wird. |
@@ -230,7 +228,7 @@ Apps sollten nicht verlangen, dass sich die Benutzer jedes Mal anmelden, wenn si
     });
 ```
 
-> |Hinweis:||
+> |Hierbei gilt:||
 > |---------|---------|
 > | `SCOPES` | Enthält die angeforderten Bereiche (d.h. `{ "user.read" }` für Microsoft Graph oder `{ "<Application ID URL>/scope" }` für benutzerdefinierte Web-APIs (z.B. `api://<Application ID>/access_as_user`)). |
 > | `getAccounts(...)` | Enthält das Konto, für das Sie automatisch Token abrufen möchten. |

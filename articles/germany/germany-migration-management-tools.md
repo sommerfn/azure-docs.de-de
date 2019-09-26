@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: fbc2a8e70a6b972958343de1762ec11acf621271
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a9c3ca3a4047e69efedaa0baa93d3f1923c78c22
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376256"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272529"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
@@ -56,7 +56,7 @@ Azure Scheduler ist veraltet. Verwenden Sie Azure Logic Apps zum Erstellen von P
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/#step-by-step-tutorials) durcharbeiten.
+- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
 - Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="network-watcher"></a>Network Watcher

@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 10/17/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62124002"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266573"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -79,7 +78,7 @@ Die folgende Tabelle enthält ein Beispiel dafür, wie die Beispiel-VNETs und lo
 | Virtuelles Netzwerk | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA (Westen) | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |USA (Ost) |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Abschnitt 1 – Konfigurieren der Einstellungen für klassische VNETs
 
@@ -144,20 +143,13 @@ In diesem Abschnitt erstellen Sie das Gateway für das virtuelle Netzwerk und da
 * Subnetzname = Subnet-1 <br>
 * Adressbereich = 192.168.1.0/24 <br>
 
-
 Wenn Sie nicht über ein Resource Manager-VNET verfügen und diese Schritte als Übung ausführen, erstellen Sie mit den Schritten in [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md) und den Beispielwerten ein virtuelles Netzwerk.
 
-### <a name="2-create-a-gateway-subnet"></a>2. Erstellen eines Gatewaysubnetzes
+### <a name="creategw"></a>2. Erstellen eines Gateways für das virtuelle Netzwerk
 
-**Beispielwert:** GatewaySubnet = 192.168.0.0/26
+In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
-Bevor Sie ein Gateway für ein virtuelles Netzwerk erstellen, müssen Sie das Gatewaysubnetz erstellen. Erstellen Sie ein Gatewaysubnetz mit einem CIDR-Wert von /28 oder höher (/27, /26 usw.). Wenn Sie dies im Rahmen einer Übung durchführen, können Sie die Beispielwerte verwenden.
-
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
-
-[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
-
-### <a name="creategw"></a>3. Erstellen eines Gateways für das virtuelle Netzwerk
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 **Beispielwerte:**
 
@@ -167,18 +159,21 @@ Bevor Sie ein Gateway für ein virtuelles Netzwerk erstellen, müssen Sie das Ga
 * SKU = VpnGw1 <br>
 * Standort = USA, Osten <br>
 * Virtuelles Netzwerk = RMVNet <br>
+* GatewaySubnet = 192.168.0.0/26 <br>
 * Erste IP-Konfiguration = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>4. Erstellen eines Gateways für das lokale Netzwerk
+[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+
+### <a name="createlng"></a>3. Erstellen eines Gateways für das lokale Netzwerk
 
 **Beispielwerte:** Lokales Netzwerkgateway = ClassicVNetLocal
 
 | Virtual Network | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |Öffentliche IP-Adresse des Gateways|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA (Westen) | RMVNetLocal (192.168.0.0/16) |Die öffentliche IP-Adresse, die dem Gateway ClassicVNet zugewiesen ist|
-| RMVNet | (192.168.0.0/16) |USA (Ost) |ClassicVNetLocal (10.0.0.0/24) |Die öffentliche IP-Adresse, die dem Gateway RMVNet zugewiesen ist|
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |Die öffentliche IP-Adresse, die dem Gateway RMVNet zugewiesen ist|
 
 Das lokale Netzwerkgateway legt den Adressbereich und die öffentliche IP-Adresse fest, die Ihrem klassischen VNET und dem Gateway des zugehörigen virtuellen Netzwerks zugeordnet sind. Wenn Sie diese Schritte als Übung durchführen, sehen Sie bei den Beispielwerten nach.
 

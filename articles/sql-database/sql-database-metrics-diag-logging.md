@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 208ebaa2e22f4cd0ee2138f3e49f78c1e56860cf
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135176"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260331"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Einzeldatenbanken, Pooldatenbanken in Pools für elastische Datenbanken und Inst
 Weitere Informationen zu den Metriken und Protokollkategorien, die von verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 - [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/resource-logs-overview.md)
 
 Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwaltete Instanzen. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
 
@@ -304,7 +304,7 @@ Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen mithilfe der Azure
 
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen beim Erstellen von Ressourcen mithilfe der Resource Manager-Vorlage aktivieren](../azure-monitor/platform/diagnostic-logs-stream-template.md).
+Informieren Sie sich darüber, wie Sie [Diagnoseeinstellungen beim Erstellen von Ressourcen mithilfe der Resource Manager-Vorlage aktivieren](../azure-monitor/platform/diagnostic-settings-template.md).
 
 ## <a name="stream-into-azure-sql-analytics"></a>Streamen in Azure SQL-Analyse
 
@@ -442,7 +442,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: ResourceUsageStats |
+|Category|Name der Kategorie Immer: ResourceUsageStats |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: MANAGEDINSTANCES |
 |SubscriptionId|Abonnement-GUID für die Datenbank |
@@ -467,7 +467,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics |
+|Category|Name der Kategorie Immer: QueryStoreRuntimeStatistics |
 |OperationName|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -518,7 +518,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: QueryStoreWaitStatistics |
+|Category|Name der Kategorie Immer: QueryStoreWaitStatistics |
 |OperationName|Name des Vorgangs. Immer: QueryStoreWaitStatisticsEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -556,7 +556,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: Errors |
+|Category|Name der Kategorie Immer: Errors |
 |OperationName|Name des Vorgangs. Immer: ErrorEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -585,7 +585,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: DatabaseWaitStatistics |
+|Category|Name der Kategorie Immer: DatabaseWaitStatistics |
 |OperationName|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -614,7 +614,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: Zeitlimits |
+|Category|Name der Kategorie Immer: Zeitlimits |
 |OperationName|Name des Vorgangs. Immer: TimeoutEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -637,7 +637,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: Blöcke |
+|Category|Name der Kategorie Immer: Blöcke |
 |OperationName|Name des Vorgangs. Immer: BlockEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -661,7 +661,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC] |Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: Deadlocks |
+|Category|Name der Kategorie Immer: Deadlocks |
 |OperationName|Name des Vorgangs. Immer: DeadlockEvent |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
@@ -682,7 +682,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
 |type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
-|Category (Kategorie)|Name der Kategorie Immer: AutomaticTuning |
+|Category|Name der Kategorie Immer: AutomaticTuning |
 |Resource|Name der Ressource |
 |ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES |
 |SubscriptionId|Abonnement-GUID für die Datenbank |
@@ -712,7 +712,7 @@ Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-databas
 Weitere Informationen zum Aktivieren der Protokollierung und zu den Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 - [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/resource-logs-overview.md)
 
 Weitere Informationen zu Event Hubs finden Sie hier:
 

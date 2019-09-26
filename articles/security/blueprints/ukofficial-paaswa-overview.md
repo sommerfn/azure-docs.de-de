@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946520"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262783"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -113,7 +113,7 @@ Mit dieser Vorlage werden die folgenden App Service-Features bereitgestellt:
 - Mehrere App Service-[Bereitstellungsslots](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, Vorschauversion, QA, UAT und natürlich Produktion (Standardslot).
 - [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) für die Verbindungsherstellung mit [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (kann auch verwendet werden, um Zugriff auf [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) zu ermöglichen) 
 - Integration mit [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) zur Überwachung der Leistung
-- [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md) 
 - [Metrikwarnungen](../../azure-monitor/app/alerts.md) 
 - [Azure API-Apps](https://azure.microsoft.com/services/app-service/api/) 
 

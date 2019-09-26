@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000795"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268848"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -29,26 +29,6 @@ Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlü
 ## <a name="public-previews"></a>Öffentliche Vorschauversionen
 
 Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des neuen Key Vault-Features. Testen Sie diese, und teilen Sie uns Ihre Meinung über die folgende E-Mail-Adresse für Feedback mit: azurekeyvault@microsoft.com.
-
-### <a name="storage-account-keys---july-10-2017"></a>Speicherkontoschlüssel – 10. Juli 2017
-
->[!NOTE]
->Für dieses Update von Azure Key Vault ist nur das Feature **Speicherkontoschlüssel** in der Vorschau enthalten.
-
-Diese Vorschau enthält unser neues Speicherkontoschlüssel-Feature, das über diese Schnittstellen verfügbar ist: [.NET/C#](/dotnet/api/microsoft.azure.keyvault/), [REST](/rest/api/keyvault/) und [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Weitere Informationen zum neuen Speicherkontoschlüssel-Feature finden Sie unter [Azure Key Vault storage account keys overview](key-vault-ovw-storage-keys.md) (Übersicht zu Azure Key Vault-Speicherkontoschlüsseln).
-
-## <a name="videos"></a>Videos
-
-Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und diesen in der Beispielanwendung „Hello Key Vault“ verwenden.
-
-- [Key Vault-Entwickler: Schnellstarthandbuch](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Im Video erwähnte Ressourcen:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault-Beispielcode](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
 

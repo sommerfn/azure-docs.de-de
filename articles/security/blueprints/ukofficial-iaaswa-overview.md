@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899940"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262798"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint: Dreischichtige IaaS-Webanwendungen für UK OFFICIAL
 
@@ -172,7 +172,7 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 **Aktivitätsprotokolle:** Konfigurieren Sie [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md), um Einblicke in die Vorgänge zu geben, die von Ressourcen in Ihrem Abonnement ausgeführt wurden.
 
-**Diagnoseprotokolle:** [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) sind alle Protokolle, die von einer Ressource ausgegeben werden. Diese Protokolle können Windows-Ereignissystemprotokolle, Blob-, -Tabellen- und -Warteschlangenprotokolle umfassen.
+**Diagnoseprotokolle:** [Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md) sind alle Protokolle, die von einer Ressource ausgegeben werden. Diese Protokolle können Windows-Ereignissystemprotokolle, Blob-, -Tabellen- und -Warteschlangenprotokolle umfassen.
 
 **Firewallprotokolle:** Application Gateway stellt umfassende Diagnose- und Zugriffsprotokolle bereit. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 

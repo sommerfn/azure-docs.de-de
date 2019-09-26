@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596963"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299490"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Security Center für IoT“ in IoT Hub
 
@@ -37,19 +37,6 @@ In diesem Artikel erfahren Sie, wie Sie den Dienst „Azure Security Center für
   - Sie können noch einen weiteren Informationstyp hinzufügen: **Rohereignisse**. Hinweis: Für die Speicherung von **Rohereignissen** in Log Analytics fallen zusätzliche Speicherkosten an. 
 - IoT Hub (Standard-Tarif)
 - Erfüllen aller [Dienstvoraussetzungen](service-prerequisites.md) 
-
-|Unterstützte Azure-Dienstregionen | ||
-|---|---|---|
-| USA (Mitte) |East US |USA (Ost) 2 |
-| USA, Westen-Mitte |USA (Westen) |USA, Westen 2 |
-| USA, Süden-Mitte|USA Nord Mitte | Kanada, Mitte|
-| Kanada, Osten| Nordeuropa|Brasilien Süd|
-| Frankreich, Mitte| UK, Westen|UK, Süden|
-|Europa, Westen|Nordeuropa| Japan, Westen|
-|Japan, Osten | Australien, Südosten|Australien (Osten)|
-|Asien, Osten| Asien, Südosten| Korea, Mitte|
-|Korea, Süden| Indien, Mitte| Indien (Süden)|
-|
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Aktivieren von Azure Security Center für IoT in Ihrer IoT Hub-Instanz 
 

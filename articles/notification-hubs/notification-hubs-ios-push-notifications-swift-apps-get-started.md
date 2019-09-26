@@ -4,8 +4,8 @@ description: Erfahren Sie, wie Sie mit Azure Notification Hubs Pushbenachrichtig
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
-manager: patniko
-editor: spelluru
+manager: femila
+editor: jwargo
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,12 +14,14 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340400"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211956"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Tutorial: Senden von Pushbenachrichtigungen an Swift-iOS-Apps, die die Notification Hubs-REST-API verwenden
 
@@ -89,10 +91,10 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
 
    | Schlüssel                            | type                     | Wert                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | string                   | \<Hubschlüssel>                  |
-   | notificationHubKeyName         | string                   | \<Hubschlüsselname>              |
-   | notificationHubName            | string                   | \<Hubname>                 |
-   | notificationHubNamespace       | string                   | \<Hubnamespace>            |
+   | notificationHubKey             | Zeichenfolge                   | \<Hubschlüssel>                  |
+   | notificationHubKeyName         | Zeichenfolge                   | \<Hubschlüsselname>              |
+   | notificationHubName            | Zeichenfolge                   | \<Hubname>                 |
+   | notificationHubNamespace       | Zeichenfolge                   | \<Hubnamespace>            |
 
    Die erforderlichen Werte finden Sie durch Navigieren zur Benachrichtigungshubressource im Azure-Portal. Die Werte **notificationHubName** und **notificationHubNamespace** finden Sie in der rechten oberen Ecke der **Essentials** (Zusammenfassung) auf der **Übersichtsseite**.
 

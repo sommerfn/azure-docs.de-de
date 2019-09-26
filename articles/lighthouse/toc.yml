@@ -19,7 +19,7 @@
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
     - name: Angebote für verwaltete Dienste in Azure Marketplace
-      displayName: 'managed services offer, azure marketplace'
+      displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Empfohlene Sicherheitsmaßnahmen
       displayName: 'mfa, authentication, secure, group'
@@ -27,6 +27,9 @@
     - name: Überlegungen zum Cloud Solution Provider-Programm
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
+    - name: Azure Lighthouse in Unternehmensszenarien
+      displayName: 'corporation, IT, consolidate'
+      href: ./concepts/enterprise.md
 - name: Anleitungen
   items:
     - name: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen

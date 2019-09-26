@@ -16,6 +16,17 @@ metadata:
 abstract:
   description: "Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed\_Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten."
 sections:
+  - title: Konzepte
+    items:
+      - type: paragraph
+        text: 'Lernen Sie die wichtigsten Konzepte kennen, die Ihnen beim Einstieg in Azure Spatial Anchors helfen:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/spatial-anchors/concepts/authentication">Authentifizierung</a>
+          - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Ankerbeziehungen und Wegeleitsysteme</a>
+          - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Umgebungsleitfäden</a>
+          - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Protokollierung und Diagnose</a>
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
@@ -24,35 +35,35 @@ sections:
         style: icon48
         items:
           - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Android
-            href: quickstarts/get-started-android.md
-          - image:
               src: /media/logos/logo_Windows.svg
               alt: null
-            text: HoloLens
-            href: quickstarts/get-started-hololens.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: iOS
-            href: quickstarts/get-started-ios.md
+            text: Unity HoloLens
+            href: quickstarts/get-started-unity-hololens.md
           - image:
               src: /media/logos/logo_android.svg
               alt: null
             text: Unity Android
             href: quickstarts/get-started-unity-android.md
           - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: Unity HoloLens
-            href: quickstarts/get-started-unity-hololens.md
-          - image:
               src: /media/logos/logo_ios.svg
               alt: null
             text: Unity iOS
             href: quickstarts/get-started-unity-ios.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
           - image:
               src: /media/logos/logo_xamarin.svg
               alt: null
@@ -66,9 +77,11 @@ sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'In diesen Tutorials erfahren Sie, wie Sie eine App mit Azure Spatial Anchors entwickeln, einrichten, verwalten und bereitstellen.'
+        text: 'In diesen Tutorials erfahren Sie, wie Sie eine App mit Azure Spatial Anchors entwickeln, einrichten, verwalten und bereitstellen:'
       - type: list
         style: unordered
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Freigeben in Unity</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Freigeben in Unity mit Azure Cosmos DB</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Starten einer neuen Unity HoloLens-App</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Starten einer neuen Android-App</a>

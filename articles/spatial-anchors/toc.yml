@@ -17,12 +17,12 @@
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: Erstellen einer iOS-App
-      href: quickstarts/get-started-ios.md
-    - name: Erstellen einer Android-App
-      href: quickstarts/get-started-android.md
     - name: Erstellen einer HoloLens-App
       href: quickstarts/get-started-hololens.md
+    - name: Erstellen einer Android-App
+      href: quickstarts/get-started-android.md
+    - name: Erstellen einer iOS-App
+      href: quickstarts/get-started-ios.md
     - name: Erstellen einer Xamarin-App
       items:
         - name: Android
@@ -84,6 +84,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Ressourcen
   items:
+    - name: Ressourcenverwaltungs-REST-API von Azure Mixed Reality
+      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
     - name: Häufig gestellte Fragen
       href: spatial-anchor-faq.md
     - name: Abgeben von Produktfeedback

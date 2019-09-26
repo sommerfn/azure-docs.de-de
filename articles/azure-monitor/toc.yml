@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Leistungsindikatoren
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: Abhängigkeiten
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: Übersicht
                       href: platform/diagnostics-extension-overview.md
+                    - name: Erfassen von Protokollen
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Versionsverlauf
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: Computergruppen
               href: platform/computer-groups.md
-        - name: Azure-Ressourcen
+        - name: Azure Platform
           items:
-            - name: Diagnoseprotokolle
+            - name: Übersicht über Plattformprotokolle
+              href: platform/platform-logs-overview.md
+            - name: Ressourcenprotokolle
               items:
                 - name: Übersicht
-                  href: platform/diagnostic-logs-overview.md
-                - name: Erfassen in Protokollen
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Sammeln in Azure Storage
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: "Erfassen in Azure\_Monitor-Protokollen"
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Archivieren im Speicher
-                  href: platform/archive-diagnostic-logs.md
-                - name: Aktivieren mit Resource Manager-Vorlagen
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure-Abonnement
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Stream für Event Hubs
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Aktivitätsprotokoll
               items:
                 - name: Übersicht
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: Schema
                   href: platform/activity-log-schema.md
+            - name: Diagnoseeinstellungen
+              items:
+                - name: Erstellen einer Diagnoseeinstellung
+                  href: platform/diagnostic-settings.md
+                - name: Erstellen einer Diagnoseeinstellung mit Resource Manager
+                  href: platform/diagnostic-settings-template.md
+                - name: Ändern in das Blobspeicherformat
+                  href: platform/resource-logs-blob-format.md
             - name: Streamen von Daten an Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-Analysen
@@ -685,6 +695,7 @@
         - name: Storage
           items:
             - name: Azure Monitor für Storage
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Datenbanken
           items:
@@ -747,7 +758,7 @@
             - name: Herstellen einer Verbindung mit Configuration Manager
               href: platform/collect-sccm.md
         - name: Streamen von Daten an Event Hubs
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Daten analysieren
       items:
         - name: metrics

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976610"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266856"
 ---
 ## <a name="benefits"></a>Vorteile 
 
@@ -113,6 +113,6 @@ Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden
 |----------|----------------|
 | Host verfügbar     | Es liegen keine bekannten Probleme mit dem Host vor.   |
 | Host wird untersucht  | Es liegen einige Probleme mit dem Host vor, die derzeit untersucht werden. Dies ist ein erforderlicher Übergangszustand, in dem Azure versucht, den Umfang und die Ursache des identifizierten Problems zu identifizieren. Auf dem Host ausgeführte virtuelle Computer können beeinträchtigt werden. |
-| Ausstehende Aufhebung der Freigabe für den Host   | Azure kann den Host nicht wieder in einen fehlerfreien Status versetzen, und Sie werden aufgefordert, Ihre virtuellen Computer außerhalb dieses Hosts erneut bereitzustellen. Wenn `autoHealingOnFailure` aktiviert ist, werden Ihre virtuellen Computer für eine fehlerfreie Hardware *wieder einsatzfähig gemacht*. Andernfalls wird der virtuelle Computer möglicherweise auf einem Host ausgeführt, der in Kürze ausfallen könnte.|
+| Ausstehende Aufhebung der Freigabe für den Host   | Azure kann den Host nicht wieder in einen fehlerfreien Status versetzen, und Sie werden aufgefordert, Ihre virtuellen Computer außerhalb dieses Hosts erneut bereitzustellen. Wenn `autoReplaceOnFailure` aktiviert ist, werden Ihre virtuellen Computer für eine fehlerfreie Hardware *wieder einsatzfähig gemacht*. Andernfalls wird der virtuelle Computer möglicherweise auf einem Host ausgeführt, der in Kürze ausfallen könnte.|
 | Zuordnung für Host aufgehoben  | Alle virtuellen Computer wurden vom Host entfernt. Dieser Host wird Ihnen nicht mehr in Rechnung gestellt, da die Hardware aus der Rotation entfernt wurde.   |
 

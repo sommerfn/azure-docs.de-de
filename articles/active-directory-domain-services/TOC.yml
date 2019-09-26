@@ -95,22 +95,22 @@
       items:
         - name: Häufige Fehler
           href: troubleshoot.md
-        - name: Allgemeine Warnungen
-          items:
-            - name: Allgemeine Warnungen
-              href: troubleshoot-alerts.md
-            - name: Korrigieren einer fehlerhaften Netzwerkkonfiguration
-              href: alert-nsg.md
-            - name: Wiederherstellen fehlender Dienstprinzipale
-              href: alert-service-principal.md
-            - name: Secure LDAP-Warnungen
-              href: alert-ldaps.md
         - name: Fehler durch nicht übereinstimmende Mandanten
           href: mismatched-tenant-error.md
         - name: Angehaltene Domänen
           href: suspension.md
         - name: Sicheres LDAP (LDAPS)
           href: tshoot-ldaps.md
+        - name: Bekannte Probleme
+          items:
+            - name: Allgemeine Warnungen
+              href: troubleshoot-alerts.md
+            - name: Netzwerkwarnungen
+              href: alert-nsg.md
+            - name: Dienstprinzipalwarnungen
+              href: alert-service-principal.md
+            - name: Secure LDAP-Warnungen
+              href: alert-ldaps.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen

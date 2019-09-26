@@ -2,20 +2,22 @@
 title: Erstellen einer Azure Notification Hub-Instanz über das Azure-Portal | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal eine Azure Notification Hub-Instanz erstellen.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: jowargo
-ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313989"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212439"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Erstellen einer Azure Notification Hub-Instanz über das Azure-Portal 
 Azure Notification Hubs bietet ein benutzerfreundliches, horizontal skalierbares Pushmodul, mit dem Sie von einem beliebigen Back-End (cloudbasiert oder lokal) Benachrichtigungen an sämtliche Plattformen (iOS, Android, Windows, Kindle, Baidu usw.) senden können. Weitere Informationen zu diesem Dienst finden Sie unter [Was ist Azure Notification Hubs?](notification-hubs-push-notification-overview.md).

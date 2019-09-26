@@ -2,22 +2,24 @@
 title: Azure Notification Hubs und die Google FCM-Migration (Firebase Cloud Messaging)
 description: Hier erfahren Sie, wie Azure Notification Hubs die Migration von Google GCM zu FCM behandelt.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: jowargo
-ms.openlocfilehash: 4cbfc67bc66e84b4743f3326db40872241e5d474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458296"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212305"
 ---
 # <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs und die Google FCM-Migration (Firebase Cloud Messaging)
 

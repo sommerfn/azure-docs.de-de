@@ -2,20 +2,22 @@
 title: Einrichten von Pushbenachrichtigungen in Azure Notification Hubs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Notification Hubs im Azure-Portal mit den Einstellungen des Plattformbenachrichtigungssystems (Platform Notification System, PNS) einrichten.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: jowargo
-ms.openlocfilehash: 1037d8d4652f238f03d8e80b0c59a5f396ab5605
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 9a17b96da376843c07a4324856bf8943aa385cac
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445712"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212468"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Einrichten von Pushbenachrichtigungen in einem Notification Hub im Azure-Portal
 

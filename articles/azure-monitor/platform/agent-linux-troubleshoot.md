@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 732c93688dbc73cb5a4ce21e4669744be61c5925
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071654"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299564"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -51,7 +51,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 
  >[!NOTE]
  >Änderungen an den Konfigurationsdateien für Leistungsindikatoren und Syslog werden überschrieben, wenn die Sammlung für Ihren Arbeitsbereich im Azure-Portal über das [Menü „Daten“ in den erweiterten Einstellungen von Log Analytics](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) konfiguriert wird. Um die Konfiguration für alle Agents zu deaktivieren, deaktivieren Sie die Sammlung auf dem Blatt **Erweiterte Einstellungen** für Log Analytics. Wenn Sie die Konfiguration für einen einzelnen Agent deaktivieren möchten, führen Sie den folgenden Befehl aus:  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Codes für Installationsfehler
 
@@ -192,11 +192,11 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 ## <a name="issue-you-see-omiagent-using-100-cpu"></a>Problem: OMI-Agent verwendet 100 % der CPU
 
 ### <a name="probable-causes"></a>Mögliche Ursachen
-Eine Regression im nss-pem-Paket [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) verursachte ein schwerwiegendes Leistungsproblem, dass in Redhat/Centos 7.x-Distributionen sehr häufig vorkommt. Weitere Informationen zu diesem Problem finden Sie in dieser Dokumentation: Fehler [1667121 Leistungsregression in libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+Eine Regression im nss-pem-Paket [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) verursachte ein schwerwiegendes Leistungsproblem, dass in Redhat/Centos 7.x-Distributionen sehr häufig vorkommt. Weitere Informationen zu diesem Problem finden Sie in dieser Dokumentation: Fehler [1667121 Leistungsregression in libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
 
 Leistungsbezogene Fehler kommen nicht immer vor und sind nur sehr schwer zu reproduzieren. Wenn ein solches Problem mit OMI-Agent auftritt, verwenden Sie das Skript „omiHighCPUDiagnostics.sh“, das bei Überschreitung eines bestimmten Schwellenwerts die Stapelüberwachung des OMI-Agents erfasst.
 
-1. Skript herunterladen <br/>
+1. Herunterladen des Skripts <br/>
 `wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
 
 2. Für 24 Stunden Diagnose mit einem CPU-Schwellenwert von 30 % ausführen <br/>
@@ -206,7 +206,7 @@ Leistungsbezogene Fehler kommen nicht immer vor und sind nur sehr schwer zu repr
 
 ### <a name="resolution-step-by-step"></a>Lösung (Schritt für Schritt)
 
-1. Aktualisieren Sie das nss-pem-Paket auf [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+1. Aktualisieren Sie das nss-pem-Paket auf [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
 2. Wenn nss-perm nicht für das Upgrade verfügbar ist (tritt größtenteils unter Centos auf), stufen Sie Curl auf 7.29.0-46 herab. Wenn Sie versehentlich „yum-update“ ausführen, wird Curl auf 7.29.0-51 aktualisiert, und das Problem wird erneut auftreten. <br/>

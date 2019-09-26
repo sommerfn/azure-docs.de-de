@@ -472,6 +472,8 @@
         - name: Bereitstellen von Datenträgern mit Vorlage
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: 'Hochladen einer VHD auf einen Datenträger: CLI'
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Ändern der Größe eines Datenträgers
           href: expand-disks.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers

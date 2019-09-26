@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775207"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219766"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Mappingdatenflüsse – Spaltenmuster
 
@@ -57,5 +57,5 @@ Erstellen Sie Regeln mithilfe des Ausdrucks-Generators. Ihre Ausdrücke geben ei
 * `position` ist die Ordinalposition von Spalten in Ihrem Datenfluss.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich ausführlicher über die [Ausdruckssprache](http://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.
+* Informieren Sie sich ausführlicher über die [Ausdruckssprache](https://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.
 * Verwenden von Spaltenmustern in der [Senkentransformation](data-flow-sink.md) und [Auswählen einer Transformation](data-flow-select.md) mit regelbasierter Zuordnung

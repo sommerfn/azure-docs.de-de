@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: bc341492779e6ed5aef2505a98ad8a116866fe4d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ae974be462a688d7b740fb9ca28e1186e7512326
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695278"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273802"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
 ## <a name="download-your-usage-details"></a>Herunterladen Ihrer Nutzungsdetails
-Um zu beginnen, [laden Sie Ihre Nutzungsdetails herunter](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Die folgende Tabelle enthält Definitionen und Beispielwerte zur Nutzung virtueller Computer, die über den Azure Resource Manager bereitgestellt wurden. Dieses Dokument enthält keine Detailinformationen zu virtuellen Computern, die über das klassische Modell bereitgestellt wurden.
+Um zu beginnen, [laden Sie Ihre Nutzungsdetails herunter](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Die folgende Tabelle enthält Definitionen und Beispielwerte zur Nutzung virtueller Computer, die über den Azure Resource Manager bereitgestellt wurden. Dieses Dokument enthält keine Detailinformationen zu virtuellen Computern, die über das klassische Modell bereitgestellt wurden.
 
 
 | Felder             | Bedeutung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Beispielwerte                                                                                                                                                                                                                                                                                                                                                   |

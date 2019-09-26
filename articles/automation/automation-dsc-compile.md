@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850664"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265125"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilieren von DSC-Konfigurationen in Azure Automation DSC
 
@@ -259,7 +259,7 @@ Eine signierte Knotenkonfiguration wird lokal vom DSC-Agent auf einem verwaltete
 > [!NOTE]
 > Knotenkonfigurationsdateien dürfen nicht größer als 1 MB sein, damit sie in Azure Automation importiert werden können.
 
-Weitere Informationen zum Signieren von Knotenkonfigurationen finden Sie unter [in WMF 5.1 – So signieren Sie Konfigurationen und Module](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+Weitere Informationen zum Signieren von Knotenkonfigurationen finden Sie unter [in WMF 5.1 – So signieren Sie Konfigurationen und Module](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Kompilieren einer Konfiguration in Windows PowerShell
 

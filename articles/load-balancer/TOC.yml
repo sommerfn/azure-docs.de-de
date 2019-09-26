@@ -84,7 +84,11 @@
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Konfigurieren von Regeln für ausgehenden Datenverkehr
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: 'Konfigurieren von Ausgangsregeln: CLI'
+          href: configure-load-balancer-outbound-cli.md
+        - name: 'Konfigurieren von Ausgangsregeln: PowerShell'
+          href: configure-load-balancer-outbound-powershell.md
     - name: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
       href: create-load-balancer-rest-api.md
     - name: Einrichten eines Lastenausgleichs im Basic-Tarif (Vorlage)

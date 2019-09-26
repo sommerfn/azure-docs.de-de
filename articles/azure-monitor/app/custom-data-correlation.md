@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: evternov
-ms.openlocfilehash: 9bc94f653f5e70883b483fa44f6a17f6e9e9eaf1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3abf50b3467ce9a97f2163a10ad1782f6e1c9c20
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594433"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258437"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korrelieren von Application Insights-Daten mit benutzerdefinierten Datenquellen
 
@@ -28,7 +28,7 @@ Einige Situationen, in denen Sie ggf. benutzerdefinierte Daten benötigen, sind:
 
 - Datenanreicherung oder Nachschlagetabellen: Beispielsweise die Ergänzung eines Servernamens durch den Besitzer des Servers und den zugehörigen Labstandort 
 - Korrelation mit anderen Datenquellen als Application Insights: Beispielsweise das Korrelieren von Daten zu einem Kauf in einem Web-Store mit Informationen Ihres Diensts zur Erfüllung des Kaufs, um zu bestimmen, wie genau Ihre Schätzungen in Bezug auf die Versandzeit waren 
-- Vollständig benutzerdefinierte Daten: Viele Ihrer Kunden schätzen die Abfragesprache und Leistung der Azure Monitor-Protokollplattform, auf der Application Insights basiert, und möchten diese zum Abfragen von Daten verwenden, die sich nicht auf Application Insights beziehen. Ein Beispiel hierfür ist die Nachverfolgung der Solaranlage einer Smart Home-Installation, wie [hier]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/) beschrieben.
+- Vollständig benutzerdefinierte Daten: Viele Ihrer Kunden schätzen die Abfragesprache und Leistung der Azure Monitor-Protokollplattform, auf der Application Insights basiert, und möchten diese zum Abfragen von Daten verwenden, die sich nicht auf Application Insights beziehen. Ein Beispiel hierfür ist die Nachverfolgung der Solaranlage einer Smart Home-Installation, wie [hier](https://www.catapultsystems.com/blogs/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/) beschrieben.
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Korrelieren von benutzerdefinierten Daten mit Application Insights-Daten 
 

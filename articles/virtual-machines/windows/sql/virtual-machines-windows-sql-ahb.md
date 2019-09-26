@@ -6,20 +6,20 @@ documentationcenter: na
 author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
-ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2cce369f6a0670790ede7367609f87c18672ddd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100613"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262869"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure
 In diesem Artikel wird beschrieben, wie Sie das Lizenzierungsmodell für einen virtuellen SQL Server-Computer (VM) in Azure ändern, indem Sie den neuen SQL-VM-Ressourcenanbieter **Microsoft.SqlVirtualMachine** verwenden.
@@ -125,7 +125,7 @@ Wenn Sie eine SQL Server-VM mit Images mit nutzungsbasierter Bezahlung aus dem 
 
 Sie sind nur dazu berechtigt, SQL Server auf einer Azure-VM über den Azure-Hybridvorteil selbst zu installieren. Sie sollten [diese VMs beim SQL-VM-Ressourcenanbieter registrieren](virtual-machines-windows-sql-register-with-resource-provider.md), indem Sie die SQL Server-Lizenz auf den Azure-Hybridvorteil festlegen, um die Nutzung des Azure-Hybridvorteils gemäß der Microsoft-Produktbestimmungen anzugeben.
 
-Sie können den Lizenztyp „Nutzungsbasierte Bezahlung“ oder Azure-Hybridvorteil einer SQL Server-VM nur ändern, wenn die SQL Server-VM beim SQL-VM-Ressourcenanbieter registriert ist. Alle SQL Server-VMS sollten für die Lizenzüberprüfung beim Ressourcenanbieter registriert werden.
+Sie können den Lizenztyp „Nutzungsbasierte Bezahlung“ oder Azure-Hybridvorteil einer SQL Server-VM nur ändern, wenn die SQL Server-VM beim SQL-VM-Ressourcenanbieter registriert ist.
 
 ## <a name="remarks"></a>Anmerkungen
 

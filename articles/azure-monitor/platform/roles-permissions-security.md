@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243419"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260623"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
@@ -31,7 +31,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 * Anzeigen von in [Azure-Warnungen](alerts-overview.md) definierten Warnungsregeln
 * Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](powershell-quickstart-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
-* Anzeigen der [Diagnoseeinstellungen](diagnostic-logs-overview.md#diagnostic-settings) für eine Ressource.
+* Anzeigen der [Diagnoseeinstellungen](diagnostic-settings.md) für eine Ressource.
 * Anzeigen des [Protokollprofils](activity-log-export.md) für ein Abonnement.
 * Anzeigen von Einstellungen für die automatische Skalierung.
 * Anzeigen von Warnaktivitäten und -einstellungen.
@@ -52,7 +52,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen sowie Überwachungseinstellungen erstellen und ändern, aber keine weiteren Ressourcen ändern. Diese Rolle ist eine Obermenge der Überwachungsleserrolle und eignet sich für Mitglieder des Überwachungsteams einer Organisation oder für Anbieter verwalteter Dienste, die neben den oben genannten Berechtigungen auch folgende Aufgaben ausführen müssen:
 
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
-* Festlegen von [Diagnoseeinstellungen](diagnostic-logs-overview.md#diagnostic-settings) für eine Ressource.\*
+* Festlegen von [Diagnoseeinstellungen](diagnostic-settings.md) für eine Ressource.\*
 * Festlegen des [Protokollprofils](activity-log-export.md) für ein Abonnement.\*
 * Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](alerts-overview.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.

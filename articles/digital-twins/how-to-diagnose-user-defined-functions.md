@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876582"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260854"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -35,7 +35,7 @@ Azure Digital Twins bietet eine zuverlässige Protokollierung, Überwachung und 
 
 * Informationen zur spezifischen Protokollierungskonfiguration für Azure Digital Twins finden Sie unter [Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins](./how-to-configure-monitoring.md).
 * In der [Übersicht über Azure Monitor](../azure-monitor/overview.md) finden Sie Informationen zu praktischen Protokolleinsteinstellungen, die durch Azure Monitor ermöglicht werden.
-* Im Artikel [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) erfahren Sie, wie Sie Diagnoseprotokolleinstellungen in Azure Digital Twins über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell konfigurieren.
+* Im Artikel [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) erfahren Sie, wie Sie Diagnoseprotokolleinstellungen in Azure Digital Twins über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell konfigurieren.
 
 Nach Abschluss der Konfiguration können Sie alle Protokollkategorien sowie Metriken auswählen und beim Debuggen auf leistungsstarke Azure Monitor-Arbeitsbereiche für die Protokollanalyse zurückgreifen.
 

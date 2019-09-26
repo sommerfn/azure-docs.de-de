@@ -18,7 +18,7 @@
       items:
         - name: Hinzufügen von Speicherzielen
           href: hpc-cache-add-storage.md
-        - name: Verschieben von Daten in Cachespeicher
+        - name: Verschieben von Daten in Speicherziele (sofern erforderlich)
           items:
             - name: Vorabladen des neuen Blobspeichers
               href: hpc-cache-ingest.md

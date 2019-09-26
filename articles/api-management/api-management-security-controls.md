@@ -2,18 +2,17 @@
 title: Sicherheitskontrollen für Azure API Management
 description: Eine Prüfliste mit Sicherheitskontrollen zur Auswertung von API Management
 services: api-management
-author: msmbaldwin
-manager: rkarlin
+author: vladvino
 ms.service: api-management
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e808f373ed3c977fb3263bc9e2e25bc602c7a7e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/23/2019
+ms.author: vlvinogr
+ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886258"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257087"
 ---
 # <a name="security-controls-for-api-management"></a>Sicherheitskontrollen für API Management
 
@@ -23,44 +22,45 @@ In diesem Artikel werden die in API Management integrierten Sicherheitskontrolle
 
 ## <a name="network"></a>Netzwerk
 
-| Sicherheitskontrolle | Ja/Nein | Notizen |
-|---|---|--|
-| Unterstützung des Dienstendpunkts| Nein | |
-| Unterstützung der VNET-Einschleusung| Ja | |
-| Unterstützung von Netzwerkisolation und Firewall| Ja | Mithilfe von Netzwerksicherheitsgruppen (NSGs) bzw. Azure Application Gateway (oder anderen Softwareappliances) |
-| Unterstützung der Tunnelerzwingung| Ja | Azure-Netzwerke unterstützen die Tunnelerzwingung. |
+| Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
+|---|---|--|--|
+| Unterstützung des Dienstendpunkts| Nein | |  |
+| Unterstützung der VNET-Einschleusung| Ja | |  |
+| Unterstützung von Netzwerkisolation und Firewall| Ja | Mithilfe von Netzwerksicherheitsgruppen (NSGs) bzw. Azure Application Gateway (oder anderen Softwareappliances) |  |
+| Unterstützung der Tunnelerzwingung| Ja | Azure-Netzwerke unterstützen die Tunnelerzwingung. |  |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
 
-| Sicherheitskontrolle | Ja/Nein | Notizen|
-|---|---|--|
-| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | |
-| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) |
-| Protokollierung und Überwachung auf Datenebene| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)  |
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
+|---|---|--|--|
+| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | | |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) | |
+| Protokollierung und Überwachung auf Datenebene| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)  | |
+
 
 ## <a name="identity"></a>Identity
 
-| Sicherheitskontrolle | Ja/Nein | Notizen|
-|---|---|--|
-| Authentication| Ja | |
-| Authorization| Ja | |
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
+|---|---|--|--|
+| Authentication| Ja | |  |
+| Authorization| Ja | |  |
 
 ## <a name="data-protection"></a>Datenschutz
 
-| Sicherheitskontrolle | Ja/Nein | Notizen |
-|---|---|--|
-| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. |
-| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein | Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet. |
-| Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
-| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselung erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |
-| Verschlüsselte API-Aufrufe| Ja | Aufrufe auf Verwaltungsebene erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml) und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich.  Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
+| Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
+|---|---|--|--|
+| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. |  |
+| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein | Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet. |  |
+| Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |  |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselung erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |  |
+| Verschlüsselte API-Aufrufe| Ja | Aufrufe auf Verwaltungsebene erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml) und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich.  Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden. |   |
  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 
-| Sicherheitskontrolle | Ja/Nein | Notizen|
-|---|---|--|
-| Unterstützung der Konfigurationsverwaltung (Versionsverwaltung der Konfiguration usw.)| Ja | Verwendung des [Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) |
+| Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
+|---|---|--|--|
+| Unterstützung der Konfigurationsverwaltung (Versionsverwaltung der Konfiguration usw.)| Ja | Verwendung des [Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) |  |
 
 ## <a name="vulnerability-scans-false-positives"></a>Überprüfungen auf Sicherheitsrisiken: Falsch positive Ergebnisse
 
