@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a660fe0f7663ac87b82038a3bd3d4c4fbf18544
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937986"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962772"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -53,7 +53,7 @@ Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektiv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-Diensten zu erhalten.
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
 Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 

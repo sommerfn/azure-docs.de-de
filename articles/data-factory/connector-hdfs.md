@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a695f08f00b99fcd0bc634d12e30c0f3cfbd312
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813093"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092091"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopieren von Daten aus HDFS mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -481,6 +481,10 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 **In Azure Data Factory:**
 
 * Konfigurieren Sie den HDFS-Connector mithilfe der **Windows-Authentifizierung** zusammen mit Ihrem Domänenkonto oder Ihrem Kerberos-Prinzipal, um eine Verbindung mit der HDFS-Datenquelle herzustellen. Informationen zu den Konfigurationsdetails finden Sie im Abschnitt [Eigenschaften des mit HDFS verknüpften Diensts](#linked-service-properties).
+
+## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
