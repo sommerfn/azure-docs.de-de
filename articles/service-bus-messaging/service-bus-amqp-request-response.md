@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4aea0a092ad836c020e23b81d38246ceead22ea0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402682"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213300"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -179,7 +179,7 @@ Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt best
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|lang|Ja|Die Sequenznummer, von der aus das Einsehen gestartet wird|  
+|`from-sequence-number`|long|Ja|Die Sequenznummer, von der aus das Einsehen gestartet wird|  
 |`message-count`|int|Ja|Die maximale Anzahl von einsehbaren Nachrichten|  
   
 #### <a name="response"></a>response  
@@ -273,13 +273,7 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
-|statusDescription|Zeichenfolge|Nein|Beschreibung des Status|  
-  
-Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
-  
-|Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
-|---------|----------------|--------------|--------------------|  
-|sequence-numbers|Long-Array|Ja|Sequenznummer der geplanten Nachrichten. Sequenznummer wird zum Abbrechen verwendet.|  
+|statusDescription|Zeichenfolge|Nein|Beschreibung des Status|   
   
 ## <a name="session-operations"></a>Sitzungsvorgänge  
   
@@ -334,7 +328,7 @@ Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt best
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|from-sequence-number|lang|Ja|Die Sequenznummer, von der aus das Einsehen gestartet wird|  
+|from-sequence-number|long|Ja|Die Sequenznummer, von der aus das Einsehen gestartet wird|  
 |message-count|int|Ja|Die maximale Anzahl von einsehbaren Nachrichten|  
 |session-id|Zeichenfolge|Ja|Sitzungs-ID|  
   
@@ -504,7 +498,7 @@ Die Zuordnung **correlation-filter** muss mindestens einen der folgenden Einträ
 |label|Zeichenfolge|Nein||  
 |session-id|Zeichenfolge|Nein||  
 |reply-to-session-id|Zeichenfolge|Nein||  
-|Inhaltstyp|Zeichenfolge|Nein||  
+|content-type|Zeichenfolge|Nein||  
 |properties|map|Nein|Zuordnung zu Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)|  
   
 Die Zuordnung **sql-rule-action** muss die folgenden Einträge enthalten:  
@@ -573,7 +567,7 @@ Die Antwortnachricht umfasst die folgenden Eigenschaften:
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
-|Regeln| Zuordnungsarray|Ja|Regelnarray. Jede Regel wird durch eine Zuordnung dargestellt.|
+|rules| Zuordnungsarray|Ja|Regelnarray. Jede Regel wird durch eine Zuordnung dargestellt.|
 
 Jeder Zuordnungseintrag im Array enthält die folgenden Eigenschaften:
 

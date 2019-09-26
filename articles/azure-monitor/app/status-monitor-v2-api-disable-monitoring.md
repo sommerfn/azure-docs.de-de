@@ -3,7 +3,7 @@ title: 'API-Referenz für Azure-Statusmonitor v2: Deaktivieren der Überwachung 
 description: API-Referenz für Statusmonitor v2. Disable-ApplicationInsightsMonitoring. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326414"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203429"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>API für Statusmonitor v2: Disable-ApplicationInsightsMonitoring
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
-## <a name="description"></a>Beschreibung
+## <a name="description"></a>BESCHREIBUNG
 
 Deaktiviert die Überwachung auf dem Zielcomputer.
 Dieses Cmdlet entfernt Änderungen an der IIS-Datei „applicationHost.config“ und Registrierungsschlüssel.

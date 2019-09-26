@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194675"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161980"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -20,7 +20,7 @@ Wenn festgestellt wird, dass eine Azure-Ressource nicht konform mit einer Richtl
 
 > [!div class="checklist"]
 > - [Konformitätsdetails](#compliance-details)
-> - [Änderungsverlauf (Vorschau)](#change-history-preview)
+> - [Änderungsverlauf (Vorschau)](#change-history)
 
 ## <a name="compliance-details"></a>Konformitätsdetails
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte durch, um die Konformitätsdetails anzuzeigen
 > [!NOTE]
 > Der aktuelle Wert zeigt Asteriske an, wenn ein Eigenschaftswert ein _Geheimnis_ ist, um Daten zu schützen.
 
-In den Details wird angegeben, warum eine Ressource nicht konform ist. Allerdings wird nicht angegeben, wann eine Änderung an der Ressource vorgenommen wurde, die dazu geführt hat, dass sie nicht mehr konform ist. Zu diesen Informationen erfahren Sie im Abschnitt [Änderungsverlauf (Vorschau)](#change-history-preview) mehr.
+In den Details wird angegeben, warum eine Ressource nicht konform ist. Allerdings wird nicht angegeben, wann eine Änderung an der Ressource vorgenommen wurde, die dazu geführt hat, dass sie nicht mehr konform ist. Zu diesen Informationen erfahren Sie im Abschnitt [Änderungsverlauf (Vorschau)](#change-history) mehr.
 
 ### <a name="compliance-reasons"></a>Konformitätsgründe
 
