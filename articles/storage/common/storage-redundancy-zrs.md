@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016432"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036248"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016432"
 
 ## <a name="support-coverage-and-regional-availability"></a>Supportabdeckung und regionale Verfügbarkeit
 
-ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
+ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“ und Speicherkonten vom Typ „FileStorage“. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
 ZRS ist für Blockblobs, Seitenblobs ohne Datenträger, Dateien, Tabellen und Warteschlangen verfügbar
 
-ZRS ist in den folgenden Regionen verfügbar:
+Für Konten vom Typ „Allgemein v2“ ist ZRS allgemein in den folgenden Regionen verfügbar:
 
 - Asien, Südosten
 - Europa, Westen
@@ -38,6 +38,10 @@ ZRS ist in den folgenden Regionen verfügbar:
 - USA, Osten
 - USA (Ost 2)
 - USA, Westen 2
+
+Für Konten vom Typ „FileStorage“ ist ZRS allgemein in den folgenden Regionen verfügbar:
+
+- Europa, Westen
 
 Microsoft arbeitet daran, ZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu neuen Regionen zu erhalten.
 
@@ -64,6 +68,9 @@ Ihnen stehen in erster Linie zwei Optionen für die Migration zu ZRS zur Verfüg
 
 - Kopieren oder verschieben Sie Daten manuell aus einem vorhandenen Konto in ein neues ZRS-Konto.
 - Fordern Sie eine Livemigration an.
+
+> [!IMPORTANT]
+> Die Livemigration wird für Premium-Dateifreigaben zurzeit nicht unterstützt. Derzeit wird nur das manuelle Kopieren oder Verschieben von Daten unterstützt.
 
 Wenn die Migration zu einem bestimmten Zeitpunkt abgeschlossen sein muss, sollten Sie eine manuelle Migration in Erwägung ziehen. Eine manuelle Migration bietet mehr Flexibilität als eine Livemigration. Bei einer manuellen Migration können Sie den zeitlichen Ablauf steuern.
 
@@ -94,7 +101,7 @@ Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.porta
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an: 
     - **Schweregrad**: Behalten Sie den Standardwert bei.
     - **Problemtyp**: Wählen Sie **Datenmigration** aus.
-    - **Kategorie**: Wählen Sie **Innerhalb einer Region zu ZRS migrieren** aus.
+    - **Kategorie**: Wählen Sie **Zu ZRS migrieren** aus.
     - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
     - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“. 
 5. Klicken Sie auf **Weiter**.

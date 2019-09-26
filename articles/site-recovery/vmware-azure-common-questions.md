@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491694"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002276"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -86,9 +86,9 @@ Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertoo
 
 Die Berechnung der Kosten für verwaltete Datenträger unterscheidet sich etwas von der für Speicherkonten. [Weitere Informationen](https://azure.microsoft.com/pricing/details/managed-disks/) zu den Preisen für verwaltete Datenträger.
 
-### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Gibt es einen Kostenunterschied bei der Replikation zu einem universellen v2 Speicherkonto?
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Gibt es einen Kostenunterschied bei der Replikation zu einem Speicherkonto vom Typ „Allgemein v2“?
 
-Normalerweise treten erhöhte Transaktionskosten bei GPV2-Speicherkonten auf, da viele Transaktionen über Azure Site Recovery durchgeführt werden. [Erfahren Sie mehr](../storage/common/storage-account-upgrade.md#pricing-and-billing), um die Änderung einschätzen zu können.
+Normalerweise treten erhöhte Transaktionskosten bei GPv2-Speicherkonten auf, da viele Transaktionen über Azure Site Recovery durchgeführt werden. [Erfahren Sie mehr](../storage/common/storage-account-upgrade.md#pricing-and-billing), um die Änderung einschätzen zu können.
 
 ## <a name="mobility-service"></a>Mobilitätsdienst
 
@@ -231,7 +231,7 @@ Für den Konfigurationsserver benötigen Sie eine einzelne hoch verfügbare loka
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Kann ich den Konfigurationsserver manuell einrichten, statt eine Vorlage zu verwenden?
 
-Es empfiehlt sich, [den virtuellen Computer des Konfigurationsservers](vmware-azure-deploy-configuration-server.md) mit der neuesten Version der OVF-Vorlage (Open Virtual Machine Format) zu erstellen. Wenn Sie die Vorlage nicht verwenden können (weil Sie z.B. keinen Zugriff auf den VMware-Server haben), [laden](physical-azure-set-up-source.md) Sie die Setupdatei über das Portal herunter, und richten Sie den Konfigurationsserver ein.
+Es empfiehlt sich, [den virtuellen Computer des Konfigurationsservers](vmware-azure-deploy-configuration-server.md) mit der neuesten Version der OVF-Vorlage (Open Virtualization Format) zu erstellen. Wenn Sie die Vorlage nicht verwenden können (weil Sie z.B. keinen Zugriff auf den VMware-Server haben), [laden](physical-azure-set-up-source.md) Sie die Setupdatei über das Portal herunter, und richten Sie den Konfigurationsserver ein.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Kann ein Konfigurationsserver zu mehreren Regionen replizieren?
 
@@ -289,6 +289,14 @@ Ja. Beachten Sie aber, dass für den physischen Computer nur ein Failback auf ei
 
 Wählen Sie im Recovery Services-Tresor unter **Site Recovery-Infrastruktur** > **Verwalten** die Option **Konfigurationsserver** aus. Wählen Sie dann unter **Server** die Option **Registrierungsschlüssel herunterladen** aus, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 
+### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Kann ein einzelner Konfigurationsserver zum Schutz mehrerer vCenter-Instanzen verwendet werden?
+
+Ja, ein einzelner Konfigurationsserver kann virtuelle Computer über mehrere vCenter hinweg schützen.  Es gibt keine Begrenzung, wie viele vCenter-Instanzen dem Konfigurationsserver hinzugefügt werden können, jedoch gelten die Begrenzungen für die Anzahl der virtuellen Computer, die ein einzelner Konfigurationsserver schützen kann.
+
+### <a name="can-a-single-configuration-server-protect-multiple-clusters-within-vcenter"></a>Kann ein einzelner Konfigurationsserver mehrere Cluster in vCenter schützen?
+
+Ja, Azure Site Recovery kann virtuelle Computer über verschiedene Cluster hinweg schützen.
+
 ## <a name="process-server"></a>Prozessserver
 
 ### <a name="why-am-i-unable-to-select-the-process-server-when-i-enable-replication"></a>Warum kann ich nicht den Prozessserver auswählen, wenn ich die Replikation aktiviere?
@@ -297,7 +305,7 @@ Updates in den Versionen 9.24 und höher zeigen jetzt die [Integrität des Proze
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Wie aktualisiere ich den Prozessserver auf Version 9.24 oder höher, um genaue Integritätsinformationen zu erhalten?
 
-Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder neuer,](service-updates-how-to.md#links-to-currently-supported-update-rollups) damit alle Benachrichtigung generiert werden.
+Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder neuer,](service-updates-how-to.md#links-to-currently-supported-update-rollups) damit alle Warnungen generiert werden.
 
 ## <a name="failover-and-failback"></a>Failover und Failback
 

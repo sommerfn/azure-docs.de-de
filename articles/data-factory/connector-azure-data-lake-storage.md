@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 76c50814c66b941310b73e1d2a52867b0da5aa10
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8f190f6b933c61072df9af954c8db01497e35e82
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813603"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010236"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
 
@@ -27,10 +27,11 @@ In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure Data Lake Sto
 
 Dieser Azure Data Lake Storage Gen2-Connector wird für die folgenden Aktivitäten unterstützt:
 
-- [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen oder Senken-Matrix](copy-activity-overview.md)
+- [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Mapping Data Flow](concepts-data-flow-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 - [GetMetadata-Aktivität](control-flow-get-metadata-activity.md)
+- [Delete-Aktivität](delete-activity.md)
 
 Mit diesem Connector können Sie insbesondere:
 
@@ -590,6 +591,17 @@ Hier ist ein Beispiel für die JSON-Konfiguration angegeben (siehe `preserve`):
 
 Weitere Informationen zur [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) finden Sie unter der Mapping Data Flow-Funktion.
 
+## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>Eigenschaften der GetMetadata-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [GetMetadata-Aktivität](control-flow-get-metadata-activity.md). 
+
+## <a name="delete-activity-properties"></a>Eigenschaften der Delete-Aktivität
+
+Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivität](delete-activity.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

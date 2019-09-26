@@ -2,18 +2,18 @@
 title: Überwachen und Verwalten von Azure HDInsight mithilfe der Ambari-Webbenutzeroberfläche
 description: Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Linux-basierten HDInsight-Clustern verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Webbenutzeroberfläche Ambari verwenden.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885271"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098660"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -47,7 +47,7 @@ Wenn Sie eine Verbindung zur Webbenutzeroberfläche Ambari herstellen, werden Si
 
 Beachten Sie beim Öffnen der Seite die Leiste im oberen Bereich. Diese Leiste enthält die folgenden Informationen und Steuerelemente:
 
-![Ambari-Navigation](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Item |BESCHREIBUNG |
 |---|---|
@@ -76,15 +76,15 @@ Bei anderen Warnungen als **OK** wird am Seitenanfang unter dem Eintrag **(Anzah
 
 Warnungen sind in mehrere Standardgruppen angeordnet, die über die Seite **Alerts** angezeigt werden können.
 
-![Seite "Warnungen"](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+![Apache Ambari – Zusammenfassung der Seite „Warnungen“](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die Option **Warnungsgruppen verwalten** auswählen.
 
-![Warnungsgruppen verwalten (Dialogfeld)](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![Apache Ambari – Warnungsgruppen verwalten](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Über den Eintrag __Warnungsbenachrichtigungen verwalten__ im Menü **Aktionen** können Sie ebenfalls Warnungsmethoden verwalten und Warnungsbenachrichtigungen erstellen. Es werden alle aktuellen Benachrichtigungen angezeigt. Sie können hier auch Benachrichtigungen erstellen. Die Benachrichtigungen können bei bestimmten Kombinationen aus Warnung und Schweregrad über **E-Mail** oder **SNMP** gesendet werden. Sie können z.B. eine E-Mail senden, wenn eine der Benachrichtigungen in der Gruppe **YARN Default** auf **Kritisch** festgelegt ist.
 
-![Warnung erstellen (Dialogfeld)](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Apache Ambari – Warnungsbenachrichtigung erstellen](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 Über den Eintrag __Warnungseinstellungen verwalten__ im Menü __Aktionen__ können Sie schließlich festlegen, wie oft eine Warnung ausgegeben werden muss, bevor eine Benachrichtigung gesendet wird. Dies Einstellung kann verwendet werden, um Benachrichtigungen für vorübergehende Fehler zu verhindern.
 
@@ -92,28 +92,28 @@ Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die
 
 Die Registerkarte **Metrics** im Dashboard enthält eine Reihe von Widgets, die das Überwachen des Clusterstatus auf einen Blick erleichtern. Verschiedene Widgets wie **CPU Usage**bieten zusätzliche Informationen, wenn Sie darauf klicken.
 
-![Dashboard mit Metriken](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
+![Apache Ambari-Dashboard mit Metriken](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Die Registerkarte **Heatmaps** zeigt Metriken als farbige Wärmebilder an, die von Grün bis Rot reichen.
 
-![Dashboard mit Heatmaps](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+![Apache Ambari-Dashboard mit Heatmaps](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 Weitere Informationen zu den Knoten im Cluster finden Sie unter **Hosts**. Wählen Sie anschließend den bestimmten Knoten, für den Sie sich interessieren.
 
-![Hostdetails](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Apache Ambari – Details der Hostzusammenfassung](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Dienste
 
 Die Seitenleiste **Dienste** des Dashboards bietet einen schnellen Überblick über den Status der Dienste, die im Cluster aktiv sind. Es werden verschiedene Symbole verwendet, um den Status oder Aktionen anzugeben, die vorgenommen werden sollten. Ein gelbes Recycling-Symbol wird z.B. angezeigt, wenn ein Dienst wiederverwendet werden muss.
 
-![Seitenleiste "Services"](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![Apache Ambari – Seitenleiste „Dienste“](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > Je nach Typ und Version des HDInsight-Clusters werden unterschiedliche Dienste angezeigt. Hier werden daher möglicherweise andere Dienste angezeigt als für Ihren Cluster.
 
 Wenn Sie einen Dienst auswählen, werden weitere ausführliche Informationen zum Dienst angezeigt.
 
-![Zusammenfassungsinformationen zum Dienst](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![Apache Ambari – Zusammenfassungsinformationen zum Dienst](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Quicklinks
 
@@ -142,7 +142,7 @@ Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines
 
 Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen vor, um Hosts zu verwalten.
 
-![Seite "Hosts"](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+![Apache Ambari – Übersicht über die Seite „Hosts“](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Für HDInsight-Cluster sollte kein Host hinzugefügt, zurückgesetzt und wiederhergestellt werden.
@@ -168,7 +168,7 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
 
 Verwenden Sie auf der Seite **Dashboard** oder **Dienste** am Ende der Dienstliste die Schaltfläche **Aktionen**, um alle Dienste zu beenden und zu starten.
 
-![Service Actions](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![Apache Ambari – Liste der Dienstaktionen](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > **Dienst hinzufügen** wird in diesem Menü zwar aufgeführt, sollte jedoch nicht verwendet werden, um dem HDInsight-Cluster Dienste hinzuzufügen. Neue Dienste sollten während der Clusterbereitstellung mit einer Skriptaktion hinzugefügt werden. Weitere Informationen zur Verwendung von Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
@@ -179,7 +179,7 @@ Während die Schaltfläche **Actions** alle Dienste neu starten kann, ist es mö
 
 2. Verwenden Sie am oberen Rand der Registerkarte **Zusammenfassung** die Schaltfläche **Dienstaktionen**, und wählen Sie dann die auszuführende Aktion aus. Dadurch wird der Dienst auf allen Knoten neu gestartet.
 
-    ![Dienstaktion](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    ![Apache Ambari – Einzelne Dienstaktionen](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
    > Der Neustart einiger Dienste bei aktivem Cluster kann dazu führen, dass Warnungen generiert werden. Um Warnungen zu vermeiden, können Sie die Schaltfläche **Dienstaktionen** verwenden, um den **Wartungsmodus** für den Dienst zu aktivieren, bevor Sie den Neustart durchführen.
@@ -195,7 +195,7 @@ Gehen Sie wie folgt vor, um einen Dienst zu konfigurieren:
 
 2. Wählen Sie die Registerkarte **Configs** aus. Daraufhin wird die aktuelle Konfiguration angezeigt. Zudem wird eine Liste der vorherigen Konfigurationen angezeigt.
 
-    ![Konfigurationen](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![Apache Ambari – Dienstkonfiguration](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Verwenden Sie die angezeigten Felder, um die Konfiguration zu ändern, und klicken Sie dann auf **Save**. Sie können auch eine vorherige Konfiguration und dann **Make current** auswählen, um die vorherigen Einstellungen zu reaktivieren.
 

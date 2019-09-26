@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918261"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066978"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Tief eintauchen – Advanced Analytics
 
@@ -23,17 +23,17 @@ HDInsight bietet die Möglichkeit, wertvolle Erkenntnisse aus großen Mengen str
 
 ## <a name="advanced-analytics-process"></a>Advanced Analytics-Prozesse
 
-![Prozess](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![Advanced Analytics-Prozessablauf](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-Nachdem Sie das geschäftliche Problem identifiziert und die Sammlung und Verarbeitung Ihrer Daten gestartet haben, müssen Sie ein Modell erstellen, das die Frage darstellt, für die Sie eine Vorhersage treffen möchten. Ihr Modell verwendet mindestens einen Machine Learning-Algorithmus, um die Art von Vorhersage zu treffen, die Ihren Geschäftsanforderungen am besten entspricht.  Die Mehrheit Ihrer Daten sollte zum Trainieren Ihres Modells verwendet werden, wobei der Rest zum Testen oder Bewerten des Modells verwendet werden sollte. 
+Nachdem Sie das geschäftliche Problem identifiziert und die Sammlung und Verarbeitung Ihrer Daten gestartet haben, müssen Sie ein Modell erstellen, das die Frage darstellt, für die Sie eine Vorhersage treffen möchten. Ihr Modell verwendet mindestens einen Machine Learning-Algorithmus, um die Art von Vorhersage zu treffen, die Ihren Geschäftsanforderungen am besten entspricht.  Die Mehrheit Ihrer Daten sollte zum Trainieren Ihres Modells verwendet werden, wobei der Rest zum Testen oder Bewerten des Modells verwendet werden sollte.
 
-Nach dem Erstellen, Laden, Testen und Bewerten Ihres Modells besteht der nächste Schritt darin, Ihr Modell bereitzustellen, damit es beginnt, Antworten auf Ihre Fragen zu liefern. Der letzte Schritt ist das Überwachen der Leistung Ihres Modells und nach Bedarf seine Optimierung. 
+Nach dem Erstellen, Laden, Testen und Bewerten Ihres Modells besteht der nächste Schritt darin, Ihr Modell bereitzustellen, damit es beginnt, Antworten auf Ihre Fragen zu liefern. Der letzte Schritt ist das Überwachen der Leistung Ihres Modells und nach Bedarf seine Optimierung.
 
 ## <a name="common-types-of-algorithms"></a>Gängige Typen von Algorithmen
 
 Advaced Analytics-Lösungen bieten eine Gruppe von Machine Learning-Algorithmen. Hier finden Sie eine Zusammenfassung der Kategorien von Algorithmen und der ihnen zugeordneten gängigen geschäftlichen Anwendungsfälle.
 
-![Anwendungsfälle für Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+![Machine Learning-Kategoriezusammenfassungen](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 Zusammen mit der Auswahl der am besten geeigneten Algorithmen müssen Sie berücksichtigen, ob Sie Daten für das Training bereitstellen müssen oder nicht. Machine Learning-Algorithmen werden wie folgt kategorisiert:
 
@@ -98,7 +98,7 @@ Es gibt drei wesentliche Aufgaben in diesem Szenario für Advanced Analytics:
 
 Dieses Beispiel verwendet das CIFAR-10-Bilderset, zusammengestellt und verteilt von Alex Krizhevsky, Vinod Nair und Geoffrey Hinton. Das CIFAR-10-Dataset enthält 60.000 32x32-Farbbilder, die zu 10 sich gegenseitig ausschließenden Klassen gehören:
 
-![Bilder](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+![Machine Learning-Beispielbilder](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Weitere Details zu dem Dataset finden Sie in [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) (Lernen mehrerer Ebenen von Merkmalen aus kleinen Bildern)von Alex Krizhevsky.
 
@@ -111,7 +111,7 @@ Das Dataset wurde in ein Trainingsset von 50.000 Bildern und ein Testset von 10.
 
 Die gesamte Vorverarbeitung/Bewertung der 10.000 Bilder dauert auf einem Cluster mit 4 Workerknoten weniger als eine Minute. Das Modell sagt die Bezeichnungen von ~ 9.100 (91 %) Bildern exakt vorher. Eine Konfusionsmatrix veranschaulicht die häufigsten Klassifizierungsfehler. Beispielsweise zeigt die Matrix, dass die Fehlbezeichnung von Hunden als Katzen und umgekehrt häufiger vorkommt als bei anderen Bezeichnungspaaren.
 
-![Ergebnisse](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+![Machine Learning-Ergebnisdiagramm](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Probieren Sie sie aus.
 

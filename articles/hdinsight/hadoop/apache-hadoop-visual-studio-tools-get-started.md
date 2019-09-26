@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884046"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076299"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -83,7 +83,7 @@ So stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her:
 
 4. Im Server-Explorer wird eine Liste der vorhandenen HDInsight-Cluster angezeigt. Wenn Sie noch keine Cluster haben, können Sie über das Azure-Portal, Azure PowerShell oder das HDInsight SDK Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](../hdinsight-hadoop-provision-linux-clusters.md).
 
-   ![Screenshot der Clusterliste von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Clusterliste von Data Lake Tools für Visual Studio im Server-Explorer")
+   ![Clusterliste von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Clusterliste von Data Lake Tools für Visual Studio im Server-Explorer")
 
 5. Erweitern Sie einen HDInsight-Cluster. **Hive-Datenbanken**, das Standardspeicherkonto, verknüpfte Speicherkonten und das **Hadoop-Dienstprotokoll** werden angezeigt. Sie können die einzelnen Elemente weiter erweitern.
 
@@ -113,11 +113,11 @@ Klicken Sie mit der rechten Maustaste auf den verknüpften Cluster, und wählen 
 ## <a name="explore-linked-resources"></a>Erkunden der verknüpften Ressourcen
 Im Server-Explorer werden das Standardspeicherkonto und verknüpfte Speicherkonten angezeigt. Wenn Sie das Standardspeicherkonto erweitern, werden die Container im Speicherkonto angezeigt. Das Standardspeicherkonto und der Standardcontainer sind markiert. Klicken Sie mit der rechten Maustaste auf einen der Container, um seinen Inhalt anzuzeigen.
 
-![Screenshot der Liste der verknüpften Ressourcen von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "Liste der verknüpften Ressourcen")
+![Verknüpfte Ressourcen von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "Liste der verknüpften Ressourcen")
 
 Nach dem Öffnen eines Containers können Sie mithilfe der folgenden Schaltflächen Blobs hochladen, löschen und herunterladen:
 
-![Screenshot der Blobvorgänge von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "Hochladen, Löschen und Herunterladen von Blobs im Server-Explorer")
+![Blobvorgänge von Data Lake Tools für Visual Studio im Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "Hochladen, Löschen und Herunterladen von Blobs im Server-Explorer")
 
 ## <a name="run-interactive-apache-hive-queries"></a>Ausführen interaktiver Apache Hive-Abfragen
 [Apache Hive](https://hive.apache.org) ist eine Data Warehouse-Infrastruktur, die auf Hadoop basiert. Hive wird für die Datenzusammenfassung, Abfragen und die Analyse verwendet. Sie können Data Lake Tools für Visual Studio verwenden, um Hive-Abfragen in Visual Studio auszuführen. Weitere Informationen zu Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight](hdinsight-use-hive.md).
@@ -201,7 +201,7 @@ So können Sie Ad-hoc-Abfragen erstellen und ausführen
 
       Achten Sie darauf, dass **Batch** ausgewählt ist, und klicken Sie dann auf **Senden**.  Konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** für das Skript, wenn Sie die Option für erweitertes Senden auswählen:
 
-      ![Screenshot: Abfrage und Batch](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
+      ![Visual Studio – Abfrage- und-Batchoptionen](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Übermitteln von Abfragen")
 
@@ -224,7 +224,7 @@ So erstellen Sie eine Hive-Lösung und führen Sie sie aus:
 
 Die Auftragszusammenfassung unterscheidet sich zwischen den Modi **Batch** und **Interactive** (Interaktiv).
 
-![Auftragszusammenfassung](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive-Auftragszusammenfassung")
+![Anzeige der Registerkarte für die Apache Hive-Auftragszusammenfassung](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive-Auftragszusammenfassung")
 
 Klicken Sie auf die Schaltfläche **Aktualisieren**, um den Status zu aktualisieren, bis sich der Auftragsstatus in **Abgeschlossen** ändert.  
 
@@ -232,7 +232,7 @@ Klicken Sie auf die Schaltfläche **Aktualisieren**, um den Status zu aktualisie
 
 * Wenn Sie die Auftragsdetails im **interaktiven** Modus anzeigen möchten, klicken Sie auf die Registerkarten **Ausgabe** und **HiveServer2-Ausgabe**.
 
-  ![Auftragsdetails](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive-Auftragsdetails")
+  ![Visual Studio Apache Hive-Auftragsdetails](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive-Auftragsdetails")
 
 ### <a name="view-job-graph"></a>Anzeigen von Auftragsdiagrammen
 
@@ -242,14 +242,13 @@ Um alle Operatoren am Scheitelpunkt anzuzeigen, doppelklicken Sie auf die Scheit
 
 Das Auftragsdiagramm wird möglicherweise auch dann nicht angezeigt, wenn Tez als Ausführung-Engine beim Start der Tez-Anwendung verwendet wird.  Dies kann daran liegen, dass der Auftrag keine DML-Anweisungen enthält, oder dass die DML-Anweisungen etwas zurückgegeben können, ohne dass eine Tez-Anwendung gestartet werden muss. Durch `SELECT * FROM table1` wird die Tez-Anwendung z.B. nicht gestartet.
 
-![Auftragsdiagramm](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive-Auftragszusammenfassung")
-
+![Visual Studio Apache Hive-Auftragsgraph](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive-Auftragszusammenfassung")
 
 ### <a name="task-execution-detail"></a>Details zur Taskausführung
 
 In der Auftragsdiagramm können Sie **Details zur Taskausführung** auswählen, um strukturierte und visualisierte Informationen zu Hive-Aufträgen anzeigen. Sie können auch weitere Auftragsinformationen abrufen. Im Fall von Leistungsproblemen können Sie in der Ansicht weitere Details zum Problem anzeigen. Beispielsweise können Sie Informationen zur Funktion jeder Aufgabe und ausführliche Informationen zu einzelnen Aufgaben (Lese-/Schreibzugriff auf Daten, Zeitplan, Start- und Endzeit usw.) anzeigen. Mithilfe der visualisierten Informationen können Sie Auftragskonfigurationen oder die Systemarchitektur optimieren.
 
-![Screenshot der Aufgabenausführungsansicht von Data Lake Tools für Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "Aufgabenausführungsansicht")
+![Data Lake Tools für Visual Studio – Fenster für die Aufgabenausführungsanzeige](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "Aufgabenausführungsanzeige")
 
 
 ### <a name="view-hive-jobs"></a>Anzeigen von Hive-Aufträgen
