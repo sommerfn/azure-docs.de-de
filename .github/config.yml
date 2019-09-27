@@ -1,3 +1,5 @@
+newIssueWelcomeComment: >
+“
 Vielen Dank, dass Sie zu unseren lokalisierten Inhalten beigetragen haben. 
 Alle Beiträge zu unseren Inhalten müssen den folgenden Richtlinien entsprechen:
 1. [Style Guides für die Lokalisierung von Microsoft](https://www.microsoft.com/Language/StyleGuides) enthalten Informationen darüber, wie der Text gestaltet sein soll, wenn er aus dem Englischen in eine andere Sprache übersetzt wird.
@@ -6,3 +8,4 @@ Wenn Sie unserer stetig wachsenden Lokalisierungscommunity beitreten, erfahren S
 Verfassen Sie Beiträge, und erreichen Sie auf unserem [Contributors' Leaderboard (Leaderboard für Mitwirkende) ](https://microsoftl10n.github.io/) einen höheren Rang, sobald Sie mit Punkten für Ihre Beiträge zur <Lokalisierung> belohnt werden.
 
 Microsoft Developer Relationship International Group
+“
