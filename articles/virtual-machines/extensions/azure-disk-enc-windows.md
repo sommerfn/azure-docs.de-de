@@ -144,17 +144,17 @@ Verwenden von `AADClientCertificate`:
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | Zeichenfolge |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (0.1-Schema) AADClientSecret | password | Zeichenfolge |
-| (0.1-Schema) AADClientCertificate | thumbprint | Zeichenfolge |
+| (0.1-Schema) AADClientSecret | password | string |
+| (0.1-Schema) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-Wörterbuch |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Zeichenfolge | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Zeichenfolge |
-| KeyEncryptionKeyURL | url | Zeichenfolge |
-| KeyVaultURL | url | Zeichenfolge |
-| (optional) Passphrase | password | Zeichenfolge | 
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultURL | url | string |
+| (optional) Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Betriebssystem, Daten, alle | string |
 
