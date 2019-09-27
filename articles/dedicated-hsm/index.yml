@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation für dediziertes HSM von Azure
+### YamlMime:Landing
+title: Dokumentation zu Azure Dedicated HSM
+summary: Hier erfahren Sie, wie Sie mithilfe von Azure Dedicated HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
 metadata:
-  title: 'Dokumentation für dediziertes HSM von Azure: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Dokumentation zu Azure Dedicated HSM
+  description: Hier erfahren Sie, wie Sie mithilfe von Azure Dedicated HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
   services: dedicated-hsm
-  author: msmbaldwin
-  manager: rkarlin
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
+  author: msmbaldwin
   ms.author: mbaldwin
-abstract:
-  description: Informieren Sie sich über dediziertes HSM und ob es für Ihre Umgebung relevant ist.
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: '<p>Erfahren Sie, worum es sich beim Azure-Dienst für dediziertes HSM handelt.</p>'
-            image:
-              src: media/index/hsm.svg
-            title: Übersicht über dediziertes HSM von Azure
-          - href: /azure/dedicated-hsm/faq
-            html: <p>Überlegungen zum Entwurf bei der Verwendung von dediziertem HSM</p>
-            image:
-              src: media/index/guide.svg
-            title: Wählen der Bereitstellungsarchitektur
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Häufig gestellte Fragen
-            html: <p><a href="/azure/dedicated-hsm/faq/">Häufig gestellte Fragen</a></p>
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300104"
+landingContent:
+- title: Informationen zu Dedicated HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist dediziertes HSM?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Hochverfügbarkeit
+      url: high-availability.md
+    - text: Physische Sicherheit
+      url: physical-security.md
+    - text: Netzwerk
+      url: networking.md
+    - text: Unterstützungsmöglichkeiten
+      url: supportability.md
+    - text: Überwachung
+      url: monitoring.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Bereitstellen in einem virtuellen Netzwerk mit der Azure CLI
+      url: tutorial-deploy-hsm-cli.md
+    - text: Bereitstellen in einem virtuellen Netzwerk mit Azure PowerShell
+      url: tutorial-deploy-hsm-powershell.md
+- title: Szenarien
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Azure Dedicated HSM-Bereitstellungsarchitektur
+      url: deployment-architecture.md

@@ -1,78 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zum Azure Resource Manager
+### YamlMime:Landing
+title: Dokumentation zu Azure Resource Manager
+summary: Die Resource Manager-Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind.
 metadata:
-  title: 'Dokumentation zum Azure Resource Manager: Tutorials, Beispiele, Referenz und Ressourcen'
-  description: 'Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen und verwalten und wie Sie Vorlagen für eine konsistente und wiederholbare Ressourcenbereitstellung erstellen.'
+  title: Dokumentation zu Azure Resource Manager
+  description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen entwickeln und damit Azure-Ressourcen bereitstellen.
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: 'Resource Manager, Azure, DevOps, Tutorials, Beispiele, Referenz, Dokumentation'
-  author: mumian
-  manager: dougeby
-  ms.author: jgao
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 12/10/2018
-abstract:
-  description: 'Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen, überwachen und verwalten. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Ressourcengruppen einrichten und Vorlagen für eine konsistente und wiederholbare Bereitstellung erstellen.'
-sections:
-  - title: Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Verwenden Sie verschiedene Tools, um Azure Resource Manager-Vorlagen für die Bereitstellung von Azure-Ressourcen zu erstellen.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Generieren einer Vorlage im Azure-Portal
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Erstellen einer Vorlage mit Visual Studio Code
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Erstellen einer Vorlage mit Visual Studio
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen für die Bereitstellung von Azure-Ressourcen erstellen.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">Verwenden der Referenz zu Resource Manager-Vorlagen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Erstellen mehrerer Instanzen einer Azure-Ressource</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">Festlegen der Reihenfolge für die Ressourcenbereitstellung</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">Verwenden von Bedingungen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Integrieren von Azure Key Vault</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">Erstellen verknüpfter Vorlagen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">Bereitstellen von VM-Erweiterungen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">Bereitstellen von SQL-Erweiterungen</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">Secure template artifacts</a> (Sichern von Vorlagenartefakten).'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">Verwenden von sicheren Bereitstellungsmethoden</a>.'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Problembehandlung bei Vorlagenbereitstellungen</a>.'
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: Beispielkonfigurationsvorlagen für allgemeine Bereitstellungsaufgaben
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure-Schnellstartvorlagen</a>'
-          - html: '<a href="https://resources.azure.com/">Azure-Ressourcen-Explorer (Vorschauversion)</a>'
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Vorlagen
-            html: <p><a href="/azure/templates/">Vorlagenreferenz</a></p><p><a href="/azure/resource-group-template-functions">Vorlagenfunktionen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funktionen von Benutzeroberflächen-Definitionen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elemente für Benutzeroberflächendefinitionen</a></p>
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/resource">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: Sprachen
-            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/resources/">REST-API</a></p>
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 4981000d942bfa49503a63ce2a82ec994efc3c6e
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299507"
+landingContent:
+- title: Informationen zu Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Resource Manager?
+      url: resource-group-overview.md
+    - text: Worum handelt es sich bei einer Resource Manager-Vorlage?
+      url: template-deployment-overview.md
+  - linkListType: concept
+    links:
+    - text: Bewährte Methoden
+      url: template-best-practices.md
+    - text: Bereitstellungsmodi
+      url: deployment-modes.md
+    - text: Verknüpfte Vorlagen
+      url: resource-group-linked-templates.md
+    - text: Bereitstellung auf Abonnementebene
+      url: deploy-to-subscription.md
+    - text: Bereitstellungs-Manager
+      url: deployment-manager-overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen von Vorlagen – Portal
+      url: resource-manager-quickstart-create-templates-use-the-portal.md
+    - text: 'Erstellen von Vorlagen: VS Code'
+      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - text: 'Erstellen von Vorlagen: Visual Studio'
+      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Bereitstellen mehrerer Instanzen
+      url: resource-manager-tutorial-create-multiple-instances.md
+    - text: Festlegen der Bereitstellungsreihenfolge
+      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
+    - text: Integrieren eines Schlüsseltresors
+      url: resource-manager-tutorial-use-key-vault.md
+- title: Entwickeln von Vorlagen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von Visual Studio Code
+      url: resource-manager-tools-vs-code.md
+    - text: Verwenden von Funktionen
+      url: resource-group-template-functions.md
+    - text: Definieren von Parametern
+      url: template-parameters.md
+    - text: Definieren von Variablen
+      url: template-variables.md
+    - text: Definieren von Ressourcen
+      url: child-resource-name-type.md
+    - text: Definieren der Ausgaben
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Azure-Schnellstartvorlagen
+      url: /resources/templates/
+- title: Bereitstellen von Vorlagen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Mit PowerShell
+      url: resource-group-template-deploy.md
+    - text: Mit der Befehlszeilenschnittstelle
+      url: resource-group-template-deploy-cli.md
+    - text: Mit dem Portal
+      url: resource-group-template-deploy-portal.md
+    - text: Mit der REST-API
+      url: resource-group-template-deploy-rest.md
+- title: Verwalten von Vorlagen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exportieren von Vorlagen
+      url: export-template-portal.md
+    - text: CI/CD
+      url: vs-resource-groups-project-devops-pipelines.md
+- title: Verwalten von Ressourcen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verschieben von Ressourcen
+      url: resource-group-move-resources.md
+    - text: Markieren von Ressourcen
+      url: resource-group-using-tags.md
+    - text: Sperren von Ressourcen
+      url: resource-group-lock-resources.md
+- title: Überwachen und Behandeln von Problemen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen von Aktivitätsprotokollen
+      url: resource-group-audit.md
+    - text: Anzeigen des Bereitstellungsvorgangs
+      url: resource-manager-deployment-operations.md
+    - text: Behandeln von Bereitstellungsfehlern
+      url: resource-manager-common-deployment-errors.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Ressourcenanbieter und -typen
+      url: resource-manager-supported-services.md
+    - text: Vorlagenreferenz
+      url: /azure/templates/

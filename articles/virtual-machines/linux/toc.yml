@@ -476,6 +476,8 @@
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Ändern der Größe eines Datenträgers
           href: expand-disks.md
+        - name: Verwalten von Datenträgern mithilfe von Storage-Explorer
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
         - name: Erstellen einer inkrementellen Momentaufnahme

@@ -71,6 +71,8 @@
           items:
             - name: 'Löschen von Imagedaten: CLI'
               href: container-registry-delete.md
+            - name: Aufbewahrungsrichtlinie für nicht markierte Manifeste (Vorschau)
+              href: container-registry-retention-policy.md
             - name: Automatisches Löschen von Tags und Manifesten (Vorschau)
               href: container-registry-auto-purge.md
         - name: Aktualisieren einer klassischen Registrierung

@@ -691,6 +691,8 @@
       items:
         - name: Aktivieren von Notebooks
           href: enable-notebooks.md
+        - name: Verwenden integrierter Notebookbefehle
+          href: use-notebook-features-and-commands.md
     - name: Serverseitige Programmierung
       items:
         - name: 'Schreiben von gespeicherten Prozeduren, Triggern und UDFs'

@@ -21,7 +21,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Aktivieren von Azure Security Center für IoT in IoT Hub
+    - name: Durchführen des Onboardings für Azure Security Center für IoT in IoT Hub
       href: quickstart-onboard-iot-hub.md
     - name: Konfigurieren Ihrer Lösung
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: Untersuchen eines Geräts
       href: how-to-investigate-device.md
+    - name: Anpassen Ihrer Lösung
+      href: how-to-customize-solution.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen

@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Herstellen einer Verbindung über einen Webbrowser
           href: connect-web.md
+        - name: Herstellen einer Verbindung mit dem macOS-Client
+          href: connect-macos.md
+        - name: Herstellen einer Verbindung mit dem iOS-Client
+          href: connect-ios.md
     - name: Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
       href: create-host-pools-arm-template.md
     - name: Erstellen eines Hostpools mit PowerShell
