@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999200"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262756"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -93,7 +93,7 @@ Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschl
 Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert. Application Insights wird daher zu einem wertvollen Sicherheitstool, da es bei der Verfügbarkeit hilft, die zu den drei Sicherheitsbereichen zählt: Vertraulichkeit, Integrität und Verfügbarkeit.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 [Azure Monitor-Protokolle](https://azure.microsoft.com/documentation/services/log-analytics/) bietet eine IT-Verwaltungslösung für lokale Infrastrukturen und cloudbasierte Drittanbieterinfrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Azure Monitor-Protokolle weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.

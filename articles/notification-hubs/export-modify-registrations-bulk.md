@@ -2,22 +2,24 @@
 title: Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Notification Hubs-Unterstützung für Massenvorgänge zum Durchführen einer großen Anzahl von Vorgängen für einen Notification Hub oder zum Exportieren aller Registrierungen verwenden.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575302"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212402"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen
 In einigen Szenarios ist das Erstellen oder Anpassen großer Mengen von Registrierungen in einem Notification Hub erforderlich. Bei einigen dieser Szenarios handelt es sich um Tagaktualisierungen, die auf Batchberechnungen folgen, oder Migrationen vorhandener Pushimplementierungen zur Verwendung von Notification Hubs.

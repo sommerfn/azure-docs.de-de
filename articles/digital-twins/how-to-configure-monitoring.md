@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950122"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261042"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins
 
@@ -57,7 +57,7 @@ Für die erweiterte Aktivitätsprotokollierung:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Aktivieren von Kundendiagnoseprotokollen
 
-Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
+Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/resource-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
 
 Die Diagnoseprotokollierung umfasst z.B. folgende Angaben:
 
@@ -129,6 +129,6 @@ Azure Digital Twins unterstützt zudem eine anwendungsspezifische Protokollierun
 
 - Erfahren Sie mehr über [Azure-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md).
 
-- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md)).
+- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md)).
 
 - Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/get-started-portal.md).

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036338"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300645"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
@@ -29,7 +29,11 @@ Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. We
 
 GZRS und RA-GZRS sind derzeit in den folgenden Regionen als Vorschau verfügbar:
 
+- Europa, Norden
+- Europa, Westen
 - USA, Osten
+- USA (Ost 2)
+- USA, Mitte
 
 Microsoft arbeitet daran, GZRS und RA-GZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite  [Azure Service-Updates](https://azure.microsoft.com/updates/)  nach, um Informationen zu neuen unterstützten Regionen zu erhalten.
 

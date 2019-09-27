@@ -3,7 +3,7 @@ title: 'API-Referenz für Azure-Statusmonitor v2: Festlegen der Konfiguration | 
 description: API-Referenz für Statusmonitor v2. Set-ApplicationInsightsMonitoringConfig. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f3a55caba13b3b96884d446e0750d9fb67a343df
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326292"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200450"
 ---
 # <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>API für Statusmonitor v2: Set-ApplicationInsightsMonitoringConfig
 

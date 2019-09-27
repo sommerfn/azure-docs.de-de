@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 18b68d480b823bff572cba1ba29143a9af0be40c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 37baf361a34df1629d3e05f5e40b2d2f8912ce27
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858491"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272530"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 
@@ -69,7 +69,7 @@ Um Azure Stream Analytics-Dienste von Azure Deutschland zu Azure weltweit zu mig
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job) durcharbeiten.
 - Lesen Sie die [Übersicht über Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 - Erfahren Sie, wie Sie [einen Stream Analytics-Auftrag über PowerShell erstellen](../stream-analytics/stream-analytics-quick-create-powershell.md).
 

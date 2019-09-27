@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086243"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171187"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -529,7 +529,7 @@ Die Table Storage-Eingabebindung unterstützt folgende Szenarien:
 
 * **Lesen von Zeilen in JavaScript**
 
-  Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie `partitionKey` oder `rowKey` nicht fest. Verwenden Sie `context.bindings.<name>`, um auf die Eingabetabellenentität(en) zuzugreifen. Die deserialisierten Objekte verfügen über die Eigenschaften `RowKey` und `PartitionKey`.
+  Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie `partitionKey` oder `rowKey` nicht fest. Verwenden Sie `context.bindings.<BINDING_NAME>`, um auf die Eingabetabellenentität(en) zuzugreifen. Die deserialisierten Objekte verfügen über die Eigenschaften `RowKey` und `PartitionKey`.
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ Die Table Storage-Ausgabebindung unterstützt folgende Szenarien:
 
 * **Schreiben von Zeilen in JavaScript**
 
-  In JavaScript-Funktionen erfolgt der Zugriff auf die Tabellenausgabe mithilfe von `context.bindings.<name>`.
+  In JavaScript-Funktionen erfolgt der Zugriff auf die Tabellenausgabe mithilfe von `context.bindings.<BINDING_NAME>`.
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 

@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: 2e8f1cd32bc0b57faf7b2365e100064be78a37a2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 88aedb97f659725887026d0c83be88cbde27ae4f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106922"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219677"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Verschieben eines internen Azure Load Balancers mithilfe des Azure-Portals in eine andere Region
 
@@ -27,7 +27,7 @@ Interne Azure Load Balance können nicht aus einer Region in eine andere verscho
 - Interne Azure Load Balancer können nicht zwischen Regionen verschoben werden.  Sie müssen den neuen Load Balancer Ressourcen in der Zielregion zuordnen.
 
 - Zum Exportieren einer internen Load Balancer-Konfiguration und Bereitstellen einer Vorlage zum Erstellen eines internen Load Balancers in einer anderen Region benötigen Sie die Rolle „Netzwerkmitwirkender“ oder höher.
-   
+
 - Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout umfasst Load Balancer, Netzwerksicherheitsgruppen, virtuelle Computer und virtuelle Netzwerke, kann sich aber auch auf weitere Komponenten beziehen.
 
 - Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen interner Load Balancer in der verwendeten Zielregion zulässt. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
@@ -43,13 +43,13 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>Exportieren der Vorlage für virtuelle Netzwerke und Bereitstellen über das Azure-Portal
 
-1. Melden Sie sich bei [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+1. Melden Sie sich bei [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
 2. Suchen Sie die Ressourcengruppe, die das virtuelle Netzwerk enthält, und klicken Sie darauf.
 3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
 4. Wählen Sie **Bereitstellen  **auf dem Blatt** Vorlage exportieren** aus.
 5. Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
 6. Um den Parameter für den Namen des virtuellen Netzwerks zu bearbeiten, ändern Sie Eigenschaft **value** unter **parameters**:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -65,8 +65,8 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 8. Klicken Sie im Editor auf **Speichern**.
 
-9. Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen. 
-    
+9. Klicken Sie auf **VORLAGE** > **Parameter bearbeiten**, um die Datei **parameters.json** im Online-Editor zu öffnen.
+
 10. Zum Bearbeiten der Zielregion, in die das VNET verschoben wird, ändern Sie die Eigenschaft **location** unter „resources“:
 
     ```json
@@ -86,9 +86,9 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
                         },
 
     ```
-  
+
 11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **Central US** = **centralus**.
-    
+
 12. Sie können wahlweise auch andere Parameter in der Datei **template.json** ändern. Diese sind abhängig von Ihren Anforderungen optional:
 
     * **Adressraum**: Der Adressraum des VNETs kann vor dem Speichern geändert werden, indem der Abschnitt **resources** > **addessSpace** und die Eigenschaft **addressPrefixes** in der Datei **template.json** geändert werden:
@@ -182,7 +182,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 14. Klicken Sie auf **GRUNDLAGEN** > **Abonnement**,um das Abonnement auszuwählen, in dem das Ziel-VNET bereitgestellt wird.
 
-15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der das Ziel-VNET bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für das Ziel-VNET zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen VNETs übereinstimmt. 
+15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der das Ziel-VNET bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für das Ziel-VNET zu erstellen.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen VNETs übereinstimmt.
 
 16. Stellen Sie sicher, dass **GRUNDLAGEN** > **Standort** auf den Zielstandort festgelegt ist, an dem das VNET bereitgestellt werden soll.
 
@@ -194,7 +194,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportieren der Vorlage des internen Load Balancers und Bereitstellen aus Azure PowerShell
 
-1. Melden Sie sich bei [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+1. Melden Sie sich bei [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
 2. Suchen Sie die Ressourcengruppe, die den internen Quell-Load Balancer enthält, und klicken Sie darauf.
 3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
 4. Wählen Sie **Bereitstellen  **auf dem Blatt** Vorlage exportieren** aus.
@@ -215,15 +215,15 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
              "type": "String"
              }
     ```
- 
+
 6. Wenn Sie den Wert des zuvor verschobenen virtuellen Zielnetzwerks bearbeiten möchten, müssen Sie zunächst die Ressourcen-ID abrufen und kopieren und sie dann in die Datei **parameters.json** einfügen. So rufen Sie die ID ab:
-    
-    1. Melden Sie sich auf einer anderen Browserregisterkarte oder in einem anderen Fenster am [Azure-Portal](http://portal.azure.com) > **Ressourcengruppen** an.
+
+    1. Melden Sie sich auf einer anderen Browserregisterkarte oder in einem anderen Fenster am [Azure-Portal](https://portal.azure.com) > **Ressourcengruppen** an.
     2. Suchen Sie nach der Zielressourcengruppe, die das mit den oben beschriebenen Schritten verschobene virtuelle Netzwerk enthält, und klicken Sie darauf.
     3. Wählen Sie **Einstellungen** > **Eigenschaften** aus.
     4. Markieren Sie auf dem Blatt auf der rechten Seite die **Ressourcen-ID**, und kopieren Sie sie in die Zwischenablage.  Alternativ können Sie rechts neben dem Pfad der **Ressourcen-ID** auf die Schaltfläche **In Zwischenablage kopieren** klicken.
     5. Fügen Sie die Ressourcen-ID in die Eigenschaft **DefaultValue** im Editor **Parameter bearbeiten** ein, den Sie in einem anderen Browserfenster oder auf einer anderen Registerkarte geöffnet haben:
-   
+
         ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
          "contentVersion": "1.0.0.0",
@@ -256,9 +256,9 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     ```
 
 9.  Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **Central US** = **centralus**.
-    
+
 10. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
-    
+
     * **SKU**: Sie können die SKU des internen Load Balancers in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **template.json** ändern:
 
         ```json
@@ -374,12 +374,12 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         }
         ```
         Weitere Informationen zu NAT-Regeln für eingehenden Datenverkehr finden Sie unter [Was ist Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-    
+
 12. Klicken Sie im Online-Editor auf **Speichern**.
-    
+
 13. Klicken Sie auf **GRUNDLAGEN** > **Abonnement**,um das Abonnement auszuwählen, in dem der interne Ziel-Load Balancer bereitgestellt wird.
 
-15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der der Ziel-Load Balancer bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für den internen Ziel-Load Balancer zu erstellen, oder Sie können die vorhandene Ressourcengruppe auswählen, die weiter oben für das virtuelle Netzwerk erstellt wurde.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen internen Quell-Load Balancer übereinstimmt. 
+15. Klicken Sie auf **GRUNDLAGEN** > **Ressourcengruppe**,um die Ressourcengruppe auszuwählen, in der der Ziel-Load Balancer bereitgestellt wird.  Sie können auf **Neu erstellen** klicken, um eine neue Ressourcengruppe für den internen Ziel-Load Balancer zu erstellen, oder Sie können die vorhandene Ressourcengruppe auswählen, die weiter oben für das virtuelle Netzwerk erstellt wurde.  Stellen Sie sicher, dass der Name nicht mit dem Namen der Quellressourcengruppe des vorhandenen internen Quell-Load Balancer übereinstimmt.
 
 16. Stellen Sie sicher, dass **GRUNDLAGEN** > **Standort** auf den Zielstandort festgelegt ist, an dem der interne Load Balancer bereitgestellt werden soll.
 
@@ -389,7 +389,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
 19. Klicken Sie auf die Schaltfläche **Kaufen**, um das virtuelle Zielnetzwerk bereitzustellen.
 
-## <a name="discard"></a>Verwerfen 
+## <a name="discard"></a>Verwerfen
 
 Wenn Sie das virtuelle Zielnetzwerk und den internen Load Balancer verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Zielnetzwerk und den internen Load Balancer enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 

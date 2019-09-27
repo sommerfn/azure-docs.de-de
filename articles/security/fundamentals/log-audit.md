@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946505"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262848"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 
@@ -36,7 +36,7 @@ Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Protokolle lie
 Azure-Protokolle werden in der folgenden Typen kategorisiert:
 * **Steuerungs-/Verwaltungsprotokolle** enthalten Informationen zu CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager. Weitere Informationen finden Sie in [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md).
 
-* **Datenebenenprotokolle** enthalten Informationen über Ereignisse, die bei der Nutzung der Azure-Ressource aufgetreten sind. Beispiele für diesen Protokolltyp sind System-, Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer (VM) sowie die über Azure Monitor konfigurierten [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md).
+* **Datenebenenprotokolle** enthalten Informationen über Ereignisse, die bei der Nutzung der Azure-Ressource aufgetreten sind. Beispiele für diesen Protokolltyp sind System-, Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer (VM) sowie die über Azure Monitor konfigurierten [Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md).
 
 * **Verarbeitete Ereignisse** enthalten Informationen zu analysierten Ereignisse/Warnungen, die in Ihrem Auftrag verarbeitet wurden. Beispiele für diesen Typ sind [Azure Security Center-Warnungen](../../security-center/security-center-managing-and-responding-alerts.md), bei denen [Azure Security Center](../../security-center/security-center-intro.md) Ihr Abonnement verarbeitet und analysiert hat und prägnante Sicherheitswarnungen ausgibt.
 
@@ -45,7 +45,7 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 | Protokollkategorie | Protokolltyp | Verwendung | Integration |
 | ------------ | -------- | ------ | ----------- |
 |[Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md)|Ereignisse der Steuerungsebene für Azure Resource Manager-Ressourcen|  Bieten Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden.|    REST-API und [Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement|  Bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor, [Stream](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Azure-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement|    Bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor, [Stream](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Azure AD-Berichterstellung](../../active-directory/reports-monitoring/overview-reports.md)|Protokolle und Berichte | Enthält Informationen über Aktivitäten zur Benutzeranmeldung und Systemaktivitäten zur Benutzer- und Gruppenverwaltung.|[Graph-API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuelle Computer und Clouddienste](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows-Ereignisprotokolldienst und Linux-Syslog|  Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](../../monitoring-and-diagnostics/azure-diagnostics.md) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
 |[Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung, stellt Metrikdaten für ein Speicherkonto bereit|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.|   REST-API oder [Clientbibliothek](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -95,14 +95,14 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen, wie z. B. das A
 
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../../azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. In den Diagnoseeinstellungen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 
-* [Sie können Diagnoseprotokolle zur Erfassung](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) an Event Hubs streamen.
+* [Sie können Diagnoseprotokolle zur Erfassung](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) an Event Hubs streamen.
 
 * Sie können sie mit [Azure Monitor-Protokollen](../../log-analytics/log-analytics-queries.md) analysieren.
 
 **Unterstützten Dienste, Schema für Diagnoseprotokolle und unterstützte Protokollkategorien pro Ressourcentyp**
 
 
-| Dienst | Schema und Dokumentation | Ressourcentyp | Category (Kategorie) |
+| Dienst | Schema und Dokumentation | Ressourcentyp | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Azure Monitor-Protokolle für Load Balancer (Vorschauversion)](../../load-balancer/load-balancer-monitor-log.md)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |Netzwerksicherheitsgruppen|[Azure Monitor-Protokolle für Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-nsg-manage-log.md)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -315,11 +315,11 @@ Im Mittelpunkt von Azure Monitor-Protokollen steht der Log Analytics-Arbeitsbere
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourcen, die die Daten generieren, die von Azure Monitor-Protokollen gesammelt wurden. Zu den Quellen können Agents gehören, die auf direkt verbundenen [Windows](../../log-analytics/log-analytics-agent-windows.md)- oder [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md)-Computern installiert sind, oder Agents in einer [verbundenen System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md). Azure Monitor-Protokolle können auch Daten aus [Azure-Speicherkonten](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) sammeln.
+Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourcen, die die Daten generieren, die von Azure Monitor-Protokollen gesammelt wurden. Zu den Quellen können Agents gehören, die auf direkt verbundenen [Windows](../../log-analytics/log-analytics-agent-windows.md)- oder [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md)-Computern installiert sind, oder Agents in einer [verbundenen System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md). Azure Monitor-Protokolle können auch Daten aus [Azure-Speicherkonten](../../azure-monitor/platform/resource-logs-collect-storage.md) sammeln.
 
 [Datenquellen](../../azure-monitor/platform/agent-data-sources.md) sind die verschiedenen Arten von Daten, die aus jeder verbundenen Quelle gesammelt werden. Hierzu zählen Ereignisse und [Leistungsdaten](../../azure-monitor/platform/data-sources-performance-counters.md) aus [Windows](../../azure-monitor/platform/data-sources-windows-events.md)- und Linux-Agents sowie Quellen wie [IIS-Protokolle](../../azure-monitor/platform/data-sources-iis-logs.md) und [benutzerdefinierte Textprotokolle](../../azure-monitor/platform/data-sources-custom-logs.md). Sie konfigurieren jede Datenquelle, aus der Sie Daten sammeln möchten, und die Konfiguration wird automatisch an jede verbundene Quelle übermittelt.
 
-Es gibt vier Möglichkeiten, [Protokolle und Metriken für Azure-Dienste](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) zu erfassen:
+Es gibt vier Möglichkeiten, [Protokolle und Metriken für Azure-Dienste](../../azure-monitor/platform/resource-logs-collect-storage.md) zu erfassen:
 
 * Azure-Diagnosen direkt an Azure Monitor-Protokolle (**Diagnose** in der folgenden Tabelle)
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914772"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146459"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -88,14 +88,11 @@ Wenn Sie die Inhaberschaft des Domänennamens bestätigt haben, entfernt Azure A
 ### <a name="support-for-external-admin-takeover"></a>Unterstützung für eine externe Administratorübernahme
 Die externe Administratorübernahme wird von folgenden Onlinediensten unterstützt:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 Die unterstützten Tarife umfassen:
 
-- Power BI Free
-- Power BI Pro
 - PowerApps Free
 - PowerFlow Free
 - RMS for Individuals
@@ -113,10 +110,6 @@ Für [RMS for Individuals](/azure/information-protection/rms-for-individuals) we
 Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und die Organisation, die Sie besitzen, befindet sich in Nordamerika.
 
 Obwohl RMS for Individuals so konzipiert ist, dass es die Azure AD-Authentifizierung unterstützt, um geschützte Inhalte zu öffnen, hindert es Benutzer nicht daran, ebenfalls Inhalte zu schützen. Haben Benutzer Inhalte mit dem RMS for Individuals-Abonnement geschützt, und wurden die Schlüssel und die Vorlagen nicht verschoben, kann nach der Domänenübernahme nicht auf diese Inhalte zugegriffen werden.
-
-#### <a name="more-information-about-power-bi"></a>Weitere Informationen zu Power BI
-
-Beim Ausführen einer externen Übernahme werden Power BI-Inhalte, die vor der Übernahme erstellt wurden, in einem [archivierten Arbeitsbereich in Power BI](/power-bi/service-admin-power-bi-archived-workspace) platziert. Sie müssen alle Inhalte manuell migrieren, die im neuen Mandanten verwendet werden sollen.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD-PowerShell-Cmdlets für die ForceTakeover-Option
 Diese Cmdlets werden im [PowerShell-Beispiel](#powershell-example) verwendet.

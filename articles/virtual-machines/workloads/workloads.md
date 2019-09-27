@@ -12,14 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 06/06/2019
+ms.date: 09/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 4593859c441073115fddc3a67dc4ce99fdd6124a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 11d503e7dd15f148208da65d551f9c6ae71a7e7f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795075"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265566"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Workloads auf virtuellen Azure-Computern
 
@@ -34,4 +34,4 @@ Virtuelle Computer in Azure können viele Workloads unterstützen. Für jede Wor
 
 **Nächste Schritte**
 
-Lernen Sie Azure-VMs mit den Azure VM-Schnellstartanleitungen für [Linux](../linux/quick-create-cli-nodejs.md) und [Windows](../windows/quick-create-powershell.md) kennen.
+Lernen Sie Azure-VMs mit den Azure VM-Schnellstartanleitungen für [Linux](../linux/quick-create-cli.md) und [Windows](../windows/quick-create-powershell.md) kennen.
