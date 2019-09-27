@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035909"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260869"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Event Hubs verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle Daten, die mit Azure Storage gespeichert werden, durch von Microsoft verwaltete Schlüssel verschlüsselt. 
@@ -28,7 +28,7 @@ Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Nam
 
 Verwenden Sie Azure Key Vault, um Ihre Schlüssel zu verwalten und die Schlüsselverwendung zu überwachen. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
 
-In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit kundenseitig verwalteten Schlüsseln mithilfe des Azure-Portals konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter []Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/quick-create-portal.md).
+In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit kundenseitig verwalteten Schlüsseln mithilfe des Azure-Portals konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über das Azure-Portal finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Für die Verwendung kundenseitig verwalteter Schlüssel mit Azure Event Hubs müssen für den Schlüsseltresor zwei erforderliche Eigenschaften konfiguriert werden. Sie lauten wie folgt:  **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Diese Eigenschaften sind standardmäßig aktiviert, wenn Sie im Azure-Portal einen neuen Schlüsseltresor erstellen. Wenn Sie diese Eigenschaften jedoch für einen vorhandenen Schlüsseltresor aktivieren möchten, müssen Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden.
@@ -84,7 +84,7 @@ Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Event
 > Wenn Sie einen vorhandenen Verschlüsselungsschlüssel aus Ihrem Schlüsseltresor löschen und ihn durch einen neuen Schlüssel im Event Hubs-Namespace ersetzen, ist der Zugriff auf Ihre alten Daten (die mit dem alten Schlüssel verschlüsselt wurden) zusammen mit den neuen Daten, auf die jetzt nur mit dem neuen Schlüssel zugegriffen werden kann, unter Umständen weiterhin möglich, da der gelöschte Schlüssel noch bis zu einer Stunde lang gültig ist (weil er zwischengespeichert ist). Dieses Verhalten ist in der Vorschauversion des Features standardmäßig integriert. 
 
 ## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen 
-Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md).
+Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Aktivieren von Benutzerprotokollen
 Führen Sie die folgenden Schritte aus, um Protokolle für kundenseitig verwaltete Schlüssel zu aktivieren.
