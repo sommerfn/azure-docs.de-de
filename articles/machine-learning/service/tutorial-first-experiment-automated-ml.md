@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092005"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259326"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 
@@ -58,100 +58,103 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
 
 1. Wählen Sie **Erste Schritte** aus.
 
-1.  Wählen Sie im linken Bereich im Abschnitt **Erstellung** die Option **Automatisiertes ML** aus.
-Da dies Ihr erstes Experiment mit automatisiertem maschinellem Lernen ist, wird der Bildschirm **Erste Schritte** angezeigt.
+1. Wählen Sie im linken Bereich im Abschnitt **Erstellung** die Option **Automatisiertes maschinelles Lernen** aus.
 
-    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Da dies Ihr erstes automatisiertes Machine Learning-Experiment ist, wird der Bildschirm „Erste Schritte“ angezeigt.
+
+   ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. Wählen Sie **Create Experiment** (Experiment erstellen) aus. 
 
-1. Geben Sie **my-1st-automl-experiment** als Experimentnamen ein.
+1. Geben Sie den folgenden Experimentnamen ein: `my-1st-automl-experiment`
 
-1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus. „Compute“ bezeichnet eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
+1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
 
-    1. Konfigurieren Sie den Computekontext für dieses Experiment.
-        
-        Feld | Wert
-        ----|---
-        Computename |  Geben Sie einen eindeutigen Namen ein, der Ihren Computekontext identifiziert. In diesem Beispiel verwenden Sie **automl-compute**.
-        Größe des virtuellen Computers| Wählen Sie die Größe für Ihren Computes aus. Verwenden Sie die Standardgröße, **Standard_DS12_V2**.
-        Zusätzliche Einstellungen| *Min node* (Mindestanzahl von Knoten): 1. Zum Aktivieren der Datenprofilerstellung müssen Sie über mindestens einen Knoten verfügen. <br> *Max node* (Maximale Anzahl von Knoten): 6.
- 
-    1. Wählen Sie **Erstellen** aus, um Ihren neuen Compute zu erstellen. Dieser Vorgang nimmt einige Minuten in Anspruch. 
+   Feld | BESCHREIBUNG | Wert für das Tutorial
+   ----|---|---
+   Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|automl-compute
+   Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
+   Min/Max nodes (Min./Max. Knoten) (unter „Erweiterte Einstellungen“)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
 
-    1. Wählen Sie nach Abschluss der Erstellung in der Dropdownliste Ihren neuen Compute aus, und klicken Sie dann auf **Weiter**.
+   >[!NOTE]
+   >Für dieses Tutorial verwenden Sie das Standardspeicherkonto und den mit Ihrer neuen Computeressource erstellten Container. Dies wird automatisch im Formular eingetragen.
+    
+1. Wählen Sie **Erstellen** aus, um das Computeziel abzurufen. 
 
-    >[!NOTE]
-    >Für dieses Tutorial verwenden Sie das Standardspeicherkonto und den mit Ihrer neuen Computeressource erstellten Container. Dies wird automatisch im Formular eingetragen.
+   **Dieser Vorgang nimmt einige Minuten in Anspruch.** 
 
-1. Wählen Sie **Aus lokaler Datei hochladen** aus. Hier erstellen Sie einen neuen Datensatz mit der Datei **bankmarketing_train.csv**, die Sie zuvor für dieses Tutorial heruntergeladen haben. 
+1. Wählen Sie nach der Erstellung in der Dropdownliste Ihr neues Computeziel aus, und klicken Sie dann auf **Weiter**.
 
-    1. Wählen Sie **Durchsuchen** aus, und wählen Sie dann auf dem lokalen Computer die Datei **bankmarketing_train.csv** aus. 
+1. Wählen Sie **Aus lokaler Datei hochladen** aus, um mit dem Erstellen eines neuen Datasets zu beginnen. 
+
+    1. Wählen Sie **Durchsuchen**.
+    
+    1. Wählen Sie auf dem lokalen Computer die Datei **bankmarketing_train.csv** aus. Dies ist die Datei, die Sie als [Voraussetzung](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) heruntergeladen haben.
 
     1. Weisen Sie Ihrem Dataset einen eindeutigen Namen zu, und geben Sie eine optionale Beschreibung ein. 
 
-    1. Wählen Sie **Weiter** aus, um das Dataset in den Standardcontainer hochzuladen, der bei der Erstellung des Arbeitsbereichs automatisch eingerichtet wurde. Die öffentliche Vorschauversion unterstützt nur Uploads von lokalen Dateien. 
-
-    1. Wenn der Upload abgeschlossen ist, wird das Formular **Einstellungen und Vorschau** basierend auf dem Dateityp intelligent ausgefüllt. Stellen Sie sicher, dass das Formular wie folgt ausgefüllt ist.
+    1. Wählen Sie unten links **Weiter** aus, um das Dataset in den Standardcontainer hochzuladen, der bei der Erstellung Ihres Arbeitsbereichs automatisch eingerichtet wurde. Die öffentliche Vorschauversion unterstützt nur Uploads von lokalen Dateien. 
+    
+       Wenn der Upload abgeschlossen ist, wird das Formular „Einstellungen und Vorschau“ basierend auf dem Dateityp vorab aufgefüllt. 
+       
+    1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
-        Feld|Wert
+        Feld|Wert für das Tutorial
         ---|---
         Dateiformat| Durch Trennzeichen getrennt
         Trennzeichen| Komma
         Codieren| UTF-8
         Spaltenüberschriften| Alle Dateien weisen dieselben Header auf.
         Zeilen überspringen | Keine
-
-        >[!NOTE]
-        > Wenn eine der Einstellungen in diesem Formular aktualisiert wird, wird auch die Vorschau entsprechend aktualisiert.
-
-        Klicken Sie auf **Weiter**.
     
-
     1. Das Formular **Schema** ermöglicht eine weitere Konfiguration der Daten für dieses Experiment. Wählen Sie für dieses Beispiel den Umschalter für das Feature **day_of_week** aus, um es für dieses Experiment nicht einzuschließen. Wählen Sie **Fertig** aus, um das Hochladen von Dateien und das Erstellen des Datasets für Ihr Experiment abzuschließen.
 
         ![Konfiguration der Registerkarte „Preview“ (Vorschau)](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
-        
 1. Wählen Sie **Classification** (Klassifizierung) als Vorhersageaufgabe aus.
 
 1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
 
 1. Erweitern Sie **Advanced Settings** (Erweiterte Einstellungen), und füllen Sie die Felder wie folgt aus.
 
-    Erweiterte Einstellungen|Wert
-    ------|------
-    Primary metric (Primäre Metrik)| AUC_weighted 
-    Exit Criteria (Beendigungskriterien)| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag vor dem vollständigen Abschluss beendet: <br> *Training job time (minutes)* (Dauer des Trainingsauftrags (Minuten)): 5  <br> *Max number of iterations* (Maximale Anzahl von Iterationen): 10 
-    Preprocessing (Vorverarbeitung)| Aktivieren der Vorverarbeitung durch automatisiertes Machine Learning. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.
-    Überprüfen| Wählen Sie die K-fache Kreuzvalidierung und **2** für die Anzahl der Kreuzvalidierungen aus. 
-    Parallelität| Wählen Sie **5** für die maximale Anzahl gleichzeitiger Iterationen aus.
-
    >[!NOTE]
-   > Für dieses Experiment legen Sie keinen Schwellenwert für Metriken oder maximale Kerne pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
+   > Für dieses Tutorial legen Sie keine Metrikbewertung oder maximale Anzahl von Kernen pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
+   
+   Erweiterte&nbsp;Einstellungen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
+   ------|---------|---
+   Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|AUC_weighted
+   Exit Criteria (Beendigungskriterien)| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags: 5 <br> <br> Maximale&nbsp;#&nbsp;Anzahl von&nbsp;Iterationen&#58;10
+   Preprocessing (Vorverarbeitung)| Aktivieren der Vorverarbeitung durch automatisiertes Machine Learning. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
+   Überprüfungstyp | Wählen Sie einen Kreuzvalidierungstyp aus.|K-fache Kreuzvalidierung
+   Number of validations (Anzahl von Validierungen) | Anzahl von Tests. | Zwei Kreuzvalidierungen 
+   Parallelität| Die maximale Anzahl gleichzeitiger Iterationen.|5
+   
+1. Wählen Sie **Start** aus, um das Experiment auszuführen. Wenn die Vorbereitung des Experiments beginnt, wird ein Bildschirm mit einer Statusmeldung angezeigt.
 
-1. Wählen Sie **Start** aus, um das Experiment auszuführen.
+>[!IMPORTANT]
+> Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch. Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  
+>
+> In einer Produktionsumgebung würden Sie in dieser Zeit wahrscheinlich eine kurze Pause machen. Für dieses Tutorial empfehlen wir jedoch, schon während der Ausführung der anderen Iterationen mit der Untersuchung der fertigen Iterationsergebnisse zu beginnen. 
 
-   Wenn das Experiment startet, wird ein leerer Bildschirm mit einer Statusmeldung oben angezeigt.
+##  <a name="explore-iteration-results"></a>Untersuchen der Iterationsergebnisse
 
-Der Vorbereitungsprozess des Experiments nimmt einige Minuten in Anspruch. Wenn dieser Prozess abgeschlossen wird, wechselt die Statusmeldung zu **Run is Running** (Ausführung läuft).
+Während der Experimentausführung werden das **Iterationsdiagramm** und die **Iterationsliste** beim Abschluss der verschiedenen Iterationen (Modelle) auf dem Bildschirm aktualisiert und nach der Metrikbewertung sortiert. Standardmäßig steht das Modell, das für die ausgewählte **AUC_weighted**-Metrik die höchste Bewertung erhält, ganz oben in der Liste.
 
-##  <a name="view-experiment-details"></a>Anzeigen von Details zum Experiment
+Während Sie auf den Abschluss aller Experimentiterationen warten, können Sie den **Namen** einer abgeschlossenen Iteration auswählen und sich die zugehörigen Leistungsdetails ansehen. 
+   
+Im Folgenden sehen Sie die Diagramme und Ausführungsmetriken, die für jede Iteration generiert werden, z. B. eine Kurve zur Genauigkeit und Trefferquote, eine Konfusionsmatrix, gewichtete Genauigkeitsbewertungen usw. 
 
-Während der Experimentausführung aktualisiert der Bildschirm das **Iterationsdiagramm** und die **Iterationsliste** mit den verschiedenen Iterationen (Modellen), die ausgeführt werden. Die Liste der Iterationen ist nach Metrikbewertungen sortiert. Standardmäßig steht das Modell, das auf Grundlage unserer **AUC_weighted**-Metrik die höchste Bewertung erhält, ganz oben in der Liste.
-
->[!WARNING]
-> Die Ausführung von Trainingsaufträgen dauert für jede Pipeline einige Minuten.
-
-[![Dashboard mit den Ausführungsdetails](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
+![Details zur Iterationsausführung](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
-Durch die Verwendung von automatisiertem maschinellem Lernen auf der Angebotsseite des Arbeitsbereichs können wir das beste Modell in einigen Schritten als Webdienst bereitstellen. Bei der Bereitstellung handelt es sich um die Integration des Modells, sodass neue Daten vorhergesagt und potenzielle Verkaufschancen identifiziert werden können. In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
+Durch die Verwendung von automatisiertem maschinellen Lernen auf der Angebotsseite des Arbeitsbereichs können Sie das beste Modell in wenigen Schritten als Webdienst bereitstellen. Bei der Bereitstellung handelt es sich um die Integration des Modells, sodass neue Daten vorhergesagt und potenzielle Verkaufschancen identifiziert werden können. In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
+
+Navigieren Sie nach Abschluss der Ausführung zurück zur Detailseite mit dem **Iterationsdiagramm** und der **Iterationsliste**. 
 
 Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
 
-1. Wählen Sie auf der Seite **Run Detail** (Ausführungsdetail) oben rechts die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) aus.
+1. Klicken Sie oben rechts auf die Schaltfläche **Deploy Best Model** (Bestes Modell) bereitstellen.
 
 1. Füllen Sie den Bereich **Deploy Best Model** (Bestes Modell bereitstellen) wie folgt aus:
 
