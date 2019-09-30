@@ -426,5 +426,5 @@ LUIS-Entität | Entitätstyp | BESCHREIBUNG | Beispiele
 ------------|-------------|-------------|---------
 SearchEngine | List | Die gewünschte Suchmaschine | Bing <br> Google
 SearchText | simple, pattern.Any | Der zu suchende Text. <br> _Markieren Sie „Freunde bei Facebook“ als SearchText, wenn die Website nach „in“ keine Suchmaschine ist. Die URL sollte auch als SearchText markiert werden._ | Film <br> Deep Learning <br> Tom Cruise
-Link | url | Der Link der Website | www.twitter.com
+Link | url | Der Link der Website | [www.twitter.com](www.twitter.com)
 
