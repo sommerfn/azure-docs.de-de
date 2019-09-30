@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Herstellen einer Verbindung mit Power BI
               href: knowledge-store-connect-power-bi.md
+        - name: Beheben von Anreicherungsproblemen
+          href: cognitive-search-common-errors-warnings.md
     - name: Abfragedokumente
       items:
         - name: Abfragetypen und Komposition

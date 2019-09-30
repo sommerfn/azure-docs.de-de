@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984873"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173588"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -210,6 +210,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Format |Gilt nur für den JSON-Typ. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
 | Eigenschaftenspalten | Optional. Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Benutzerdefinierte Metadateneigenschaften für die Ausgabe](#custom-metadata-properties-for-output). |
+| Systemeigenschaftsspalten | Optional. Schlüssel-Wert-Paare von Systemeigenschaften und entsprechenden Spaltennamen, die an die ausgehende Nachricht anstatt an die Nutzlast angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Systemeigenschaften für Service Bus-Warteschlange und Themenausgaben](#system-properties-for-service-bus-queue-and-topic-outputs).  |
 
 Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.
 
@@ -229,6 +230,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Codieren |Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Eigenschaftenspalten | Optional. Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Benutzerdefinierte Metadateneigenschaften für die Ausgabe](#custom-metadata-properties-for-output). |
+| Systemeigenschaftsspalten | Optional. Schlüssel-Wert-Paare von Systemeigenschaften und entsprechenden Spaltennamen, die an die ausgehende Nachricht anstatt an die Nutzlast angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Systemeigenschaften für Service Bus-Warteschlange und Themenausgaben](#system-properties-for-service-bus-queue-and-topic-outputs). |
 
 Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.
 
@@ -294,6 +296,25 @@ Im folgenden Beispiel fügen wir die beiden Felder `DeviceId` und `DeviceStatus`
 Der folgende Screenshot zeigt die Eigenschaften der Ausgabemeldung, die in EventHub durch [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) überprüft wurden.
 
 ![Benutzerdefinierte Ereigniseigenschaften](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Systemeigenschaften für Service Bus-Warteschlange und Themenausgaben 
+Sie können Abfragespalten als [Systemeigenschaften](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) an Ihre ausgehenden Service Bus-Warteschlangen- oder Themenmeldungen anfügen. Diese Spalten werden nicht in die Nutzlast eingefügt. Stattdessen wird die entsprechende BrokeredMessage-[Systemeigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) mit den Werten der Abfragespalte aufgefüllt.
+Diese Systemeigenschaften werden unterstützt: `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Zeichenfolgenwerte dieser Spalten werden als entsprechender Systemeigenschaftswert-Typ analysiert, und alle Analysefehler werden als Datenfehler behandelt.
+Dieses Feld wird im JSON-Objektformat bereitgestellt. Details zu diesem Format:
+* Umgeben von geschweiften Klammern {}.
+* Geschrieben in Schlüssel/Wert-Paaren.
+* Schlüssel und Werte müssen Zeichenfolgen sein.
+* Der Schlüssel ist der Name der Systemeigenschaft, und der Wert ist der Name der Abfragespalte.
+* Schlüssel und Werte werden hierbei durch einen Doppelpunkt voneinander getrennt.
+* Die einzelnen Schlüssel/Wert-Paare sind durch ein Komma voneinander getrennt.
+
+So wird diese Eigenschaft verwendet:
+
+* Abfrage: `select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Systemeigenschaftsspalten: `{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+Dadurch wird die `MessageId` für Service Bus-Warteschlangenmeldungen mit den Werten von `column1` und PartitionKey mit `column2`-Werten festgelegt.
 
 ## <a name="partitioning"></a>Partitionierung
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: adca1bdd0cf525627cc284b1c0d3509beddef131
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534983"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219385"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door Service
 In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Application Firewall (WAF) für Azure Front Door Service über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.
@@ -25,6 +25,8 @@ In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Appli
 Eine auf IP-Adressen basierende Zugriffssteuerungsregel ist eine benutzerdefinierte WAF-Regel, mit der Sie den Zugriff auf Ihre Webanwendungen steuern können. Dazu ist in der Regel eine Liste von IP-Adressen oder IP-Adressbereichen im CIDR-Format (Classless Inter-Domain Routing) angegeben.
 
 Standardmäßig kann auf Ihre Webanwendungen über das Internet zugegriffen werden. Wenn Sie den Zugriff auf Clients entsprechend einer Liste bekannter IP-Adressen oder IP-Adressbereiche einschränken möchten, können Sie eine IP-Abgleichregel erstellen, die die Liste der IP-Adressen als abzugleichende Werte enthält und in der der Operator auf „Nicht“ (Negation ist wahr) und die Aktion auf **Blockieren** festgelegt wird. Nachdem eine IP-Einschränkungsregel angewandt wurde, erhalten Anforderungen von Adressen, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „403 (Nicht zulässig)“.  
+
+Eine Client-IP-Adresse kann sich von der von WAF überwachten IP-Adresse unterscheiden, beispielsweise, wenn ein Client über einen Proxy auf WAF zugreift. Sie können IP-Einschränkungsregeln basierend auf Client-IP-Adressen (RemoteAddr) oder von WAF erkannten Socket-IP-Adressen (SocketAddr) erstellen. 
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurieren einer WAF-Richtlinie über die Azure-Befehlszeilenschnittstelle
 
@@ -67,7 +69,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-Fügen Sie der Regel nun eine Übereinstimmungsbedingung hinzu:
+Fügen Sie der Regel nun eine Client-IP-Übereinstimmungsbedingung hinzu:
 
 ```azurecli
 az network front-door waf-policy rule match-condition add\
@@ -79,9 +81,19 @@ az network front-door waf-policy rule match-condition add\
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>Suchen der ID einer WAF-Richtlinie 
-Mit dem Befehl [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) können Sie die ID einer WAF-Richtlinie suchen. Ersetzen Sie *IPAllowPolicyExampleCLI* im folgenden Beispiel durch die eindeutige Richtlinie, die Sie zuvor erstellt haben.
+Socket-IP-Übereinstimmungsbedingung (SocketAddr):
+  ```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable SocketAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI                                                  
+
+### Find the ID of a WAF policy 
+Find a WAF policy's ID by using the [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) command. Replace *IPAllowPolicyExampleCLI* in the following example with your unique policy that you created earlier.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -141,7 +153,17 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
+Socket-IP-Übereinstimmungsbedingung (SocketAddr):   
+```powershell
+$IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
+-MatchVariable  SocketAddr `
+-OperatorProperty IPMatch `
+-MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
+```
+
+
 ### <a name="create-a-custom-ip-allow-rule"></a>Erstellen einer benutzerdefinierten IP-Zulassungsregel
 
 Verwenden Sie den Befehl [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject), um eine Aktion zu definieren und eine Priorität festzulegen. Im folgenden Beispiel werden Anforderungen, die von Client-IP-Adressen stammen, die nicht mit der Liste übereinstimmen, blockiert.

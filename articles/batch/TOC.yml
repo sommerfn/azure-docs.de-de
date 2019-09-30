@@ -80,6 +80,8 @@
         - name: Konfigurieren des Zugriffs auf Computeknoten
           href: pool-endpoint-configuration.md
         - name: Erstellen eines Pools mit Shared Image Gallery
+          href: batch-sig-images.md
+        - name: Erstellen eines Pools mit einer verwalteten Imageressource
           href: batch-custom-images.md
         - name: Erstellen eines Pools in einem virtuellen Netzwerk
           href: batch-virtual-network.md

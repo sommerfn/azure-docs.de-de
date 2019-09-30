@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: bd32f68037e29e38fffb0b716772040d22fdfff0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59ca917f31a3e20b6ad02363a5015f16340924e2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942756"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147148"
 ---
 # <a name="consulting-service-prerequisites"></a>Voraussetzungen für Beratungsdienst
 
@@ -20,6 +20,7 @@ Lesen Sie die Beschreibung und Anforderungen für diesen Angebotstyp unter [Bera
 
 |     Angebotstyp   |    Anforderung   |
 |     ----------   |    -----------   |
+| Microsoft Azure | Partner müssen über eine Silber- oder Goldzertifizierung für die Kompetenz [Cloudplattform](https://partner.microsoft.com/membership/cloud-platform-competency) verfügen. |
 | Dynamics 365 for Customer Engagement | Partner müssen über eine Silber- oder Gold-Zertifizierung für die [Cloud Customer Relationship Management-Kompetenz](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) verfügen. |
 | Dynamics 365 for Finance and Operations | Partner müssen über eine Silber- oder Goldzertifizierung für die Kompetenz [Enterprise Resource Planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) verfügen. Partner müssen zudem in den vorangegangenen 12 Monaten einen Mindestumsatz von 25.000 US-Dollar für Cloudvorgänge generiert haben. |
 | Dynamics 365 Business Central | Partner müssen für mindestens einen Kunden als Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Digital Partner of Record (DPOR) fungiert haben. <br/> Informationen dazu, wie man ein CSP wird, finden Sie unter [Erste Schritte als Cloudlösungsanbieter](https://partner.microsoft.com/cloud-solution-provider/get-started). <br/> Die DPOR-Anforderungen finden Sie in der entsprechenden [Übersicht](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1). |

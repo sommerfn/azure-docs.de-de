@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309180"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123598"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe des Azure-Portals
 
@@ -47,7 +47,7 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
     ![Azure Database for MariaDB – Replikatstandort](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
+   > Regionsübergreifende Replikation ist Vorschauversion verfügbar. Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
 
 7. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 

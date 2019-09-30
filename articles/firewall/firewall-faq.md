@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018846"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130223"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -163,3 +163,7 @@ Der Azure Firewall-Dienst muss mehr VM-Instanzen bereitstellen, als er skaliert.
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Muss die Größe des Firewallsubnetzes geändert werden, wenn der Dienst eine Skalierung ausführt?
 
 Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
+
+Nein. Standardmäßig blockiert Azure Firewall den Zugriff auf Active Directory. Konfigurieren Sie das Diensttag „AzureActiveDirectory“, um den Zugriff zuzulassen. Weitere Informationen finden Sie unter [Azure Firewall-Diensttags](service-tags.md).

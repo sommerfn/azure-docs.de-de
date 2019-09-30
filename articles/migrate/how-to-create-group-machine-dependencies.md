@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906374"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200207"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung
 
@@ -19,7 +19,7 @@ Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten in Azure Mi
 
 Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten computerübergreifend visualisieren, die Sie bewerten und migrieren möchten.
 
-- In „Azure Migrate:  Serverbewertung“ sammeln Sie die Computer, die Sie bewerten möchten. In der Regel sind das Computer, die Sie gemeinsam migrieren möchten.
+- In Azure Migrate: Serverbewertung die Computer, die Sie bewerten möchten. In der Regel sind das Computer, die Sie gemeinsam migrieren möchten.
 - Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Gruppen mit höheren Zuverlässigkeitsgraden zugreifen möchten.
 - Die Zuordnung der Abhängigkeiten ist hilfreich, die Abhängigkeiten zwischen Computern zu überprüfen, bevor Sie eine Bewertung durchführen.
 - Die Zuordnung und Visualisierung von Abhängigkeiten hilft Ihnen, Ihre Migration nach Azure effektiv zu planen. Dies trägt dazu bei, dass nichts zurückbleibt und vermeidet Überraschungsausfälle während der Migration.
@@ -61,7 +61,7 @@ Fügen Sie einen Arbeitsbereich wie folgt an:
 
     ![Arbeitsbereich hinzufügen](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - Nachdem Sie einen Namen für einen neuen Arbeitsbereich angegeben haben, wird dieser in der gleichen Geografie wie das Azure Migrate-Projekt erstellt.
+    - Nachdem Sie einen Namen für einen neuen Arbeitsbereich angegeben haben, können Sie die [Region](https://azure.microsoft.com/global-infrastructure/regions/) auswählen, in der der Arbeitsbereich erstellt wird.
     - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen.
     - Sie benötigen einen Lesezugriff zum Arbeitsbereich, um ihn anhängen zu können.
     - Sie können den Arbeitsbereich, der einem Projekt zugeordnet ist, nicht mehr ändern, nachdem er angehängt wurde.

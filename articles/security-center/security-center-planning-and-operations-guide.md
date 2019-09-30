@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b731c5fe6b6c7055b7397386b1e9fd4bed47db8a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 62387fe7ddbde75e79724c77dd7eeedd5cae64c3
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910591"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201874"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -182,13 +182,13 @@ Der Abschnitt **Erkennung** ist eher reaktionsorientiert. Die Warnungen beziehen
 Planen Sie den täglichen Aufruf der Option [Informationen zu Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) ein. Hier können Sie sich über Sicherheitsrisiken für die Umgebung informieren und so beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Überwachung auf neue oder geänderte Ressourcen
-Die meisten Azure-Umgebungen sind dynamisch, sodass unter anderem immer wieder neue Ressourcen hinzukommen oder wegfallen und Konfigurationen geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
+Die meisten Azure-Umgebungen sind dynamisch, wobei Ressourcen regelmäßig erstellt, hoch- oder heruntergefahren, neu konfiguriert und geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
 
 Wenn Sie Ihrer Azure-Umgebung neue Ressourcen (virtuelle Computer, SQL-Datenbanken) hinzufügen, erkennt Security Center dies automatisch und beginnt mit der Überwachung ihrer Sicherheit. Hierzu gehören auch PaaS-Webrollen und -Workerrollen. Wenn in der [Sicherheitsrichtlinie](tutorial-security-policy.md)die Datensammlung aktiviert ist, werden für Ihre virtuellen Computer automatisch zusätzliche Überwachungsfunktionen aktiviert.
 
 ![Wichtige Bereiche](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
-1. Klicken Sie für virtuelle Computer im Abschnitt **Prävention** auf **Compute**. Probleme mit der Aktivierung der Datensammlung oder entsprechenden Empfehlungen werden auf der Registerkarte **Übersicht** und im Abschnitt **Überwachungsempfehlungen** behandelt.
+1. Klicken Sie für virtuelle Computer im Abschnitt **Ressourcensicherheit** auf **Compute und Apps**. Probleme mit der Aktivierung der Datensammlung oder entsprechenden Empfehlungen werden auf der Registerkarte **Übersicht** und im Abschnitt **Überwachungsempfehlungen** behandelt.
 2. In den **Empfehlungen** erfahren Sie, ob (und wenn ja, welche) Sicherheitsrisiken für die neue Ressource gefunden wurden.
 3. Auf virtuellen Computern, die der Umgebung neu hinzugefügt werden, ist zunächst häufig nur das Betriebssystem installiert. Der Ressourcenbesitzer benötigt unter Umständen etwas Zeit, um weitere Apps bereitzustellen, die von diesen virtuellen Computern verwendet werden.  Im Idealfall sollten Sie den endgültigen Zweck der Workload kennen. Wird der Computer als Anwendungsserver verwendet? Je nach Zweck der neuen Workload können Sie dann die passende **Sicherheitsrichtlinie** aktivieren. Dies ist der dritte Schritt in diesem Workflow.
 4. Wenn Ihrer Azure-Umgebung neue Ressourcen hinzugefügt werden, werden auf der Kachel **Sicherheitswarnungen** möglicherweise neue Warnungen angezeigt. Suchen Sie nach neuen Warnungen auf dieser Kachel, und befolgen Sie die Empfehlungen.

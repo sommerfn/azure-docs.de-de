@@ -3,9 +3,8 @@ title: Anpassen der SQL Information Protection-Richtlinie im Azure Security Cent
 description: Erfahren Sie, wie Sie Information Protection-Richtlinien im Azure Security Center anpassen.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875608"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202097"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
 Im Azure Security Center kann eine SQL Information Protection-Richtlinie für Ihren gesamten Azure-Mandanten definiert und angepasst werden.
 
-Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz sensibler Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, PII usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
+Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz sensibler Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnung bei anomalen Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenspeichern, die sensible Daten enthalten

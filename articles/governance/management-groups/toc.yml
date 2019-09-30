@@ -1,0 +1,16 @@
+- name: Dokumentation zu Azure-Verwaltungsgruppen
+  href: ./index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Azure-Verwaltung
+      href: ../azure-management.md
+    - name: Verwaltungsgruppen
+      href: ./overview.md
+- name: Anleitungen
+  expanded: true
+  items:
+    - name: Erstellen von Verwaltungsgruppen
+      href: ./create.md
+    - name: Verwalten Ihrer Ressourcen
+      href: ./manage.md

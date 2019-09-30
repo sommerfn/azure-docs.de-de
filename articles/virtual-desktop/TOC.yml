@@ -24,10 +24,12 @@
   items:
     - name: Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen
       items:
-        - name: Herstellen einer Verbindung über Windows 10 oder Windows 7
+        - name: Herstellen einer Verbindung mit dem Windows-Desktopclient
           href: connect-windows-7-and-10.md
-        - name: Herstellen einer Verbindung über einen Webbrowser
+        - name: Herstellen einer Verbindung mit dem Webclient
           href: connect-web.md
+        - name: Herstellen einer Verbindung mit dem Android-Client
+          href: connect-android.md
         - name: Herstellen einer Verbindung mit dem macOS-Client
           href: connect-macos.md
         - name: Herstellen einer Verbindung mit dem iOS-Client
@@ -72,6 +74,8 @@
       href: partners.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.md
+    - name: Datenspeicherorte
+      href: data-locations.md
 - name: Problembehandlung
   items:
     - name: 'Problembehandlung: Übersicht, Feedback und Support'

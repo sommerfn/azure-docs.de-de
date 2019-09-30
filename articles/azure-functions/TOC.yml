@@ -8,47 +8,29 @@
       href: durable/durable-functions-overview.md
     - name: Serverloser Vergleich
       href: functions-compare-logic-apps-ms-flow-webjobs.md
+    - name: Optionen für Hostingpläne
+      href: functions-scale.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen von Funktionen – Visual Studio Code
-      href: functions-create-first-function-vs-code.md
-    - name: Erstellen von Funktionen – Visual Studio
+    - name: 'Erstellen von Funktionen – C#'
       href: functions-create-your-first-function-visual-studio.md
     - name: Erstellen von Funktionen – Java/Maven
       href: functions-create-first-java-maven.md
-    - name: Erstellen von Funktionen – Python
-      href: functions-create-first-function-python.md
+    - name: Erstellen von Funktionen – JavaScript
+      href: functions-create-first-function-vs-code.md
     - name: Erstellen von Funktionen – PowerShell
       href: functions-create-first-function-powershell.md
-    - name: Erstellen von Funktionen – Azure-CLI
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: Erstellen von Funktionen – Portal
-      href: functions-create-first-azure-function.md
-    - name: Erstellen von Funktionen – Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: Trigger
+    - name: Erstellen von Funktionen – Python
+      href: functions-create-first-function-python.md
+    - name: Verbinden mit Diensten
       items:
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: Blob Storage
-          href: functions-create-storage-blob-triggered-function.md
-        - name: Queue Storage
-          href: functions-create-storage-queue-triggered-function.md
-        - name: Timer
-          href: functions-create-scheduled-function.md
-    - name: Integrieren
-      items:
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
+        - name: 'Speicher – C#'
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Speicher – JavaScript
+          href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Speicher – Python
           href: functions-add-output-binding-storage-queue-python.md
-        - name: Speicher – Portal
-          href: functions-integrate-storage-queue-output-binding.md
-        - name: 'Speicher: Visual Studio Code'
-          href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: 'Speicher: Visual Studio'
-          href: functions-add-output-binding-storage-queue-vs.md
 - name: Lernprogramme
   items:
     - name: Funktionen mit Logic Apps
@@ -77,10 +59,12 @@
       items:
         - name: 'C#'
           href: /samples/browse/?products=azure-functions&languages=csharp
-        - name: JavaScript
-          href: /samples/browse/?products=azure-functions&languages=javascript
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
+        - name: JavaScript
+          href: /samples/browse/?products=azure-functions&languages=javascript
+        - name: PowerShell
+          href: /samples/browse/?products=azure-functions&languages=azurepowershell
         - name: Python
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
@@ -92,8 +76,6 @@
     - name: Vergleichen der Versionen 1.x und 2.x
       href: functions-versions.md
       displayName: 'migrate, migration'
-    - name: Skalierung und Hosting
-      href: functions-scale.md
     - name: Premium-Tarif
       href: functions-premium-plan.md
     - name: Bereitstellungen
@@ -142,6 +124,7 @@
       href: functions-consumption-costs.md
     - name: Überlegungen zur Leistung
       href: functions-best-practices.md
+      displayName: best practice
     - name: Functions-Proxys
       href: functions-proxies.md
     - name: Netzwerkoptionen
@@ -156,36 +139,75 @@
       items:
         - name: Entwicklerhandbuch
           href: functions-reference.md
-        - name: Testen von Funktionen
-          href: functions-test-a-function.md
-        - name: Lokales Entwickeln und Debuggen
-          href: functions-develop-local.md
-        - name: Visual Studio Code-Entwicklung
-          href: functions-develop-vs-code.md
-        - name: Visual Studio-Entwicklung
-          href: functions-develop-vs.md
-        - name: Core Tools-Entwicklung
-          href: functions-run-local.md
-        - name: IntelliJ IDEA-Entwicklung
-          href: functions-create-maven-intellij.md
-        - name: Eclipse-Entwicklung
-          href: functions-create-maven-eclipse.md
-        - name: Erstellen einer Linux-Funktions-App
-          href: create-function-app-linux-app-service-plan.md
-        - name: Debuggen lokaler PowerShell-Funktionen
-          href: functions-debug-powershell-local.md
-        - name: Einschleusung von Abhängigkeiten
+        - name: Lokale Entwicklung
+          items:
+            - name: Lokales Entwickeln und Debuggen
+              href: functions-develop-local.md
+            - name: Visual Studio Code-Entwicklung
+              href: functions-develop-vs-code.md
+            - name: Visual Studio-Entwicklung
+              href: functions-develop-vs.md
+            - name: Core Tools-Entwicklung
+              href: functions-run-local.md
+        - name: Erstellen von Funktionen
+          items:
+            - name: HTTP-Trigger
+              items:
+                - name: Azure-Portal
+                  href: functions-create-first-azure-function.md
+                - name: Befehlszeile
+                  href: functions-create-first-azure-function-azure-cli.md
+                - name: Visual Studio
+                  href: create-visual-studio.md
+                - name: Visual Studio Code
+                  href: create-visual-studio-code.md
+                - name: Java mit Eclipse
+                  href: functions-create-maven-eclipse.md
+                - name: Java mit IntelliJ IDEA
+                  href: functions-create-maven-intellij.md
+                - name: App Service-Plan für Linux
+                  href: create-function-app-linux-app-service-plan.md
+                - name: Plan für Linux-Verbrauch
+                  href: functions-create-first-azure-function-azure-cli-linux.md
+                - name: Azure for Students Starter
+                  href: functions-create-student-starter.md
+            - name: Azure Cosmos DB-Trigger
+              href: functions-create-cosmos-db-triggered-function.md
+            - name: Blob Storage-Trigger
+              href: functions-create-storage-blob-triggered-function.md
+            - name: Queue Storage-Trigger
+              href: functions-create-storage-queue-triggered-function.md
+            - name: Trigger mit Timer
+              href: functions-create-scheduled-function.md
+        - name: Hinzufügen von Bindungen
+          items:
+            - name: Azure Cosmos DB – Portal
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: Speicher – Python
+              href: add-output-binding-storage-queue-python.md
+            - name: Speicher – Portal
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: 'Speicher: Visual Studio Code'
+              href: add-output-binding-storage-queue-vs-code.md
+            - name: 'Speicher: Visual Studio'
+              href: add-output-binding-storage-queue-vs.md
+        - name: Debuggen und testen
+          items:
+            - name: Testfunktionen
+              href: functions-test-a-function.md
+            - name: Debuggen lokaler PowerShell-Funktionen
+              href: functions-debug-powershell-local.md
+            - name: Lokales Debuggen des Event Grid-Triggers
+              href: functions-debug-event-grid-trigger-local.md
+        - name: Abhängigkeitsinjektion
           href: functions-dotnet-dependency-injection.md
         - name: Verwalten von Verbindungen
           href: manage-connections.md
+          displayName: best practice
         - name: Fehlerbehandlung
           href: functions-bindings-error-pages.md
         - name: Manuelles Ausführen einer Funktion ohne HTTP-Trigger
           href: functions-manually-run-non-http.md
-        - name: Lokales Debuggen des Event Grid-Triggers
-          href: functions-debug-event-grid-trigger-local.md
-        - name: Azure for Students Starter
-          href: functions-create-student-starter.md
     - name: Bereitstellen
       items:
         - name: Kontinuierliche Bereitstellung
@@ -249,6 +271,18 @@
           href: functions-geo-disaster-recovery.md
     - name: Integrieren
       items:
+        - name: Hinzufügen von Bindungen
+          items:
+            - name: Azure Cosmos DB – Portal
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: Speicher – Python
+              href: functions-add-output-binding-storage-queue-python.md
+            - name: Speicher – Portal
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: 'Speicher: Visual Studio Code'
+              href: functions-add-output-binding-storage-queue-vs-code.md
+            - name: 'Speicher: Visual Studio'
+              href: functions-add-output-binding-storage-queue-vs.md
         - name: Verbinden mit SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk

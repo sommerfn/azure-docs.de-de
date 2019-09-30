@@ -3,23 +3,19 @@ title: Bedrohungserkennung für virtuelle Computer und Server in Azure Security 
 description: In diesem Thema werden die in Azure Security Center verfügbaren Warnungen für virtuelle Computer und Server vorgestellt.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: dd2eb069-4c76-4154-96bb-6e6ae553ef46
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 055b578c1d976b7f85c65ab4e028f9d609861cd4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013325"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273881"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center
 
@@ -32,14 +28,14 @@ In diesem Thema werden die verschiedenen Arten von Erkennungsmethoden und Warnun
 
 Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basierten Computer in Azure-Dienste integriert. In Security Center werden die Warnungen und Behandlungsvorschläge aus allen diesen Diensten in einem benutzerfreundlichen Format präsentiert.
 
-### Windows Server Defender ATP <a nanme="windows-atp"></a>
+### Microsoft Defender ATP <a nanme="windows-atp"></a>
 
-Security Center erweitert seine Plattformen für den Cloudworkloadschutz durch die Integration in Windows Server Defender Advanced Threat Protection (ATP). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung.
+Security Center erweitert seine Plattformen für den Cloudworkloadschutz durch die Integration in Microsoft Defender Advanced Threat Protection (ATP). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung.
 
 > [!NOTE]
-> Der Windows Server Defender ATP-Sensor wird automatisch auf Windows-Servern aktiviert, die Security Center verwenden.
+> Der Microsoft Defender ATP-Sensor wird automatisch auf Windows-Servern aktiviert, die Security Center verwenden.
 
-Wenn von Windows Server Defender ATP eine Bedrohung erkannt wird, wird eine Warnung ausgelöst. Die Warnung wird auf dem Security Center-Dashboard angezeigt. Über das Dashboard können Sie zur Windows Defender ATP-Konsole wechseln und eine detaillierte Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Weitere Informationen zu Windows Server Defender ATP finden Sie unter [Onboard servers to the Windows Defender ATP service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints) (Integrieren von Servern in den Windows Defender ATP-Dienst).
+Wenn von Microsoft Defender ATP eine Bedrohung erkannt wird, wird eine Warnung ausgelöst. Die Warnung wird auf dem Security Center-Dashboard angezeigt. Über das Dashboard können Sie zur Microsoft Defender ATP-Konsole wechseln und eine detaillierte Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Weitere Informationen zu Microsoft Defender ATP finden Sie unter [Integrieren von Servern in den Microsoft Defender ATP-Dienst](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Absturzabbildanalyse <a nanme="windows-dump"></a>
 
@@ -89,7 +85,7 @@ Security Center sammelt Überwachungsdatensätze von Linux-Computern mithilfe vo
 
 Beim auditd-System handelt es sich um ein Subsystem auf Kernelebene. Es dient zur Überwachung von Systemaufrufen, filtert diese Aufrufe nach einem bestimmten Regelsatz und schreibt entsprechende Meldungen in einen Socket. Security Center integriert Funktionen aus dem AuditD-Paket in Microsoft Monitoring Agent (MMA). Diese Integration ermöglicht das Sammeln von auditd-Ereignissen in allen unterstützten Linux-Distributionen ohne weitere Bedingungen.  
 
-auditd-Datensätze werden gesammelt, angereichert und mithilfe des Linux-MMA-Agents zu Ereignissen aggregiert. In Security Center werden ständig neue Analysen hinzugefügt, die Linux-Signale verwenden, um schädliches Verhalten auf cloudbasierten und lokalen Linux-Computern zu erkennen. Diese Analysen umfassen ähnlich wie bei Windows-Funktionen verdächtige Prozesse und Anmeldeversuche, das Laden von Kernel-Modulen sowie andere Aktivitäten, die darauf hindeuten können, dass ein Computer angegriffen wird oder kompromittiert wurde.  
+auditd-Datensätze werden gesammelt, angereichert und mithilfe des Linux-MMA-Agents zu Ereignissen aggregiert. In Security Center werden ständig neue Analysen hinzugefügt, die Linux-Signale verwenden, um schädliches Verhalten auf cloudbasierten und lokalen Linux-Computern zu erkennen. Diese Analysen umfassen ähnlich wie bei Windows-Funktionen verdächtige Prozesse und Anmeldeversuche, das Laden von Kernmodulen sowie andere Aktivitäten, die darauf hindeuten, dass ein Computer angegriffen wird oder kompromittiert wurde.  
 
 Im Folgenden finden Sie mehrere Beispiele für Analysen, die verschiedene Phasen des Angriffslebenszyklus abdecken.
 

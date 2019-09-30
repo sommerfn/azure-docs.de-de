@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure-Verwaltungsgruppen
+summary: Azure-Verwaltungsgruppen unterstützen Sie beim Organisieren von Ressourcen und Abonnements.
+metadata:
+  title: Dokumentation zu Azure-Verwaltungsgruppen
+  description: Azure-Verwaltungsgruppen unterstützen Sie beim Organisieren von Ressourcen und Abonnements.
+  ms.service: governance
+  ms.topic: landing-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71341044"
+landingContent:
+- title: Informationen zu Azure Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht der Verwaltungsdienste in Azure
+      url: ../azure-management.md
+- title: Informationen zu Azure-Verwaltungsgruppen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure-Verwaltungsgruppen
+      url: ./overview.md
+- title: Organisieren Ihrer Ressourcen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen von Verwaltungsgruppen
+      url: ./create.md
+    - text: Verwalten Ihrer Ressourcen
+      url: ./manage.md

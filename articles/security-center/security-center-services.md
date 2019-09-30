@@ -3,23 +3,22 @@ title: Verfügbare unterstützte Features in Azure Security Center | Microsoft-D
 description: Dieses Dokument enthält eine Liste der von Azure Security Center unterstützten Dienste.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/24/2019
+ms.author: memildin
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234569"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218265"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -42,7 +41,7 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 ||**Virtueller Computer**|**VM-Skalierungsgruppe**||**Virtueller Computer**|**VM-Skalierungsgruppe**|
 |Warnungen der VMBA-Bedrohungserkennung|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
 |Warnungen der netzwerkbasierten Bedrohungserkennung|✔|✔|X|✔|✔|X|Standard|
-|Windows Defender ATP-Integration|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
+|Microsoft Defender ATP-Integration|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
 |Fehlende Patches|✔|✔|✔|✔|✔|✔|Kostenlos|
 |Sicherheitskonfigurationen|✔|✔|✔|✔|✔|✔|Kostenlos|
 |Bewertung von Endpoint Protection|✔|✔|✔|X|X|X|Kostenlos|

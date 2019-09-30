@@ -151,9 +151,9 @@ Nachdem Sie sich das Zugriffstoken und den APIM-Abonnementschlüssel notiert hab
     | `Authorization` | Der verschlüsselte Tokenwert, den Sie zuvor notiert haben, mit dem Präfix `Bearer ` (mit einem Leerzeichen nach „Bearer“) |
     | `Ocp-Apim-Subscription-Key` | Der APIM-Abonnementschlüssel, den Sie zuvor notiert haben |
 
-    Die Anforderungs-URL **GET** (Abrufen) und **Headers** (Header) sollten in etwa wie folgt angezeigt werden:
+    Die Anforderungs-URL **GET** und **Headers** (Header) sollten in etwa wie folgt angezeigt werden:
 
-    ![Postman-Benutzeroberfläche mit der Anforderungs-URL „GET“ (Abrufen) und den Headern](media/secure-apim-with-b2c-token/postman-01-headers.png)
+    ![Postman-Benutzeroberfläche mit der Anforderungs-URL „GET“ und den Headern](media/secure-apim-with-b2c-token/postman-01-headers.png)
 
 1. Wählen Sie in Postman die Schaltfläche **Send** (Senden) aus, um die Anforderung auszuführen. Wenn Sie alles korrekt konfiguriert haben, wird Ihnen eine JSON-Antwort mit einer Sammlung von Konferenzsprechern angezeigt werden (hier abgeschnitten):
 

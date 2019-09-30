@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928015"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123053"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -128,19 +128,8 @@ Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftri
 Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Isolierte Größen virtueller Computer
-Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
-Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtueller Computer als einziger in der jeweiligen Serverinstanz ausgeführt wird.  Zu den aktuellen Angebote isolierter virtueller Computer zählen Folgende:
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-Weitere Informationen zu den einzelnen isolierten Größen finden Sie [hier](../../virtual-machines/windows/sizes-memory.md).
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V- und Stammbetriebssystem-Isolation zwischen Stamm-VM und Gast-VMs
 Die Computeplattform von Azure basiert auf der Virtualisierung von Computern. Dies bedeutet, dass der gesamte Kundencode auf einem virtuellen Hyper-V-Computer ausgeführt wird. Auf jedem Azure-Knoten (bzw. Netzwerkendpunkt) ist ein Hypervisor angeordnet, der direkt über die Hardware ausgeführt wird und einen Knoten in eine variable Anzahl von virtuellen Gastcomputern unterteilt.
@@ -352,7 +341,7 @@ Eine Azure-Bereitstellung umfasst mehrere Stufen der Netzwerkisolation. Das folg
 
 - [Network Isolation Options for Machines in Windows Azure Virtual Networks](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) (Optionen der Netzwerkisolation für Computer in virtuellen Windows Azure-Netzwerken)
 
-Dies schließt auch das klassische Front-End- und Back-End-Szenario ein, bei dem Computer in einem bestimmten Back-End-Netzwerk oder Unternetzwerk basierend auf einer Positivliste mit IP-Adressen nur für bestimmte Clients oder andere Computer das Herstellen einer Verbindung mit einem bestimmten Endpunkt zulassen.
+Dies schließt auch das klassische Front-End- und Back-End-Szenario ein, bei dem Computer in einem bestimmten Back-End-Netzwerk oder Unternetzwerk basierend auf einer Zulassungsliste mit IP-Adressen nur für bestimmte Clients oder andere Computer das Herstellen einer Verbindung mit einem bestimmten Endpunkt zulassen.
 
 - [Computeisolation](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

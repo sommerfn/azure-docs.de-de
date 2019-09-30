@@ -1,33 +1,35 @@
 ---
-title: Abfragebeispiele mit „einfacher“ Suchsyntax – Azure Search
-description: Enthält einfache Abfragebeispiele für die Volltextsuche, Filtersuche, geografische Suche, Facettensuche und andere Abfragezeichenfolgen, die zum Abfragen eines Azure Search-Index verwendet werden.
+title: Erstellen einer einfachen Abfrage – Azure Search
+description: Lernen Sie anhand von Beispielen, indem Sie Abfragen auf der Grundlage der einfachen Syntax für Volltextsuche, Filtersuche, geografische Suche und Facettensuche für einen Azure Search-Index ausführen.
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647619"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179189"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Abfragebeispiele mit „einfacher“ Suchsyntax in Azure Search
+# <a name="create-a-simple-query-in-azure-search"></a>Erstellen einer einfachen Abfrage in Azure Search
 
-Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Azure Search-Index auszuführen. Die einfache Abfrageanalyse ist schnell und verarbeitet gängige Szenarien in Azure Search, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. In diesem Artikel werden anhand von Beispielen Abfragevorgänge, die bei Verwendung der einfachen Syntax verfügbar sind, Schritt für Schritt beschrieben.
+Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) in Azure Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
 
-Die Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Beispiele für Lucene-Syntaxabfragen](search-query-lucene-examples.md).
+In diesem Artikel werden Beispiele verwendet, um die einfache Syntax zu veranschaulichen.
+
+Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
 
 Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://nycopendata.socrata.com/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Dies bedeutet, dass Sie kein Azure-Abonnement und keine Azure Search-Instanz benötigen, um diese Abfragen auszuprobieren.
 
-Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Untersuchen mit REST-Clients](search-get-started-postman.md).
+Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Quickstart: Erkunden der Azure Search-REST-API mit Postman](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Festlegen des Anforderungsheaders
 
