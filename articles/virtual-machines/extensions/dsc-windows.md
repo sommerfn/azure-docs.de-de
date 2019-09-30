@@ -99,7 +99,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
-| apiVersion | 01.10.2018 | date |
+| apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
