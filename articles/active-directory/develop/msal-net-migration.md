@@ -17,25 +17,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835015"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264275"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
-Sowohl die Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) als auch die Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) werden zum Authentifizieren von Azure AD-Entitäten und zum Anfordern von Token von Azure AD verwendet. Bisher haben die meisten Entwickler die Azure AD für Entwickler-Plattform (v1.0) genutzt, um Azure AD-Identitäten (Geschäfts-, Schul- und Unikonten) zu authentifizieren, indem sie unter Verwendung der Azure AD-Authentifizierungsbibliothek (ADAL) Token anforderten. Ab jetzt können Sie mithilfe von MSAL.NET eine größere Gruppe von Microsoft-Identitäten (Azure AD-Identitäten und Microsoft-Konten sowie Social Media- und lokale Konten über Azure AD B2C) authentifizieren, indem Sie den Microsoft Identity Platform-Endpunkt verwenden. 
+Sowohl die Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) als auch die Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) werden zum Authentifizieren von Azure AD-Entitäten und zum Anfordern von Token von Azure AD verwendet. Bisher haben die meisten Entwickler die Azure AD für Entwickler-Plattform (v1.0) genutzt, um Azure AD-Identitäten (Geschäfts-, Schul- und Unikonten) zu authentifizieren, indem sie unter Verwendung der Azure AD-Authentifizierungsbibliothek (ADAL) Token anforderten. Verwenden von MSAL:
 
-Dieser Artikel leistet Hilfestellung bei der Entscheidung zwischen der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) und der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) und bietet eine Gegenüberstellung der beiden Bibliotheken.  
+- Sie können eine größere Gruppe von Microsoft-Identitäten (Azure AD-Identitäten und Microsoft-Konten sowie Social Media- und lokale Konten über Azure AD B2C) authentifizieren, da der Microsoft Identity Platform-Endpunkt verwendet wird.
+- Ihre Benutzer erhalten die besten Funktionen für einmalige Anmelden (Single Sign-On, SSO).
+- Ihre Anwendung kann inkrementelle Zustimmung aktivieren, und Unterstützung des bedingten Zugriffs ist einfacher.
+- Sie profitieren von der Innovation.
+
+**MSAL.NET ist jetzt die empfohlene Authentifizierungsbibliothek für die Verwendung mit Microsoft Identity Platform**. Für ADAL.NET werden keine neuen Features implementiert. Der Schwerpunkt liegt auf der Verbesserung von MSAL.
+
+Dieser Artikel beschreibt die Unterschiede zwischen der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) und der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) und hilft Ihnen bei der Migration zu MSAL.  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Unterschiede zwischen ADAL- und MSAL-Apps
+
 In den meisten Fällen möchten Sie wahrscheinlich MSAL.NET und den Microsoft Identity Platform-Endpunkt verwenden, da es sich hierbei um die neueste Generation von Microsoft-Authentifizierungsbibliotheken handelt. Mithilfe von MSAL.NET rufen Sie Token für Benutzer ab, die sich mit Azure AD (Geschäfts-, Schul- und Unikonten), (persönlichen) Microsoft-Konten (MSA) oder Azure AD B2C bei Ihrer Anwendung anmelden. 
 
 Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt (und ADAL.NET) vertraut sind, könnte Sie der Artikel zu den [Neuerungen des Microsoft Identity Platform (v2.0)-Endpunkts](active-directory-v2-compare.md) interessieren.
 
-Wenn Benutzer in Ihrer Anwendung mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) angemeldet werden müssen, benötigen Sie jedoch weiterhin ADAL.NET. Weitere Details finden Sie im Thema zur [AD FS-Unterstützung](https://aka.ms/msal-net-adfs-support).
+Wenn Benutzer in Ihrer Anwendung mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) angemeldet werden müssen, benötigen Sie jedoch weiterhin ADAL.NET. Weitere Informationen finden Sie unter [ADFS-Support](https://aka.ms/msal-net-adfs-support).
 
 In der folgenden Abbildung sind einige Unterschiede zwischen ADAL.NET und MSAL.NET in einem ![Codevergleich](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png) gegenübergestellt.
 
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Geltungsbereiche, die im Fall eines Clientanmeldeinformations-Flows/einer Daemon-App angefordert werden
 
-Bei einem Clientanmeldeinformations-Flow lautet der zu übergebende Geltungsbereich ebenfalls `/.default`. Dies bedeutet für Azure AD: Alle Berechtigungen auf Anwendungsebene, denen der Administrator bei der Anwendungsregistrierung zugestimmt hat.
+Bei einem Clientanmeldeinformations-Flow lautet der zu übergebende Geltungsbereich ebenfalls `/.default`. Dieser Bereich bedeutet für Azure AD: Alle Berechtigungen auf Anwendungsebene, denen der Administrator bei der Anwendungsregistrierung zugestimmt hat.
 
 ## <a name="adal-to-msal-migration"></a>Migration von ADAL zu MSAL
 
@@ -214,9 +222,9 @@ In ADAL.NET v2.X wurden die Aktualisierungstoken offengelegt, sodass Sie Lösung
 * Zeitintensive Dienste, die verschiedene Aktionen für Benutzer ausführen – beispielsweise Dashboards aktualisieren – während diese Benutzer nicht mehr verbunden sind 
 * WebFarm-Szenarien, die es dem Client ermöglichen, das RT dem Webdienst zur Verfügung zu stellen (die Zwischenspeicherung erfolgt auf Client- und nicht auf Serverseite, verschlüsseltes Cookie)
 
-Auf MSAL.NET trifft dies jedoch nicht zu, weil wir aus Sicherheitsgründen mittlerweile davon abraten, das Aktualisierungstoken auf diese Weise zu verwenden. Dadurch würde die Migration zu MSAL 3.x erschwert, weil die API keine Möglichkeit bietet, zuvor abgerufene Aktualisierungstoken zu übergeben. 
+MSAL.NET stellt aus Sicherheitsgründen keine Aktualisierungstoken bereit: MSAL übernimmt das Aktualisieren von Token für Sie. 
 
-Praktischerweise verfügt MSAL.NET nun über eine API, die die Migration früherer Aktualisierungstoken in `IConfidentialClientApplication` unterstützt. 
+Praktischerweise verfügt MSAL.NET nun über eine API, die die Migration früherer Aktualisierungstoken (mit ADAL abgerufen) zu `IConfidentialClientApplication` unterstützt.
 
 ```CSharp
 /// <summary>

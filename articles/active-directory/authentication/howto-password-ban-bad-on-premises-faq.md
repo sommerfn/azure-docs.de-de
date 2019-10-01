@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097568"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268641"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -100,6 +100,8 @@ Nein. Da der Proxyserver zustandslos ist, spielt es keine Rolle, welcher Proxyse
 **F: Kann der Azure AD-Kennwortschutz-Proxydienst neben anderen Diensten wie Azure AD Connect bereitgestellt werden?**
 
 Ja. Der Azure AD-Kennwortschutz-Proxydienst und Azure AD Connect führen nie zu direkten Konflikten.
+
+Leider wurde eine Inkompatibilität zwischen der Version des Microsoft Azure AD Connect-Agent-Updaterdiensts, die von der Software Azure AD-Kennwortschutzproxy installiert wird, und der Version des Diensts festgestellt, die von der Software [Azure Active Directory-Anwendungsproxy ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) installiert wird. Diese Inkompatibilität kann dazu führen, dass der Agent-Updaterdienst sich mit Azure für Softwareupdates nicht in Verbindung setzen kann. Es wird nicht empfohlen, den Azure AD-Kennwortschutzproxy und den Azure Active Directory-Anwendungsproxy auf demselben Computer zu installieren.
 
 **F: In welcher Reihenfolge sollen die DC-Agents und Proxys installiert und registriert werden?**
 

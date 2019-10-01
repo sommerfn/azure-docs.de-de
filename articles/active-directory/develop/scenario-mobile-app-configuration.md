@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061405"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268364"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile App zum Aufrufen von Web-APIs – Codekonfiguration
 
@@ -33,14 +33,14 @@ Die folgenden Microsoft-Bibliotheken unterstützen mobile Apps:
   MSAL-Bibliothek | BESCHREIBUNG
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Zum Entwickeln portabler Anwendungen. Die von MSAL.NET unterstützten Plattformen zum Erstellen einer mobilen Anwendung sind UWP, Xamarin.iOS und Xamarin.Android.
-  ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Zum Entwickeln nativer iOS-Anwendungen mit Objective-C oder Swift
+  ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Entwickeln nativer iOS-Anwendungen mit Objective-C oder Swift
   ![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | Zum Entwickeln nativer Android-Anwendungen in Java für Android
 
-## <a name="configuring-the-application"></a>Konfigurieren der Anwendung
-
-Mobile Anwendungen verwenden die `PublicClientApplication`-Klasse. Nachfolgend wird veranschaulicht, wie sie instanziiert wird:
+## <a name="instantiating-the-application"></a>Instanziieren der Anwendung
 
 ### <a name="android"></a>Android
+
+Mobile Anwendungen verwenden die `PublicClientApplication`-Klasse. Nachfolgend wird veranschaulicht, wie sie instanziiert wird:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -50,21 +50,28 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-```swift
-// Initialize the app.
-guard let authorityURL = URL(string: kAuthority) else {
-    self.loggingText.text = "Unable to create authority URL"
-    return
-}
-let authority = try MSALAADAuthority(url: authorityURL)
-let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
-self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
-}
+Mobile Anwendungen unter iOS müssen die `MSALPublicClientApplication`-Klasse instanziieren.
+
+Objective-C:
+
+```objc
+NSError *msalError = nil;
+     
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
+
+Swift:
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+Es gibt [zusätzliche MSALPublicClientApplicationConfig-Eigenschaften](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options), die die Standardautorität überschreiben, einen Umleitungs-URI angeben oder das Zwischenspeicherungsverhalten von MSAL-Token ändern können. 
 
 ### <a name="xamarin-or-uwp"></a>Xamarin oder UWP
 
-Im folgenden Absatz wird erläutert, wie Sie den Code der Anwendung für Xamarin.iOS-, Xamarin.Android- und UWP-Apps konfigurieren. Der erste Schritt besteht darin, die Anwendung zu instanziieren. Ein optionaler Schritt ist das Konfigurieren des Brokers.
+Im folgenden Absatz wird erläutert, wie Sie die Anwendung für Xamarin.iOS-, Xamarin.Android- und UWP-Apps instanziieren.
 
 #### <a name="instantiating-the-application"></a>Instanziieren der Anwendung
 
@@ -102,7 +109,7 @@ var pca = PublicClientApplicationBuilder
 - Eine Liste aller bei `PublicClientApplicationBuilder` verfügbaren Modifizierer finden Sie in der Referenzdokumentation [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
 - Die Beschreibung aller bei `PublicClientApplicationOptions` verfügbar gemachten Optionen finden Sie in der Referenzdokumentation [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions).
 
-#### <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS-spezifische Aspekte
+## <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS-spezifische Aspekte
 
 Bei Xamarin iOS müssen Sie bei Verwendung von MSAL.NET mehrere Aspekte berücksichtigen:
 
@@ -113,7 +120,15 @@ Bei Xamarin iOS müssen Sie bei Verwendung von MSAL.NET mehrere Aspekte berücks
 
 Die Details finden Sie unter [Spezielle Überlegungen für Xamarin iOS mit MSAL.NET](msal-net-xamarin-ios-considerations.md).
 
-#### <a name="other-xamarin-android-specific-considerations"></a>Weitere Xamarin Android-spezifische Aspekte
+## <a name="msal-for-ios-and-macos-specific-considerations"></a>MSAL für iOS- und macOS-spezifische Aspekte
+
+Bei der Verwendung von MSAL für iOS und macOS gelten ähnliche Überlegungen:
+
+1. [Implementieren Sie den `openURL`-Rückruf](#brokered-authentication-for-msal-for-ios-and-macos).
+2. [Aktivieren Sie Keychainzugriffsgruppen](howto-v2-keychain-objc.md).
+3. [Passen Sie Browser und WebViews an](customize-webviews.md).
+
+## <a name="xamarin-android-specific-considerations"></a>Xamarin Android-spezifische Aspekte
 
 Für Xamarin Android gelten die folgenden Besonderheiten:
 
@@ -132,17 +147,21 @@ Auf der UWP können Sie Unternehmensnetzwerke verwenden. Weitere Informationen z
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Konfigurieren der Anwendung für die Verwendung des Brokers
 
-### <a name="why-use-brokers-on-xamarinios-and-xamarinandroid-applications"></a>Warum sollten Broker für Xamarin.iOS- und Xamarin.Android-Anwendungen verwendet werden?
+### <a name="why-use-brokers-in-ios-and-android-applications"></a>Warum sollten Broker in iOS- und Android-Anwendungen verwendet werden?
 
 Unter Android und iOS ermöglichen Broker Folgendes:
 
-- Einmaliges Anmelden (Single Sign-On, SSO). Ihre Benutzer müssen sich nicht bei jeder Anwendung anmelden.
+- Einmaliges Anmelden (Single Sign on, SSO), wenn das Gerät bei AAD registriert ist. Ihre Benutzer müssen sich nicht bei jeder Anwendung anmelden.
 - Geräteidentifikation. Ermöglicht Azure AD-gerätebezogene Richtlinien für den bedingten Zugriff durch den Zugriff auf das Gerätezertifikat, das auf dem Gerät erstellt wurde, als es dem Arbeitsplatz beigetreten ist.
 - Überprüfung der Anwendungsidentifikation. Wenn eine Anwendung den Broker aufruft, übergibt sie die Umleitungs-URL, und der Broker überprüft sie.
 
 ### <a name="enable-the-brokers-on-xamarin"></a>Aktivieren der Broker in Xamarin
 
-Verwenden Sie zum Aktivieren einer dieser Funktionen den `WithBroker()`-Parameter, wenn Sie die `PublicClientApplicationBuilder.CreateApplication`-Methode aufrufen. `.WithBroker()` ist standardmäßig auf „true“ festgelegt. Führen Sie unter [iOS](#brokered-authentication-for-xamarinios) die folgenden Schritte aus.
+Verwenden Sie zum Aktivieren einer dieser Funktionen den `WithBroker()`-Parameter, wenn Sie die `PublicClientApplicationBuilder.CreateApplication`-Methode aufrufen. `.WithBroker()` ist standardmäßig auf „true“ festgelegt. Führen Sie unter [Xamarin.iOS](#brokered-authentication-for-xamarinios) die folgenden Schritte aus.
+
+### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>Aktivieren des Brokers für MSAL für iOS und macOS
+
+Brokerauthentifizierung ist standardmäßig für AAD-Szenarien in MSAL für iOS und macOS aktiviert. Führen Sie die folgenden Schritte aus, um Ihre Anwendung für die Unterstützung von Brokerauthentifizierung für [MSAL für iOS und macOS](#brokered-authentication-for-msal-for-ios-and-macos) zu konfigurieren. Beachten Sie, dass sich einige Schritte zwischen [MSAL für Xamarin.iOS](#brokered-authentication-for-xamarinios) und [MSAL für iOS und macOS](#brokered-authentication-for-msal-for-ios-and-macos) unterscheiden.
 
 ### <a name="brokered-authentication-for-xamarinios"></a>Brokerauthentifizierung für Xamarin.iOS
 
@@ -252,6 +271,80 @@ Sie müssen in der Datei `Info.plist` dem Abschnitt `LSApplicationQueriesSchemes
     <array>
       <string>msauthv2</string>
     </array>
+```
+
+### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>Brokerauthentifizierung für MSAL für iOS und macOS
+
+Brokerauthentifizierung ist für AAD-Szenarien standardmäßig aktiviert.
+
+#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>Schritt 1: Aktualisieren von AppDelegate zum Verarbeiten des Rückrufs
+
+Wenn MSAL für iOS und macOS den Broker aufruft, führt der Broker wiederum einen Rückruf Ihrer Anwendung über die `openURL`-Methode aus. Da MSAL auf die Antwort vom Broker wartet, muss Ihre Anwendung kooperieren, damit der Rückruf von MSAL erfolgen kann. Dazu aktualisieren Sie die Datei `AppDelegate.m`, um die folgende Methode außer Kraft zu setzen.
+
+Objective-C:
+
+```objc
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [MSALPublicClientApplication handleMSALResponse:url 
+                                         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
+}
+```
+
+Swift:
+
+```swift
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
+            return false
+        }
+        
+        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
+    }
+```
+
+Beachten Sie Folgendes: Wenn Sie UISceneDelegate unter iOS 13 oder höher verwendet haben, muss der MSAL-Rückruf stattdessen im `scene:openURLContexts:`-Element von UISceneDelegate platziert werden (siehe [Apple-Dokumentation](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). MSAL `handleMSALResponse:sourceApplication:` darf für jede URL nur ein Mal aufgerufen werden.
+
+#### <a name="step-2-register-a-url-scheme"></a>Schritt 2: Registrieren eines URL-Schemas
+
+MSAL für iOS und macOS verwendet URLs, um den Broker aufzurufen und die Brokerantwort dann an Ihre App zurückzugeben. Um den Roundtrip abzuschließen, müssen Sie in der Datei `Info.plist` ein URL-Schema für Ihre App registrieren.
+
+Stellen Sie dem benutzerdefinierten URL-Schema `msauth` als Präfix voran. Fügen Sie dann am Ende **Ihren Bundlebezeichner** hinzu.
+
+`msauth.(BundleId)`
+
+**Beispiel:** 
+`msauth.com.yourcompany.xforms`
+
+> [!NOTE]
+> Dieses URL-Schema wird Teil des Umleitungs-URIs, der beim Empfangen der Brokerantwort zum eindeutigen Identifizieren Ihrer App verwendet wird. Stellen Sie sicher, dass der RedirectUri im Format `msauth.(BundleId)://auth` für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) registriert ist.
+
+```XML
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>msauth.[BUNDLE_ID]</string>
+        </array>
+    </dict>
+</array>
+```
+
+#### <a name="step-3-lsapplicationqueriesschemes"></a>Schritt 3: LSApplicationQueriesSchemes
+
+**Fügen Sie `LSApplicationQueriesSchemes`** hinzu, damit bei der Installation Microsoft Authenticator aufgerufen werden kann.
+Beachten Sie, dass das Schema „msauthv3“ erforderlich ist, wenn Sie Ihre App mit Xcode 11 oder höher kompilieren. 
+
+```XML 
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>msauthv2</string>
+  <string>msauthv3</string>
+</array>
 ```
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>Brokerauthentifizierung für Xamarin.Android

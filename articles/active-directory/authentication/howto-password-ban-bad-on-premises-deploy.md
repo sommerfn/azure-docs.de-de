@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959939"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268666"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -43,9 +43,9 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
 ## <a name="deployment-requirements"></a>Bereitstellungsanforderungen
 
 * Lizenzanforderungen für den Azure AD-Kennwortschutz finden Sie im Artikel [Beseitigen falscher Kennwörter in Ihrer Organisation](concept-password-ban-bad.md#license-requirements).
-* Alle Domänencontroller, auf denen der DC-Agent-Dienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
+* Alle Computer, auf denen die DC Agent-Software für Azure AD-Kennwortschutz installiert werden soll, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der DC-Agent-Dienst installiert werden soll, muss .NET 4.5 installiert sein.
-* Alle Computer, auf denen der Proxydienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 R2 oder höher ausführen.
+* Alle Computer, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, müssen Windows Server 2012 R2 oder höher ausführen.
    > [!NOTE]
    > Die Bereitstellung von Proxydiensten ist eine obligatorische Voraussetzung für das Bereitstellen des Kennwortschutzes von Azure AD, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt. 
    >
@@ -53,13 +53,14 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
   .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen. Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen. Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
-* Alle Computer, die den Proxydienst hosten, müssen auf die folgenden Endpunkte zugreifen können:
+* Alle Computer, auf denen der Proxydienst für den AD-Kennwortschutz installiert werden soll, müssen Netzwerkzugriff auf die folgenden Endpunkte besitzen:
 
     |**Endpunkt**|**Zweck**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
 
+  Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die in den [Setupprozeduren für die Anwendungsproxyumgebung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) angegeben werden. Diese Konfigurationsschritte sind erforderlich, damit der Microsoft Azure AD Connect-Agent-Updaterdienst funktionieren kann (dieser Dienst wird parallel zum Proxydienst installiert). Es wird nicht empfohlen, den Azure AD-Kennwortschutzproxy und den Anwendungsproxy parallel auf demselben Computer zu installieren, da die Versionen der Microsoft Azure AD Connect-Agent-Updatersoftware inkompatibel sind.
 * Alle Computer, auf denen der Proxydienst für den Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein globales Administratorkonto zum Registrieren des Proxydiensts für Kennwortschutz und der Gesamtstruktur bei Azure AD.

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801274"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212603"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -30,19 +30,17 @@ Sie können Logik-Apps zwar im [Azure-Portal](https://portal.azure.com) erstelle
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind: 
+* Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind:
 
-  * [Visual Studio 2019, 2017 oder 2015 – Community Edition oder höher](https://aka.ms/download-visual-studio). 
-  In dieser Schnellstartanleitung wird die kostenlose Version Visual Studio Community 2017 verwendet.
+  * [Visual Studio 2019, 2017 oder 2015 – Community Edition oder höher](https://aka.ms/download-visual-studio). In dieser Schnellstartanleitung wird die kostenlose Version Visual Studio Community 2017 verwendet.
 
     > [!IMPORTANT]
     > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
     > Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
-    Um Cloud-Explorer für Visual Studio 2015 zu installieren, [laden Sie Cloud-Explorer aus dem Visual Studio Marketplace herunter](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-    Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Um Cloud-Explorer für Visual Studio 2015 zu installieren, [laden Sie Cloud-Explorer aus dem Visual Studio Marketplace herunter](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
-  * [Azure SDK (2.9.1 oder höher)](https://azure.microsoft.com/downloads/) 
+  * [Azure SDK (2.9.1 oder höher)](https://azure.microsoft.com/downloads/)
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -54,13 +52,11 @@ Sie können Logik-Apps zwar im [Azure-Portal](https://portal.azure.com) erstelle
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. 
-    Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
+    Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
 
 * Internetzugriff bei Verwendung des eingebetteten Logic Apps-Designers
 
-  Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen der Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich. 
-  Wenn Sie beispielsweise den Dynamics CRM Online-Connector verwenden, prüft der Designer Ihre CRM-Instanz auf verfügbare standardmäßige und benutzerdefinierte Eigenschaften.
+  Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen der Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich. Wenn Sie beispielsweise den Dynamics CRM Online-Connector verwenden, prüft der Designer Ihre CRM-Instanz auf verfügbare standardmäßige und benutzerdefinierte Eigenschaften.
 
 <a name="find-logic-apps-vs"></a>
 
@@ -70,14 +66,13 @@ In Visual Studio finden Sie alle Logik-Apps, die Ihrem Azure-Abonnement zugeordn
 
 1. Öffnen Sie Visual Studio. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
 
-1. Wählen Sie im Cloud-Explorer **Kontenverwaltung** aus. Wählen Sie das Azure-Abonnement aus, dem Ihre Logik-Apps zugeordnet sind, und wählen Sie dann **Übernehmen** aus. Beispiel:
+1. Wählen Sie im Cloud-Explorer die Option **Kontenverwaltung** aus. Wählen Sie das Azure-Abonnement aus, dem Ihre Logik-Apps zugeordnet sind, und wählen Sie dann **Übernehmen** aus. Beispiel:
 
-   ![„Kontenverwaltung“ auswählen](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
+   ![Auswählen von „Kontoverwaltung“](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
 1. Je nachdem, ob Sie nach **Ressourcengruppen** oder **Ressourcentypen** suchen, gehen Sie folgendermaßen vor:
 
-   * **Ressourcengruppen**: Unter Ihrem Azure-Abonnement zeigt der Cloud-Explorer alle Ressourcengruppen an, die diesem Abonnement zugeordnet sind. 
-   Erweitern Sie die Ressourcengruppe, die die Logik-App enthält, und wählen Sie dann Ihre Logik-App aus.
+   * **Ressourcengruppen**: Unter Ihrem Azure-Abonnement zeigt der Cloud-Explorer alle Ressourcengruppen an, die diesem Abonnement zugeordnet sind. Erweitern Sie die Ressourcengruppe, die die Logik-App enthält, und wählen Sie dann Ihre Logik-App aus.
 
    * **Ressourcentypen**: Erweitern Sie unter Ihrem Azure-Abonnement **Logik-Apps**. Sobald der Cloud-Explorer alle bereitgestellten Logik-Apps anzeigt, die Ihrem Abonnement zugeordnet sind, wählen Sie Ihre Logik-App aus.
 
@@ -87,7 +82,7 @@ In Visual Studio finden Sie alle Logik-Apps, die Ihrem Azure-Abonnement zugeordn
 
 In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über das Azure-Portal oder als Azure Resource Group-Projekte mit Visual Studio erstellt und bereitgestellt worden sind.
 
-1. Öffnen Sie den Cloud-Explorer, und suchen Sie Ihre Logik-App. 
+1. Öffnen Sie den Cloud-Explorer, und suchen Sie Ihre Logik-App.
 
 1. Wählen Sie im Kontextmenü der Logik-App **Mit Logik-App-Editor öffnen** aus.
 
@@ -98,32 +93,30 @@ In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über
 
    ![Bereitgestellte Logik-Apps vom Azure-Portal aus öffnen](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Sobald die Logik-App am unteren Rand des Logic Apps-Designers angezeigt wird, können Sie **Codeansicht** auswählen, um die zugrunde liegende Definitionsstruktur der Logik-App zu überprüfen. 
-   Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md).
+   Sobald die Logik-App am unteren Rand des Logic Apps-Designers angezeigt wird, können Sie **Codeansicht** auswählen, um die zugrunde liegende Definitionsstruktur der Logik-App zu überprüfen. Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Herunterladen aus Azure
 
-Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen. Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md), die auch JavaScript Object Notation (JSON) verwenden.
+Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen.  Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md), die auch JavaScript Object Notation (JSON) verwenden.
 
-1. Öffnen Sie in Visual Studio den Cloud-Explorer, suchen Sie die Logik-App, die Sie aus Azure herunterladen möchten, und wählen Sie sie aus.
+1. Öffnen Sie in Visual Studio den Cloud-Explorer. Suchen Sie die Logik-App, die Sie aus Azure herunterladen möchten, und wählen Sie sie aus.
 
-2. Wählen Sie im Kontextmenü der Logik-App **Mit Logik-App-Editor öffnen** aus.
+1. Wählen Sie im Kontextmenü der Logik-App **Mit Logik-App-Editor öffnen** aus.
 
    > [!TIP]
    > Wenn Sie diesen Befehl in Visual Studio 2019 nicht finden, sollten Sie überprüfen, ob Sie das letzte Update für Visual Studio installiert haben.
 
-   Der Logik-App-Designer wird geöffnet und zeigt die Logik-App an. 
-   Um die zugrunde liegende Definition und Struktur der Logik-App zu überprüfen, wählen Sie am unteren Rand des Designers **Codeansicht** aus. 
+   Der Logik-App-Designer wird geöffnet und zeigt die Logik-App an. Um die zugrunde liegende Definition und Struktur der Logik-App zu überprüfen, wählen Sie am unteren Rand des Designers **Codeansicht** aus.
 
-3. Wählen Sie auf der Symbolleiste des Designers die Option **Herunterladen** aus.
+1. Wählen Sie auf der Symbolleiste des Designers **Herunterladen** aus.
 
-   ![„Herunterladen“ auswählen](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
+   ![Auswählen von „Herunterladen“](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. Wenn Sie aufgefordert werden, einen Speicherort einzugeben, navigieren Sie zu diesem Speicherort, und speichern Sie die Resource Manager-Vorlage für die Definition der Logik-App im JSON-Dateiformat (.json). 
+1. Wenn Sie aufgefordert werden, einen Speicherort einzugeben, navigieren Sie zu diesem Speicherort, und speichern Sie die Resource Manager-Vorlage für die Definition der Logik-App im JSON-Dateiformat (.json).
 
-Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+   Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
@@ -156,7 +149,7 @@ Wenn Sie die Eigenschaft **Integrationskonto** in Visual Studio festlegen und ih
 
 ## <a name="refresh-from-azure"></a>Aktualisieren von Azure aus
 
-Wenn Sie Ihre Logik-App im Azure-Portal bearbeiten und die Änderungen beibehalten möchten, stellen Sie sicher, dass Sie die Version dieser App in Visual Studio mit diesen Änderungen aktualisieren. 
+Wenn Sie Ihre Logik-App im Azure-Portal bearbeiten und die Änderungen beibehalten möchten, stellen Sie sicher, dass Sie die Version dieser App in Visual Studio mit diesen Änderungen aktualisieren.
 
 * Wählen Sie in Visual Studio auf der Logik-App-Designer-Symbolleiste **Aktualisieren** aus.
 
@@ -191,7 +184,7 @@ Um den Status zu überprüfen und Probleme mit Logik-App-Ausführungen zu diagno
    ![Detaillierter Ausführungsverlauf](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > Wählen Sie zum Sortieren der Tabelle nach Eigenschaft die Spaltenüberschrift für diese Eigenschaft aus. 
+   > Wählen Sie zum Sortieren der Tabelle nach Eigenschaft die Spaltenüberschrift für diese Eigenschaft aus.
 
 1. Erweitern Sie die Schritte, deren Eingaben und Ausgaben Sie überprüfen möchten. Beispiel:
 
@@ -199,15 +192,14 @@ Um den Status zu überprüfen und Probleme mit Logik-App-Ausführungen zu diagno
 
 ## <a name="disable-or-enable-logic-app"></a>Deaktivieren oder Aktivieren der Logik-App
 
-Ohne Ihre Logik-App zu löschen, können Sie verhindern, dass der Trigger ausgelöst wird, wenn die Auslöserbedingung das nächste Mal erfüllt ist. Das Deaktivieren Ihrer Logik-App verhindert, dass das Logic Apps-Modul zukünftige Workflowinstanzen für Ihre Logik-App erstellt und ausführt.
-Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Deaktivieren** aus.
+Ohne Ihre Logik-App zu löschen, können Sie verhindern, dass der Trigger ausgelöst wird, wenn die Auslöserbedingung das nächste Mal erfüllt ist. Das Deaktivieren Ihrer Logik-App verhindert, dass das Logic Apps-Modul zukünftige Workflowinstanzen für Ihre Logik-App erstellt und ausführt. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Deaktivieren** aus.
 
 ![Ihre Logik-App deaktivieren](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann. 
+> Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann.
 
-Wenn Sie wünschen, dass Ihre Logik-App den Betrieb fortsetzt, können Sie Ihre Logik-App erneut aktivieren. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Aktivieren** aus.
+Um Ihre Logik-App erneut zu aktivieren, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie dann **Aktivieren** aus.
 
 ![Ihre Logik-App aktivieren](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 

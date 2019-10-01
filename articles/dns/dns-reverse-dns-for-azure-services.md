@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c33914fb404467a20a9799df9643e9702234c300
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160926"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224488"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 
@@ -61,7 +61,7 @@ Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adressresso
 
 #### <a name="powershell"></a>PowerShell
 
-So fügen Sie vorhandenen öffentlichen IP-Adressen Reverse-DNS hinzu
+So aktualisieren Sie Reverse-DNS in eine vorhandene öffentliche IP-Adresse:
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"

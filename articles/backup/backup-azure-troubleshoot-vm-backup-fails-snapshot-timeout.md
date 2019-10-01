@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018170"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268775"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -233,7 +233,11 @@ Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung n
 
 ### <a name="clean_up_restore_point_collection"></a>Bereinigen der Wiederherstellungspunktsammlung
 
-Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt werden. Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
+Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt werden.
+
+Wenn Sie die Ressourcengruppe des virtuellen Computers oder die VM selbst löschen, bleiben die Momentaufnahmen für die sofortige Wiederherstellung verwalteter Datenträger aktiv und laufen gemäß der festgelegten Aufbewahrungsdauer ab. Um die Momentaufnahmen für die sofortige Wiederherstellung zu löschen (wenn Sie sie nicht mehr benötigen), die in der Wiederherstellungspunktsammlung gespeichert sind, bereinigen Sie die Wiederherstellungspunktsammlung gemäß den unten angegebenen Schritten.
+
+Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
 
 - [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>

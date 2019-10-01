@@ -1,5 +1,5 @@
 ---
-title: Verknüpfen von Azure AD-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+title: Verknüpfen von Azure AD-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Active Directory-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5784101c9f2e0dc238ac48c5d0f6fbe4c0dc596f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620674"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240815"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Verknüpfen von Daten aus Azure Active Directory
 
-> [!IMPORTANT]
-> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Mit Azure Sentinel können Sie Daten aus [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) sammeln und in Azure Sentinel streamen. Sie können wählen, ob Sie [Anmeldeprotokolle](../active-directory/reports-monitoring/concept-sign-ins.md) und [Auditprotokolle](../active-directory/reports-monitoring/concept-audit-logs.md) streamen möchten.
 
@@ -43,9 +41,11 @@ Mit Azure Sentinel können Sie Daten aus [Azure Active Directory](../active-dire
 
 1. Klicken Sie in Azure Sentinel auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Azure Active Directory**.
 
-2. Klicken Sie neben den Protokollen, die Sie in Azure Sentinel streamen möchten, auf **Verbinden**.
+1. Klicken Sie neben den Protokollen, die Sie in Azure Sentinel streamen möchten, auf **Verbinden**.
 
-6. Um das relevante Schema für die Azure AD-Warnungen in Log Analytics zu verwenden, suchen Sie nach **SigninLogs** und **AuditLogs**.
+1. Sie können auswählen, ob die Warnungen von Azure AD automatisch Incidents in Azure Sentinel generieren sollen. Wählen Sie unter **Incidents erstellen** die Option **Aktivieren** aus, um die standardmäßige Analyseregel zu aktivieren, die automatisch Incidents aus im verbundenen Sicherheitsdienst generierten Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** und anschließend unter **Aktive Regeln** bearbeiten.
+
+1. Um das relevante Schema für die Azure AD-Warnungen in Log Analytics zu verwenden, suchen Sie nach **SigninLogs** und **AuditLogs**.
 
 
 
@@ -53,4 +53,4 @@ Mit Azure Sentinel können Sie Daten aus [Azure Active Directory](../active-dire
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde beschrieben, wie Sie Azure AD mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).

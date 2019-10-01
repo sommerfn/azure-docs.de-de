@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309022"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259957"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -244,6 +244,14 @@ Wenden Sie sich bei sämtlichen technischen Produktsupportangelegenheiten an den
 Im [Azure Marketplace](https://azuremarketplace.microsoft.com/) getätigte Käufe können nicht zurückgegeben, jedoch storniert/gelöscht werden. Verbrauchsbasierte Angebote werden nach Nutzung berechnet, d. h. wenn kein Verbrauch mehr stattfindet, fallen auch keine Kosten an. Abonnements werden storniert und nur noch im aktuellen Abrechnungszeitraum in Rechnung gestellt. Wenn ein Abonnement kurz nach dem Kauf (24 Stunden bei Monatsabonnements und 14 Tage bei Jahresabonnements) storniert wird, erfolgt eine vollständige Rückerstattung.
 
 Kunden müssen sich bei technischen Probleme mit einem im Marketplace erworbenen Dienst oder Produkt direkt an den Herausgeber wenden. Die Kontaktinformationen des Herausgebers und/oder einen Link zur Supportwebsite finden Sie auf der Seite mit den Lösungsdetails im Azure Marketplace.
+
+**Wie werden Lizenzerweiterungen behandelt, wenn sie in der Mitte der Laufzeit erfolgen?**
+
+Lizenzen, die einem vorhandenen Abonnement hinzugefügt werden, werden für die restliche Abonnementlaufzeit anteilig bewertet.
+
+**Wie werden Lizenzentfernungen in der Mitte der Laufzeit behandelt?**
+
+Gekündigte Lizenzen unterliegen der in diesen FAQ genannten Erstattungsrichtlinie.  Alle Lizenzen, die gekündigt werden, werden sofort aus Ihrem Konto entfernt und stehen nicht mehr zur Verwendung zur Verfügung.
 
 ## <a name="faq-for-publishers"></a>Häufig gestellte Fragen für Herausgeber
 

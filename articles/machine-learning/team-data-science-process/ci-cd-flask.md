@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Azure-Pipeline für Continuous Integration – Team Data Science-Prozess
-description: 'DevOps für KI-Anwendungen (Künstliche Intelligenz): Erstellen einer Continuous Integration-Pipeline in Azure mit Docker und Kubernetes'
+title: 'Erstellen einer CI/CD-Pipeline mit Azure Pipelines: Team Data Science-Prozess'
+description: Erstellen einer Continuous Integration- und Continuous Delivery-Pipeline für Anwendungen der Künstlichen Intelligenz (KI) mit Docker und Kubernetes.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -8,63 +8,61 @@ editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 09/06/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62103553"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260669"
 ---
-# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Erstellen einer Continuous Integration-Pipeline in Azure mit Docker, Kubernetes und der Python Flask-Anwendung
-Für eine KI-Anwendung gibt es häufig zwei Arbeitsbereiche: Data Scientists, die Modelle für maschinelles Lernen erstellen, und App-Entwickler, die die Anwendung programmieren und den Endbenutzern zur Verfügung stellen. In diesem Artikel wird veranschaulicht, wie Sie eine Pipeline für Continuous Integration (CI) bzw. Continuous Delivery (CD) für eine KI-Anwendung implementieren. Eine KI-Anwendung ist eine Kombination aus Anwendungscode, der mit einem vortrainierten Modell für maschinelles Lernen (MK) eingebettet ist. In diesem Artikel wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto genutzt, wobei auch ein AWS S3-Konto verwendet werden könnte. Zudem wird eine einfache Python Flask-Webanwendung in diesem Artikel verwendet.
+# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Erstellen von CI/CD-Pipelines für KI-Apps mit Azure Pipelines, Docker und Kubernetes
+
+Eine Anwendung für Künstliche Intelligenz (KI) bedeutet, dass Anwendungscode in ein vortrainiertes Machine Learning-Modell (ML) eingebettet wird. Es gibt immer zwei Aufgabenschwerpunkte für eine KI-Anwendung: Data Scientists erstellen das ML-Modell, und App-Entwickler erstellen die App und stellen Sie für die Nutzung durch Endbenutzer bereit. In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für eine KI-Anwendung implementieren, die das ML-Modell in den Quellcode der APP einbettet. Im Beispielcode und Tutorial wird eine einfache Python Flask-Webanwendung verwendet, und es wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto abgerufen. Sie können auch ein AWS S3-Speicherkonto verwenden.
 
 > [!NOTE]
-> Dies ist eine von mehreren Möglichkeiten, wie CI/CD durchgeführt werden kann. Es gibt jedoch auch Alternativen zu den unten genannten Tools und anderen Voraussetzungen. Weitere entwickelte Inhalte werden veröffentlicht, sobald diese verfügbar sind.
->
->
+> Der folgende Prozess ist eine von mehreren Möglichkeiten für CI/CD. Es gibt Alternativen zu diesen Tools und den Voraussetzungen.
 
-## <a name="github-repository-with-document-and-code"></a>GitHub-Repository mit Dokument und Code
-Sie können den Quellcode von [GitHub](https://github.com/Azure/DevOps-For-AI-Apps) herunterladen. Ein [detailliertes Tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) steht ebenfalls zur Verfügung.
+## <a name="source-code-tutorial-and-prerequisites"></a>Quellcode, Tutorial und Voraussetzungen
 
-## <a name="pre-requisites"></a>Voraussetzungen
-Im Folgenden sind die Voraussetzungen für die nachfolgend beschriebene CI/CD-Pipeline aufgeführt:
-* [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure Container Service (AKS)-Cluster mit Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registry-Konto (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
-* [Installation von Kubectl zum Ausführen von Befehlen für den Kubernetes-Cluster](https://kubernetes.io/docs/tasks/tools/install-kubectl/). Dies ist erforderlich, um die Konfiguration aus dem ACS-Cluster abzurufen. 
-* Fork des Repositorys zu Ihrem GitHub-Konto
+Sie können [Quellcode](https://github.com/Azure/DevOps-For-AI-Apps) und ein [detailliertes Tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) von GitHub herunterladen. Befolgen Sie die Schritte im Tutorial zum Implementieren einer CI/CD-Pipeline für Ihre eigene Anwendung.
 
-## <a name="description-of-the-cicd-pipeline"></a>Beschreibung der CI/CD-Pipeline
-Die Pipeline startet für jeden neuen Commit, führt die Testsammlung aus, nimmt bei bestandenem Test den neuesten Build und erstellt daraus ein Paket in einen Docker-Container. Der Container wird dann über Azure Container Service (ACS) bereitgestellt, und die Images werden sicher in Azure Container Registry (ACR) gespeichert. ACS führt Kubernetes für die Verwaltung von Containerclustern aus, Sie können hierfür aber auch Docker Swarm oder Mesos wählen.
+Für die Verwendung des heruntergeladenen Quellcodes und dieses Tutorial müssen die folgenden Voraussetzungen erfüllt sein: 
 
-Die Anwendung pullt sicher das neueste Modell aus einem Azure Storage-Konto und verpackt dieses als Teil der Anwendung. Die bereitgestellte Anwendung verfügt über den App-Code und das als Einzelcontainer verpackte ML-Modell. So werden App-Entwickler und Data Scientists entkoppelt, um sicherzustellen, dass ihre Produktions-App immer den neuesten Code mit dem neuesten ML-Modell ausführt.
+- Das [Quellcoderepository](https://github.com/Azure/DevOps-For-AI-Apps) muss zu Ihrem GitHub-Konto geforkt werden
+- Eine [Azure DevOps-Organisation](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+- Ein [Azure Container Service-Cluster (AKS) für Kubernetes](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) zum Ausführen von Befehlen und Abrufen der Konfiguration aus dem AKS-Cluster 
+- Ein [Azure Container Registry-Konto (ACR)](/azure/container-registry/container-registry-get-started-portal)
 
-Unten sehen Sie die Pipelinearchitektur. 
+## <a name="cicd-pipeline-summary"></a>Zusammenfassung der CI/CD-Pipeline
 
-![Architecture](./media/ci-cd-flask/Architecture.PNG?raw=true)
+Jeder neue Git-Commit startet die Buildpipeline. Der Build pullt das neueste ML-Modell sicher aus einem Blobspeicherkonto und verpackt es mit dem App-Code in einem einzelnen Container. Diese Entkopplung der Anwendungsentwicklung und der Data Science-Arbeitsströme stellt sicher, dass die Produktions-App immer den neuesten Code mit dem aktuellsten ML-Modell ausführt. Wenn die App Tests besteht, speichert die Pipeline das Buildimage sicher in einem Docker-Container in ACR. Die Releasepipeline stellt den Container dann mithilfe von AKS bereit. 
 
-## <a name="steps-of-the-cicd-pipeline"></a>Schritte der CI/CD-Pipeline
-1. Entwickler arbeiten an der IDE ihrer Wahl am Anwendungscode.
-2. Sie committen den Code bei der Quellcodeverwaltung ihrer Wahl (Azure DevOps bietet gute Unterstützung für verschiedene Quellcodeverwaltungen).
-3. Die Data Scientists arbeiten separat an der Entwicklung ihres Modells.
-4. Sobald sie mit dem Ergebnis zufrieden sind, veröffentlichen sie das Modell in einem Modellrepository. In diesem Fall wird ein Blob Storage-Konto verwendet. 
-5. Ein Build wird in Azure DevOps basierend auf dem Commit in GitHub gestartet.
-6. Die Azure DevOps-Buildpipeline pullt das neueste Modell aus dem Blobcontainer und erstellt einen Container.
-7. Azure DevOps pusht das Image in ein privates Imagerepository in Azure Container Registry.
-8. Nach einem festgelegten Zeitplan (nachts) wird die Releasepipeline gestartet.
-9. Das neueste Image aus ACR wird über den Kubernetes-Cluster in ACS gepullt und bereitgestellt.
-10. Die Benutzeranforderung der App erfolgt über den DNS-Server.
-11. Der DNS-Server übergibt die Anforderung an das Lastenausgleichsmodul und sendet die Antwort an den Benutzer zurück.
+## <a name="cicd-pipeline-steps"></a>Schritte der CI/CD-Pipeline
 
-## <a name="next-steps"></a>Nächste Schritte
-* Details und Anweisungen zum Implementieren Ihrer eigenen CI/CD-Pipeline für Ihre Anwendung finden Sie im [Tutorial](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md).
+In der folgenden Abbildung und in den Schritten wird die Architektur der CI/CD-Pipeline beschrieben:
 
-## <a name="references"></a>Referenzen
-* [Team Data Science-Prozess (TDSP)](https://aka.ms/tdsp)
-* [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Azure DevOps](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+![Architektur der CI/CD-Pipeline](./media/ci-cd-flask/architecture.png)
+
+1. Entwickler arbeiten in der IDE ihrer Wahl am Anwendungscode.
+2. Die Entwickler committen den Code an Azure Repos, GitHub oder einen anderen Git-Quellcodeverwaltungsanbieter. 
+3. Data Scientists arbeiten separat davon an der Entwicklung ihres ML-Modells.
+4. Die Data Scientists veröffentlichen das fertige Modell in einem Modellrepository (in diesem Fall ein Blobspeicherkonto). 
+5. Azure Pipelines startet einen Build basierend auf dem Git-Commit.
+6. Die Buildpipeline pullt das neueste ML-Modell aus dem Blobspeicher und erstellt einen Container.
+7. Die Pipeline pusht das Buildimage in das private Imagerepository in ACR.
+8. Die Releasepipeline wird basierend auf dem erfolgreichen Build gestartet.
+9. Die Pipeline pullt das neueste Image aus ACR und stellt es über den Kubernetes-Cluster in AKS bereit.
+10. Benutzeranforderungen für die App durchlaufen den DNS-Server.
+11. Der DNS-Server übergibt die Anforderung an einen Load Balancer und sendet Antworten zurück an den Server.
+
+## <a name="see-also"></a>Weitere Informationen
+
+- [Team Data Science-Prozess (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)

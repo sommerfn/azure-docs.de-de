@@ -3,9 +3,8 @@ title: Advanced Data Security für IaaS in Azure Security Center | Microsoft-Dok
 description: " Erfahren Sie, wie Sie Advanced Data Security für IaaS in Azure Security Center aktivieren. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295758"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202175"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Erweiterte Datensicherheit für SQL-Server auf Azure Virtual Machines (Public Preview)
-Advanced Data Security für SQL Server-Instanzen auf Azure Virtual Machines ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Derzeit (in der öffentlichen Vorschau) enthält es Funktionen zum Aufzeigen und Mindern potenzieller Datenbank-Schwachstellen und zum Erkennen anomaler Aktivitäten, die auf eine Bedrohung für Ihre Datenbank hinweisen könnten. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Erweiterte Datensicherheit für SQL-Server in Azure Virtual Machines (Public Preview)
+Advanced Data Security für SQL Server-Instanzen auf Azure Virtual Machines ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Derzeit (Public Preview) enthält es Funktionen zum Aufzeigen und Mindern potenzieller Datenbankschwachstellen und zum Erkennen anormaler Aktivitäten, die auf eine Bedrohung für Ihre Datenbank hinweisen können. 
 
 Dieses Sicherheitsangebot für SQL Server-Instanzen auf Azure-VMs basiert auf der gleichen grundlegenden Technologie, die auch im [Advanced Data Security-Paket für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) verwendet wird.
 
@@ -36,7 +35,7 @@ Advanced Data Security stellt eine Reihe erweiterter SQL-Sicherheitsfunktionen b
 
 ## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Erste Schritte mit Advanced Data Security für SQL auf Azure-VMs
 
-Die folgenden Schritte helfen Ihnen, sich in Advanced Data Security for SQL auf Azure VMs Public Preview zurechtzufinden.
+Die folgenden Schritte dienen als Einstieg in Advanced Data Security für SQL für Azure-VMs (Public Preview).
 
 ### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Einrichten von Advanced Data Security für SQL auf Azure-VMs
 
@@ -95,7 +94,7 @@ Sie können die aktuellen Sicherheitswarnungen anzeigen und verwalten.
 
 Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigung erhalten sollen, wenn ASC-Warnungen generiert werden. Die E-Mail enthält einen direkten Link zur Warnung in Azure Security Center mit allen relevanten Details. 
 
-1. Gehen Sie zu **Security Center** >  **Preise & Einstellungen** und klicken Sie auf das entsprechende Abonnement
+1. Navigieren Sie zu **Security Center** > **Preise und Einstellungen**, und klicken Sie auf das entsprechende Abonnement.
 
     ![Abonnementeinstellungen](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -145,7 +144,7 @@ Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt au
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Warnungen der Advanced Threat Protection für SQL Server-Instanzen auf Azure-VMs
 Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für SQL Server-Instanzen generiert. Diese Ereignisse können die folgenden Warnungen auslösen:
 
-### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Anomale Zugriffsmusterwarnungen (unterstützt in Public Preview)
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Warnungen zu anormalen Zugriffsmustern (in Public Preview unterstützt)
 
 * **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Änderung des Zugriffsmusters für SQL Server erfolgt ist, weil sich eine Person von einem ungewöhnlichen Ort aus bei SQL Server angemeldet hat. Mögliche Ursachen:
      * Ein Angreifer oder böswilliger ehemaliger Mitarbeiter hat auf Ihren SQL Server zugegriffen.

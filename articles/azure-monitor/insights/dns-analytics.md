@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982586"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265169"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -179,6 +179,12 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 1. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Problembehandlung
+
+Allgemeine Schritte zur Problembehandlung:
+
+1. Fehlende DNS-Lookupdaten: Um dieses Problem zu beheben, setzen Sie die Konfiguration zurück, oder laden Sie die Konfigurationsseite einfach ein Mal im Portal. Ändern Sie zum Zurücksetzen nur eine Einstellung in einen anderen Wert, und ändern Sie sie anschließend erneut in den ursprünglichen Wert. Speichern Sie die Konfiguration dann.
 
 ## <a name="feedback"></a>Feedback
 

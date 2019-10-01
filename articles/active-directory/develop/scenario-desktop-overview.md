@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852684"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268347"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
@@ -32,7 +32,7 @@ Erfahren Sie, wie Sie eine Desktop-App erstellen, die Web-APIs aufruft
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Sofern nicht bereits geschehen, erstellen Sie nun Ihre erste Anwendung, indem Sie den Schritten in der .NET Desktop-Schnellstartanleitung oder der UWP-Schnellstartanleitung folgen:
+Sofern nicht bereits geschehen, erstellen Sie nun Ihre erste Anwendung, indem Sie den Schritten in der .NET Desktop-Schnellstartanleitung, der UWP-Schnellstartanleitung oder der Schnellstartanleitung für native macOS-Apps folgen:
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Sofern nicht bereits geschehen, erstellen Sie nun Ihre erste Anwendung, indem Si
 > [!div class="nextstepaction"]
 > [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer UWP-App aus](./quickstart-v2-uwp.md)
 
+> [!div class="nextstepaction"]
+> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API aus einer nativen macOS-App](./quickstart-v2-ios.md)
+
 ## <a name="overview"></a>Übersicht
 
 Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung anmelden, und Web-APIs wie Microsoft Graph, andere Microsoft-APIs oder Ihre eigene Web-API aufrufen. Sie haben hierfür mehrere Möglichkeiten:
 
 - Sie können den interaktiven Tokenabruf verwenden:
 
-  - Wenn Ihre Desktopanwendung grafische Steuerelemente unterstützt, z.B. im Fall einer Windows.Form-Anwendung oder einer WPF-Anwendung.
+  - Wenn Ihre Desktopanwendung grafische Steuerelemente unterstützt, z.B. im Fall einer Windows.Form-Anwendung, einer WPF-Anwendung oder einer nativen macOS-Anwendung.
   - Wenn es sich um eine .NET Core-Anwendung handelt, und Sie zustimmen, dass die Authentifizierungsinteraktion mit Azure AD im Systembrowser erfolgt.
 
 - Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in AAD eingebunden sind.

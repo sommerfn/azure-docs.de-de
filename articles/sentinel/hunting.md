@@ -1,5 +1,5 @@
 ---
-title: Bedrohungssuchfunktionen in Azure Sentinel Preview | Microsoft-Dokumentation
+title: Bedrohungssuchfunktionen in Azure Sentinel | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie die Bedrohungssuchfunktionen von Azure Sentinel verwendet werden.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780459"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240611"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Suchen nach Bedrohungen mit Azure Sentinel Preview
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Bedrohungssuch- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
 
@@ -41,8 +39,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 - Leistungsfähige Abfragesprache mit IntelliSense: Aufgesetzt auf eine Abfragesprache, die Ihnen die Flexibilität bietet, die Sie benötigen, um die Bedrohungssuche auf die nächste Stufe zu heben.
 
-- Erstellen Sie Ihre eigenen Lesezeichen: Während des Bedrohungssuchprozesses stoßen Sie möglicherweise auf Übereinstimmungen oder Ergebnisse, Dashboards oder Aktivitäten, die ungewöhnlich oder verdächtig aussehen. Um diese Elemente zu markieren, damit Sie zukünftig zu ihnen zurückkehren können, verwenden Sie die Lesezeichenfunktionalität. Mit Lesezeichen können Sie Elemente speichern, damit diese später zum Erstellen eines zu untersuchenden Vorfalls verwendet werden können. Weitere Informationen über Lesezeichen finden Sie unter „Verwenden von [Lesezeichen in Bedrohungssuche]“.
-
+- Erstellen Sie Ihre eigenen Lesezeichen: Während des Bedrohungssuchprozesses stoßen Sie möglicherweise auf Übereinstimmungen oder Ergebnisse, Dashboards oder Aktivitäten, die ungewöhnlich oder verdächtig aussehen. Um diese Elemente zu markieren, damit Sie zukünftig zu ihnen zurückkehren können, verwenden Sie die Lesezeichenfunktionalität. Mit Lesezeichen können Sie Elemente speichern, damit diese später zum Erstellen eines zu untersuchenden Vorfalls verwendet werden können. Weitere Informationen zu Lesezeichen finden Sie unter [Verwenden von Lesezeichen bei der Bedrohungssuche](hunting.md).
 - Verwenden von Notebooks, um Untersuchungen zu automatisieren: Notebooks sind wie Schritt-für-Schritt-Playbooks, die Sie erstellen können, um die Schritte einer Untersuchung zu durchlaufen und nach Bedrohungen zu suchen.  Notebooks kapseln alle Bedrohungssuchschritte in einem wiederverwendbaren Playbook, das für andere Personen in Ihrer Organisation freigegeben werden kann. 
 - Fragen Sie die gespeicherten Daten ab: Die Daten sind in Tabellen zugänglich, die Sie abfragen können. Beispielsweise können Sie Prozesserstellung, DNS-Ereignisse und viele andere Ereignistypen abfragen.
 

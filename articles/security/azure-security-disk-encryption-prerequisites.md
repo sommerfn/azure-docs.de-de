@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 423fad943190232d9e5e674b98b62f4f0dffb8ae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728752"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224505"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption – Voraussetzungen
 
@@ -28,7 +28,7 @@ Bevor Sie Azure Disk Encryption auf Azure-IaaS-VMs für die unterstützten Szena
 
 ## <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
 
-Azure Disk Encryption ist auf virtuellen Computern verfügbar, die diese Mindestanforderungen für den Arbeitsspeicher erfüllen:
+Azure Disk Encryption ist für [VMs des Typs „Basic, A-Serie“](https://azure.microsoft.com/pricing/details/virtual-machines/series/) nicht verfügbar. Azure Disk Encryption ist auf anderen virtuellen Computern verfügbar, die diese Mindestanforderungen an den Arbeitsspeicher erfüllen:
 
 | Virtual Machine | Mindestens erforderlicher Arbeitsspeicher |
 |--|--|

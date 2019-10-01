@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688053"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240842"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>Ursache
 
 Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
@@ -52,6 +60,7 @@ Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 2. Es ist eine Richtlinie vorhanden, die die Bereitstellung der Lösung zum Starten/Beenden von VMs nicht zulässt.
 3. Die `Microsoft.OperationsManagement`-, `Microsoft.Insights`- oder `Microsoft.Automation`-Ressourcentypen sind nicht registriert.
 4. Ihr Log Analytics-Arbeitsbereich ist mit einer Sperre versehen.
+5. Sie verfügen über eine veraltete Version der AzureRM-Module oder der Lösung zum Starten/Beenden.
 
 ### <a name="resolution"></a>Lösung
 
@@ -66,6 +75,7 @@ Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 
    Weitere Informationen zu Fehlern beim Registrieren von Anbietern finden Sie unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/resource-manager-register-provider-errors.md).
 4. Wenn eine Sperre für Ihren Log Analytics-Arbeitsbereich vorhanden ist, navigieren Sie im Azure-Portal zu Ihrem Arbeitsbereich, und entfernen Sie alle Sperren für die Ressource.
+5. Wenn die oben genannten Lösungen Ihr Problem nicht beheben, befolgen Sie die Anleitungen unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution), um die Lösung zum Starten/Beenden erneut bereitzustellen.
 
 ## <a name="all-vms-fail-to-startstop"></a>Szenario: Alle virtuellen Computer können nicht gestartet/beendet werden
 

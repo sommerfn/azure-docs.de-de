@@ -3,8 +3,8 @@ title: Ermittlung von Endpoint Protection-Lösungen und Health Assessment in Azu
 description: Erläutert, wie die Endpoint Protection-Lösungen ermittelt und als fehlerfrei identifiziert werden.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
+author: memildin
+manager: rkarlin
 ms.assetid: 2730a2f5-20bc-4027-a1c2-db9ed0539532
 ms.service: security-center
 ms.devlang: na
@@ -12,28 +12,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a5cd0f88173abb65a120aa305206505af51d9f9e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.author: memildin
+ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861370"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202259"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
-Endpoint Protection-Bewertung und Empfehlungen in Azure Security Center ermittelt [unterstützte](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) Versionen von Endpoint Protection-Lösungen und stellt Integritätsbewertungen von diesen bereit. In diesem Thema werden die Szenarien erläutert, bei denen die folgenden zwei Empfehlungen für Endpoint Protection-Lösungen über das Azure Security Center generiert werden.
+Azure Security Center bietet Integritätsbewertungen von [unterstützten](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) Versionen von Endpoint Protection-Lösungen. In diesem Artikel werden die Szenarien erläutert, die dazu führen, dass Security Center die folgenden beiden Empfehlungen generiert:
 
 * **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren**
 * **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
+* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** ist.
 
-* Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben“** wird generiert, wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und mindestens eine der folgenden Situationen eintritt:
+* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und eine der folgenden Situationen eintritt:
 
-  * Mindestens eine der folgenden Eigenschaften ist „False“:
+  * Eine der folgenden Eigenschaften ist FALSE:
 
      **AMServiceEnabled**
 
@@ -47,7 +47,7 @@ Endpoint Protection-Bewertung und Empfehlungen in Azure Security Center ermittel
 
      **OnAccessProtectionEnabled**
 
-  * Mindestens eine oder beide folgenden Eigenschaften ist größer oder gleich 7.
+  * Mindestens eine der folgenden Eigenschaften ist größer oder gleich 7.
 
      **AntispywareSignatureAge**
 
@@ -55,9 +55,9 @@ Endpoint Protection-Bewertung und Empfehlungen in Azure Security Center ermittel
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wen das Importieren von **SCEPMpModule  („$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1“)** und Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
+* Security Center empfiehlt, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn das Importieren von **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** und Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
 
-* Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben“** wird generiert, wenn **Get-MprotComputerStatus** ausgeführt wird und mindestens eine der folgenden Situationen eintritt:
+* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn **Get-MprotComputerStatus** ausgeführt wird und eine der folgenden Situationen eintritt:
 
     * Mindestens eine der folgenden Eigenschaften ist „False“:
 
@@ -81,14 +81,14 @@ Endpoint Protection-Bewertung und Empfehlungen in Azure Security Center ermittel
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn eine oder mehrere der folgenden Überprüfungen nicht bestanden werden:
+* Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** ist vorhanden
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** ist vorhanden
     * Die Datei **dsq_query.cmd** ist im Installationsordner vorhanden
     * Das Ausführen von **dsa_query.cmd** führt zum Ergebnis **Component.AM.mode: on – Trend Micro Deep Security-Agent erkannt**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
-Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 * **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
@@ -100,7 +100,7 @@ oder
 
 * **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben“** wird generiert, wenn eine der folgenden Überprüfungen nicht bestanden wird:  
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 * Überprüfen: Symantec-Version >= 12:  Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
 
@@ -121,13 +121,13 @@ Registrierungspfade:
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection für Windows
 
-Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn die folgenden Überprüfungen nicht bestanden werden:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 * **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** ist vorhanden
 
 * **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben“** wird generiert, wenn die folgenden Überprüfungen nicht bestanden werden:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 * McAfee-Version: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
@@ -139,13 +139,13 @@ Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security für Linux-Bedrohungsschutz 
 
-Die Empfehlung **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren** wird generiert, wenn eine oder beide der folgenden Überprüfungen nicht bestanden werden:  
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - Datei **/opt/isec/ens/threatprevention/bin/isecav** wird beendet 
 
 - Ausgabe von **"/opt/isec/ens/threatprevention/bin/isecav --version"** lautet: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
-Die Empfehlung **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben** wird generiert, wenn eine oder mehrere der folgenden Überprüfungen nicht bestanden werden:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **Quick scan, Full scan** zurück, und für beide Scans gilt „<= 7 Tage“
 
@@ -155,19 +155,19 @@ Die Empfehlung **Endpoint Protection-Integritätsprobleme auf Ihren Computern be
 
 ## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus für Linux 
 
-Die Empfehlung **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren** wird generiert, wenn eine oder beide der folgenden Überprüfungen nicht bestanden werden:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - Datei **/opt/sophos-av/bin/savdstatus** wird beendet, oder Suche nach benutzerdefiniertem Ort **"readlink $(which savscan)"** wird durchgeführt
 
 - **"/opt/sophos-av/bin/savdstatus --version"** gibt **Sophos name = Sophos Anti-Virus and Sophos version >= 9** zurück
 
-Die Empfehlung **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben** wird generiert, wenn eine oder mehrere der folgenden Überprüfungen nicht bestanden werden:
+Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück   
 
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück   
 
-- **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück, Wert sollte „<= 7 Tage“ lauten 
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück. Der Wert sollte kleiner oder gleich 7 Tage sein 
 
 - **"/opt/sophos-av/bin/savdstatus -v"** entspricht **"On-access scanning is running"** 
 
@@ -182,4 +182,4 @@ Microsoft Antimalware-Erweiterungsprotokolle sind verfügbar unter:
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Sie können auch einen Azure-Supportfall erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+Wenn Sie weitere Hilfe benötigen, setzen Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung. Sie können auch einen Azure-Supportfall erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).

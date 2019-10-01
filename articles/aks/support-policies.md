@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596127"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240885"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -95,7 +95,7 @@ Microsoft und die Kunden teilen sich die Verantwortung für die Kubernetes-Worke
   * Docker- oder Moby-Daemon
 
 > [!NOTE]
-> Wenn eine Komponente der Steuerungsebene auf einem Workerknoten ausgefallen ist, muss das AKS-Team unter Umständen den gesamten Workerknoten neu starten. Aufgrund des eingeschränkten Zugriffs auf die aktiven Workloads und Daten des Kunden startet das AKS-Team einen Workerknoten nur dann neu, wenn der Kunde das Problem entsprechend eskaliert. Soweit möglich, ist das AKS-Team bestrebt zu verhindern, dass ein erforderlicher Neustart die Anwendung beeinträchtigt.
+> Wenn eine Komponente der Steuerungsebene auf einem Workerknoten ausgefallen ist, muss das AKS-Team unter Umständen einzelne Komponenten oder den gesamten Workerknoten neu starten. Diese Neustartvorgänge sind automatisiert und ermöglichen eine automatische Wiederherstellung bei häufigen Problemen. Diese Neustarts erfolgen nur auf der Ebene _Knoten_ und nicht auf der Clusterebene, es sei denn, es handelt sich hierbei um eine Notfallwartung oder einen Ausfall.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Zuständigkeiten des Kunden für AKS-Workerknoten
 

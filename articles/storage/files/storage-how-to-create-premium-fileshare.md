@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699572"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260218"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
@@ -59,7 +59,7 @@ Sobald Ihre Speicherkontoressource erstellt wurde, navigieren Sie dorthin.
 ### <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
 
 1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Dateidienst**, und wählen Sie **Files**.
-1. Wählen Sie **+Dateifreigabe** aus, um eine Premium-Dateifreigabe zu erstellen.
+1. Wählen Sie **Dateifreigabe** aus, um eine Premium-Dateifreigabe zu erstellen.
 1. Geben Sie einen Namen und das gewünschte Kontingent für Ihre Dateifreigabe ein, und wählen Sie **Erstellen** aus.
 
 > [!NOTE]

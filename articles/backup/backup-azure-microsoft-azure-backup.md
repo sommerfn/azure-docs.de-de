@@ -8,19 +8,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575141"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241075"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
+
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
+
+> Anwendungsbereich: MABS v3. (MABS v2 wird nicht mehr unterstützt. Wenn Sie eine frühere Version als MABS v3 verwenden, führen Sie ein Upgrade auf die neueste Version durch.)
 
 In diesem Artikel wird das Vorbereiten Ihrer Umgebung für die Sicherung von Workloads per Microsoft Azure Backup Server (MABS) beschrieben. Mit Azure Backup Server können Sie Anwendungsworkloads wie Hyper-V-VMs, Microsoft SQL Server, SharePoint Server, Microsoft Exchange und Windows-Clients über eine zentrale Konsole schützen.
 
@@ -39,23 +42,24 @@ Bei Bereitstellung von MABS auf einem virtuellen Azure-Computer können VMs in A
 Azure Backup Server erbt einen Großteil der Funktionalität für die Workloadsicherung von Data Protection Manager (DPM). Dieser Artikel enthält Links zur DPM-Dokumentation mit einer Beschreibung der gemeinsamen Funktionen. Obwohl Azure Backup Server einen Großteil der Funktionen als DPM freigegeben hat, führt Azure Backup Server weder Sicherungen auf Band durch noch wird der Dienst in System Center integriert.
 
 ## <a name="choose-an-installation-platform"></a>Auswahl der Installationsplattform
+
 Der erste Schritt zur Inbetriebnahme von Azure Backup Server ist die Einrichtung eines Computers mit Windows Server. Der Server kann sich unter Azure oder am lokalen Standort befinden.
 
 ### <a name="using-a-server-in-azure"></a>Verwenden eines Servers in Azure
-Beim Auswählen eines Servers zum Ausführen von Azure Backup Server wird empfohlen, mit einem Katalogimage von Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter oder Windows Server 2019 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: Standard_A4_v2 mit vier Kernen und 8 GB RAM.
+
+Beim Auswählen eines Servers zum Ausführen von Azure Backup Server wird empfohlen, mit einem Katalogimage von Windows Server 2016 Datacenter oder Windows Server 2019 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: Standard_A4_v2 mit vier Kernen und 8 GB RAM.
 
 Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Dies wird im Artikel [Installieren von DPM als virtuellen Azure-Computer](https://technet.microsoft.com/library/jj852163.aspx)beschrieben. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 
 ### <a name="using-an-on-premises-server"></a>Verwenden eines lokalen Servers
+
 Wenn Sie den Basisserver nicht in Azure ausführen möchten, können Sie den Server auf einer Hyper-V-VM, einer VMware-VM oder einem physischen Host ausführen. Die empfohlenen Mindestanforderungen für die Serverhardware lauten: zwei Kerne und 8 GB RAM. In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 
 | Betriebssystem | Plattform | SKU |
 |:--- | --- |:--- |
-| Windows Server 2019 |64-Bit |Standard, Datacenter, Essentials (MABS v3 und höher) |
-| Windows Server 2016 und die neuesten SPs |64-Bit |Standard, Datacenter, Essentials (MABS v2 und höher) |
-| Windows Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Datacenter, Foundation |
-| Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Workgroup |
-| Windows Storage Server 2012 und neuesten SPs |64-Bit |Standard, Workgroup |
+| Windows Server 2019 |64-Bit |Standard, Datacenter, Essentials |
+| Windows Server 2016 und die neuesten SPs |64-Bit |Standard, Datacenter, Essentials  |
+
 
 Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](https://technet.microsoft.com/library/dn891438.aspx) bei Bereitstellung auf Hyper-V-VMs.
 
@@ -74,6 +78,7 @@ Unabhängig davon, ob Sie Sicherungsdaten an Azure senden oder lokal speichern, 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
+
 Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
@@ -85,10 +90,10 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
      ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
- 
-
 ## <a name="software-package"></a>Softwarepaket
+
 ### <a name="downloading-the-software-package"></a>Herunterladen des Softwarepakets
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, klicken Sie im Hauptmenü auf **Durchsuchen**.
 
@@ -140,6 +145,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
     Da die Downloadgröße aller Dateien zusammen mehr als 3 G beträgt, dauert es über einen Downloadlink mit 10 MBit/s bis zu 60 Minuten, bis der Download abgeschlossen ist.
 
 ### <a name="extracting-the-software-package"></a>Extrahieren des Softwarepakets
+
 Nachdem Sie alle Dateien heruntergeladen haben, klicken Sie auf **MicrosoftAzureBackupInstaller.exe**. Der **Setup-Assistent von Microsoft Azure Backup** wird gestartet, um die Setupdateien an einem Speicherort Ihrer Wahl zu extrahieren. Fahren Sie mit dem Assistenten fort, und klicken Sie auf die Schaltfläche **Extrahieren** , um den Extrahierungsprozess zu starten.
 
 > [!WARNING]
@@ -152,6 +158,7 @@ Nachdem Sie alle Dateien heruntergeladen haben, klicken Sie auf **MicrosoftAzure
 Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die gerade extrahierte Datei *setup.exe* zu starten und mit der Installation von Microsoft Azure Backup Server zu beginnen. Klicken Sie dann auf die Schaltfläche **Fertig stellen**.
 
 ### <a name="installing-the-software-package"></a>Installieren des Softwarepakets
+
 1. Klicken Sie auf **Microsoft Azure Backup** , um den Setup-Assistenten zu starten.
 
     ![Setup-Assistent von Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
@@ -214,6 +221,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 Wenn der Installationsschritt abgeschlossen ist, wurden auch die Desktopsymbole des Produkts bereits erstellt. Doppelklicken Sie einfach auf das Symbol, um das Produkt zu starten.
 
 ### <a name="add-backup-storage"></a>Hinzufügen von Backup Storage
+
 Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
 
 > [!NOTE]
@@ -256,7 +264,7 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
 3. Setzen Sie das Computerkonto in Active Directory zurück.
 4. Installieren Sie Server 2016 auf dem neuen Computer, und vergeben Sie den gleichen Namen wie für den ursprünglichen Azure Backup-Server.
 5. Führen Sie den Domänenbeitritt durch.
-6. Installieren Sie Azure Backup Server v2 oder höher. (Verschieben Sie die Datenträger für den MABS-Speicherpool vom alten Server, und führen Sie den Import durch.)
+6. Installieren Sie Azure Backup Server v3 oder höher (verschieben Sie die Datenträger für den MABS-Speicherpool vom alten Server, und führen Sie den Import durch).
 7. Stellen Sie die DPMDB aus Schritt 1 wieder her.
 8. Fügen Sie den Speicher vom ursprünglichen Sicherungsserver an den neuen Server an.
 9. Stellen Sie die DPMDB über SQL wieder her.
@@ -269,6 +277,7 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
     Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
 
 ## <a name="network-connectivity"></a>Netzwerkverbindung
+
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 
 Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://account.windowsazure.com/Subscriptions) an.
@@ -285,6 +294,7 @@ Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, k�
 | Verbindung vor mehr als 15 Tagen verloren |Bereitstellung aufgehoben |Beendet |Beendet |Beendet und Azure-Wiederherstellungspunkte gelöscht |Beendet |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Wiederherstellung nach Verbindungsverlust
+
 Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugriff auf Azure verhindert, müssen Sie im Profil der Firewall bzw. des Proxys die folgenden Domänenadressen zulassen:
 
 * `http://www.msftncsi.com/ncsi.txt`
@@ -296,12 +306,14 @@ Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugrif
 Nach dem Wiederherstellen der Verbindung mit Azure für den Azure Backup Server-Computer wird anhand des Azure-Abonnementstatus ermittelt, welche Vorgänge durchgeführt werden können. Die obige Tabelle enthält Details zu den Vorgängen, die nach dem „Verbinden“ des Computers zulässig sind.
 
 ### <a name="handling-subscription-states"></a>Behandeln von Abonnementstatus
+
 Es ist möglich, den Status eines Azure-Abonnements von *Abgelaufen* oder *Bereitstellung aufgehoben* in *Aktiv* zu ändern. Dies ist aber mit Auswirkungen auf das Produktverhalten verbunden, solange der Status nicht *Aktiv* lautet:
 
 * Ein Abonnement mit dem Status *Bereitstellung aufgehoben* verliert für den Zeitraum der Aufhebung die Funktionalität. Beim Festlegen auf *Aktiv*wird die Produktfunktionalität für Sicherung/Wiederherstellung wieder aktiviert. Die Sicherungsdaten auf der lokalen Festplatte können auch abgerufen werden, sofern sie mit einer ausreichend langen Beibehaltungsdauer versehen sind. Die Sicherungsdaten in Azure gehen aber unwiederbringlich verloren, wenn das Abonnement in den Status *Bereitstellung aufgehoben* versetzt wird.
 * Für ein Abonnement mit dem Status *Abgelaufen* geht die Funktionalität nur so lange verloren, bis es wieder in den Status *Aktiv* versetzt wird. Alle Sicherungen für den Zeitraum, in dem sich das Abonnement im Status *Abgelaufen* befindet, werden nicht ausgeführt.
 
 ## <a name="upgrade-mabs"></a>Durchführen eines Upgrades von MABS
+
 Verwenden Sie die folgenden Verfahren, um ein Upgrade für MABS durchzuführen.
 
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Durchführen eines Upgrades von MABS v2 auf v3
@@ -332,15 +344,13 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 4. Sicherungen sollten fortgesetzt werden, ohne dass Ihre Produktionsserver neugestartet werden müssen.
 5. Nun können Sie mit der Konfiguration von Schutzmaßnahmen für Ihre Daten beginnen. Wenn Sie bei bestehendem Schutz ein Upgrade auf Modern Backup Storage durchführen, können Sie auch die Volumes auswählen, in denen die Sicherungen gespeichert werden sollen und auf unzureichend bereitgestellten Speicher prüfen. [Weitere Informationen](backup-mabs-add-storage.md)
 
-> [!NOTE]
->
-> Falls Sie ein Upgrade von MABS v1 auf v2 durchführen, stellen Sie sicher, dass Ihr Betriebssystem Windows Server 2016 oder Windows Server 2012 R2 ist. Um neue System Center 2016 Data Protection Manager-Features wie Modern Backup Storage nutzen zu können, müssen Sie Backup Server v2 unter Windows Server 2016 installieren. Machen Sie sich vor der Installation von oder einem Upgrade auf Backup Server v2 mit den für MABS geltenden [Installationsvoraussetzungen](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) vertraut.
-
 ## <a name="troubleshooting"></a>Problembehandlung
+
 Wenn auf dem Microsoft Azure Backup-Server während der Installationsphase (oder bei der Sicherung oder der Wiederherstellung) Fehler auftreten, verwenden Sie dieses [Dokument mit Fehlercodes](https://support.microsoft.com/kb/3041338), um weitere Informationen zu erhalten.
 Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Ausführliche Informationen zum [Vorbereiten der Umgebung für DPM](https://technet.microsoft.com/library/hh758176.aspx) finden Sie auf der Microsoft TechNet-Website. Sie finden dort auch Informationen zu den unterstützten Konfigurationen, unter denen Azure Backup Server bereitgestellt und verwendet werden kann. Sie können eine Reihe von [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) für verschiedene Vorgänge verwenden.
 
 In den folgenden Artikeln finden Sie zusätzliche Informationen zum Workloadschutz mit einem Microsoft Azure Backup-Server.

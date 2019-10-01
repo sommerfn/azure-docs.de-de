@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abaf234d3b216e0f67501e5d2f2f5c3f874c5d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56d3d01e39adfeb6bf2ef5e7e7d595f49c90f5a5
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111244"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268278"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Desktop-App, die Web-APIs aufruft – Aufrufen einer Web-API
 
@@ -33,6 +33,36 @@ Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufru
 <!--
 More includes will come later for Python and Java
 -->
+
+## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Aufrufen einer Web-API in MSAL für iOS und macOS
+
+Diese Methoden zum Abrufen von Token geben ein `MSALResult`-Objekt zurück. `MSALResult` stellt eine `accessToken`-Eigenschaft bereit, die verwendet werden kann, um eine Web-API aufzurufen. Das Zugriffstoken muss dem HTTP-Autorisierungsheader hinzugefügt werden, bevor der Aufruf zum Zugriff auf die geschützte Web-API erfolgt.
+
+Objective-C:
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
+
+Swift:
+
+```swift
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
+```
 
 ## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Aufrufen mehrerer APIs – Inkrementelle Zustimmung und bedingter Zugriff
 

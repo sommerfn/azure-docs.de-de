@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101428"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240999"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure (Vorschauversion)
 
@@ -50,7 +50,7 @@ Das folgende Diagramm bietet einen allgemeinen Überblick über die verbundene L
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Die Vorschauversion der cloudübergreifenden Konnektivität ist auf die Azure-Region „USA, Osten“ (eastus) und die OCI-Region „Ashburn“ (us-ashburn-1) beschränkt.
+* Die Vorschauversion der cloudübergreifenden Konnektivität ist auf die Azure-Regionen „USA, Osten“ (eastus), „Vereinigtes Königreich, Süden“ (uksouth) und die OCI-Regionen „Ashburn“ (USA, Osten) und London (Vereinigtes Königreich, Süden) beschränkt. Verwenden Sie für die Region „Vereinigtes Königreich, Süden“ die Verfügbarkeitsdomäne 1 (AD 1) in OCI, wenn Sie die Konnektivität für geringere Latenzen bereitstellen.
 
 ## <a name="networking"></a>Netzwerk
 

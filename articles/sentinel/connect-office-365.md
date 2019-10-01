@@ -1,32 +1,29 @@
 ---
-title: Herstellen der Verbindung von Office 365-Daten mit Azure Sentinel Preview | Microsoft-Dokumentation
+title: Herstellen einer Verbindung von Office 365-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Verbindung von Office 365-Daten mit Azure Sentinel herstellen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018998"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240660"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Herstellen der Verbindung von Daten aus Office 365-Protokollen
 
-> [!IMPORTANT]
-> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) mit einem einzigen Klick an Azure Sentinel streamen. Sie können Überwachungsprotokolle von mehreren Mandanten an einen einzigen Arbeitsbereich in Azure Sentinel streamen. Der Office 365-Aktivitätsprotokoll-Connector bietet Einblick in die aktuellen Benutzeraktivitäten. Sie erhalten Informationen über unterschiedliche Benutzer-, Administrator-, System- und Richtlinienaktionen und -ereignisse aus Office 365. Durch Verbinden von Office 365-Protokollen mit Azure Sentinel können Sie diese Daten verwenden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Ihren Untersuchungsprozess zu verbessern.
 
@@ -36,7 +33,7 @@ Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie müssen globaler Administrator oder Sicherheitsadministrator für Ihren Mandanten sein.
-- Stellen Sie sicher, dass auf dem Computer, von dem Sie sich bei Azure Sentinel zum Erstellen der Verbindung angemeldet haben, Port 4433 für Webdatenverkehr geöffnet ist.
+- Stellen Sie sicher, dass auf dem Computer, von dem Sie sich bei Azure Sentinel zum Erstellen der Verbindung angemeldet haben, Port 4433 für Webdatenverkehr geöffnet ist. Dieser Port kann wieder geschlossen werden, nachdem die Verbindung erfolgreich hergestellt wurde.
 - Wenn Ihr Mandant nicht über eine Office 365 E3- oder Office 365 E5-Lizenz verfügt, müssen Sie die einheitliche Überwachung auf Ihrem Mandanten mithilfe eines der folgenden Prozesse aktivieren:
     - [Verwenden des Cmdlets „Set-AdminAuditLogConfig“](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) und Aktivieren des Parameters „UnifiedAuditLogIngestionEnabled“.
     - [Oder Verwenden der Benutzeroberfläche des Security & Compliance Centers](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
@@ -58,5 +55,5 @@ Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Office 365 mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
 

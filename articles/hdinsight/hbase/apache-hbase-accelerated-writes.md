@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091728"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179094"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight Accelerated Writes für Apache HBase
 
@@ -54,6 +54,12 @@ flush 'mytable'
 ```
 disable 'mytable'
 ```
+
+Führen Sie beim zentralen Herunterskalieren des Clusters ähnliche Schritte aus: Leeren Sie Ihre Tabellen, und deaktivieren Sie sie, um den Eingang von Daten zu beenden. Sie können Ihren Cluster nicht auf weniger als drei Knoten zentral herunterskalieren.
+
+Wenn Sie diese Schritte ausführen, stellen Sie eine erfolgreiche zentrale Herunterskalierung sicher und vermeiden die Möglichkeit, dass ein Namensknoten aufgrund von unterreplizierten oder temporären Dateien in den abgesicherten Modus wechselt.
+
+Wenn Ihr Namensknoten nach dem zentralen Herunterskalieren in den abgesicherten Modus wechselt, verwenden Sie HDFS-Befehle, um die unterreplizierten Blöcke erneut zu replizieren und den abgesicherten Modus für HDFS aufzuheben. Mit dieser erneuten Replikation können Sie HBase erfolgreich neu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

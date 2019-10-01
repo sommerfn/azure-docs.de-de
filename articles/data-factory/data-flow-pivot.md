@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348446"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178671"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory-Pivottransformation
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -55,6 +55,12 @@ Verwenden Sie die ADF-Datenfluss-Ausdruckssprache, um die Transformationen der p
 ## <a name="pivot-metadata"></a>Pivotmetadaten
 
 Die Pivottransformation generiert auf der Basis Ihrer eingehenden Daten neue, dynamische Spaltendaten. Der Pivotschlüssel produziert die Werte für jeden neuen Spaltennamen. Wenn Sie keine einzelnen Namen angeben und dynamische Spaltennamen für jeden eindeutigen Wert in Ihrem Pivotschlüssel erstellen möchten, werden die Metadaten auf der Benutzeroberfläche nicht in „Untersuchen“ angezeigt, und es gibt keine Spaltenweitergabe an die Sink-Transformation. Wenn Sie Werte für den Pivotschlüssel festlegen, kann ADF die neuen Spaltennamen bestimmen, und diese Spaltennamen stehen Ihnen in der Inspect- und Sink-Zuordnung zur Verfügung.
+
+### <a name="generate-a-new-model-from-dynamic-columns"></a>Generieren eines neuen Modells aus dynamischen Spalten
+
+Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie können diese neuen Spalten in Metadaten umwandeln, auf die später im Datenfluss verwiesen werden kann. Klicken Sie hierzu auf die Registerkarte „Datenvorschau“. Alle neuen Spalten, die von Ihrer Pivot-Transformation generiert werden, werden mit einem „abweichenden“ Symbol in der Tabellenkopfzeile angezeigt. Klicken Sie auf die Schaltfläche „Abweichende zuordnen“, um diese neuen Spalten in Metadaten umzuwandeln, sodass Sie zu einem Teil des Modells des Datenflusses werden.
+
+![Pivotspalten](media/data-flow/newpivot1.png "Zuordnen abweichender Pivotspalten")
 
 ### <a name="landing-new-columns-in-sink"></a>Bereitstellen neuer Spalten in Sink
 

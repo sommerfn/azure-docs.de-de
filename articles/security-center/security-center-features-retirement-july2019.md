@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910571"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202208"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
+
 > [!NOTE]
 > Dieses Dokument enthält eine Liste der Funktionen, die zum 31. Juli 2019 in Azure Security Center eingestellt wurden.
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
-
 Wir haben in den sechs Monaten bis zum Juli 2019 verschiedene [Verbesserungen](https://azure.microsoft.com/updates/?product=security-center) an Azure Security Center vorgenommen.
 Aufgrund dieser verbesserten Funktionen wurden am 31. Juli 2019 eine Reihe redundanter Features sowie zugehörige APIs aus Security Center entfernt.
 
-Die meisten dieser eingestellten Features können mit neuer Funktionalität in Azure Security Center oder Azure Log Analytics ersetzt werden. Andere Features können mithilfe von [Azure Sentinel (Vorschau)](https://azure.microsoft.com/services/azure-sentinel/) implementiert werden.
+Die meisten dieser veralteten Features können durch eine andere Funktionalität in Azure Security Center oder Azure Log Analytics ersetzt werden. Andere Features können mithilfe von [Azure Sentinel (Vorschau)](https://azure.microsoft.com/services/azure-sentinel/) implementiert werden.
 
 Zu den eingestellten Security Center-Features zählen:
 
@@ -104,11 +103,11 @@ Wir haben die Schaltfläche **Zu Sicherheitsereignisübersicht wechseln** und da
 
 ![Karte mit Sicherheitswarnungen – Schaltfläche][10]
 
-Wenn Sie die Schaltfläche **Klicken Sie auf Sicherheit Ereignisse Karte** auswählen, öffnen Sie das Dashboard „Informationen zu Bedrohungen“. Das Dashboard „Informationen zu Bedrohungen“ wurde eingestellt.
+Wenn Sie die Schaltfläche **Klicken Sie auf Sicherheit Ereignisse Karte** auswählen, wurde das Dashboard mit Informationen zu Bedrohungen (jetzt veraltet) geöffnet.
 
 ![Dashboard „Informationen zu Bedrohungen“][11]
 
-Wenn Sie einen Arbeitsbereich auswählen, um das zugehörige Dashboard „Informationen zu Bedrohungen“ aufzurufen, öffnen Sie den Bildschirm mit der Karte für Sicherheitswarnungen (Vorschau) in Log Analytics. Dieser Bildschirm wurde eingestellt.
+Wenn Sie einen Arbeitsbereich auswählen, um das zugehörige Dashboard zu den Informationen zu Bedrohungen aufzurufen, haben Sie den Bildschirm mit der Karte für Sicherheitswarnungen (Vorschau) in Log Analytics geöffnet.
 
 ![Karte mit Sicherheitswarnungen in Log Analytics][12]
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142330"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178632"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratives Entwickeln und Debuggen mit Azure Data Factory
 
@@ -51,6 +51,10 @@ Sie können alle Debugausführungen visualisieren, die an einem Ort für Ihre Da
 ![Auswählen des Symbols zum Anzeigen aktiver Debugausführungen](media/iterative-development-debugging/view-debug-runs-image1.png)
 
 ![Beispielauflistung aktiver Debugausführungen](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+Wenn Sie über aktive Datenfluss-Debugsitzungen verfügen, werden diese Sitzungen im unteren Teil des aktiven Debugfensters angezeigt. Sie können eine aktive Datenflusssitzung auswählen und den jeweiligen Cluster beenden.
+
+![Beispielauflistung aktiver Datenfluss-Debugausführungen](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>Überwachen von Debugausführungen
 

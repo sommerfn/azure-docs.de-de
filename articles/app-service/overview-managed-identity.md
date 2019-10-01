@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098468"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260139"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -309,7 +309,10 @@ Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die 
 > |resource|Abfragen|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
 > |api-version|Abfragen|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
 > |secret|Header|Der Wert der Umgebungsvariable „MSI_SECRET“. Dieser Header wird als Maßnahme gegen SSRF-Angriffe (Server-Side Request Forgery) verwendet.|
-> |clientid|Abfragen|(Optional) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
+> |clientid|Abfragen|(Optional, sofern nicht benutzerseitig zugewiesene Identität) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
+
+> [!IMPORTANT]
+> Wenn Sie Token für vom benutzerseitig zugewiesene Identitäten abrufen möchten, müssen Sie die `clientid`-Eigenschaft einbinden. Andernfalls versucht der Tokendienst, ein Token für eine vom System zugewiesene Identität abzurufen, die möglicherweise nicht vorhanden ist.
 
 Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigenschaften:
 
