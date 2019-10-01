@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: Erstellen eines Hostpools mit PowerShell
       href: create-host-pools-powershell.md
+    - name: "Bereitstellen eines virtuellen Windows\_7-Computers in Windows Virtual Desktop"
+      href: deploy-windows-7-virtual-machine.md
     - name: Anwenden einer Windows-Lizenz auf Windows Virtual Desktop-Sitzungshosts
       href: apply-windows-license.md
     - name: Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
+    - name: "Problembehandlung für virtuelle Windows\_7-Computer in Windows Virtual Desktop"
+      href: troubleshoot-windows-7-vm.md
     - name: Remotedesktop-Clientverbindungen
       href: troubleshoot-client-connection.md
     - name: 'Windows Virtual Desktop: PowerShell'

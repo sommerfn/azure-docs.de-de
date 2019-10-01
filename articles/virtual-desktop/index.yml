@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zu Windows Virtual Desktop (Vorschauversion)
+title: Dokumentation zu Windows Virtual Desktop
 metadata:
-  title: 'Dokumentation zu Windows Virtual Desktop (Vorschauversion): Tutorials, Schnellstartanleitungen, API-Referenz | Microsoft-Dokumentation'
-  description: "Windows Virtual Desktop (Vorschauversion) für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
+  title: 'Dokumentation zu Windows Virtual Desktop: Tutorials, Schnellstartanleitungen, API-Referenz | Microsoft-Dokumentation'
+  description: "Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -17,11 +17,11 @@ sections:
   - title: Übersicht
     items:
       - type: paragraph
-        text: 'Hier finden Sie Informationen zu Windows Virtual Desktop (Vorschauversion) und zur Verwendung. In Tutorials, Leitfäden, Referenzinhalten und mehr wird veranschaulicht, wie Sie Hostpools und Mandanten einrichten und Benutzern Rollen für Ihre Windows Virtual Desktop-Umgebung zuweisen.'
+        text: 'Enthält Informationen zu Windows Virtual Desktop und zur Verwendung. In Tutorials, Leitfäden, Referenzinhalten und mehr wird veranschaulicht, wie Sie Hostpools und Mandanten einrichten und Benutzern Rollen für Ihre Windows Virtual Desktop-Umgebung zuweisen.'
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/virtual-desktop/overview">Was ist Windows Virtual Desktop (Vorschauversion)?</a>
+          - html: <a href="/azure/virtual-desktop/overview">Was ist Windows Virtual Desktop?</a>
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph

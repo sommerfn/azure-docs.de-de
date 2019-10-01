@@ -206,6 +206,8 @@
       items:
         - name: "Blobs, Warteschlangen und Dateien (Version\_12.x – Vorschau)"
           href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: 'Blobs, Warteschlangen und Dateien (Version 8)'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
         - name: Speicherressourcenanbieter
           href: /java/api/overview/azure/storage/management
     - name: Node.js
@@ -269,8 +271,8 @@
           href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
         - name: Azure-Konfigurations-Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
-        - name: Azure Storage-Datenverschiebungsbibliothek
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Bibliothek des Speicherressourcenanbieters
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: Quellcode
       items:
         - name: .NET
@@ -284,11 +286,13 @@
             - name: Datenverschiebungsbibliothek
               href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Bibliothek des Speicherressourcenanbieters
-              href: /dotnet/api/overview/azure/storage/management
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
             - name: "Azure Storage-Clientbibliothek, Version\_12.x (Vorschau)"
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: 'Blobs, Warteschlangen und Dateien (Version 8)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
             - name: "Azure Storage-Clientbibliothek, Version\_8.x und früher"
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

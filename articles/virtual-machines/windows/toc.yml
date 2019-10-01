@@ -36,13 +36,15 @@
     - name: '10: Steuern virtueller Computer'
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: '11: Überwachen und Aktualisieren von virtuellen Computern'
-      href: tutorial-monitoring.md
-    - name: '12: Verwalten der VM-Sicherheit'
+    - name: '11: Nachverfolgen und Aktualisieren von virtuellen Computern'
+      href: tutorial-config-management.md
+    - name: '12: Überwachen virtueller Computer'
+      href: tutorial-monitor.md
+    - name: '13: Verwalten der VM-Sicherheit'
       href: tutorial-azure-security.md
-    - name: '13: Installieren eines SQL-\IIS-\.NET-Stapels'
+    - name: '14: Installieren eines SQL-\IIS-\.NET-Stapels'
       href: tutorial-iis-sql.md
-    - name: '14: Sichern von Webservern mit SSL'
+    - name: '15: Sichern von Webservern mit SSL'
       href: tutorial-secure-web-server.md
 - name: Beispiele
   items:
