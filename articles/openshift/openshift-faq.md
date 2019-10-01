@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991644"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203538"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -164,3 +164,45 @@ Ausführlichere Informationen hierzu finden Sie unter [OpenShift Container Platf
 Azure Red Hat OpenShift unterstützt VNET-Peering und ermöglicht es dem Kunden, ein VNET, mit dem Peering erfolgt, und einen VNET-CIDR bereitzustellen, in dem das OpenShift-Netzwerk funktioniert.
 
 Das von ARO erstellte VNET wird geschützt und akzeptiert keine Konfigurationsänderungen. Das VNET, für das Peering erfolgt ist, wird vom Kunden gesteuert und befindet sich in dessen Abonnement.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Befindet sich der Cluster in einem Kundenabonnement? 
+
+Die verwaltete Azure-Anwendung befindet sich in einer gesperrten Ressourcengruppe im Kundenabonnement. Der Kunde kann Objekte in dieser Ressourcengruppe anzeigen, aber nicht ändern.
+
+## <a name="is-the-sdn-module-configurable"></a>Ist das SDN-Modul konfigurierbar?
+
+SDN ist „openshift-ovs-networkpolicy“ und kann nicht konfiguriert werden.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Welche UNIX-Rechte (in IaaS) sind für Master/Infra/App-Knoten verfügbar?
+
+Für dieses Angebot nicht zutreffend. Knotenzugriff ist unzulässig.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Welche OCP-Rechte haben wir? Clusteradministrator? Projektadministrator?
+
+Weitere Informationen finden Sie in der Azure Red Hat OpenShift-[Übersicht für Clusteradministration](https://docs.openshift.com/aro/admin_guide/index.html).
+
+## <a name="which-kind-of-federation-with-ldap"></a>Welche Art von Verbund liegt mit LDAP vor?
+
+Dies wird über Azure AD-Integration erreicht. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Gibt es irgendein Element in ARO, das für andere Kunden freigegeben ist? Oder ist alles unabhängig?
+
+Jeder Azure Red Hat OpenShift-Cluster ist einem bestimmten Kunden zugeordnet und befindet sich im Abonnement des Kunden. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Können wir eine permanente Speicherlösung auswählen? OCS? 
+
+Es sind zwei Speicherklassen zur Auswahl verfügbar: Azure-Datenträger (Azure Disk) und Azure-Datei (Azure File).
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Wie wird ein Cluster aktualisiert (einschließlich Hauptversionen und Nebenversionen aufgrund von Sicherheitsrisiken)?
+
+Informationen hierzu finden Sie unter [Wie sieht der allgemeine Upgradeprozess aus?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Welche Azure Load Balancer-Variante wird von ARO verwendet?  Ist es die Standard- oder Basic-Variante, und ist diese konfigurierbar?
+
+ARO verwendet Standard-Variante von Azure Load Balancer, und diese ist nicht konfigurierbar.
+
+## <a name="can-aro-use-netapp-based-storage"></a>Kann ARO NetApp-basierten Speicher verwenden?
+
+Zurzeit werden nur die Speicherklassen „Azure-Datenträger“ und „Azure-Datei“ unterstützt. 
+
+

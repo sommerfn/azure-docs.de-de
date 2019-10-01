@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 27f86660de4f37142829114780ab9c198cb1858d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088505"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162591"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Remoteverbindung mit einer VM kann nicht hergestellt werden, da der RDP-Port in der NSG nicht aktiviert ist
 
@@ -42,9 +42,8 @@ Führen Sie diese Schritte aus, um den RDP-Port in einer NSG zu aktivieren:
 4. Überprüfen Sie unter **Regeln für eingehende Ports**, ob der Port für RDP richtig festgelegt ist. Hier ist ein Beispiel für die Konfiguration angegeben: 
 
     **Priorität:** 300 </br>
-    **Port:** 3389 </br>
-    **Name:** Port_3389 </br>
-    **Port:** 3389 </br>
+    **Name**: Port_3389 </br>
+    **Port(Ziel)** : 3389 </br>
     **Protokoll:** TCP </br>
     **Quelle:** Any </br>
     **Ziele:** Any </br>

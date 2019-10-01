@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035597"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170438"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -63,10 +63,10 @@ Verwenden Sie diese Tools für Azure Machine Learning:
 + <a href="#compute-targets">Computeziele</a>
 + <a href="#training-scripts">Trainingsskript</a>
 + <a href="#runs">Run</a>
++ <a href="#environments">Umgebungen</a>
 + <a href="#github-tracking-and-integration">Git-Tracking</a>
 + <a href="#snapshots">Momentaufnahme</a>
 + <a href="#activities">Aktivität</a>
-+ <a href="#images">Image</a>
 + <a href="#deployment">Bereitstellung</a>
 + <a href="#web-service-deployments">Webdienste</a>
 + <a href="#iot-module-deployments">IoT-Module</a>
@@ -180,28 +180,15 @@ Eine Aktivität stellt einen Vorgang mit langer Ausführungsdauer dar. Die folge
 
 Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberfläche bereitstellen, damit Sie den Status dieser Vorgänge auf einfache Weise überwachen können.
 
-### <a name="images"></a>Bilder
+### <a name="environments"></a>Umgebungen
 
-Images sind eine Möglichkeit für die zuverlässige Bereitstellung eines Modells mit allen Komponenten, die für die Verwendung des Modells benötigt werden. Ein Image enthält die folgenden Elemente:
+Azure ML-Umgebungen werden verwendet, um die Konfiguration (Docker/Python/Spark/usw.) anzugeben, die dazu verwendet wird, eine reproduzierbare Umgebung für Datenaufbereitung, Modelltraining und Modellspeisung zu erstellen. Dabei handelt es sich um verwaltete und versionsverwaltete Entitäten innerhalb Ihres Azure Machine Learning-Arbeitsbereichs, die reproduzierbare, überprüfbare und portierbare Machine Learning-Workflows über verschiedene Computeziele hinweg ermöglichen.
 
-* Ein Modell.
-* Ein Bewertungsskript oder eine entsprechende Anwendung. Sie verwenden das Skript, um die Eingabe an das Modell zu übergeben und die Ausgabe des Modells zurückzugeben.
-* Die Abhängigkeiten, die vom Modell oder dem Bewertungsskript bzw. der Bewertungsanwendung benötigt werden. Beispielsweise können Sie eine Conda-Umgebungsdatei einfügen, in der Python-Paketabhängigkeiten aufgeführt werden.
+Sie können ein Umgebungsobjekt auf Ihrem lokalen Compute verwenden, um Ihr Trainingsskript zu entwickeln, dieselbe Umgebung auf Azure Machine Learning Compute für das skalierte Modelltraining wiederverwenden und Ihr Modell sogar mit dieser selben Umgebung bereitstellen. 
 
-Azure Machine Learning kann zwei Arten von Images erstellen:
+Erfahren Sie, wie Sie für Training und Rückschluss [eine wiederverwendbare ML-Umgebung erstellen und verwalten](how-to-use-environments.md).
 
-* **FPGA-Image**: Wird beim Bereitstellen eines FPGA (Field-Programmable Gate Array) in Azure verwendet.
-* **Docker-Image**: Wird beim Bereitstellen auf anderen Computezielen als FPGA verwendet. Beispiele hierfür sind Azure Container Instances und Azure Kubernetes Service.
 
-Azure Machine Learning bietet ein Basisimage, das standardmäßig verwendet wird. Sie können auch Ihre eigenen benutzerdefinierten Images angeben.
-
-### <a name="image-registry"></a>Imageregistrierung
-
-Images werden in der **Imageregistrierung** in Ihrem Arbeitsbereich katalogisiert. Sie können beim Erstellen des Images zusätzliche Metadatentags bereitstellen, damit Sie diese später abfragen können, um Ihr Image zu ermitteln.
-
-Ein Beispiel für die Erstellung eines Images finden Sie unter [Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
-
-Ein Beispiel für die Bereitstellung eines Modells mit einem benutzerdefinierten Image finden Sie unter [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md).
 
 ### <a name="deployment"></a>Bereitstellung
 

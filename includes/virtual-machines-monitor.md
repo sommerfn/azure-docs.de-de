@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 11c9b2ea3ea054415f25f864651df28288aa0025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178064"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266839"
 ---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -54,12 +54,12 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 
 Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem Sie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) oder [Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/) verwenden.
 
-[Azure-Diagnoseprotokolle](../articles/azure-monitor/platform/diagnostic-logs-overview.md) sind von Ihrer VM ausgegebene Protokolle, die umfassende häufig verwendete Daten zum Betrieb der VM enthalten. Diagnoseprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
+[Azure-Ressourcenprotokolle](../articles/azure-monitor/platform/resource-logs-overview.md) sind von Ihrer VM ausgegebene Protokolle, die ausführliche Daten über den Betrieb der VM enthalten. Ressourcenprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
 
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
 - Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
-- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md).
 - Analysieren Sie sie mit [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 33f3b03ba76a0c3fd33e057d0f15b2ab7a0f44e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089502"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273863"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -205,9 +205,9 @@ Sie können ein verwaltetes Image aus einer Momentaufnahme eines generalisierten
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Erstellen eines Images aus einer VHD in einem Speicherkonto
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Erstellen eines Images aus einer VM, für die ein Speicherkonto verwendet wird
 
-Erstellen Sie ein verwaltetes Image aus einer generalisierten Betriebssystem-VHD in einem Speicherkonto. Sie benötigen den URI der VHD im Speicherkonto mit dem Format „https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer*/*vhdfilename.vhd*“. In diesem Beispiel befindet sich die VHD unter *mystorageaccount* in einem Container namens *vhdcontainer*, und der VHD-Dateiname lautet *vhdfilename.vhd*.
+Um ein verwaltetes Image aus einer VM zu erstellen, für die keine verwalteten Datenträger verwendet werden, benötigen Sie den URI der Betriebssystem-VHD im Speicherkonto im folgenden Format: „https://*meinspeicherkonto*.blob.core.windows.net/*vhdcontainer*/*vhddateiname.vhd*“. In diesem Beispiel befindet sich die VHD unter *mystorageaccount* in einem Container namens *vhdcontainer*, und der VHD-Dateiname lautet *vhdfilename.vhd*.
 
 
 1.  Erstellen Sie einige Variablen.

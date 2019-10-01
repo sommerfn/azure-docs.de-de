@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163301"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174126"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -296,17 +296,76 @@ Wenn das Betriebssystem Microsoft Windows 10 ist, fahren Sie mit den folgenden A
 
 16. Wenn die Ausführung der Cmdlets abgeschlossen ist, starten Sie die VM mit dem fehlerhaften parallelen Stapel neu.
 
-## <a name="remote-licensing-model-is-not-configured"></a>Remotelizenzierungsmodell ist nicht konfiguriert
+## <a name="remote-licensing-model-isnt-configured"></a>Remotelizenzierungsmodell ist nicht konfiguriert
 
-Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administratorkonto anmelden, erhalten Sie möglicherweise folgende Benachrichtigung: „Der Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert. Die Remotedesktopdienste können in X Tagen nicht mehr ausgeführt werden. Geben Sie mit dem Server-Manager auf dem Verbindungsbrokerserver einen Remotedesktop-Lizenzierungsmodus an.“ Wenn diese Meldung angezeigt wird, müssen Sie den Lizenzierungsmodus manuell auf **Pro Benutzer** festlegen.
+Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administratorkonto anmelden, erhalten Sie möglicherweise folgende Benachrichtigung: „Der Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert. Die Remotedesktopdienste können in X Tagen nicht mehr ausgeführt werden. Geben Sie mit dem Server-Manager auf dem Verbindungsbrokerserver einen Remotedesktop-Lizenzierungsmodus an.“
 
-So konfigurieren Sie den Lizenzierungsmodus manuell:  
+Wenn das Zeitlimit abgelaufen ist, wird die folgende Fehlermeldung angezeigt: „Die Verbindung mit der Remotesitzung wurde getrennt, da keine Remotedesktop-Clientzugriffslizenzen für diesen Computer vorhanden sind.“
 
-1. Wechseln Sie im Menü **Start** zum Suchfeld. Dann suchen und öffnen Sie **gpedit.msc**, um auf den Editor für lokale Gruppenrichtlinien zuzugreifen. 
-2. Navigieren Sie zu  **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Lizenzierung**. 
-3. Wählen Sie **Remotedesktop-Lizenzierungsmodus festlegen** aus, und ändern Sie ihn in **Pro Benutzer**.
+Wenn eine dieser Meldungen angezeigt wird, müssen Sie den Gruppenrichtlinien-Editor öffnen und den Lizenzierungsmodus manuell auf **Pro Benutzer** festlegen. Der manuelle Konfigurationsprozess ist je nachdem, welche Version von Windows 10 Enterprise (mehrere Sitzungen) Sie verwenden, unterschiedlich. In den folgenden Abschnitten wird erläutert, wie Sie die Versionsnummer überprüfen, und welche Aktionen für jede Version auszuführen sind.
 
-Derzeit untersuchen wir die Probleme mit dem Timeout für Benachrichtigung und Karenzzeit. Diese sollen in einem kommenden Update behandelt werden. 
+>[!NOTE]
+>Windows Virtual Desktop erfordert nur dann eine RDS-Clientzugriffslizenz (Client Access License, CAL), wenn Ihr Hostpool Windows Server-Sitzungshosts enthält. Informationen zum Konfigurieren einer RDS-CAL finden Sie unter [Lizenzieren deiner RDS-Bereitstellung mit Clientzugriffslizenzen (CALs)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Ermitteln, welche Version von Windows 10 Enterprise (mehrere Sitzungen) verwendet wird
+
+Gehen Sie wie folgt vor, um zu ermitteln, mit welcher Version von Windows 10 Enterprise (mehrere Sitzungen) Sie arbeiten:
+
+1. Melden Sie sich mit Ihrem Administratorkonto an.
+2. Geben Sie „Info“ in die Suchleiste neben dem Startmenü ein.
+3. Wählen Sie **PC-Infos** aus.
+4. Überprüfen Sie die Nummer neben „Version“. Die Nummer muss entweder „1809“ oder „1903“ lauten, wie in der folgenden Abbildung dargestellt.
+   
+    ![Screenshot des Fensters für Windows-Spezifikationen Die Versionsnummer ist blau hervorgehoben.](media/windows-specifications.png)
+
+Nun, da Sie die Versionsnummer wissen, wechseln Sie zu dem entsprechenden Abschnitt.
+
+### <a name="version-1809"></a>Version 1809
+
+Wenn die Versionsnummer „1809“ lautet, können Sie entweder auf Windows 10 Enterprise (mehrere Sitzungen), Version 1903, aktualisieren oder den Hostpool mit dem neuesten Image erneut bereitstellen.
+
+So aktualisieren Sie auf Windows 10, Version 1903
+
+1. Sofern noch nicht geschehen, laden Sie das [Windows-Update vom 10. Mai 2019](https://support.microsoft.com/help/4028685/windows-10-get-the-update) herunter, und installieren Sie es.
+2. Melden Sie sich mit Ihrem Administratorkonto bei Ihrem Computer an.
+3. Führen Sie **gpedit.msc** aus, um den Gruppenrichtlinien-Editor zu öffnen.
+4. Navigieren Sie unter „Computerkonfiguration“ zu **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopsitzungs-Host** > **Lizenzierung**.
+5. Wählen Sie **Remotedesktop-Lizenzierungsmodus festlegen** aus.
+6. Wählen Sie im daraufhin angezeigten Fenster zuerst die Option **Aktiviert** aus, und geben Sie dann unter „Optionen“ den Lizenzierungsmodus für den RD-Sitzungshostserver als **Pro Benutzer** an, wie in der folgenden Abbildung dargestellt.
+    
+    ![Screenshot des Fensters „Remotedesktop-Lizenzierungsmodus festlegen“ mit Konfigurationseinstellungen gemäß Schritt 6](media/group-policy-editor-per-user.png)
+
+7. Wählen Sie **Übernehmen**.
+8. Klicken Sie auf **OK**.
+9.  Starten Sie den Computer neu.
+
+So stellen Sie den Hostpool mit dem neuesten Image erneut bereit
+
+1. Führen Sie die unter [Erstellen eines Hostpools mit dem Azure Marketplace](create-host-pools-azure-marketplace.md) aufgeführten Schritte aus, bis Sie zur Auswahl der Betriebssystemversion des Image aufgefordert werden. Sie können Windows 10 Enterprise (mehrere Sitzungen) mit oder ohne Office365 ProPlus auswählen.
+2. Melden Sie sich mit Ihrem Administratorkonto bei Ihrem Computer an.
+3. Führen Sie **gpedit.msc** aus, um den Gruppenrichtlinien-Editor zu öffnen.
+4. Navigieren Sie unter „Computerkonfiguration“ zu **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopsitzungs-Host** > **Lizenzierung**.
+5. Wählen Sie **Remotedesktop-Lizenzierungsmodus festlegen** aus.
+6. Wählen Sie im daraufhin angezeigten Fenster zuerst die Option **Aktiviert** aus, und geben Sie dann unter „Optionen“ den Lizenzierungsmodus für den RD-Sitzungshostserver als **Pro Benutzer** an.
+7. Wählen Sie **Übernehmen**.
+8. Klicken Sie auf **OK**.
+9.  Starten Sie den Computer neu.
+
+### <a name="version-1903"></a>Version 1903
+
+Wenn die Versionsnummer „1903“ lautet, gehen Sie wie folgt vor:
+
+1. Melden Sie sich mit Ihrem Administratorkonto bei Ihrem Computer an.
+2. Führen Sie **gpedit.msc** aus, um den Gruppenrichtlinien-Editor zu öffnen.
+3. Navigieren Sie unter „Computerkonfiguration“ zu **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopsitzungs-Host** > **Lizenzierung**.
+4. Wählen Sie **Remotedesktop-Lizenzierungsmodus festlegen** aus.
+6. Wählen Sie im daraufhin angezeigten Fenster zuerst die Option **Aktiviert** aus, und geben Sie dann unter „Optionen“ den Lizenzierungsmodus für den RD-Sitzungshostserver als **Pro Benutzer** an, wie in der folgenden Abbildung dargestellt.
+    
+    ![Screenshot des Fensters „Remotedesktop-Lizenzierungsmodus festlegen“ mit Konfigurationseinstellungen gemäß Schritt 6](media/group-policy-editor-per-user.png)
+
+7. Wählen Sie **Übernehmen**.
+8. Klicken Sie auf **OK**.
+9.  Starten Sie den Computer neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

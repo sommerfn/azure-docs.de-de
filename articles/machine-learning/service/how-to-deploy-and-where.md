@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f70975749be52e8498488d7019bf5cb8d858df54
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034688"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162569"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 
@@ -65,7 +65,7 @@ Der folgende Code veranschaulicht, wie Sie mithilfe von Informationen, die in de
 Ein registriertes Modell ist ein logischer Container für eine oder mehrere Dateien, aus denen Ihr Modell besteht. Wenn Sie beispielsweise ein Modell verwenden, das in mehreren Dateien gespeichert ist, können Sie diese als einzelnes Modell im Arbeitsbereich registrieren. Nachdem Sie die Dateien registriert haben, können Sie das registrierte Modell herunterladen oder bereitstellen und alle Dateien empfangen, die Sie registriert haben.
 
 > [!TIP]
-> Wenn Sie ein Modell registrieren, geben Sie den Pfad eines Cloudspeicherorts (aus einem Trainingslauf) oder eines lokalen Verzeichnisses an. Dieser Pfad wird lediglich dazu verwendet, die Dateien während des Registrierungsprozesses für das Hochladen zu finden. Er muss nicht mit dem Pfad identisch sein, der im Eingabeskript verwendet wird. Weitere Informationen finden Sie unter [Was ist get_model_path?](#what-is-get_model_path).
+> Wenn Sie ein Modell registrieren, geben Sie den Pfad eines Cloudspeicherorts (aus einem Trainingslauf) oder eines lokalen Verzeichnisses an. Dieser Pfad wird lediglich dazu verwendet, die Dateien während des Registrierungsprozesses für das Hochladen zu finden. Er muss nicht mit dem Pfad identisch sein, der im Eingabeskript verwendet wird. Weitere Informationen finden Sie unter [Suchen nach Modelldateien im Eingabeskript](#locate-model-files-in-your-entry-script).
 
 Machine Learning-Modelle werden in Ihrem Azure Machine Learning-Arbeitsbereich registriert. Das Modell kann aus Azure Machine Learning oder aus einer anderen Quelle stammen. Die folgenden Beispiele veranschaulichen das Registrieren eines Modells.
 
@@ -195,7 +195,37 @@ Das Skript enthält zwei Funktionen zum Laden und Ausführen des Modells:
 
 * `run(input_data)`: Diese Funktion verwendet das Modell zur Vorhersage eines Werts, der auf den Eingabedaten basiert. Für Ein- und Ausgaben der Ausführung wird in der Regel JSON für die Serialisierung und Deserialisierung verwendet. Sie können auch mit binären Rohdaten arbeiten. Sie können die Daten transformieren, bevor Sie sie an das Modell senden oder an den Client zurückgeben.
 
-#### <a name="what-is-get_model_path"></a>Was ist „get_model_path“?
+#### <a name="locate-model-files-in-your-entry-script"></a>Suchen nach Modelldateien im Eingabeskript
+
+Es gibt zwei Möglichkeiten, in einem Eingabeskript nach Modellen zu suchen:
+* `AZUREML_MODEL_DIR`: Eine Umgebungsvariable, die den Pfad zu dem Speicherort des Modells enthält
+* `Model.get_model_path`: Eine API, die den registrierten Modellnamen verwendet, um den Pfad zur Modelldatei zurückzugeben
+
+##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
+
+AZUREML_MODEL_DIR ist eine Umgebungsvariable, die während der Dienstbereitstellung erstellt wird. Sie können diese Umgebungsvariable verwenden, um den Speicherort der bereitgestellten Modelle zu ermitteln.
+
+In der folgenden Tabelle ist der Wert von AZUREML_MODEL_DIR in Abhängigkeit von der Anzahl der bereitgestellten Modelle beschrieben:
+
+| Bereitstellung | Wert der Umgebungsvariablen |
+| ----- | ----- |
+| Einzelnes Modell | Der Pfad zu dem Ordner, der das Modell enthält |
+| Mehrere Modelle | Der Pfad zu dem Ordner, der alle Modelle enthält. Die Modelle befinden sich nach Name und Version in diesem Ordner (`$MODEL_NAME/$VERSION`). |
+
+Um den Pfad zu einer Datei in einem Modell abzurufen, kombinieren Sie die Umgebungsvariable mit dem Dateinamen, nach dem Sie suchen.
+Die Dateinamen der Modelldateien werden während der Registrierung und Bereitstellung beibehalten. 
+
+**Beispiel für ein einzelnes Modell**
+```python
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+```
+
+**Beispiel für mehrere Modelle**
+```python
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+```
+
+##### <a name="get_model_path"></a>get_model_path
 
 Wenn Sie ein Modell registrieren, geben Sie einen Modellnamen ein. Dieser wird dazu verwendet, das Modell in der Registrierung zu verwalten. Sie verwenden diesen Namen mit der [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)-Methode, um den Pfad der Modelldatei(en) im lokalen Dateisystem abzurufen. Wenn Sie einen Ordner oder eine Sammlung von Dateien registrieren, gibt diese API den Pfad des Verzeichnisses zurück, das diese Dateien enthält.
 
@@ -251,9 +281,9 @@ Das folgende Beispiel zeigt, wie JSON-Daten akzeptiert und zurückgegeben werden
 #Example: scikit-learn and Swagger
 import json
 import numpy as np
+import os
 from sklearn.externals import joblib
 from sklearn.linear_model import Ridge
-from azureml.core.model import Model
 
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
@@ -261,10 +291,12 @@ from inference_schema.parameter_types.numpy_parameter_type import NumpyParameter
 
 def init():
     global model
-    # Note that here "sklearn_regression_model.pkl" is the name of the model registered under.
-    # This is a different behavior than before when the code is run locally, even though the code is the same.
-    model_path = Model.get_model_path('sklearn_regression_model.pkl')
-    # Deserialize the model file back into a sklearn model.
+    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
+    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
+    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
+    # Alternatively: model_path = Model.get_model_path('sklearn_mnist')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
 
@@ -302,8 +334,8 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 
 def init():
     global model
-    # Replace model_name with your actual model name, if necessary.
-    model_path = Model.get_model_path('model_name')
+    # Replace filename if needed.
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 

@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999291"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219695"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Nachverfolgen von Metriken und Bereitstellen von Modellen mit MLflow und Azure Machine Learning (Vorschauversion)
 
@@ -146,6 +146,7 @@ Mit MLflow-Tracking mit Azure Machine Learning können Sie die protokollierten M
 Um Ihre MLflow-Experimente mit Azure Databricks durchzuführen, müssen Sie zunächst einen [Azure Databricks-Arbeitsbereich und -Cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) erstellen.
 
 Installieren Sie in Ihrem Cluster die Bibliothek *azureml-mlflow* von PyPi, um sicherzustellen, dass Ihr Cluster Zugriff auf die notwendigen Funktionen und Klassen hat.
+Importieren Sie daraus Ihr Experimentnotebook, ordnen Sie dem Notebook Ihren Cluster zu, und führen Sie Ihr Experiment aus. 
 
 ### <a name="install-libraries"></a>Installieren von Bibliotheken
 
@@ -184,10 +185,17 @@ workspace_name = 'workspace_name'
 ws = Workspace.get(name=workspace_name,
                    subscription_id=subscription_id,
                    resource_group=resource_group)
-
 ```
+
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Verbinden Ihres Azure Databricks- und Ihres Azure Machine Learning-Arbeitsbereichs
+
+Im [Azure-Portal](https://ms.portal.azure.com) können Sie Ihren Azure Databricks-Arbeitsbereich (ADB-Arbeitsbereich) mit einem neuen oder vorhandenen Azure Machine Learning-Arbeitsbereich verknüpfen. Navigieren Sie zu diesem Zweck zu Ihrem ADB-Arbeitsbereich, und wählen Sie unten rechts die Schaltfläche **Link Azure Machine Learning workspace** (Azure Machine Learning-Arbeitsbereich verknüpfen) aus. Das Verknüpfen Ihrer Arbeitsbereiche ermöglicht es Ihnen, Ihre Experimentdaten im Azure Machine Learning-Arbeitsbereich nachzuverfolgen. 
+
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>Verknüpfen des MLflow-Trackings mit Ihrem Arbeitsbereich
+
 Nachdem Sie Ihren Arbeitsbereich instanziiert haben, legen Sie den MLflow-Tracking-URI fest. Dabei verknüpfen Sie das MLflow-Tracking mit dem Azure Machine Learning-Arbeitsbereich. Danach werden alle Ihre Experimente in den verwalteten Azure Machine Learning-Nachverfolgungsdienst verschoben.
+
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Direktes Festlegen von MLflow-Nachverfolgung in Ihrem Notebook
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
@@ -200,6 +208,12 @@ Importieren Sie in Ihrem Trainingsskript mlflow, um die MLflow-Protokollierungs-
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
+
+#### <a name="automate-setting-mlflow-tracking"></a>Automatisieren der Einstellung für MLflow-Nachverfolgung
+
+Anstatt Ihren Nachverfolgungs-URI in jeder späteren Sitzung des Experimentnotebooks für Ihre Cluster manuell festzulegen, können Sie dies automatisch vornehmen, indem Sie dieses [Azure Machine Learning Tracking Cluster-Initialisierungsskript](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md) verwenden.
+
+Wenn die Konfiguration ordnungsgemäß ist, können Sie Ihre MLflow-Nachverfolgungsdaten in der REST-API von Azure Machine Learning und in allen Clients sowie in Azure Databricks über die MLflow-Benutzeroberfläche oder über den MLflow-Client sehen.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Anzeigen von Metriken und Artefakten in Ihrem Arbeitsbereich
 

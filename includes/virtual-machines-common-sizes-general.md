@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881647"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266890"
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe.
 
@@ -51,7 +51,7 @@ Zu den möglichen Anwendungsfällen zählen Entwicklungs- und Testserver, Webser
 | Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 200 %                   | 60                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
 | Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400 %                   | 120                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800 %                   | 240                   | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
-| Standard_B12ms | 12           | 48             | 96                         | 202 %                  | 1200 %                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320/50                                 | 6  |
+| Standard_B12ms | 12           | 48             | 96                         | 202 %                  | 1200 %                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320/50                                 | 6  |
 | Standard_B16ms | 16           | 64             | 128                         | 270 %                  | 1600 %                   | 480                   | 162                 | 3888           | 32                                     | 8640/100                                 | 4320/50                                 | 8  |
 | Standard_B20ms | 20           | 80             | 160                         | 337 %                  | 2000 %                   | 600                   | 203                 | 4860           | 32                                     | 10800/125                                 | 4320/50                                 | 8  |
 
@@ -80,13 +80,15 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeo
 
 <sup>1</sup> Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-## <a name="dasv3-series"></a>Dasv3-Serie
+## <a name="dasv3-series-preview"></a>Dasv3-Serie (Vorschauversion)
 
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
 
-Die Größen der Dasv3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Dasv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
+Die Größen der Dasv3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Dasv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
+
+[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>1</sup> Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-## <a name="dav3-series"></a>Dav3-Serie
+## <a name="dav3-series-preview"></a>Dav3-Serie (Vorschauversion)
 
 Storage Premium Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-Die Größen der Dav3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Wenn Sie Datenträger mit Storage Premium nutzen möchten, verwenden Sie die Dasv3-Größen. Für Dasv3-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav3-Serie.
+Die Größen der Dav3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Wenn Sie Datenträger mit Storage Premium nutzen möchten, verwenden Sie die Dasv3-Größen. Für Dasv3-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav3-Serie.
+
+[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
 |---|---|---|---|

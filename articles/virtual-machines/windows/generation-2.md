@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: 5e342418dc6cc9ed0a3bbbfaad42801d5ffe9e9d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900252"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173786"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Unterstützung für VMs der Generation 2 (Vorschau) in Azure
 
@@ -49,7 +49,7 @@ VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure b
 * [Mv2-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * [NCv2-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) und [NCv3-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [ND-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv2-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [NVv3-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-Images der Generation 2 in Azure Marketplace
 
@@ -88,12 +88,13 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 
 | Funktion | Generation 1 | Generation 2 |
 |------------|--------------|--------------|
-| Betriebssystem-Datenträger > 2 TB                    | :x:                        | :heavy_check_mark: |
-| Benutzerdefinierter Datenträger/Image/Swapbetriebssystem         | :heavy_check_mark:         | :heavy_check_mark: |
-| Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/Backup                        | :heavy_check_mark:         | :x:                |
-| Shared Image Gallery              | :heavy_check_mark:         | :x:                |
-| Azure Disk Encryption             | :heavy_check_mark:         | :x:                |
+| Betriebssystem-Datenträger > 2 TB                    | :x:                | :heavy_check_mark: |
+| Benutzerdefinierter Datenträger/Image/Swapbetriebssystem         | :heavy_check_mark: | :heavy_check_mark: |
+| Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
+| Shared Image Gallery              | :heavy_check_mark: | :x:                |
+| Azure Disk Encryption             | :heavy_check_mark: | :x:                |
 
 ## <a name="creating-a-generation-2-vm"></a>Erstellen einer VM der Generation 2
 
@@ -101,14 +102,37 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 
 VMs der Generation 2 können aus einem Marketplace-Image, das den UEFI-Start unterstützt, über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle erstellt werden.
 
-Das `windowsserver-gen2preview`-Angebot enthält nur Windows-Images der Generation 2. Dieses Paket vermeidet Verwechslungen zwischen Images der Generationen 1 und 2. Wählen Sie zum Erstellen einer VM der Generation 2 **Images** aus diesem Angebot aus, und führen Sie den Standardprozess für die VM-Erstellung aus.
+#### <a name="azure-portal"></a>Azure-Portal
 
-Im Marketplace werden derzeit die folgenden Windows-Images der Generation 2 angeboten:
+Generation 2-Images für Windows und SLES sind im selben Serverangebot wie die Gen1-Images enthalten. Aus Sicht des Ablaufs bedeutet dies, dass Sie das Angebot und die SKU im Portal für Ihren virtuellen Computer (VM) auswählen. Unterstützt die SKU sowohl Generation 1- als Generation 2-Images, können Sie im Ablauf der VM-Erstellung auf der Registerkarte *Erweitert* auswählen, dass eine VM der Generation 2 erstellt werden soll.
 
-* 2019-datacenter-gen2
-* 2016-datacenter-gen2
-* 2012-r2-datacenter-gen2
-* 2012-datacenter-gen2
+Derzeit unterstützen die folgenden SKUs sowohl Generation 1- als auch Generation 2-Images:
+
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows Server 2016
+* Windows Server 2019
+
+Wenn Sie eine Windows Server-SKU als Angebot auswählen, gibt es auf der Registerkarte **Erweitert** die Option, entweder eine **Gen 1**- (BIOS) oder eine **Gen 2**-VM (UEFI) zu erstellen. Wenn Sie **Gen 2** auswählen, müssen Sie sicherstellen, dass die auf der Registerkarte **Grundlagen** ausgewählte VM-Größe [für VMs der Generation 2 unterstützt wird](#generation-2-vm-sizes).
+
+![Virtuellen Computer der Gen 1 oder Gen 2 auswählen](./media/generation-2/gen1-gen2-select.png)
+
+#### <a name="powershell"></a>PowerShell
+
+Sie können auch PowerShell verwenden, um einen virtuellen Computer zu erstellen, indem Sie direkt auf die SKU der Generation 1 oder der Generation 2 verweisen.
+
+Verwenden Sie beispielsweise das folgende PowerShell-Cmdlet, um eine Liste der SKUs im `WindowsServer`-Angebot abzurufen.
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Wenn Sie einen virtuellen Computer mit Windows Server 2012 als Betriebssystem erstellen, wählen Sie entweder die VM-SKU der Generation 1 (BIOS) oder der Generation 2 (UEFI) aus, die wie folgt aussieht:
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
 
 Im Abschnitt [Features und Funktionen](#features-and-capabilities) finden Sie eine aktuelle Liste der unterstützten Marketplace-Images.
 
@@ -131,7 +155,7 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
 * **Ich verfüge über eine VHD-Datei aus meiner lokalen VM der Generation 2. Kann ich die VHD-Datei verwenden, um einen virtuellen Computer der Generation 2 in Azure zu erstellen?**
   Ja, Sie können die VHD-Datei der Generation 2 in Azure einbringen und zum Erstellen eines virtuellen Computers der Generation 2 verwenden. Führen Sie dazu die folgenden Schritte aus:
     1. Laden Sie die VHD-Datei in ein Speicherkonto in derselben Region hoch, in der Sie Ihre VM erstellen möchten.
-    1. Erstellen Sie einen verwalteten Datenträger aus der VHD-Datei. Legen Sie die Eigenschaft „HyperV-Generation“ auf „V2“ fest. Die folgenden PowerShell-Befehle legen die Eigenschaft „HyperV-Generation“ beim Erstellen eines verwalteten Datenträgers fest.
+    1. Erstellen Sie einen verwalteten Datenträger aus der VHD-Datei. Legen Sie die Eigenschaft „Hyper-V-Generation“ auf „V2“ fest. Die folgenden PowerShell-Befehle legen die Eigenschaft „Hyper-V-Generation“ beim Erstellen eines verwalteten Datenträgers fest.
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
@@ -141,7 +165,7 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
         ```
 
     1. Nachdem der Datenträger verfügbar ist, erstellen Sie einen virtuellen Computer durch Anfügen dieses Datenträgers. Der erstellte virtuelle Computer ist eine VM der Generation 2.
-    Wenn der virtuelle Computer der Generation 2 erstellt ist, können Sie optional das Image dieser VM verallgemeinern. Wenn Sie das Image verallgemeinern, können Sie es verwenden, um mehrere VMS zu erstellen.
+    Wenn der virtuelle Computer der Generation 2 erstellt ist, können Sie optional das Image dieser VM verallgemeinern. Wenn Sie das Image verallgemeinern, können Sie es verwenden, um mehrere VMs zu erstellen.
 
 * **Wie erhöhe ich die Größe des Betriebssystemdatenträgers?**  
   Betriebssystemdatenträger mit einer Größe von mehr als 2 TB sind neu bei VMs der 2. Generation. Standardmäßig sind die Betriebssystemdatenträger für VMs der Generation 2 kleiner als 2 TB. Sie können die Größe des Datenträgers auf die empfohlene maximale Größe von 4 TB erhöhen. Verwenden Sie zum Erhöhen der Größe von Betriebssystemdatenträgern die Azure-Befehlszeilenschnittstelle oder das Azure-Portal. Weitere Informationen zum programmgesteuerten Erweitern von Datenträgern finden Sie unter [Ändern der Größe eines Datenträgers](expand-os-disk.md).

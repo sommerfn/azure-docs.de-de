@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541472"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266873"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -183,8 +183,26 @@ Nein, Azure Backup-Unterstützung ist noch nicht verfügbar.
 **Kann ich einen Ultra-Datenträger einem virtuellen Computer zuordnen, der in einer Verfügbarkeitsgruppe ausgeführt wird?**
 Nein, das wird noch nicht unterstützt.
 
-**Kann ich Azure Site Recovery (ASR) für virtuelle Computer mit Ultra-Datenträgern aktivieren?**
-Nein, ASR wird für Ultra-Datenträger noch nicht unterstützt.
+**Kann ich Azure Site Recovery für virtuelle Computer mit Ultra-Datenträgern aktivieren?**
+Nein, Azure Site Recovery wird für Ultra-Datenträger noch nicht unterstützt.
+
+## <a name="uploading-to-a-managed-disk"></a>Hochladen in einen verwalteten Datenträger
+
+**Kann ich Daten in einen vorhandenen verwalteten Datenträger hochladen?**
+
+Nein, Hochladen kann nur während der Erstellung eines neuen leeren Datenträgers verwendet werden, der den Status **ReadyToUpload** hat.
+
+**Wie lade ich Daten auf einen verwalteten Datenträger hoch?**
+
+Erstellen Sie den verwalteten Datenträger so, dass die [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption)-Eigenschaft von [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) auf „Upload“ festgelegt ist. Danach können Sie Daten auf den Datenträger hochladen.
+
+**Kann ich einen Datenträger einem virtuellen Computer zuordnen, während der Datenträger einen Uploadstatus hat?**
+
+Nein.
+
+**Kann ich eine Momentaufnahme eines verwalteten Datenträgers erstellen, der einen Uploadstatus hat?**
+
+Nein.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 

@@ -101,7 +101,7 @@ Verwaltete Azure AD DS-Domänen werden mit den gleichen Verwaltungstools verwal
 
 Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM zu installieren:
 
-1. **Server-Manager** sollte standardmäßig geöffnet werden, wenn Sie sich bei der VM anmelden. Wenn dies nicht der Fall ist, wählen Sie im Startmenü **** die Option **Server-Manager** aus.
+1. **Server-Manager** sollte standardmäßig geöffnet werden, wenn Sie sich bei der VM anmelden. Wenn dies nicht der Fall ist, wählen Sie im **Startmenü** die Option **Server-Manager** aus.
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
@@ -120,7 +120,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstool
 
 Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Sie die verwaltete Azure AD DS-Domäne damit verwalten. Stellen Sie sicher, dass Sie bei der VM mit einem Benutzerkonto angemeldet sind, das Mitglied der Gruppe der *AAD-DC-Administratoren* ist.
 
-1. Wählen Sie im Startmenü **** die Option **Windows-Verwaltungsprogramme** aus. Die im vorherigen Schritt installierten AD-Verwaltungstools werden aufgelistet.
+1. Wählen Sie im Startmenü die Option **Windows-Verwaltungsprogramme** aus **.** Die im vorherigen Schritt installierten AD-Verwaltungstools werden aufgelistet.
 
     ![Liste der auf dem Server installierten Verwaltungstools](./media/tutorial-create-management-vm/list-admin-tools.png)
 

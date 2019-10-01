@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743912"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262883"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -27,11 +27,21 @@ In diesem Artikel wird beschrieben, wie Sie Ihren virtuellen SQL Server-Compute
 
 Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das Azure-Portal wird die SQL Server-VM automatisch beim Ressourcenanbieter registriert. Wenn Sie SQL Server auf einem virtuellen Azure-Computer selbst installieren und kein Image im Azure Marketplace auswählen oder wenn Sie eine Azure-VM aus einer benutzerdefinierten VHD mit SQL Server bereitstellen, sollten Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren. Dies hat folgende Vorteile:
 
-- **Compliance**: Gemäß den Microsoft-Produktbedingungen müssen Kunden Microsoft mitteilen, wenn Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Dazu müssen sie sich beim SQL-VM-Ressourcenanbieter registrieren. 
+- **Vereinfachen der Lizenzverwaltung**: Gemäß den Microsoft-Produktbedingungen müssen Kunden Microsoft mitteilen, wenn Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Ein Registrieren beim SQL-VM-Ressourcenanbieter vereinfacht die SQL Server-Lizenzverwaltung und ermöglicht es Ihnen, schnell SQL Server-VMs zu erkennen, indem Sie den Azure-Hybridvorteil im [Portal](virtual-machines-windows-sql-manage-portal.md) oder in der Azure CLI verwenden: 
+
+   ```azurecli-interactive
+   $vms = az sql vm list | ConvertFrom-Json
+   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
+   ```
 
 - **Featurevorteile:** Wenn Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren, werden [automatische Patches](virtual-machines-windows-sql-automated-patching.md), [automatisierte Sicherungen](virtual-machines-windows-sql-automated-backup-v2.md) sowie Überwachungs-und Verwaltbarkeitsfunktionen freigegeben. Außerdem erhalten Sie mehr Flexibilität bei der [Lizenzierung](virtual-machines-windows-sql-ahb.md) und bei der Auswahl der [Edition](virtual-machines-windows-sql-change-edition.md). Zuvor waren diese Features nur für SQL Server-VM-Images aus dem Azure Marketplace verfügbar.
 
+- **Kostenlose Verwaltung**:  Das Registrieren beim SQL-VM-Ressourcenanbieter und alle Verwaltbarkeitsmodi sind vollständig kostenlos. Es fallen keine zusätzlichen Kosten für den Ressourcenanbieter oder das Ändern von Verwaltungsmodi an. 
+
 Damit Sie den SQL-VM-Ressourcenanbieter verwenden können, müssen Sie ihn außerdem für Ihr Abonnement registrieren. Verwenden Sie hierzu das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell. 
+
+  > [!NOTE]
+  > Es gibt keine zusätzlichen Lizenzierungsanforderungen, die mit dem Registrieren beim Ressourcenanbieter verknüpft sind. Das Registrieren beim SQL-VM-Ressourcenanbieter bietet eine vereinfachte Methode, um die Anforderung zu erfüllen, dass Microsoft zu benachrichtigen ist, wenn der Azure-Hybridvorteil aktiviert wurde, statt für jede Ressource Formulare zur Lizenzierungsregistrierung zu verwenden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -172,13 +182,13 @@ Ein Fehler zeigt an, dass die SQL Server-VM nicht beim Ressourcenanbieter regist
 
 ## <a name="change-management-modes"></a>Change Management-Modi
 
-Es gibt drei Verwaltungsmodi für die SQL Server-IaaS-Erweiterung: 
+Es gibt drei kostenlose Verwaltbarkeitsmodi für die SQL Server-IaaS-Erweiterung: 
 
-- Der Modus **Vollständig** bietet alle Funktionen, erfordert aber einen Neustart des SQL Server-Computers sowie Systemadministratorberechtigungen. Diese Option wird standardmäßig installiert. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. 
+- Der Modus **Vollständig** bietet alle Funktionen, erfordert aber einen Neustart des SQL Server-Computers sowie Systemadministratorberechtigungen. Diese Option wird standardmäßig installiert. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. Für den Modus „Vollständig“ werden zwei Windows-Dienste installiert, die minimale Auswirkungen auf den Arbeitsspeicher und die CPU haben. Diese Dienste können über den Task-Manager überwacht werden. Mit der Verwendung des Verwaltbarkeitsmodus „Vollständig“ sind keine Kosten verbunden. 
 
-- **Lightweight** erfordert keinen Neustart von SQL Server, unterstützt jedoch nur das Ändern des Lizenztyps und der Edition von SQL Server. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für die Teilnahme an einer Failoverclusterinstanz (FCI). 
+- **Lightweight** erfordert keinen Neustart von SQL Server, unterstützt jedoch nur das Ändern des Lizenztyps und der Edition von SQL Server. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für die Teilnahme an einer Failoverclusterinstanz (FCI). Es gibt keine Auswirkung auf den Arbeitsspeicher oder die CPU, wenn der Modus „Lightweight“ verwendet wird. Mit der Verwendung des Verwaltbarkeitsmodus „Lightweight“ sind keine Kosten verbunden. 
 
-- **NoAgent** ist speziell für Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 vorgesehen. 
+- **NoAgent** ist speziell für Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 vorgesehen. Es gibt keine Auswirkung auf den Arbeitsspeicher oder die CPU, wenn der Modus „NoAgent“ verwendet wird. Mit der Verwendung des Verwaltbarkeitsmodus „NoAgent“ sind keine Kosten verbunden. 
 
 Über PowerShell können Sie den aktuellen Modus des SQL Server-IaaS-Agents anzeigen: 
 
@@ -359,6 +369,12 @@ Ja. SQL Server-Failoverclusterinstanzen auf einer Azure-VM können beim SQL-VM-
 **Kann ich meine VM beim SQL-VM-Ressourcenanbieter registrieren, wenn eine Always On-Verfügbarkeitsgruppe konfiguriert wurde?**
 
 Ja. Es gibt keine Einschränkungen beim Registrieren einer SQL Server-Instanz auf einer Azure-VM beim SQL-VM-Ressourcenanbieter, wenn Sie einer Always On-Verfügbarkeitsgruppenkonfiguration angehören.
+
+**Welche Kosten fallen für das Registrieren beim SQL-VM-Ressourcenanbieter oder beim Upgraden auf den Verwaltbarkeitsmodus „Vollständig“ an?**
+None (Keine): Für das Registrieren beim SQL-VM-Ressourcenanbieter oder das Verwenden eines der drei Verwaltbarkeitsmodi fallen keine Gebühren an. Das Verwalten Ihrer SQL Server-VM mit dem Ressourcenanbieter ist vollständig kostenlos. 
+
+**Welche Auswirkungen hat ein Verwenden der verschiedenen Verwaltbarkeitsmodi auf die Leistung?**
+Es gibt keine Auswirkungen, wenn der Verwaltbarkeitsmodus *NoAgent* oder *Lightweight* verwendet wird. Es gibt minimale Auswirkungen, wenn der Verwaltbarkeitsmodus *Vollständig* von zwei Diensten verwendet wird, die in das Betriebssystem installiert wurden. Diese Dienste können über den Task-Manager überwacht werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

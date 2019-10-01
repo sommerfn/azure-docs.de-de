@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
-ms.reviewer: yagup
-ms.openlocfilehash: dbc0829adc29848c9047368295a2ade589834e8b
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.reviewer: vinigam
+ms.openlocfilehash: 6c11f415fc1ea3a578893f6d14a60dfc1c4fddb0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70031856"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203010"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -30,6 +30,8 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 - Verstehen von Mustern im Datenverkehr über Azure-Regionen und das Internet zur Optimierung Ihrer Netzwerkbereitstellung im Hinblick auf Leistung und Kapazität
 - Ermitteln von Fehlkonfigurationen im Netzwerk, die zu fehlerhaften Verbindungen in Ihrem Netzwerk führen
 
+> [!NOTE]
+> Traffic Analytics unterstützt jetzt das Erfassen von NSG-Flussprotokollen mit einer höheren Frequenz von 10 Minuten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -179,9 +181,9 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 3. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet. Stellen Sie sicher, dass „Data Lake Storage Gen2 Hierarchical Namespace Enabled“ für den Speicher nicht auf TRUE festgelegt ist. Außerdem können NSG-Datenflussprotokolle nicht in einem Speicherkonto mit einer Firewall gespeichert werden. 
 4. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
 > [!IMPORTANT]
-> Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobspeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Delete network security group flow log storage blobs in Network Watcher](network-watcher-delete-nsg-flow-log-blobs.md) (Löschen von Speicherblobs mit NSG-Flowprotokollen in Network Watcher).
+> Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus Blob Storage gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Delete network security group flow log storage blobs in Network Watcher](network-watcher-delete-nsg-flow-log-blobs.md) (Löschen von Speicherblobs mit NSG-Flowprotokollen in Network Watcher).
 5. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
-6. Wählen Sie das Verarbeitungsintervall aus. Basierend auf Ihrer Auswahl werden Datenflussprotokolle aus dem Speicherkonto erfasst und von Traffic Analytics verarbeitet. Sie können das Verarbeitungsintervall auf jede Stunde oder alle 10 Minuten festlegen.
+6. Wählen Sie das Verarbeitungsintervall aus. Basierend auf Ihrer Auswahl werden Datenflussprotokolle aus dem Speicherkonto erfasst und von Traffic Analytics verarbeitet. Sie können das Verarbeitungsintervall auf jede Stunde oder alle 10 Minuten festlegen. 
 7. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#supported-regions-log-analytics-workspaces) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.

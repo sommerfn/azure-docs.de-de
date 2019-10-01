@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100601"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262905"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -78,7 +78,11 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbank
 Für die virtuellen Azure-Computer, den Speicher und die Netzwerkressourcen gelten andere Betriebsbedingungen als für eine lokale, nicht virtualisierte IT-Infrastruktur. Für eine erfolgreiche Implementierung einer SQL Server-HADR-Lösung in Azure sollten Sie diese Unterschiede kennen und Ihre Lösung daran anpassen.
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Hochverfügbarkeitsknoten in einer Verfügbarkeitsgruppe
-Durch Verfügbarkeitsgruppen in Azure können Sie Hochverfügbarkeitsknoten in separaten Fehler- und Updatedomänen (FD bzw. UD) platzieren. Damit virtuelle Azure-Computer derselben Verfügbarkeitsgruppe hinzugefügt werden, müssen Sie sie im gleichen Clouddienst bereitstellen. Nur Knoten in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Durch Verfügbarkeitsgruppen in Azure können Sie Hochverfügbarkeitsknoten in separaten Fehler- und Updatedomänen (FD bzw. UD) platzieren. Jeder virtuelle Computer in der Verfügbarkeitsgruppe wird einer Updatedomäne (UD) und einer Fehlerdomäne (FD) der zugrunde liegenden Azure-Plattform zugewiesen. Durch diese Konfiguration in einem Datencenter wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 Prozent eingehalten wird. Um die Hochverfügbarkeitseinrichtung zu konfigurieren, platzieren Sie alle beteiligten virtuellen SQL-Computer in derselben Verfügbarkeitsgruppe, damit es bei einem Wartungsereignis nicht zu Anwendungs- oder Datenverlust kommt. Nur Knoten in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>Hochverfügbarkeitsknoten in einer Verfügbarkeitszone
+Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Rechenzentrumsausfällen, indem sichergestellt wird, dass mindestens ein virtueller Computer verfügbar ist. So wird eine Azure-SLA (Vereinbarung zum Servicelevel) von 99,99 % erreicht. Um Hochverfügbarkeit zu konfigurieren, platzieren Sie die beteiligten virtuellen SQL-Computer verteilt auf die verfügbaren Verfügbarkeitszonen der Region. Es fallen zusätzliche Gebühren für Datenübertragungen zwischen VMs in unterschiedlichen Verfügbarkeitszonen an. Weitere Informationen finden Sie unter [Verfügbarkeitszonen](/azure/availability-zones/az-overview). 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Failoverclusterverhalten in Azure-Netzwerken
 Der nicht RFC-konforme DHCP-Dienst in Azure kann dazu führen, dass bei der Erstellung bestimmter Failoverclusterkonfigurationen ein Fehler auftritt, da dem Clusternetzwerknamen eine doppelte IP-Adresse zugewiesen wird, z.B. die IP-Adresse eines der Clusterknoten. Dies stellt beim Implementieren von Verfügbarkeitsgruppen ein Problem dar, da diese vom Windows-Failoverclusterfeature abhängen.

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774582"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204202"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -69,7 +69,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -100,6 +100,9 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 
 > [!NOTE]
 > Auf einem virtuellen Computer kann jeweils nur eine Version einer Erweiterung installiert werden. Wenn Sie die Erweiterung für benutzerdefinierte Skripts zweimal in derselben Resource Manager-Vorlage für denselben Computer angeben, treten Fehler auf.
+
+> [!NOTE]
+> Dieses Schema kann in der VirtualMachine-Ressource oder als eigenständige Ressource verwendet werden. Der Name der Ressource muss das Format „virtualMachineName/extensionName“ haben, wenn diese Erweiterung als eigenständige Ressource in der ARM-Vorlage verwendet wird. 
 
 ### <a name="property-values"></a>Eigenschaftswerte
 

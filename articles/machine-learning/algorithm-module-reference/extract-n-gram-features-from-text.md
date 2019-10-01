@@ -1,7 +1,7 @@
 ---
-title: 'Extrahieren von N-Grammen: Modulreferenz'
+title: Referenz des Moduls „Extract N-Gram Features from Text“
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Extrahieren von N-Grammen“ in Azure Machine Learning Service verwenden, um Textdaten in Merkmale zu zerlegen.
+description: Erfahren Sie, wie Sie das Modul zum Extrahieren von N-Grammen in Azure Machine Learning Service verwenden, um Textdaten in Merkmale zu zerlegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 450c205f92fc65cad4e552aef3a1f28157d25ab6
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 0803627b8d2e9fb3db2c7c96d7dd74e9b275f5d8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210568"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171000"
 ---
-# <a name="extract-n-gram-features-from-text"></a>Extrahieren von N-Gramm-Merkmalen aus Text
+# <a name="extract-n-gram-features-from-text-module-reference"></a>Referenz des Moduls „Extract N-Gram Features from Text“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben. Verwenden Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren), um unstrukturierte Textdaten *in Merkmale zu zerlegen*. 
 
-Verwenden Sie das Modul **Extract N-Gram Features from Text** (Extrahieren von N-Gramm-Merkmalen aus Text), um unstrukturierte Textdaten *in Merkmale zu zerlegen*.
+## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfiguration des Moduls „Extract N-Gram Features from Text“
 
-Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm-Wörterbuchs:
+Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm-Wörterbuchs:
 
 * [Erstellen eines neuen N-Gramm-Wörterbuchs](#create-a-new-n-gram-dictionary) aus einer Spalte mit freiem Text.
 
@@ -30,13 +30,11 @@ Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gr
 
 * [Bewerten oder Veröffentlichen eines Modells](#score-or-publish-a-model-that-uses-n-grams), das N-Gramme verwendet.
 
-## <a name="configure-extract-n-gram-features-from-text"></a>Konfigurieren von „Extract N-Gram Features from Text“ (Extrahieren von N-Gramm-Merkmalen aus Text)
-
 ### <a name="create-a-new-n-gram-dictionary"></a>Erstellen eines neuen N-Gramm-Wörterbuchs
 
-1.  Fügen Sie das Modul **Extract N-Gram Features from Text** (Extrahieren von N-Gramm-Merkmalen aus Text) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält.
+1.  Fügen Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält.
 
-1.  Verwenden Sie **Text column** (Textspalte), um eine Spalte vom Typ **string** auszuwählen, die den zu extrahierenden Text enthält. Da die Ergebnisse ausführlich sind, können Sie nur jeweils eine Spalte gleichzeitig verarbeiten.
+1.  Verwenden Sie **Text column** (Textspalte), um eine Spalte des Typs „string“ auszuwählen, die den zu extrahierenden Text enthält. Weil die Ergebnisse ausführlich sind, können Sie immer nur jeweils eine Spalte verarbeiten.
 
 1. Legen Sie **Vocabulary mode** (Vokabularmodus) auf **Create** (Erstellen) fest, um anzugeben, dass Sie eine neue Liste von N-Gramm-Merkmalen erstellen. 
 
@@ -46,13 +44,15 @@ Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gr
 
 1. **Weighting function** (Gewichtungsfunktion) gibt an, wie der Dokumentmerkmalsvektor erstellt und Vokabular aus Dokumenten extrahiert wird.
 
-    * **Binary Weight** (Binäre Gewichtung): Weist den extrahierten N-Grammen einen binären Wert für das Vorhandensein zu. Der Wert für jedes N-Gramm ist 1, wenn es im angegebenen Dokument vorhanden ist, andernfalls ist er 0.
+    * **Binary Weight** (Binäre Gewichtung): Weist den extrahierten N-Grammen einen binären Wert für das Vorhandensein zu. Der Wert für jedes N-Gramm ist gleich 1, wenn es im Dokument vorhanden ist, andernfalls ist der Wert gleich 0.
 
-    * **TF Weight** (TF-Gewichtung): Weist den extrahierten N-Grammen eine Bewertung für die Begriffshäufigkeit (Term Frequency, **TF**) zu. Der Wert jedes N-Gramm ist die Häufigkeit des Vorkommens im angegebenen Dokument.
+    * **TF Weight** (TF-Gewichtung): Weist den extrahierten N-Grammen eine Begriffshäufigkeit (Term Frequency, TF) zu. Der Wert für jedes N-Gramm ist dessen Vorkommenshäufigkeit im Dokument.
 
-    * **IDF Weight** (IDF-Gewichtung): Weist den extrahierten N-Grammen eine Bewertung für die inverse Dokumenthäufigkeit (Inverse Document Frequency, **IDF**) zu. Der Wert für jedes N-Gramm ist das Protokoll der Korpusgröße geteilt durch die Häufigkeit seines Vorkommens im gesamten Korpus. `IDF = log of corpus_size / document_frequency`
+    * **IDF Weight** (IDF-Gewichtung): Weist den extrahierten N-Grammen eine Bewertung für die inverse Dokumenthäufigkeit (Inverse Document Frequency, IDF) zu. Der Wert für jedes N-Gramm ist das Protokoll der Korpusgröße geteilt durch die Häufigkeit seines Vorkommens im gesamten Korpus.
+    
+      `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF Weight** (TF-IDF-Gewichtung): Weist den extrahierten N-Grammen eine Bewertung für die Begriffshäufigkeit/inverse Dokumenthäufigkeit (**TF/IDF**) zu. Der Wert für jedes N-Gramm ist die TF-Bewertung multipliziert mit seiner IDF-Bewertung.
+    *  **TF-IDF Weight** (TF-IDF-Gewichtung): Weist den extrahierten N-Grammen eine Bewertung für die Begriffshäufigkeit/inverse Dokumenthäufigkeit (TF/IDF) zu. Der Wert für jedes N-Gramm ist die TF-Bewertung multipliziert mit seiner IDF-Bewertung.
 
 1. Legen Sie **Minimum word length** (Minimale Wortlänge) auf die minimale Anzahl von Buchstaben fest, die in jedem *Einzelwort* in einem N-Gramm verwendet werden können.
 
@@ -69,7 +69,7 @@ Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gr
     Ein Verhältnis von 1 gibt beispielsweise an, dass das N-Gramm dem N-Gramm-Wörterbuch selbst dann hinzugefügt werden kann, wenn in jeder Zeile ein bestimmtes N-Gramm vorhanden ist. In der Regel wird ein Wort, das in jeder Zeile vorkommt, als Füllwort betrachtet und entfernt. Um fachgebietsabhängige Füllwörter auszufiltern, verringern Sie dieses Verhältnis.
 
     > [!IMPORTANT]
-    > Die Häufigkeit des Vorkommens bestimmter Wörter ist nicht einheitlich, sondern variiert von Dokument zu Dokument. Wenn Sie beispielsweise Kundenkommentare zu einem bestimmten Produkt analysieren, kann der Produktname sehr häufig vorkommen und ähnlich einem Füllwort sein, aber in anderen Kontexten als wichtiger Begriff gelten.
+    > Die Häufigkeit des Vorkommens bestimmter Wörter ist nicht einheitlich. Sie variiert von Dokument zu Dokument. Wenn Sie beispielsweise Kundenkommentare zu einem bestimmten Produkt analysieren, kann der Produktname sehr häufig vorkommen und ähnlich einem Füllwort sein, aber in anderen Kontexten als wichtiger Begriff gelten.
 
 1. Wählen Sie die Option **Normalize n-gram feature vectors** (N-Gramm-Merkmalsvektoren normalisieren) aus, um die Merkmalsvektoren zu normalisieren. Wenn diese Option aktiviert ist, wird jeder N-Gramm-Merkmalsvektor durch seine L2-Norm dividiert.
 
@@ -77,18 +77,18 @@ Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gr
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>Verwenden eines vorhandenen N-Gramm-Wörterbuchs
 
-1.  Fügen Sie das Modul **Extract N-Gram Features from Text** (Extrahieren von N-Gramm-Merkmalen aus Text) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält, mit dem **Dataset**-Port.
+1.  Fügen Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren) Ihrem Experiment hinzu, und verbinden Sie das Dataset, das den zu verarbeitenden Text enthält, mit dem **Dataset**-Port.
 
-1.  Verwenden **Text column** (Textspalte), um die Textspalte auszuwählen, die den Text enthält, den Sie in Merkmale zerlegen möchten. Standardmäßig wählt das Modul alle Spalten vom Typ „string“ aus. Um optimale Ergebnisse zu erzielen, verarbeiten Sie jeweils eine einzelne Spalte.
+1.  Verwenden **Text column** (Textspalte), um die Textspalte auszuwählen, die den Text enthält, den Sie in Merkmale zerlegen möchten. Standardmäßig wählt das Modul alle Spalten des Typs **string** aus. Um optimale Ergebnisse zu erzielen, verarbeiten Sie jeweils eine einzelne Spalte.
 
-1. Fügen Sie das gespeicherte Dataset hinzu, das ein zuvor generiertes N-Gramm-Wörterbuch enthält, und verbinden Sie es mit dem **Input vocabulary**-Port (Eingabevokabular). Sie können auch die Ausgabe **Result vocabulary** (Ergebnisvokabular) einer Upstreaminstanz des Moduls **Extract N-Gram Features from Text** (Extrahieren von N-Gramm-Merkmalen aus Text) verbinden.
+1. Fügen Sie das gespeicherte Dataset hinzu, das ein zuvor generiertes N-Gramm-Wörterbuch enthält, und verbinden Sie es mit dem **Input vocabulary**-Port (Eingabevokabular). Sie können auch die Ausgabe **Result vocabulary** (Ergebnisvokabular) einer Upstreaminstanz des Moduls „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren) verbinden.
 
-1. Wählen Sie unter **Vocabulary mode** (Vokabularmodus) in der Dropdownliste die folgende Aktualisierungsoption aus:
+1. Wählen Sie unter **Vocabulary mode** (Vokabularmodus) in der Dropdownliste die Aktualisierungsoption **ReadOnly** (Schreibgeschützt) aus.
 
-   * **ReadOnly**: Stellt den Eingabekorpus für das Eingabevokabular dar. Anstatt die Häufigkeiten von Begriffen aus dem neuen Textdataset (für die linke Eingabe) zu berechnen, werden die N-Gramm-Gewichtungen aus dem Eingabevokabular unverändert übernommen.
+   Die Option **ReadOnly** stellt den Eingabekorpus für das Eingabevokabular dar. Anstatt die Häufigkeiten von Begriffen aus dem neuen Textdataset (für die linke Eingabe) zu berechnen, werden die N-Gramm-Gewichtungen aus dem Eingabevokabular unverändert übernommen.
 
-    > [!TIP]
-    > Verwenden Sie diese Option, wenn Sie einen Textklassifizierer bewerten.
+   > [!TIP]
+   > Verwenden Sie diese Option, wenn Sie einen Textklassifizierer bewerten.
 
 1.  Informationen zu allen anderen Optionen finden Sie in den Eigenschaftenbeschreibungen im [vorherigen Abschnitt](#create-a-new-n-gram-dictionary).
 
@@ -100,19 +100,17 @@ Dieses Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gr
 
 1.  Verbinden Sie die Ausgabe **Result Vocabulary** (Ergebnisvokabular) aus dem Trainingsdatenfluss mit dem **Input Vocabulary** (Eingabevokabular) für den Bewertungsdatenfluss.
 
-1.  Ändern Sie im Bewertungsworkflow das Modul **Extract N-Gram Features from Text**, und nehmen Sie diese Änderungen vor. Lassen Sie alles andere unverändert:
-
-    - Legen Sie den Parameter **Vocabulary mode** (Vokabularmodus) auf **ReadOnly** (Schreibgeschützt) fest.
+1.  Ändern Sie im Bewertungsworkflow das Modul „Extract N-Gram Features from Text“, und legen Sie den **Vocabulary mode**-Parameter auf **ReadOnly** fest. Belassen Sie alle anderen Parameter ungeändert.
 
 1.  Um das Experiment zu veröffentlichen, speichern Sie das **Result Vocabulary** (Ergebnisvokabular) als Dataset.
 
-1.  Verbinden Sie dann das gespeicherte Dataset mit dem Modul **Extract N-Gram Features from Text** in Ihrem Bewertungsgraphen.
+1.  Verbinden Sie dann das gespeicherte Dataset mit dem Modul „Extract N-Gram Features from Text“ in Ihrem Bewertungsgraphen.
 
 ## <a name="results"></a>Ergebnisse
 
-Das Modul **Extract N-Gram Features from Text** erstellt zwei Arten von Ausgaben: 
+Das Modul „Extract N-Gram Features from Text“ erstellt zwei Arten von Ausgabe: 
 
-* **Ergebnisdataset**: Eine Zusammenfassung des analysierten Texts in Kombination mit den N-Grammen, die extrahiert wurden. Spalten, die Sie nicht in der Option **Text column** (Textspalte) ausgewählt haben, werden an die Ausgabe übergeben. Für jede Textspalte, die Sie analysieren, generiert das Modul diese Spalten:
+* **Result Dataset** (Ergebnisdataset): Diese Ausgabe ist eine Zusammenfassung des analysierten Texts in Kombination mit den N-Grammen, die extrahiert wurden. Spalten, die Sie nicht in der Option **Text column** (Textspalte) ausgewählt haben, werden an die Ausgabe übergeben. Für jede Textspalte, die Sie analysieren, generiert das Modul diese Spalten:
 
   * **Matrix von N-Gramm-Vorkommen**: Das Modul generiert eine Spalte für jedes im Gesamtkorpus gefundene N-Gramm und fügt in jeder Spalte eine Bewertung hinzu, um die Gewichtung des N-Gramms für diese Zeile anzugeben. 
 
@@ -120,23 +118,23 @@ Das Modul **Extract N-Gram Features from Text** erstellt zwei Arten von Ausgaben
 
 ### <a name="result-vocabulary"></a>Ergebnisvokabular
 
-Das Vokabular enthält das N-Gramm-Wörterbuch mit den Bewertungen für die Begriffshäufigkeit, die als Teil der Analyse generiert werden. Die Bewertungen **DF** und **IDF** werden unabhängig von anderen Optionen generiert.
+Das Vokabular enthält das N-Gramm-Wörterbuch mit den Bewertungen für die Begriffshäufigkeit, die als Teil der Analyse generiert werden. Die DF- und die IDF-Bewertung werden unabhängig von anderen Optionen generiert.
 
 + **ID**: Ein Bezeichner, der für jedes eindeutige N-Gramm generiert wird.
 + **NGram**: Das N-Gramm. Leerzeichen oder andere Worttrennzeichen werden durch Unterstriche ersetzt.
 + **DF**: Die Bewertung für die Begriffshäufigkeit für das N-Gramm im ursprünglichen Korpus.
 + **IDF**: Die Bewertung für die inverse Dokumenthäufigkeit für das N-Gramm im ursprünglichen Korpus.
 
-Sie können dieses Dataset manuell aktualisieren. Allerdings können dabei Fehler auftreten. Beispiel:
+Sie können dieses Dataset manuell aktualisieren. Es könnte aber sein, dass Sie dabei Fehler einführen. Beispiel:
 
 * Wenn das Modul doppelt vorhandene Zeilen mit demselben Schlüssel im Eingabevokabular findet, wird ein Fehler ausgelöst. Stellen Sie sicher, dass keine zwei Zeilen im Vokabular dasselbe Wort aufweisen.
 * Das Eingabeschema der Vokabulardatasets muss genau übereinstimmen, einschließlich der Spaltennamen und Spaltentypen. 
-* Die Spalte **ID** und die **DF**-Bewertungsspalte müssen den Typ „integer“ aufweisen. 
-* Die **IDF**-Spalte muss vom Typ „FLOAT“ sein.
+* Die Spalte **ID** und die Spalte **DF** müssen den Typ „integer“ haben. 
+* Die Spalte **IDF** muss den Typ „float“ haben.
 
 > [!Note]
-> Verbinden Sie die Datenausgabe nicht direkt mit dem Modul **Train Model** (Modell trainieren). Spalten mit freiem Text sollten vor dem Einspeisen in **Train Model** entfernt werden. Andernfalls werden Spalten mit freiem Text als kategorische Merkmale behandelt.
+> Verbinden Sie die Datenausgabe nicht direkt mit dem Modul „Train Model“ (Modell trainieren). Sie müssen freie Textspalten entfernen, bevor Sie in das Modul „Train Model“ eingespeist werden. Andernfalls werden die freien Textspalten als kategorische Features (Kategoriemerkmale) behandelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
