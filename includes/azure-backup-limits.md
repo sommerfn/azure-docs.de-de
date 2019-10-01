@@ -22,6 +22,6 @@ Für Azure Backup gelten die folgenden Beschränkungen.
 | Server oder Computer, die in einem Tresor registriert werden können. | Windows Server/Windows Client/System Center Data Protection Manager: 50 verwendet. <br/><br/> IaaS-VMs: 1.000.  |
 | Die Größe einer Datenquelle im Tresorspeicher. |54.400GB Maximum. Die Beschränkung gilt nicht für IaaS-VM-Sicherungen. |
 | Sicherungstresore in einem Azure-Abonnement. |500 Tresore pro Region. |
-| Planen täglicher Sicherungen. |Windows Server/Client: Drei pro Tag.<br/> System Center DPM Zwei pro Tag. <br/> IaaS-VMs: Eine pro Tag.  |
+| Planen täglicher Sicherungen. |Windows Server/Client: Drei pro Tag.<br/> System Center DPM: Zwei pro Tag. <br/> IaaS-VMs: Eine pro Tag.  |
 | Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind. | 16 |
 | Einzelner Datenträger, der für die Sicherung an einen virtuellen Azure-Computer angeschlossen ist.| 4\.095GB|
