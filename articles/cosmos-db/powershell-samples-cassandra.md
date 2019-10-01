@@ -4,14 +4,14 @@ description: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Cassandra-API'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 670fac2e7eadaa8273c309fee56f164512398d78
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 31997143aa688c2eb74d180a2811496e53bc672c
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565478"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155439"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: Cassandra-API
 
@@ -23,7 +23,8 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azu
 |[Keyspaces oder Tabellen auflisten oder abrufen](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Auflisten oder Abrufen von Keyspaces oder Tabellen |
 |[RU/s abrufen](scripts/powershell/cassandra/ps-cassandra-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von RU/s für einen Keyspace oder eine Tabelle |
 |[RU/s aktualisieren](scripts/powershell/cassandra/ps-cassandra-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualisieren von RU/s für einen Keyspace oder eine Tabelle |
-|[Region hinzufügen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen eines Azure Cosmos-Kontos und Hinzufügen einer Region zur Liste der Speicherorte. |
-|[Failoverpriorität ändern](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Failoverpriorität eines Azure Cosmos-Kontos mit einem manuellen Failovertrigger. |
-|[Aufgaben für Kontoschlüssel und Verbindungszeichenfolgen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen der Verbindungszeichenfolgen für ein Azure Cosmos-Konto. Abrufen der Primär- und Sekundärschlüssel eines Azure Cosmos-Kontos. Erneutes Generieren eines Kontoschlüssels |
+|[Ein Konto aktualisieren oder eine Region hinzufügen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hinzufügen einer Region zu einem Cosmos-Konto. Kann auch zum Ändern anderer Kontoeigenschaften verwendet werden, dafür muss jedoch ein separater Vorgang ausgeführt werden. |
+|[Failoverpriorität ändern oder Failover auslösen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ändern der Priorität eines regionalen Failovers eines Azure Cosmos-Kontos oder Auslösen eines manuellen Failovers |
+|[Kontoschlüssel oder Verbindungszeichenfolgen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Abrufen von Primär- und Sekundärschlüsseln und Verbindungszeichenfolgen oder erneutes Generieren eines Kontoschlüssels eines Azure Cosmos-Kontos |
+|[Cosmos-Konto mit IP-Firewall erstellen](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellen eines Azure Cosmos-Kontos mit aktivierter IP-Firewall |
 |||

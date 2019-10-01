@@ -1,19 +1,19 @@
 ---
-title: 'Azure PowerShell-Skript: Anpassen der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos-Konto'
-description: 'Azure PowerShell-Skriptbeispiel: Anpassen der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos-Konto'
+title: 'Azure PowerShell-Skript: Erstellen eines Azure Cosmos-Kontos mit IP-Firewall'
+description: 'Azure PowerShell-Skriptbeispiel: Erstellen eines Azure Cosmos-Kontos mit IP-Firewall'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
+ms.openlocfilehash: c0e7d2b4fe1e63b468a4ef8c88310c5d7e115ebe
 ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155408"
+ms.locfileid: "71156515"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Anpassen der Failoverpriorität oder Auslösen des Failovers für ein Azure Cosmos-Konto mithilfe von PowerShell
+# <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>Erstellen eines Azure Cosmos-Kontos mit IP-Firewall
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,11 +22,9 @@ ms.locfileid: "71155408"
 ## <a name="sample-script"></a>Beispielskript
 
 > [!NOTE]
-> Jede Änderung an einer Region mit `failoverPriority=0` löst ein manuelles Failover aus und kann nur für ein Konto ausgeführt werden, für das das manuelle Failover konfiguriert ist. Durch Änderungen an allen anderen Regionen wird einfach die Failoverpriorität für ein Cosmos-Konto geändert.
-> [!NOTE]
 > Dieses Beispiel veranschaulicht die Verwendung eines SQL-API-Kontos (Core-API). Wenn Sie dieses Beispiel für andere APIs verwenden möchten, kopieren Sie die zugehörigen Eigenschaften, und wenden Sie sie auf Ihr API-spezifisches Skript an.
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -43,8 +41,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure-Ressourcen**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Dient zum Aufrufen einer Aktion für eine Ressource. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
 |**Azure-Ressourcengruppen**| |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 

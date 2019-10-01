@@ -3,15 +3,16 @@ title: 'Azure PowerShell-Skript: Azure Cosmos DB – Erstellen einer Datenbank u
 description: 'Azure PowerShell-Skript: Azure Cosmos DB – Erstellen einer Datenbank und eines Containers für die SQL-API (Core-API)'
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b8b30f178ba068bc800103f16adde43cf5dcb1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602217"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178797"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Erstellen einer Datenbank und eines Containers für Azure Cosmos DB – SQL-API (Core-API)
 
@@ -21,7 +22,9 @@ ms.locfileid: "67602217"
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create a database and container for SQL (Core) API")]
+Dieses Skript erstellt ein Cosmos-Konto für die SQL-API (Core-API) in zwei Regionen mit Konsistenz auf Sitzungsebene, eine Datenbank mit gemeinsam genutztem Durchsatz und einen Container mit einem Partitionsschlüssel, benutzerdefinierter Indizierungsrichtlinie, einer Richtlinie für eindeutige Schlüssel, TTL, dediziertem Durchsatz und einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ mit einem benutzerdefinierten Konfliktauflösungspfads, der im Fall von `multipleWriteLocations=true` verwendet wird.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 

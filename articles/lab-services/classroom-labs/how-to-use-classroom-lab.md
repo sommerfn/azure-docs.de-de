@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
+ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032014"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161529"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registrieren, alle Labs anzeigen, auf die Sie zugreifen können, einen virtuellen Computer im Lab starten/beenden und eine Verbindung mit dem virtuellen Computer herstellen. 
@@ -28,8 +28,11 @@ In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registr
 
 1. Navigieren Sie zur **Registrierungs-URL**, die Sie von der Lehrkraft erhalten haben. Die Registrierungs-URL muss nach Abschluss der Registrierung nicht mehr verwendet werden. Verwenden Sie stattdessen die folgende URL: [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wird noch nicht unterstützt. 
 1. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto beim Dienst an, um die Registrierung abzuschließen. 
-2. Vergewissern Sie sich nach der Registrierung, dass Sie den virtuellen Computer für das Lab sehen, auf das Sie Zugriff haben. 
-3. Warten Sie, bis der virtuelle Computer bereit ist. Beachten Sie auf der VM-Kachel die folgenden Felder:
+
+    > [!NOTE]
+    > Für die Verwendung von Azure Lab Services ist ein Microsoft-Konto erforderlich. Wenn Sie ein nicht von Microsoft stammendes Konto (beispielsweise ein Yahoo- oder Google-Konto) für die Anmeldung beim Portal verwenden möchten, befolgen Sie die Anweisungen zum Erstellen eines Microsoft-Kontos, das mit Ihrem Nicht-Microsoft-Konto verknüpft wird. Führen Sie anschließend die Schritte zum Abschließen des Registrierungsprozesses aus. 
+1. Vergewissern Sie sich nach der Registrierung, dass Sie den virtuellen Computer für das Lab sehen, auf das Sie Zugriff haben. 
+1. Warten Sie, bis der virtuelle Computer bereit ist. Beachten Sie auf der VM-Kachel die folgenden Felder:
     1. Im oberen Kachelbereich wird der **Name des Labs** angezeigt.
     1. Auf der rechten Seite wird das Symbol angezeigt, das für das **Betriebssystem** des virtuellen Computers steht. In diesem Beispiel ist es das Windows-Betriebssystem. 
     1. Im unteren Kachelbereich befinden sich Symbole und Schaltflächen, über die Sie den virtuellen Computer starten und beenden sowie eine Verbindung mit dem virtuellen Computer herstellen können. 

@@ -1,19 +1,19 @@
 ---
 title: 'Azure PowerShell-Skript: Aktualisieren eines Azure Cosmos-Kontos'
-description: 'Beispiel eines Azure PowerShell-Skripts: Aktualisieren eines Azure Cosmos-Konto durch Hinzufügen von Regionen'
+description: 'Beispiel eines Azure PowerShell-Skripts: Aktualisieren eines Azure Cosmos-Kontos oder Ändern von Regionen'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8fad9b47b4f451f4b77f32038b26d6dc43809a60
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7d57264daf4036d1823d3da27c248bdca1d7466d
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603949"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154738"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>Aktualisieren eines Azure Cosmos-Konto durch Hinzufügen einer Region mithilfe von PowerShell
+# <a name="update-an-azure-cosmos-account-or-add-modify-regions-using-powershell"></a>Aktualisieren eines Azure Cosmos-Kontos oder Hinzufügen/Ändern von Regionen mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603949"
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> Regionen und andere Cosmos-Kontoeigenschaften können nicht im gleichen Vorgang geändert werden. Dafür müssen zwei separate Vorgänge ausgeführt werden.
+> [!NOTE]
+> Dieses Beispiel veranschaulicht die Verwendung eines SQL-API-Kontos (Core-API). Wenn Sie dieses Beispiel für andere APIs verwenden möchten, kopieren Sie die zugehörigen Eigenschaften, und wenden Sie sie auf Ihr API-spezifisches Skript an.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -38,8 +43,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 |**Azure-Ressourcen**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Dient zum Abrufen einer Ressource. |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Aktualisieren Sie eine Ressource. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Aktualisieren einer Ressource |
 |**Azure-Ressourcengruppen**| |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915151"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240973"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -57,6 +57,7 @@ Ein Entwicklungscomputer:
 
 * Windows 10 mit Update 1809 oder höher.
 * Sie können je nach Ihren Präferenzen bei der Entwicklung Ihren eigenen Computer oder einen virtuellen Computer verwenden.
+  * Stellen Sie sicher, dass Ihr Entwicklungscomputer geschachtelte Virtualisierung unterstützt. Diese Funktion ist zum Ausführen einer Containerengine erforderlich, die Sie im nächsten Abschnitt installieren.
 * Installieren Sie [Git](https://git-scm.com/). 
 
 Ein Azure IoT Edge-Gerät unter Windows:
@@ -299,7 +300,7 @@ Der Code von „IotEdgeModule1“ empfängt Nachrichten über die zugehörige Ei
 
 3. Im Abschnitt **Ausgabe** von Visual Studio können Sie dann verfolgen, wie die Nachrichten auf Ihrem IoT-Hub eingehen. 
 
-   Es dauert ggf. einige Minuten, bis beide Module gestartet wurden. Die IoT Edge-Runtime muss das neue Bereitstellungsmanifest empfangen, die Modulimages per Pullvorgang aus der Containerruntime abrufen und dann jedes neue Modul starten. Wenn Sie 
+   Es dauert ggf. einige Minuten, bis beide Module gestartet wurden. Die IoT Edge-Runtime muss das neue Bereitstellungsmanifest empfangen, die Modulimages per Pullvorgang aus der Containerruntime abrufen und dann jedes neue Modul starten. 
 
    ![Anzeigen von eingehenden Gerät-zu-Cloud-Nachrichten](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 

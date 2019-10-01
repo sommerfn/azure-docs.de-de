@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931359"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172168"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter, zeitplanbasierter periodischer Workflows mithilfe von Azure Logic Apps
 
@@ -58,12 +58,12 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Angeben von Informationen zur Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Eigenschaft | Wert | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | LA-TravelTime | Der Name Ihrer Logik-App. Er darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten. In diesem Beispiel wird „LA-TravelTime“ verwendet. |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements |
    | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-TravelTime-RG“ verwendet. |
-   | **Standort** | USA, Westen | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
+   | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
    ||||
 
@@ -83,7 +83,7 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
 1. Geben Sie im Designer für Logik-Apps die Zeichenfolge „Serie“ als Filter in das Suchfeld ein. Wählen Sie in der Liste **Trigger** den Trigger **Serie** aus.
 
-   ![Hinzufügen eines Serientriggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
+   ![Hinzufügen eines Recurrence-Triggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
 1. Wählen Sie Bereich **Serie** die Schaltfläche mit den **Auslassungspunkten** ( **...** ) und anschließend **Umbenennen** aus. Nennen Sie den Trigger wie folgt: `Check travel time every weekday morning`
 
@@ -93,10 +93,10 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
    ![Ändern von Intervall und Frequenz](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Intervall** | Ja | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen |
-   | **Frequenz** | Ja | Woche | Die Zeiteinheit für die Wiederholung |
+   | **Frequency** | Ja | Woche | Die Zeiteinheit für die Wiederholung |
    |||||
 
 1. Öffnen Sie unter **Intervall** und **Frequenz** die Liste **Neuen Parameter hinzufügen**, und wählen Sie die folgenden Eigenschaften aus, um sie dem Trigger hinzuzufügen:
@@ -111,7 +111,7 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
    ![Eingeben der Zeitplan- und Wiederholungsdetails](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | Eigenschaft | Wert | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **An diesen Tagen** | Montag,Dienstag,Mittwoch,Donnerstag,Freitag | Nur verfügbar, wenn für **Häufigkeit** die Option „Woche“ festgelegt ist. |
    | **Zu diesen Stunden** | 7,8,9 | Nur verfügbar, wenn für **Häufigkeit** die Option „Woche“ oder „Tag“ festgelegt ist. Wählen Sie für die Ausführung der Wiederholung die Stunden des Tages aus. Dieses Beispiel wird um 7, 8 und 9 Uhr ausgeführt. |
@@ -142,7 +142,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
 
    ![Erstellen der Bing Maps-Verbindung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Eigenschaft | Erforderlich | Value | Beschreibung |
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | BingMapsConnection | Geben Sie einen Namen für die Verbindung an. In diesem Beispiel wird „BingMapsConnection“ verwendet. |
    | **API-Schlüssel** | Ja | <*Ihr Bing Maps-Schlüssel*> | Geben Sie den Bing Maps-Schlüssel ein, den Sie zuvor abgerufen haben. Falls Sie keinen Bing Maps-Schlüssel besitzen, lesen Sie die Informationen zum [Abrufen eines Schlüssels](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -162,7 +162,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
 
    ![Angeben von Details für die Aktion „Get route“ (Route ermitteln)](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Eigenschaft | Erforderlich | Value | Beschreibung |
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Wegpunkt 1** | Ja | <*Start*> | Ausgangspunkt für die Route |
    | **Wegpunkt 2** | Ja | <*Ziel*> | Ziel der Route |
@@ -193,7 +193,7 @@ Die vorherige Aktion **Get route** (Route ermitteln) gibt standardmäßig die ak
 
 1. Geben Sie die Details für die Variable an wie hier beschrieben:
 
-   | Eigenschaft | Erforderlich | Value | Beschreibung |
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | travelTime | Der Name für Ihre Variable. In diesem Beispiel wird „travelTime“ verwendet. |
    | **Typ** | Ja | Integer | Der Datentyp für die Variable |
@@ -235,7 +235,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, ob die aktuelle 
 
 1. Wählen Sie unter der vorherigen Aktion die Option **Neuer Schritt** aus.
 
-1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus, suchen Sie nach „Bedingung“, und wählen Sie anschließend die Aktion **Bedingung** aus.
+1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff „Bedingung“ als Filter ein. Wählen Sie in der Liste „Aktionen“ die Aktion **Bedingung** aus.
 
    ![Auswählen der Aktion „Bedingung“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -243,19 +243,19 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, ob die aktuelle 
 
 1. Erstellen Sie wie hier beschrieben und gezeigt eine Bedingung, die überprüft, ob der Eigenschaftswert **travelTime** den von Ihnen angegebenen Grenzwert überschreitet:
 
-   1. Klicken Sie innerhalb der Bedingung auf das Feld **Wert auswählen** (auf der linken Seite der Bedingung).
+   1. Klicken Sie in der Bedingung auf das Feld **Wert auswählen** (links von der Bedingung).
 
-   1. Wenn die Liste mit den dynamischen Inhalten angezeigt wird, wählen Sie unter **Variablen** die Eigenschaft **travelTime** aus.
+   1. Wählen Sie in der angezeigten Liste mit den dynamischen Inhalten unter **Variablen** die Eigenschaft **travelTime** aus.
 
       ![Erstellen der Bedingung (linke Seite)](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. Wählen Sie im Vergleichsfeld den folgenden Operator: **ist größer als**.
+   1. Wählen Sie im mittleren Vergleichsfeld den Operator **ist größer als** aus.
 
    1. Geben Sie auf der rechten Seite der Bedingung im Feld **Wert auswählen** den folgenden Grenzwert ein: `15`
 
       Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-      ![Erstellen der Bedingung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Abgeschlossene Bedingung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Speichern Sie Ihre Logik-App.
 

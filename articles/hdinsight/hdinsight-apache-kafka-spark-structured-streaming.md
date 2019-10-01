@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bcf1b967cf8eeab7aae4b720683785309689858e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076991"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204230"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -186,12 +186,15 @@ Dieses Beispiel zeigt, wie Sie strukturiertes Spark-Streaming mit Kafka in HDIns
 
 4. Laden Sie die vom Notebook verwendeten Pakete, indem Sie die folgenden Informationen in einer Zelle des Notebooks eingeben. Führen Sie den Befehl mit **STRG+EINGABETASTE**aus.
 
+Spark-Streaming beinhaltet Mikrobatchverarbeitung. Das bedeutet, dass Daten als Batches vorliegen und Executors für die Datenbatches ausgeführt werden. Ist das Leerlauftimeout des Executors geringer als die für die Verarbeitung des Batches benötigte Zeit, werden die Executors ständig hinzugefügt und entfernt. Ist das Leerlauftimeout der Executors länger als die Batchdauer, wird der Executor nie entfernt. **Daher wird empfohlen, die dynamische Zuteilung zu deaktivieren, indem Sie „spark.dynamicAllocation.enabled“ bei der Ausführung von Streaminganwendungen auf „false“ festlegen.**
+
     ```
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```

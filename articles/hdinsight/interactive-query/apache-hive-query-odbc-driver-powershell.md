@@ -3,17 +3,17 @@ title: Abfragen von Apache Hive mit ODBC-Treiber und PowerShell – Azure HDInsi
 description: Verwenden Sie den Microsoft Hive ODBC-Treiber und PowerShell zum Abfragen von Apache Hive-Clustern in Azure HDInsight.
 keywords: Hive, Hive ODBC, PowerShell
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b02c865e953861b5ac396538fdd0f0623b0e5428
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486063"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122172"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Tutorial: Abfragen von Apache Hive mit ODBC und PowerShell
 
@@ -70,7 +70,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
    |  Rows fetched per block |Wenn Sie viele Datensätze abrufen, ist es möglicherweise erforderlich, diesen Parameter zu optimieren, um optimale Leistung zu garantieren. |
    |  Default string column length, Binary column length, Decimal column scale |Längen und Genauigkeiten der Datentypen können beeinflussen, wie die Daten zurückgegeben werden. Aufgrund zu geringer Genauigkeit und von Abschneidevorgängen werden falsche Informationen zurückgegeben. |
 
-    ![Erweiterte Optionen](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Erweiterte DSN-Konfigurationsoptionen")
+    ![Erweiterte DSN-Konfigurationsoptionen](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Erweiterte DSN-Konfigurationsoptionen")
 
 1. Wählen Sie **Testen** aus, um die Datenquelle zu testen. Wenn die Datenquelle richtig konfiguriert wurde, wird als Testergebnis **SUCCESS** angezeigt.  
 

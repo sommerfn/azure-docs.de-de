@@ -5,136 +5,106 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278004"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128726"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit (Vorschau)
 
-Wenn Sie Azure Active Directory (Azure AD) für die B2B-Zusammenarbeit mit externen Partnern verwenden, können Sie mehrere Gastbenutzer gleichzeitig in Ihre Organisation einladen. In diesem Tutorial erfahren Sie, wie Sie mit PowerShell Masseneinladungen an externe Benutzer senden. Das Tutorial umfasst vor allem die folgenden Aufgaben:
+|     |
+| --- |
+| In diesem Artikel wird eine öffentliche Previewfunktion von Azure Active Directory beschrieben. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
+
+
+Wenn Sie Azure Active Directory (Azure AD) für die B2B-Zusammenarbeit mit externen Partnern verwenden, können Sie mehrere Gastbenutzer gleichzeitig in Ihre Organisation einladen. In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Portal Masseneinladungen an externe Benutzer senden. Das Tutorial umfasst vor allem die folgenden Aufgaben:
 
 > [!div class="checklist"]
-> * Vorbereiten einer durch Trennzeichen getrennten CSV-Datei mit den Benutzerinformationen
-> * Ausführen eines PowerShell-Skripts zum Senden von Einladungen
+> * Vorbereiten einer CSV-Datei mit den Benutzerinformationen und Einladungseinstellungen mithilfe von **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau))
+> * Hochladen der CSV-Datei in Azure AD
 > * Überprüfen, ob Benutzer dem Verzeichnis hinzugefügt wurden
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Sollten Sie keine Azure Active Directory-Instanz haben, erstellen Sie zunächst ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="install-the-latest-azureadpreview-module"></a>Installieren des aktuellen AzureADPreview-Moduls
-Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls (AzureADPreview). 
-
-Überprüfen Sie zunächst, welche Module Sie installiert haben. Öffnen Sie dafür Windows PowerShell als Benutzer mit erhöhten Rechten („Als Administrator ausführen“), und führen Sie den folgenden Befehl aus:
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-Führen Sie je nach Ausgabe einen der folgenden Schritte aus:
-
-- Wenn keine Ergebnisse zurückgegeben werden, führen Sie den folgenden Befehl aus, um das AzureADPreview-Modul zu installieren:
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, eine Meldung Sie jedoch darauf hinweist, dass eine neuere Version verfügbar ist, führen Sie die folgenden Befehle aus, um das Modul zu aktualisieren: 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-Möglicherweise erscheint ein Hinweis, dass Sie das Modul aus einem nicht vertrauenswürdigen Repository installieren. Das passiert, wenn Sie das PSGallery-Repository nicht zuvor als vertrauenswürdiges Repository festgelegt haben. Drücken Sie **Y**, um das Modul zu installieren.
-
-### <a name="get-test-email-accounts"></a>Einrichten von Test-E-Mail-Konten
-
 Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen senden können. Die Konten müssen sich außerhalb Ihrer Organisation befinden. Sie können jede Art von Konto verwenden, einschließlich Konten bei sozialen Netzwerken wie „gmail.com“- oder „outlook.com“-Adressen.
 
-## <a name="prepare-the-csv-file"></a>Vorbereiten der CSV-Datei
+## <a name="invite-guest-users-in-bulk"></a>Masseneinladung von Gastbenutzern
 
-Erstellen Sie in Microsoft Excel eine CSV-Datei mit der Liste der Benutzernamen und E-Mail-Adressen der einzuladenden Personen. Achten Sie darauf, dass Sie die Spaltenüberschriften **Name** und **InvitedUserEmailAddress** angeben. 
+1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
+2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
+3. Wählen Sie unter **Verwalten** die Optionen **Benutzer** > **Masseneinladung** aus.
+4. Wählen Sie auf der Seite **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau)) die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Einladungseigenschaften zu erhalten.
 
-Erstellen Sie beispielsweise ein Arbeitsblatt im folgenden Format:
+    ![Downloadschaltfläche für Masseneinladungen](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Gastbenutzer hinzu. Erforderliche Werte:
 
-![PowerShell-Ausgabe: ausstehende Annahme durch Benutzer](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **E-Mail-Adresse für Einladung**: Der Benutzer, der eine Einladung erhält
 
-Speichern Sie die Datei unter **C:\BulkInvite\Invitations.csv**. 
+   * **Umleitungs-URL**: Die URL, an die der eingeladene Benutzer nach dem Akzeptieren der Einladung weitergeleitet wird
 
-Wenn Sie Excel nicht verwenden, können Sie eine CSV-Datei in jedem beliebigen Text-Editor erstellen, z.B. Notepad. Trennen Sie Werte durch Kommas und Zeilen durch eine neue Zeile. 
+    ![Beispiel für eine CSV-Datei mit eingegebenen Gastbenutzern](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>Anmelden im Mandanten
+   > [!NOTE]
+   > Verwenden Sie unter **Benutzerdefinierte Einladungsnachricht** keine Kommas, da die Nachricht sonst nicht erfolgreich analysiert werden kann.
 
-Führen Sie den folgenden Befehl aus, um eine Verbindung mit der Mandantendomäne herzustellen:
+6. Speichern Sie die Datei .
+7. Navigieren Sie auf der Seite **Bulk invite users (Preview)** (Massenbenutzereinladung (Vorschau)) unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen, wird mit der Überprüfung der CSV-Datei begonnen. 
+8. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
+9. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Hinzufügen der Einladungen zu starten. 
+10. Wählen Sie zum Anzeigen des Auftragsstatus **Klicken Sie hier, um den Status für jeden Vorgang anzuzeigen.** aus. Alternativ können Sie im Abschnitt **Aktivität** die Option **Ergebnisse von Massenvorgängen (Vorschau)** auswählen. Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte in der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-Beispiel: `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+    ![Beispiel für Ergebnisse von Massenvorgängen](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-Geben Sie bei Aufforderung Ihre Anmeldeinformationen ein.
+11. Nach Abschluss des Vorgangs wird eine Benachrichtigung angezeigt, dass der Massenvorgang erfolgreich abgeschlossen wurde.
 
-## <a name="send-bulk-invitations"></a>Senden von Masseneinladungen
+## <a name="verify-guest-users-in-the-directory"></a>Überprüfen von Gastbenutzern im Verzeichnis
 
-Führen Sie das folgende PowerShell-Skript aus (mit **c:\bulkinvite\invitations.csv** als CSV-Dateipfad), um die Einladungen zu senden: 
+Überprüfen Sie entweder im Azure-Portal oder mithilfe von PowerShell, ob die hinzugefügten Gastbenutzer im Verzeichnis vorhanden sind.
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-Dieses Skript sendet Einladungen an die E-Mail-Adressen in der Datei „Invitations.csv“. Die Ausgabe sollte für jeden Benutzer ungefähr so aussehen:
+### <a name="view-guest-users-in-the-azure-portal"></a>Anzeigen von Gastbenutzern im Azure-Portal
 
-![PowerShell-Ausgabe: ausstehende Annahme durch Benutzer](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
+2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
+3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
+4. Wählen Sie unter **Anzeigen** die Option **Nur Gastbenutzer** aus, und überprüfen Sie, ob die hinzugefügten Benutzer aufgelistet werden.
 
-## <a name="verify-users-exist-in-the-directory"></a>Überprüfen, ob Benutzer im Verzeichnis vorhanden sind
+### <a name="view-guest-users-with-powershell"></a>Anzeigen von Gastbenutzern mit PowerShell
 
-Um zu überprüfen, ob die eingeladenen Benutzer Azure AD hinzugefügt wurden, führen Sie den folgenden Befehl aus:
+Führen Sie den folgenden Befehl aus:
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
+
 Die von Ihnen eingeladenen Benutzer sollten mit einem Benutzerprinzipalnamen (UPN) im Format *E-Mail-Adresse*#EXT#\@*Domäne* angezeigt werden. Beispiel: *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, wobei „contoso.onmicrosoft.com“ der Organisation entspricht, für die Sie die Einladungen gesendet haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Testbenutzerkonten nicht mehr benötigen, können Sie sie aus dem Verzeichnis löschen. Führen Sie den folgenden Befehl aus, um ein Benutzerkonto zu löschen:
+Wenn Sie die Testbenutzerkonten nicht mehr benötigen, können Sie sie im Azure-Portal auf der Seite „Benutzer“ aus dem Verzeichnis löschen. Aktivieren Sie dazu das Kontrollkästchen neben dem Gastbenutzer, und wählen Sie dann **Löschen** aus. 
+
+Sie können aber auch den folgenden PowerShell-Befehl ausführen, um ein Benutzerkonto zu löschen:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 Beispiel: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie Masseneinladungen an Gastbenutzer außerhalb Ihrer Organisation gesendet. Als Nächstes erfahren Sie, wie Einladungen eingelöst werden.
 
 > [!div class="nextstepaction"]
 > [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md)
-

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900672"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173650"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst in Azure Service Fabric
 
 Dieses Tutorial ist der erste Teil einer Serie. Das Ergebnis ist eine Abstimmungsanwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst in Azure Service Fabric gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren. Gegebenenfalls ist auch die [Schnellstartanleitung für Java Reliable Services](service-fabric-quickstart-java-reliable-services.md) hilfreich.
 
-![Voting-App (lokal)](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Service Fabric-Beispiel „Voting“](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -60,15 +60,15 @@ Erstellen Sie zunächst das Web-Front-End der Abstimmungsanwendung. Eine Angular
 
 2. Erstellen Sie ein Projekt über **Datei** > **Neu** > **Andere** > **Service Fabric** > **Service Fabric-Projekt**.
 
-    ![Dialogfeld „Neues Projekt“ in Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Neues Service Fabric-Projekt in Eclipse](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
 3. Geben Sie dem Projekt im Dialogfeld des **ServiceFabric-Projekt-Assistenten** den Namen **Voting**, und wählen Sie **Weiter** aus.
 
-    ![Auswählen des zustandslosen Java-Diensts im Dialogfeld für einen neuen Dienst](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![Auswählen des zustandslosen Java-Diensts im Dialogfeld für einen neuen Dienst](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
 4. Wählen Sie auf der Seite **Dienst hinzufügen** die Option **Zustandsloser Dienst** aus, und geben Sie dem Dienst den Namen **VotingWeb**. Wählen Sie **Fertig stellen** aus, um das Projekt zu erstellen.
 
-    ![Erstellen eines zustandslosen Diensts]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Erstellen eines zustandslosen Diensts für Ihr Service Fabric-Projekt]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Eclipse erstellt eine Anwendung und ein Dienstprojekt und zeigt diese Elemente im Paket-Explorer an.
 
@@ -416,7 +416,7 @@ Service Fabric ermöglicht eine konsistente und zuverlässige Speicherung von Da
 
 3. Eclipse erstellt ein Dienstprojekt und zeigt es im Paket-Explorer an.
 
-    ![Projektmappen-Explorer](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Projekt-Explorer von Eclipse](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>Hinzufügen der Datei „VotingDataService.java“
 
@@ -557,7 +557,7 @@ Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird
 
 1. Klicken Sie im Paket-Explorer mit der rechten Maustaste auf das Projekt **Voting**, und wählen Sie dann **Neu** > **Ordner** aus. Nennen Sie den Ordner **VotingRPC/src/rpcmethods**.
 
-    ![Erstellen des Pakets „VotingRPC“](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![Erstellen eines VotingRPC-Pakets im Projekt-Explorer von Eclipse](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. Erstellen Sie unter *Voting/VotingRPC/src/rpcmethods* eine Datei mit dem Namen *VotingRPC.java*, und fügen Sie Folgendes in **diese Datei** ein. 
 
@@ -720,7 +720,7 @@ Die Abstimmungsanwendung besteht aus zwei Diensten:
 - Web-Front-End-Dienst (VotingWeb): Ein Java-Web-Front-End-Dienst, der die Webseite bereitstellt und APIs für die Kommunikation mit dem Back-End-Dienst verfügbar macht.
 - Back-End-Dienst (VotingDataService): Ein Java-Webdienst, der über Remoteprozeduraufrufe (RPCs) aufgerufene Methoden definiert, um Stimmen dauerhaft zu speichern.
 
-![Anwendungsdiagramm](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![Abstimmungsbeispieldiagramm](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 Wenn Sie in der Anwendung eine Aktion durchführen (Element hinzufügen, Abstimmen, Element entfernen), treten die folgenden Ereignisse ein:
 1. Ein JavaScript sendet die entsprechende Anforderung als HTTP-Anforderung an die Web-API im Web-Front-End-Dienst.

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001663"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128950"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning
 
@@ -143,11 +143,11 @@ Sie verfügen jetzt über die erforderlichen Pakete und Computeressourcen, die S
 
 ## <a name="explore-data"></a>Erkunden von Daten
 
-Bevor Sie ein Modell trainieren, müssen Sie die Daten verstehen, die zum Trainieren verwendet werden. Sie müssen außerdem die Daten in die Cloud kopieren. Dann sind sie für Ihre Cloudtrainingsumgebung zugänglich. In diesem Abschnitt erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
+Bevor Sie ein Modell trainieren, müssen Sie die Daten verstehen, die zum Trainieren verwendet werden. Außerdem müssen Sie die Daten in die Cloud hochladen, damit sie für Ihre Cloudtrainingsumgebung zugänglich sind. In diesem Abschnitt erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
 * Herunterladen des MNIST-Datasets.
 * Anzeigen einiger Beispielbilder.
-* Hochladen von Daten in die Cloud.
+* Hochladen von Daten in Ihren Arbeitsbereich in der Cloud
 
 ### <a name="download-the-mnist-dataset"></a>Laden des MNIST-Datasets
 
@@ -209,18 +209,29 @@ Eine zufällige Stichprobe von Bildern wird angezeigt:
 
 Sie haben jetzt einen Eindruck vom Aussehen dieser Bilder und vom erwarteten Vorhersageergebnis.
 
-### <a name="upload-data-to-the-cloud"></a>Hochladen von Daten in die Cloud
+### <a name="create-a-filedataset"></a>Erstellen eines FileDataset-Elements
 
-Sie haben die Trainingsdaten auf dem Computer mit dem ausgeführten Notebook heruntergeladen und verwendet.  Im nächsten Abschnitt trainieren Sie ein Modell in der Azure Machine Learning Compute-Remoteinstanz.  Die Remotecomputeressource benötigt auch Zugriff auf Ihre Daten. Zum Bereitstellen des Zugriffs laden Sie Ihre Daten in einen zentralisierten Datenspeicher hoch, der dem Arbeitsbereich zugeordnet ist. Bei Verwendung von Remotecomputezielen in der Cloud bietet dieser Datenspeicher schnellen Zugriff auf Ihre Daten, da sie sich im Azure-Datencenter befinden.
-
-Laden Sie die MNIST-Dateien in ein Verzeichnis namens `mnist` hoch, das sich im Stammverzeichnis des Datenspeichers befindet. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md).
+Ein `FileDataset`-Objekt verweist auf Dateien in Ihrem Arbeitsbereichsdatenspeicher oder unter öffentlichen URLs. Die Dateien können ein beliebiges Format haben, und die Klasse ermöglicht es Ihnen, die Dateien in Ihre Computeinstanz herunterzuladen oder einzubinden. Durch Erstellen eines `FileDataset`-Objekts erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen. Weitere Informationen finden Sie in der [Beschreibung](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) des `Dataset`-Pakets.
 
 ```python
-ds = ws.get_default_datastore()
-print(ds.datastore_type, ds.account_name, ds.container_name)
+from azureml.core.dataset import Dataset
 
-ds.upload(src_dir=data_folder, target_path='mnist',
-          overwrite=True, show_progress=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
+
+Verwenden Sie die `register()`-Methode, um das Dataset in Ihrem Arbeitsbereich zu registrieren, damit es für andere Benutzer freigegeben und für unterschiedliche Experimente wiederverwendet werden kann und damit in Ihrem Trainingsskript über den Namen darauf verwiesen werden kann.
+
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 ```
 
 Jetzt haben Sie alles, was Sie zum Trainieren eines Modells benötigen.
@@ -253,6 +264,7 @@ Um den Auftrag an den Cluster zu übermitteln, erstellen Sie zuerst ein Training
 import argparse
 import os
 import numpy as np
+import glob
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
@@ -260,7 +272,7 @@ from sklearn.externals import joblib
 from azureml.core import Run
 from utils import load_data
 
-# let user feed in 2 parameters, the location of the data files (from datastore), and the regularization rate of the logistic regression model
+# let user feed in 2 parameters, the dataset to mount or download, and the regularization rate of the logistic regression model
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
 parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
@@ -271,10 +283,10 @@ print('Data folder:', data_folder)
 
 # load train and test set into numpy arrays
 # note we scale the pixel intensity values to 0-1 (by dividing it with 255.0) so the model can converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -322,19 +334,31 @@ Ein [SKLearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core
 * Den Namen des Trainingsskripts, **train.py**.
 * Die für das Trainingsskript erforderlichen Parameter.
 
-In diesem Tutorial wird der AmlCompute-Cluster als Ziel verwendet. Alle Dateien im Skriptordner werden zur Ausführung in die Clusterknoten hochgeladen. **data_folder** wird auf die Verwendung des Datenspeichers (`ds.path('mnist').as_mount()`) festgelegt:
+In diesem Tutorial wird der AmlCompute-Cluster als Ziel verwendet. Alle Dateien im Skriptordner werden zur Ausführung in die Clusterknoten hochgeladen. **data_folder** wird auf die Verwendung des Datasets festgelegt. Erstellen Sie zunächst ein Umgebungsobjekt, das die für das Training erforderlichen Abhängigkeiten angibt. 
+
+```python
+from azureml.core.environment import Environment
+from azureml.core.conda_dependencies import CondaDependencies
+
+env = Environment('my_env')
+cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+env.python.conda_dependencies = cd
+```
+
+Erstellen Sie dann den Estimator mit dem folgenden Code:
 
 ```python
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--regularization': 0.5
 }
 
 est = SKLearn(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
+              environment_definition=env, 
               entry_script='train.py')
 ```
 

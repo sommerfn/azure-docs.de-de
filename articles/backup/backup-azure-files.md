@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624354"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129562"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Sichern und Wiederherstellen von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -86,13 +86,15 @@ Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederh
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Das Menü „Sicherungselemente“ wird für die ausgewählte Dateifreigabe geöffnet.
+3. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Einzelheiten zum **Sicherungselement** werden angezeigt. Klicken Sie im Menü **Sicherungselement** auf **Jetzt sichern**. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/backup-item-menu.png)
 
-4. Klicken Sie im Menü „Sicherungselemente“ auf **Jetzt sichern**. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet. Das Dialogfeld **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll.
+4. Das Dialogfeld **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/backup-now-menu.png)
+
+5. Klicken Sie auf **OK**, um den bedarfsgesteuerten Sicherungsauftrag zu bestätigen.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Wiederherstellen aus der Sicherung einer Azure-Dateifreigabe
 Wenn Sie eine gesamte Dateifreigabe oder einzelne Dateien oder Ordner auf der Grundlage eines Wiederherstellungspunkts wiederherstellen müssen, navigieren Sie zu „Sicherungselemente“, wie im vorherigen Abschnitt erläutert. Wählen Sie **Restore Share** (Freigabe wiederherstellen), um für eine gesamte Dateifreigabe eine Zeitpunktwiederherstellung durchzuführen. Wählen Sie in der Liste der angezeigten Wiederherstellungspunkte einen Punkt aus, um die aktuelle Dateifreigabe zu überschreiben oder den Punkt als alternative Dateifreigabe in der gleichen Region wiederherzustellen.

@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44eb25be12b908c8f951cb20948068da3bfc2928
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170887"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203139"
 ---
-## <a name="test"></a>Testen der Funktion in Azure
+## <a name="test"></a>Überprüfen der Funktion in Azure
 
-Testen Sie die bereitgestellte Funktion mit cURL. Fügen Sie unter Verwendung der URL (einschließlich des Funktionsschlüssels), die Sie im vorherigen Schritt kopiert haben, die Abfragezeichenfolge `&name=<yourname>` an die URL an.
+Überprüfen Sie die bereitgestellte Funktion mit cURL. Fügen Sie unter Verwendung der URL (einschließlich des Funktionsschlüssels), die Sie im vorherigen Schritt kopiert haben, die Abfragezeichenfolge `&name=<yourname>` an die URL an.
 
 ![Verwenden von cURL zum Aufrufen der Funktion in Azure](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 

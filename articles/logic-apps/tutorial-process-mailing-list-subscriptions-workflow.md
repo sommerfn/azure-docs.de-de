@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Genehmigungsworkflows für die Verarbeitung von Adressenlistenanforderungen – Azure Logic Apps | Microsoft-Dokumentation
-description: 'Tutorial: Erstellen automatisierter Genehmigungsworkflows für die Verarbeitung von Adressenlistenabonnements mit Azure Logic Apps'
+title: 'Erstellen genehmigungsbasierter automatisierter Workflows: Azure Logic Apps'
+description: 'Tutorial: Erstellen eines genehmigungsbasierten automatisierten Workflows, mit dem Adressenlistenabonnements mithilfe von Azure Logic Apps verarbeitet werden'
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,18 +10,17 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/12/2018
-ms.openlocfilehash: 016d004a538a1313ca31f36b46e961098051785c
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/20/2019
+ms.openlocfilehash: 734a6be81a8052b2894f4c27b165bb8dc4f14caf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051707"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171732"
 ---
-# <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Verwalten von Adressenlistenanforderungen mit Azure Logic Apps
+# <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps
 
-Mit Azure Logic Apps können Sie Workflows automatisieren und Daten übergreifend in Azure-Dienste, Microsoft-Dienste, andere SaaS-Apps (Software-as-a-Service) und lokale Systeme integrieren. In diesem Tutorial erfahren Sie, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) erstellen, die Abonnementanforderungen für eine Adressenliste verarbeitet, die von dem Dienst [MailChimp](https://mailchimp.com/) verwaltet wird.
-Die Logik-App überwacht ein E-Mail-Konto auf diese Anforderungen, sendet sie zur Genehmigung und fügt genehmigte Mitglieder der Adressenliste hinzu.
+In diesem Tutorial wird gezeigt, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) erstellen, die einen genehmigungsbasierten Workflow automatisiert. Diese Logik-App verarbeitet gezielt Abonnementanforderungen für eine Adressenliste, die von dem Dienst [MailChimp](https://mailchimp.com/) verwaltet wird. Die Logik-App überwacht ein E-Mail-Konto auf diese Anforderungen, sendet sie zur Genehmigung und fügt genehmigte Mitglieder der Adressenliste hinzu.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -38,11 +37,11 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ![Allgemeine Darstellung der fertigen Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein MailChimp-Konto. Erstellen Sie eine Liste namens „test-members-ML“, der Ihre Logik-App E-Mail-Adressen für genehmigte Mitglieder hinzufügen kann. Falls Sie über kein Konto verfügen, [registrieren Sie sich für ein kostenloses Konto](https://login.mailchimp.com/signup/), und [informieren Sie sich, wie Sie eine Liste erstellen](https://us17.admin.mailchimp.com/lists/#). 
+* Ein Azure-Abonnement. Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
+
+* Ein MailChimp-Konto, das eine Liste namens „test-members-ML“ enthält, der Ihre Logik-App E-Mail-Adressen für genehmigte Mitglieder hinzufügen kann. Falls Sie über kein Konto verfügen, [registrieren Sie sich für ein kostenloses Konto](https://login.mailchimp.com/signup/), und informieren Sie sich dann darüber, [wie Sie eine MailChimp-Liste erstellen](https://us17.admin.mailchimp.com/lists/#).
 
 * Ein E-Mail-Konto bei Office 365 Outlook oder Outlook.com, das Genehmigungsworkflows unterstützt. In diesem Artikel wird Office 365 Outlook verwendet. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
@@ -52,130 +51,143 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
-1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
+1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
    ![Erstellen einer Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
 
-2. Geben Sie unter **Logik-App erstellen** die Informationen wie beschrieben ein. Wenn Sie fertig sind, wählen Sie **An Dashboard anheften** > **Erstellen** aus.
+1. Geben Sie unter **Logik-App erstellen** die Informationen wie beschrieben ein. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
    ![Angeben von Informationen zur Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
-   | **Name** | LA-MailingList | Der Name Ihrer Logik-App | 
-   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
-   | **Ressourcengruppe** | LA-MailingList-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
-   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
-   | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
-   |||| 
+   | Eigenschaft | Wert | BESCHREIBUNG |
+   |----------|-------|-------------|
+   | **Name** | LA-MailingList | Der Name Ihrer Logik-App. Er darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten. In diesem Beispiel wird „LA-MailingList“ verwendet. |
+   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements |
+   | **Ressourcengruppe** | LA-MailingList-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-MailingList-RG“ verwendet. |
+   | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
+   | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
+   ||||
 
-3. Nachdem Ihre App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet und eine Seite mit einem Einführungsvideo und Vorlagen für allgemeine Logik-App-Mustern angezeigt. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
+1. Wählen Sie nach der Bereitstellung Ihrer App durch Azure für Ihre bereitgestellte Logik-App auf der Azure-Symbolleiste **Benachrichtigungen** > **Zu Ressource wechseln** aus.
 
-   ![Auswählen der Vorlage „Leere Logik-App“](./media/tutorial-process-mailing-list-subscriptions-workflow/choose-logic-app-template.png)
+   ![Zu Ressource wechseln](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app.png)
 
-Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der auf eingehende E-Mails mit Abonnementanforderungen lauscht.
-Jede Logik-App beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder neue Daten eine bestimmte Bedingung erfüllen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Sie können zum Suchen und Auswählen Ihrer Logik-App auch den Namen in das Suchfeld eingeben.
+
+   Der Designer für Logik-Apps wird geöffnet. Es wird eine Seite mit einem Einführungsvideo sowie mit häufig verwendeten Triggern und Logik-App-Mustern angezeigt. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
+
+   ![Auswählen der Vorlage „Leere Logik-App“](./media/tutorial-process-mailing-list-subscriptions-workflow/select-logic-app-template.png)
+
+Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der auf eingehende E-Mails mit Abonnementanforderungen lauscht. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder neue Daten eine bestimmte Bedingung erfüllen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-trigger-to-monitor-emails"></a>Hinzufügen eines Triggers zum Überwachen von E-Mails
 
-1. Geben Sie in das Suchfeld des Designers den Text „Wenn E-Mail empfangen wird“ ein. Wählen Sie den folgenden Trigger für Ihren E-Mail-Anbieter aus: **<*Ihr E-Mail-Anbieter*> - Wenn eine neue E-Mail empfangen wird**
-   
-   ![Wählen Sie den folgenden Trigger für den E-Mail-Anbieter aus: „When a new email arrives“ (Wenn eine neue E-Mail eingeht)](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+1. Geben Sie im Designer für Logik-Apps `when email arrives` als Filter in das Suchfeld ein. Wählen Sie in der Liste **Trigger** den Trigger **Wenn eine neue E-Mail empfangen wird** für Ihren E-Mail-Anbieter aus.
+
+   In diesem Beispiel wird der Trigger „Office 365 Outlook“ verwendet:
+
+   ![Auswählen des Triggers „Wenn eine neue E-Mail empfangen wird“ für den E-Mail-Anbieter](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“.
    * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“.
 
-2. Falls Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, melden Sie sich bei Ihrem E-Mail-Konto an, damit Logic Apps eine Verbindung mit Ihrem E-Mail-Konto erstellen kann.
+1. Melden Sie sich bei entsprechender Aufforderung mit Ihren Anmeldeinformationen bei Ihrem E-Mail-Konto an, damit Logic Apps eine Verbindung mit Ihrem E-Mail-Konto erstellen kann.
 
-3. Geben Sie nun die Kriterien an, die der Trigger in allen neuen E-Mails überprüfen soll.
+1. Geben Sie im Trigger die Kriterien für die Überprüfung aller neuen E-Mails an.
 
    1. Geben Sie den Ordner, das Intervall und die Häufigkeit für die E-Mail-Überprüfung an.
 
       ![Angeben von Ordner, Intervall und Häufigkeit für die E-Mail-Überprüfung](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Einstellung | Wert | BESCHREIBUNG | 
-      | ------- | ----- | ----------- | 
-      | **Ordner** | Posteingang | Der zu überwachende E-Mail-Ordner. | 
-      | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen | 
-      | **Frequency** | Hour | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  | 
-      |  |  |  | 
+      | Eigenschaft | Wert | BESCHREIBUNG |
+      |----------|-------|-------------|
+      | **Ordner** | `Inbox` | Der zu überwachende E-Mail-Ordner. |
+      | **Intervall** | `1` | Die Anzahl von Warteintervallen zwischen Überprüfungen |
+      | **Frequency** | `Hour` | Die Zeiteinheit für die Wiederholung |
+      ||||
 
-   2. Klicken Sie auf **Erweiterte Optionen anzeigen**. Geben Sie im Feld **Filter für Betreff** den folgenden Text ein, auf den der Trigger den E-Mail-Betreff überprüfen soll: ```subscribe-test-members-ML```
+   1. Fügen Sie dem Trigger nun eine weitere Eigenschaft hinzu, damit Sie nach E-Mail-Betreffzeile filtern können. Öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Eigenschaft **Betrefffilter** aus.
 
-      ![Festlegen erweiterter Optionen](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-advanced-options.png)
+      ![Neuen Parameter hinzufügen](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
-4. Klicken Sie auf die Titelleiste des Triggers, um die Triggerdetails vorerst auszublenden.
+      Weitere Informationen zu den Eigenschaften dieses Triggers finden Sie in der [Referenz zum Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](https://docs.microsoft.com/connectors/outlook/).
+
+   1. Wenn die Eigenschaft im Trigger angezeigt wird, geben Sie den folgenden Text ein: `subscribe-test-members-ML`.
+
+      ![Eingeben des Betrefffilters (Neuen Parameter hinzufügen)](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+
+1. Klicken Sie auf die Titelleiste des Triggers, um die Triggerdetails vorerst auszublenden.
 
    ![Ausblenden der Details durch Reduzieren des Bereichs](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
-5. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
+1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
-   Ihre Logik-App befindet sich jetzt im Livemodus, überprüft bislang aber lediglich Ihre eingehenden E-Mails. 
-   Fügen Sie daher eine Aktion hinzu, die reagiert, wenn der Trigger ausgelöst wird.
+Ihre Logik-App befindet sich jetzt im Livemodus, überprüft bislang aber lediglich Ihre eingehenden E-Mails. Fügen Sie daher eine Aktion hinzu, die reagiert, wenn der Trigger ausgelöst wird.
 
 ## <a name="send-approval-email"></a>Genehmigungs-E-Mail senden
 
-Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, die eine E-Mail zur Genehmigung oder Ablehnung der Anforderung sendet. 
+Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, die eine E-Mail zur Genehmigung oder Ablehnung der Anforderung sendet.
 
-1. Klicken Sie unter dem Trigger auf **+ Neuer Schritt** > **Aktion hinzufügen**. Suchen Sie nach „Genehmigung“, und wählen Sie die folgende Aktion aus: **<*Ihr E-Mail-Anbieter*> - Genehmigungs-E-Mail senden**
+1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. 
 
-   ![Auswählen von „<Ihr-E-Mail-Anbieter> - Genehmigungs-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
+1. Geben Sie unter **Aktion auswählen** im Suchfeld `approval` als Filter ein. Wählen Sie in der Liste der Aktionen die Aktion **Genehmigungs-E-Mail senden** für Ihren E-Mail-Anbieter aus. 
 
-2. Geben Sie Informationen für diese Aktion wie hier dargestellt und beschrieben an: 
+   In diesem Beispiel wird die Aktion „Office 365 Outlook“ verwendet:
 
-   ![Festlegen der Einstellungen für die Genehmigungs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
+   ![Auswählen der Aktion „Genehmigungs-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
-   | **To** | <*E-Mail-Adresse der genehmigenden Person*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. | 
-   | **Benutzeroptionen** | Genehmigen, Ablehnen | Die Antwortoptionen, zwischen denen die genehmigende Person wählen kann. Standardmäßig kann die genehmigende Person zwischen „Genehmigen“ und „Ablehnen“ wählen. | 
-   | **Subject** | Approve member request for test-members-ML | Ein aussagekräftiger E-Mail-Betreff. | 
-   |  |  |  | 
+1. Geben Sie die Informationen zu dieser Aktion wie beschrieben an: 
 
-   Ignorieren Sie vorerst die Liste mit den dynamischen Inhalten oder die Inlineparameterliste, die beim Klicken auf bestimmte Bearbeitungsfelder angezeigt wird. 
-   In dieser Liste können Sie Parameter aus vorherigen Aktionen auswählen, die als Eingabe in Ihrem Workflow verwendet werden können. 
-   Die Breite des Browserfensters bestimmt, welche Liste angezeigt wird. 
+   ![Eigenschaften für „Genehmigungs-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
+
+   | Eigenschaft | Wert | BESCHREIBUNG |
+   |----------|-------|-------------|
+   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. In diesem Beispiel wird die fiktive E-Mail-Adresse „sophia.owen@fabrikam.com“ verwendet. |
+   | **Subject** | `Approve member request for test-members-ML` | Ein aussagekräftiger E-Mail-Betreff. |
+   | **Benutzeroptionen** | `Approve, Reject` | Die Antwortoptionen, zwischen denen die genehmigende Person wählen kann. Standardmäßig kann die genehmigende Person zwischen „Genehmigen“ und „Ablehnen“ wählen. |
+   ||||
+
+   Ignorieren Sie vorerst die Liste mit den dynamischen Inhalten, die beim Klicken auf bestimmte Bearbeitungsfelder angezeigt wird. In dieser Liste können Sie verfügbare Ausgaben aus vorherigen Aktionen auswählen, die als Eingabe in Ihrem Workflow verwendet werden können.
+
+   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](https://docs.microsoft.com/connectors/outlook/).
  
-4. Speichern Sie Ihre Logik-App.
+1. Speichern Sie Ihre Logik-App.
 
 Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, welche Antwort die genehmigende Person gewählt hat.
 
 ## <a name="check-approval-response"></a>Überprüfen der Genehmigungsantwort
 
-1. Klicken Sie unter der Aktion **Genehmigungs-E-Mail senden** auf **+ Neuer Schritt** > **Bedingung hinzufügen**.
+1. Wählen Sie unter der Aktion **Genehmigungs-E-Mail senden** die Option **Neuer Schritt** aus.
 
-   Daraufhin werden der Bedingungsbereich sowie alle verfügbaren Parameter angezeigt, die Sie als Eingabe in Ihren Workflow einbeziehen können. 
+1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `condition` als Filter ein. Wählen Sie in der Liste „Aktionen“ die Aktion **Bedingung** aus.
 
-2. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen.
+   ![Auswählen von „Bedingung“](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition.png)
+
+1. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen.
 
    1. Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** ( **...** ) und anschließend auf **Umbenennen**.
 
-      Beispiel für die schmale Browseransicht:
+      ![Umbenennen der Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition.png)
 
-      ![Umbenennen der Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/condition-rename.png)
+   1. Nennen Sie Ihre Bedingung wie folgt: `If request approved`
 
-      Wenn Sie die breite Browseransicht verwenden und die Liste mit den dynamischen Inhalten die Schaltfläche mit den Auslassungspunkten verdeckt, klicken Sie innerhalb der Bedingung auf **Dynamischen Inhalt hinzufügen**, um die Liste zu schließen.
+1. Erstellen Sie eine Bedingung, die überprüft, ob die genehmigende Person **Genehmigen** ausgewählt hat.
 
-   2. Nennen Sie Ihre Bedingung wie folgt: ```If request approved```
+   1. Klicken Sie in der Bedingung auf das Feld **Wert auswählen** (links von der Bedingung).
 
-3. Erstellen Sie eine Bedingung, die überprüft, ob die genehmigende Person **Genehmigen** ausgewählt hat:
-
-   1. Klicken Sie in der Bedingung auf das Feld **Wert auswählen**. Dieses Feld befindet sich entweder links (breite Browseransicht) oder oben (schmale Browseransicht).
-   Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Genehmigungs-E-Mail senden** das Feld **SelectedOption** aus.
-
-      Bei Verwendung der breiten Ansicht sieht Ihre Bedingung wie im folgenden Beispiel aus:
+   1. Wählen Sie in der angezeigten Liste mit dynamischen Inhalten unter **Genehmigungs-E-Mail senden** die Eigenschaft **SelectedOption** aus.
 
       ![Auswählen von „SelectedOption“ unter „Genehmigung-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
-   2. Wählen Sie im Vergleichsoperatorfeld den folgenden Operator aus: **ist gleich**
+   1. Wählen Sie im mittleren Vergleichsfeld den Operator **Ist gleich** aus.
 
-   3. Geben Sie rechts (breite Ansicht) oder unten (schmale Ansicht) im Feld **Wert auswählen** den folgenden Wert ein: ```Approve```
+   1. Geben Sie auf der rechten Seite der Bedingung im Feld **Wert auswählen** den folgenden Text ein: `Approve`.
 
-      Danach sieht Ihre Bedingung wie im folgenden Beispiel aus:
+      Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-      ![Vollständige Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![Abgeschlossene Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
-4. Speichern Sie Ihre Logik-App.
+1. Speichern Sie Ihre Logik-App.
 
 Geben Sie als Nächstes die Aktion an, die Ihre Logik-App ausführen soll, wenn der Prüfer die Anforderung genehmigt. 
 
@@ -183,119 +195,122 @@ Geben Sie als Nächstes die Aktion an, die Ihre Logik-App ausführen soll, wenn 
 
 Fügen Sie nun eine Aktion hinzu, die das genehmigte Mitglied Ihrer Adressenliste hinzufügt.
 
-1. Klicken in der Bedingungsverzweigung **Bei TRUE** auf **Aktion hinzufügen**.
-Suchen Sie nach „mailchimp“, und wählen Sie diese Aktion aus: **MailChimp - Mitglied zu Liste hinzufügen**
+1. Wählen Sie in der Bedingungsverzweigung **Bei TRUE** die Option **Aktion hinzufügen** aus.
 
-   ![Auswählen von „MailChimp - Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
+1. Geben Sie unter **Aktion auswählen** `mailchimp` als Filter ein, und wählen Sie die Aktion **Mitglied zu Liste hinzufügen** aus.
 
-3. Wenn Sie zur Anmeldung bei Ihrem MailChimp-Konto aufgefordert werden, melden Sie sich mit Ihren MailChimp-Anmeldeinformationen an.
+   ![Auswählen der Aktion „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
-4. Geben Sie Informationen für diese Aktion wie hier dargestellt und beschrieben an:
+1. Wenn Sie zum Zugriff auf Ihr MailChimp-Konto aufgefordert werden, melden Sie sich mit Ihren MailChimp-Anmeldeinformationen an.
+
+1. Geben Sie Informationen zu dieser Aktion wie hier dargestellt und beschrieben an:
 
    ![Angeben der Informationen für „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
-   | **Listen-ID** | test-members-ML | Der Name Ihrer MailChimp-Adressenliste. | 
-   | **Status** | subscribed | Der Abonnementstatus für das neue Mitglied. Weitere Informationen finden Sie unter [Manage Subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/) (Verwalten von Abonnenten mit der MailChimp-API). | 
-   | **E-Mail-Adresse** | <*E-Mail-Adresse des neuen Mitglieds*> | Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Von** aus. Dadurch wird die E-Mail-Adresse des neuen Mitglieds übergeben. 
-   |  |  |  | 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | **Listen-ID** | Ja | `test-members-ML` | Der Name Ihrer MailChimp-Adressenliste. In diesem Beispiel wird „test-members-ML“ verwendet. |
+   | **Status** | Ja | `subscribed` | Wählen Sie den Abonnementstatus für das neue Mitglied aus. In diesem Beispiel wird „Abonniert“ verwendet. <p>Weitere Informationen finden Sie unter [Manage Subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/) (Verwalten von Abonnenten mit der MailChimp-API). |
+   | **E-Mail-Adresse** | Ja | <*E-Mail-Adresse des neuen Mitglieds*> | Wählen Sie in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Von** aus. Dadurch wird die E-Mail-Adresse des neuen Mitglieds übergeben. |
+   ||||
 
-5. Speichern Sie Ihre Logik-App.
+   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum MailChimp-Connector](https://docs.microsoft.com/connectors/mailchimp/).
+
+1. Speichern Sie Ihre Logik-App.
 
 Fügen Sie als Nächstes eine Bedingung hinzu, um zu prüfen, ob das neue Mitglied der Adressenliste hinzugefügt wurde. So erfahren Sie, ob der Vorgang erfolgreich war.
 
 ## <a name="check-for-success-or-failure"></a>Überprüfen, ob der Vorgang erfolgreich war
 
-1. Klicken Sie in der Verzweigung **Bei TRUE** unter der Aktion **Mitglied zu Liste hinzufügen** auf **Mehr...**  > **Bedingung hinzufügen**.
+1. Wählen Sie in der Verzweigung **Bei TRUE** unter der Aktion **Mitglied zu Liste hinzufügen** die Option **Aktion hinzufügen** aus.
 
-2. Nennen Sie die Bedingung wie folgt: ```If add member succeeded```
+1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `condition` als Filter ein. Wählen Sie in der Liste mit den Aktionen **Bedingung** aus.
 
-3. Erstellen Sie eine Bedingung, die überprüft, ob das genehmigte Mitglied der Adressenliste hinzugefügt wurde:
+1. Nennen Sie die Bedingung wie folgt: `If add member succeeded`
 
-   1. Klicken Sie in der Bedingung auf das Feld **Wert auswählen**. Dieses Feld befindet sich entweder links (breite Browseransicht) oder oben (schmale Browseransicht).
-   Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** das Feld **Status** aus.
+1. Erstellen Sie eine Bedingung, die überprüft, ob das genehmigte Mitglied der Adressenliste hinzugefügt wurde:
 
-      Bei Verwendung der breiten Ansicht sieht Ihre Bedingung wie im folgenden Beispiel aus:
+   1. Klicken Sie in der Bedingung auf das Feld **Wert auswählen** (links von der Bedingung). Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **Status** aus.
+
+      Ihre Bedingung sieht etwa wie im folgendem Beispiel aus:
 
       ![Auswählen von „Status“ unter „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member.png)
 
-   2. Wählen Sie im Vergleichsoperatorfeld den folgenden Operator aus: **ist gleich**
+   1. Wählen Sie im mittleren Vergleichsfeld den Operator **Ist gleich** aus.
 
-   3. Geben Sie rechts (breite Ansicht) oder unten (schmale Ansicht) im Feld **Wert auswählen** den folgenden Wert ein: ```subscribed```
+   1. Geben Sie auf der rechten Seite der Bedingung im Feld **Wert auswählen** den folgenden Text ein: `subscribed`.
 
-   Danach sieht Ihre Bedingung wie im folgenden Beispiel aus:
+      Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-   ![Fertige Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![Abgeschlossene Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
 Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das genehmigte Mitglied erfolgreich der Adressenliste hinzugefügt wurde oder wenn das Hinzufügen nicht erfolgreich war.
 
 ## <a name="send-email-if-member-added"></a>Senden einer E-Mail, wenn das Mitglied hinzugefügt wurde
 
-1. Klicken Sie in der Verzweigung **Bei TRUE** für die Bedingung **If add member succeeded** auf **Aktion hinzufügen**.
+1. Wählen Sie in der Verzweigung **Bei TRUE** für die Bedingung **If add member succeeded** die Option **Aktion hinzufügen** aus.
 
-   ![Klicken auf „Aktion hinzufügen“ in der Verzweigung „Bei TRUE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![Auswählen von „Aktion hinzufügen“ in der Verzweigung „Bei TRUE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-2. Suchen Sie nach „Outlook E-Mail senden“, und wählen Sie die folgende Aktion aus: **<*Ihr E-Mail-Anbieter*> - E-Mail senden**
+1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text `outlook send email` als Filter ein, und wählen Sie die Aktion **E-Mail senden** aus.
 
-   ![Hinzufügen einer Aktion für „E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
+   ![Hinzufügen der Aktion „E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
-3. Nennen Sie die Aktion wie folgt: ```Send email on success```
+1. Nennen Sie die Aktion wie folgt: `Send email on success`
 
-4. Geben Sie Informationen für diese Aktion wie hier dargestellt und beschrieben an:
+1. Geben Sie Informationen für diese Aktion wie hier dargestellt und beschrieben an:
 
    ![Angeben der Informationen für die Erfolgs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
-   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Subject** | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Mitglied erfolgreich zu „test-members-ML“ hinzugefügt: **E-Mail-Adresse** | 
-   | **Text** | <*Text für Erfolgs-E-Mail*> | Der Inhalt der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die angegebenen Felder aus:  <p>Ein neues Mitglied wurde in „test-members-ML“ aufgenommen: **E-Mail-Adresse**</br>Abonnementstatus des Mitglieds: **Status** | 
-   | | | | 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | **To** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **Subject** | Ja | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Success! Member added to "test-members-ML": ` <p>Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **E-Mail-Adresse** aus. |
+   | **Text** | Ja | <*Text für Erfolgs-E-Mail*> | Der Inhalt der Erfolgs-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`New member has joined "test-members-ML":` <p>Wählen Sie in der Liste mit den dynamischen Inhalten die Eigenschaft **E-Mail-Adresse** aus. <p>Geben Sie in der nächsten Zeile den folgenden Text ein: `Member opt-in status: `. <p> Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **Status** aus. |
+   |||||
 
-5. Speichern Sie Ihre Logik-App.
+1. Speichern Sie Ihre Logik-App.
 
 ## <a name="send-email-if-member-not-added"></a>Senden einer E-Mail, wenn das Mitglied nicht hinzugefügt wurde
 
-1. Klicken Sie in der Verzweigung **Bei FALSE** für die Bedingung **If add member succeeded** auf **Aktion hinzufügen**.
+1. Wählen Sie in der Verzweigung **Bei FALSE** für die Bedingung **If add member succeeded** die Option **Aktion hinzufügen** aus.
 
-   ![Klicken auf „Aktion hinzufügen“ in der Verzweigung „Bei FALSE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![Auswählen von „Aktion hinzufügen“ in der Verzweigung „Bei FALSE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-2. Suchen Sie nach „Outlook E-Mail senden“, und wählen Sie die folgende Aktion aus: **<*Ihr E-Mail-Anbieter*> - E-Mail senden**
+1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text `outlook send email` als Filter ein, und wählen Sie die Aktion **E-Mail senden** aus.
 
    ![Hinzufügen einer Aktion für „E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
-3. Nennen Sie die Aktion wie folgt: ```Send email on failure```
+1. Nennen Sie die Aktion wie folgt: `Send email on failure`
 
-4. Geben Sie Informationen für diese Aktion wie hier dargestellt und beschrieben an:
+1. Geben Sie Informationen zu dieser Aktion wie hier dargestellt und beschrieben an:
 
    ![Angeben der Informationen für die Fehler-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
-   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Subject** | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Fehler: Mitglied wurde „test-members-ML“ nicht hinzugefügt: **E-Mail-Adresse** | 
-   | **Text** | <*Text für Fehler-E-Mail*> | Der Inhalt der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>Das Mitglied ist möglicherweise bereits vorhanden. Überprüfen Sie Ihr MailChimp-Konto. | 
-   | | | | 
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | **To** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **Subject** | Ja | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Failed, member not added to "test-members-ML": ` <p>Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **E-Mail-Adresse** aus. |
+   | **Text** | Ja | <*Text für Fehler-E-Mail*> | Der Inhalt der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Member might already exist. Check your MailChimp account.` |
+   |||||
 
-5. Speichern Sie Ihre Logik-App. 
+1. Speichern Sie Ihre Logik-App. 
 
 Testen Sie als Nächstes Ihre Logik-App, die nun in etwa wie folgt aussieht:
 
- ![Fertiggestellte Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+![Fertiggestellte Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 
-1. Senden Sie sich selbst eine E-Mail mit der Anforderung, in Ihre Adressenliste aufgenommen zu werden.
-Warten Sie, bis die Anforderung in Ihrem Posteingang eingeht.
+1. Senden Sie sich selbst eine E-Mail mit der Anforderung, in Ihre Adressenliste aufgenommen zu werden. Warten Sie, bis die Anforderung in Ihrem Posteingang eingeht.
 
-3. Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu starten. 
+1. Wählen Sie auf der Symbolleiste des Designers die Option **Ausführen** aus, um Ihre Logik-App manuell zu starten. 
 
    Wenn der Betreff Ihrer E-Mail dem Betrefffilter des Triggers entspricht, sendet Ihre Logik-App Ihnen eine E-Mail zur Genehmigung der Abonnementanforderung.
 
-4. Wählen Sie in der Genehmigungs-E-Mail die Option **Genehmigen** aus.
+1. Wählen Sie in der Genehmigungs-E-Mail die Option **Genehmigen** aus.
 
-5. Wenn die E-Mail-Adresse des Abonnenten in Ihrer Adressenliste nicht vorhanden ist, fügt Ihre Logik-App die entsprechende E-Mail-Adresse hinzu und sendet Ihnen eine E-Mail. Beispiel:
+1. Wenn die E-Mail-Adresse des Abonnenten in Ihrer Adressenliste nicht vorhanden ist, fügt Ihre Logik-App die entsprechende E-Mail-Adresse hinzu und sendet Ihnen eine E-Mail. Beispiel:
 
    ![Erfolgs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-success.png)
 
@@ -303,22 +318,21 @@ Warten Sie, bis die Anforderung in Ihrem Posteingang eingeht.
 
    ![Fehler-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-failed.png)
 
-   Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. 
-   E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. 
-   Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
+   Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
 
 Geschafft! Sie haben eine Logik-App erstellt und ausgeführt, die Informationen über Azure, Microsoft-Dienste und andere SaaS-Apps hinweg integriert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und klicken Sie auf **Löschen**.
+Wenn Sie diese exemplarische Logik-App nicht mehr benötigen, löschen Sie die Ressourcengruppe, die Ihre Logik-App und die zugehörigen Ressourcen enthält. 
 
-![„Übersicht“ > „Ressourcengruppe löschen“](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
+1. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus.
 
-## <a name="get-support"></a>Support
+1. Wählen Sie im Ressourcengruppenmenü **Übersicht** > **Ressourcengruppe löschen** aus. 
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
+   ![„Übersicht“ > „Ressourcengruppe löschen“](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
+
+1. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

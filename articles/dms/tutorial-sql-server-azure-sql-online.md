@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/09/2019
-ms.openlocfilehash: e5666a64e4160964e2c1b35707a0f064edb72460
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 09/22/2019
+ms.openlocfilehash: 619c36257f9166492e98d88335d767f358e3feca
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706909"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179122"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS
 
@@ -78,16 +78,16 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Wenn eine der Tabellen keinen Primärschlüssel enthält, aktivieren Sie Change Data Capture (CDC) für die Datenbank und bestimmte Tabellen.
     > [!NOTE]
     > Mit dem folgenden Skript können Sie Tabellen suchen, die keinen Primärschlüssel enthalten.
-
+    
     ```sql
     USE <DBName>;
     go
     SELECT is_tracked_by_cdc, name AS TableName
     FROM sys.tables WHERE type = 'U' and is_ms_shipped = 0 AND
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
-     ```
+    ```
 
-    >Wenn in den Ergebnissen für mindestens eine Tabelle „0“ für „is_tracked_by_cdc“ angezeigt wird, aktivieren Sie die Änderungserfassung für die Datenbank und die jeweiligen Tabellen. Gehen Sie dazu wie im Artikel [Aktivieren und Deaktivieren von Change Data Capture (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017) beschrieben vor.
+    Wenn in den Ergebnissen für mindestens eine Tabelle „0“ für „is_tracked_by_cdc“ angezeigt wird, aktivieren Sie die Änderungserfassung für die Datenbank und die jeweiligen Tabellen. Gehen Sie dazu wie im Artikel [Aktivieren und Deaktivieren von Change Data Capture (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017) beschrieben vor.
 
 - Konfigurieren Sie die Verteilerrolle für die SQL Server-Quellinstanz.
 
@@ -132,12 +132,12 @@ Führen Sie zum Bewerten einer lokalen Datenbank die folgenden Schritte aus:
 1. Klicken Sie im DMA auf das Symbol „Neu (+)“, und wählen Sie dann den Projekttyp **Bewertung** aus.
 2. Geben Sie einen Projektnamen im Textfeld **Source server type** (Quellservertyp) an, wählen Sie **SQL Server**, wählen Sie dann im Textfeld **Target server type** (Zielservertyp) die Option **Azure SQL Database** (Azure SQL-Datenbank) und anschließend **Create** (Erstellen), um das Projekt zu erstellen.
 
-    Bei der Bewertung der SQL Server-Quelldatenbank für die Migration zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank können Sie einen oder beide der folgenden Bewertungsberichtstypen auswählen:
+   Bei der Bewertung der SQL Server-Quelldatenbank für die Migration zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank können Sie einen oder beide der folgenden Bewertungsberichtstypen auswählen:
 
    - Check database compatibility (Datenbankkompatibilität prüfen)
    - Check feature parity (Featureparität prüfen)
 
-     Beide Berichtsarten sind standardmäßig ausgewählt.
+   Beide Berichtsarten sind standardmäßig ausgewählt.
 
 3. Klicken Sie im DMA auf dem Bildschirm **Optionen** auf **Weiter**.
 4. Geben Sie im Bildschirm **Select sources** (Quellen auswählen) im Dialogfeld **Connect to a server** (Verbindung mit einem Server herstellen) die Verbindungsdetails für SQL Server an, und wählen Sie dann **Connect** (Verbinden).
