@@ -1,5 +1,5 @@
 ---
-title: Massenimport zum Hinzufügen von Benutzern (Vorschau) im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Massenerstellung von Benutzern (Vorschau) im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Fügen Sie Benutzer in einem Massenvorgang im Azure Admin Center in Azure Active Directory hinzu.
 services: active-directory
 author: curtand
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a22052117448cdb71bbc16e1df7899e6d3eb764e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901310"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146313"
 ---
-# <a name="bulk-import-users-preview-in-azure-active-directory"></a>Massenimport von Benutzern (Vorschau) in Azure Active Directory
+# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Massenerstellung von Benutzern (Vorschau) in Azure Active Directory
 
 Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung und Massenlöschung von Benutzern, Masseneinladung für Gäste sowie das Herunterladen von Listen von Benutzern, Gruppen und Gruppenmitgliedern.
 
@@ -37,6 +37,9 @@ Zur Massenerstellung von Benutzern im Verwaltungsportal müssen Sie als globaler
 1. [Melden Sie sich bei ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
 1. Wählen Sie in Azure AD **Benutzer** > **Massenerstellung** aus.
 1. Wählen Sie auf der Seite **Benutzer für Massenerstellung** die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Benutzereigenschaften herunterzuladen. Fügen Sie dann die neuen Benutzer hinzu.
+
+   ![Die CSV-Datei enthält Namen und IDs der zu erstellenden Benutzer.](./media/users-bulk-add/add-csv-file.png)
+
 1. Wenn Sie die Bearbeitung der CSV-Datei abgeschlossen haben oder eine Ihrer eigenen Dateien hochladen möchten, wählen Sie die Datei unter **Ihre CSV-Datei hochladen** zur Überprüfung aus.
 
    ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten.](./media/users-bulk-add/upload-button.png)

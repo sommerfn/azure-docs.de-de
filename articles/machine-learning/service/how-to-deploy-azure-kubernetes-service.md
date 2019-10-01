@@ -114,7 +114,7 @@ Weitere Informationen finden Sie unter [az ml computetarget create ask](https://
 
 **Geschätzter Zeitaufwand:** Ca. fünf Minuten.
 
-Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser die Version 1.12.* hat, können Sie diesen für die Bereitstellung Ihres Image verwenden.
+Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser die Version 1.12.hat, können Sie diesen für die Bereitstellung Ihres Image verwenden.
 
 > [!TIP]
 > Der vorhandenen AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning-Arbeitsbereich.

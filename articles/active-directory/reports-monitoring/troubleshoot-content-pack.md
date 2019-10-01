@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987905"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129287"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Behandlung von Fehlern am Inhaltspaket von Azure Active Directory-Aktivitätsprotokollen 
 
@@ -47,7 +47,7 @@ In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Be
 | Ursache | So behebt man den Fehler |
 | ---   | ---        |
 | Aktualisierungsfehler können auftreten, wenn die Anmeldeinformationen der Benutzer, die eine Verbindung mit dem Inhaltspaket herstellen, zurückgesetzt, aber nicht in den Verbindungseinstellungen des Inhaltspakets aktualisiert wurden. | Suchen Sie in Power BI das Dataset, das dem Dashboard für Azure AD-Aktivitätsprotokolle (**Azure Active Directory-Aktivitätsprotokolle**) entspricht. Wählen Sie die geplante Aktualisierung aus, und geben Sie dann Ihre Azure AD-Anmeldeinformationen ein. |
-| Eine Aktualisierung kann aufgrund großer Datasets fehlschlagen. | Zurzeit kann das Azure AD-Inhaltspaket mit Power BI aufgrund von Einschränkungen bei Zeitlimits im Power BI-Dienst nur kleine Datasets (weniger als 500,00 Zeilen) unterstützen. Wenn Drosselungsfehler auftreten oder die Aktualisierung aufgrund von Zeitlimitproblemen fehlschlägt, versuchen Sie möglicherweise, ein großes Dataset abzurufen. Reduzieren Sie die Zeitspanne in der Abfrage, und versuchen Sie es erneut.|
+| Eine Aktualisierung kann aufgrund großer Datasets fehlschlagen. | Derzeit kann das Azure AD-Inhaltspaket mit Power BI aufgrund von Einschränkungen bei Zeitlimits im Power BI-Dienst nur kleine Datasets (weniger als 500.000 Zeilen) unterstützen. Wenn Drosselungsfehler auftreten oder die Aktualisierung aufgrund von Zeitlimitproblemen fehlschlägt, versuchen Sie möglicherweise, ein großes Dataset abzurufen. Reduzieren Sie die Zeitspanne in der Abfrage, und versuchen Sie es erneut.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle 

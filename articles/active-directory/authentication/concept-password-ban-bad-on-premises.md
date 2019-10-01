@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694765"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200216"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
-Der Kennwortschutz für Azure AD ist ein Feature, das Kennwortrichtlinien in einer Organisation verbessert. Der Kennwortschutz für lokale Bereitstellungen verwendet sowohl die Liste der globalen als auch benutzerdefinierten gesperrten Kennwörter, die in Azure AD gespeichert sind. Er führt lokal die gleichen Überprüfungen durch wie Azure AD wie bei cloudbasierten Änderungen.
+Der Kennwortschutz für Azure AD ist ein Feature, das Kennwortrichtlinien in einer Organisation verbessert. Der Kennwortschutz für lokale Bereitstellungen verwendet sowohl die Liste der globalen als auch benutzerdefinierten gesperrten Kennwörter, die in Azure AD gespeichert sind. Er führt lokal die gleichen Überprüfungen durch wie Azure AD bei cloudbasierten Änderungen. Diese Überprüfungen werden in Kennwortänderungs- und Kennwortzurücksetzungsszenarien durchgeführt.
 
 ## <a name="design-principles"></a>Entwurfsprinzipien
 

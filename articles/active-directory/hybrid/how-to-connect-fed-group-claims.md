@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 2d547c73137605e4666499b568bdcebce394935a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3cb53656adb1dbeb5e5597d02edfe5be4dbec6a8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595221"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170490"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory (öffentliche Vorschau)
 
@@ -60,7 +60,7 @@ Wenn eine vorhandene Anwendung jedoch bereits erwartet, Gruppeninformationen üb
 - Wenn Sie den lokalen sAMAccountName der Gruppe für die Autorisierung nutzen, sollten Sie qualifizierte Domänennamen verwenden. Diese bergen ein geringeres Risiko, dass Situationen mit Namenskonflikten eintreten. Der sAMAccountName alleine kann innerhalb einer Active Directory-Domäne eindeutig sein. Wenn jedoch mehrere Active Directory-Domänen mit einem Azure Active Directory-Mandanten synchronisiert werden, besteht die Möglichkeit, dass mehrere Gruppen den gleichen Namen aufweisen.
 - Erwägen Sie die Verwendung von [Anwendungsrollen](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md), um eine Dereferenzierungsschicht zwischen der Gruppenmitgliedschaft und der Anwendung bereitzustellen.   Die Anwendung trifft dann interne Autorisierungsentscheidungen basierend auf Rollenansprüchen im Token.
 - Wenn die Anwendung für den Abruf von Gruppenattributen konfiguriert ist, die aus Active Directory synchronisiert werden, und ein Group-Objekt diese Attribute nicht enthält, wird die entsprechende Gruppe in den Ansprüchen nicht eingeschlossen.
-- Gruppenansprüche in Token enthalten geschachtelte Gruppen.   Wenn ein Benutzer Mitglied von Gruppe B und Gruppe B Mitglied von Gruppe A ist, enthalten die Gruppenansprüche für den Benutzer sowohl Gruppe A als auch Gruppe B. In Organisationen, in denen in hohem Maß geschachtelte Gruppen und Benutzer mit sehr vielen Gruppenmitgliedschaften verwendet werden, kann die Anzahl der in den Token enthaltenen Gruppen die Tokengröße erhöhen.   Um zu verhindern, dass Token zu groß werden, begrenzt Azure Active Directory die Anzahl der Gruppen, die in einem Token ausgegeben werden, auf 150 für SAML-Assertionen und auf 200 für JWT.  Wenn ein Benutzer Mitglied von mehr Gruppen ist, als der Grenzwert zulässt, werden die Gruppen ausgegeben, und es wird ein Link zu dem Graph-Endpunkt bereitgestellt, um weitere Gruppeninformationen abzurufen.
+- Gruppenansprüche in Token enthalten geschachtelte Gruppen.   Wenn ein Benutzer Mitglied von Gruppe B und Gruppe B Mitglied von Gruppe A ist, enthalten die Gruppenansprüche für den Benutzer sowohl Gruppe A als auch Gruppe B. In Organisationen, in denen in hohem Maß geschachtelte Gruppen und Benutzer mit sehr vielen Gruppenmitgliedschaften verwendet werden, kann die Anzahl der in den Token enthaltenen Gruppen die Tokengröße erhöhen.   Um zu verhindern, dass Token zu groß werden, begrenzt Azure Active Directory die Anzahl der Gruppen, die in einem Token ausgegeben werden, auf 150 für SAML-Assertionen und auf 200 für JWT.  Wenn ein Benutzer Mitglied einer größeren Anzahl von Gruppen ist, als der Grenzwert zulässt, werden die Gruppen zusammen mit einem Link zum Graph-Endpunkt ausgegeben, um weitere Gruppeninformationen abzurufen.
 
 > Voraussetzungen für die Verwendung von Group-Attributen, die aus Active Directory synchronisiert werden:   Die Gruppen müssen über Azure AD Connect aus Active Directory synchronisiert werden.
 
