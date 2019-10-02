@@ -301,7 +301,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\\** . Klicken Sie auf **Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\** . Klicken Sie auf **Weiter**.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.

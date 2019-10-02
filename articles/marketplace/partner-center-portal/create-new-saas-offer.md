@@ -441,7 +441,7 @@ Wählen Sie aus, wie häufig Kunden den aufgeführten Preis zahlen müssen. Es m
 - **Preis**: „USD per month“ (US-Dollar pro Monat) oder „USD per year“ (US-Dollar pro Jahr)
 
 Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation. Sie sind für die Überprüfung des Preismodells und diese Einstellungen verantwortlich.
-**Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.*
+* *Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.*
 
 Überprüfen Sie Ihre Preise vor der Veröffentlichung sorgfältig, da nicht alle Elemente eines Plans nach seiner Veröffentlichung geändert werden können:
 
