@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852908"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290821"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens von einer JavaScript-Single-Page-Webanwendung
 
@@ -96,7 +96,8 @@ Wählen Sie die Option aus, die für Ihre Entwicklungsumgebung geeignet ist:
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -112,7 +113,7 @@ var msalConfig = {
 
 > [!div renderon="docs"]
 >
-> Hinweis:
+> Hierbei gilt:
 > - *\<Enter_the_Application_Id_here>* ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 > - *\<Enter_the_Tenant_info_here >* wird auf eine der folgenden Optionen festgelegt:
 >    - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (beispielsweise *contoso.microsoft.com*).
@@ -169,7 +170,8 @@ Im Schnellstartcode wird auch veranschaulicht, wie Sie die MSAL-Bibliothek initi
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,8 +184,9 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Hierbei gilt:  |  |
 > |---------|---------|
-> |`ClientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung.|
+> |`clientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung.|
 > |`authority`    | (Optional:) Die Autoritäts-URL zur Unterstützung von Kontotypen, wie im Konfigurationsabschnitt oben beschrieben. Die Standardautorität lautet `https://login.microsoftonline.com/common`. |
+> |`redirectURI`     | Der konfigurierte Antwort-/Umleitungs-URI der Anwendungsregistrierung. In diesem Fall `http://localhost:30662/`. |
 > |`cacheLocation`  | (Optional:) Hiermit wird der Browserspeicher für den Authentifizierungsstatus festgelegt. Der Standardwert lautet „sessionStorage“.   |
 > |`storeAuthStateInCookie`  | (Optional:) Die Bibliothek, in der der für die Überprüfung der Authentifizierungsflows in den Browsercookies erforderliche Authentifizierungsanforderungsstatus gespeichert wird. Dieses Cookie wird für die Browser IE und Edge festgelegt, um die Auswirkungen bestimmter [bekannter Probleme](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) zu minimieren. |
 

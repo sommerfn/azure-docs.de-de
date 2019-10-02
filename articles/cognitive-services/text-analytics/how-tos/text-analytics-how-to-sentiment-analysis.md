@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845341"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211773"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
 
@@ -139,7 +139,7 @@ Die [nächste Version der Standpunktanalyse](https://westcentralus.dev.cognitive
 > [!NOTE]
 > * Anforderungsformat und [Datenlimits](../overview.md#data-limits) der Standpunktanalyse v3 haben sich gegenüber der vorherigen Version nicht geändert.
 > * Zurzeit gilt Folgendes für die Standpunktanalyse v3:
->    * Unterstützt derzeit Englisch, vereinfachtes Chinesisch und Japanisch.
+>    * Sie unterstützt Englisch, Französisch, Italienisch, Japanisch, vereinfachtes Chinesisch und Chinesisch (traditionell).
 >    * Sie ist in den folgenden Regionen verfügbar: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe` und `West US 2`.
 
 |Feature |BESCHREIBUNG  |

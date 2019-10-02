@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799224"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203829"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -58,7 +58,7 @@ Die Daten, die in und aus Data Box übertragen werden, werden mithilfe der folge
 
 - AES-256-Bit-Verschlüsselung für ruhende Daten.
 - Während ihrer Übertragung können für Daten verschlüsselte Protokolle verwendet werden.
-- Sicheres Löschen von Daten vom Gerät nach dem Upload in Azure. Das Löschen der Daten wird gemäß NIST-Standards (800-88r1) durchgeführt. Das Datenlöschereignis wird im [Auftragsverlauf](data-box-logs.md#download-order-history) aufgezeichnet.
+- Sicheres Löschen von Daten vom Gerät nach dem Upload in Azure. Das Löschen der Daten wird gemäß den Richtlinien in [Anhang A für ATA-Festplatten der NIST-Standards (800-88r1)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) durchgeführt. Das Datenlöschereignis wird im [Auftragsverlauf](data-box-logs.md#download-order-history) aufgezeichnet.
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts
 
@@ -80,11 +80,11 @@ Azure Data Box sammelt und zeigt personenbezogene Daten an den folgenden wichtig
 
   - Kontaktname
   - Telefonnummer
-  - E-Mail
+  - Email
   - Anschrift
   - City
   - Postleitzahl
-  - Zustand
+  - State
   - Land/Provinz/Region
   - Kontonummer des Versanddienstleisters
   - Nachverfolgungsnummer für den Versand
@@ -106,7 +106,7 @@ Die folgenden Sicherheitsrichtlinien sind in Data Box implementiert:
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Für Dauerhaftigkeit bei widrigen Transportbedingungen          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Für sichere Firmwareupdates         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Für Datenschutz         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Für Datenbereinigung         |
+|Anhang A für ATA-Festplatten in [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Für Datenbereinigung         |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

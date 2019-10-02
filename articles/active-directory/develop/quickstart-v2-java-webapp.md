@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/11/2019
+ms.date: 09/18/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086989"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120511"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -34,8 +34,8 @@ Am Ende dieses Leitfadens akzeptiert Ihre Anwendung Anmeldungen von persönliche
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Beispiel benötigen Sie Folgendes: 
-- JDK 8 (Java Development Kit) oder höher und Maven
+Für dieses Beispiel benötigen Sie Folgendes:
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 oder höher und [Maven](https://maven.apache.org/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App

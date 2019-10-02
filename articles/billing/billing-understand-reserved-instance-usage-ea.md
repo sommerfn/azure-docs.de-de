@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598103"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218074"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
 
@@ -57,18 +57,20 @@ Weitere in den Azure-Nutzungsdaten verfügbare Informationen haben sich geänder
 - Term (Laufzeit): 12 Monate oder 36 Monate.
 - RINormalizationRatio: Verfügbar unter AdditionalInfo. Dies ist das Verhältnis, in dem die Reservierung auf den Verwendungseintrag angewendet wird. Wenn Flexibilität der Instanzgröße für Ihre Reservierung aktiviert ist, kann dies auch auf andere Größen gelten. Der Wert zeigt das Verhältnis an, in dem die Reservierung auf den Verwendungseintrag angewendet wurde.
 
+[Felddefinition anzeigen](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Abrufen von Azure-Verbrauchs- und Reservierungsnutzungsdaten mittels API
 
 Sie können die Daten mithilfe der API abrufen oder aus dem Azure-Portal herunterladen.
 
-Sie rufen die [Nutzungsdetails-API](/rest/api/consumption/usagedetails/list) mit der API-Version &quot;2019-04-01-Preview&quot; auf, um die neuen Daten zu erhalten. Detailinformationen zur Terminologie finden Sie unter [Nutzungsbedingungen](billing-understand-your-usage.md). Der Aufrufer sollte ein Unternehmensadministrator für das Enterprise Agreement sein, der das [EA-Portal](https://ea.azure.com) verwendet. Unternehmensadministratoren mit „Nur Lesen“-Berechtigung können die Daten auch abrufen.
+Sie rufen die [Nutzungsdetails-API](/rest/api/consumption/usagedetails/list) auf, um die neuen Daten zu erhalten. Detailinformationen zur Terminologie finden Sie unter [Nutzungsbedingungen](billing-understand-your-usage.md). Der Aufrufer sollte ein Unternehmensadministrator für das Enterprise Agreement sein, der das [EA-Portal](https://ea.azure.com) verwendet. Unternehmensadministratoren mit „Nur Lesen“-Berechtigung können die Daten auch abrufen.
 
 Die Daten sind nicht verfügbar in [Berichterstellungs-APIs für Unternehmenskunden – Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
 Hier sehen Sie einen Beispielaufruf der API:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 Weitere Informationen zu {enrollmentId} und {billingPeriodId} finden Sie im API-Artikel [Nutzungsdetails – Liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list).

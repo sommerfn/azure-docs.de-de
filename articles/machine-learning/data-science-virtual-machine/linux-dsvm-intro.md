@@ -1,419 +1,141 @@
 ---
-title: 'Schnellstart: Erstellen einer CentOS Linux-Instanz'
-titleSuffix: Azure Data Science Virtual Machine
-description: Erstellen und konfigurieren Sie in Azure eine Data Science Virtual Machine-Instanz mit Linux für Analysen und maschinelles Lernen.
-services: machine-learning
+title: 'Schnellstart: Erstellen einer Data Science VM-Instanz unter CentOS'
+description: Konfigurieren und erstellen Sie eine Data Science Virtual Machine für Linux (CentOS), um Analysen und Machine Learning-Vorgänge durchzuführen.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 1ab3a527643bc5a567644a937fdd1eb9e31bf567
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 09/13/2019
+ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195331"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204183"
 ---
-# <a name="quickstart-set-up-a-linux-centos-data-science-virtual-machine-in-azure"></a>Schnellstart: Einrichten einer Data Science Virtual Machine-Instanz mit Linux CentOS in Azure
+# <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Schnellstart: Einrichten einer Data Science Virtual Machine-Instanz mit CentOS (Linux) in Azure
 
-Eine Data Science Virtual Machine-Instanz (DSVM) mit Linux ist ein CentOS-basierter virtueller Azure-Computer. Die Linux-DSVM-Instanz enthält eine Sammlung vorinstallierter Tools, die Sie für die Datenanalyse sowie für maschinelles Lernen verwenden können. 
-
-Die wichtigsten in einer Linux-DSVM-Instanz enthaltenen Softwarekomponenten sind:
-
-* Betriebssystem: Linux CentOS-Distribution
-* Microsoft Machine Learning Server
-* Anaconda Python-Distribution (Versionen 3.5 und 2.7), einschließlich gängiger Datenanalysebibliotheken
-* JuliaPro, eine betreute Distribution der Sprache Julia mit gängigen Wissenschafts- und Datenanalysebibliotheken
-* Eigenständige Spark-Instanz und Hadoop für einen einzelnen Knoten (HDFS, YARN)
-* JupyterHub, ein Jupyter Notebook-Server für mehrere Benutzer mit Unterstützung von R-, Python-, PySpark- und Julia-Kernels
-* Azure Storage-Explorer.
-* Azure CLI, die Azure-Befehlszeilenschnittstelle für die Verwaltung von Azure-Ressourcen
-* PostgreSQL-Datenbank
-* Tools für maschinelles Lernen:
-  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), ein Deep Learning-Softwaretoolkit von Microsoft Research
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit), ein schnelles System für maschinelles Lernen, das verschiedene Verfahren unterstützt, wie z.B. Online, Hashing, Allreduce, Reductions, Learning2Search sowie aktives und interaktives Lernen
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/), ein Tool, das eine schnelle und präzise Boosted Tree-Implementierung ermöglicht
-  * [Rattle](https://togaware.com/rattle/), ein Tool, das den Einstieg in Datenanalysen und maschinelles Lernen in R vereinfacht. Rattle ermöglicht ein GUI-basiertes Durchsuchen von Daten sowie das Modellieren mit automatischer R-Codegenerierung.
-* Azure SDK in Java, Python, Node.js, Ruby und PHP
-* Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
-* Entwicklungstools und -editoren (RStudio, PyCharm, IntelliJ, Emacs, gedit, vi)
-
-Der Data Science-Vorgang umfasst eine Aufgabensequenz:
-
-1. Suchen, Laden und Vorverarbeiten von Daten
-1. Kompilieren und testen von Modellen.
-1. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen.
-
-Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es kann zeitaufwendig sein, die richtigen Versionen der Software zu finden und diese dann herunterzuladen, zu kompilieren und zu installieren.
-
-Die Linux-DSVM-Instanz vereinfacht diesen Vorgang erheblich. Nutzen Sie die Linux-DSVM-Instanz für einen schnellen Einstieg in Ihr Analyseprojekt. Die Linux-DSVM-Instanz ermöglicht es Ihnen, in verschiedenen Sprachen zu arbeiten, u. a. in R, Python, SQL, Java und C++. Eclipse bietet eine benutzerfreundliche IDE zum Entwickeln und Testen von Code. Mit dem in DSVM integrierten Azure SDK können Sie Ihre Anwendungen mithilfe verschiedener Dienste unter Linux für die Microsoft-Cloudplattform erstellen. Andere Sprachen sind vorinstalliert, einschließlich Ruby, Perl, PHP und Node.js.
-
-Für dieses DSVM-Image fallen keine Softwaregebühren an. Sie zahlen nur die Gebühren für die Azure-Hardwarenutzung, die basierend auf der Größe des virtuellen Computers berechnet werden, den Sie mit dem DSVM-Image bereitstellen. Weitere Informationen zu den Computegebühren finden Sie im Azure Marketplace unter [Data Science Virtual Machine für Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Schnelle Betriebsbereitschaft mit einer CentOS-basierten Data Science VM-Instanz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie eine Linux Data Science Virtual Machine-Instanz erstellen können, müssen die folgenden Voraussetzungen erfüllt sein:
+Zum Erstellen einer Data Science VM-Instanz unter CentOS benötigen Sie ein **Azure-Abonnement**. [Erstellen Sie ein kostenloses Abonnement](https://azure.com/free).
 
-* **Azure-Abonnement**: Erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), um ein Azure-Abonnement zu erhalten.
-* **Azure-Speicherkonto**: Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md). Wenn Sie kein vorhandenes Azure-Speicherkonto verwenden möchten, können Sie beim Erstellen der DSVM-Instanz ein Speicherkonto erstellen.
+## <a name="create-your-centos-data-science-virtual-machine"></a>Erstellen Ihrer Data Science VM-Instanz unter CentOS
 
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andere Versionen der Data Science Virtual Machine
+Es folgen die Schritte zum Erstellen einer Data Science VM-Instanz unter CentOS:
 
-Die Data Science Virtual Machine-Instanz ist auch in den folgenden Versionen verfügbar:
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Falls Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie ggf. eine entsprechende Aufforderung. 
+1. Geben Sie „Data Science Virtual Machine“ in die Suchleiste ein, und wählen Sie die CentOS-DSVM-Instanz aus.
 
-* [Ubuntu](dsvm-ubuntu-intro.md): Das Ubuntu-Image verfügt über viele der Tools, die auch beim CentOS-Image verfügbar sind, u. a. Deep Learning-Frameworks. 
-* [Windows](provision-vm.md)
+    ![CentOS-Suchergebnis](./media/linux-dsvm-intro/search-centos.png)
 
-## <a name="create-a-linux-data-science-virtual-machine"></a>Erstellen einer Data Science Virtual Machine-Instanz mit Linux
+1. Wählen Sie im nachfolgenden Fenster die Option **Erstellen** aus.
 
-So erstellen Sie eine Linux-DSVM-Instanz:
+    [![](media/linux-dsvm-intro/create-centos.png "Schaltfläche zum Erstellen eines CentOS-Computers")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm) zur Auflistung der virtuellen Computer.
-1. Wählen Sie **Erstellen** aus, um den Assistenten zu öffnen.
-
-   ![Der Assistent, der eine Data Science Virtual Machine-Instanz konfiguriert](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-1. Geben Sie für jeden Schritt des Assistenten folgende Informationen ein, oder wählen Sie sie aus:
+1. Sie sollten auf das Blatt „Virtuellen Computer erstellen“ umgeleitet werden.
    
-   **1** **Grundlagen**:
+   ![Registerkarte „Grundlagen“ für den virtuellen CentOS-Computer](./media/linux-dsvm-intro/review-create-centos.png)
 
-      * **Name**: Der Name des Data Science-Servers, den Sie erstellen.
-      * **Benutzername**: Die ID für die erste Kontoanmeldung.
-      * **Kennwort**: Das erste Kontokennwort. (Sie können statt des Kennworts einen öffentlichen SSH-Schlüssel verwenden.)
-      * **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen über Berechtigungen zum Erstellen von Ressourcen für das Abonnement verfügen.
-      * **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Gruppe verwenden.
-      * **Standort**: Wählen Sie ein Datencenter aus, das für die DSVM-Instanz verwendet werden soll. In den meisten Fällen handelt es sich dabei um das Datencenter, in dem der Großteil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist (für einen schnellen Netzwerkzugriff).
-   
-   **2** **Größe**: Wählen Sie einen Servertyp aus, der Ihren funktionalen Anforderungen erfüllt und Ihrem Kostenrahmen entspricht. Wählen Sie **Alle anzeigen** aus, um weitere Optionen für VM-Größen anzuzeigen.
-   
-   
-   **3** **Einstellungen**:
-      * **Datenträgertyp**: Wählen Sie **Premium** aus, wenn Sie ein Solid State Drive (SSD) bevorzugen. Wählen Sie andernfalls **Standard** aus.
-      * **Speicherkonto**: Sie können ein neues Azure-Speicherkonto in Ihrem Abonnement erstellen oder ein vorhandenes Azure-Konto an dem Standort verwenden, den Sie im Schritt **Grundlagen** des Assistenten ausgewählt haben.
-      * **Weitere Parameter**: In den meisten Fällen verwenden Sie einfach die Standardeinstellungen zum Konfigurieren weiterer Parameter. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink für den jeweiligen Parameter, falls Sie auch andere Werte als die Standardwerte anzeigen möchten.
-   
-   **4** **Zusammenfassung**: Stellen Sie sicher, dass die eingegebenen Informationen richtig sind.
-   
-   **5** **Kaufen**: Um den Bereitstellungsprozess zu starten, wählen Sie **Kaufen** aus. Sie erhalten einen Link zu den Bedingungen der Transaktion. Für die DSVM-Instanz fallen neben den Computegebühren für die unter **Größe** ausgewählte Servergröße keine weiteren Gebühren an.
+1. Geben Sie die folgenden Informationen ein, um die einzelnen Schritte des Assistenten zu konfigurieren:
 
-Die Bereitstellung dauert 10 bis 20 Minuten. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
+    1. **Grundlagen**:
+    
+       * **Abonnement**: Falls Sie über mehrere Abonnements verfügen, müssen Sie das Abonnement auswählen, unter dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+       * **Ressourcengruppe**: Erstellen Sie eine neue Gruppe, oder verwenden Sie eine bereits vorhandene.
+       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. So wird er im Azure-Portal angezeigt.
+       * **Region**: Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Weitere Informationen zu [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Image**: Behalten Sie den Standardwert bei.
+       * **Größe**: Dies sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/linux/sizes.md).
+       * **Authentifizierungstyp:** Wählen Sie für eine schnellere Einrichtung die Option „Kennwort“ aus. 
+         
+         > [!NOTE]
+         > Wenn Sie JupyterHub verwenden möchten, achten Sie darauf, dass „Kennwort“ ausgewählt ist, da JupyterHub *nicht* für die Verwendung von öffentlichen SSH-Schlüsseln konfiguriert ist.
 
-## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Zugreifen auf die Linux Data Science Virtual Machine
+       * **Benutzername**: Geben Sie den Benutzernamen des Administrators ein. Dies ist der Benutzername, den Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden. Er muss nicht mit Ihrem Azure-Benutzernamen identisch sein. Verwenden Sie *keine* Großbuchstaben.
+         
+         > [!NOTE]
+         > Wenn Sie in Ihrem Benutzernamen Großbuchstaben verwenden, funktioniert JupyterHub nicht, und die Meldung „500 – Interner Serverfehler“ wird angezeigt.
 
-Nachdem die DSVM-Instanz erstellt wurde, können Sie sich mithilfe von SSH anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** des Assistenten für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Window System), können Sie die X11-Weiterleitung unter PuTTY verwenden oder den X2Go-Client installieren.
+       * **Kennwort**: Geben Sie das Kennwort ein, das Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden.    
+    
+   1. Klicken Sie auf **Überprüfen + erstellen**.
+   1. **Überprüfen + erstellen**
+      * Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind. 
+      * Klicken Sie auf **Erstellen**.
+    
+    Die Bereitstellung sollte ungefähr 5 Minuten dauern. Der Status wird im Azure-Portal angezeigt.
+
+## <a name="how-to-access-the-centos-data-science-virtual-machine"></a>Zugreifen auf die Data Science VM-Instanz unter CentOS
+
+Es gibt drei Methoden für den Zugriff auf die DSVM-Instanz unter CentOS:
+
+  * SSH für Terminalsitzungen
+  * X2Go für grafische Sitzungen
+  * JupyterHub und JupyterLab für Jupyter-Notebooks
+
+Sie können Azure Notebooks auch eine Data Science Virtual Machine zuordnen, um Jupyter-Notebooks auf der VM auszuführen und die Einschränkungen der kostenlosen Dienstebene zu umgehen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten: Computeebene](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+
+### <a name="ssh"></a>SSH
+
+Nachdem der virtuelle Computer erstellt wurde, können Sie sich mit SSH anmelden, sofern er mit SSH-Zugriff konfiguriert wurde. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool, z. B. [PuTTY](https://www.putty.org), herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Window System), können Sie die X11-Weiterleitung unter PuTTY verwenden.
 
 > [!NOTE]
 > Der X2Go-Client hat bei Tests besser abgeschnitten als die X11-Weiterleitung. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.
 
-## <a name="install-and-configure-the-x2go-client"></a>Installieren und Konfigurieren des X2Go-Clients
+### <a name="x2go"></a>X2Go
 
-Die Linux-DSVM-Instanz wird mit X2Go-Server bereits bereitgestellt und kann Clientverbindungen akzeptieren. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Linux-DSVM-Desktop herzustellen:
+Die Linux-VM ist schon in der Bereitstellung von X2Go-Server enthalten und zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.
-1. Führen Sie den X2Go-Client aus. Wählen Sie **New Session** (Neue Sitzung) aus. Ein Konfigurationsfenster mit mehreren Registerkarten wird geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
+1. Notieren Sie sich die öffentliche IP-Adresse des virtuellen Computers. Diese finden Sie im Azure-Portal, indem Sie den soeben erstellten virtuellen Computer öffnen.
+
+   ![IP-Adresse des CentOS-Computers](./media/linux-dsvm-intro/centos-ip-address.png)
+
+1. Führen Sie den X2Go-Client aus. Wenn das Fenster „Neue Sitzung“ nicht automatisch angezeigt wird, wechseln Sie zu „Sitzung“ > „Neue Sitzung“.
+
+1. Geben Sie im daraufhin angezeigten Konfigurationsfenster die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
-     * **Host**: Geben Sie den Hostnamen oder die IP-Adresse Ihrer Linux-DSVM-Instanz ein.
-     * **Anmeldung**: Geben Sie den Benutzernamen für die Linux-DSVM-Instanz ein.
-     * **SSH-Port**: Behalten Sie den Standardwert **22** bei.
-     * **Sitzungstyp**: Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux-DSVM-Instanz nur den XFCE-Desktop.
-   * Registerkarte **Media** (Medien): Sie können die Soundunterstützung und die Clientausgabe deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner**: Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-DSVM-Instanz bereitgestellt werden sollen, fügen Sie die Clientcomputerverzeichnisse hinzu, die Sie für DSVM freigeben möchten.
+     * **Host**: Geben Sie die IP-Adresse Ihres virtuellen Computers ein, die Sie zuvor notiert haben.
+     * **Anmeldung**: Geben Sie den Benutzernamen für die Linux-VM ein.
+     * **SSH-Port**: Übernehmen Sie den Standardwert 22.
+     * **Sitzungstyp**: Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
+   * **Registerkarte „Medien“** : Sie können die Soundunterstützung und die Clientausgabe deaktivieren, wenn Sie diese Funktionen nicht benötigen.
+   * **Freigegebene Ordner**: Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
 
-Nachdem Sie sich entweder mithilfe des SSH-Clients oder des grafischen XFCE-Desktops über den X2Go-Client bei DSVM angemeldet haben, können Sie die Tools verwenden, die in der DSVM-Instanz installiert und konfiguriert sind. Auf dem XFCE-Desktop sehen Sie Verknüpfungen von Anwendungsmenüs und Desktopsymbole für viele Tools.
+   ![X2go-Konfiguration](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
+1. Klicken Sie auf **OK**.
+1. Klicken Sie im rechten Bereich des X2Go-Fensters auf das Feld, um den Anmeldebildschirm für Ihren virtuellen Computer anzuzeigen.
+1. Geben Sie das Kennwort für Ihren virtuellen Computer ein.
+1. Klicken Sie auf **OK**.
+1. Möglicherweise müssen Sie X2Go die Berechtigung zum Umgehen Ihrer Firewall erteilen, um den Verbindungsvorgang abzuschließen.
+1. Nun sollte die grafische Benutzeroberfläche für Ihre CentOS-DSVM-Instanz angezeigt werden. 
 
-## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>In der Linux Data Science Virtual Machine installierte Tools
 
-### <a name="machine-learning-server"></a>Machine Learning Server
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub und JupyterLab
 
-R ist eine der beliebtesten Sprachen für Datenanalyse und Machine Learning. Wenn Sie R für Ihre Analysen verwenden möchten, können Sie Machine Learning Server mit Microsoft R Open und Math Kernel Library in DSVM verwenden. Math Kernel Library optimiert gängige mathematische Vorgänge in Analysealgorithmen. R Open ist vollständig kompatibel mit CRAN R. Alle in CRAN veröffentlichten R-Bibliotheken können unter R Open installiert werden. 
+Die CentOS-DSVM-Instanz führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), einen Jupyter-Server für mehrere Benutzer, aus. Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen:
 
-Sie können Machine Learning Server zum Skalieren und Operationalisieren von R-Modellen in Webdienste verwenden. Sie können Ihre R-Programme in einem Standard-Editor wie RStudio, vi oder Emacs bearbeiten. Der Emacs-Editor ist in der DSVM-Instanz vorinstalliert. Das Emacs ESS-Paket (Emacs Speaks Statistics) vereinfacht die Verwendung von R-Dateien im Emacs-Editor.
+   1. Notieren Sie sich die öffentliche IP-Adresse für Ihren virtuellen Computer, indem Sie im Azure-Portal nach ihrem virtuellen Computer suchen und ihn auswählen.
 
-Geben Sie zum Öffnen der R-Konsole in der Shell **R** ein. Über diesen Befehl gelangen Sie zu einer interaktiven Umgebung. Zum Entwickeln Ihres R-Programms verwenden Sie in der Regel einen Editor wie Emacs oder vi und führen dann die Skripts in R aus. Mit RStudio verfügen Sie über eine vollständige grafische IDE zum Entwickeln Ihres R-Programms.
+       ![IP-Adresse des CentOS-Computers](./media/linux-dsvm-intro/centos-ip-address.png)
 
-Ein R-Skript, mit dem Sie die [beliebtesten 20 R-Pakete](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) installieren können, ist in DSVM enthalten. Sie können dieses Skript ausführen, wenn Sie sich auf der interaktiven R-Oberfläche befinden. Geben Sie wie bereits erwähnt zum Öffnen der Schnittstelle in der Shell **R** ein.  
+   1. Öffnen Sie auf Ihrem lokalen Computer einen Webbrowser, und navigieren Sie zu „https:\//IP-Ihrer-VM:8000“. Ersetzen Sie dabei „IP-Ihrer-VM“ durch die IP-Adresse, die Sie zuvor notiert haben.
+   1. Geben Sie den Benutzernamen mit dem zugehörigen Kennwort ein, den Sie zum Erstellen des virtuellen Computers verwendet haben, und melden Sie sich an. 
 
-### <a name="python"></a>Python
+      ![Jupyter-Anmeldung eingeben](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
-Anaconda Python wird mit Python 3.5- und 2.7-Umgebungen installiert. Die 2.7-Umgebung wird als _root_ bezeichnet und die 3.5-Umgebung als _py35_. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen.
+   1. Durchsuchen Sie die zahlreichen verfügbaren Beispielnotebooks.
 
-Standardmäßig wird die py35-Umgebung verwendet. Sie können die root-Umgebung (2.7) mit dem folgenden Befehl aktivieren:
+JupyterLab, die nächste Generation von Jupyter-Notebooks, und JupyterHub, sind ebenfalls verfügbar. Für den Zugriff darauf melden Sie sich bei JupyterHub an, und navigieren Sie dann zu der URL „https:\//IP-Ihrer-VM:8000/Benutzer/Ihr-Benutzername/lab“. Ersetzen Sie dabei „Ihr-Benutzername“ durch den Benutzernamen, den Sie beim Konfigurieren des virtuellen Computers gewählt haben.
 
-```bash
-source activate root
+Sie können JupyterLab als Standard-Notebookserver festlegen, indem Sie `/etc/jupyterhub/jupyterhub_config.py` die folgende Zeile hinzufügen:
+
+```python
+c.Spawner.default_url = '/lab'
 ```
-
-Verwenden Sie den folgenden Befehl zum erneuten Aktivieren der py35-Umgebung:
-
-```bash
-source activate py35
-```
-
-Geben Sie zum Aufrufen einer interaktiven Sitzung in der Shell **python** ein. 
-
-Installieren Sie mithilfe von Conda oder pip weitere Python-Bibliotheken. Aktivieren Sie für pip zuerst die richtige Umgebung, wenn Sie die Standardeinstellung nicht verwenden möchten:
-
-```bash
-source activate root
-pip install <package>
-```
-
-Oder geben Sie den vollständigen Pfad zu Pip an:
-
-```bash
-/anaconda/bin/pip install <package>
-```
-
-Für Conda müssen Sie immer den Umgebungsnamen angeben (py35 oder root):
-
-```bash
-conda install <package> -n py35
-```
-
-Wenn Sie sich auf einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten. Sie können die standardmäßigen Text-Editoren verwenden. Außerdem können Sie Spyder nutzen, eine Python-IDE, die als Bündel mit Anaconda Python-Distributionen bereitgestellt wird. Für Spyder wird ein grafischer Desktop oder die X11-Weiterleitung benötigt. Auf dem grafischen Desktop befindet sich eine Verknüpfung mit Spyder.
-
-### <a name="jupyter-notebook"></a>Jupyter Notebook
-
-Zur Anaconda-Distribution gehört außerdem Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Der Zugriff auf Jupyter Notebook erfolgt über JupyterHub. Melden Sie sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort an.
-
-Der Jupyter Notebook-Server ist mit Python 2-, Python 3- und R-Kernels vorkonfiguriert. Verwenden Sie das Desktopsymbol **Jupyter Notebook**, um den Browser zu öffnen und auf den Jupyter Notebook-Server zuzugreifen. Wenn Sie per SSH oder über den X2Go-Client auf DSVM zugreifen, erreichen Sie den Jupyter Notebook-Server auch über https:\//localhost:8000/ zugreifen.
-
-> [!NOTE]
-> Fahren Sie fort, falls Sie Zertifikatwarnungen erhalten.
-
-Sie können von jedem Host aus auf den Jupyter Notebook-Server zugreifen. Geben Sie **https:\//\<DSVM-DNS-Name oder -IP-Adresse\>:8000/** ein.
-
-> [!NOTE]
-> Port 8000 wird standardmäßig in der Firewall geöffnet, wenn die DSVM-Instanz bereitgestellt wird. 
-
-Microsoft hat einige Beispiel-Notebooks zusammengestellt – eins für Python und eins für R. Der Link zu den Beispielen wird Ihnen auf der Jupyter Notebook-Startseite angezeigt, nachdem Sie sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort Jupyter Notebook authentifiziert haben. Wenn Sie ein neues Notebook erstellen möchten, wählen Sie **Neu** und dann den zu verwendenden Sprachkernel aus. Wenn die Schaltfläche **New** (Neu) nicht angezeigt wird, wählen Sie oben links das **Jupyter**-Symbol aus, um die Startseite des Notebook-Servers zu öffnen.
-
-### <a name="spark-standalone"></a>Eigenständige Spark-Instanz 
-
-Eine Instanz des Modus für die eigenständige Spark-Instanz ist in der Linux-DSVM-Instanz vorinstalliert, damit Sie Spark-Anwendungen zunächst lokal entwickeln können, bevor Sie sie in großen Clustern testen und bereitstellen. 
-
-Sie können PySpark-Programme über den Jupyter-Kernel ausführen. Wenn Sie Jupyter öffnen und die Schaltfläche **New** (Neu) auswählen, wird eine Liste mit verfügbaren Kernels angezeigt. **Spark – Python** ist der PySpark-Kernel, mit dem Sie Spark-Anwendungen in der Sprache Python erstellen können. Sie können auch eine Python-IDE wie PyCharm oder Spyder verwenden, um Spark-Programme zu erstellen. 
-
-In dieser eigenständigen Instanz wird der Spark-Stapel im aufrufenden Clientprogramm ausgeführt. Dieses Feature führt dazu, dass sich Probleme schneller und einfacher beheben lassen als beim Entwickeln in einem Spark-Cluster.
-
-Jupyter stellt ein PySpark-Beispielnotebook bereit. Sie finden dieses Notebook im Basisverzeichnis von Jupyter im Verzeichnis „SparkML“ ($HOME/Notebooks/SparkML/PySpark). 
-
-Wenn Sie in R für Spark programmieren, können Sie Machine Learning Server, SparkR oder sparklyr verwenden. 
-
-Vor dem Ausführen im Spark-Kontext in Machine Learning Server müssen Sie einen einmaligen Schritt zur Einrichtung ausführen, um eine lokale Hadoop HDFS- und YARN-Instanz für einen Knoten zu aktivieren. Standardmäßig gilt, dass die Hadoop-Dienste installiert, aber auf der DSVM deaktiviert sind. Führen Sie die folgenden Befehle zum Aktivieren von Hadoop-Diensten beim ersten Mal als root aus:
-
-```bash
-echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-chmod 0600 ~hadoop/.ssh/authorized_keys
-chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
-```
-
-Sie können die Hadoop-bezogenen Dienste anhalten, wenn Sie sie nicht benötigen. Führen Sie dazu `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` aus.
-
-Das Verzeichnis „/dsvm/samples/MRS“ umfasst ein Beispiel, in dem gezeigt wird, wie Machine Learning Server in einem Remote-Spark-Kontext (dies ist die eigenständige Spark-Instanz in der DSVM-Instanz) entwickelt und getestet wird.
-
-### <a name="ides-and-editors"></a>IDEs und Editoren
-
-Sie können aus mehreren Code-Editoren auswählen, einschließlich vi/VIM, Emacs, gedit, PyCharm, RStudio, Eclipse, LaTex und IntelliJ. 
-
-* gedit, Eclipse, IntelliJ, R Studio und PyCharm sind grafische Editoren. Sie müssen bei einem grafischen Desktop angemeldet sein, um sie verwenden zu können. Sie können diese über Desktop- und Anwendungsmenüverknüpfungen öffnen.
-
-* Vim und Emacs sind textbasierte Editoren. Bei Emacs erleichtert das ESS-Add-On-Paket die Arbeit mit R im Emacs-Editor. Weitere Informationen finden Sie auf der [ESS-Website](https://ess.r-project.org/).
-
-* Eclipse ist eine erweiterbare Open-Source-IDE, die mehrere Sprachen unterstützt. Die Eclipse-IDE für Java-Entwickler ist die Version, die in der DSVM-Instanz installiert ist. Sie können Plug-Ins für mehrere beliebte Sprachen installieren, um die Umgebung zu erweitern. 
-
-  Das Azure-Toolkit für Eclipse-Plug-In wird mit Eclipse in der DSVM-Instanz installiert. Sie können das Azure-Toolkit für Eclipse zum Erstellen, Entwickeln, Testen und Bereitstellen von Azure-Anwendungen nutzen, indem Sie die Eclipse-Entwicklungsumgebung verwenden, die Sprachen wie Java unterstützt.
-
-  Das Azure SDK für Java wird auch mit dem Azure-Toolkit für Eclipse in der DSVM-Instanz installiert. Das Azure SDK für Java ermöglicht Ihnen den Zugriff auf unterschiedliche Azure-Dienste aus einer Java-Umgebung. 
-  
-  Weitere Informationen finden Sie unter [Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
-
-* LaTeX wird über das texlive-Paket zusammen mit einem Emacs-Add-On-Paket namens [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) installiert. Dieses Paket vereinfacht das Erstellen von LaTeX-Dokumenten in Emacs. 
-
-### <a name="databases"></a>Datenbanken
-
-Die Linux-DSVM-Instanz bietet Ihnen Zugriff auf mehrere Datenbank- und Befehlszeilentools.
-
-#### <a name="postgressql"></a>PostgresSQL
-
-Die Open-Source-Datenbank PostgresSQL ist in der DSVM-Instanz verfügbar. Die Dienste werden ausgeführt, und initdb ist bereits abgeschlossen. Sie müssen Datenbanken und Benutzer noch erstellen. Weitere Informationen finden Sie in der [PostgresSQL-Dokumentation](https://www.postgresql.org/docs/).  
-
-#### <a name="squirrel-sql"></a>SQuirreL SQL
-
-SQuirreL SQL ist ein grafischer SQL-Client, der eine Verbindung mit verschiedenen Datenbanken (einschließlich SQL Server, PostgresSQL und MySQL) herstellen und SQL-Abfragen ausführen kann. Sie können SQuirreL SQL in einer grafischen Desktopsitzung (z. B. mithilfe des X2Go-Clients) über ein Desktopsymbol ausführen. Alternativ können Sie den Client mithilfe des folgenden Befehls in der Shell ausführen:
-
-```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
-```
-
-Vor der ersten Verwendung müssen Sie Ihre Treiber und Datenbankaliase einrichten. Die JDBC-Treiber befinden sich unter „/usr/share/Java/jdbcdrivers“.
-
-Weitere Informationen finden Sie unter [SQuirreL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
-
-#### <a name="command-line-tools-for-accessing-sql-server"></a>Befehlszeilentools für den Zugriff auf SQL Server
-
-Das ODBC-Treiberpaket für SQL Server verfügt auch über zwei Befehlszeilentools:
-
-* **bcp**: Das Tool bcp kopiert Daten per Massenkopiervorgang zwischen einer Instanz von SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format. Das Tool bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie eine für diese Tabelle erstellte Formatdatei verwenden. Alternativ müssen Sie die Struktur der Tabelle und die Datentypen, die für ihre Spalten gelten, verstehen.
-
-  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit bcp](https://msdn.microsoft.com/library/hh568446.aspx).
-
-* **sqlcmd**: Mit dem Hilfsprogramm sqlcmd können Sie Transact-SQL-Anweisungen, Systemprozeduren und Skriptdateien an der Eingabeaufforderung eingeben. Für das Hilfsprogramm sqlcmd wird ODBC zum Ausführen von Transact-SQL-Batches verwendet.
-
-  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
-
-  > [!NOTE]
-  > Bei diesem Tool gibt es einige Unterschiede zwischen Linux- und Windows-Plattformen. Ausführliche Informationen dazu finden Sie in der -Dokumentation.
-
-#### <a name="database-access-libraries"></a>Bibliotheken für den Datenbankzugriff
-
-Bibliotheken für den Datenbankzugriff sind in R und Python verfügbar:
-
-* In R können Sie mit den Paketen RODBC oder dplyr SQL-Anweisungen auf dem Datenbankserver abfragen oder ausführen.
-* In Python ermöglicht die Bibliothek pyodbc den Datenbankzugriff mit ODBC als zugrunde liegender Schicht.
-
-### <a name="azure-tools"></a>Azure-Tools
-
-Die folgenden Azure-Tools werden in der DSVM-Instanz installiert:
-
-* **Azure CLI**: Mit der Befehlszeilenschnittstelle in Azure können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie **azure help** ein, um die Azure-Tools zu öffnen. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Storage-Explorer**: Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, sowie zum Hoch- und Herunterladen von Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell öffnen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
-* **Azure-Bibliotheken**: Die folgenden Bibliotheken sind in der DSVM-Instanz vorinstalliert:
-  
-  * **Python**: Die zu Azure gehörenden Bibliotheken in Python sind *azure*, *azureml*, *pydocumentdb* und *pyodbc*. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.
-  * **R**: Die zu Azure gehörenden Bibliotheken in R sind AzureML und RODBC.
-  * **Java**: Die Liste mit den Azure Java-Bibliotheken befindet sich im Verzeichnis „/dsvm/sdk/AzureSDKJava“ in der DSVM-Instanz. Die wichtigsten Bibliotheken sind Azure-Speicher- und -Verwaltungs-APIs, Azure Cosmos DB und JDBC-Treiber für SQL Server.  
-
-Sie können über den vorinstallierten Firefox-Browser auf das [Azure-Portal](https://portal.azure.com) zugreifen. Im Azure-Portal können Sie Azure-Ressourcen erstellen, verwalten und überwachen.
-
-### <a name="azure-machine-learning"></a>Azure Machine Learning
-
-Azure Machine Learning ist ein vollständig verwalteter Clouddienst, mit dem Sie Predictive Analytics-Lösungen erstellen, bereitstellen und freigeben können. Sie erstellen Ihre Experimente und Modelle mit Azure Machine Learning Studio. Wenn Sie auf Azure Machine Learning über einen Webbrowser der DSVM-Instanz zugreifen möchten, navigieren Sie zu [Microsoft Azure Machine Learning](https://studio.azureml.net).
-
-Nachdem Sie sich bei Azure Machine Learning Studio angemeldet haben, haben Sie Zugriff auf einen Zeichenbereich zum Experimentieren, in dem Sie einen logischen Ablauf für die Machine Learning-Algorithmen erstellen können. Sie haben außerdem auch Zugriff auf eine Jupyter Notebook-Instanz, die in Azure Machine Learning gehostet wird. Das Notebook kann problemlos mit den Experimenten in Machine Learning Studio verwendet werden. 
-
-Operationalisieren Sie die von Ihnen erstellten Machine Learning-Modelle, indem Sie sie mit einer Webdienstschnittstelle umschließen. Durch das Operationalisieren von Machine Learning-Modellen können Clients, die in einer beliebigen Sprache geschrieben sind, Vorhersagen aus diesen Modellen aufrufen. Weitere Informationen finden Sie in der [Dokumentation zu Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
-
-Sie können Ihre Modelle auch in R oder Python in der DSVM-Instanz erstellen und diese dann in der Produktion in Azure Machine Learning bereitstellen. Microsoft hat Bibliotheken in R (**AzureML**) und Python (**azureml**) installiert, um diese Funktion zu unterstützen.
-
-Informationen zum Bereitstellen von Modellen in R und Python für Azure Machine Learning finden Sie unter [Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können](vm-do-ten-things.md).
-
-> [!NOTE]
-> Die Anweisungen unter [Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können](vm-do-ten-things.md) wurden für die Windows-Version der DSVM-Instanz erstellt. Die Informationen zum Bereitstellen von Modellen für Azure Machine Learning gelten jedoch auch für die Linux-DSVM-Instanz.
-
-### <a name="machine-learning-tools"></a>Machine Learning-Tools
-
-DSVM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Das umfasst:
-
-* **Microsoft Cognitive Toolkit**: Ein Deep Learning-Toolkit.
-* **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
-* **XGBoost**: Ein Tool, das optimierte Boosted Tree-Algorithmen bereitstellt.
-* **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install` -Befehl verwenden.
-* **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Zu den vorinstallierten Bibliotheken zählen u. a. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie `install.packages(<lib name>)` ausführen.
-
-Microsoft Cognitive Toolkit, Vowpal Wabbit und XGBoost werden in den nächsten Abschnitten ausführlicher erläutert.
-
-#### <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
-
-Microsoft Cognitive Toolkit ist ein Open-Source-Toolkit für Deep Learning. Es handelt sich um ein Befehlszeilentool (CNTK), das sich bereits im Pfad (PATH) befindet.
-
-Um ein einfaches Beispiel auszuführen, verwenden Sie die folgenden Befehle in der Shell:
-
-```bash
-cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
-cntk configFile=lr_bs.cntk makeMode=false command=Train
-```
-
-Weitere Informationen finden Sie im [GitHub-CNTK-Repository](https://github.com/Microsoft/CNTK) und im [CNTK-Wiki](https://github.com/Microsoft/CNTK/wiki).
-
-#### <a name="vowpal-wabbit"></a>Vowpal Wabbit
-
-Vowpal Wabbit ist ein Machine Learning-System, das verschiedene Verfahren einsetzt, etwa Online, Hashing, Allreduce, Reductions, Learning2Search sowie aktives und interaktives Lernen.
-
-Verwenden Sie die folgenden Befehle, um das Tool für ein einfaches Beispiel auszuführen:
-
-```bash
-cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
-cd vwdemo
-vw house_dataset
-```
-
-Das Vowpal Wabbit-Demoverzeichnis enthält andere, größere Demos. Weitere Informationen zu Vowpal Wabbit finden Sie im [GitHub-Vowpal Wabbit-Repository](https://github.com/JohnLangford/vowpal_wabbit) und im [Vowpal Wabbit-Wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
-
-#### <a name="xgboost"></a>XGBoost
-
-Die XGBoost-Bibliothek wurde für Boosted (Tree)-Algorithmen entworfen und optimiert. Das Ziel der XGBoost-Bibliothek besteht darin, die Rechenleistung von Computern erheblich zu verbessern, um Struktur-Boosting-Vorgänge in großem Umfang zu ermöglichen, die skalierbar, portabel und präzise sind.
-
-XGBoost wird als Befehlszeile und als R-Bibliothek bereitgestellt.
-
-Wenn Sie die XGBoost-Bibliothek in R verwenden möchten, starten Sie eine interaktive R-Sitzung (geben Sie in der Shell **R** ein), und laden Sie anschließend die Bibliothek.
-
-Dies ist ein einfaches Beispiel, das Sie an der Eingabeaufforderung von R ausführen können:
-
-```R
-library(xgboost)
-
-data(agaricus.train, package='xgboost')
-data(agaricus.test, package='xgboost')
-train <- agaricus.train
-test <- agaricus.test
-bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
-                eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
-pred <- predict(bst, test$data)
-```
-
-Nutzen Sie die folgenden Befehle in der Shell, um die XGBoost-Befehlszeile in der Shell auszuführen:
-
-```bash
-cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
-cd xgboostdemo
-xgboost mushroom.conf
-```
-
-Eine MODEL-Datei wird in das angegebene Verzeichnis geschrieben. Informationen zu diesem Demobeispiel auf GitHub finden Sie unter [Binärklassifizierung](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
-
-Weitere Informationen zu XGBoost finden Sie in der [XGBoost-Dokumentation](https://xgboost.readthedocs.org/en/latest/) und im [XGBoost-GitHub-Repository](https://github.com/dmlc/xgboost).
-
-#### <a name="rattle"></a>Rattle
-
-Rattle (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) verwendet GUI-basierte Durchsuchungs- und Modellierungsvorgänge für Daten. Rattle:
-- Zeigt statistische und visuelle Zusammenfassungen von Daten an.
-- Transformiert Daten, die direkt modelliert werden können.
-- Erstellt sowohl nicht überwachte als auch überwachte Modelle aus Daten.
-- Zeigt die Leistung von Modellen grafisch an.
-- Bewertet neue Datasets.
-- Generiert R-Code.
-- Repliziert Vorgänge in der UI, die direkt in R ausgeführt oder als Ausgangspunkt für weitere Analysen verwendet werden können.
-
-Damit Sie Rattle ausführen können, müssen Sie bei einer grafischen Desktopsitzung angemeldet sein. Geben Sie in einem Terminal **R** ein, um die R-Umgebung zu öffnen. Geben Sie an der R-Eingabeaufforderung die folgenden Befehle ein:
-
-```R
-library(rattle)
-rattle()
-```
-
-Eine grafische Benutzeroberfläche mit einer Reihe von Registerkarten wird geöffnet. Verwenden Sie die folgenden Schnellstartschritte in Rattle, um ein Beispiel-Wetterdataset zu verwenden und ein Modell zu erstellen. In einigen Schritten werden Sie zum automatischen Installieren und Laden einiger erforderlicher R-Pakete aufgefordert, die sich nicht bereits im System befinden.
-
-> [!NOTE]
-> Falls Sie über keine Berechtigungen für die Installation des Pakets im Systemverzeichnis (Standardeinstellung) haben, wird unter Umständen in Ihrem R-Konsolenfenster eine Aufforderung mit der Frage angezeigt, ob Pakete in Ihrer persönlichen Bibliothek installiert werden sollen. Geben Sie **y** ein, wenn diese Aufforderungen angezeigt werden.
-
-1. Wählen Sie **Execute**(Ausführen).
-1. In einem Dialogfeld werden Sie aufgefordert, das Beispielwetterdataset zu laden. Wählen Sie **Yes** (Ja) aus, um das Beispiel zu laden.
-1. Wählen Sie die Registerkarte **Model** (Modell) aus.
-1. Wählen Sie **Execute** (Ausführen) aus, um eine Entscheidungsstruktur zu erstellen.
-1. Wählen Sie **Draw** (Zeichnen) aus, um die Entscheidungsstruktur anzuzeigen.
-1. Wählen Sie die Option **Forest** (Gesamtstruktur) und anschließend **Execute** (Ausführen) aus, um eine zufällige Gesamtstruktur zu erstellen.
-1. Wählen Sie die Registerkarte **Evaluate** (Auswerten) aus.
-1. Wählen Sie die Option **Risk** (Risiko) und anschließend **Execute** (Ausführen) aus, um zwei Leistungsdarstellungen zu **Risk (Cumulative)** (Risiko (Kumulativ)) anzuzeigen.
-1. Wählen Sie die Registerkarte **Log** (Protokoll) aus, um den generierten R-Code für die obigen Vorgänge anzuzeigen. (Aufgrund eines Fehlers in der aktuellen Version von Rattle müssen Sie im Text des Protokolls vor **Export this log** (Dieses Protokoll exportieren) das Zeichen **#** eingeben.)
-1. Wählen Sie die Schaltfläche **Export** (Exportieren) aus, um die R-Skriptdatei *weather_script.R* im Basisordner zu speichern.
-
-Sie können Rattle und R beenden. Nun können Sie das generierte R-Skript bearbeiten. Sie können das Skript auch unverändert verwenden und es jederzeit ausführen, um alle Aktionen auf der Rattle-Benutzeroberfläche zu wiederholen. Dies ist besonders für Einsteiger in R eine Möglichkeit, auf einer einfachen grafischen Benutzeroberfläche schnell Analysen und maschinelles Lernen durchzuführen, während in R automatisch Code zum Ändern bzw. Lernen generiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -423,3 +145,4 @@ Informieren Sie sich weiter:
 * Entdecken Sie die unterschiedlichen Data Science-Tools der DSVM-Instanz, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch `dsvm-more-info` in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den in der DSVM-Instanz installierten Tools zu erhalten.  
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://aka.ms/tdsp)systematisch vollständige Analyselösungen erstellen.
 * Besuchen Sie die [Azure AI Gallery](https://gallery.azure.ai/), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure-KI-Dienste verwendet werden.
+* Gehen Sie anhand der entsprechenden [Referenzdokumentation](./reference-centos-vm.md) für diesen virtuellen Computer vor.

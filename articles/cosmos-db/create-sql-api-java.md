@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a34cb8e13d32cbeb6d289869dca3a8cb1391d68f
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 5c9cae2fadfccadfd4f178021160e3a4ecd0fab8
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390848"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266284"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -191,7 +191,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen zur Verbindungsz
 
 7. Die App löscht die erstellten Ressourcen nicht. Gehen Sie zurück zum Portal, um in Ihrem Konto [die Ressourcen zu löschen](#clean-up-resources),  damit keine Gebühren anfallen.
 
-    ![Konsolenausgabe](./media/create-sql-api-java/rxjava-console-output.png)
+    ![Anzeigen der Ausgabe im Konsolenfenster](./media/create-sql-api-java/rxjava-console-output.png)
 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal

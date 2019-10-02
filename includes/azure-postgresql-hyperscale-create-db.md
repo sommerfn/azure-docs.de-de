@@ -5,15 +5,15 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178334"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71279886"
 ---
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -38,27 +38,20 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
    > Das hier angegebene Kennwort für den Serveradministrator ist erforderlich, um die Anmeldung am Server und bei den zugehörigen Datenbanken auszuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
 
 5. Klicken Sie auf **Servergruppe konfigurieren**. Übernehmen Sie die Einstellungen in diesem Abschnitt unverändert, und klicken Sie auf **Speichern**.
-6. Klicken Sie auf **Bewerten + erstellen** und dann auf **Erstellen**, um den Server bereitzustellen. Die Bereitstellung dauert einige Minuten.
-7. Die Seite leitet zur Überwachung der Bereitstellung um. Wenn sich der Livestatus von **Ihre Bereitstellung wird ausgeführt** in **Ihre Bereitstellung wurde abgeschlossen** ändert, klicken Sie links auf der Seite auf das Menüelement **Ausgaben**.
-8. Die Seite „Ausgaben“ enthält einen Koordinatorhostnamen mit einer Schaltfläche daneben, um den Wert in die Zwischenablage zu kopieren. Notieren Sie diese Informationen zur späteren Verwendung.
+6. Klicken Sie unten auf der Seite auf **Weiter: Netzwerk >** .
 
-## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
-
-Der Dienst Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion) verwendet eine Firewall auf der Serverebene. Standardmäßig hindert die Firewall alle externen Anwendungen und Tools daran, eine Verbindung mit dem Koordinatorknoten und mit internen Datenbanken herzustellen. Sie müssen eine Regel zum Öffnen der Firewall für einen bestimmten IP-Adressbereich hinzufügen.
-
-1. Klicken Sie im Abschnitt **Ausgaben**, in dem Sie zuvor den Hostnamen des Koordinatorknotens kopiert hatten, zurück zum Menüelement **Übersicht**.
-
-2. Suchen Sie den Namen der Servergruppe Ihrer Bereitstellung, und klicken Sie darauf. (Der Name der Servergruppe hat *kein* Suffix. Elemente, deren Namen z. B. auf „-c“, „-w0“ oder „-w1“ enden, sind nicht die Servergruppe.)
-
-3. Klicken Sie im Menü auf der linken Seite unter **Sicherheit** auf **Firewall**.
-
-4. Klicken Sie auf den Link **+ Firewallregel für die aktuelle Client-IP-Adresse hinzufügen**.
-
-5. Klicken Sie abschließend auf die Schaltfläche **Speichern**.
+7. Klicken Sie auf der Registerkarte **Netzwerk** auf das Optionsfeld **Öffentlicher Endpunkt**.
+   ![Öffentlicher Endpunkt ausgewählt](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+8. Klicken Sie auf den Link **+ Aktuelle Client-IP-Adresse hinzufügen**.
+   ![Hinzugefügte Client-IP-Adresse](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
    > Der Azure-PostgreSQL-Server kommuniziert über Port 5432. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 5432 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 5432 öffnet.
    >
+
+9. Klicken Sie auf **Bewerten + erstellen** und dann auf **Erstellen**, um den Server bereitzustellen. Die Bereitstellung dauert einige Minuten.
+10. Die Seite leitet zur Überwachung der Bereitstellung um. Wenn sich der Livestatus von **Ihre Bereitstellung wird ausgeführt** in **Ihre Bereitstellung wurde abgeschlossen** ändert, klicken Sie links auf der Seite auf das Menüelement **Ausgaben**.
+11. Die Seite „Ausgaben“ enthält einen Koordinatorhostnamen mit einer Schaltfläche daneben, um den Wert in die Zwischenablage zu kopieren. Notieren Sie diese Informationen zur späteren Verwendung.
 
 ## <a name="connect-to-the-database-using-psql"></a>Herstellen einer Verbindung mit der Datenbank mithilfe von psql
 

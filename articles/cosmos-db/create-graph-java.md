@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172526"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212627"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Schnellstart: Erstellen einer Graphdatenbank mit dem Java SDK und der Azure Cosmos DB-Tabellen-API
 
@@ -110,7 +110,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
     Kopieren Sie den ersten Teil des URI-Werts.
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/create-graph-java/keys.png)
+    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. Öffnen Sie die Datei „src/remote.yaml“, und fügen Sie den eindeutigen ID-Wert über `$name$` in `hosts: [$name$.graphs.azure.com]` ein.
 
     Die erste Zeile von „remote.xaml“ sollte etwa wie folgt aussehen: 
@@ -219,15 +219,15 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
 12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass in der Liste **Ergebnisse** der Eintrag **ashley** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Option ![Ziel eines Scheitelpunkts in einem Graph ändern](./media/create-graph-java/edit-pencil-button.png) aus. Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
 
-    ![Ändern des Ziels eines Scheitelpunkts in einem Graph](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Ändern des Ziels eines Scheitelpunkts in einem Graph: Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Kantenbezeichnung** die Zeichenfolge *knows* ein, und aktivieren Sie anschließend das Kontrollkästchen.
 
-    ![Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Hinzufügen einer Verbindung im Daten-Explorer: Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Wählen Sie nun in der Ergebnisliste den Eintrag **rakesh** aus. Wie Sie sehen, sind „ashley“ und „rakesh“ miteinander verbunden. 
 
-    ![Zwei verbundene Scheitelpunkte im Daten-Explorer](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Zwei im Daten-Explorer verbundene Scheitelpunkte: Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Damit haben Sie den Teil des Tutorials, in dem die Ressourcen erstellt werden, abgeschlossen. Sie können weiter Scheitelpunkte zu Ihrem Graphen hinzufügen, die vorhandenen Scheitelpunkte anpassen oder die Abfragen ändern. Sehen Sie sich nun die von Azure Cosmos DB bereitgestellten Metriken an, und bereinigen Sie anschließend die Ressourcen. 
 

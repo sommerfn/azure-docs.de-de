@@ -3,18 +3,18 @@ title: Übersicht über Azure Digital Twins | Microsoft-Dokumentation
 description: Hier finden Sie weitere Informationen zu Azure Digital Twins – einer Azure IoT-Lösung für Raumintelligenz.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736970"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178298"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Übersicht über Azure Digital Twins
 
@@ -45,13 +45,13 @@ Azure Digital Twins verfügt über die folgenden wichtigen Funktionen.
 
 ### <a name="spatial-intelligence-graph"></a>Raumintelligenzgraph
 
-Der [*Raumintelligenzgraph*](./concepts-objectmodel-spatialgraph.md#graph) oder *Raumgraph* ist eine virtuelle Darstellung der physischen Umgebung. Sie können ihn zum Modellieren der Beziehungen zwischen Personen, Orten und Geräten zu modellieren.
+Der [*Raumintelligenzgraph*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph) oder *Raumgraph* ist eine virtuelle Darstellung der physischen Umgebung. Sie können ihn zum Modellieren der Beziehungen zwischen Personen, Orten und Geräten zu modellieren.
 
 Stellen Sie sich eine intelligente Versorger-App vor, die zahlreiche Stromzähler eines Viertels umfasst. Das Versorgungsunternehmen muss den Stromverbrauch und die Abrechnung präzise überwachen und prognostizieren. Jedes Gerät und jeder Sensor muss im Kontext des Orts und des Kunden, der die Abrechnung erhält, modelliert werden. Solche komplexen Beziehungen können mithilfe des Raumintelligenzgraphen modelliert werden.
 
 ### <a name="digital-twin-object-models"></a>Objektmodelle für digitale Zwillinge
 
-[Objektmodelle für digitale Zwillinge](./concepts-objectmodel-spatialgraph.md#model) sind vordefinierte Geräteprotokolle und ein Datenschema. Sie stimmen die domänenspezifischen Anforderungen Ihrer Lösung ab, um die Entwicklung zu beschleunigen und zu vereinfachen.
+[Objektmodelle für digitale Zwillinge](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) sind vordefinierte Geräteprotokolle und ein Datenschema. Sie stimmen die domänenspezifischen Anforderungen Ihrer Lösung ab, um die Entwicklung zu beschleunigen und zu vereinfachen.
 
 So kann beispielsweise eine Raumbelegungsanwendung vordefinierte Bereichstypen wie Campus, Gebäude, Etage, Raum usw. verwenden.
 
@@ -93,9 +93,9 @@ Azure Digital Twins eignet sich für die Darstellung der realen Welt und der vie
 
 Azure Digital Twins nutzt Azure IoT Hub, um eine Verbindung mit den IoT-Geräten und Sensoren herzustellen, die jeweils aktuelle Daten aus der physischen Welt liefern. Das folgende Diagramm veranschaulicht die Beziehung zwischen Azure Digital Twins und anderen Azure IoT-Diensten.
 
-![Azure Digital Twins ist ein auf Azure IoT Hub basierender Dienst.][1]
+[![Azure Digital Twins ist ein auf Azure IoT Hub basierender Dienst.](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösungen](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösungen](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,6 +113,3 @@ Machen Sie sich mit zentralen Aspekten von Azure Digital Twins vertraut:
 
 >[!div class="nextstepaction"]
 >[Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

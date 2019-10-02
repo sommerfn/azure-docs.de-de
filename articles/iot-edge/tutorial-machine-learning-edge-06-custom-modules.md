@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840109"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299864"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -56,7 +56,7 @@ Die Schritte in diesem Artikel werden normalerweise von einem Cloudentwickler au
 
 ## <a name="create-a-new-iot-edge-solution"></a>Erstellen einer neuen IoT Edge-Projektmappe
 
-Während der Ausführung des zweiten unserer beiden Azure Notebooks haben wir ein Containerimage mit unserem RUL-Modell erstellt und veröffentlicht. Azure Machine Learning ist als Teil des Imagezeugungsprozesses in die Teile integriert, damit das Image als Azure IoT Edge-Modul bereitgestellt werden kann. In diesem Schritt erstellen wir eine Azure IoT Edge-Projektmappe mit dem Modul „Azure Machine Learning“ und verweisen das Modul auf das Image, das wir mit Azure Notebooks veröffentlicht haben.
+Während der Ausführung des zweiten unserer beiden Azure Notebooks haben wir ein Containerimage mit unserem RUL-Modell erstellt und veröffentlicht. Azure Machine Learning hat im Rahmen der Imageerstellung dieses Modell gepackt, damit das Image als Azure IoT Edge-Modul bereitgestellt werden kann. In diesem Schritt erstellen wir eine Azure IoT Edge-Projektmappe mit dem Modul „Azure Machine Learning“ und verweisen das Modul auf das Image, das wir mit Azure Notebooks veröffentlicht haben.
 
 1. Öffnen Sie eine Remotedesktopsitzung auf Ihrem Entwicklungscomputer.
 

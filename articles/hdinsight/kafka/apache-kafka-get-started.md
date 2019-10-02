@@ -1,19 +1,19 @@
 ---
 title: 'Einrichten von Apache Kafka in HDInsight über das Azure-Portal: Schnellstart'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal einen Apache Kafka-Cluster in Azure HDInsight erstellen. Darüber hinaus erfahren Sie mehr über Kafka-Themen, -Abonnenten und -Consumer.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960329"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123579"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal
 
@@ -38,8 +38,8 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** > **Analytics** > **HDInsight**.
-   
-    ![Erstellen eines HDInsight-Clusters](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure-Portal: Erstellen einer Ressource für HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. Geben Sie unter **Grundlagen** folgende Informationen ein, bzw. wählen Sie sie aus:
 
@@ -47,9 +47,9 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
     | --- | --- |
     | Clustername | Einen eindeutigen Namen für den HDInsight-Cluster. |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
-    
+
    Wählen Sie __Clustertyp__ aus, um die **Clusterkonfiguration** zu öffnen.
-   
+
    ![Standardkonfiguration eines Apache Kafka-Clusters in HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. Wählen Sie unter __Clusterkonfiguration__ die folgenden Werte aus:
@@ -61,7 +61,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Klicken Sie auf **Auswählen**, um die Clustertypeinstellungen zu speichern und zu __Grundlagen__ zurückzukehren.
 
-    ![Auswählen des Clustertyps](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight: Apache Kafka-Clustertyp](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. Geben Sie unter __Grundlagen__ folgende Informationen ein, bzw. wählen Sie sie aus:
 
@@ -77,7 +77,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Für Hochverfügbarkeit von Daten wählen Sie eine Region (Speicherort) mit __drei Fehlerdomänen__. Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-   ![Wählen Sie das Abonnement aus.](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Azure-Portal: Grundlagen für Clustererstellung](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Wählen Sie __Weiter__ aus, um die grundlegende Konfiguration abzuschließen.
 
@@ -105,7 +105,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
 11. Überprüfen Sie unter **Zusammenfassung** die Konfiguration für den Cluster. Ändern Sie ggf. falsche Einstellungen mithilfe der Link zum __Bearbeiten__. Wählen Sie zum Schluss **Erstellen** aus, um den Cluster zu erstellen.
 
-    ![Zusammenfassung der Clusterkonfiguration](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![Zusammenfassung der Kafka-Clusterkonfiguration](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 

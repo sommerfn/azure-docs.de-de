@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: b1c739b6355d3b32063e5289720ed1d191611e65
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721225"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212688"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und Java
 
@@ -58,7 +58,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
     import java.nio.file.Paths;
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Den folgenden URI können Sie für die Freihanderkennung verwenden. Er wird später dem Dienstendpunkt angefügt, um die URL für API-Anforderungen zu erstellen.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Ersetzen Sie den folgenden Endpunkt durch den für die Freihanderkennungsressource generierten Endpunkt. Fügen Sie ihn an den Freihanderkennungs-URI an, um eine Verbindung mit der API herzustellen.
 
     ```java
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -66,7 +66,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
     // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
     static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://api.cognitive.microsoft.com";
+    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 

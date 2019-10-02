@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371281"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212105"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Schnellstart: Self-Service-Kennwortzurücksetzung
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung wird Schritt für Schritt die Konfiguration der 
 
 ## <a name="enable-self-service-password-reset"></a>Aktivieren der Self-Service-Kennwortzurücksetzung
 
-> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+[Diesen Prozess als Video auf YouTube anzeigen](https://youtu.be/Pa0eyqjEjvQ)
 
 1. Wählen Sie auf Ihrem vorhandenen Azure AD-Mandanten im **Azure-Portal** unter **Azure Active Directory** die Option **Kennwortzurücksetzung**.
 

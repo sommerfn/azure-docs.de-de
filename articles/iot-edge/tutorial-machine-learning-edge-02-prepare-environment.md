@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fd3b5766ec2bd8d1babf847598f1fbe5b6511ce7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1db94e683a0dfb3b60b12bc5ac205c766d405d0a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432846"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299823"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
@@ -26,7 +26,7 @@ Dieser Artikel der umfassenden Tutorialreihe zum Thema Azure Machine Learning in
 
 Dieser Schritt wird normalerweise von einem Cloudentwickler ausgeführt. Ein Teil der Software ist ggf. auch für einen Data Scientist hilfreich.
 
-Im Laufe dieses Artikels führen wir verschiedene Entwickleraufgaben durch, z. B. das Codieren, Kompilieren, Konfigurieren und Bereitstellen von IoT Edge-Modulen und IoT-Geräten. Der Einfachheit halber haben wir ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe DS8V3 gewählt.
+Im Laufe dieses Artikels führen wir verschiedene Entwickleraufgaben durch, z. B. das Codieren, Kompilieren, Konfigurieren und Bereitstellen von IoT Edge-Modulen und IoT-Geräten. Der Einfachheit halber haben wir ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-Computer erstellt wird, für den viele erforderliche Komponenten bereits konfiguriert sind. Die von uns erstellte VM muss die [geschachtelte Virtualisierung](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) verarbeiten können. Aus diesem Grund haben wir einen Computer mit der Größe [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) gewählt.
 
 Für die Einrichtung des virtuellen Entwicklungscomputers wird Folgendes verwendet:
 

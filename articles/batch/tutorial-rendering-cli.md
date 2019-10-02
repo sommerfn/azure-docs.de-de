@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321652"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272334"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Zum Schreiben von Ausgabedateien in den Container muss Batch ein SAS-Token (Shared Access Signature) verwenden. Erstellen Sie das Token mit dem Befehl [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In diesem Beispiel wird ein Token zum Schreiben von Blobcontainern in das Konto erstellt. Das Token läuft am 15. November 2018 ab:
+Zum Schreiben von Ausgabedateien in den Container muss Batch ein SAS-Token (Shared Access Signature) verwenden. Erstellen Sie das Token mit dem Befehl [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). In diesem Beispiel wird ein Token zum Schreiben in einen beliebigen Blobcontainer im Konto erstellt. Das Token läuft am 15. November 2020 ab:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Notieren Sie sich das vom Befehl zurückgegebene Token. Es sieht in etwa wie folgt aus. Sie verwenden dieses Token in einem späteren Schritt.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>Rendern einer Szene mit einem Frame
@@ -217,7 +217,7 @@ In der Aufgabe wird ein 3ds Max-Befehl angegeben, um einen einzelnen Frame der S
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

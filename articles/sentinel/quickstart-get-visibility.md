@@ -1,12 +1,11 @@
 ---
-title: 'Azure Sentinel-Schnellstart: Erste Schritte mit Azure Sentinel (Vorschauversion) | Microsoft-Dokumentation'
+title: 'Azure Sentinel-Schnellstart: Erste Schritte mit Azure Sentinel | Microsoft-Dokumentation'
 description: 'Azure Sentinel-Schnellstart: Erste Schritte mit Azure Sentinel'
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,23 +13,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780481"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240084"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Schnellstart: Erste Schritte mit Azure Sentinel
-
-> [!IMPORTANT]
-> Azure Sentinel ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
 
-In diesem Schnellstart erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mit Azure Sentinel schnell anzeigen und überwachen können. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, stehen Ihnen sofort Datenvisualisierungen und -analysen zur Verfügung, die Informationen zu allen Vorgängen in Ihren verbundenen Datenquellen liefern. Azure Sentinel bietet Ihnen Dashboards mit den leistungsstarken Funktionen der bereits in Azure verfügbaren Tools sowie integrierte Tabellen und Diagramme mit Analysen für Ihre Protokolle und Abfragen. Sie können integrierte Dashboards verwenden, mühelos ein komplett neues Dashboard erstellen oder auf der Grundlage eines vorhandenen Dashboards ein eigenes Dashboard erstellen. 
+
+
+In diesem Schnellstart erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mit Azure Sentinel schnell anzeigen und überwachen können. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, stehen Ihnen sofort Datenvisualisierungen und -analysen zur Verfügung, die Informationen zu allen Vorgängen in Ihren verbundenen Datenquellen liefern. Azure Sentinel bietet Ihnen Arbeitsmappen mit den leistungsstarken Funktionen der bereits in Azure verfügbaren Tools sowie integrierte Tabellen und Diagramme mit Analysen für Ihre Protokolle und Abfragen. Sie können integrierte Arbeitsmappen verwenden, mühelos eine komplett neue Arbeitsmappe erstellen oder auf der Grundlage einer vorhandenen Arbeitsmappe eine eigene Arbeitsmappe erstellen. 
 
 ## <a name="get-visualization"></a>Visualisierung
 
@@ -59,43 +56,43 @@ Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den S
 
    ![Azure Sentinel-Karte](./media/qs-get-visibility/anomolies.png)
 
-## Verwenden der integrierten Dashboards<a name="dashboards"></a>
+## Verwenden integrierter Arbeitsmappen<a name="dashboards"></a>
 
-Integrierte Dashboards stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Dashboards umfassen die Azure-ID, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle).
+Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenquellen bereit, mit deren Hilfe Sie die in diesen Diensten generierten Ereignisse untersuchen können. Die integrierten Arbeitsmappen umfassen die Azure-ID, Azure-Aktivitätsereignisse und Daten von lokalen Systemen, bei denen es sich um Daten aus „Windows-Ereignisse“ von Servern, Warnungen von Erstanbieterlösungen und Daten von Drittanbieterlösungen handeln kann, die auf Windows-Ereignissen basieren (einschließlich Protokolle zum Firewalldatenverkehr, Office 365 und unsichere Protokolle). Die Arbeitsmappen basieren auf Azure Monitor-Arbeitsmappen, um Ihnen erweiterte Anpassungsmöglichkeiten und Flexibilität beim Entwerfen Ihrer eigenen Arbeitsmappe zu bieten. Weitere Informationen finden Sie unter [Arbeitsmappen](../azure-monitor/app/usage-workbooks.md).
 
-1. Wählen Sie unter **Einstellungen** die Option **Dashboards** aus. Unter **Installiert** werden alle installierten Dashboards angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Dashboards angezeigt, die zur Installation verfügbar sind. 
-2. Suchen Sie nach einem bestimmten Dashboard, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Dashboards anzuzeigen. 
-3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Azure Sentinel mindestens die folgenden Dashboards zu installieren:
+1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
+2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 
+3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Azure Sentinel mindestens die folgenden Arbeitsmappen zu installieren:
    - **Azure AD**: Verwenden Sie eines oder beide der folgenden Dashboards:
-       - Das Dashboard **Azure AD sign-ins** (Azure AD-Anmeldungen) analysiert Anmeldungen im Zeitverlauf, um Anomalien zu ermitteln. In diesem Dashboard werden fehlgeschlagene Anmeldungen nach Anwendungen, Geräten und Orten sortiert angezeigt, sodass Sie auf einen Blick sehen können, ob etwas Ungewöhnliches geschieht. Achten Sie besonders auf mehrmals fehlgeschlagene Anmeldungen. 
+       - Das Dashboard **Azure AD sign-ins** (Azure AD-Anmeldungen) analysiert Anmeldungen im Zeitverlauf, um Anomalien zu ermitteln. In dieser Arbeitsmappe werden fehlgeschlagene Anmeldungen nach Anwendungen, Geräten und Orten sortiert angezeigt, sodass Sie auf einen Blick sehen können, ob etwas Ungewöhnliches geschieht. Achten Sie besonders auf mehrmals fehlgeschlagene Anmeldungen. 
        - Das Dashboard **Azure AD audit logs** (Azure AD-Überwachungsprotokolle) analysiert Administratoraktivitäten, z. B. Änderungen der Benutzer (Hinzufügen, Entfernen usw.), die Erstellung von Gruppen und andere Änderungen.  
 
-   - Fügen Sie ein Dashboard für Ihre Firewall hinzu. Fügen Sie beispielsweise das Palo Alto-Dashboard hinzu. Das Dashboard analysiert Ihren Firewalldatenverkehr, zeigt Korrelationen zwischen Ihren Firewalldaten und Bedrohungsereignissen auf und hebt verdächtige Ereignisse entitätsübergreifend hervor. Dashboards liefern Ihnen Informationen zu Trends in Ihrem Datenverkehr und ermöglichen Ihnen das Anzeigen von Detailinformationen sowie das Filtern der Ergebnisse. 
+   - Fügen Sie eine Arbeitsmappe für die Firewall hinzu. Fügen Sie beispielsweise die Palo Alto-Arbeitsmappe hinzu. Die Arbeitsmappe analysiert Ihren Firewalldatenverkehr, zeigt Korrelationen zwischen Ihren Firewalldaten und Bedrohungsereignissen auf und hebt verdächtige Ereignisse entitätsübergreifend hervor. Arbeitsmappen liefern Ihnen Informationen zu Trends in Ihrem Datenverkehr und ermöglichen Ihnen das Anzeigen von Detailinformationen sowie das Filtern der Ergebnisse. 
 
       ![Palo Alto-Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sie können die Dashboards anpassen, indem Sie auf ![button](./media/qs-get-visibility/edit-query-button.png) klicken und die Hauptabfrage bearbeiten. Sie können auf die Schaltfläche ![button](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (...) klicken und **Kacheldaten anpassen** auswählen, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus dem Dashboard zu entfernen.
+Sie können die Arbeitsmappen anpassen, indem Sie die ![Schaltfläche](./media/qs-get-visibility/edit-query-button.png) der Hauptabfrage bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (...) klicken und **Kacheldaten anpassen** auswählen, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus dem Dashboard zu entfernen.
 
 Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Visualisieren von Daten in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md).
 
 ### <a name="add-a-new-tile"></a>Hinzufügen einer neuen Kachel
 
-Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einem vorhandenen Dashboard hinzufügen (einem von Ihnen erstellten Dashboard oder einem integrierten Azure Sentinel-Dashboard). 
+Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einer vorhandenen Arbeitsmappe hinzufügen (einer von Ihnen erstellten Arbeitsmappe oder einer integrierten Azure Sentinel-Arbeitsmappe). 
 1. Erstellen Sie in Log Analytics eine Kachel, indem Sie den Anweisungen in [Tutorial: Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/learn/tutorial-logs-dashboards.md) folgen. 
-2. Nachdem die Kachel erstellt wurde, wählen Sie unter **Anheften** das Dashboard aus, auf dem die Kachel angezeigt werden soll.
+2. Nachdem die Kachel erstellt wurde, wählen Sie unter **Anheften** die Arbeitsmappe aus, in der die Kachel angezeigt werden soll.
 
-## <a name="create-new-dashboards"></a>Erstellen neuer Dashboards
-Sie können ein komplett neues Dashboard erstellen oder ein integriertes Dashboard als Grundlage für das neue Dashboard verwenden.
+## <a name="create-new-workbooks"></a>Neue Arbeitsmappen erstellen
+Sie können eine komplett neue Arbeitsmappe erstellen oder eine integrierte Arbeitsmappe als Grundlage für die neue Arbeitsmappe verwenden.
 
-1. Klicken Sie zum Erstellen eines neuen Dashboards auf **Dashboards**, und wählen Sie dann **+ Neues Dashboard** aus.
-2. Wählen Sie das Abonnement aus, in dem Sie das Dashboard erstellen, und geben Sie einen beschreibenden Namen ein. Jedes Dashboard ist eine normale Azure-Ressource. Sie können ihm Rollen zuweisen (rollenbasierte Zugriffssteuerung; Role-Based Access Control, RBAC), um die zugriffsberechtigten Benutzer festzulegen und einzuschränken. 
-3. Damit das Dashboard in Ihren Dashboards angezeigt wird und Visualisierungen angeheftet werden können, müssen Sie es freigeben. Klicken Sie auf **Freigeben** und dann auf **Benutzer verwalten**. 
+1. Zum Erstellen einer komplett neuen Arbeitsmappe wählen Sie **Arbeitsmappen** aus, und klicken Sie dann auf **+Neue Arbeitsmappe**.
+2. Wählen Sie das Abonnement aus, in dem Sie die Arbeitsmappe erstellen, und geben Sie einen beschreibenden Namen ein. Jede Arbeitsmappe ist eine normale Azure-Ressource. Sie können ihr Rollen zuweisen (rollenbasierte Zugriffssteuerung; Role-Based Access Control, RBAC), um die zugriffsberechtigten Benutzer festzulegen und einzuschränken. 
+3. Damit die Arbeitsmappe in Ihren Arbeitsmappen angezeigt wird und Visualisierungen angeheftet werden können, müssen Sie sie freigeben. Klicken Sie auf **Freigeben** und dann auf **Benutzer verwalten**. 
  
-1. Verwenden Sie die Optionen **Zugriff überprüfen** und **Rollenzuweisungen** wie bei jeder anderen Azure-Ressource. Weitere Informationen finden Sie unter [Freigeben von Azure-Dashboards mithilfe der rollenbasierten Zugriffssteuerung](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Verwenden Sie die Optionen **Zugriff überprüfen** und **Rollenzuweisungen** wie bei jeder anderen Azure-Ressource. Weitere Informationen finden Sie unter [Freigeben von Azure-Arbeitsmappe mithilfe der rollenbasierten Zugriffssteuerung](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Beispiele für neue Dashboards
+## <a name="new-workbook-examples"></a>Beispiele für neue Arbeitsmappen
 
 Mit der folgenden Beispielabfrage können Sie Datenverkehrstrends über mehrere Wochen hinweg vergleichen. Sie können den Gerätehersteller und die Datenquelle, für den bzw. die Sie die Abfrage ausführen, ganz einfach ändern. In diesem Beispiel wird „SecurityEvent“ von Windows verwendet. Sie können die Abfrage ändern, um sie für eine beliebige andere Firewall für „AzureActivity“ oder „CommonSecurityLog“ auszuführen.
 
@@ -117,7 +114,7 @@ Möglicherweise möchten Sie eine Abfrage erstellen, die Daten aus mehreren Quel
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Sie können basierend auf der Rolle der Person, die die Daten anzeigt, und den gesuchten Daten verschiedene Dashboards erstellen. Sie können beispielsweise ein Dashboard für Ihren Netzwerkadministrator erstellen, das Firewalldaten enthält. Sie können Dashboards auch basierend auf der Häufigkeit erstellen, mit der Sie sie anzeigen möchten. Während Ihnen bei manchen Daten eine tägliche Überprüfung genügt, möchten Sie andere vielleicht stündlich einsehen (beispielsweise Ihre Azure AD-Anmeldungen, um einmal pro Stunde nach Anomalien zu suchen). 
+Sie können basierend auf der Rolle der Person, die die Daten anzeigt, und den gesuchten Daten verschiedene Arbeitsmappen erstellen. Sie können beispielsweise eine Arbeitsmappe für Ihren Netzwerkadministrator erstellen, die Firewalldaten enthält. Sie können Arbeitsmappen auch basierend auf der Häufigkeit erstellen, mit der Sie sie anzeigen möchten. Während Ihnen bei manchen Daten eine tägliche Überprüfung genügt, möchten Sie andere vielleicht stündlich einsehen (beispielsweise Ihre Azure AD-Anmeldungen, um einmal pro Stunde nach Anomalien zu suchen). 
 
 ## <a name="create-new-detections"></a>Erstellen neuer Erkennungen
 
@@ -125,18 +122,14 @@ Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Azure Sentinel ver
 
 Nutzen Sie beim Erstellen einer neuen Erkennung die von Microsoft-Sicherheitsexperten entwickelten integrierten Erkennungen, die auf die verbundenen Datenquellen zugeschnitten sind.
 
-1. Navigieren Sie in der [GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) zum Ordner **Detections** (Erkennungen), und wählen Sie die entsprechenden Ordner aus.
-   ![entsprechende Ordner](./media/qs-get-visibility/detection-folders.png)
- 
-3.  Navigieren Sie zur Registerkarte **Analytics**, und wählen Sie **Hinzufügen** aus.
-   ![Erstellen einer Regel in Log Analytics](./media/qs-get-visibility/query-params.png)
+Zum Anzeigen aller Standarderkennungen wechseln Sie zu **Analytics** und dann zu  **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
 
-3.  Kopieren Sie alle Parameter in die Regel, und klicken Sie auf **Erstellen**.
-   ![Erstellen einer Warnungsregel](./media/qs-get-visibility/create-alert-rule.png)
+   ![Verwenden integrierter Erkennungen für die Suche nach Bedrohungen mit Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
+Weitere Informationen zum Abrufen von Standarderkennungen finden Sie unter [Tutorial: Abrufen integrierter Analysen](tutorial-detect-threats-built-in.md).
  
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Tutorial zum [Erkennen von Bedrohungen](tutorial-detect-threats.md) fort.
+In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Tutorial zum [Erkennen von Bedrohungen](tutorial-detect-threats-built-in.md) fort.
 > [!div class="nextstepaction"]
-> Verwenden Sie die [Bedrohungserkennung](tutorial-detect-threats.md), um Ihre Maßnahmen zur Reaktion auf Bedrohungen zu automatisieren.
+> [Erstellen Sie benutzerdefinierte Regeln zur Bedrohungserkennung](tutorial-detect-threats-custom.md), um die auf Bedrohungen zu automatisieren.
 

@@ -3,9 +3,8 @@ title: 'Schnellstart für Azure Security Center: Einbinden von Linux-Computern i
 description: Dieser Schnellstart zeigt, wie Sie Ihre Linux-Computer in Security Center integrieren.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.author: memildin
+ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816123"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202891"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Linux-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Linux-Ressourcen aktivieren, die außerhalb von Azure (etwa lokal oder in anderen Clouds) ausgeführt werden. Stellen Sie dazu einen Agent bereit. Der Agent heißt Microsoft Monitoring Agent (MMA), wird aber auch als OMS-Agent bezeichnet.

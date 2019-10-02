@@ -4,15 +4,15 @@ description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandante
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971568"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309650"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -87,6 +87,10 @@ Zurzeit unterstützt die mandantenübergreifende Verwaltung die folgenden Szenar
   - Verstärkung des Schutzes der Konfiguration von Netzwerksicherheitsgruppen mit adaptiver Netzwerkhärtung
   - Sicherstellung mittels adaptiver Anwendungssteuerung, dass auf Servern nur die Anwendungen und Prozesse ausgeführt werden, die ausgeführt werden sollten
   - Überwachen von Änderungen an wichtigen Dateien und Registrierungseinträgen mittels Überwachung der Dateiintegrität (FIM)
+
+[Azure Sentinel:](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers)
+
+- Verwalten von Azure Sentinel-Ressourcen in Kundenmandanten
 
 [Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 

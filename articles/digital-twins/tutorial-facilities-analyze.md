@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827838"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300062"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen in den Azure Digital Twins-Gebäudebereichen mit Time Series Insights
 
@@ -38,6 +38,9 @@ In diesem Tutorial wird vorausgesetzt, dass Sie das Azure Digital Twins-Setup [k
 - Die [C#-Beispiele für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp) (auf den Arbeitscomputer heruntergeladen und extrahiert).
 - [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist.
 
+> [!TIP]
+> Verwenden Sie bei der Bereitstellung einer neuen Instanz einen eindeutigen Namen für die Digital Twins-Instanz.
+
 ## <a name="stream-data-by-using-event-hubs"></a>Streamen von Daten mithilfe von Event Hubs
 
 Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine Pipeline zum Streamen Ihrer Daten erstellen. In diesem Abschnitt wird erläutert, wie Sie den Event Hub als Konnektor zwischen Ihren Azure Digital Twins- und Time Series Insights-Instanzen erstellen.
@@ -54,10 +57,10 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Wählen Sie in der Event Hubs-Namespacebereitstellung erst den Bereich **Übersicht** und dann **Zu Ressource wechseln** aus.
 
-    ![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. Wählen Sie oben im Bereich **Übersicht** des Event Hubs-Namespace die Schaltfläche **Event Hub** aus.
-    ![Schaltfläche „Event Hub“](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![Schaltfläche „Event Hub“](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Geben Sie einen **Namen** für den Event Hub ein, und wählen Sie **Erstellen** aus.
 
@@ -65,13 +68,13 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Wählen Sie im oberen Bereich die Schaltfläche **Consumergruppe**, und geben Sie einen Namen für die Consumergruppe ein, beispielsweise **tsievents**. Klicken Sie auf **Erstellen**.
 
-    ![Event Hub-Consumergruppe](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![Event Hub-Consumergruppe](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Nach der Erstellung wird die Consumergruppe in der Liste unten im Bereich **Übersicht** des Event Hubs angezeigt.
 
 1. Öffnen Sie den Bereich **Freigegebene Zugriffsrichtlinien** für Ihren Event Hub, und wählen Sie die Schaltfläche **Hinzufügen** aus. Geben Sie als Richtlinienname **ManageSend** ein, vergewissern Sie sich, dass alle Kontrollkästchen aktiviert sind, und wählen Sie **Erstellen** aus.
 
-    ![Event Hub-Verbindungszeichenfolgen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![Event Hub-Verbindungszeichenfolgen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. Öffnen Sie die soeben erstellte Richtlinie „ManageSend“, und kopieren Sie die Werte für **Verbindungszeichenfolge – Primärschlüssel** und **Verbindungszeichenfolge – Sekundärschlüssel** in eine temporäre Datei. Sie benötigen diese Werte im nächsten Abschnitt, um einen Endpunkt für den Event Hub zu erstellen.
 
@@ -124,21 +127,21 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
    Dieser Befehl erstellt zwei Endpunkte für Ihren Event Hub.
 
-   ![Endpunkte für Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Endpunkte für Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analysieren mit Time Series Insights
 
 1. Wählen Sie auf der linken Seite im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus. 
 
-1. Suchen Sie nach einer neuen **Time Series Insights**-Ressource, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
+1. Suchen Sie nach einer allgemein verfügbaren **Time Series Insights**-Ressource, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
 1. Geben Sie einen **Namen** für Ihre Time Series Insights-Instanz ein, und wählen Sie dann Ihr **Abonnement** aus. Wählen Sie die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, und den **Standort** aus. Klicken Sie auf **Weiter: Ereignisquelle** oder die Registerkarte **Ereignisquelle**.
 
-    ![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. Geben Sie auf der Registerkarte **Ereignisquelle** einen **Namen** ein. Wählen Sie **Ereignishub** als **Quelltyp** aus, und stellen Sie sicher, dass die anderen Werte ordnungsgemäß ausgewählt sind. Wählen Sie unter **Event Hub-Richtlinienname** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Überprüfen + erstellen**.
 
-    ![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. Überprüfen Sie im Bereich **Überprüfen + erstellen** die von Ihnen eingegebenen Informationen, und klicken Sie auf **Erstellen**.
 
@@ -150,13 +153,13 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Nachdem einige simulierte Ereignisse generiert wurden, kehren Sie zum Time Series Insights-Explorer zurück, und wählen Sie oben die Schaltfläche „Aktualisieren“. Daraufhin sollten Analysediagramme für Ihre simulierten Sensordaten erstellt werden. 
 
-    ![Diagramm im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Diagramm im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. Im Time Series Insights-Explorer können Sie dann Diagramme und Wärmebilder für verschiedene Ereignisse und Daten von Ihren Räumen, Sensoren und anderen Ressourcen generieren. Klicken Sie auf der linken Seite auf die Dropdownfelder **MEASURE** und **TEILEN NACH**, um eigene Visualisierungen zu erstellen. 
 
    Wählen Sie beispielsweise im Feld **MEASURE** die Option **Ereignisse** und im Feld **TEILEN NACH** die Option **DigitalTwins-SensorHardwareId** aus, um ein Wärmebild für jeden Sensor zu generieren. Das Wärmebild sieht etwa wie in der folgenden Abbildung aus:
 
-   ![Wärmebild im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Wärmebild im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

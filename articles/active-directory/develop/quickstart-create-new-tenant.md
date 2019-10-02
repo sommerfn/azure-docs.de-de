@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853140"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268609"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>Schnellstart: Einrichten einer Entwicklungsumgebung
+# <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
 Die Microsoft Identity Platform ermöglicht es Entwicklern, Anwendungen für eine Vielzahl von benutzerdefinierten Microsoft 365-Umgebungen und -Identitäten zu erstellen. Um mit der Verwendung von Microsoft Identity Platform zu beginnen, müssen Sie auf eine Umgebung zugreifen, die auch als Azure AD-Mandant bezeichnet wird und die Apps registrieren und verwalten kann, Zugriff auf Microsoft 365-Daten besitzt und benutzerdefinierten bedingten Zugriff und Mandanteneinschränkungen bereitstellt.
 

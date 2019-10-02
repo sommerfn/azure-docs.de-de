@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721241"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211787"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#
 
@@ -60,7 +60,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
     using Newtonsoft.Json.Linq;
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Den folgenden URI können Sie für die Freihanderkennung verwenden. Er wird später dem Dienstendpunkt angefügt, um die URL für API-Anforderungen zu erstellen.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel und Ihren Endpunkt. Ersetzen Sie den folgenden Endpunkt durch den für die Freihanderkennungsressource generierten Endpunkt. Fügen Sie ihn an den Freihanderkennungs-URI an, um eine Verbindung mit der API herzustellen.
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -70,7 +70,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
     const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
 
     // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
+    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 

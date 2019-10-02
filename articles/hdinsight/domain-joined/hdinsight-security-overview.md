@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488693"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240402"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -52,7 +52,7 @@ Die Überwachung des gesamten Zugriffs auf die Clusterressourcen und der Daten i
 
 Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Außerdem kann er sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen, die an von Apache Ranger unterstützten Endpunkten vorgenommen werden, und entsprechende Berichte erstellen. 
 
-Aktivieren Sie [Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md), und zeigen Sie die zugehörigen Überwachungsprotokolle an, um auf Überwachungsprotokolle von Apache Ranger und Ambari zuzugreifen.
+Aktivieren Sie [Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing), und zeigen Sie die Tabellen mit Überwachungsdatensätzen an, um auf Überwachungsprotokolle von Apache Ranger und Ambari sowie SSH-Zugriffsprotokolle zuzugreifen.
 
 ### <a name="encryption"></a>Verschlüsselung
 
@@ -73,6 +73,7 @@ Die folgende Tabelle enthält Links zu Ressourcen für jede Art von Sicherheitsl
 | Datenzugriffssicherheit | Konfigurieren von [Zugriffssteuerungslisten (ACLs)](../../storage/blobs/data-lake-storage-access-control.md) für Azure Data Lake Storage Gen1 und Gen2  | Kunde |
 |  | Aktivieren der Eigenschaft [Sichere Übertragung erforderlich](../../storage/common/storage-require-secure-transfer.md) für Speicherkonten | Kunde |
 |  | Konfigurieren von [Azure Storage-Firewalls](../../storage/common/storage-network-security.md) und virtuellen Netzwerken | Kunde |
+|  | Konfigurieren von [Azure Virtual Network-Dienstendpunkten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) für Cosmos DB und [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Kunde |
 |  | Sicherstellen, dass die [TLS-Verschlüsselung](../../storage/common/storage-security-tls.md) für Daten während der Übertragung aktiviert ist | Kunde |
 |  | Konfigurieren von [Kunden verwalteter Schlüssel](../../storage/common/storage-encryption-keys-portal.md) für die Azure Storage-Verschlüsselung | Kunde |
 | Anwendungs- und Middleware-Sicherheit | Integrieren mit AAD-DS und [Konfigurieren der Authentifizierung](apache-domain-joined-configure-using-azure-adds.md) | Kunde |

@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898052"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203726"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Schnellstart: Einrichten einer CI/CD-Pipeline für eine Java-App mit Azure DevOps Projects
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Esse
 
 2. Klicken Sie auf **Erstellen**.
 
-    ![Konfiguration von Continuous Delivery](_img/azure-devops-project-java/fullbrowser.png)
+    ![Erstellen einer Azure-Ressource in DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Auswählen einer Beispielanwendung und eines Azure-Diensts
 
@@ -62,7 +62,7 @@ Zu den Java-Beispielen zählen verschiedene Anwendungsframeworks.
 
 2. Wählen Sie **Durchsuchen** aus, um Ihre ausgeführte Anwendung anzuzeigen.
 
-    ![Dashboardansicht](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Anzeigen des Anwendungsdashboards im Azure-Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert.  Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit automatisch auf Ihrer Website bereitgestellt wird, mit einem Team an einer Java-App zusammenarbeiten.
 

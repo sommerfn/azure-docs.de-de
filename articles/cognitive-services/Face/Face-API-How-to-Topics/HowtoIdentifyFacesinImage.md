@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 5806c17b0532f4d18b7ac57fbf70c92ed9d47daa
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c21647e3fbbc38e905a6d6ec116551004da20d5c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827496"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300530"
 ---
 # <a name="example-identify-faces-in-images"></a>Beispiel: Identifizieren von Gesichtern in Bildern
 
@@ -81,7 +81,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
 // Define Bill and Clare in the same way
 ```
 ### <a name="step2-2"></a> Schritt 2.2: Erkennen von Gesichtern und Zuordnen zur richtigen Person
-Senden Sie zur Gesichtserkennung eine POST-Webanforderung an die API [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) mit der Bilddatei im Text der HTTP-Anforderung. Bei Verwendung einer Clientbibliothek erfolgt die Gesichtserkennung über die DetectAsync-Methode für die FaceClient-Klasse.
+Senden Sie zur Gesichtserkennung eine POST-Webanforderung an die API [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) mit der Bilddatei im Text der HTTP-Anforderung. Bei Verwendung der Clientbibliothek erfolgt die Gesichtserkennung über eine der DetectAsync-Methoden für die FaceClient-Klasse.
 
 Rufen Sie für jedes erkannte Gesicht [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) auf, um es der richtigen Person hinzuzufügen.
 
@@ -142,7 +142,7 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceClient.Face.DetectAsync(s);
+    var faces = await faceClient.Face.DetectWithStreamAsync(s);
     var faceIds = faces.Select(face => face.FaceId).ToArray();
  
     var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
