@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934738"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272434"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
@@ -79,6 +79,8 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
     Nachdem Sie **Aktives Lernen** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Akzeptieren eines Vorschlags des aktiven Lernens in der Wissensdatenbank
+
+Aktives Lernen ändert die Wissensdatenbank oder den Suchdienst, nachdem Sie den Vorschlag bestätigt und dann gespeichert und trainiert haben. Wenn Sie den Vorschlag bestätigen, wird er als alternative Frage hinzugefügt.
 
 1. Um die vorgeschlagenen Fragen anzuzeigen, wählen Sie auf der Seite **Bearbeiten** der Wissensdatenbank **Optionen anzeigen** und danach **Show active learning suggestions** (Vorschläge für aktives Lernen anzeigen) aus. 
 
@@ -387,7 +389,14 @@ Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizi
 ]
 ```
 
+Sie können auch die API zum Herunterladen von Änderungen verwenden, um diese Änderungen mithilfe von REST oder eines der sprachbasierten SDKs zu überprüfen:
+* [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Informationen und empfiehlt Vorschläge für Ihre Wissensdatenbank. 
+
+
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

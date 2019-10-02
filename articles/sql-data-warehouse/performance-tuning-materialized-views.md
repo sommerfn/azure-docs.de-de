@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985285"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172786"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten 
 Die materialisierten Sichten in Azure SQL Data Warehouse bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
@@ -84,19 +84,21 @@ Hier ist ein allgemeiner Leitfaden zur Verwendung von materialisierten Sichten, 
 
 **Entwurf für Ihren Workload**
 
-- Bevor Sie mit dem Erstellen von materialisierten Sichten beginnen, ist es wichtig, dass Sie sich mit Ihrem Workload in Bezug auf Abfragemuster, Wichtigkeit, Häufigkeit und Größe der sich ergebenden Daten umfassend vertraut machen.  
+Bevor Sie mit dem Erstellen von materialisierten Sichten beginnen, ist es wichtig, dass Sie sich mit Ihrem Workload in Bezug auf Abfragemuster, Wichtigkeit, Häufigkeit und Größe der sich ergebenden Daten umfassend vertraut machen.  
 
-- Benutzer können EXPLAIN WITH_RECOMMENDATIONS < SQL_statement-> für die vom Abfrageoptimierer empfohlenen materialisierten Sichten ausführen.  Da es sich hierbei um abfragespezifische Empfehlungen handelt, ist eine materialisierte Sicht, die eine einzelne Abfrage bietet, für andere Abfragen in demselben Workload möglicherweise nicht optimal geeignet.  Werten Sie diese Empfehlungen unter Berücksichtigung Ihrer Workloadanforderungen aus.  Die idealen materialisierten Sichten sind solche, die die Leistung des Workloads nutzen.  
+Benutzer können EXPLAIN WITH_RECOMMENDATIONS < SQL_statement-> für die vom Abfrageoptimierer empfohlenen materialisierten Sichten ausführen.  Da es sich hierbei um abfragespezifische Empfehlungen handelt, ist eine materialisierte Sicht, die eine einzelne Abfrage bietet, für andere Abfragen in demselben Workload möglicherweise nicht optimal geeignet.  Werten Sie diese Empfehlungen unter Berücksichtigung Ihrer Workloadanforderungen aus.  Die idealen materialisierten Sichten sind solche, die die Leistung des Workloads nutzen.  
 
 **Beachten Sie den Kompromiss zwischen schnelleren Abfragen und den Kosten** 
 
-- Bei jeder materialisierten Sicht gibt es Speicherkosten und Kosten für die Sichtwartung durch den Tupelverschiebungsvorgang. Pro Azure SQL Data Warehouse-Serverinstanz gibt es einen einzigen Tupelverschiebungsvorgang.  Bei zu vielen materialisierten Sichten erhöht sich der Workload des Tupelverschiebungsvorgangs, und die Leistung von Abfragen, die materialisierte Sichten nutzen, könnte beeinträchtigt werden, wenn dieser Vorgang Daten nicht schnell genug in Indexsegmente verschieben kann.  Benutzer sollten überprüfen, ob die aus allen materialisierten Sichten anfallenden Kosten durch den Abfrageleistungsgewinn ausgeglichen werden können.  Ausführen dieser Abfrage für die Liste von materialisierten Sichten in einer Datenbank: 
+Bei jeder materialisierten Sicht gibt es Kosten für den Datenspeicher und Kosten für die Wartung der Sicht.  Bei Datenänderungen in Basistabellen nimmt die Größe der materialisierten Sicht zu, und die physische Struktur ändert sich ebenfalls.  Um eine Leistungsminderung bei der Abfrage zu vermeiden, wird jede materialisierte Sicht von der Data Warehouse-Engine separat gewartet, einschließlich dem Verschieben von Zeilen aus dem Deltaspeicher in die Columnstore-Indexsegmente und dem Konsolidieren von Datenänderungen.  Die Wartungsworkload wird höher, wenn die Anzahl von materialisierten Sichten und Änderungen an der Basistabelle zunimmt.   Benutzer sollten überprüfen, ob die aus allen materialisierten Sichten anfallenden Kosten durch den Abfrageleistungsgewinn ausgeglichen werden können.  
+
+Sie können diese Abfrage für die Liste von materialisierten Sichten in einer Datenbank ausführen: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 Optionen zum Verringern der Anzahl von materialisierten Sichten: 
 

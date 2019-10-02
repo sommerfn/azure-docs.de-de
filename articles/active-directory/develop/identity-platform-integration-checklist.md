@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104046"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145656"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -78,6 +78,7 @@ Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) |  Konfigurieren Sie für mobile Apps jede Plattform unter Verwendung der Anwendungsregistrierung. Für Ihre App muss ein Broker-Umleitungs-URI konfiguriert werden, damit sie Microsoft Authenticator oder das Microsoft-Unternehmensportal für einmaliges Anmelden nutzen kann. Dadurch kann Microsoft nach der Authentifizierung die Kontrolle an Ihre Anwendung zurückgeben. Beim Konfigurieren der einzelnen Plattformen führt Sie die App-Registrierung durch den Prozess. Verwenden Sie die Schnellstartanleitung, um ein Beispiel herunterzuladen. Verwenden Sie unter iOS nach Möglichkeit Broker und System WebView.|
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) |  Halten Sie in Web-Apps oder Web-APIs jeweils einen Tokencache pro Konto bereit.  Bei Web-Apps sollte der Tokencache durch die Konto-ID mit einem Schlüssel versehen werden.  Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Aufrufen der API verwendet wird, mit einem Schlüssel versehen werden. MSAL.NET bietet eine benutzerdefinierte Tokencache-Serialisierung auf der .NET Framework- und der .NET Core-Unterplattform. Aus Sicherheits- und Leistungsgründen wird empfohlen, jeweils einen Cache pro Benutzer zu serialisieren. Weitere Informationen finden Sie unter [Tokencache für eine Web-App (vertrauliche Clientanwendung)](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).|
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Wenn die von Ihrer App benötigten Daten über [Microsoft Graph](https://developer.microsoft.com/graph) verfügbar sind, fordern Sie Berechtigungen für diese Daten über den Microsoft Graph-Endpunkt statt über die einzelne API an. |
+| ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) |Betrachten Sie nicht den Wert des Zugriffstoken, und versuchen Sie nicht, ihn als Client zu analysieren.  Werte und Formate können ohne Vorwarnung geändert oder sogar verschlüsselt werden. Verwenden Sie daher immer den id_token-Wert, wenn der Client Informationen zum Benutzer erhalten soll, oder rufen Sie Microsoft Graph auf.  Nur Web-APIs sollten Zugriffstoken analysieren (da über sie das Format definiert wird und die Verschlüsselungsschlüssel festgelegt werden). |
 
 ## <a name="end-user-experience"></a>Endbenutzererfahrung
 

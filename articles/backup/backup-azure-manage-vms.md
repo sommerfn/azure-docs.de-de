@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098403"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130168"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -164,6 +164,13 @@ Es gibt zwei Möglichkeiten, die Sicherungsdaten eines virtuellen Computers zu l
 
   > [!NOTE]
   > Wenn Sie die Sicherungsdaten löschen, werden alle zugehörigen Wiederherstellungspunkte gelöscht. Sie können keine bestimmten Wiederherstellungspunkte zum Löschen auswählen.
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Sichern eines Elements, bei dem die primäre Datenquelle nicht mehr vorhanden ist
+
+- Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-) Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen Ad-hoc-Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt). 
+- Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß der Aufbewahrungsdauer bereinigt, die in der Sicherungsrichtlinie festgelegt wurde.
+- Benutzern wird empfohlen, die Sicherungselemente zu löschen, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement/die Daten für die Löschressourcen nicht mehr benötigt wird bzw. werden, weil der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer gemäß den geltenden Preisen für die Sicherung eine Gebühr berechnet wird.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über das [Sichern einer Azure-VM über die VM-Einstellungen](backup-azure-vms-first-look-arm.md).

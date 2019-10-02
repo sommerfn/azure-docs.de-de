@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9de3232bcd7908f775dadff4dc584f2a687b0c68
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299761"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
 
- In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie Ihrer Abonnement-ID und der Tokenautorisierung verwendet, um auf Ihren Speicher zuzugreifen, ohne diese Informationen in Ihren Skripts hart codieren zu müssen.
+In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen.
 
 In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 * [Registrieren von Datenspeichern](#access)
@@ -49,7 +49,7 @@ Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsof
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher registrieren können.
 
-+ Verwenden Sie [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) für einen **Azure-Blobcontainer-Datenspeicher**.
++ Verwenden Sie [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) für einen **Azure-Blobcontainer-Datenspeicher**.
 
   ```Python
   datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -84,7 +84,7 @@ Verwenden Sie die statische Methode [`get()`](https://docs.microsoft.com/python/
 #get named datastore from current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Um die Liste der in einem bestimmten Arbeitsbereich registrierten Datenspeicher abzurufen, können Sie die `datastores`-Eigenschaft für ein Arbeitsbereichsobjekt verwenden:
+Um die Liste der in einem bestimmten Arbeitsbereich registrierten Datenspeicher abzurufen, können Sie die [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#datastores)-Eigenschaft für ein Arbeitsbereichsobjekt verwenden:
 
 ```Python
 #list all datastores registered in current workspace
@@ -110,7 +110,7 @@ ws.set_default_datastore('your datastore name')
 
 <a name="up-and-down"></a>
 ## <a name="upload--download-data"></a>Hoch- und herunterladen von Daten
-Die in den folgenden Beispielen beschriebenen [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)- und [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)-Methoden sind für die [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)- und [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)-Klassen bestimmt und werden identisch ausgeführt.
+Die in den folgenden Beispielen beschriebenen [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-)- und [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)-Methoden sind für die [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)- und [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)-Klassen bestimmt und werden identisch ausgeführt.
 
 ### <a name="upload"></a>Hochladen
 
@@ -147,15 +147,16 @@ Der Parameter `target_path` ist der Speicherort des lokalen Verzeichnisses, in d
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Zugreifen auf Ihre Daten während des Trainings
 
-Wenn Sie während des Trainings auf Daten zugreifen möchten, können Sie Ihre Daten aus ihren Azure Storage-Diensten entweder auf das Computeziel herunterladen oder über Datenspeicher dort einbinden.
+> [!IMPORTANT]
+> Die Verwendung von [Azure Machine Learning-Datasets (Vorschauversion)](how-to-create-register-datasets.md) ist die neue empfohlene Vorgehensweise für den Zugriff auf Ihre Daten im Training. Datasets bieten Funktionen, die tabellarische Daten in Pandas- oder Spark-Datenrahmen laden, sowie die Möglichkeit zum Herunterladen oder Einbinden von Dateien in beliebigen Formaten aus Azure-Blobs, Azure Files, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Erfahren Sie mehr über das [Trainieren mit Datasets](how-to-train-with-datasets.md).
 
 Die folgende Tabelle listet die Methoden auf, die dem Computeziel mitteilen, wie der Datenspeicher während der Ausführungen verwendet wird. 
 
 Weg|Methode|BESCHREIBUNG|
 ----|-----|--------
 Einbinden| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Wird zum Einbinden des Datenspeichers auf dem Computeziel verwendet.
-Download|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Wird zum Herunterladen der Inhalte Ihres Datenspeichers in den unter `path_on_compute` angegebenen Speicherort verwendet. <br> Dieser Download findet vor der Ausführung statt.
-Hochladen|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Wird zum Hochladen einer Datei aus dem von `path_on_compute` angegebenen Speicherort in Ihren Datenspeicher verwendet. <br> Dieser Upload findet nach der Ausführung statt.
+Download|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Wird zum Herunterladen der Inhalte Ihres Datenspeichers in den unter `path_on_compute` angegebenen Speicherort verwendet. <br><br> Dieser Download findet vor der Ausführung statt.
+Hochladen|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Wird zum Hochladen einer Datei aus dem von `path_on_compute` angegebenen Speicherort in Ihren Datenspeicher verwendet. <br><br> Dieser Upload findet nach der Ausführung statt.
 
 Um auf bestimmte Ordner oder Dateien in Ihrem Datenspeicher zu verweisen und sie im Computeziel verfügbar zu machen, verwenden Sie die Datenspeichermethode [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-).
 
@@ -167,13 +168,13 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Jedes `datastore`- oder `datastore.path`-Objekt wird in den Namen einer Umgebungsvariablen des Formats `"$AZUREML_DATAREFERENCE_XXXX"` aufgelöst, deren Wert für den Einbindungs-/Downloadpfad im Zielcompute steht. Der Datenspeicherpfad auf dem Zielcompute stimmt möglicherweise nicht mit dem Ausführungspfad für das Trainingsskript überein.
+> Jedes angegebene `datastore`- oder `datastore.path`-Objekt wird in den Namen einer Umgebungsvariable des Formats `"$AZUREML_DATAREFERENCE_XXXX"` aufgelöst, deren Wert für den Einbindungs-/Downloadpfad im Computeziel steht. Der Datenspeicherpfad auf dem Zielcompute stimmt möglicherweise nicht mit dem Ausführungspfad für das Trainingsskript überein.
 
 ### <a name="examples"></a>Beispiele 
 
 Die folgenden Codebeispiele beziehen sich speziell auf die [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)-Klasse für den Zugriff auf Daten während des Trainings. 
 
-`script_params` ist ein Wörterbuch, das Parameter für entry_script enthält. Sie können es verwenden, um einen Datenspeicher als Eingabe zu übergeben und zu beschreiben, wie Daten auf dem Computeziel verfügbar gemacht werden sollen. Weitere Informationen finden Sie in unserem End-to-End-[Tutorial](tutorial-train-models-with-aml.md).
+`script_params` ist ein Wörterbuch, das Parameter für entry_script enthält. Verwenden Sie es, um einen Datenspeicher als Eingabe zu übergeben und zu beschreiben, wie Daten auf dem Computeziel verfügbar gemacht werden. Weitere Informationen finden Sie in unserem End-to-End-[Tutorial](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -240,7 +241,7 @@ Azure Machine Learning bietet mehrere Möglichkeiten, Ihre Modelle zur Bewertung
 | [Webdienst](how-to-deploy-and-where.md) | &nbsp; | Stellen Sie ein Modell bzw. Modelle als Webdienst bereit. |
 | [IoT Edge-Modul](how-to-deploy-and-where.md) | &nbsp; | Stellen Sie ein Modell bzw. Modelle auf IoT Edge-Geräten bereit. |
 
-Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, können Sie möglicherweise benutzerdefinierten Code mit dem entsprechenden Azure SDK erstellen, um auf die Daten zuzugreifen. Verwenden Sie beispielsweise das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python), um auf in Blobs gespeicherte Daten zuzugreifen.
+Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, können Sie möglicherweise benutzerdefinierten Code mit dem entsprechenden Azure-SDK erstellen, um auf die Daten zuzugreifen. Das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) ist beispielsweise eine Clientbibliothek, mit der Sie auf in Blobs oder Dateien gespeicherte Daten zugreifen können.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

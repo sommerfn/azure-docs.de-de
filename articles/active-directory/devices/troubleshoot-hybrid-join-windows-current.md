@@ -1,6 +1,6 @@
 ---
 title: Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung – Azure Active Directory
-description: Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrid-Azure Active Directory-Einbindung
+description: Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995175"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162404"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
 
@@ -110,7 +110,7 @@ Fahren Sie mit den nächsten Schritten zur weiteren Problembehandlung fort.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 und höher
 
-Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „Vorherige Registrierung“.
+Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „Vorherige Registrierung“. Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht in Azure AD Hybrid eingebunden werden kann.
 Das Feld „Fehlerphase“ bezeichnet die Phase, in der der Einbindungsfehlers aufgetreten ist, während „Client-Fehlercode“ den Fehlercode des Einbindungsvorgangs angibt.
 
 ```
@@ -181,7 +181,7 @@ Verwenden Sie eine der folgenden Methoden, um den Unterfehlercode für den Code 
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 Version 1803 und höher
 
-Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „DRS-Ermittlungstest“.
+Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „DRS-Ermittlungstest“. Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht in Azure AD Hybrid eingebunden werden kann.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Suchen Sie in der folgenden Liste nach dem Registrierungstyp und dem Fehlercode.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 Version 1803 und höher
 
-Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „Vorherige Registrierung“.
+Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „Vorherige Registrierung“. Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht in Azure AD Hybrid eingebunden werden kann.
 Das Feld „Registrierungstyp“ gibt die Art der durchgeführten Einbindung an.
 
 ```
@@ -355,7 +355,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    - Lösung: Deaktivieren Sie TPM auf Geräten mit diesem Fehler. Windows 10 Version 1809 erkennt automatisch TPM-Fehler und schließt die Hybrid-Azure AD-Einbindung ohne Verwendung des TPM ab.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Ursache: TPM wurde gesperrt.
-   - Lösung: Vorübergehender Fehler. Warten Sie die Abkühlzeit ab. Der Einbindungsversuch sollte nach einiger Zeit erfolgreich sein. Weitere Informationen finden Sie im Artikel [TPM-Grundlagen](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Lösung: Transient error. (Vorübergehender Fehler.) Warten Sie die Abkühlzeit ab. Der Einbindungsversuch sollte nach einiger Zeit erfolgreich sein. Weitere Informationen finden Sie im Artikel [TPM-Grundlagen](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>Netzwerkfehler
 

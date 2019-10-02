@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414589"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299846"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel
 
@@ -100,11 +100,14 @@ Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Ang
 
    1. Wählen Sie **Speichern** aus.
 
-Nachdem nun eine Registrierung für dieses Gerät vorhanden ist, kann die IoT Edge-Runtime das Gerät während der Installation automatisch bereitstellen. Kopieren Sie den Wert für den **Primärschlüssel**  Ihrer Registrierung, der beim Erstellen des Geräteschlüssels verwendet werden soll.
+Nachdem nun eine Registrierung für dieses Gerät vorhanden ist, kann die IoT Edge-Runtime das Gerät während der Installation automatisch bereitstellen. Kopieren Sie unbedingt den Wert des **Primärschlüssels** Ihrer Registrierung. Sie müssen ihn bei der Installation der IoT Edge-Runtime oder beim Erstellen der Geräteschlüssel bei einer Gruppenregistrierung angeben.
 
 ## <a name="derive-a-device-key"></a>Ableiten eines Geräteschlüssels
 
-Ihr Gerät verwendet den abgeleiteten Geräteschlüssel mit der eindeutigen Registrierungs-ID, um während der Bereitstellung den Nachweis symmetrischer Schlüssel mit der Registrierung durchzuführen. Verwenden Sie für die Generierung des Geräteschlüssels den Schlüssel, den Sie aus der DPS-Registrierung kopiert haben, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID des Geräts zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
+> [!NOTE]
+> Dieser Abschnitt ist nur erforderlich, wenn Sie eine Gruppenregistrierung verwenden.
+
+Jedes Gerät verwendet den abgeleiteten Geräteschlüssel mit der eindeutigen Registrierungs-ID, um während der Bereitstellung den Nachweis symmetrischer Schlüssel mit der Registrierung durchzuführen. Verwenden Sie für die Generierung des Geräteschlüssels den Schlüssel, den Sie aus der DPS-Registrierung kopiert haben, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID des Geräts zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
 
 Nehmen Sie den Primär- oder Sekundärschlüssel Ihrer Registrierung nicht in den Gerätecode auf.
 
@@ -159,7 +162,10 @@ Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
 
 * Den Wert für den DPS-**ID-Bereich**
 * Die von Ihnen erstellte **Registrierungs-ID** für das Gerät
-* Den abgeleiteten Geräteschlüssel des Geräts für den Nachweis symmetrischer Schlüssel
+* Der **Primärschlüssel**, den Sie aus der DPS-Registrierung kopiert haben
+
+> [!TIP]
+> Bei Gruppenregistrierungen benötigen Sie anstelle des DPS-Registrierungsschlüssels den [abgeleiteten Schlüssel](#derive-a-device-key) jedes Geräts.
 
 ### <a name="linux-device"></a>Linux-Gerät
 

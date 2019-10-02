@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018179"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129337"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -122,9 +122,9 @@ Wenn Sie nach dem Wiederherstellen den Vorgang „Fortsetzen“ ausführen, ist 
 
 Der Recovery Services-Tresor kann nicht gelöscht werden, wenn sich darin Sicherungselemente mit dem Status „Vorläufig gelöscht“ befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Sie können den Tresor erst löschen, nachdem alle vorläufig gelöschten Elemente entfernt wurden.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Wie kann ich die Daten löschen, bevor die 14 Tage im Status „Vorläufig gelöscht“ abgelaufen sind?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kann ich die Daten löschen, bevor die 14 Tage im Status „Vorläufig gelöscht“ abgelaufen sind?
 
-Es gibt keine Möglichkeit, die Daten vor Ablauf der 14 Tage nach dem Löschvorgang endgültig zu löschen. Wenden Sie sich an den Microsoft-Support, wenn es sich um ein Blocker- oder Konformitätsproblem handelt.
+Nein. Das Löschen der vorläufig gelöschten Elemente kann nicht erzwungen werden; sie werden nach 14 Tagen automatisch gelöscht. Diese Sicherheitsfunktion ist aktiviert, um die gesicherten Daten vor versehentlichen oder böswilligen Löschvorgängen zu schützen.  Sie sollten 14 Tage warten, bevor Sie eine andere Aktion auf dem virtuellen Computer ausführen.  Vorläufig gelöschte Elemente werden nicht in Rechnung gestellt.  Wenn Sie die zum vorläufigen Löschen gekennzeichneten VMs innerhalb von 14 Tagen in einem neuen Tresor erneut schützen müssen, wenden Sie sich an den Microsoft-Support.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Kann das vorläufige Löschen in PowerShell oder per CLI durchgeführt werden?
 

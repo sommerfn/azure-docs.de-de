@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 50ab6cfefe4a7df9d671e7fd1287aa16b803f260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702893"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300931"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Hochverfügbarkeit und Zuverlässigkeit für Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 Azure Scheduler bietet sowohl [Hochverfügbarkeit](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) als auch Zuverlässigkeit für Ihre Aufträge. Weitere Informationen finden Sie unter [SLA für Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 

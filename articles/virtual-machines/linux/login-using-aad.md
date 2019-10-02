@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 946ccc61ead7f005667984a490761bc64560a69e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163219"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300731"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -86,6 +86,9 @@ az vm create \
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Installieren der VM-Erweiterung für die Azure AD-Anmeldung
+
+> [!NOTE]
+> Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Speicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
 
 Für die Anmeldung bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen müssen Sie die VM-Erweiterung für die Azure Active Directory-Anmeldung installieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung *AADLoginForLinux* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* zu installieren:
 

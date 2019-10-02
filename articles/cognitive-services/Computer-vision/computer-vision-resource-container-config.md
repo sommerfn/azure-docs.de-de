@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102285"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129967"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>Konfigurieren von Docker-Containern für die Texterkennung
+# <a name="configure-computer-vision-docker-containers"></a>Konfigurieren von Docker-Containern für maschinelles Sehen
 
-Die Runtimeumgebung für Container für die **Texterkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
+Sie können die Runtimeumgebung für Container für maschinelles Sehen über die Argumente des Befehls `docker run` konfigurieren. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -65,7 +65,7 @@ Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen
 
 ## <a name="http-proxy-credentials-settings"></a>Anmeldeinformationseinstellungen für HTTP-Proxy
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging-Einstellungen
  
@@ -84,14 +84,12 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 |Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für Maschinelles Sehen nicht verwendet.|
 |Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
+## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
 Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](computer-vision-how-to-install-containers.md#stop-the-container).
 
 * **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
 * **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
-
-Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
 
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
@@ -104,17 +102,19 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Cognitive Services`-Ressource für die Gesichtserkennung. 
+> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Cognitive Services`-Ressource.
 
-## <a name="recognize-text-container-docker-examples"></a>Beispiele für Docker-Container zur Texterkennung
+## <a name="container-docker-examples"></a>Beispiele für Docker-Container
 
-Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennung. 
+#### <a name="readtabread"></a>[Lesen](#tab/read)
 
-### <a name="basic-example"></a>Einfaches Beispiel 
+Im Folgenden finden Sie Docker-Beispiele für den Container für das Lesen.
+
+### <a name="basic-example"></a>Einfaches Beispiel
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -123,13 +123,40 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
 ### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+#### <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
+
+Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennung.
+
+### <a name="basic-example"></a>Einfaches Beispiel
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>Beispiel für die Protokollierung
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
+
+***
 
 ## <a name="next-steps"></a>Nächste Schritte
 

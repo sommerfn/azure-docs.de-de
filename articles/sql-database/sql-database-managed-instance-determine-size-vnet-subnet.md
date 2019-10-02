@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567498"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273553"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Bestimmen der VNET-/Subnetzgröße für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -29,7 +29,7 @@ Bei der Erstellung einer verwalteten Instanz ordnet Azure abhängig vom Tarif, d
 Prinzipiell benötigt eine verwaltete Instanz zwischen 16 und 256 IP-Adressen in einem Subnetz. Daher können Sie für die Definition Ihrer Subnetz-IP-Adressbereiche 28- bis 24-Bit-Masken verwenden. Eine 28-Bit-Maske (14 Hosts pro Netzwerk) ist eine gute Größe für eine Bereitstellung für einen universellen Zweck oder für geschäftskritische Bereitstellungen. Eine 27-Bit-Maske (30 Hosts pro Netzwerk) ist ideal für Bereitstellungen mit mehreren verwalteten Instanzen innerhalb des gleichen VNets. Eine 26- (62 Hosts) und 24-Bit-Maske (254 Hosts) ermöglichen die weitere Skalierung über das VNet hinaus, um zusätzliche verwaltete Instanzen zu unterstützen.
 
 > [!IMPORTANT]
-> Als Größe für das Subnetz stellen 16 IP-Adressen das absolute Minimum dar, das nur beschränkte Möglichkeiten für eine weitere Hochskalierung der verwalteten Instanz bietet. Die Auswahl eines Subnetzes mit dem Präfix /27 oder darunter wird dringend empfohlen.
+> Eine Subnetzgröße mit 16 IP-Adressen ist das absolute Minimum mit eingeschränktem Potenzial, bei dem ein Skalierungsvorgang wie eine Änderung der V-Kern-Größe nicht unterstützt wird. Die Auswahl eines Subnetzes mit dem Präfix „/27“ oder dem längsten Präfix wird dringend empfohlen.
 
 ## <a name="determine-subnet-size"></a>Bestimmen der Subnetzgröße
 

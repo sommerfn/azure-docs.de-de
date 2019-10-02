@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993469"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123088"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -160,6 +160,12 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
    |GP_S_Gen5_1|Allgemeiner Zweck|Gen5|1|
    |GP_S_Gen5_2|Allgemeiner Zweck|Gen5|2|
    |GP_S_Gen5_4|Allgemeiner Zweck|Gen5|4|
+   |GP_S_Gen5_6|Allgemeiner Zweck|Gen5|6|
+   |GP_S_Gen5_8|Allgemeiner Zweck|Gen5|8|
+   |GP_S_Gen5_10|Allgemeiner Zweck|Gen5|10|
+   |GP_S_Gen5_12|Allgemeiner Zweck|Gen5|12|
+   |GP_S_Gen5_14|Allgemeiner Zweck|Gen5|14|
+   |GP_S_Gen5_16|Allgemeiner Zweck|Gen5|16|
 
 2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
 
@@ -282,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 
-Ressourceneinschränkungen werden unter [Serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.
+Ressourceneinschränkungen werden unter [serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.
 
 ## <a name="billing"></a>Abrechnung
 

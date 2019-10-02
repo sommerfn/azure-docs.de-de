@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056133"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170473"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -81,7 +81,7 @@ Unterstützte Anpassungen umfassen:
 
 Sie können den Azure AD-Bereitstellungsdienst für die ausgewählte Anwendung im Bildschirm **Bereitstellung** im Bereich **Einstellungen** starten und beenden. Sie können auch den Bereitstellungscache leeren und den Dienst neu starten.
 
-Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den **Bereitstellungsstatus** auf **Ein** fest, um den Dienst zu aktivieren. Diese Änderung bewirkt, dass der Azure AD-Bereitstellungsdienst eine anfänglichen Zyklus ausführt. Hierbei liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung auf diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen aus. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach dem anfänglichen Zyklus synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem Intervall von zehn Minuten.
+Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den **Bereitstellungsstatus** auf **Ein** fest, um den Dienst zu aktivieren. Diese Änderung bewirkt, dass der Azure AD-Bereitstellungsdienst eine anfänglichen Zyklus ausführt. Hierbei liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung auf diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen aus. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach dem ersten Zyklus synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem 40-Minuten-Intervall.
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
 

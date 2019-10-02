@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910190"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300560"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 
@@ -46,7 +46,7 @@ Sie können ein Speicherkonto oder einen Event Hub-Namespace verwenden, das/der 
 
 Verwenden Sie Diagnoseeinstellungen, um Diagnoseprotokolle für Nicht-Computeressourcen zu konfigurieren. Die Einstellungen für eine Ressourcensteuerung verfügen über die folgenden Features:
 
-* Sie geben an, wohin Diagnoseprotokolle gesendet werden, z.B. an ein Azure-Speicherkonto, an einen Azure Event Hub oder an Überwachungsprotokolle.
+* Sie geben an, wohin Diagnoseprotokolle gesendet werden, z. B. an ein Azure Storage-Konto, an einen Azure Event Hub oder an Monitor-Protokolle.
 * Sie geben an, welche Protokollkategorien gesendet werden.
 * Sie geben an, wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden.
 * Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
@@ -504,8 +504,6 @@ Durch die Installation von Azure Data Factory-Analysen wird ein Standardsatz von
 - ADF-Statistik – 3) Höchstdauer der Pipelineausführungen
 
 ![Fenster mit den hervorgehobenen Optionen „Arbeitsmappen (Vorschau)“ und „AzureDataFactoryAnalytics“](media/data-factory-monitor-oms/monitor-oms-image6.png)
-
-![Grafische Darstellung von Ausführungen und Fehlern](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
 Sie können u.a. die voranstehenden Metriken visualisieren, die Abfragen hinter diesen Metriken betrachten, die Abfragen bearbeiten Benachrichtigungen erstellen oder andere Aktionen ausführen.
 

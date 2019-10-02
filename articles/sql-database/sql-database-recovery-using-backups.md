@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ab0a622dcb72072621e6696d423a1d4d2917bedc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813348"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178386"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
@@ -66,11 +66,11 @@ Für ein einzelnes Abonnement gibt es Einschränkungen der Anzahl gleichzeitiger
 Derzeit gibt es keine integrierte Methode, um den gesamten Server wiederherzustellen. Das Skript [Azure SQL-Datenbank: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) (Vollständige Serverwiederherstellung) ist ein Beispiel dafür, wie Sie diese Aufgabe erreichen können.
 
 > [!IMPORTANT]
-> Um eine Wiederherstellung mithilfe von automatisierten Sicherungen durchzuführen, müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ im Abonnement oder Besitzer des Abonnements sein. Weitere Informationen dazu finden Sie unter [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md). Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
+> Um eine Wiederherstellung mithilfe von automatisierten Sicherungen durchzuführen, müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ im Abonnement oder Besitzer des Abonnements sein. Weitere Informationen dazu finden Sie unter [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md). Sie können die Wiederherstellung mithilfe von Azure-Portal, PowerShell oder der REST-API durchführen. Die Nutzung von Transact-SQL ist nicht möglich.
 
 ## <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-Sie können den Zustand einer eigenständigen, Pool- oder Instanzdatenbank zu einem früheren Zeitpunkt mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder [REST-API](https://docs.microsoft.com/rest/api/sql/databases) wiederherstellen. Die Anforderung kann jede Dienstebene oder Computegröße für die wiederhergestellte Datenbank angeben. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Nach Abschluss des Vorgangs wird eine neue Datenbank auf demselben Server wie die ursprüngliche Datenbank erstellt. Die wiederhergestellte Datenbank wird basierend auf Dienstebene und Computegröße zum normalen Satz in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
+Sie können eine eigenständige Datenbank, eine Pool- oder Instanzdatenbank mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/databases) auf deren Zustand zu einem früheren Zeitpunkt wiederherstellen. Die Anforderung kann jede Dienstebene oder Computegröße für die wiederhergestellte Datenbank angeben. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Nach Abschluss des Vorgangs wird eine neue Datenbank auf demselben Server wie die ursprüngliche Datenbank erstellt. Die wiederhergestellte Datenbank wird basierend auf Dienstebene und Computegröße zum normalen Satz in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
 Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank behandeln oder als Quelldaten zum Aktualisieren der ursprünglichen Datenbank verwenden.
 
@@ -82,7 +82,7 @@ Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem fr�
 
   Wenn Sie planen, zum Wiederherstellen nach einem Benutzer- oder Anwendungsfehler Daten aus der wiederhergestellten Datenbank abzurufen, müssen Sie ein Datenwiederherstellungsskript schreiben und ausführen, das Daten aus der Datenbank extrahiert und auf die ursprüngliche Datenbank anwendet. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während des Wiederherstellungsvorgangs in der Datenbankliste angezeigt. Wenn Sie die Datenbank während der Wiederherstellung löschen, wird der Wiederherstellungsvorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, deren Wiederherstellung nicht abgeschlossen wurde.
 
-Um einen Singleton, eine in einem Pool zusammengefasste Datenbank oder eine Instanzdatenbank zu einem bestimmten Zeitpunkt über das Azure-Portal wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
+Um eine Einzel-, Pool- oder Instanzdatenbank mithilfe von Azure-Portal auf den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
 
 ![Point-in-Time-Wiederherstellung](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -91,7 +91,7 @@ Um einen Singleton, eine in einem Pool zusammengefasste Datenbank oder eine Inst
 
 ## <a name="deleted-database-restore"></a>Wiederherstellen einer gelöschten Datenbank
 
-Sie können den Zustand einer gelöschten Datenbank zum Zeitpunkt des Löschens oder früher auf der gleichen Instanz von SQL-Datenbank-Server mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder [REST-API (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) wiederherstellen. Sie können [mithilfe von PowerShell eine gelöschte Datenbank in einer verwalteten Instanz wiederherstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+Sie können eine gelöschte Datenbank mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder der [REST-API (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) auf demselben SQL-Datenbank-Server auf den Zustand zum Zeitpunkt des Löschens oder früher wiederherstellen. Sie können [mithilfe von PowerShell eine gelöschte Datenbank in einer verwalteten Instanz wiederherstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
 
 > [!TIP]
 > Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschten Datenbank wiederhergestellt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](scripts/sql-database-restore-database-powershell.md).
@@ -100,7 +100,7 @@ Sie können den Zustand einer gelöschten Datenbank zum Zeitpunkt des Löschens 
 
 ### <a name="deleted-database-restore-using-the-azure-portal"></a>Wiederherstellen einer gelöschten Datenbank im Azure-Portal
 
-Öffnen Sie zum Wiederherstellen einer gelöschten Datenbank die Seite für Ihren Server im Azure-Portal, und klicken Sie im Bereich „Vorgänge“ auf **Gelöschte Datenbanken**.
+Öffnen Sie zum Wiederherstellen einer gelöschten Datenbank mithilfe von Azure-Portal die Seite für Ihren Server, und klicken Sie im Bereich „Vorgänge“ auf **Gelöschte Datenbanken**.
 
 ![deleted-database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -117,21 +117,56 @@ Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn
 
 ![Geowiederherstellung](./media/sql-database-geo-restore/geo-restore-2.png)
 
-> [!TIP]
-> Ein PowerShell-Beispielskript, das zeigt, wie eine Geowiederherstellung durchgeführt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](scripts/sql-database-restore-database-powershell.md).
+### <a name="geo-restore-using-azure-portal"></a>Durchführen einer Geowiederherstellung mithilfe von Azure-Portal
+
+Das allgemeine Konzept zur Geowiederherstellung einer Datenbank aus Azure-Portal besteht aus dem Erstellen einer neuen Einzeldatenbank oder einer Datenbank der verwalteten Instanz und dem Auswählen einer verfügbaren Geowiederherstellungssicherung im Bildschirm zum Erstellen einer Datenbank. Die neu erstellte Datenbank enthält die mittels Geowiederherstellung wiederhergestellten Sicherungsdaten.
+
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
+
+Wenn Sie eine Azure SQL-Einzeldatenbank mittels Geowiederherstellung aus Azure-Portal in der Region und auf dem Server Ihrer Wahl wiederherstellen möchten, führen Sie die folgenden Schritte aus:
+
+1. Klicken Sie im Marketplace auf **+Hinzufügen**, und wählen Sie **SQL-Datenbank erstellen** aus. Geben Sie dann die erforderlichen Informationen auf der Registerkarte **Grundeinstellungen** ein.
+2. Wählen Sie die Registerkarte **Zusätzliche Einstellungen** aus.
+3. Klicken Sie unter „Vorhandene Daten verwenden“ auf **Sicherung**.
+4. Wählen Sie aus der Dropdownliste der verfügbaren Geowiederherstellungssicherungen die gewünschte Sicherung aus.
+
+![Geowiederherstellung einer Azure SQL-Einzeldatenbank](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+
+Schließen Sie den Vorgang des Erstellens einer neuen Datenbank ab. Nachdem die Azure SQL-Einzeldatenbank erstellt wurde, enthält sie eine mittels Geowiederherstellung wiederhergestellte Sicherung.
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Wenn Sie eine Datenbank der verwalteten Instanz mittels Geowiederherstellung aus Azure-Portal auf einer vorhandenen verwalteten Instanz in einer Region Ihrer Wahl wiederherstellen möchten, wählen Sie die verwaltete Instanz aus, auf der die Datenbank wiederhergestellt werden soll, und führen Sie die folgenden Schritte aus:
+
+1. Klicken Sie auf **+Neue Datenbank**.
+2. Geben Sie den gewünschten Datenbanknamen ein.
+3. Wählen Sie unter „Vorhandene Daten verwenden“ die Option **Sicherung** aus.
+4. Wählen Sie aus der Dropdownliste der verfügbaren Geowiederherstellungssicherungen die gewünschte Sicherung aus.
+
+![Wiederherstellen der Datenbank einer verwalteten Instanz mittels Geowiederherstellung](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+
+Schließen Sie den Vorgang des Erstellens einer neuen Datenbank ab. Nachdem die Instanzdatenbank erstellt wurde, enthält sie eine mittels Geowiederherstellung wiederhergestellte Sicherung.
+
+### <a name="geo-restore-using-powershell"></a>Durchführen einer Geowiederherstellung mithilfe von PowerShell
+
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
+
+Ein PowerShell-Skript, das zeigt, wie die Geowiederherstellung für eine Azure SQL-Einzeldatenbank durchgeführt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Einzeldatenbank auf den Zustand zu einem früheren Zeitpunkt mithilfe von PowerShell](scripts/sql-database-restore-database-powershell.md).
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Ein PowerShell-Skript, das zeigt, wie die Geowiederherstellung für eine Datenbank der verwalteten Instanzdatenbank durchgeführt wird, finden Sie unter [Wiederherstellen einer Datenbank der verwalteten Instanz in einer anderen geografischen Region mithilfe von PowerShell](scripts/sql-managed-instance-restore-geo-backup.md).
+
+### <a name="geo-restore-considerations"></a>Überlegungen zur Geowiederherstellung
 
 Point-in-Time-Wiederherstellung für geosekundäre Datenbanken wird derzeit nicht unterstützt. Point-in-Time-Wiederherstellung kann nur für eine primäre Datenbank erfolgen. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
 > Die Geowiederherstellung ist die einfachste in SQL-Datenbank verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit RPO = 1 Stunde und geschätzter Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbank(en) nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Geschäftsanwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung zur Wiederherstellung im Notfall. Verwenden Sie für unternehmenskritische Anwendungen, die große Datenbanken verwenden und die Geschäftskontinuität gewährleisten müssen, [Autofailover-Gruppen](sql-database-auto-failover-group.md) für ein transparentes und koordiniertes Failover mehrerer Datenbanken. Er bietet eine niedrigere RPO und RTO, und die Kapazität ist immer garantiert. Weitere Informationen zur Optionen für Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-### <a name="geo-restore-using-the-azure-portal"></a>Durchführen einer Geowiederherstellung über das Azure-Portal
-
-Zur Geowiederherstellung einer Datenbank im Azure-Portal öffnen Sie die Seite „SQL-Datenbanken“ und klicken dann auf **Hinzufügen**. Wählen Sie im Textfeld **Quelle auswählen** die Option **Sicherung** aus. Geben Sie die Sicherung an, aus der die Wiederherstellung in der Region und auf dem Server Ihrer Wahl erfolgen soll. 
-
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen
 
-Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über das Azure-Portal, sondern auch programmgesteuert mit Azure PowerShell oder mit der REST-API ausgeführt werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen.
+Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über Azure-Portal, sondern auch programmgesteuert mithilfe von Azure PowerShell oder der REST-API durchgeführt werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen.
 
 ### <a name="powershell"></a>PowerShell
 

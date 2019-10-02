@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098961"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219335"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -102,8 +102,17 @@ Sie können auch PowerShell nutzen, um für eine Datei das Zurückrufen zu erzwi
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+
+Wenn Sie `-Order CloudTieringPolicy` angeben, werden zuerst die zuletzt geänderten Dateien abgerufen.
+Andere optionale Parameter:
+* `-ThreadCount` bestimmt, wie viele Dateien parallel abgerufen werden können.
+* `-PerFileRetryCount` bestimmt, wie oft ein Abruf einer Datei versucht wird, die derzeit blockiert ist.
+* `-PerFileRetryDelaySeconds` bestimmt die Zeit in Sekunden zwischen den Versuchen zum erneuten Abrufen und sollte immer in Kombination mit dem vorherigen Parameter verwendet werden.
+
+> [!Note]  
+> Wenn das lokale Volume, das den Server hostet, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, schlägt das Cmdlet `Invoke-StorageSyncFileRecall` fehl.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung der Azure-Dateisynchronisierung nicht mit der Eigenschaft *Größe* überein? 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70992308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299642"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -31,7 +31,7 @@ Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) ve
  1. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Der Ressourcenname zum Anfordern eines Tokens ist `https://servicebus.azure.net`.
  1. Anschließend wird das Token als Teil einer Anforderung an den Service Bus-Dienst übergeben, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
-Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. Informationen zum Authentifizieren von Anforderungen, die von einer verwalteten Identität an den Service Bus-Dienst übermittelt werden, finden Sie unter [Authentifizieren des Zugriffs auf Azure Service Bus-Ressourcen mit Azure Active Directory und verwalteten Identitäten für Azure Ressourcen](service-bus-managed-service-identity.md). 
+Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. 
 
 Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal mindestens eine RBAC-Rolle zuzuweisen. Azure Service Bus stellt RBAC-Rollen bereit, die Berechtigungssätze für Service Bus-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von RBAC-Rollen zu Azure Service Bus finden Sie unter [Integrierte RBAC-Rollen für Azure Service Bus](#built-in-rbac-roles-for-azure-service-bus). 
 
@@ -55,7 +55,14 @@ Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zug
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Service Bus-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus RBAC-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. 
+- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus RBAC-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. Im Folgenden finden Sie ein Beispiel für die Verwendung des Azure CLI-Befehls [az-role-assignment-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) für das Zuweisen einer Identität zu einer Service Bus-RBAC-Rolle: 
+
+    ```azurecli
+    az role assignment create \
+        --role $service_bus_role \
+        --assignee $assignee_id \
+        --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
+    ```
 - **Service Bus-Namespace:** Die Rollenzuweisung umfasst die gesamte Topologie von Service Bus unter dem Namespace und für die zugeordnete Consumergruppe.
 - **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
 - **Abonnement**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.

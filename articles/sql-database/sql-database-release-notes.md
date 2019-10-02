@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101551"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266420"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
@@ -60,6 +60,7 @@ In diesem Artikel werden die SQL-Datenbank-Features aufgeführt, die sich derzei
 
 ### <a name="managed-instance-h2-2019-updates"></a>Verwaltete Instanz – H2 2019-Updates
 
+- [Gruppen für automatisches Failover](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) ermöglichen es Ihnen, alle Datenbanken aus der primären Instanz in eine sekundäre Instanz in einer anderen Region zu replizieren.
 - Konfigurieren Sie das Verhalten Ihrer verwalteten Instanz mit [globalen Ablaufverfolgungsflags](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/).
 
 ### <a name="managed-instance-h1-2019-updates"></a>Verwaltete Instanz – H1 2019-Updates
@@ -69,7 +70,7 @@ Die folgenden Funktionen sind im Bereitstellungsmodell für verwaltete Instanzen
   - Unterstützung für <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 und SharePoint 2019 </a> und <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Erstellen Sie Instanzen mit <a href="https://aka.ms/managed-instance-collation">Sortierung auf Serverebene</a> und <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">Zeitzone</a> für Ihre Auswahl.
   - Verwaltete Instanzen sind jetzt durch eine <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrierte Firewall</a> geschützt.
-  - Konfigurieren Sie Instanzen für die Verwendung von [öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-configure.md), einer Verbindung zur [Proxy-Außerkraftsetzung](/sql-database-connectivity-architecture.md#connection-policy), um eine bessere Netzwerkleistung zu erzielen, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuellen Kernen bei der Gen5-Hardwaregenerierung</a>, oder <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurieren Sie die Beibehaltung der Sicherung bis zu 35 Tage</a> für eine Point-in-Time-Wiederherstellung. Die langfristige Beibehaltung der Sicherung (bis zu 10 Jahre) ist noch nicht aktiviert, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Kopiesicherungen</a> verwenden können.
+  - Konfigurieren Sie Instanzen für die Verwendung von [öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-configure.md), einer Verbindung zur [Proxy-Außerkraftsetzung](sql-database-connectivity-architecture.md#connection-policy), um eine bessere Netzwerkleistung zu erzielen, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuellen Kernen bei der Gen5-Hardwaregenerierung</a>, oder <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurieren Sie die Beibehaltung der Sicherung bis zu 35 Tage</a> für eine Point-in-Time-Wiederherstellung. Die langfristige Beibehaltung der Sicherung (bis zu 10 Jahre) ist noch nicht aktiviert, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Kopiesicherungen</a> verwenden können.
   - Neue Funktionen ermöglichen Ihnen die <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">Geowiederherstellung Ihrer Datenbank in einem anderen Rechenzentrum mithilfe von PowerShell </a>, das [Umbenennen einer Datenbank](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/) und das [Löschen eines virtuellen Clusters](sql-database-managed-instance-delete-virtual-cluster.md).
   - Die neue integrierte [Rolle „Mitwirkender für Instanzen“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) ermöglicht SoD-Einhaltung (Separation of Duty, Aufgabentrennung) von Sicherheitsprinzipien und Einhaltung von Unternehmensstandards.
   - Eine verwaltete Instanz ist in den folgenden Azure Government-Regionen für GA (US Gov Texas, US Gov Arizona) sowie in China, Norden 2, und China, Osten 2, verfügbar. Außerdem ist sie in den folgenden öffentlichen Regionen verfügbar: Australien, Mitte; Australien, Mitte 2; Brasilien, Süden; Frankreich, Süden; VAE, Mitte; VAE, Norden; Südafrika, Norden; Südafrika, Westen.

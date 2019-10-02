@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018989"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128881"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -543,6 +543,14 @@ Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 
 Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a> Bekannte Probleme
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Das Ändern der Dienstebene und Erstellen von Instanzvorgängen wird durch die laufende Datenbankwiederherstellung blockiert
+
+**Datum:** September 2019
+
+Durch die laufende `RESTORE`-Anweisung blockieren der Migrationsprozess des Datenmigrationsdiensts und die integrierte Point-in-Time-Wiederherstellung das Aktualisieren der Dienstebene oder eine Größenänderung bei der vorhandenen Instanz sowie das Erstellen neuer Instanzen so lange, bis der Wiederherstellungsvorgang abgeschlossen ist. Der Wiederherstellungsvorgang blockiert diese Vorgänge für die verwalteten Instanzen und Instanzenpools in demselben Subnetz, in dem der Wiederherstellungsvorgang ausgeführt wird. Die Instanzen in Instanzenpools sind davon nicht betroffen. Die Vorgänge des Erstellens oder Änderns von Dienstebenen führen nicht zu einem Fehler oder Timeout. Sie werden nach dem Abschluss oder einem Abbrechen des Wiederherstellungsvorgangs fortgesetzt.
+
+**Problemumgehung**: Warten Sie, bis der Wiederherstellungsvorgang abgeschlossen ist, oder brechen Sie ihn ab, wenn der Vorgang des Erstellens oder Aktualisierens der Dienstebene höhere Priorität hat.
 
 ### <a name="missing-validations-in-restore-process"></a>Fehlende Überprüfungen im Wiederherstellungsprozess
 

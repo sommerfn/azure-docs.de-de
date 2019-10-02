@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 7/9/2019
+ms.date: 9/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515418"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299663"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -95,6 +95,9 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
     * **Pfad der Organisationseinheit**  
         Dies ist der LDAP-Pfad für die Organisationseinheit, in der Computerkonten für SMB-Server erstellt werden. Das bedeutet, Organisationseinheit = zweite Ebene, Organisationseinheit = erste Ebene. 
+
+        Bei Verwendung von Azure NetApp Files mit Azure Active Directory Domain Services lautet der Pfad der Organisationseinheit `OU=AADDC Computers`, wenn Sie Active Directory für Ihr NetApp-Konto konfigurieren.
+        
     * Anmeldeinformationen, einschließlich **Benutzername** und **Kennwort**
 
     ![Beitreten zu Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
@@ -118,7 +121,9 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.
+        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.   
+
+        `default` kann nicht als Volumename verwendet werden.
 
     * **Kapazitätspool**  
         Geben Sie den Kapazitätspool an, in dem das Volume erstellt werden soll.

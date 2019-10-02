@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638300"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266152"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
 
@@ -135,7 +135,7 @@ Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-S
 
 ![Die Raspberry Pi- und Sensorverbindung](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-Mit dem BME280-Sensor können Daten zur Temperatur und Luftfeuchtigkeit erfasst werden. Die LED blinkt, wenn das Gerät eine Nachricht an die Cloud sendet. 
+Mit dem BME280-Sensor können Daten zur Temperatur und Luftfeuchtigkeit erfasst werden. Die LED blinkt, wenn das Gerät eine Nachricht an die Cloud sendet.
 
 Verwenden Sie für Sensorstifte die folgende Verkabelung:
 
@@ -170,8 +170,8 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 1. Stellen Sie die Verbindung Ihres Raspberry Pi mit einem der folgenden SSH-Clients auf Ihrem Hostcomputer her:
 
    **Windows-Benutzer**
-  
-   a. Laden Sie [PuTTY](https://www.putty.org/) für Windows herunter, und installieren Sie es. 
+
+   a. Laden Sie [PuTTY](https://www.putty.org/) für Windows herunter, und installieren Sie es.
 
    b. Kopieren Sie die IP-Adresse von Pi, fügen Sie sie in den Abschnitt „Hostname (oder IP-Adresse)“ ein, und wählen Sie „SSH“ als Verbindungstyp.
 
@@ -192,10 +192,10 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
    node -v
    ```
 
-   Wenn die Version niedriger als 11.x oder Node.js nicht auf Ihrem Pi-Gerät vorhanden ist, installieren Sie die neueste Version.
+   Wenn die Version niedriger als 10.x oder kein Node.js auf Ihrem Pi vorhanden ist, installieren Sie die neueste Version.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
    Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Das erste ist `interval`, mit dem das Zeitintervall (in Millisekunden) zwischen Nachrichten bestimmt wird, die an die Cloud gesendet werden. Das zweite heißt `simulatedData` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
 
    Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `simulatedData` auf `true` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
+
+   *Hinweis: Die in diesem Tutorial verwendete i2c-Adresse ist standardmäßig „0x77“. Je nach Ihrer Konfiguration könnte sie auch „0x76“ lauten. Wenn ein i2c-Fehler auftritt, versuchen Sie, den Wert in „118“ zu ändern, und prüfen Sie, ob dies besser funktioniert. Wenn Sie sehen möchten, welche Adresse von Ihrem Sensor verwendet wird, führen Sie `sudo i2cdetect -y 1` in einer Shell auf Raspberry Pi aus*.
 
 2. Speichern und beenden Sie durch Drücken von STRG+O > EINGABETASTE > STRG+X.
 

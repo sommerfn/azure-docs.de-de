@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f418a78f80d65cbb784685804a4cc6790c28b99
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530915"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300901"
 ---
 # <a name="what-is-azure-scheduler"></a>Was ist Azure Scheduler?
 
 > [!IMPORTANT]
-> Der Azure Scheduler wird eingestellt und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) unterstützt Sie durch deklarative Beschreibung von Aktionen beim Erstellen von [Aufträgen](../scheduler/scheduler-concepts-terms.md), die in der Cloud ausgeführt werden. Anschließend werden diese Aktionen vom Dienst automatisch geplant und ausgeführt. Sie können beispielsweise Dienste inner- und außerhalb von Azure aufrufen (z. B. HTTP- oder HTTPS-Endpunkte) und zudem Nachrichten in Azure Storage-Warteschlangen sowie Azure Service Bus-Warteschlangen oder -Themen veröffentlichen. Sie können Aufträge sofort oder zu einem späteren Zeitpunkt ausführen. [Komplexe Zeitpläne und erweiterte Serien](../scheduler/scheduler-advanced-complexity.md) werden von Scheduler problemlos unterstützt. Scheduler legt fest, wann Aufträge ausgeführt werden, speichert einen Verlauf der Auftragsergebnisse, den Sie überprüfen können, und plant die auszuführenden Workloads dann auf vorhersehbare und zuverlässige Weise.
 

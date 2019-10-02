@@ -1,19 +1,19 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung: manuelles Kopieren'
+title: 'Azure HPC Cache-Datenerfassung (Vorschau): manuelles Kopieren'
 description: Verwenden von cp-Befehlen zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 2d89a74d4b79e74c2bc6667a5f76c2348ca3c274
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775038"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299985"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung: Methode manuelles Kopieren
+# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): Methode zum manuellen Kopieren
 
 Dieser Artikel enthält detaillierte Anweisungen zum manuellen Kopieren von Daten in einen Blobspeichercontainer für die Verwendung mit Azure HPC Cache. Er verwendet parallele Multithreadvorgänge, um die Kopiergeschwindigkeit zu optimieren.
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>Zeitpunkt für das Hinzufügen von Bereitstellungspunkten
 
-Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zielsystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.  
+Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zieldateisystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.  
 
-In diesem Fall können Sie clientseitige Bereitstellungspunkte zu anderen Einbindungsadressen von Azure HPC Cache hinzufügen, wobei Sie denselben Einbindungspfad des Remotedateisystems verwenden:
+In diesem Fall können Sie clientseitige Bereitstellungspunkte anderen Einbindungsadressen von Azure HPC Cache hinzufügen und dabei denselben Einbindungspfad des Remotedateisystems verwenden:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Erstellen von Dateimanifesten
 
-Nachdem Sie die oben genannten Ansätze verstanden haben (mehrere Kopierthreads pro Ziel, mehrere Ziele pro Client, mehrere Clients pro netzwerkfähigem Quelldateisystem), sollten Sie die folgende Empfehlung beachten: Erstellen Sie Dateimanifeste, und verwenden Sie sie dann mit Kopierbefehlen für mehrere Clients.
+Wenn Sie die oben genannten Ansätze verstanden haben (mehrere Kopierthreads pro Ziel, mehrere Ziele pro Client, mehrere Clients pro netzwerkfähigem Quelldateisystem), sollten Sie die folgende Empfehlung beachten: Erstellen Sie Dateimanifeste, und verwenden Sie sie dann mit Kopierbefehlen für mehrere Clients.
 
 Dieses Szenario verwendet den UNIX-Befehl ``find``, um Manifeste von Dateien oder Verzeichnissen zu erstellen:
 

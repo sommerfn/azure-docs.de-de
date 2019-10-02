@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 39427ac12dc6214630d6c3e5ace62692b1ea30b6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003085"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266055"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Striim
 
@@ -155,11 +155,13 @@ In diesem Abschnitt konfigurieren Sie das Azure Cosmos DB-Cassandra-API-Konto a
 
    ![Mit Ziel verbinden](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Stellen Sie vor dem Konfigurieren des Ziels sicher, dass Sie der [Java-Umgebung von Striim ein Baltimore-Stammzertifikat](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store) hinzugefügt haben.
+1. Stellen Sie vor dem Konfigurieren des Ziels sicher, dass Sie der [Java-Umgebung von Striim ein Baltimore-Stammzertifikat](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store) hinzugefügt haben.
 
 1. Geben Sie die Konfigurationseigenschaften Ihrer Azure Cosmos DB-Zielinstanz ein, und wählen Sie **Save** (Speichern) aus, um den Vorgang fortzusetzen. Dies sind die wichtigsten Parameter:
 
-   * ****************************************************************** Beim Schreiben in die Cassandra-API von Azure Cosmos DB ist DatabaseWriter erforderlich. Der Cassandra-Treiber 3.6.0 ist mit Striim gebündelt. Wenn DatabaseWriter die Anzahl von in Ihrem Azure Cosmos-Container bereitgestellten RUs überschreitet, stürzt die Anwendung ab.
+   * **Adapter:** Verwenden Sie **DatabaseWriter**. Beim Schreiben in die Cassandra-API von Azure Cosmos DB ist DatabaseWriter erforderlich. Der Cassandra-Treiber 3.6.0 ist mit Striim gebündelt. Wenn DatabaseWriter die Anzahl von in Ihrem Azure Cosmos-Container bereitgestellten RUs überschreitet, stürzt die Anwendung ab.
+
+   * **Verbindungs-URL:** Geben Sie Ihre JDBC-Verbindungs-URL für Azure Cosmos DB an. Das Format der URL ist `jdbc:cassandra://<contactpoint>:10350/<databaseName>?SSL=true`.
 
    * **Username** (Benutzername): Geben Sie den Namen Ihres Azure Cosmos-Kontos an.
    

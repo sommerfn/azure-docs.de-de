@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515353"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162254"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -54,7 +54,7 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 | | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Größe der Datei ab | – | Verwaltete Instanz: Hängt von der Größe der Datei ab|
-|**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 15 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
+|**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
 
 \* Pools für elastische Datenbanken werden in der Dienstebene „Hyperscale“ nicht unterstützt.
@@ -139,7 +139,7 @@ Nein.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Wie viele Replikate mit Leseskalierung werden unterstützt?
 
-Die Hyperscale-Datenbanken werden standardmäßig mit einem Replikat mit Leseskalierung (insgesamt zwei Replikaten) erstellt. Sie können die Anzahl der schreibgeschützten Replikate über das [Azure-Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder die [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) auf einen Wert zwischen 0 und 4 anpassen.
+Die Hyperscale-Datenbanken werden standardmäßig mit einem Replikat mit Leseskalierung (insgesamt zwei Replikaten) erstellt. Sie können die Anzahl der schreibgeschützten Replikate über das [Azure-Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder die [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) auf einen Wert zwischen „0“ und „4“ anpassen.
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Müssen zur Erzielung von Hochverfügbarkeit zusätzliche Computeknoten bereitgestellt werden?
 
@@ -348,7 +348,7 @@ Durch den Endbenutzer. Dies ist kein automatischer Vorgang.
 
 Ja. Die temp-Datenbank wird automatisch zentral hochskaliert, je größer der Computebedarf wird.  
 
-### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Können mehrere primäre Computeknoten wie ein Multimastersystem bereitgestellt werden, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Können mehrere primäre Computeknoten, z.B. ein Multimastersystem, bereitgestellt werden, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
 
 Nein. Nur der primäre Computeknoten akzeptiert Lese-/Schreibanforderungen. Sekundäre Computeknoten akzeptieren nur schreibgeschützte Anforderungen.
 
@@ -362,6 +362,11 @@ Es werden standardmäßig zwei Replikate für Hyperscale-Datenbanken erstellt. S
 
 Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computeknoten herstellen, indem Sie das `ApplicationIntent`-Argument in Ihrer Verbindungszeichenfolge auf `readonly` festlegen. Verbindungen, die mit `readonly` markiert sind, werden automatisch an einen der zusätzlichen schreibgeschützten Computeknoten weitergeleitet.  
 
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Wie kann ich überprüfen, ob ich eine Verbindung mit dem sekundären Computeknoten mithilfe von SSMS oder anderen Clienttools erfolgreich hergestellt habe?
+
+Sie können die folgende T-SQL-Abfrage mithilfe von SSMS/anderen Clienttools ausführen: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Das Ergebnis ist `READ_ONLY`, wenn Ihre Verbindung auf den schreibgeschützten sekundären Knoten verweist, oder `READ_WRITE`, wenn die Verbindung auf den primären Knoten verweist.
+
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Kann ein dedizierter Endpunkt für das Replikat mit Leseskalierung erstellt werden?
 
 Nein. Sie können eine Verbindung mit Replikaten mit Leseskalierung nur herstellen, indem Sie `ApplicationIntent=ReadOnly` angeben.
@@ -372,7 +377,7 @@ Nein. Die schreibgeschützte Workload wird an ein zufälliges Replikat mit Leses
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Können sekundäre Computeknoten unabhängig vom primären Computeknoten zentral hoch- oder herunterskaliert werden?
 
-Nein. Die sekundären Computeknoten werden auch für die Hochverfügbarkeit verwendet. Daher müssen diese für den Fall eines Failovers die gleiche Konfiguration wie die primären Computeknoten aufweisen.
+Nein. Die sekundären Computeknoten werden auch für die Hochverfügbarkeit verwendet. Daher müssen sie für den Fall eines Failovers die gleiche Konfiguration wie die primären Computeknoten aufweisen.
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Gelten für primäre Computeknoten und zusätzliche sekundäre Computeknoten unterschiedliche temp-Datenbankgrößen?
 

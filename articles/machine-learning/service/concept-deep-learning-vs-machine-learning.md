@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035507"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123137"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -37,7 +37,7 @@ Beachten Sie die folgenden Definitionen, um Deep Learning im Vergleich zu maschi
 
 - **Künstliche Intelligenz (KI)** ist ein Verfahren, mit dem Computer menschliche Intelligenz imitieren können. Sie umfasst auch maschinelles Lernen. 
  
-Es ist wichtig, die Beziehung zwischen künstlicher Intelligenz, maschinellem Lernen und Deep Learning zu verstehen. Maschinelles Lernen ist ein Weg, um künstliche Intelligenz zu erreichen. Mithilfe von Machine Learning- und Deep Learning-Techniken können Sie Computersysteme und Anwendungen erstellen, die Aufgaben erledigen, die in der Regel mit menschlicher Intelligenz verbunden werden. Zu diesen Aufgaben gehören visuelle Wahrnehmung, Spracherkennung, Entscheidungsfindung und Sprachübersetzung.
+Es ist wichtig, die Beziehung zwischen künstlicher Intelligenz, maschinellem Lernen und Deep Learning zu verstehen. Maschinelles Lernen ist ein Weg, um künstliche Intelligenz zu erreichen. Mithilfe von Machine Learning- und Deep Learning-Techniken können Sie Computersysteme und Anwendungen erstellen, die Aufgaben erledigen, die in der Regel mit menschlicher Intelligenz verbunden werden. Zu diesen Aufgaben gehören Bilderkennung, Spracherkennung und Sprachübersetzung.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Techniken von Deep Learning und maschinellem Lernen 
 
@@ -47,12 +47,12 @@ In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 
 | |Vollständig Machine Learning |Nur Deep Learning|
 |---|---|---|
-|  **Anzahl von Datenpunkten** | Kann kleine Datenmengen verwenden, die von Benutzern bereitgestellt werden. | Erfordert eine große Menge Trainingsdaten, um präzise Schlussfolgerungen zu treffen. |
+|  **Anzahl von Datenpunkten** | Kann mithilfe kleiner Datenmengen Vorhersagen treffen | Benötigt große Mengen von Trainingsdaten, um Vorhersagen zu treffen |
 |  **Hardwareabhängigkeiten** | Kann auf Low-End-Computern ausgeführt werden. Erfordert keine hohe Rechenleistung. | Hängt von High-End-Computern ab. Grundsätzlich wird eine große Zahl von Matrixmultiplikationsvorgängen durchgeführt. Eine GPU kann diese Vorgänge effizient optimieren. |
 |  **Featurebereitstellung** | Merkmale müssen von Benutzern genau identifiziert und erstellt werden. | Lernt allgemeine Merkmale aus Daten und erstellt selbstständig neue Merkmale. |
-|  **Lernansatz** | Unterteilt Aufgaben in kleine Teile und kombiniert empfangene Ergebnisse zu einer Schlussfolgerung. | Löst das Problem durchgängig. |
-|  **Ausführungszeit** | Das Training nimmt im Vergleich weniger Zeit in Anspruch: von wenigen Sekunden bis hin zu einigen Stunden. | Das Training dauert ungewöhnlich lange, da ein Deep Learning-Algorithmus viele Parameter beinhaltet. |
-|  **Ausgabe** | Die Ausgabe ist normalerweise ein numerischer Wert, z.B. eine Bewertung oder Klassifizierung. | Die Ausgabe kann Text, eine Bewertung, ein Element oder ein Sound sein. |
+|  **Lernansatz** | Unterteilt den Lernprozess in kleinere Schritte. Anschließend werden die Ergebnisse aus den einzelnen Schritten in einer Ausgabe zusammengefasst. | Durchläuft den Lernprozess durch Lösen des Problems auf Gesamtbasis. |
+|  **Ausführungszeit** | Das Training nimmt im Vergleich weniger Zeit in Anspruch: von wenigen Sekunden bis hin zu einigen Stunden. | Das Training dauert meist lange, da ein Deep Learning-Algorithmus viele Schichten aufweist. |
+|  **Ausgabe** | Die Ausgabe ist normalerweise ein numerischer Wert, z.B. eine Bewertung oder Klassifizierung. | Die Ausgabe kann mehrere Formate aufweisen, z. B. einen Text, eine Bewertung oder eine Tonausgabe. |
 
 ## <a name="deep-learning-use-cases"></a>Anwendungsfälle für Deep Learning
 
@@ -62,7 +62,7 @@ Einige der häufigsten Anwendungen für Deep Learning werden in den folgenden Ab
 
 ### <a name="named-entity-recognition"></a>Named-entity recognition (NER)
 
-Ein Einsatzbereich von Deep-Learning-Netzwerken ist NER (Named-Entity Recognition): eine Möglichkeit, bestimmte Arten von Informationen aus unstrukturierten und nicht bezeichneten Daten zu extrahieren. Diese Informationen können Personen, Orte, Unternehmen oder Dinge sein. Die Informationen können dann in einem strukturierten Schema gespeichert werden, um eine Liste von Adressen zu erstellen oder als Benchmark für eine Engine zur Identitätsüberprüfung verwendet zu werden.
+Named-entity recognition (Erkennung benannter Entitäten) ist eine Deep Learning-Methode, die einen Text als Eingabe entgegennimmt und in eine vordefinierte Klasse umwandelt. Diese neue Angabe kann etwa eine Postleitzahl, ein Datum oder eine Produkt-ID sein. Die Informationen können dann in einem strukturierten Schema gespeichert werden, um eine Liste von Adressen zu erstellen oder als Benchmark für eine Engine zur Identitätsüberprüfung verwendet zu werden.
 
 ### <a name="object-detection"></a>Objekterkennung
 
@@ -72,17 +72,21 @@ Objekterkennung wird bereits in Branchen wie Gaming, Einzelhandel, Tourismus und
 
 ### <a name="image-caption-generation"></a>Generierung der Bildbeschriftung
 
-Wie bei der Bilderkennung muss bei der Bildbeschriftung im System für ein bestimmtes Bild eine Beschriftung generiert werden, die den Inhalt des Bilds beschreibt. Wenn Sie Objekte in Fotos erkennen und bezeichnen können, besteht der nächste Schritt darin, diese Bezeichnungen in beschreibende, kohärente Sätze umzuwandeln. Im Allgemeinen verwenden Bildbeschriftungssysteme sehr große Convolutional Neural Networks, um Objekte auf den Fotos zu erkennen, und dann ein Recurrent Neural Network, um die Bezeichnungen in zusammenhängende Sätze umzuwandeln.
+Wie bei der Bilderkennung muss bei der Bildbeschriftung im System für ein bestimmtes Bild eine Beschriftung generiert werden, die den Inhalt des Bilds beschreibt. Wenn Sie Objekte in Fotos erkennen und bezeichnen können, besteht der nächste Schritt darin, diese Bezeichnungen in beschreibende Sätze umzuwandeln. 
+
+Im Allgemeinen verwenden Bildbeschriftungsanwendungen Convolutional Neural Networks, um Objekte auf den Fotos zu erkennen, und dann ein Recurrent Neural Network, um die Bezeichnungen in zusammenhängende Sätze umzuwandeln.
 
 ### <a name="machine-translation"></a>Maschinelle Übersetzung
 
-Bei der maschinellen Übersetzung werden Wörter, Ausdrücke oder Sätze aus einer Sprache automatisch in eine andere Sprache übersetzt. Die automatische maschinelle Übersetzung gibt es schon seit geraumer Zeit, mit Deep Learning werden jedoch beeindruckende Ergebnisse in zwei bestimmten Bereichen erzielt: bei der automatischen Übersetzung von Text (und bei der Spracherkennung) sowie bei der automatischen Übersetzung von Bildern. 
+Bei der maschinellen Übersetzung werden Wörter oder Sätze aus einer Sprache automatisch in eine andere Sprache übersetzt. Die maschinelle Übersetzung gibt es schon seit geraumer Zeit, mit Deep Learning werden jedoch beeindruckende Ergebnisse in zwei bestimmten Bereichen erzielt: bei der automatischen Übersetzung von Text (und Spracherkennung) sowie bei der automatischen Übersetzung von Bildern.
 
-Mit der richtigen Datentransformation kann ein Deep Learning-Netz Text-, Audio- und visuelle Signale verstehen. Die maschinelle Übersetzung kann verwendet werden, um Tonausschnitte in größeren Audiodateien zu identifizieren und gesprochenen Text oder Bilder in Text zu transkribieren.
+Mit der richtigen Datentransformation kann ein neuronales Netz Text-, Audio- und visuelle Signale verstehen. Die maschinelle Übersetzung kann verwendet werden, um Tonausschnitte in größeren Audiodateien zu identifizieren und gesprochenen Text oder Bilder in Text zu transkribieren.
 
 ### <a name="text-analytics"></a>Textanalyse
 
-Eine wichtige Aufgabe, die mit Deep Learning ausgeführt werden kann, ist eDiscovery. Unternehmen verwenden Textanalysen, die auf Deep Learning basieren, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Bei Hedgefonds werden Textanalysen verwendet, um einen Drilldown in umfangreiche Dokumentrepositorys auszuführen und so Einblicke in die zukünftige Anlageperformance und Marktstimmung zu erhalten. Der Anwendungsfall für Textanalysen, die auf Deep Learning basieren, beruht auf der Möglichkeit, sehr große Mengen an Textdaten zu analysieren, um Analysen durchzuführen oder Aggregationen zu erzielen.
+Die auf Deep Learning-Methoden basierende Textanalyse umfasst das Analysieren großer Mengen von Textdaten (z. B. medizinischen Dokumenten oder Ausgabenbelegen), das Erkennen von Mustern und das Erstellen von organisierten und präzisen Informationen aus diesen.
+
+Unternehmen führen mit Deep Learning Textanalysen durch, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Ein weiteres gängiges Beispiel ist Versicherungsbetrug: Mithilfe von Textanalysen wurden häufig große Mengen von Dokumenten analysiert, um zu ermitteln, mit welcher Wahrscheinlichkeit es sich bei einem Versicherungsanspruch um Betrug handelte. 
 
 ## <a name="artificial-neural-networks"></a>Künstliche neuronale Netze
 
@@ -96,13 +100,13 @@ Das neuronale Feedforward-Netz ist die grundlegendste Art von künstlichen neuro
 
 ### <a name="recurrent-neural-network"></a>Recurrent Neural Network
 
-Recurrent Neural Networks sind häufig verwendete künstliche neuronale Netze. Diese Netze speichern die Ausgabe einer Schicht und geben Sie zurück in die Eingabeschicht, um das Ergebnis der Schicht vorherzusagen. Recurrent Neural Networks weisen großartige Lernmöglichkeiten auf. Sie werden häufig für komplexe Aufgaben wie das Erlernen von Handschrift und Spracherkennung verwendet.
+Recurrent Neural Networks sind häufig verwendete künstliche neuronale Netze. Diese Netze speichern die Ausgabe einer Schicht und geben Sie zurück in die Eingabeschicht, um das Ergebnis der Schicht vorherzusagen. Recurrent Neural Networks weisen großartige Lernmöglichkeiten auf. Sie werden häufig für komplexe Aufgaben wie Zeitreihenvorhersagen, das Erlernen von Handschrift und die Spracherkennung verwendet.
 
 ### <a name="convolutional-neural-networks"></a>Convolutional Neural Networks
 
 Ein Convolutional Neural Network (faltendes neuronales Netz, CNN) ist ein besonders effektives künstliches neuronales Netz und stellt eine einzigartige Architektur dar. Die Schichten sind in drei Dimensionen organisiert: Breite, Höhe und Tiefe. Die Neuronen in einer Schicht sind nicht mit allen Neuronen in der nächsten Schicht, sondern nur mit einem kleinen Bereich der Neuronen der Schicht verbunden. Die endgültige Ausgabe wird auf einen einzelnen Vektor mit Wahrscheinlichkeitsbewertungen reduziert, der entlang der Tiefendimension organisiert ist. 
 
-Convolutional Neural Networks werden in Bereichen wie Bilderkennung und -klassifizierung eingesetzt.
+Convolutional Neural Networks werden in Bereichen wie Video- und Bilderkennung sowie Empfehlungssystemen eingesetzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

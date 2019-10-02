@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034354"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123285"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Datenabweichungen zwischen dem Trainingsdata
 
 ## <a name="what-is-data-drift"></a>Was sind Datenabweichungen?
 
-Datenabweichungen treten auf, wenn sich die Daten, die ein Modell in der Produktion erhält, von den Daten unterscheiden, die zum Trainieren des Modells verwendet wurden. Sie sind einer der wichtigsten Gründe für die Abnahme der Modellgenauigkeit im Zeitverlauf, und das Überwachen auf Datenabweichungen hilft bei der Erkennung von Problemen bei der Leistung eines Modells. 
+Im Zusammenhang mit maschinellem Lernen ist die Datenabweichung die Änderung der Modelleingabedaten, die zu einem Abfallen der Modellleistung führt. Sie sind einer der wichtigsten Gründe für die Abnahme der Modellgenauigkeit im Zeitverlauf, und das Überwachen auf Datenabweichungen hilft bei der Erkennung von Problemen bei der Leistung eines Modells. 
 
 ## <a name="what-can-i-monitor"></a>Was kann ich überwachen?
 

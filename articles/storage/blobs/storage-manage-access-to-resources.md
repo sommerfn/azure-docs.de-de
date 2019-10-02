@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 09/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6293fc84969c4e246c05da4482f76142263db230
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e3d6312be0936f14ece5d30a2bbf3e4235031c0e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985557"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154071"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Verwalten des anonymen Lesezugriffs auf Container und Blobs
 
@@ -27,22 +27,15 @@ In der Standardeinstellung kann nur ein Benutzer mit den entsprechenden Berechti
 
 Sie können einen Container mit den folgenden Berechtigungen konfigurieren:
 
-* **No public read access** (Kein öffentlicher Lesezugriff): Nur der Speicherkontobesitzer kann auf den Container und dessen Blobs zugreifen. Dies ist die Standardeinstellung für alle neuen Container.
-* **Public read access for blobs only** (Öffentlicher Lesezugriff nur für Blobs): Blobs innerhalb des Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber nicht verfügbar. Anonyme Clients können die Blobs im Container nicht aufzählen.
-* **Public read access for container and its blobs** (Öffentlicher Lesezugriff für Container und zugehörige Blobs): Alle Container- und Blobdaten können über anonyme Anforderungen gelesen werden. Clients können Blobs im Container über anonyme Anforderungen aufzählen, können aber keine Container im Speicherkonto aufzählen.
-
-Sie können Folgendes verwenden, um Containerberechtigungen festzulegen:
-
-* [Azure-Portal](https://portal.azure.com)
-* [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure-Befehlszeilenschnittstelle](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* Programmgesteuert, indem Sie eine der Speicherclientbibliotheken oder die REST-API verwenden
+- **No public read access** (Kein öffentlicher Lesezugriff): Nur der Speicherkontobesitzer kann auf den Container und dessen Blobs zugreifen. Dies ist die Standardeinstellung für alle neuen Container.
+- **Public read access for blobs only** (Öffentlicher Lesezugriff nur für Blobs): Blobs innerhalb des Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber nicht verfügbar. Anonyme Clients können die Blobs im Container nicht aufzählen.
+- **Public read access for container and its blobs** (Öffentlicher Lesezugriff für Container und zugehörige Blobs): Alle Container- und Blobdaten können über anonyme Anforderungen gelesen werden. Clients können Blobs im Container über anonyme Anforderungen aufzählen, können aber keine Container im Speicherkonto aufzählen.
 
 ### <a name="set-container-public-access-level-in-the-azure-portal"></a>Festlegen der öffentlichen Zugriffsebene für einen Container im Azure-Portal
 
 Im [Azure-Portal](https://portal.azure.com) können Sie die öffentliche Zugriffsebene für einen oder mehrere Container ändern:
 
-1. Navigieren Sie zum Speicherkonto im Azure-Portal.
+1. Navigieren Sie zu Ihrer Speicherkontoübersicht im Azure-Portal.
 1. Wählen Sie auf dem Menüblatt unter **Blob-Dienst** die Option **Blobs** aus.
 1. Wählen Sie die Container aus, für die Sie die öffentliche Zugriffsebene festlegen möchten.
 1. Klicken Sie auf **Zugriffsebene ändern**, um die Einstellungen für den öffentlichen Zugriff aufzurufen.
@@ -57,16 +50,28 @@ Auf dem folgenden Screenshot wird gezeigt, wie Sie die öffentliche Zugriffseben
 
 ### <a name="set-container-public-access-level-with-net"></a>Festlegen der öffentlichen Zugriffsebene für den Container mit .NET
 
-Um Berechtigungen für einen Container mit C# und der Speicherclientbibliothek für .NET festzulegen, rufen Sie zunächst die vorhandenen Berechtigungen des Containers ab, indem Sie die **GetPermissions**-Methode aufrufen. Legen Sie dann die **PublicAccess**-Eigenschaft für das **BlobContainerPermissions**-Objekt fest, das von der **GetPermissions**-Methode zurückgegeben wird. Rufen Sie abschließend die **SetPermissions** -Methode mit den aktualisierten Berechtigungen auf.
+Um Berechtigungen für einen Container mit der Azure Storage-Clientbibliothek für .NET festzulegen, rufen Sie zunächst die vorhandenen Berechtigungen des Containers ab, indem Sie eine der folgenden Methoden aufrufen:
+
+- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
+
+Legen Sie als Nächstes die Eigenschaft **PublicAccess** für das Objekt [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) fest, das von der **GetPermissions**-Methode zurückgegeben wird.
+
+Rufen Sie schließlich eine der folgenden Methoden auf, um die Berechtigungen für den Container zu aktualisieren:
+
+- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
 Im folgenden Beispiel werden die Berechtigungen des Containers auf vollständigen öffentlichen Lesezugriff festgelegt. Legen Sie zum Festlegen von Berechtigungen auf den öffentlichen Lesezugriff nur für Blobs die **PublicAccess**-Eigenschaft auf **BlobContainerPublicAccessType.Blob** fest. Um alle Berechtigungen für anonyme Benutzer zu entfernen, legen Sie die Eigenschaft auf **BlobContainerPublicAccessType.Off**fest.
 
 ```csharp
-public static void SetPublicContainerPermissions(CloudBlobContainer container)
+private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
 {
-    BlobContainerPermissions permissions = container.GetPermissions();
+    BlobContainerPermissions permissions = await container.GetPermissionsAsync();
     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
-    container.SetPermissions(permissions);
+    await container.SetPermissionsAsync(permissions);
+
+    Console.WriteLine("Container {0} - permissions set to {1}", container.Name, permissions.PublicAccess);
 }
 ```
 
@@ -81,13 +86,15 @@ Sie können ein neues Dienstclientobjekt für den anonymen Zugriff durch Bereits
 ```csharp
 public static void CreateAnonymousBlobClient()
 {
-    // Create the client object using the Blob storage endpoint.
-    CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
+    // Create the client object using the Blob storage endpoint for your account.
+    CloudBlobClient blobClient = new CloudBlobClient(
+        new Uri(@"https://storagesamples.blob.core.windows.net"));
 
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. Note this is only possible when the container supports full public read access.
+    // Read the container's properties. 
+    // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
@@ -102,9 +109,11 @@ Wenn Sie über die URL zu einem Container verfügen, der anonym verfügbar ist, 
 public static void ListBlobsAnonymously()
 {
     // Get a reference to a container that's available for anonymous access.
-    CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
+    CloudBlobContainer container = new CloudBlobContainer(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container"));
 
     // List blobs in the container.
+    // Note this is only possible when the container supports full public read access.
     foreach (IListBlobItem blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
@@ -119,45 +128,14 @@ Wenn Sie über die URL zu einem Blob verfügen, das für den anonymen Zugriff ve
 ```csharp
 public static void DownloadBlobAnonymously()
 {
-    CloudBlockBlob blob = new CloudBlockBlob(new Uri(@"https://storagesample.blob.core.windows.net/sample-container/logfile.txt"));
-    blob.DownloadToFile(@"C:\Temp\logfile.txt", System.IO.FileMode.Create);
+    CloudBlockBlob blob = new CloudBlockBlob(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container/logfile.txt"));
+    blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>Für anonyme Benutzer verfügbare Features
-
-In der folgenden Tabelle wird dargestellt, welche Vorgänge anonym aufgerufen werden können, wenn der Container für den öffentlichen Zugriff konfiguriert ist.
-
-| REST-Vorgang | Öffentlicher Lesezugriff auf Container | Nur öffentlicher Lesezugriff auf Blobs |
-| --- | --- | --- |
-| List Containers | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Create Container | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Container Properties | Anonyme Anforderungen zulässig | Nur autorisierte Anforderungen |
-| Get Container Metadata | Anonyme Anforderungen zulässig | Nur autorisierte Anforderungen |
-| Set Container Metadata | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Container ACL | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Set Container ACL | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Delete Container | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| List Blobs | Anonyme Anforderungen zulässig | Nur autorisierte Anforderungen |
-| Put Blob | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Blob | Anonyme Anforderungen zulässig | Anonyme Anforderungen zulässig |
-| Get Blob Properties | Anonyme Anforderungen zulässig | Anonyme Anforderungen zulässig |
-| Set Blob Properties | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Blob Metadata | Anonyme Anforderungen zulässig | Anonyme Anforderungen zulässig |
-| Set Blob Metadata | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Put Block | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Block List (nur Blöcke mit ausgeführtem Commit) | Anonyme Anforderungen zulässig | Anonyme Anforderungen zulässig |
-| Get Block List (nur Blöcke ohne ausgeführten Commit oder alle Blöcke) | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Put Block List | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Delete Blob | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Kopieren von Blobs | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Snapshot Blob | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Lease Blob | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Put Page | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-| Get Page Ranges | Anonyme Anforderungen zulässig | Anonyme Anforderungen zulässig |
-| Blob anfügen | Nur autorisierte Anforderungen | Nur autorisierte Anforderungen |
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Authorization for the Azure Storage Services (Autorisierung für Azure Storage-Dienste)](https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services)
-* [Verwenden von Shared Access Signatures (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Autorisierung des Zugriffs auf Azure Storage](../common/storage-auth.md)
+- [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md)
+- [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)

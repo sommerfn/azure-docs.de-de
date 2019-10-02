@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074350"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122974"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -28,12 +28,7 @@ Azure Storage überprüft regelmäßig die Integrität der gespeicherten Daten m
 
 Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Redundanzoptionen auswählen:
 
-- [Lokal redundanter Speicher (LRS)](storage-redundancy-lrs.md)
-- [Zonenredundanter Speicher (ZRS)](storage-redundancy-zrs.md)
-- [Georedundanter Speicher (GRS)](storage-redundancy-grs.md)
-- [Georedundanter Speicher mit Lesezugriff (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Geozonenredundanter Speicher (GZRS)](storage-redundancy-gzrs.md)
-- [Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 Die folgende Tabelle zeigt in einer kurzen Übersicht, in welchem Umfang die jeweilige Replikationsstrategie bei einem bestimmten Ereignistyp (oder einem Ereignis ähnlicher Auswirkung) Dauerhaftigkeit und Verfügbarkeit bietet.
 
@@ -55,7 +50,7 @@ Die Preisen für die verschiedenen Redundanzoptionen finden Sie unter [Preise f�
 Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit finden Sie im [SLA für Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Azure Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS).
+> Azure Storage Premium unterstützt derzeit nur lokal redundanten Speicher (Locally Redundant Storage, LRS).
 
 ## <a name="changing-replication-strategy"></a>Ändern der Replikationsstrategie
 

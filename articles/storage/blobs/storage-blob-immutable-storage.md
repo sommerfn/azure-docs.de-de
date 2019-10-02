@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: fcc5c4008c0fdef3b77e436761d8958fe31458d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036404"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257368"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Speichern unternehmenskritischer Daten auf unveränderliche Weise in Azure-Blobspeicher 
 
 Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unternehmenskritische Datenobjekte im WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Blobobjekte können während des Aufbewahrungszeitraums erstellt und gelesen werden, aber das Ändern oder Löschen ist nicht möglich. Unveränderlicher Speicher ist für Universell v2-Konten und Blobspeicherkonten in allen Azure-Regionen aktiviert.
 
@@ -42,7 +42,7 @@ Für unveränderlichen Speicher wird Folgendes unterstützt:
 
 - **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
 
-- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
+- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
 ## <a name="how-it-works"></a>So funktioniert's
 

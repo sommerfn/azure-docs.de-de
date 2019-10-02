@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065845"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264361"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -25,44 +25,45 @@ ms.locfileid: "71065845"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie noch nicht über einen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) verfügen, erstellen Sie einen, der mit Ihrem Azure-Abonnement verknüpft ist.
+- Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
+- Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](active-directory-b2c-setup-fb-app.md) aus, um eine Facebook-Anwendung zu konfigurieren.
 
 ## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Wählen Sie im Hauptmenü über den Filter **Verzeichnis + Abonnement** das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 
 ### <a name="create-the-signing-key"></a>Erstellen des Signaturschlüssels
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-2. Klicken Sie unter **Optionen** auf `Generate`.
-3. Geben Sie unter **Name** `TokenSigningKeyContainer` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-4. Wählen Sie **RSA** als **Schlüsseltyp** aus.
-5. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
-6. Klicken Sie auf **Create**.
+1. Klicken Sie unter **Optionen** auf `Generate`.
+1. Geben Sie unter **Name** `TokenSigningKeyContainer` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
+1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
+1. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-the-encryption-key"></a>Erstellen des Verschlüsselungsschlüssels
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-2. Klicken Sie unter **Optionen** auf `Generate`.
-3. Geben Sie unter **Name** `TokenEncryptionKeyContainer` ein. Das Präfix `B2C_1A`_ wird möglicherweise automatisch hinzugefügt.
-4. Wählen Sie **RSA** als **Schlüsseltyp** aus.
-5. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
-6. Klicken Sie auf **Create**.
+1. Klicken Sie unter **Optionen** auf `Generate`.
+1. Geben Sie unter **Name** `TokenEncryptionKeyContainer` ein. Das Präfix `B2C_1A`_ wird möglicherweise automatisch hinzugefügt.
+1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
+1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
+1. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-the-facebook-key"></a>Erstellen des Facebook-Schlüssels
 
-Wenn Sie bereits über ein [Facebook-Anwendungsgeheimnis](active-directory-b2c-setup-fb-app.md) verfügen, können Sie dieses Ihrem Mandanten als Richtlinienschlüssel hinzufügen. Andernfalls müssen Sie den Schlüssel mit einem Platzhalterwert erstellen, damit Ihre Richtlinien die Überprüfung bestehen.
+Fügen Sie das [App-Geheimnis](active-directory-b2c-setup-fb-app.md) der Facebook-Anwendung als Richtlinienschlüssel hinzu. Sie können das App-Geheimnis der Anwendung verwenden, das Sie unter „Voraussetzungen“ in diesem Artikel erstellt haben.
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-2. Klicken Sie unter **Optionen** auf `Manual`.
-3. Geben Sie unter **Name** `FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-4. Geben Sie unter **Geheimnis** Ihr Facebook-Geheimnis aus „developers.facebook.com“ oder `0` als Platzhalter ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
-5. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
-6. Klicken Sie auf **Create**.
+1. Klicken Sie unter **Optionen** auf `Manual`.
+1. Geben Sie unter **Name** `FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Geheimnis** das *App-Geheimnis* der Facebook-Anwendung aus developers.facebook.com ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
+1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
 
@@ -78,19 +79,19 @@ Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registri
 1. Geben Sie unter **Name** `IdentityExperienceFramework` ein.
 1. Wählen Sie unter **Anwendungstyp** die Option **Web-App/API** aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Anmelde-URL** ein, wobei `your-tenant-name` für den Domänennamen Ihres Azure AD B2C-Mandanten steht. Alle URLs sollten jetzt [b2clogin.com](b2clogin.md) verwenden.
-1. Klicken Sie auf **Create**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
+1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrieren der ProxyIdentityExperienceFramework-Anwendung
 
 1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus.
-2. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
-3. Wählen Sie **Nativ** als **Anwendungstyp** aus.
-4. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
-5. Klicken Sie auf **Create**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
-6. Klicken Sie auf der Seite „Einstellungen“ zunächst auf **Erforderliche Berechtigungen** und dann auf **Hinzufügen**.
-7. Wählen Sie **API auswählen** aus, suchen Sie nach **IdentityExperienceFramework**, wählen Sie diese API aus, und klicken Sie anschließend auf **Auswählen**.
-9. Aktivieren Sie das Kontrollkästchen neben **Access IdentityExperienceFramework** (Auf IdentityExperienceFramework zugreifen), und klicken Sie erst auf **Auswählen** und dann auf **Done** (Fertig).
-10. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie dies anschließend durch Auswahl von **Ja**.
+1. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
+1. Wählen Sie **Nativ** als **Anwendungstyp** aus.
+1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
+1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
+1. Wählen Sie **Einstellungen**, anschließend **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.
+1. Wählen Sie **API auswählen** aus, suchen Sie nach **IdentityExperienceFramework**, wählen Sie diese API aus, und klicken Sie anschließend auf **Auswählen**.
+1. Aktivieren Sie das Kontrollkästchen neben **Access IdentityExperienceFramework** (Auf IdentityExperienceFramework zugreifen), und klicken Sie erst auf **Auswählen** und dann auf **Done** (Fertig).
+1. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie dies anschließend durch Auswahl von **Ja**.
 
 ## <a name="custom-policy-starter-pack"></a>Starter Pack für benutzerdefinierte Richtlinien
 
@@ -160,7 +161,6 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
 
-1. Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](active-directory-b2c-setup-fb-app.md) aus, um eine Facebook-Anwendung zu konfigurieren.
 1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
 
    ```xml
@@ -172,7 +172,7 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 
 1. Laden Sie die Datei *TrustFrameworkExtensions.xml* in Ihren Mandanten hoch.
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
-1. Wählen Sie **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich bei Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen. Oder rufen Sie die Richtlinie direkt über Ihre registrierte Anwendung auf.
+1. Wählen Sie **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich bei Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

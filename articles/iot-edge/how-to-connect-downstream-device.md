@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie nachgeschaltete oder Blattgeräte für eine V
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999405"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266125"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -33,6 +33,10 @@ Dieser Artikel erläutert häufige Probleme beim Verbinden nachgeschalteter Ger�
 * Azure IoT-Beispiele für mehrere Sprachen zum Einstieg 
 
 In diesem Artikel beziehen sich die Begriffe *Gateway* und *IoT Edge-Gateway* auf ein IoT Edge-Gerät, das als transparentes Gateway konfiguriert wurde. 
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+Auf Ihrem nachgeschalteten Gerät muss die Zertifikatsdatei **azure-iot-test-only.root.ca.cert.pem** zur Verfügung stehen, die in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) generiert wurde. Das nachgeschaltete Gerät verwendet dieses Zertifikat zum Überprüfen der Identität des Gatewaygeräts. 
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
 
@@ -89,6 +93,14 @@ Es sollte die Meldung „Updating certificates in /etc/ssl/certs 1 added, 0 remo
 ### <a name="windows"></a>Windows
 
 Die folgenden Schritte sind ein Beispiel für die Installation eines ZS-Zertifikats auf einem Windows-Host. In diesem Beispiel wird davon ausgegangen, dass Sie das Zertifikat **azure-iot-test-only.root.ca.cert.pem** aus den Artikeln über die Voraussetzungen verwenden und das Zertifikat an einen Speicherort auf dem nachgeschalteten Gerät kopiert haben.
+
+Sie können Zertifikate mit [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) von PowerShell als Administrator installieren:
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+Außerdem können Sie Zertifikate mit dem Hilfsprogramm **certlm** installieren: 
 
 1. Suchen Sie im Startmenü nach **Computerzertifikate verwalten**, und wählen Sie die Option aus. Daraufhin wird das Hilfsprogramm **certlm** geöffnet.
 2. Navigieren Sie zu **Zertifikate – Lokaler Computer** > **Vertrauenswürdige Stammzertifizierungsstellen**.

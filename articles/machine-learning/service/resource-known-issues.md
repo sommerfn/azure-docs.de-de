@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81eabadba70a2d5334fab43157f17d24c41d97ec
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 275cf20329be04e86c2e7c2a613f657733e652df
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103418"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213454"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -185,7 +185,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualisieren von Azure Machine Learning-Komponenten in einem AKS-Cluster
 
-Updates für Azure Machine Learning-Komponenten, die in einem Azure Kubernetes Service-Cluster installiert sind, müssen manuell angewendet werden. Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und den Cluster dann dem Arbeitsbereich erneut zuordnen. Ist SSL im Cluster aktiviert, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut zuordnen. 
+Updates für Azure Machine Learning-Komponenten, die in einem Azure Kubernetes Service-Cluster installiert sind, müssen manuell angewendet werden. Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und ihn dann dem Arbeitsbereich erneut zuordnen. Ist SSL im Cluster aktiviert, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut zuordnen. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)

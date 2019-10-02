@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325602"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300462"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
-In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln. Weitere Informationen finden Sie in den [häufig gestellten Fragen](container-instances-faq.md).
+In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln. Weitere Informationen finden Sie in den [häufig gestellten Fragen](container-instances-faq.md). 
+
+Weitere Unterstützung finden Sie in den verfügbaren Optionen für **Hilfe und Support** im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
@@ -200,9 +202,28 @@ Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der di
 
 Azure Container Instances bietet keinen direkten Zugriff auf die zugrundeliegende Infrastruktur, die Containergruppen hostet. Dazu gehört der Zugriff auf die Docker-API, die auf dem Containerhost läuft, und die Ausführung von privilegierten Containern. Wenn Sie Docker-Interaktion benötigen, lesen Sie die [REST-Referenzdokumentation](https://aka.ms/aci/rest), um zu sehen, was die ACI-API unterstützt. Wenn Sie etwas nicht finden, senden Sie eine Anforderung an die [ACI-Feedbackforen](https://aka.ms/aci/feedback).
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Auf IP-Adressen kann aufgrund von Portkonflikten nicht zugegriffen werden
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Auf die IP-Adresse der Containergruppe kann aufgrund von Portkonflikten nicht zugegriffen werden
 
-Azure Container Instances unterstützt derzeit keine Portzuordnung wie bei der regulären Docker-Konfiguration. Eine entsprechende Korrektur ist jedoch bereits geplant. Sollten IP-Adressen unerwartet nicht erreichbar sein, vergewissern Sie sich, dass Sie Ihr Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in Ihrer Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
+Azure Container Instances unterstützt noch nicht die Portzuordnung wie bei der regulären Docker-Konfiguration. Wenn die IP-Adresse einer Containergruppe unerwartet nicht erreichbar ist, vergewissern Sie sich, dass Sie das Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in der Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
+
+Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lauschen kann, den Sie im Containerimage konfiguriert haben, testen Sie eine Bereitstellung des Images `aci-helloworld`, das den Port verfügbar macht. Führen Sie außerdem die App `aci-helloworld` aus, sodass sie an dem Port lauscht. `aci-helloworld` akzeptiert die optionale Umgebungsvariable `PORT`, um den Standardport 80 zu überschreiben, an dem gelauscht wird. Gehen Sie beispielsweise zum Testen von Port 9000 wie folgt vor:
+
+1. Richten Sie die Containergruppe so ein, dass Port 9000 verfügbar gemacht wird, und übergeben Sie die Portnummer als Wert der Umgebungsvariable:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip**. 
+1. Nachdem der Container erfolgreich bereitgestellt wurde, navigieren Sie im Browser zu der IP-Adresse und dem Port der Container-App, z. B. `192.0.2.0:9000`. 
+
+    In der Web-App sollte die Meldung „Willkommen bei Azure Container Instances“ angezeigt werden.
+1. Wenn Sie den Container nicht mehr benötigen, entfernen Sie ihn mithilfe des Befehls `az container delete`:
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

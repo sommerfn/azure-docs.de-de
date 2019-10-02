@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 478afb20f3dabec74d66d00bec325408ce6604fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 293cd956f8270a4863fcc657f58c970096cec1e3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713741"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300924"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Grenzwerte, Kontingente und Drosselungsschwellenwerte in Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 ## <a name="limits-quotas-and-thresholds"></a>Grenzwerte, Kontingente und Schwellenwerte
 

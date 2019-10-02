@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532015"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300989"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen, sollten Sie [stattdessen Azure Logic Apps testen](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 In diesem Tutorial wird gezeigt, wie Sie einen Auftrag erstellen und planen und diesen Auftrag dann überwachen und verwalten können. 
 
@@ -93,7 +93,7 @@ Um weitere Informationen zu diesen Bereichen anzuzeigen, wählen Sie einen Berei
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 Um schreibgeschützte Eigenschaften anzuzeigen, die die Verwaltungsmetadaten für Ihren Auftrag beschreiben, klicken Sie auf **Eigenschaften**.
 

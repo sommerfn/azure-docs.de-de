@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 09bcce6daf519c7d5e99c7c120064f5c8bb92475
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e1cf67abcc44a3ca134e5435137869d4fff1a7eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996870"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162360"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -197,6 +197,9 @@ public class HttpTrigger
 ```
 
 Weitere Informationen zum Arbeiten mit Optionen finden Sie unter [Optionsmuster in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+
+> [!WARNING]
+> Vermeiden Sie es, Werte aus Dateien wie *local.settings.json* oder *appsettings.{Umgebung}.json* im Verbrauchsplan zu lesen. Werte, die aus diesen Dateien im Zusammenhang mit Triggerverbindungen gelesen werden, sind bei der Skalierung der App nicht verfügbar, da die Hostinginfrastruktur keinen Zugriff auf die Konfigurationsinformationen hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

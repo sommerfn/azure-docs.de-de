@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0b210868c87b06a6b7caf55aece74cba956b406a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097597"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290778"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -46,7 +46,13 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 ## <a name="14x0"></a>1.4.X.0
 
 >[!IMPORTANT]
->Bisher wurden kompatible Windows-Computer, die mit dem lokalen AD verknüpft waren, unter bestimmten Umständen falsch mit der Cloud synchronisiert. Beispielsweise wurde der Wert des userCertificate-Attributs für kompatible Windows-Geräte in AD ausgefüllt. Diese Geräte in Azure AD blieben jedoch immer im Status „Ausstehend“, da diese Betriebssystemversionen nicht für die Registrierung bei Azure AD über AAD Sync konzipiert waren. In dieser Version von Azure AD Connect synchronisiert AAD Sync kompatible Windows-Computer nicht mehr mit Azure AD und entfernt ebenfalls die bisher fehlerhaft synchronisierten kompatiblen Windows-Geräte aus Azure AD. Beachten Sie, dass durch diese Änderung keine kompatiblen Windows-Computer gelöscht werden, die mithilfe des MSI-Pakets ordnungsgemäß bei Azure AD registriert wurden. Diese Geräte werden für den gerätebasierten bedingten Zugriff weiterhin erwartungsgemäß funktionieren. Einige Kunden stellen vielleicht fest, dass einige oder alle ihrer kompatiblen Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten während der Autorisierung mit bedingtem Zugriff von Azure AD eigentlich nie verwendet wurden. Diese Kunden müssen sich möglicherweise in https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan erneut anmelden und ihre kompatiblen Windows-Computer ordnungsgemäß registrieren, um sicherzustellen, dass diese Geräte den gerätebasierten bedingten Zugriff in vollem Umfang nutzen können. Beachten Sie Folgendes: Wenn diese Löschvorgänge von kompatiblen Computern/Geräteobjekten in Azure AD den Schwellenwert für den Löschvorgang beim Export überschreiten, wird dem Kunden empfohlen, diese Löschvorgänge zuzulassen.
+>Windows-Computer, die mit Azure AD Hybrid Join registriert wurden, werden in Azure AD als Geräteobjekte dargestellt. Diese Geräteobjekte können für den bedingten Zugriff verwendet werden. Windows 10-Computer werden über Azure AD Connect mit der Cloud synchronisiert. Kompatible Windows-Computer werden direkt entweder mithilfe von AD FS oder durch nahtloses einmaliges Anmelden registriert.
+>
+>Nur Windows 10-Computer mit einem spezifischen in Azure AD Hybrid Join konfigurierten Wert für das userCertificate-Attribut sollten über Azure AD Connect mit der Cloud synchronisiert werden.  In früheren Versionen von Azure AD Connect wurde diese Anforderung nicht strikt erzwungen, was zu unnötigen Geräteobjekten in Azure AD geführt hat. Solche Geräte haben in Azure AD dauerhaft den Status „Ausstehend“, da diese Computer nicht für die Registrierung bei Azure AD konzipiert waren.
+>
+>In dieser Version von Azure AD Connect werden nur Windows 10-Computer synchronisiert, die ordnungsgemäß für Azure AD Hybrid Join konfiguriert sind. In Azure AD Connect sollten niemals [Windows-Geräte mit früheren Versionen](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) synchronisiert werden.  Alle Geräte in Azure AD, die zuvor falsch synchronisiert wurden, werden nun aus Azure AD gelöscht.  Durch diese Änderung werden jedoch keine Windows-Geräte gelöscht, die ordnungsgemäß bei Azure AD für Azure AD Hybrid Join registriert wurden. 
+>
+>Einige Kunden stellen vielleicht fest, dass einige oder alle ihre Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Einige Kunden sollten sich möglicherweise unter [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../../active-directory/devices/hybrid-azuread-join-plan.md) erneut informieren und ihre Windows-Computer ordnungsgemäß registrieren, um sicherzustellen, dass der gerätebasierte bedingte Zugriff auf diesen Geräten in vollem Umfang genutzt werden kann. Wenn in Azure AD Connect versucht wird, [Windows-Geräte mit früheren Versionen](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) zu löschen, entspricht ein solches Gerät nicht mehr dem Gerät, das über den [MSI-Installer für Microsoft Workplace Join für Nicht-Windows 10-Computer](https://www.microsoft.com/download/details.aspx?id=53554) erstellt wurde, sodass auf dem Gerät keine anderen Azure AD-Funktionen verwendet werden können.  Wenn die Löschvorgänge von Computern/Geräteobjekten in Azure AD den Schwellenwert für den Löschvorgang beim Export überschreiten, wird dem Kunden empfohlen, diese Löschvorgänge zuzulassen.
 
 ### <a name="release-status"></a>Releasestatus
 09.10.2019: Nur für automatisches Upgrade veröffentlicht
@@ -57,7 +63,7 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 - Kunden sollten darüber informiert werden, dass die veralteten WMI-Endpunkte für MIIS_Service jetzt entfernt wurden. Alle WMI-Vorgänge sollten jetzt über PS-Cmdlets erfolgen.
 - Sicherheitsverbesserung durch Zurücksetzen der eingeschränkten Delegierung für AZUREADSSOACC-Objekt
 - Werden beim Hinzufügen/Bearbeiten einer Synchronisierungsregel in der Regel Attribute verwendet, die sich zwar im Connector-Schema befinden, dem Connector aber nicht hinzugefügt wurden, werden die Attribute automatisch dem Connector hinzugefügt. Dies gilt auch für den Objekttyp, auf den sich die Regel auswirkt. Wird dem Connector etwas hinzugefügt, wird der Connector markiert, damit beim nächsten Synchronisierungszyklus ein vollständiger Import erfolgt.
-- Die Verwendung eines Unternehmens- oder Domänenadministrators als Connector-Konto wird nicht mehr unterstützt.
+- Die Verwendung eines Unternehmens- oder Domänenadministrators als Connectorkonto wird in neuen AAD Connect-Bereitstellungen nicht mehr unterstützt. Aktuelle AAD Connect-Bereitstellungen, bei denen ein Unternehmens- oder Domänenadministrator als Connectorkonto verwendet wird, sind von diesem Release nicht betroffen.
 - Im Synchronisierungs-Manager wird beim Erstellen/Bearbeiten/Löschen von Regeln eine vollständige Synchronisierung ausgeführt. Bei jeder Regeländerung wird der Benutzer in einem Popup-Fenster darüber informiert, wenn ein vollständiger Import oder eine vollständige Synchronisierung ausgeführt wird.
 - Zusätzliche Schritte für die Problembehandlung bei Kennwortfehlern auf der Seite „Connectors > Eigenschaften > Konnektivität“
 - Auf der Seite „Connectoreigenschaften“ wurde eine Warnung zur Einstellung für den Synchronisierungsdienst-Manager hinzugefügt. Diese Warnung informiert den Benutzer, dass über den AADC-Assistenten Änderungen vorgenommen werden sollten.
@@ -1272,7 +1278,7 @@ Veröffentlichung: Dezember 2014
 **Neue Features:**
 
 * Die Synchronisierung von Kennwörtern mit attributbasierter Filterung wird jetzt unterstützt. Weitere Informationen finden Sie unter [Synchronisierung von Kennwörtern mit Filterung](how-to-connect-sync-configure-filtering.md).
-* Das Attribut „ms-DS-ExternalDirectoryObjectID“ wird in Active Directory zurückgeschrieben. Dieses Feature fügt Unterstützung für Office 365-Anwendungen hinzu. Es verwendet „Oauth2“, um auf Online- und lokale Postfächer in einer hybriden Exchange-Bereitstellung zuzugreifen.
+* Das Attribut „ms-DS-ExternalDirectoryObjectID“ wird in Active Directory zurückgeschrieben. Dieses Feature fügt Unterstützung für Office 365-Anwendungen hinzu. Es verwendet OAuth2, um auf Online- und lokale Postfächer in einer hybriden Exchange-Bereitstellung zuzugreifen.
 
 **Behobene Upgrade-Probleme:**
 

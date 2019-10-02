@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141152"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300657"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -62,11 +62,13 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
-Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch fünf Regionen, in denen weiterhin Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
+Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte<sup>1</sup> mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch fünf Regionen, in denen weiterhin Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
 
 Überprüfen Sie auf der Kachel „Nutzung“ auf der Übersichtsseite Ihres Diensts, ob Dokumentgrenzwerte für Ihren Dienst gelten. Die Dokumentanzahl ist entweder unbegrenzt, oder es gilt ein Grenzwert basierend auf dem Tarif dafür.
 
   ![Kachel „Nutzung“](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Azure Search-Dokument wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Azure Search-Dokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
 
 ### <a name="regions-previously-having-document-limits"></a>Regionen, für die noch Dokumentgrenzwerte galten
 

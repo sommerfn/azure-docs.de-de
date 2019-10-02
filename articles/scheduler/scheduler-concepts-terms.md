@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530937"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300950"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 ## <a name="entity-hierarchy"></a>Entitätshierarchie
 
@@ -249,11 +249,11 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
-| **schedule** | Nein | Variabel | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
+| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
 | **hours** | Nein | 1 bis 24 | Ein Array mit den Stundenmarkierungen für die Ausführung des Auftrags. | 
 | **minutes** | Nein | 0 bis 59 | Ein Array mit den Minutenmarkierungen für die Ausführung des Auftrags. | 
 | **months** | Nein | 1 bis 12 | Ein Array mit den Monaten für die Ausführung des Auftrags. | 
-| **monthDays** | Nein | Variabel | Ein Array mit den Tagen des Monats für die Ausführung des Auftrags. | 
+| **monthDays** | Nein | Varies | Ein Array mit den Tagen des Monats für die Ausführung des Auftrags. | 
 | **weekDays** | Nein | Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday | Ein Array mit den Wochentagen für die Ausführung des Auftrags. | 
 | **count** | Nein | <*none*> | Die Anzahl von Wiederholungen. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
 | **endTime** | Nein | <*none*> | Das Datum und die Uhrzeit für die Beendigung der Wiederholung. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 

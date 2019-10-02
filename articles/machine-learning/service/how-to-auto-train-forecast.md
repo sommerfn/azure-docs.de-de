@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035043"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170407"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -95,10 +95,12 @@ Das Objekt `AutoMLConfig` definiert die erforderlichen Einstellungen und Daten f
 |`time_column_name`|Dient zum Angeben der Datetime-Spalte in den Eingabedaten, die zum Erstellen der Zeitreihe sowie zum Ableiten des Intervalls verwendet wird.|✓|
 |`grain_column_names`|Namen zum Definieren individueller Reihengruppen in den Eingabedaten. Ohne definierte Granularität wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.||
 |`max_horizon`|Definiert den maximal gewünschten Vorhersagehorizont in Einheiten von Zeitreihen. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
-|`target_lags`|*n* Zeiträume zum Weiterleiten von Verzögerungszielwerten vor dem Trainieren des Modells.||
-|`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge.||
+|`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Dies wird als eine Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. Wenn Sie beispielsweise versuchen, die Nachfrage nach einem Produkt vorherzusagen, hängt die Nachfrage in einem Monat möglicherweise vom Preis für bestimmte Produkte vor 3 Monaten ab. In diesem Beispiel möchten Sie möglicherweise den Zielwert (Nachfrage) um 3 Monate negativ verzögern, sodass das Modell mit der richtigen Beziehung trainiert wird.||
+|`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten.||
 
-Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `day_datetime` im Dataset fest. Definieren Sie den Parameter `grain_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `max_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren. Legen Sie ein Vorhersagefenster auf 10 Zeiträume mit `target_rolling_window_size` fest, und verzögern Sie die Zielwerte 2 Zeiträume vorwärts mit dem `target_lags`-Parameter.
+Weitere Informationen finden Sie in der [Referenzdokumentation](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `day_datetime` im Dataset fest. Definieren Sie den Parameter `grain_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `max_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren. Legen Sie mit `target_rolling_window_size` ein Vorhersagefenster auf 10 Zeiträume fest, und geben Sie mit dem Parameter `target_lags` eine einzelne Verzögerung für das Ziel um 2 Zeiträume vorwärts an.
 
 ```python
 time_series_settings = {
@@ -111,8 +113,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewendet.
+
+Durch die Definition von `grain_column_names` im obigen Codeausschnitt erstellt AutoML zwei separate Zeitreihengruppen, die auch als mehrfache Zeitreihen bezeichnet werden. Wenn keine Körnung definiert ist, geht AutoML davon aus, dass es sich bei dem Dataset um eine einzelne Zeitreihe handelt. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+
+
 
 Erstellen Sie als Nächstes ein Standardobjekt vom Typ `AutoMLConfig`, geben Sie den Aufgabentyp `forecasting` an, und übermitteln Sie das Experiment. Rufen Sie nach Fertigstellung des Modells die Iteration mit der besten Ausführung ab.
 

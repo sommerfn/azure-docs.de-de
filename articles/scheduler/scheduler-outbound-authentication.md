@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708946"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300843"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ausgehende Authentifizierung für Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Azure Scheduler, der in Kürze eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 Azure Scheduler-Aufträge müssen möglicherweise Dienste aufrufen, die eine Authentifizierung verlangen, z.B. andere Azure-Dienste, Salesforce.com, Facebook und sichere benutzerdefinierte Websites. Der aufgerufene Dienst kann festlegen, ob dem Scheduler-Auftrag Zugriff auf die angeforderten Ressourcen gewährt werden soll. 
 

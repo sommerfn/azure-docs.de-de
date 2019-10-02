@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876759"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300718"
 ---
 # <a name="remote-desktop-client-connections"></a>Remotedesktop-Clientverbindungen
 
@@ -152,6 +152,11 @@ Befolgen Sie für Fehlercodes zu Clientverbindungen diese allgemeinen Problembeh
 **Ursache:** Die VMs, mit denen der Benutzer eine Verbindung herstellen möchte, sind nicht in eine Domäne eingebunden.
 
 **Behebung:** Verbinden Sie alle VMs, die Teil eines Hostpools sind, mit dem Domänencontroller.
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Fehler ConnectionFailedUserSIDInformationMismatch
+**Ursache:** Die SID aus dem Azure Active Directory-Token (AD) des Benutzers stimmt nicht mit der SID überein, die beim Aktivieren des Benutzers für die Remoteanmeldung vom Domänencontroller zurückgegeben wurde. Dieser Fehler tritt normalerweise auf, wenn versucht wird, sich bei einer Azure Active Directory Domain Services-Umgebung (Azure AD DS) mit einem Benutzer anzumelden, der ursprünglich aus einer Windows Server-AD-Umgebung stammt.
+
+**Behebung:** Dieses Szenario wird derzeit nicht unterstützt. Nur Benutzer aus Azure Active Directory können sich bei Windows Virtual Desktop-VMs anmelden, die mit Azure AD DS verbunden sind.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Der Benutzer stellt eine Verbindung her, aber es wird nichts angezeigt (kein Feed).
 

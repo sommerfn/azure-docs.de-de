@@ -1,5 +1,5 @@
 ---
-title: Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation
+title: Überwachen eines Azure Storage-Kontos im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844918"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211856"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
-[Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen.
+[Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen. 
+
+Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschauversion) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
 
 > [!NOTE]
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).

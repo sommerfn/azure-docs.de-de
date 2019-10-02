@@ -10,17 +10,17 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531824"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300966"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Erstellen erweiterter Zeitpläne und Serien für Aufträge in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 In einem [Azure Scheduler](../scheduler/scheduler-intro.md)-Auftrag bestimmt der Zeitplan, wann und wie der Scheduler-Dienst den Auftrag ausführt. Mit Scheduler können Sie mehrere einmalige Zeitpläne und Zeitplanserien für einen Auftrag einrichten. Einmalige Zeitpläne werden nur einmal zu einem festgelegten Zeitpunkt ausgeführt und sind im Grunde Zeitplanserien, die nur einmal ausgeführt werden. Zeitplanserien werden mit einer festgelegten Häufigkeit ausgeführt. Aufgrund dieser Flexibilität kann Scheduler für eine Vielzahl von Geschäftsszenarien verwendet werden, beispielsweise:
 
@@ -140,9 +140,9 @@ Angenommen, Sie verwenden dieses Beispiel mit den folgenden Bedingungen: eine St
    
 1. Die Ausführungen erfolgen dann in der folgenden Reihenfolge: 
    
-   1. 11\.04.2015 um 14:00 Uhr
-   1. 13\.04.2015 um 14:00 Uhr 
-   1. 15\.04.2015 um 14:00 Uhr
+   1. 11.04.2015 um 14:00 Uhr
+   1. 13.04.2015 um 14:00 Uhr 
+   1. 15.04.2015 um 14:00 Uhr
    1. Und so weiter.
 
 1. Wenn für einen Auftrag ein Zeitplan, aber keine Stunden- und Minutenangaben festgelegt sind, werden als Werte standardmäßig die Stunden und Minuten der ersten Ausführung verwendet.

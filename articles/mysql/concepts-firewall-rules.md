@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 0802185b7fb0d1a6d7d41cd1fa5a30f5ce10424b
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 09/22/2019
+ms.openlocfilehash: e84dfb35a435e32cd14b244b29044d700c79d14d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443906"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203587"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für MySQL-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -46,7 +46,7 @@ Um Anwendungen von Azure die Verbindung mit dem Azure Database for MySQL-Server 
 ## <a name="programmatically-managing-firewall-rules"></a>Programmgesteuertes Verwalten von Firewallregeln
 Außer im Azure-Portal können Firewallregeln programmgesteuert mithilfe der Azure CLI verwaltet werden. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für MySQL mithilfe der Azure CLI](./howto-manage-firewall-using-cli.md).
 
-## <a name="troubleshooting-the-database-firewall"></a>Problembehandlung der Datenbankfirewall
+## <a name="troubleshooting-firewall-issues"></a>Beheben von Firewallproblemen
 Wenn der Zugriff auf den Microsoft Azure Database for MySQL-Serverdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
 * **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für den Azure Database for MySQL-Server werden möglicherweise erst nach fünf Minuten wirksam.
@@ -55,9 +55,11 @@ Wenn der Zugriff auf den Microsoft Azure Database for MySQL-Serverdienst nicht d
 
 * **Dynamische IP-Adresse**: Wenn Sie über eine Internetverbindung mit dynamischer IP-Adresszuweisung verfügen und Probleme beim Passieren der Firewall auftreten, können Sie eine der folgenden Lösungen ausprobieren:
 
-* Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, mit denen auf den Azure-Datenbank für MySQL-Server zugegriffen wird, und fügen Sie dann den IP-Adressbereich als Firewallregel hinzu.
+   * Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, mit denen auf den Azure-Datenbank für MySQL-Server zugegriffen wird, und fügen Sie dann den IP-Adressbereich als Firewallregel hinzu.
 
-* Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
+   * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
+
+* **Die IP-Adresse des Servers scheint öffentlich zu sein:** Verbindungen mit dem Azure Database for MySQL-Server werden über ein öffentlich zugängliches Azure-Gateway weitergeleitet. Die tatsächliche Server-IP-Adresse wird jedoch durch die Firewall geschützt. Weitere Informationen finden Sie im [Artikel zur Verbindungsarchitektur](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

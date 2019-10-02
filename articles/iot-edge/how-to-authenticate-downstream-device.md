@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie nachgeschaltete Geräten oder Blattgeräte be
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003626"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266140"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -32,7 +32,7 @@ Die Schritte in diesem Artikel veranschaulichen die manuelle Gerätebereitstellu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) aus.
+Führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) aus. Wenn Sie die X.509-Authentifizierung für Ihr nachgeschaltetes Gerät verwenden, müssen Sie dasselbe Skript für die Skripterstellung verwenden, das Sie im Artikel zum transparenten Gateway eingerichtet haben. 
 
 Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird im **hostname**-Parameter der Datei „config.yaml“ auf dem IoT Edge-Gatewaygerät deklariert. Er wird verwendet, um die Zertifikate in diesem Artikel zu erstellen. Außerdem wird in der Verbindungszeichenfolge der nachgeschalteten Geräten darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei.
 

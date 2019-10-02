@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877239"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266082"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installieren der Azure IoT Edge-Runtime unter Windows
 
@@ -41,6 +41,14 @@ Informationen zur aktuellen Version von IoT Edge finden Sie auf der Website für
 ### <a name="supported-windows-versions"></a>Unterstützte Windows-Versionen
 
 Für Entwicklungs- und Testszenarien kann Azure IoT Edge mit Windows-Containern unter jeder Version von Windows 10 oder Windows Server 2019 (Build 17763) installiert werden, die das Containerfeature unterstützt. Weitere Informationen darüber, welche Betriebssysteme derzeit für Produktionsszenarien unterstützt werden, finden Sie unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems). 
+
+IoT Core-Geräte müssen das optionale Feature „IoT Core-Windows-Container“ enthalten, um die IoT Edge-Runtime zu unterstützen. Verwenden Sie den folgenden Befehl in einer [PowerShell-Remotesitzung](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell), um zu überprüfen, ob Windows-Container auf Ihrem Gerät unterstützt werden: 
+
+```powershell
+Get-Service vmcompute
+```
+
+Wenn der Dienst vorhanden ist, sollten Sie eine erfolgreiche Antwort mit dem Dienststatus erhalten, der als **running** aufgeführt wird. Wenn der vmcompute-Dienst nicht gefunden wird, erfüllt Ihr Gerät nicht die Anforderungen für IoT Edge. Wenden Sie sich an Ihren Hardwareanbieter, um Unterstützung für dieses Feature zu erbitten. 
 
 ### <a name="prepare-for-a-container-engine"></a>Vorbereitungen für eine Container-Engine 
 

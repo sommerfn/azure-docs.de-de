@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178486"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148417"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -38,6 +38,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Größe einer Nachricht von der Cloud an das Gerät |64 KB |
 | Maximale Gültigkeitsdauer von Nachrichten von der Cloud an das Gerät |2 Tage |
 | Maximale Übermittlungsanzahl von Nachrichten von der <br/> Cloud an das Gerät |100 |
+| Maximale Warteschlangentiefe von der Cloud an das Gerät pro Gerät |50 |
 | Maximale Übermittlungsanzahl von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
 | [Maximale Größe des Gerätezwillings](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |

@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten aus Azure Data Factory in Azure Data Explorer
-description: In diesem Thema wird erläutert, wie Sie Daten mithilfe des Azure Data Factory-Kopiertools in Azure Data Explorer laden (erfassen).
+description: In diesem Artikel wird erläutert, wie Sie Daten mithilfe des Azure Data Factory-Kopiertools in Azure Data Explorer erfassen (laden).
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,186 +8,238 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803987"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300598"
 ---
-# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory 
+# <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory 
 
-Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die aus vielfältigen Quellen wie Anwendungen, Websites und IoT-Geräten gestreamt werden. Erkunden Sie Daten interaktiv, und ermitteln Sie Muster und Anomalien, um Produkte zu optimieren, das Kundenerlebnis zu verbessern, Geräte zu überwachen und den Betrieb auszuweiten. Erkunden Sie neue Fragen, und erhalten Sie Antworten in Minuten. Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst. Mithilfe dieses Diensts können Sie Ihre Azure Data Explorer-Datenbank mit Daten aus dem vorhandenen System füllen und beim Erstellen von Analyselösungen Zeit sparen.
+Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst. Er bietet Echtzeitanalysen großer Datenmengen, die aus vielfältigen Quellen wie Anwendungen, Websites und IoT-Geräten gestreamt werden. Mit Azure Data Explorer können Sie Daten interaktiv erkunden und Muster und Anomalien ermitteln, um Produkte zu verbessern, die Benutzerfreundlichkeit zu optimieren, Geräte zu überwachen und Vorgänge zu beschleunigen. Sie können neue Fragen überprüfen und Antworten in wenigen Minuten erhalten. 
 
-Azure Data Factory bietet die folgenden Vorteile beim Laden von Daten in Azure Data Explorer:
+Azure Data Factory ist ein vollständig verwalteter und cloudbasierter Datenintegrationsdienst. Mit diesem Dienst können Sie Ihre Azure Data Explorer-Datenbank mit Daten aus Ihrem vorhandenen System füllen. Dadurch können Sie beim Erstellen von Analyselösungen Zeit sparen.
 
-* **Mühelose Einrichtung**: Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
+Wenn Sie Daten in Azure Data Explorer laden, bietet Data Factory die folgenden Vorteile:
+
+* **Mühelose Einrichtung:** Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
 * **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher. Eine ausführliche Liste finden Sie in der Tabelle [Unterstützte Datenspeicher](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats).
-* **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen. Globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
-* **Hohe Leistung**: Bis zu 1GB/s Datenladegeschwindigkeit in Azure Data Explorer. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](/azure/data-factory/copy-activity-performance).
+* **Sicher und kompatibel**: Daten werden über HTTPS oder Azure ExpressRoute übertragen. Globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
+* **Hohe Leistung**: Datenladegeschwindigkeit von bis zu 1 Gigabyte pro Sekunde (GBit/s) in Azure Data Explorer. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](/azure/data-factory/copy-activity-performance).
 
-In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data Factory zum Laden von Daten aus Amazon S3 in Azure Data Explorer verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Datenspeichern wie [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage), [Azure SQL-Datenbank](/azure/data-factory/connector-azure-sql-database), [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse), [Google BigQuery](/azure/data-factory/connector-google-bigquery),[Oracle](/azure/data-factory/connector-oracle) und [Dateisystem](/azure/data-factory/connector-file-system) ausführen.
+In diesem Artikel verwenden Sie das Data Factory-Tool „Daten kopieren“, um von Daten aus Amazon Simple Storage Service (S3) in Azure Data Explorer zu laden. Ähnliche Schritte können Sie zum Kopieren von Daten aus anderen Datenspeichern ausführen, z. B.:
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
+* [Azure SQL-Datenbank](/azure/data-factory/connector-azure-sql-database)
+* [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)
+* [Google BigQuery](/azure/data-factory/connector-google-bigquery)
+* [Oracle](/azure/data-factory/connector-oracle)
+* [Dateisystem](/azure/data-factory/connector-file-system)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* [Azure Data Explorer-Cluster und Datenbank](create-cluster-database-portal.md)
-* Datenquelle.
+* [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md).
+* Eine Datenquelle
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Klicken Sie auf die Schaltfläche **Ressource erstellen** (+) oben links im Portal > **Analytics** > **Data Factory**.
+1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com) an.
 
-   ![Erstellen einer neuen Data Factory](media/data-factory-load-data/create-adf.png)
+1. Wählen Sie im linken Bereich die Optionen **Ressource erstellen** > **Analysen** > **Data Factory** aus.
 
-1. Geben Sie auf der Seite **Neue Data Factory** Werte für die folgenden Felder an, und wählen Sie anschließend **Erstellen** aus.
+   ![Erstellen einer Data Factory im Azure-Portal](media/data-factory-load-data/create-adf.png)
 
-    ![Seite „Neue Data Factory“](media/data-factory-load-data/my-new-data-factory.png)
+1. Geben Sie im Bereich **Neue Data Factory** die Werte für die Felder in der folgenden Tabelle an:
 
-    **Einstellung**  | **Feldbeschreibung**
-    |---|---|
-    | **Name** | Geben Sie einen global eindeutigen Namen für die Data Factory ein. Wenn die Fehlermeldung *„Data Factory mit dem Namen \"LoadADXDemo\" ist nicht verfügbar* angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](/azure/data-factory/naming-rules).|
-    | **Abonnement** | Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. |
-    | **Ressourcengruppe** | Wählen Sie **Neu erstellen**, und geben Sie den Namen einer neuen Ressourcengruppe ein. Wählen Sie **Vorhandene verwenden** aus, wenn Sie über eine vorhandene Ressourcengruppe verfügen. |
-    | **Version** | Wählen Sie **V2** aus. |
-    | **Location** | Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. |
-    | | |
+   ![Bereich „Neue Data Factory“](media/data-factory-load-data/my-new-data-factory.png)  
 
-1. Wählen Sie auf der Symbolleiste die Option „Benachrichtigungen“ aus, um den Erstellungsvorgang zu überwachen. Navigieren Sie nach Abschluss der Erstellung zu Ihrer Data Factory. Die Startseite der **Data Factory** wird geöffnet.
+   | Einstellung  | Einzugebender Wert  |
+   |---|---|
+   | **Name** | Geben Sie in diesem Feld einen global eindeutigen Namen für die Data Factory ein. Wenn die Fehlermeldung *Die Data Factory mit dem Namen \"LoadADXDemo\" ist nicht verfügbar* angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Regeln zum Benennen von Data Factory-Artefakten finden Sie unter [Azure Data Factory – Benennungsregeln](/azure/data-factory/naming-rules).|
+   | **Abonnement** | Wählen Sie in der Dropdownliste das Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. |
+   | **Ressourcengruppe** | Wählen Sie **Neu erstellen** aus, und geben Sie dann den Namen einer neuen Ressourcengruppe ein. Wenn Sie bereits über eine Ressourcengruppe verfügen, wählen Sie **Vorhandene verwenden** aus. |
+   | **Version** | Wählen Sie in der Dropdownliste die Option **V2** aus. |  
+   | **Location** | Wählen Sie in der Dropdownliste den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die in der Data Factory verwendeten Datenspeicher können an anderen Standorten oder in anderen Regionen vorhanden sein. |
 
-   ![Data Factory-Startseite](media/data-factory-load-data/data-factory-home-page.png)
+1. Klicken Sie auf **Erstellen**.
 
-1. Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Anwendung auf einer separaten Registerkarte zu starten.
+1. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** aus, um den Erstellungsvorgang zu überwachen. Nachdem Sie die Data Factory erstellt haben, wählen Sie sie aus.
+   
+   Der Bereich **Data Factory** wird geöffnet.
+
+   ![Bereich „Data Factory“](media/data-factory-load-data/data-factory-home-page.png)
+
+1. Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Anwendung in einem separaten Bereich zu öffnen.
 
 ## <a name="load-data-into-azure-data-explorer"></a>Laden von Daten in Azure Data Explorer
 
-Daten können aus vielen Typen von [Datenspeichern](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) in Azure Data Explorer geladen werden. In diesem Thema wird das Laden von Daten aus Amazon S3 erläutert.
+Sie können Daten aus verschiedenen Typen von [Datenspeichern](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) in Azure Data Explorer laden. In diesem Artikel wird erläutert, wie Daten aus Amazon S3 geladen werden.
 
-Es gibt zwei Möglichkeiten, Daten mithilfe von Azure Data Factory in Azure Data Explorer zu laden:
+Sie können die Daten mit einer der folgenden Methoden laden:
 
-* Azure Data Factory-Benutzeroberfläche – [Registerkarte **Autor**](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-* [Azure Data Factory-Tool **Daten kopieren**](/azure/data-factory/quickstart-create-data-factory-copy-data-tool), das in diesem Artikel verwendet wird.
+* Wählen Sie in der Azure Data Factory-Benutzeroberfläche im linken Bereich das Symbol **Autor** aus, wie im Abschnitt „Erstellen einer Data Factory“ unter [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory) erläutert.
+* Im Azure Data Factory-Tool „Daten kopieren“, wie unter [Kopieren von Daten mithilfe des Tools zum Kopieren von Daten](/azure/data-factory/quickstart-create-data-factory-copy-data-tool) erläutert.
 
-### <a name="copy-data-from-amazon-s3-source"></a>Kopieren von Daten aus Amazon S3 (Quelle)
+### <a name="copy-data-from-amazon-s3-source"></a>Kopieren von Daten aus Amazon S3 (Quelle)
 
-1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
+1. Öffnen Sie im Bereich **Erste Schritte** das Tool zum Kopieren von Daten durch Auswählen von **Daten kopieren**.
 
-   ![Kachel für das Tool zum Kopieren von Daten](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![Schaltfläche des Tools „Daten kopieren“](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** einen Namen ein, und klicken Sie dann auf **Weiter**.
+1. Geben Sie im Bereich **Eigenschaften** im Feld **Aufgabenname** einen Namen ein, und wählen Sie dann **Weiter** aus.
 
-    ![Kopieren aus Quelleigenschaften](media/data-factory-load-data/copy-from-source.png)
+    ![Bereich „Eigenschaften“ von „Daten kopieren“](media/data-factory-load-data/copy-from-source.png)
 
-1. Klicken Sie auf der Seite **Quelldatenspeicher** auf **+ Neue Verbindung erstellen**.
+1. Wählen Sie im Bereich **Quelldatenspeicher** die Option **Neue Verbindung erstellen** aus.
 
-    ![Quelldaten – Verbindung erstellen](media/data-factory-load-data/source-create-connection.png)
+    ![Bereich „Quelldatenspeicher“ von „Daten kopieren“](media/data-factory-load-data/source-create-connection.png)
 
 1. Wählen Sie **Amazon S3** und anschließend **Weiter** aus.
 
-    ![Neuer verknüpfter Dienst](media/data-factory-load-data/amazons3-select-new-linked-service.png)
+    ![Bereich „Neuer verknüpfter Dienst“](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. Führen Sie auf der Seite **Neuer verknüpfter Dienst (Amazon S3)** die folgenden Schritte aus:
+1. Gehen Sie im Bereich **Neuer verknüpfter Dienst (Amazon S3)** wie folgt vor:
 
     ![Mit Amazon S3 verknüpften Dienst angeben](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    * Geben Sie im Feld **Name** den Namen des neuen verknüpften Dienstes an.
-    * Wählen Sie im Dropdown den Wert **Connect via integration runtime** (Über Integration Runtime verbinden) aus.
-    * Geben Sie den Wert für die **Zugriffsschlüssel-ID** an.
-    * Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
-    * Wählen Sie **Verbindung testen** aus, um die erstellte Verbindung mit dem verknüpften Dienst zu testen.
-    * Wählen Sie **Fertig stellen** aus.
+    a. Geben Sie im Feld **Name** den Namen des neuen verknüpften Diensts ein.
 
-1. Auf der Seite **Quelldatenspeicher** wird die neue Verbindung mit AmazonS31 angezeigt. Klicken Sie auf **Weiter**.
+    b. Wählen Sie in der Dropdownliste **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) den entsprechenden Wert aus.
+
+    c. Geben Sie im Feld **Zugriffsschlüssel-ID** den entsprechenden Wert ein.
+    
+    > [!NOTE]
+    > Wählen Sie in Amazon S3 zum Suchen Ihres Zugriffsschlüssels Ihren Amazon-Benutzernamen auf der Navigationsleiste aus, und navigieren Sie dann zu **My Security Credentials** (Meine Sicherheitsanmeldeinformationen).
+    
+    d. Geben Sie im Feld **Secret Access Key** (Geheimer Zugriffsschlüssel) einen Wert ein.
+
+    e. Wählen Sie **Verbindung testen** aus, um die erstellte Verbindung mit dem verknüpften Dienst zu testen.
+
+    f. Wählen Sie **Fertig stellen** aus.
+    
+      Im Bereich **Quelldatenspeicher** wird die neue Verbindung „AmazonS31“ angezeigt. 
+
+1. Klicken Sie auf **Weiter**.
 
    ![Erstellte Verbindung mit Quelldatenspeicher](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. Auf der Seite für **Eingabedatei oder -ordner auswählen**:
+1. Führen Sie im Bereich **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) die folgenden Schritte aus:
 
-    1. Navigieren Sie zum Ordner bzw. zur Datei, der bzw. die kopiert werden soll. Wählen Sie den Ordner bzw. die Datei aus.
-    1. Wählen Sie das Kopierverhalten entsprechend den jeweiligen Anforderungen aus. Lassen Sie die Option **Binary copy** (Binärkopie) deaktiviert.
-    1. Klicken Sie auf **Weiter**.
+    a. Navigieren Sie zu der Datei oder dem Ordner, die bzw. den Sie kopieren möchten, und wählen Sie sie bzw. ihn aus.
+
+    b. Wählen Sie das gewünschte Kopierverhalten aus. Stellen Sie sicher, dass das Kontrollkästchen **Binary Copy** (Binärkopie) deaktiviert ist.
+
+    c. Klicken Sie auf **Weiter**.
 
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](media/data-factory-load-data/source-choose-input-file.png)
 
-1. Wählen Sie auf der Seite **file formats settings** (Einstellungen für Dateiformate) die relevanten Einstellungen für die Datei aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie im Bereich **File format settings** (Einstellungen für Dateiformate) die relevanten Einstellungen für die Datei aus, und wählen Sie dann **Weiter** aus.
 
-   ![Auswählen der Eingabedatei bzw. des Eingabeordners](media/data-factory-load-data/source-file-format-settings.png)
+   ![Bereich „File format settings“ (Dateiformateinstellungen)](media/data-factory-load-data/source-file-format-settings.png)
 
 ### <a name="copy-data-into-azure-data-explorer-destination"></a>Kopieren von Daten in Azure Data Explorer (Ziel)
 
-Der neue verknüpfte Azure Data Explorer-Dienst wird erstellt, um die Daten in die unten angegebene Azure Data Explorer-Zieltabelle (Senke) zu kopieren.
+Der neue verknüpfte Azure Data Explorer-Dienst wird erstellt, um die Daten in die in diesem Abschnitt angegebene Azure Data Explorer-Zieltabelle (Senke) zu kopieren.
 
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Erstellen des verknüpften Azure Data Explorer-Diensts
 
-1. Auf der Seite **Zieldatenspeicher** können Sie eine vorhandene Datenspeicherverbindung übernehmen oder einen neuen Datenspeicher angeben, indem Sie auf **+ Neue Verbindung erstellen** klicken.
+Gehen Sie zum Erstellen des verknüpften Azure Data Explorer-Diensts wie folgt vor:
 
-    ![Seite „Zieldatenspeicher“](media/data-factory-load-data/destination-create-connection.png)
+1. Zum Verwenden einer vorhandenen Datenspeicherverbindung oder Angeben eines neuen Datenspeichers wählen Sie im Bereich **Zieldatenspeicher** die Option **Neue Verbindung erstellen** aus.
 
-1. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** die Option **Azure Data Explorer** aus, und klicken Sie dann auf **Weiter**.
+    ![Bereich „Zieldatenspeicher“](media/data-factory-load-data/destination-create-connection.png)
 
-    ![„Azure Data Explorer – Neuer verknüpfter Dienst“ auswählen](media/data-factory-load-data/adx-select-new-linked-service.png)
+1. Wählen Sie im Bereich **Neuer verknüpfter Dienst** die Option **Azure Data Explorer** und dann **Weiter** aus.
 
-1. Führen Sie auf der Seite **Neuer verknüpfter Dienst (Azure Data Explorer)** die folgenden Schritte aus:
+    ![Bereich „Neuer verknüpfter Dienst“](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-    ![ADX – Neuer verknüpfter Dienst](media/data-factory-load-data/adx-new-linked-service.png)
+1. Führen Sie im Bereich **Neuer verknüpfter Dienst (Azure Data Explorer)** die folgenden Schritte aus:
 
-   * Wählen Sie den **Namen** für den neuen verknüpften Azure Data Explorer-Dienst aus.
-   * In **Account selection method** (Auswahlmethode für Konten): 
-        * Klicken Sie auf das Optionsfeld **From Azure subscription** (Aus Azure-Abonnement), und wählen Sie das Konto für Ihr **Azure-Abonnement** aus. Wählen Sie anschließend Ihren **Cluster** aus. In der Dropdownliste werden nur Cluster aufgeführt, die dem Benutzer gehören.
-        * Sie können auch auf das Optionsfeld **Manuell eingeben** klicken und Ihren **Endpunkt** eingeben.
-    * Geben Sie den **Mandanten** an.
-    * Geben Sie die **Dienstprinzipal-ID** ein.
-    * Klicken Sie auf die Schaltfläche **Dienstprinzipalschlüssel**, und geben Sie den **Dienstprinzipalschlüssel** ein.
-    * Wählen Sie Ihre **Datenbank** im Dropdownmenü aus. Sie können auch das Kontrollkästchen **Bearbeiten** aktivieren und den Namen Ihrer Datenbank eingeben.
-    * Wählen Sie **Verbindung testen** aus, um die erstellte Verbindung mit dem verknüpften Dienst zu testen. Wenn Sie eine Verbindung mit Ihrem Setup herstellen können, wird ein grünes Häkchen (**Verbindung erfolgreich**) angezeigt.
-    * Wählen Sie **Fertig stellen** aus, um die Erstellung des verknüpften Diensts abzuschließen.
+    ![Azure Data Explorer – Bereich „Neuer verknüpfter Dienst“](media/data-factory-load-data/adx-new-linked-service.png)
+
+   a. Geben Sie im Feld **Name** einen Namen für den verknüpften Azure Data Explorer-Dienst ein.
+
+   b. Führen Sie unter **Account selection method** (Auswahlmethode für Konten) einen der folgenden Schritte aus: 
+
+    * Wählen Sie **From Azure subscription** (Aus Azure-Abonnement) und dann in den jeweiligen Dropdownlisten Ihr **Azure-Abonnement** und Ihren **Cluster** aus. 
+
+        > [!NOTE]
+        > In der Dropdownliste **Cluster** sind nur Cluster aufgeführt, die Ihrem Abonnement zugeordnet sind.
+
+    * Wählen Sie **Manuell eingeben** aus, und geben Sie dann den **Endpunkt** ein.
+
+   c. Geben Sie im Feld **Mandant** den Namen des Mandanten ein.
+
+   d. Geben Sie im Feld **Dienstprinzipal-ID** die Dienstprinzipal-ID ein.
+
+   e. Wählen Sie **Dienstprinzipalschlüssel** aus, und geben Sie dann im Feld **Dienstprinzipalschlüssel** den Wert für den Schlüssel ein.
+
+   f. Wählen Sie in der Dropdownliste **Datenbank** den Namen der Datenbank aus. Alternativ können Sie das Kontrollkästchen **Bearbeiten** aktivieren und dann den Namen der Datenbank eingeben.
+
+   g. Wählen Sie **Verbindung testen** aus, um die erstellte Verbindung mit dem verknüpften Dienst zu testen. Wenn Sie eine Verbindung mit dem verknüpften Dienst herstellen können, wird im Bereich ein grünes Häkchensymbol und die Meldung **Verbindung erfolgreich** angezeigt.
+
+   h. Wählen Sie **Fertig stellen** aus, um die Erstellung des verknüpften Diensts abzuschließen.
 
     > [!NOTE]
-    > Der Dienstprinzipal wird von Azure Data Factory für den Zugriff auf den Azure Data Explorer-Dienst verwendet. [Erstellen Sie einen Azure Active Directory (Azure AD)-Dienstprinzipal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal) als Dienstprinzipal. Verwenden Sie nicht die **Azure Key Vault**-Methode.
+    > Der Dienstprinzipal wird von Azure Data Factory für den Zugriff auf den Azure Data Explorer-Dienst verwendet. Informationen zum Erstellen eines Dienstprinzipals finden Sie unter [Erstellen eines Azure Active Directory-Dienstprinzipals (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Verwenden Sie nicht die Azure Key Vault-Methode.
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>Konfigurieren der Azure Data Explorer-Datenverbindung
 
-1. Der **Zieldatenspeicher** wird geöffnet. Die erstellte Azure Data Explorer-Datenverbindung kann nun verwendet werden. Wählen Sie **Weiter** aus, um die Verbindung zu konfigurieren.
+Nach dem Erstellen der Verbindung für den verknüpften Dienst wird der Bereich **Zieldatenspeicher** geöffnet, und die erstellte Verbindung ist zur Verwendung verfügbar. Gehen Sie wie folgt vor, um die Verbindung zu konfigurieren:
 
-    ![ASX – Zieldatenspeicher](media/data-factory-load-data/destination-data-store.png)
+1. Klicken Sie auf **Weiter**.
 
-1. Legen Sie unter **Tabellenmapping** den Namen der Zieltabelle fest, und wählen Sie **Weiter** aus.
+    ![Azure Data Explorer – Bereich „Zieldatenspeicher“](media/data-factory-load-data/destination-data-store.png)
 
-    ![Ziel-Dataset – Tabellenmapping](media/data-factory-load-data/destination-dataset-table-mapping.png)
+1. Legen Sie im Bereich **Tabellenmapping** den Namen der Zieltabelle fest, und wählen Sie **Weiter** aus.
 
-1. Auf der Seite **Column mapping** (Spaltenzuordnung):
-    * Die erste Zuordnung wird von ADF entsprechend der [ADF-Schemazuordnung](/azure/data-factory/copy-activity-schema-and-type-mapping) durchgeführt.
-        * Legen Sie die **Column mappings** (Spaltenzuordnungen) für die Azure Data Factory-Zieltabelle fest. Die Standardzuordnung von der Quelle zur ADF-Zieltabelle wird angezeigt.
-        * Deaktivieren Sie die Spalten, die Sie beim Definieren der Spaltenzuordnungen nicht benötigen.
-    * Die zweite Zuordnung erfolgt, wenn diese tabellarischen Daten in Azure Data Explorer erfasst werden. Die Zuordnung erfolgt gemäß den [CSV-Zuordnungsregeln](/azure/kusto/management/mappings#csv-mapping). Beachten Sie Folgendes: Selbst wenn die Datenquelle nicht im CSV-Format vorlag, hat ADF die Daten in ein tabellarisches Format umgewandelt. Daher ist die CSV-Zuordnung an diesem Punkt die einzige relevante Zuordnung.
-        * Fügen Sie unter **Azure Data Explorer (Kusto) sink properties** (Azure Data Explorer (Kusto)-Senkeneigenschaften) den relevanten **Ingestion mapping name** (Name der Erfassungszuordnung) (optional) hinzu, sodass die Spaltenzuordnung verwendet werden kann.
-        * Wenn kein Wert für **Ingestion mapping name** (Name der Erfassungszuordnung) angegeben wird, wird die Zuordnungsreihenfolge „nach Name“ angewendet, die im Abschnitt **Column mappings** (Spaltenzuordnungen) definiert wurde. Wenn die Zuordnung „nach Name“ fehlschlägt, versucht Azure Data Explorer, die Daten mittels Zuordnung „nach Spaltenposition“ zu erfassen (standardmäßig werden Zuordnungen nach Position vorgenommen).
-    * Wählen Sie **Weiter** aus.
+    ![Zieldataset – Bereich „Tabellenmapping“](media/data-factory-load-data/destination-dataset-table-mapping.png)
 
-    ![Ziel-Dataset – Tabellenmapping](media/data-factory-load-data/destination-dataset-column-mapping.png)
+1. Im Bereich **Spaltenzuordnung** werden die folgenden Zuordnungen durchgeführt:
 
-1. Auf der Seite **Einstellungen** :
-    * Legen Sie die relevanten **fault tolerance settings** (Fehlertoleranzeinstellungen) fest.
-    * **Leistungseinstellungen**: „Enable Staging“ (Staging aktivieren) ist nicht anwendbar. Unter **Erweiterte Einstellungen** werden Kostenaspekte berücksichtigt. Sofern keine besonderen Anforderungen vorliegen, lassen Sie die Einstellungen unverändert.
+    a. Die erste Zuordnung erfolgt in Azure Data Factory entsprechend der [Azure Data Factory-Schemazuordnung](/azure/data-factory/copy-activity-schema-and-type-mapping). Gehen Sie wie folgt vor:
+
+    * Legen Sie die **Column mappings** (Spaltenzuordnungen) für die Azure Data Factory-Zieltabelle fest. Die Standardzuordnung von der Quelle zur Azure Data Factory-Zieltabelle wird angezeigt.
+
+    * Heben Sie die Auswahl der Spalten auf, die Sie zum Definieren der Spaltenzuordnung nicht benötigen.
+
+    b. Die zweite Zuordnung erfolgt, wenn diese tabellarischen Daten in Azure Data Explorer erfasst werden. Die Zuordnung erfolgt gemäß den [CSV-Zuordnungsregeln](/azure/kusto/management/mappings#csv-mapping). Selbst wenn die Quelldaten nicht im CSV-Format vorliegen, werden sie in Azure Data Factory in ein Tabellenformat umgewandelt. Daher ist die CSV-Zuordnung in dieser Phase die einzige relevante Zuordnung. Gehen Sie wie folgt vor:
+
+    * (Optional:) Fügen Sie unter **Azure Data Explorer (Kusto) sink properties** (Azure Data Explorer-Senkeneigenschaften (Kusto)) den relevanten **Ingestion mapping name** (Name der Erfassungszuordnung) hinzu, sodass die Spaltenzuordnung verwendet werden kann.
+
+    * Wenn kein Wert für **Ingestion mapping name** (Name der Erfassungszuordnung) angegeben wird, wird die Zuordnungsreihenfolge *nach Name* angewandt, die im Abschnitt **Spaltenzuordnungen** definiert wurde. Wenn bei der Zuordnung *nach Name* Fehler auftreten, versucht Azure Data Explorer, die Daten mittels Zuordnung *nach Spaltenposition* zu erfassen (d. h., standardmäßig werden Zuordnungen nach Position vorgenommen).
+
     * Klicken Sie auf **Weiter**.
 
-    ![Einstellungen für „Daten kopieren“](media/data-factory-load-data/copy-data-settings.png)
+    ![Zieldataset – Bereich „Spaltenzuordnung“](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. Überprüfen Sie unter **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**.
+1. Gehen Sie im Bereich **Einstellungen** folgendermaßen vor:
 
-    ![Zusammenfassung für „Daten kopieren“](media/data-factory-load-data/copy-data-summary.png)
+    a. Geben Sie unter **Fault tolerance settings** (Fehlertoleranzeinstellungen) die relevanten Einstellungen ein.
 
-1. Auf der Seite **Bereitstellung**:
-    * Wählen Sie **Überwachung** aus, um zur Registerkarte **Überwachung** zu wechseln und den Status der Pipeline (Fortschritt, Fehler und Datenfluss) zu überwachen.
-    * Wählen Sie **Edit Pipeline** (Pipeline bearbeiten) aus, um verknüpfte Dienste, Datasets und Pipelines zu bearbeiten.
-    * Wählen Sie **Fertig stellen** aus, um die Aufgabe „Daten kopieren“ abzuschließen.
+    b. Unter **Leistungseinstellungen** ist **Enable staging** (Staging aktivieren) nicht anwendbar, und **Erweiterte Einstellungen** schließt Kostenberücksichtigungen ein. Sofern keine spezifischen Anforderungen vorliegen, lassen Sie die Einstellungen unverändert.
 
-    ![Bereitstellungsseite](media/data-factory-load-data/deployment.png)
+    c. Klicken Sie auf **Weiter**.
+
+    ![Daten kopieren – Bereich „Einstellungen“](media/data-factory-load-data/copy-data-settings.png)
+
+1. Überprüfen Sie im Bereich **Zusammenfassung** die Einstellungen, und wählen Sie anschließend **Weiter** aus.
+
+    ![Daten kopieren – Bereich „Zusammenfassung“](media/data-factory-load-data/copy-data-summary.png)
+
+1. Führen Sie im Bereich **Deployment complete** (Bereitstellung abgeschlossen) die folgenden Schritte aus:
+
+    a. Wählen Sie **Überwachung** aus, um zur Registerkarte **Überwachung** zu wechseln und den Status der Pipeline (Fortschritt, Fehler und Datenfluss) zu überwachen.
+
+    b. Wählen Sie **Pipeline bearbeiten** aus, um verknüpfte Dienste, Datasets und Pipelines zu bearbeiten.
+
+    c. Wählen Sie **Fertig stellen** aus, um die Aufgabe „Daten kopieren“ abzuschließen.
+
+    ![Bereich „Deployment complete“ (Bereitstellung abgeschlossen)](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über den [Azure Data Explorer-Connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-
 * Informieren Sie sich über das Bearbeiten von verknüpften Diensten, Datasets und Pipelines in der [Data Factory-Benutzeroberfläche](/azure/data-factory/quickstart-create-data-factory-portal).
-
 * Erfahren Sie mehr über [Azure Data Explorer-Abfragen](/azure/data-explorer/web-query-data) zum Abfragen von Daten.

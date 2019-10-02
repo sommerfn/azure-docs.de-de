@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 3c4c70aeed833e25eb75a9eaa385e2299c2a4b7e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984854"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300760"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -178,7 +178,7 @@ Um einen Schlüssel zum Ver- oder Entschlüsseln von ruhenden Daten abzurufen, m
 - Der Kunde trägt die volle Verantwortung für die Lebensdauerverwaltung des Schlüssels
 - Zusätzlicher Aufwand für die Einrichtung und die Konfiguration
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Serverseitige Verschlüsselung mit vom Dienst verwalteten Schlüsseln auf kundengesteuerter Hardware
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln auf kundengesteuerter Hardware
 
 Einige Azure-Dienste ermöglichen das Schlüsselverwaltungsmodell HYOK (Host Your Own Key, Eigenen Schlüssel hosten). Dieser Verwaltungsmodus ist in Szenarien nützlich, in denen es notwendig ist, die ruhenden Daten zu verschlüsseln und die Schlüssel in einem geschützten Repository außerhalb der Kontrolle von Microsoft zu verwalten. In diesem Modell muss der Dienst den Schlüssel von einer externen Website abrufen. Leistungs- und Verfügbarkeitsgarantien werden beeinträchtigt, und die Konfiguration ist komplexer. Zusätzlich ähneln die allgemeinen Sicherheitsgarantien für dieses Modell denen für eine Umgebung, in der die Schlüssel vom Kunden in Azure Key Vault verwaltet werden, weil der Dienst bei Verschlüsselungs- und Entschlüsselungsvorgängen Zugriff auf den DEK hat.  Daraus folgt, dass das Modell für die meisten Organisationen ungeeignet ist, es sei denn, sie haben besondere Schlüsselverwaltungsanforderungen. Aufgrund dieser Einschränkungen unterstützen die meisten Azure-Dienste die serverseitige Verschlüsselung mit vom Server verwalteten Schlüsseln auf von Kunden verwalteter Hardware nicht.
 
@@ -262,7 +262,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit Clientverwaltung**      |
 | **KI und Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Ja                | -                  | -                  |
+| Azure Search                     | Ja                | Vorschau            | -                  |
 | Azure Machine Learning-Dienst   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
 | Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |

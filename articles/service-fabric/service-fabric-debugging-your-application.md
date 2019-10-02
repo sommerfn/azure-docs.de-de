@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428210"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300684"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -61,6 +61,13 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
 8. Das Debuggen von Diensten ist vergleichbar mit dem Debuggen jeder beliebigen anderen Anwendung. Um das Debuggen zu vereinfachen, legen Sie in der Regel Haltepunkte in Visual Studio fest. Obwohl Reliable Collections in mehreren Knoten repliziert werden, wird dennoch IEnumerable implementiert. Diese Implementierung bedeutet, dass Sie beim Debuggen die Ergebnisansicht in Visual Studio verwenden können, um den darin gespeicherten Inhalt anzuzeigen. Legen Sie hierfür an einer beliebigen Stelle im Code einen Haltepunkt fest.
    
     ![Anwendung debuggen][breakpoint]
+
+
+### <a name="running-a-script-as-part-of-debugging"></a>Ausführen eines Skripts beim Debuggen
+In bestimmten Szenarien müssen Sie möglicherweise beim Start einer Debugsitzung ein Skript ausführen (wenn Sie z. B. keine Standarddienste verwenden).
+
+In Visual Studio können Sie die Datei **Start-Service.ps1** im Ordner**Scripts** des Service Fabric-Anwendungsprojekts (.sfproj) hinzufügen. Dieses Skript wird aufgerufen, nachdem die Anwendung im lokalen Cluster erstellt wurde.
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

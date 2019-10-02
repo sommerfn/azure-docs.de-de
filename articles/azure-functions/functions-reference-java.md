@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170562"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299392"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
 Die Azure Functions-Runtime unterstützt [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Dieser Leitfaden enthält Informationen zu den Feinheiten beim Schreiben von Azure Functions mit Java.
 
-Eine Java-Funktion ist eine `public`-Methode, die mit der Anmerkung `@FunctionName` versehen ist. Diese Methode definiert die Eingabe für eine Java-Funktion und muss in einem bestimmten Paket eindeutig sein. 
+Wie in anderen Sprachen auch kann eine Funktions-App über eine oder mehrere Funktionen verfügen. Eine Java-Funktion ist eine `public`-Methode, die mit der Anmerkung `@FunctionName` versehen ist. Diese Methode definiert die Eingabe für eine Java-Funktion und muss in einem bestimmten Paket eindeutig sein. Eine in Java geschriebene Funktions-App kann mehrere Klassen mit mehreren öffentlichen Methoden enthalten, die mit `@FunctionName` kommentiert sind.
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Es empfiehlt sich zudem, die Schnellstartanleitung zu Functions zu lesen, um Ihre erste Funktion mit [Visual Studio Code](functions-create-first-function-vs-code.md) oder [Maven](functions-create-first-java-maven.md) zu erstellen.
 
 ## <a name="programming-model"></a>Programmiermodell 
 
 Die Konzepte von [Triggern und Bindungen](functions-triggers-bindings.md) sind für Azure Functions von grundlegender Bedeutung. Trigger starten die Ausführung Ihres Codes. Bindungen bieten Ihnen eine Möglichkeit, Daten an eine Funktion zu übergeben und von einer Funktion zurückgeben zu lassen, ohne benutzerdefinierten Datenzugriffscode schreiben zu müssen.
+
+## <a name="project-scaffolding"></a>Projektgerüst
+
+Das Gerüst für ein Java-basiertes Azure Functions-Projekt lässt sich am einfachsten durch Verwendung von `Apache Maven`-Archetypen erstellen. Außerdem können Sie Projektgenerierungs-Assistenten in Visual Studio Code und die Azure-Toolkits für Eclipse und IntelliJ verwenden.
+
+Derzeit stehen zwei Azure Functions-Archetypen für Maven zur Verfügung:
+
+### <a name="java-archetype"></a>Java-Archetyp
+
+Dieser Archetyp wird unter der folgenden groupId und artifactId [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) veröffentlicht.
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin-Archetyp (Vorschau)
+
+Dieser Archetyp wird unter der folgenden groupId und artifactId [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) veröffentlicht.
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Den Quellcode dieser Archetypen finden Sie im [GitHub-Repository für Azure Maven-Archetypen](https://github.com/microsoft/azure-maven-archetypes).
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -55,6 +83,8 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
+
+_* Das Kotlin-Projekt sieht sehr ähnlich aus, da es weiterhin zu Maven gehört._
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (JAVA-Datei) sowie über eine eigene Bindungskonfigurationsdatei („function.json“).
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727581"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300789"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Sicherheitsempfehlungen für Azure Marketplace-Images
 
@@ -56,7 +56,7 @@ Diese Empfehlungen sind auch für Organisationen hilfreich, die keine Images im 
 | Sicherheit                                                         | Es muss ein sicheres Basisimage für das Betriebssystem verwendet werden. Die für die Quelle von Images auf Basis von Windows Server verwendete virtuelle Festplatte (VHD) muss mit den Windows Server-Betriebssystemimages, die über Microsoft Azure bereitgestellt werden, erstellt werden. |
 | Sicherheit                                                         | Es müssen alle aktuellen Sicherheitsupdates installiert sein.                                                                                                                                     |
 | Sicherheit                                                         | Anwendungen dürfen nicht von eingeschränkten Benutzernamen wie „Administrator“, „root“ oder „admin“ abhängig sein.                                                                |
-| Sicherheit                                                         | Die BitLocker-Laufwerkverschlüsselung wird auf der Betriebssystem-Festplatte nicht unterstützt. BitLocker kann auf Datenträgern für Arbeitsdaten verwendet werden.                                                            |
+| Sicherheit                                                         | Die BitLocker-Laufwerkverschlüsselung ist sowohl für Betriebssystem-Festplatten als auch für Datenfestplatten aktiviert.                                                             |
 | Sicherheit                                                         | Die Angriffsfläche wurde minimiert, indem nur die absolut erforderlichen Windows Server-Rollen, -Features, -Dienste und Netzwerkports aktiviert wurden.                         |
 | Sicherheit                                                         | Quellcode und resultierendes VM-Image wurden auf Schadsoftware gescannt.                                                                                                                     |
 | Sicherheit                                                         | Für die Aktualisierung der Sicherheit von Windows Server-Images sollten automatische Updates festgelegt werden.                                                                                                                |

@@ -11,25 +11,27 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d3a36615109383074833e9af634eb611fb863339
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 97a9b6c60539191850e8205eed4387565b79f6db
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103649"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129881"
 ---
-# <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
+# <a name="install-and-run-computer-vision-containers"></a>Installieren und Ausführen von Containern für maschinelles Sehen
 
-Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container verfügbar. Damit können Sie gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z.B. Belege, Poster, und Visitenkarten.
+Container ermöglichen Ihnen, die APIs für maschinelles Sehen in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für maschinelles Sehen herunterladen, installieren und ausführen.
+
+Für das maschinelle Sehen sind zwei Docker-Container verfügbar: *Texterkennung* und *Lesen*. Mit dem Container für die *Texterkennung* können Sie *gedruckten Text* in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z. B. Belege, Poster und Visitenkarten. Der Container für das *Lesen* erkennt jedoch auch *handgeschriebenen Text* in Bildern und bietet Unterstützung für PDF, TIFF oder mehrere Seiten. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](concept-recognizing-text.md#read-api).
 
 > [!IMPORTANT]
-> Der Texterkennungscontainer funktioniert derzeit nur für Englisch.
+> Der Container für die Texterkennung wird durch den Container für das Lesen ersetzt. Der Container für das Lesen ist seinem Vorgänger, dem Container für die Texterkennung, übergeordnet, und Consumer sollten zum Container für das Lesen migrieren. Beide Container funktionieren nur in englischer Sprache.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden Voraussetzungen erfüllen:
+Zur Verwendung der Container müssen die folgenden Voraussetzungen erfüllt sein:
 
 |Erforderlich|Zweck|
 |--|--|
@@ -43,6 +45,8 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
+[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
+
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
@@ -53,20 +57,43 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 
-Es stehen Containerimages für die Texterkennung zur Verfügung. 
+# <a name="readtabread"></a>[Lesen](#tab/read)
 
-| Container | Repository |
+Für das Lesen stehen Containerimages zur Verfügung.
+
+| Container | Container Registry/Repository/Imagename |
 |-----------|------------|
-|Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+| Lesen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
+
+Es stehen Containerimages für die Texterkennung zur Verfügung.
+
+| Container | Container Registry/Repository/Imagename |
+|-----------|------------|
+| Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+
+***
 
 Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
 
+# <a name="readtabread"></a>[Lesen](#tab/read)
+
+### <a name="docker-pull-for-the-read-container"></a>„docker pull“ für den Container für das Lesen
+
+```bash
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
 
 ### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-Pullvorgang für den Container für die Texterkennung
 
-```
+```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
+
+***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -83,8 +110,27 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 Es sind [Beispiele](computer-vision-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 
+# <a name="readtabread"></a>[Lesen](#tab/read)
+
 ```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+containerpreview.azurecr.io/microsoft/cognitive-services-read \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Dieser Befehl:
+
+* Führt den Container für das Lesen aus dem Containerimage aus
+* Ordnet 8 CPU-Kerne und 16 GB Arbeitsspeicher zu
+* Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -93,10 +139,12 @@ ApiKey={API_KEY}
 
 Dieser Befehl:
 
-* Führt einen Erkennungscontainer auf der Grundlage des Containerimages aus
-* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
-* Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
+* Führt den Container für die Texterkennung aus dem Containerimage aus
+* Ordnet 8 CPU-Kerne und 16 GB Arbeitsspeicher zu
+* Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
+
+***
 
 Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 
@@ -105,12 +153,179 @@ Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
 Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
+
+# <a name="readtabread"></a>[Lesen](#tab/read)
+
+### <a name="asynchronous-read"></a>Asynchrones Lesen
+
+Sie können die Vorgänge `POST /vision/v2.0/read/core/asyncBatchAnalyze` und `GET /vision/v2.0/read/operations/{operationId}` kombiniert verwenden, um asynchron in einem Bild zu lesen, ähnlich wie der Dienst für maschinelles Sehen die entsprechenden REST-Vorgänge verwendet. Die asynchrone POST-Methode gibt eine `operationId` zurück, die als Bezeichner für die HTTP GET-Anforderung verwendet wird.
+
+Wählen Sie auf der Swagger-Benutzeroberfläche `asyncBatchAnalyze` aus, um die Option im Browser zu erweitern. Wählen Sie dann **Jetzt ausprobieren** > **Datei auswählen** aus. In diesem Beispiel verwenden wir das folgende Bild:
+
+![Tabstopps und Leerzeichen](media/tabs-vs-spaces.png)
+
+Wenn die asynchrone POST-Anforderung erfolgreich ausgeführt wurde, gibt sie den Statuscode **HTTP 202** zurück. Teil der Antwort ist ein `operation-location`-Header, der den Ergebnisendpunkt für die Anforderung enthält.
+
+```http
+ content-length: 0
+ date: Fri, 13 Sep 2019 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET zugegriffen wird. Hier ist die JSON-Antwort der Ausführung der URL `operation-location` aus dem vorherigen Bild:
+
+```json
+{
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 2.42,
+      "width": 502,
+      "height": 252,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [
+            56,
+            39,
+            317,
+            50,
+            313,
+            134,
+            53,
+            123
+          ],
+          "text": "Tabs VS",
+          "words": [
+            {
+              "boundingBox": [
+                90,
+                43,
+                243,
+                53,
+                243,
+                123,
+                94,
+                125
+              ],
+              "text": "Tabs",
+              "confidence": "Low"
+            },
+            {
+              "boundingBox": [
+                259,
+                55,
+                313,
+                62,
+                313,
+                122,
+                259,
+                123
+              ],
+              "text": "VS"
+            }
+          ]
+        },
+        {
+          "boundingBox": [
+            221,
+            148,
+            417,
+            146,
+            417,
+            206,
+            227,
+            218
+          ],
+          "text": "Spaces",
+          "words": [
+            {
+              "boundingBox": [
+                230,
+                148,
+                416,
+                141,
+                419,
+                211,
+                232,
+                218
+              ],
+              "text": "Spaces"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### <a name="synchronous-read"></a>Synchrones Lesen
+
+Mit dem Vorgang `POST /vision/v2.0/read/core/Analyze` können Sie ein Bild synchron lesen. Wenn das Bild vollständig gelesen wird, dann – und nur dann – gibt die API eine JSON-Antwort zurück. Die einzige Ausnahme hierzu ist das Auftreten eines Fehlers. Bei einem Fehler wird der folgende JSON-Code zurückgegeben:
+
+```json
+{
+    status: "Failed"
+}
+```
+
+Das JSON-Antwortobjekt enthält dasselbe Objektdiagramm wie die asynchrone Version. Wenn Sie ein JavaScript-Benutzer sind und Typsicherheit wünschen, können Sie die JSON-Antwort mithilfe der folgenden Typen in ein `AnalyzeResult`-Objekt umwandeln.
+
+```typescript
+export interface AnalyzeResult {
+    status: Status;
+    recognitionResults?: RecognitionResult[] | null;
+}
+
+export enum Status {
+    NotStarted = 0,
+    Running = 1,
+    Failed = 2,
+    Succeeded = 3
+}
+
+export enum Unit {
+    Pixel = 0,
+    Inch = 1
+}
+
+export interface RecognitionResult {
+    page?: number | null;
+    clockwiseOrientation?: number | null;
+    width?: number | null;
+    height?: number | null;
+    unit?: Unit | null;
+    lines?: Line[] | null;
+}
+
+export interface Line {
+    boundingBox?: number[] | null;
+    text: string;
+    words?: Word[] | null;
+}
+
+export interface Word {
+  boundingBox?: number[] | null;
+  text: string;
+  confidence?: string | null;
+}
+```
+
+Ein Beispiel für einen Anwendungsfall finden Sie in [dieser TypeScript-Sandbox](https://aka.ms/ts-read-api-types). Wählen Sie „Ausführen“ aus, um die Benutzerfreundlichkeit visuell darzustellen.
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
 
 ### <a name="asynchronous-text-recognition"></a>Asynchrone Texterkennung
 
@@ -120,10 +335,7 @@ Sie können die Vorgänge `POST /vision/v2.0/recognizeText` und `GET /vision/v2.
 
 Mit dem Vorgang `POST /vision/v2.0/recognizeTextDirect` können Sie gedruckten Text in einem Bild synchron erkennen. Da dieser Vorgang synchron ist, entspricht der Anforderungstext für diesen Vorgang dem des Vorgangs `POST /vision/v2.0/recognizeText`, der Antworttext für diesen Vorgang entspricht jedoch der Rückgabe des Vorgangs `GET /vision/v2.0/textOperations/*{id}*`.
 
-<!--  ## Validate container is running -->
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
+***
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 
@@ -133,10 +345,9 @@ Mit dem Vorgang `POST /vision/v2.0/recognizeTextDirect` können Sie gedruckten T
 
 Wenn Sie den Container mit einer [Ausgabenbereitstellung](./computer-vision-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
 
-
 ## <a name="billing"></a>Abrechnung
 
-Der Container für die Texterkennung sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Texterkennung_ in Ihrem Azure-Konto. 
+Die Cognitive Services-Container senden Abrechnungsinformationen an Azure und verwenden dafür die entsprechende Ressource in Ihrem Azure-Konto.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -148,12 +359,12 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Con
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Texterkennung kennengelernt. Zusammenfassung:
+In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für maschinelles Sehen kennengelernt. Zusammenfassung:
 
-* Die Texterkennung stellt einen Linux-Container für Docker bereit, der die Texterkennung kapselt.
-* Containerimages werden aus Microsoft Container Registry (MCR) in Azure heruntergeladen.
+* Für das maschinelle Sehen ist ein Linux-Container für Docker verfügbar, der die Texterkennung und das Lesen kapselt.
+* Containerimages werden aus der Containerregistrierung „Containervorschau“ in Azure heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
-* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Texterkennung über den Host-URI des Containers aufzurufen.
+* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in den Containern für die Texterkennung oder das Lesen über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
 
 > [!IMPORTANT]
@@ -162,7 +373,7 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](computer-vision-resource-container-config.md).
-* Lesen Sie [Übersicht über maschinelles Sehen](Home.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.  
+* Lesen Sie [Übersicht über maschinelles Sehen](Home.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
 * Details zu den vom Container unterstützten Methoden finden Sie unter [Maschinelles Sehen-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 * Unter [Häufig gestellte Fragen (FAQ)](FAQ.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität des maschinellen Sehens.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d881ffff81119167f54b5ef8f0c5e2c1ad1e4791
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075137"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264181"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -62,7 +62,10 @@ Im folgenden Beispiel wird ein Cluster auf Version *1.13.10* aktualisiert:
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
-Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und kann einige Minuten in Anspruch nehmen.
+Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und kann einige Minuten in Anspruch nehmen. 
+
+> [!NOTE]
+> Für den Abschluss von Clusterupgrades besteht eine zulässige Gesamtzeit. Diese Zeit wird als das Produkt aus `10 minutes * total number of nodes in the cluster` berechnet. Beispielsweise müssen Upgradevorgänge in einem Cluster mit 20 Knoten in 200 Minuten erfolgreich ausgeführt werden. Andernfalls löst AKS einen Fehler aus, um einen nicht behebbaren Clusterstatus zu vermeiden. Um bei einem Upgradefehler eine Wiederherstellung auszuführen, wiederholen Sie den Upgradevorgang, nachdem das Timeout aufgetreten ist.
 
 Überprüfen Sie nun mit dem Befehl [az aks show][az-aks-show], ob das Upgrade erfolgreich war:
 

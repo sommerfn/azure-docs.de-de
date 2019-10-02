@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088416"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162198"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -33,6 +33,9 @@ Sie können keinen Recovery Services-Tresor löschen, der über Abhängigkeiten 
 
   ![Serverfehler beim Löschen eines geschützten Elements](./media/backup-azure-delete-vault/error-message.jpg)
 
+- Wenn sich Sicherungselemente im vorläufig gelöschten Zustand befinden, wird die Warnmeldung unten angezeigt, und Sie müssen warten, bis sie dauerhaft gelöscht werden. Weitere Informationen finden Sie in [diesem Artikel](https://aka.ms/SoftDeleteCloudWorkloads).
+
+   ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 Wählen Sie zum Löschen des Tresors das Szenario, das Ihrem Setup entspricht, und führen Sie die empfohlenen Schritte aus:
 

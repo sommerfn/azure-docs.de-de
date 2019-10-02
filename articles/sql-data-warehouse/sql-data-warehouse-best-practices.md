@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/26/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c9e293a6e9c8126f2b82f68d591aee56ec32aec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a89988fd369a382ac86f0f4b1ef0f61c0b7b9cad
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67672279"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178424"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Bewährte Methoden für Azure SQL Data Warehouse
 Dieser Artikel enthält eine Sammlung mit bewährten Methoden, mit denen Sie mit Ihrem Azure SQL Data Warehouse die optimale Leistung erzielen.  Einige Konzepte dieses Artikels sind einfach und leicht zu erklären, während andere Konzepte etwas komplizierter sind, sodass in diesem Artikel nicht ausführlicher darauf eingegangen wird.  Dieser Artikel soll Ihnen als einfache Anleitung dienen und Sie auf wichtige Punkte aufmerksam machen, die Sie beim Erstellen des Data Warehouse beachten sollten.  In jedem Abschnitt wird ein Konzept vorgestellt, und es sind Links zu Artikeln mit ausführlicheren Informationen angegeben, in denen näher auf ein Konzept eingegangen wird.
@@ -62,6 +62,9 @@ Weitere Informationen finden Sie unter [Tabellenpartitionierung][Table partition
 INSERT-, UPDATE- und DELETE-Anweisungen werden in einer Transaktion ausgeführt, und wenn hierbei Fehler auftreten, muss ein Rollback durchgeführt werden.  Es ist ratsam, die Transaktionsgrößen nach Möglichkeit zu verringern, um das Potenzial für einen langen Rollbackvorgang zu reduzieren.  Hierfür können Sie INSERT-, UPDATE- und DELETE-Anweisungen in Teile unterteilen.  Wenn Sie beispielsweise einen INSERT-Vorgang verwenden, der voraussichtlich eine Stunde dauert, können Sie den INSERT-Vorgang, falls möglich, in vier Teile unterteilen, die jeweils 15 Minuten dauern.  Nutzen Sie spezielle Fälle mit minimaler Protokollierung, z.B. CTAS, TRUNCATE, DROP TABLE oder INSERT zum Leeren von Tabellen, um das Rollback-Risiko zu verringern.  Eine weitere Möglichkeit zum Beseitigen von Rollbacks ist die Verwendung von Vorgängen vom Typ „Nur Metadaten“, z.B. ein Partitionswechsel für die Datenverwaltung.  Anstatt z.B. eine DELETE-Anweisung zum Löschen aller Zeilen in einer Tabelle auszuführen, für die das Bestelldatum (order_date) im Oktober 2001 liegt, können Sie Ihre Daten monatlich partitionieren und die Partition dann gegen Daten für eine leere Partition aus einer anderen Tabelle auswechseln (siehe Beispiele zu ALTER TABLE).  Erwägen Sie für nicht partitionierte Tabellen die Verwendung eines CTAS-Vorgangs, um beizubehaltende Daten in eine Tabelle zu schreiben, anstatt DELETE zu verwenden.  Wenn für einen CTAS-Vorgang die gleiche Zeit benötigt wird, ist dies der sicherere Vorgang, da er mit minimaler Transaktionsprotokollierung verbunden ist und bei Bedarf schnell abgebrochen werden kann.
 
 Siehe auch [Grundlagen von Transaktionen][Understanding transactions], [Optimieren von Transaktionen][Optimizing transactions], [Tabellenpartitionierung][Table partitioning], [TRUNCATE TABLE][TRUNCATE TABLE], [ALTER TABLE][ALTER TABLE], [Create Table As Select (CTAS)][Create table as select (CTAS)].
+
+## <a name="reduce-query-result-sizes"></a>Reduzieren von Abfrageergebnisgrößen  
+Dies hilft Ihnen, clientseitige Probleme zu vermeiden, die durch ein großes Abfrageergebnis verursacht werden.  Sie können Ihre Abfrage bearbeiten, um die Anzahl von zurückgegebenen Zeilen zu reduzieren. Einige Tools zur Abfragegenerierung ermöglichen es Ihnen, jeder Abfrage „Top N“-Syntax hinzuzufügen.  Sie können das Abfrageergebnis auch mit CETAS in eine temporäre Tabelle exportieren und dann den PolyBase-Export für die kompatible Verarbeitung verwenden.
 
 ## <a name="use-the-smallest-possible-column-size"></a>Verwenden der kleinstmöglichen Spaltengröße
 Beim Ihrer DDL verbessert sich die Abfrageleistung, wenn Sie den kleinsten Datentyp verwenden, der für Ihre Daten unterstützt wird.  Dies ist besonders für CHAR- und VARCHAR-Spalten wichtig.  Wenn der längste Wert in einer Spalte 25 Zeichen lang ist, sollten Sie die Spalte VARCHAR(25) definieren.  Vermeiden Sie es, für alle Zeichenspalten eine hohe Standardlänge zu definieren.  Definieren Sie darüber hinaus Spalten als VARCHAR, sofern dies ausreicht, anstatt NVARCHAR zu verwenden.
