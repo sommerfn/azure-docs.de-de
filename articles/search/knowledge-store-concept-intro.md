@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ec0bf6002d8e90b41c2eed3c21f53e38f0fbbe8f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638178"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265219"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Was ist ein Wissensspeicher in Azure Search?
 
@@ -26,13 +25,13 @@ Ein Wissensspeicher ist ein Feature von Azure Search, das der Speicherung angere
 
 Wenn Sie die kognitive Suche schon in der Vergangenheit verwendet haben, wissen Sie bereits, dass Skillsets genutzt werden, um ein Dokument eine Sequenz von Anreicherungen durchlaufen zu lassen. Das Ergebnis kann ein Azure Search-Index oder (neu in dieser Vorschauversion) Projektionen in einem Wissensspeicher sein. Die beiden Ausgaben (Suchindex und Wissensspeicher) sind physisch voneinander getrennt. Sie haben den gleichen Inhalt, werden aber auf sehr unterschiedliche Weise gespeichert und verwendet.
 
-Physisch wird ein Wissensspeicher in einem Azure Storage-Konto erstellt, und zwar abhängig von der Konfiguration der Pipeline als Azure-Tabellenspeicher oder als Blobspeicher. Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
+In physischer Hinsicht ist ein Wissensspeicher ein Azure Storage-Konto, und zwar je nach Konfiguration der Pipeline als Azure-Tabellenspeicher, Blobspeicher oder beides. Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
 
 Projektionen sind Mechanismen zum Strukturieren von Daten in einem Wissensspeicher. Beispielsweise können Sie mithilfe von Projektionen festlegen, ob die Ausgabe als einzelnes Blob oder als Sammlung verknüpfter Tabellen gespeichert wird. Mit dem integrierten [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) für Azure-Speicher können die Inhalte eines Wissensspeichers ganz einfach angezeigt werden.
 
 ![Diagramm: Wissensspeicher in Pipeline](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Diagramm: Wissensspeicher in Pipeline")
 
-Um Wissensspeicher zu verwenden, fügen Sie einer Qualifikationsgruppe ein `knowledgeStore`-Element hinzu, das die Vorgänge in mehreren Schritten in einer Indizierungspipeline definiert. Während der Ausführung erstellt Azure Search einen Bereich in Ihrem Azure Storage-Konto und füllt diesen mit den Definitionen und Inhalten auf, die von der Pipeline erstellt werden.
+Um Wissensspeicher zu verwenden, fügen Sie einer Qualifikationsgruppe ein `knowledgeStore`-Element hinzu, das die Vorgänge in mehreren Schritten in einer Indizierungspipeline definiert. Während der Ausführung erstellt Azure Search einen Bereich in Ihrem Azure-Speicherkonto und projiziert die angereicherten Dokumente mit der Definition, die in der Pipeline erstellt wurde.
 
 ## <a name="benefits-of-knowledge-store"></a>Vorteile von Wissensspeichern
 
@@ -105,6 +104,13 @@ Wenn Sie bereits mit der KI-basierten Indizierung vertraut sind, wissen Sie, das
 
             ], 
             "objects": [ 
+               
+            ]      
+        },
+        { 
+            "tables": [ 
+            ], 
+            "objects": [ 
                 { 
                 "storageContainer": "Reviews", 
                 "format": "json", 
@@ -112,7 +118,7 @@ Wenn Sie bereits mit der KI-basierten Indizierung vertraut sind, wissen Sie, das
                 "key": "/document/Review/Id" 
                 } 
             ]      
-        }    
+        }        
     ]     
     } 
 }
@@ -132,7 +138,7 @@ Die Daten oder Dokumente, die Sie anreichern möchten, müssen in einer Azure-Da
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
-[Azure Table Storage](search-howto-indexing-azure-tables.md) kann für ausgehende Daten in einem Wissensspeicher verwendet werden, aber nicht als Ressource für die eingehenden Daten einer KI-basierten Indizierungspipeline.
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2\. Azure Search-Dienst
 
@@ -143,17 +149,17 @@ Azure Search bietet die Indexerfunktion. Indexer werden verwendet, um den gesamt
 | Object | REST-API | BESCHREIBUNG |
 |--------|----------|-------------|
 | Datenquelle | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Azure-Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
-| Qualifikationsgruppe | [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die die Verwendung von [integrierten Qualifikationen](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Qualifikationen](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
+| Qualifikationsgruppe | [Erstellen einer Qualifikationsgruppe (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die die Verwendung von [integrierten Qualifikationen](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Qualifikationen](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
 | index | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Search-Indexes. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
 | Indexer | [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden.  |
 
 ### <a name="3---cognitive-services"></a>3\. Cognitive Services
 
-Die in einer Qualifikationsgruppe angegebenen Anreicherungen basieren auf den Funktionen für maschinelles Sehen und zur Spracherkennung in Cognitive Services. Die Cognitive Services-Funktionen werden während der Indizierung über Ihre Qualifikationsgruppe genutzt. Eine Qualifikationsgruppe ist eine Zusammenstellung von Qualifikationen, die wiederum an bestimmte Funktionen für maschinelles Sehen und Sprachfunktionen gebunden sind. Für die Integration mit Cognitive Services fügen Sie einer Qualifikationsgruppe [eine Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) hinzu.
+Die in einer Qualifikationsgruppe angegebenen Anreicherungen sind entweder benutzerdefiniert oder basieren auf den Funktionen für maschinelles Sehen und zur Spracherkennung in Cognitive Services. Die Cognitive Services-Funktionen werden während der Indizierung über Ihre Qualifikationsgruppe genutzt. Eine Qualifikationsgruppe ist eine Zusammenstellung von Qualifikationen, die wiederum an bestimmte Funktionen für maschinelles Sehen und Sprachfunktionen gebunden sind. Für die Integration mit Cognitive Services fügen Sie einer Qualifikationsgruppe [eine Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) hinzu.
 
 ### <a name="4---storage-account"></a>4\. Speicherkonto
 
-Azure Search erstellt unter Ihrem Azure Storage-Konto einen Blobcontainer oder Tabellen (je nachdem, wie Sie die Qualifikationsgruppe konfigurieren). Wenn Ihre Daten aus Azure Blob Storage oder Table Storage stammen, sind Sie damit bereits fertig. Andernfalls müssen Sie noch ein Azure Storage-Konto erstellen. Tabellen und Objekte in Azure Storage enthalten die angereicherten Dokumente, die von der KI-basierten Indizierungspipeline erstellt werden.
+Azure Search erstellt unter Ihrem Azure Storage-Konto einen Blobcontainer, Tabellen oder beides (je nachdem, wie Sie Projektionen in der Qualifikationsgruppe konfigurieren). Falls Ihre Daten aus Azure-Blob- oder -Tabellenspeicher stammen, sind die Voraussetzungen bereits erfüllt, und Sie können das Speicherkonto wiederverwenden. Andernfalls müssen Sie noch ein Azure Storage-Konto erstellen. Tabellen und Objekte in Azure Storage enthalten die angereicherten Dokumente, die von der KI-basierten Indizierungspipeline erstellt werden.
 
 Das Speicherkonto wird in der Qualifikationsgruppe angegeben. In `api-version=2019-05-06-Preview` umfasst die Definition einer Qualifikationsgruppe auch einen Wissensspeicher, sodass Sie Kontoinformationen angeben können.
 
@@ -179,15 +185,13 @@ Innerhalb des Speicherkontos können die Anreicherungen als Tabellen in Azure Ta
 
 + Blob Storage erstellt eine umfassende JSON-Darstellung jedes Dokuments. Sie können beide Speicheroptionen in einer Qualifikationsgruppe verwenden, um sämtliche Ausdrücke nutzen zu können.
 
-+ Azure Search speichert Inhalte in einem Index. Wenn Ihr Szenario keine Suchen umfasst (z. B. wenn das Ziel Ihrer Analyse ein anderes Tool ist), können Sie den von der Pipeline erstellten Index löschen. Sie können den Index aber auch beibehalten und ein integriertes Tool wie den [Suchexplorer](search-explorer.md) als drittes Medium (neben Storage-Explorer und Ihrer Analyse-App) für die Interaktion mit Ihren Inhalten verwenden.
-
-Neben dem Inhalt enthalten angereicherte Dokumente auch Metadaten zur Version der Qualifikationsgruppe, mit der die Anreicherungen erstellt wurden.  
++ Azure Search speichert Inhalte in einem Index. Wenn Ihr Szenario keine Suchen umfasst (z. B. wenn das Ziel Ihrer Analyse ein anderes Tool ist), können Sie den von der Pipeline erstellten Index löschen. Sie können den Index aber auch beibehalten und ein integriertes Tool wie den [Suchexplorer](search-explorer.md) als drittes Medium (neben Storage-Explorer und Ihrer Analyse-App) für die Interaktion mit Ihren Inhalten verwenden.  
 
 ## <a name="inside-a-knowledge-store"></a>Inhalt von Wissensspeichern
 
-Ein Wissensspeicher besteht aus einem Anmerkungscache und Projektionen. Der *Cache* wird intern vom Dienst verwendet, um die Ergebnisse von Qualifikationen zwischenzuspeichern und Änderungen nachzuverfolgen. Eine *Projektion* definiert das Schema und die Struktur der Anreicherungen, die der beabsichtigten Verwendung entsprechen. Es gibt einen Cache pro Wissensspeicher, aber mehrere Projektionen. 
+ Eine *Projektion* definiert das Schema und die Struktur der Anreicherungen, die der beabsichtigten Verwendung entsprechen. Sie können mehrere Projektionen definieren, wenn Sie über Anwendungen verfügen, die die Daten in verschiedenen Formaten und Formen nutzen. 
 
-Der Cache ist immer ein Blobcontainer, Projektionen können hingegen als Tabellen oder Objekte vorliegen:
+Projektionen können als Objekte oder Tabellen formuliert werden:
 
 + Als ein Objekt ist die Projektion Blob Storage zugeordnet. Dort wird die Projektion in einem Container gespeichert, der wiederum die Objekte oder hierarchischen Darstellungen im JSON-Format für Szenarien wie eine Data Science-Pipeline enthält.
 

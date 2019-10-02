@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 5a1e0329f8d0227c05924137d5eaddd9658d5b3c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076924"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161471"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault per Resource Manager-Vorlage
 
@@ -58,6 +58,11 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 [!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
 
+Zwei Azure-Ressourcen sind in der Vorlage definiert:
+
+* **Microsoft.KeyVault/vaults**: Erstellen eines Azure-Schlüsseltresors
+* **Microsoft.KeyVault/vaults/secrets**: Erstellen eines Schlüsseltresorgeheimnisses
+
 Weitere Beispiele für Azure Key Vault-Vorlagen finden Sie [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt einen Schlüsseltresor und ein Geheimnis.
@@ -82,6 +87,8 @@ Weitere Beispiele für Azure Key Vault-Vorlagen finden Sie [hier](https://azure.
 3. Wählen Sie die Option **Kaufen**. Nach der erfolgreichen Bereitstellung des Schlüsseltresors erhalten Sie eine Benachrichtigung:
 
     ![Resource Manager-Vorlage: Key Vault-Integration – Bereitstellen (Portal)](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+
+Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 

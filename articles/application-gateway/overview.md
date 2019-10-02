@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564863"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146626"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -35,7 +35,7 @@ Application Gateway unterstützt die SSL/TLS-Beendigung am Gateway, wonach der D
 
 ## <a name="autoscaling"></a>Automatische Skalierung
 
-Application Gateway- oder WAF-Bereitstellungen unter der Standard_v2- oder WAF_v2-SKU unterstützen automatische Skalierung und können zentral hoch- und herunterskalieren, je nach Veränderung der Datenverkehr-Auslastungsmuster. Durch die automatische Skalierung entfällt auch die Notwendigkeit, während des Bereitstellens eine Bereitstellungsgröße oder eine Anzahl von Instanzen auszuwählen. Weitere Informationen zu den standard_v2- und WAF_v2-Features von Application Gateway finden Sie unter [Automatische Skalierung der v2-SKU](application-gateway-autoscaling-zone-redundant.md).
+Application Gateway- oder WAF-Bereitstellungen unter der Standard_v2- oder WAF_v2-SKU unterstützen automatische Skalierung und können zentral hoch- und herunterskalieren, je nach Veränderung der Datenverkehr-Auslastungsmuster. Durch die automatische Skalierung entfällt auch die Notwendigkeit, während des Bereitstellens eine Bereitstellungsgröße oder eine Anzahl von Instanzen auszuwählen. Weitere Informationen zu den „Standard_v2“- und „WAF_v2“-Features von Application Gateway finden Sie unter [Automatische Skalierung der v2-SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Zonenredundanz
 
@@ -47,11 +47,11 @@ Die Application Gateway-VIP in Standard_v2- oder WAF_v2-SKU unterstützt nun exk
 
 ## <a name="web-application-firewall"></a>Web Application Firewall
 
-Web Application Firewall (WAF) ist ein Feature von Application Gateway, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet. Die WAF basiert auf den Regeln der [OWASP-Kernregelsätze (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) der Version 3.0 oder 2.2.9. 
+Web Application Firewall (WAF) ist ein Feature von Application Gateway, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet. Die WAF basiert auf den Regeln der [OWASP-Kernregelsätze (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) der Version 3.1 (nur WAF_v2), 3.0 und 2.2.9. 
 
 Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Zu diesen Sicherheitslücken (Exploits) gehören üblicherweise Angriffe durch Einschleusung von SQL-Befehlen oder Angriffe durch websiteübergreifende Skripts, um nur einige zu nennen. Die Verhinderung solcher Angriffe im Anwendungscode ist oft schwierig und erfordert strenge Wartung, Patching und Überwachung auf vielen Ebenen der Anwendungstopologie. Eine zentrale Web Application Firewall vereinfacht die Sicherheitsverwaltung erheblich und bietet Anwendungsadministratoren einen besseren Schutz vor Bedrohungen und Angriffen. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways lassen sich problemlos in ein Anwendungsgateway mit Web Application Firewall konvertieren.
 
-Weitere Informationen finden Sie unter [Web Application-Firewall (WAF) in Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview).
+Weitere Informationen finden Sie unter [Web Application-Firewall (WAF) in Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview).
 
 ## <a name="url-based-routing"></a>URL-basiertes Routing
 
@@ -63,7 +63,7 @@ Weitere Informationen finden Sie unter [URL-basiertes Routing mit Application Ga
 
 ## <a name="multiple-site-hosting"></a>Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Website auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie einem Anwendungsgateway bis zu 100 Websites hinzufügen. Jede Website kann zu einem eigenen Pool umgeleitet werden. Das Anwendungsgateway kann Datenverkehr beispielsweise für `contoso.com` und `fabrikam.com` über die beiden Serverpools „ContosoServerPool“ und „FabrikamServerPool“ bereitstellen.
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Website auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie einer Application Gateway-Instanz bis zu 100 oder für WAF 40 Websites hinzufügen (für optimale Leistung). Jede Website kann zu einem eigenen Pool umgeleitet werden. Das Anwendungsgateway kann Datenverkehr beispielsweise für `contoso.com` und `fabrikam.com` über die beiden Serverpools „ContosoServerPool“ und „FabrikamServerPool“ bereitstellen.
 
 Anforderungen für `http://contoso.com` werden an „ContosoServerPool“ und Anforderungen für `http://fabrikam.com` an „FabrikamServerPool“ weitergeleitet.
 
@@ -107,6 +107,8 @@ Weitere Informationen finden Sie unter [Azure Application Gateway Ingress Contro
 
 Mit dem Verbindungsausgleich können Sie eine korrekte Entfernung von Mitgliedern des Back-End-Pools bei geplanten Dienstupdates erzielen. Diese Einstellung wird über die HTTP-Einstellung des Back-Ends aktiviert und kann bei der Erstellung einer Regel auf alle Mitglieder eines Back-End-Pools angewendet werden. Nach der Aktivierung stellt Application Gateway sicher, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen mehr erhalten, während vorhandene Anforderungen innerhalb eines konfigurierten Zeitlimits abgeschlossen werden können. Dies gilt sowohl für Back-End-Instanzen, die per API-Aufruf explizit aus dem Back-End-Pool entfernt werden, als auch für Back-End-Instanzen, die von den Integritätstests als fehlerhaft gemeldet werden.
 
+Weitere Informationen finden Sie unter [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining) im Abschnitt „Verbindungsausgleich“.
+
 ## <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
 Mit Application Gateway können Sie benutzerdefinierte Fehlerseiten erstellen, anstatt Standardfehlerseiten anzuzeigen. Sie können für eine benutzerdefinierte Fehlerseite Ihr eigenes Branding und Layout verwenden.
@@ -127,13 +129,13 @@ Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern](re
 
 ## <a name="sizing"></a>Festlegen der Größe
 
-Die Standard_v2- und WAF_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Diese SKUs bieten keine verschiedenen Instanzgrößen.
+Die Standard_v2- und WAF_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Diese SKUs bieten keine verschiedenen Instanzgrößen. Weitere Informationen zur Leistung und zu den Preisen von v2 finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
 Die Standard- und WAF-SKU von Application Gateway werden zurzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
 Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede Anwendungsgatewayinstanz mit aktivierter SSL-Auslagerung:
+Die folgende Tabelle zeigt den durchschnittlichen Leistungsdurchsatz für jede v1-Application Gateway-Instanz mit aktivierter SSL-Auslagerung:
 
 | Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
 | --- | --- | --- | --- |

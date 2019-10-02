@@ -4,7 +4,7 @@ description: Informationen zur Zahlung, wenn das Azure-Abonnement einen überfä
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491451"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300281"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement
+
+Dieser Artikel gilt für Kunden mit einem Microsoft Online Services-Programmkonto.
 
 Wenn Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie ggf. eine E-Mail, oder im Azure-Portal oder Kontocenter wird eine Benachrichtigung angezeigt.
 Als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) können Sie die ausstehenden Gebühren im [Azure-Portal](https://portal.azure.com) begleichen. Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist.
@@ -43,6 +45,13 @@ Als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) können Sie d
 1. Falls die ausgewählte Zahlungsmethode ebenfalls ausstehende Gebühren für Microsoft-Dienste aufweist, wird dies für die Summe der ausstehenden Beträge berücksichtigt. Sie müssen auch diese ausstehenden Gebühren begleichen.
 1. Klicken Sie auf **Bezahlen**.
 
+## <a name="troubleshoot-declined-credit-card"></a>Problembehandlung bei Ablehnung der Kreditkarte
+
+Falls die Belastung Ihrer Kreditkarte von Ihrem Finanzinstitut abgelehnt wurde, wenden Sie sich zur Behebung des Problems an das Finanzinstitut. Stellen Sie in Rücksprache mit Ihrer Bank Folgendes sicher:
+- Internationale Transaktionen sind für die Karte aktiviert.
+- Die Karte verfügt über ein ausreichendes Kreditlimit oder Guthaben, um den Saldo zu begleichen.
+- Wiederkehrende Zahlungen sind für die Karte aktiviert.
+
 ## <a name="not-getting-billing-email-notifications"></a>Sie erhalten keine E-Mail-Benachrichtigungen zur Abrechnung?
 
 Wenn Sie Kontoadministrator sind, [überprüfen Sie, welche E-Mail-Adresse für Benachrichtigungen verwendet wird](billing-how-to-change-azure-account-profile.md). Es wird empfohlen, dass Sie eine E-Mail-Adresse verwenden, die Sie regelmäßig überprüfen. Wenn die E-Mail-Adresse richtig ist, überprüfen Sie Ihren Spam-Ordner.
@@ -52,6 +61,7 @@ Wenn Sie Kontoadministrator sind, [überprüfen Sie, welche E-Mail-Adresse für 
 Der Dienst wird gekündigt, und Ihre Ressourcen sind nicht mehr verfügbar. Alle Ihre Azure-Daten werden 90 Tage nach dem Kündigen des Diensts gelöscht. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 Wenn Sie sicher sind, dass Ihre Zahlung verarbeitet wurde, Ihr Abonnement jedoch immer noch deaktiviert ist, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

@@ -70,7 +70,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 ## <a name="publish-to-docker-hub"></a>Veröffentlichen in Docker Hub
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus. ****
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
 
 1. Wählen Sie **App Service** und dann **Veröffentlichen** aus.
 
@@ -147,7 +147,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 ## <a name="update-locally-and-redeploy"></a>Lokales Aktualisieren und erneutes Bereitstellen
 
-1. Öffnen Sie in Visual Studio im Projektmappen-Explorer unter Ihrem Projekt **Ansichten** > **Start** > **Index.cshtml**. ****
+1. Öffnen Sie in Visual Studio im **Projektmappen-Explorer** unter Ihrem Projekt **Ansichten** > **Start** > **Index.cshtml**.
 
 1. Suchen Sie im oberen Bereich nach dem HTML-Tag `<div class="jumbotron">`, und ersetzen Sie das gesamte Element durch folgenden Code:
 
@@ -158,7 +158,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
    </div>
    ```
 
-1. Klicken Sie zum erneuten Bereitstellen in Azure im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus. ****
+1. Klicken Sie zum erneuten Bereitstellen in Azure im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
 
 1. Wählen Sie auf der Seite „Veröffentlichen“ die Option **Veröffentlichen** aus, und warten Sie, bis die Veröffentlichung abgeschlossen ist.
 

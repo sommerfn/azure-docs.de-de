@@ -59,7 +59,7 @@ Führen Sie zum Erstellen einer Umgebung die folgenden Schritte aus:
 
     Wenn die Bereitstellung erfolgreich verlaufen ist, können Sie **Zu Ressource wechseln** auswählen, um andere Eigenschaften zu konfigurieren, die Sicherheit mit Datenzugriffsrichtlinien festzulegen, Ereignisquellen hinzuzufügen und weitere Aktionen auszuführen.
 
-1. Wählen Sie in der Ressourcenübersicht rechts oben das Stecknadelsymbol aus, um künftig ganz einfach auf Ihre Time Series Insights Umgebung zugreifen zu können. **** ****
+1. Wählen Sie in der **Übersicht** der Ressource rechts oben das **Stecknadelsymbol** aus, um künftig ganz einfach auf Ihre Time Series Insights Umgebung zugreifen zu können.
 
    [![Anheften von Time Series Insights an das Dashboard](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 

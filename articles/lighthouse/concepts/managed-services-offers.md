@@ -4,15 +4,15 @@ description: Angebote für verwaltete Dienste gestatten Dienstanbietern, Ressour
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a6fcf5f1d0ac194d60f834fb8d26db019c538410
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810874"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155269"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste in Azure Marketplace
 
@@ -20,9 +20,9 @@ Dieser Artikel beschreibt die den neuen Angebotstyp **Verwaltete Dienste** im [A
 
 ## <a name="understand-managed-services-offers"></a>Grundlegendes zur Angeboten für verwaltete Dienste
 
-Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für die delegierte Azure-Ressourcenverwaltung. Nachdem ein Kunde ein Angebot im Azure Marketplace gekauft hat, kann er angeben, welche Abonnements und/oder Ressourcengruppen eingebunden werden sollen, damit die angegebenen Benutzer in Ihrer Organisation Verwaltungsaufgaben für den Kunden aus dem Mandaten Ihrer Organisation heraus durchführen können.
+Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für die delegierte Azure-Ressourcenverwaltung. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen. Jedes Abonnement muss zunächst für das Onboarding autorisiert werden, indem der Ressourcenanbieter **Microsoft.ManagedServices** manuell registriert wird.
 
-Danach sind keine weiteren Aktionen erforderlich weder vom Kunden noch vom Dienstanbieter, um das Onboarding des Kunden durchzuführen. Dies liegt daran, dass Sie, wenn Sie das Angebot im [Cloud-Partnerportal](https://cloudpartner.azure.com/) definieren, ein Manifest erstellen, das die Azure AD-Benutzer, -Gruppen und -Dienstprinzipale angibt, die Zugriff auf Kundenressourcen mithilfe der delegierten Azure-Ressourcenverwaltung erhalten. zusammen mit Rollen, die deren Zugriffsebene definieren. Dadurch, dass Sie einer Azure AD-Gruppe Berechtigungen anstelle einer Reihe einzelner Benutzer- oder Anwendungskonten zuweisen, können Sie einzelne Benutzer hinzufügen oder entfernen, wenn sich Ihre Zugriffsanforderungen ändern.
+Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots im [Cloud-Partnerportal](https://cloudpartner.azure.com/) festgelegt haben, Verwaltungsaufgaben für diese Ressourcen im Mandanten Ihrer Organisation ausführen. Dazu wird ein Manifest verwendet, das die Azure AD-Benutzer, -Gruppen und -Dienstprinzipale, die mithilfe der delegierten Azure-Ressourcenverwaltung Zugriff auf Kundenressourcen erhalten, sowie die Rollen für ihre Zugriffsebene angibt. Dadurch, dass Sie einer Azure AD-Gruppe Berechtigungen anstelle einer Reihe einzelner Benutzer- oder Anwendungskonten zuweisen, können Sie einzelne Benutzer hinzufügen oder entfernen, wenn sich Ihre Zugriffsanforderungen ändern.
 
 ## <a name="public-and-private-offers"></a>Öffentliche und private Angebote
 

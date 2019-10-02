@@ -1,21 +1,21 @@
 ---
-title: Erstellen einer Azure HPC Cache-Instanz
-description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
+title: Erstellen einer Azure HPC Cache-Instanz (Vorschauversion)
+description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a0590c14032595bea685c69962ef27dca14d1d69
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037042"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300012"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
+# <a name="create-an-azure-hpc-cache-preview"></a>Erstellen einer Azure HPC Cache-Instanz (Vorschauversion)
 
-Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
+Erstellen Sie Ihren Cache mithilfe des Azure-Portals. 
 
 ![Screenshot: Cacheübersicht im Azure-Portal mit der Schaltfläche „Erstellen“ im unteren Bereich](media/hpc-cache-home-page.png)
 
@@ -23,18 +23,20 @@ Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
 
 ![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
 
-Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten der Azure HPC Cache-Instanz aus. Achten Sie darauf, dass sich das Abonnement in der Liste für den [Vorschauzugriff](hpc-cache-prereqs.md#azure-subscription) befindet.
+Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der Liste für den [Vorschauzugriff](hpc-cache-prereqs.md#azure-subscription) befindet.
 
 Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribute fest:
 
 * Standort: Wählen Sie eine der [unterstützten Regionen](hpc-cache-overview.md#region-availability) aus.
 * Virtuelles Netzwerk: Sie können ein bereits vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen.
-* Subnetz: Wählen Sie ein Subnetz mit mindestens 64 IP-Adressen (/24) aus, das ausschließlich für Azure HPC Cache verwendet wird, oder erstellen Sie ein entsprechendes Subnetz.
+* Subnetz: Wählen Sie ein Subnetz mit mindestens 64 IP-Adressen (/24) aus, das ausschließlich für diese Azure HPC Cache-Instanz verwendet wird, oder erstellen Sie ein entsprechendes Subnetz.
 
 ## <a name="set-cache-capacity"></a>Festlegen der Cachekapazität
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-Legen Sie auf der Seite **Cache** die Kapazität Ihrer Azure HPC Cache-Instanz fest. Dieser Wert bestimmt, wie viele Daten der Cache enthalten und wie schnell er Clientanforderungen bewältigen kann. Nach dem Public Preview-Zeitraum hat die Kapazität zudem Auswirkungen auf die Kosten des Caches.
+Legen Sie auf der Seite **Cache** die Kapazität Ihres Caches fest. Dieser Wert bestimmt, wie viele Daten der Cache enthalten und wie schnell er Clientanforderungen bewältigen kann. 
+
+Nach dem Public Preview-Zeitraum hat die Kapazität zudem Auswirkungen auf die Kosten des Caches.
 
 Die Cachekapazität wird in IOPS (Input/Output operations Per Second, Eingabe-/Ausgabevorgängen pro Sekunde) gemessen. Legen Sie zum Auswählen der Kapazität die beiden folgenden Werte fest:
 
@@ -43,9 +45,9 @@ Die Cachekapazität wird in IOPS (Input/Output operations Per Second, Eingabe-/A
 
 Wählen Sie einen der verfügbaren Durchsatzwerte und eine der verfügbaren Cachespeichergrößen aus. Die IOPS-Kapazität wird berechnet und unterhalb der Werteauswahl angezeigt.
 
-Beachten Sie, dass die tatsächliche Datenübertragungsrate von der Arbeitsauslastung, der Netzwerkgeschwindigkeit und der Art der Speicherziele abhängt. Wenn sich eine Datei nicht im Cache befindet oder als veraltet markiert ist, beansprucht der Dienst einen Teil des Durchsatzes, um sie aus dem Back-End-Speicher abzurufen. Der gewählte Wert legt den maximalen Durchsatz für den gesamten Cache fest und steht nicht vollständig für Clientanforderungen zur Verfügung.
+Beachten Sie, dass die tatsächliche Datenübertragungsrate von der Arbeitsauslastung, der Netzwerkgeschwindigkeit und der Art der Speicherziele abhängt. Der gewählte Wert legt den maximalen Durchsatz für den gesamten Cache fest und steht nicht vollständig für Clientanforderungen zur Verfügung. Wenn ein Client beispielsweise eine Datei anfordert, die noch nicht im Cache gespeichert ist, oder wenn die Datei als veraltet markiert ist, nutzt der Cache einen Teil des Durchsatzes, um sie aus dem Back-End-Speicher abzurufen.
 
-Für den Cachespeicher verwaltet Azure HPC Cache, welche Dateien zwischengespeichert und vorab geladen werden, um die Cachetrefferraten zu maximieren. Der Cacheinhalt wird kontinuierlich bewertet, und seltener verwendete Dateien werden in den langfristigen Speicher verschoben. Wählen Sie eine Cachespeichergröße, die problemlos den aktiven Satz von Arbeitsdateien aufnehmen kann und Speicherplatz für Metadaten und andere Zusatzdaten bietet.
+Mit Azure HPC Cache wird verwaltet, welche Dateien zwischengespeichert und vorab geladen werden, um die Cachetrefferraten zu maximieren. Der Cacheinhalt wird kontinuierlich bewertet, und seltener verwendete Dateien werden in den langfristigen Speicher verschoben. Wählen Sie eine Cachespeichergröße, die problemlos den aktiven Satz von Arbeitsdateien aufnehmen kann und Speicherplatz für Metadaten und andere Zusatzdaten bietet.
 
 ![Screenshot: Seite zum Festlegen der Cachegröße](media/hpc-cache-create-iops.png)
 
@@ -61,9 +63,9 @@ Klicken Sie auf den Link **Speicherziel hinzufügen**, um Ihre Back-End-Speicher
 
 Sie können bis zu zehn verschiedene Speicherziele definieren.
 
-Schritt-für-Schritt-Anleitungen zum Hinzufügen eines Speicherziels sind in [Hinzufügen von Speicher](hpc-cache-add-storage.md) enthalten. Für Blobspeicher und NFS-Exporte müssen jeweils unterschiedliche Schritte ausgeführt werden.
+Eine Schritt-für-Schritt-Anleitung zum Hinzufügen eines Speicherziels finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md). Für Blobspeicher und NFS-Exporte müssen jeweils unterschiedliche Schritte ausgeführt werden.
 
-Hier einige Tipps: 
+Hier einige Tipps:
 
 * Bei beiden Speichertypen müssen Sie den Ort des Back-End-Speichersystems (entweder eine NFS-Adresse oder einen Blobcontainernamen) sowie den clientseitigen Namespacepfad angeben.
 
@@ -73,7 +75,7 @@ Hier einige Tipps:
 
 ## <a name="add-resource-tags-optional"></a>Hinzufügen von Ressourcentags (optional)
 
-Auf der Seite **Tags** können Sie Ihrer Azure HPC Cache-Instanz [Ressourcentags](https://go.microsoft.com/fwlink/?linkid=873112) hinzufügen. 
+Auf der Seite **Tags** können Sie Ihrer Azure HPC Cache-Instanz [Ressourcentags](https://go.microsoft.com/fwlink/?linkid=873112) hinzufügen.
 
 ## <a name="finish-creating-the-cache"></a>Fertigstellen der Cacheerstellung
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104251"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266907"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -43,15 +43,21 @@ Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backu
 
 Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
 
+### <a name="upload-your-vhd"></a>Hochladen der VHD
+
+ Mit dem direkten Upload ist es einfach, Ihre VHD auf einen verwalteten Azure-Datenträger zu übertragen. Bisher war die Übertragung Ihrer Daten eher umständlich und umfasste das Staging der Daten in einem Speicherkonto. Jetzt sind weniger Schritte erforderlich. Es ist einfacher, lokale VMs in Azure hochzuladen (Upload auf große verwaltete Datenträger), und der Sicherungs- und Wiederherstellungsvorgang wurde vereinfacht. Außerdem werden hierdurch die Kosten gesenkt, weil Sie Daten direkt auf verwaltete Datenträger hochladen können, ohne diese an VMs anfügen zu müssen. Sie können direkte Uploads nutzen, um VHDs mit einer Größe von bis zu 32 TiB hochzuladen.
+
+ Informationen zur Übertragung Ihrer VHD in Azure finden Sie im Artikel zur [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) bzw. zu [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md).
+
 ## <a name="encryption"></a>Verschlüsselung
 
-Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist Storage Service Encryption (SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption, die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
+Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist Storage Service Encryption (SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption (ADE), die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
 [Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) bietet Verschlüsselung für ruhende Daten und schützt Ihre Daten, um die Sicherheits- und Konformitätsverpflichtungen Ihrer Organisation zu erfüllen. SSE ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Mit Azure Disk Encryption können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Diese Verschlüsselung umfasst verwaltete Datenträger. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Dieser Verschlüsselungsvorgang ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können. Weitere Informationen finden Sie unter [Azure Disk Encryption für virtuelle IaaS-Computer](../articles/security/azure-security-disk-encryption-overview.md).
 

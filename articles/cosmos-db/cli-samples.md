@@ -1,41 +1,30 @@
 ---
-title: Azure CLI-Beispiele für Azure Cosmos DB
-description: Azure CLI-Beispiele – Erstellen und Verwalten von Konten, Datenbanken, Containern, Regionen und Firewalls von Azure Cosmos DB
+title: 'Azure CLI-Beispiele für Azure Cosmos DB: SQL-API (Core-API)'
+description: 'Azure CLI-Beispiele für Azure Cosmos DB: SQL-API (Core-API)'
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 9/25/2019
 ms.author: mjbrown
-ms.reviewer: sngun
-ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: defeacc3f0bc4cd9d77e538f8ceac5ca09a4068a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615572"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272375"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-Beispiele für Azure Cosmos DB
+# <a name="azure-cli-samples-for-azure-cosmos-db-sql-core-api"></a>Azure CLI-Beispiele für Azure Cosmos DB: SQL-API (Core-API)
 
-Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosmos DB. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar.
+Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts (Azure-Befehlszeilenschnittstelle) für die Azure Cosmos DB-SQL-API (Core-API). Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Azure CLI-Beispiele für andere Azure Cosmos DB-APIs finden Sie unter [Cassandra-API](cli-samples-cassandra.md), [MongoDB-API](cli-samples-mongodb.md), [Gremlin-API](cli-samples-gremlin.md) und [Tabellen-API](cli-samples-table.md). Alle CLI-Skriptbeispiele für Azure Cosmos DB finden Sie im [GitHub-Repository zur Azure Cosmos DB-CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
 | |  |
 |---|---|
-|**Erstellen von Konten, Datenbanken und Containern für Azure Cosmos DB**||
-| [Erstellen eines Azure Cosmos DB-Kontos mit der SQL-API](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines einzelnen Kontos, einer Datenbank und eines Containers für Azure Cosmos DB. |
-| [Erstellen eines Azure Cosmos DB-Kontos mit der API für MongoDB von Cosmos DB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines einzelnen Azure Cosmos DB-Kontos, einer Datenbank und einer Sammlung. |
-| [Erstellen eines Azure Cosmos DB-Kontos mit der Gremlin-API](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines einzelnen Kontos, einer Datenbank und eines Graph für Azure Cosmos DB. |
-| [Erstellen eines Azure Cosmos DB-Kontos mit der Cassandra-API](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines einzelnen Kontos und einer Datenbank für Azure Cosmos DB. |
-| [Erstellen eines Azure Cosmos DB-Kontos mit der Tabellen-API](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines einzelnen Kontos, einer Datenbank und einer Tabelle für Azure Cosmos DB. |
-|**Skalieren von Azure Cosmos DB**||
-| [Skalieren des Containerdurchsatzes](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ändern des in einem Container bereitgestellten Durchsatzes|
-| [Replizieren des Datenbankkontos von Azure Cosmos in mehreren Regionen und Konfigurieren der Failoverprioritäten](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globales Replizieren von Kontodaten in verschiedenen Regionen mit einer festgelegten Failoverpriorität|
-|**Schützen von Azure Cosmos DB**||
-| [Abrufen von Kontoschlüsseln](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Abrufen der primären und sekundären Hauptschlüssel zum Schreiben und der sekundären schreibgeschützten Schlüssel für das Konto|
-| [Abrufen der Verbindungszeichenfolge für das Cosmos-Konto, das mit der API für MongoDB von Azure Cosmos DB konfiguriert ist](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Abrufen der Verbindungszeichenfolge zum Herstellen einer Verbindung zwischen der MongoDB-App und Ihrem Azure Cosmos DB-Konto.|
-| [Erneutes Generieren von Kontoschlüsseln](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Erneutes Generieren der Schlüssel für das Konto|
-| [Erstellen einer Firewall](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen einer Zugriffssteuerungsrichtlinie für eingehende IPs zur Beschränkung des Zugriffs auf das Konto über eine genehmigte Gruppe von Computern und/oder Clouddiensten|
-|**Hochverfügbarkeit, Notfallwiederherstellung, Sicherung und Wiederherstellung**||
-| [Konfigurieren der Failoverrichtlinie](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Festlegen der Failoverpriorität einzelner Regionen, in denen das Konto repliziert wird|
-|**Herstellen einer Verbindung zwischen Azure Cosmos DB und Ressourcen**||
-| [Herstellen einer Verbindung zwischen einer Web-App und Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Erstellen und Herstellen einer Verbindung zwischen einer Azure Cosmos-Datenbank und einer Azure-Web-App|
+| [Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers für Azure Cosmos DB für die SQL-API (Core-API) |
+| [Ändern des Durchsatzes](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Datenbank und einen Container|
+| [Hinzufügen von Failoverregionen](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Hinzufügen einer Region, Ändern der Failoverpriorität und Auslösen eines manuellen Failovers|
+| [Kontoschlüssel und Verbindungszeichenfolgen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Auflisten von Kontoschlüsseln und schreibgeschützten Schlüsseln, erneutes Generieren von Schlüsseln und Auflisten von Verbindungszeichenfolgen|
+| [Sichern mit einer IP-Firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Cosmos-Kontos mit konfigurierter IP-Firewall|
+| [Sichern eines neuen Kontos mit Dienstendpunkten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Cosmos-Kontos und Sichern des Kontos mit Dienstendpunkten|
+| [Sichern eines vorhandenen Kontos mit Dienstendpunkten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Aktualisieren eines Cosmos-Kontos beim Konfigurieren des Subnetzes, um es mit Dienstendpunkten zu sichern|
 |||

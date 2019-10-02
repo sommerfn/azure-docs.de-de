@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883665"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203782"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -39,7 +39,7 @@ Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche
 1. Erstellen und konfigurieren sie den Personalisierungsdienst im Azure-Portal. Jede Instanz ist eine Personalisierungsschleife.
 1. Verwenden Sie das SDK zum Aufrufen der Personalisierung mit Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_). Sie müssen vor der Verwendung der Personalisierung keine bereinigten, bezeichneten Daten bereitstellen. 
 1. Zeigen Sie dem Benutzer in der Clientanwendung die von der Personalisierung ausgewählte Aktion an.
-1. Verwenden Sie das SDK, um Feedback an die Personalisierung zu senden, die angibt, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _Belohnungsbewertung_, in der Regel zwischen -1 und 1.
+1. Verwenden Sie das SDK, um an die Personalisierung Feedback dazu zu senden, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _[Relevanzbewertung](concept-rewards.md)_ .
 1. Zeigen Sie die Analyse im Azure-Portal an, um auszuwerten, wie das System funktioniert und wie Ihre Daten die Personalisierung unterstützen.
 
 ## <a name="where-can-i-use-personalizer"></a>Wo kann ich die Personalisierung verwenden?
@@ -60,7 +60,7 @@ Die Personalisierung ist kein Dienst zum Speichern und Verwalten von Benutzerpro
 Der Personalisierungsdienst verfügt über zwei APIs:
 
 * Senden von Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_), der personalisiert werden soll. Die Personalisierung antwortet mit der Top-Aktion.
-* Senden von Feedback an die Personalisierung, wie gut die Rangfolge funktioniert hat, in der Regel als Zahl zwischen 0 und 1 (im vorherigen Abschnitt -1 und 1). 
+* Senden Sie an die Personalisierung Feedback dazu, wie gut die Rangfolge als [Relevanzbewertung](concept-rewards.md) funktioniert hat. 
 
 ![Grundlegende Abfolge der Ereignisse für die Personalisierung](media/what-is-personalizer/personalization-intro.png)
 
