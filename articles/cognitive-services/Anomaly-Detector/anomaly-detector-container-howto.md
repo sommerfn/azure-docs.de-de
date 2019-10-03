@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 339aab3ffe228d306738d3c17394bd322ab5e06c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103775"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316391"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung
 
@@ -164,7 +164,9 @@ Verwenden Sie für Container-APIs den Host http://localhost:5000.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container mit einer [Ausgabenbereitstellung](anomaly-detector-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](anomaly-detector-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 

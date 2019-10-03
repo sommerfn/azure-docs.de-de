@@ -7,12 +7,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: antchu
-ms.openlocfilehash: fbae9d15ba8572a8ae2c493ec85eb0010c2664eb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886422"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709496"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von Python
 
@@ -102,4 +102,4 @@ Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azu
 In diesem Schnellstart haben Sie eine serverlose Echtzeitanwendung in VS Code erstellt und ausgeführt. Im nächsten Schritt erfahren Sie mehr darüber, wie Sie Azure Functions aus VS Code bereitstellen.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen von Azure Functions mit VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [Bereitstellen von Azure Functions mit VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)

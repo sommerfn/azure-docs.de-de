@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: ac101c6079eee908a6499f5e6ed8cc3aadffb75a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210297"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827390"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -55,7 +55,7 @@ Wie in der nachstehenden Tabelle zusammengefasst, kann Azure Backup Azure-VMs mi
 
 Führen Sie zunächst folgende Schritte aus:
 
-1. Stellen Sie sicher, dass Sie über einen oder mehrere virtuelle [Windows](../security/azure-security-disk-encryption-windows.md)- oder [Linux](../security/azure-security-disk-encryption-linux.md)-Computer mit aktiviertem ADE verfügen.
+1. Stellen Sie sicher, dass Sie über einen oder mehrere virtuelle [Windows](../security/azure-security-disk-encryption-windows.md)- oder [Linux](../virtual-machines/linux/disk-encryption-overview.md)-Computer mit aktiviertem ADE verfügen.
 2. Sehen Sie sich die [Unterstützungsmatrix](backup-support-matrix-iaas.md) für die Sicherung virtueller Azure-Computer an.
 3. [Erstellen Sie](backup-azure-arm-vms-prepare.md#create-a-vault) einen Recovery Services-Sicherungstresor, wenn Sie noch keinen haben.
 4. Wenn Sie die Verschlüsselung für VMs aktivieren, die bereits für Sicherung aktiviert wurden, müssen Sie Backup einfach Berechtigungen für den Zugriff auf den Key Vault gewähren, damit Sicherungen ohne Unterbrechung fortgesetzt werden können. [Erfahren Sie mehr](#provide-permissions) zum Zuweisen dieser Berechtigungen.

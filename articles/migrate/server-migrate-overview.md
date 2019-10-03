@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: f27982b4e310d9865e497a3e1e10be9948beb928
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ddb63fcf4d960d2d8ed2671eba83fc38cddcbe4
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640745"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710048"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -34,7 +34,7 @@ Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie könne
 **Bereitstellung einer Appliance** | Die [Azure Migrate-Appliance](migrate-appliance.md) wird lokal bereitgestellt. | Die [Azure Migrate-Replikationsappliance](migrate-replication-appliance.md) wird lokal bereitgestellt.
 **Site Recovery-Kompatibilität** | Kompatibel | Wenn Sie die Replikation für einen Computer mit Site Recovery eingerichtet haben, können Sie keine Replikation mit der Azure Migrate-Servermigration durchführen.
 **Zieldatenträger** | Verwaltete Datenträger | Verwaltete Datenträger
-**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 63
+**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 63
 **Pass-Through-Datenträger** | Nicht unterstützt | Unterstützt
 **UEFI-Start** | Nicht unterstützt | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 

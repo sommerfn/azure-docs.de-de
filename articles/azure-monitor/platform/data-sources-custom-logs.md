@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2019
+ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124133"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327459"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 
@@ -58,7 +58,7 @@ Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protok
 
 1. Wählen Sie im Azure-Portal die Optionen **Log Analytics-Arbeitsbereiche** > Ihr Arbeitsbereich > **Erweiterte Einstellungen** aus.
 2. Klicken Sie auf **Daten** > **Benutzerdefinierte Protokolle**.
-3. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
+3. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben. Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.
 4. Klicken Sie auf **Hinzufügen+** , um den Assistenten für benutzerdefinierte Protokolle zu öffnen.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Schritt 2: Hochladen und Analysieren eines Beispielprotokolls

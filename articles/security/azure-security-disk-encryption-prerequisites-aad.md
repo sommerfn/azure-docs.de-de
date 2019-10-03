@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726246"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828630"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -53,6 +53,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | Ubuntu | 18,04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Betriebssystem- und andere Datenträger |
+| RHEL | 7,7 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7.6 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7,5 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7.4 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
@@ -60,6 +61,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | RHEL | 7.2 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 6,8 | Datenträger für Daten (siehe der Hinweis unten) |
 | RHEL | 6.7 | Datenträger für Daten (siehe der Hinweis unten) |
+| CentOS | 7,7 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.6 | Betriebssystem- und andere Datenträger |
 | CentOS | 7,5 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.4 | Betriebssystem- und andere Datenträger |

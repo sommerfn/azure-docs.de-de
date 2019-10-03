@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269209"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720164"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -66,9 +66,6 @@ Für Aufgaben für maschinelles Lernen werden Artefakte aus Ihrem Arbeitsbereich
 + Anzeigen von Machine Learning-Artefakten, z. B. Experimente, Pipelines, Modelle, Bereitstellungen.
 + Nachverfolgen und Überwachen von Modellen.
 
-
-
-
 ## <a name="workspace-management"></a>Arbeitsbereichsverwaltung
 
 Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
@@ -80,7 +77,7 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 | Verwalten des Arbeitsbereichszugriffs    | **&check;**   | |  **&check;**    |
 | Erstellen einer Notebook-VM | **&check;**   | |     |
 
-### <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
+## <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
 
 Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs.
 

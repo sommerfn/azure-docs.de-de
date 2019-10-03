@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242331"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828246"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den folgenden häufig gestellten Fragen.
@@ -70,7 +70,7 @@ Die Buildtasks fügen automatisch Ausgabepfade zum bekannten Speicherort auf dem
 Ja. Alle Tasks und Tools in der Erweiterung können auf einem gehosteten Build-Agent ausgeführt werden.
 
 >[!NOTE]
-> Der Schadsoftwarescanner-Buildtask erfordert einen Build-Agent mit aktiviertem Windows Defender. Ein solcher Agent ist ab Hosted Visual Studio 2017 verfügbar. Der Buildtask kann nicht unter Verwendung des gehosteten Visual Studio 2015-Agents ausgeführt werden.
+> Der Schadsoftwarescanner-Buildtask erfordert einen Build-Agent mit aktiviertem Windows Defender. Ein solcher Agent ist ab Hosted Visual Studio 2017 verfügbar. Der Buildtask kann nicht unter Verwendung des gehosteten Agents von Visual Studio 2015 ausgeführt werden.
 >
 > Obwohl Signaturen für diese Agents nicht aktualisiert werden können, sollten sie immer weniger als drei Stunden alt sein.
 
@@ -152,12 +152,6 @@ Beispiele für gültige Unterdrückungsregeln:
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Welche Verwaltungsrichtlinien für Geheimnisse werden empfohlen?
 
-Es ist hilfreich, hartcodierte Geheimnisse rechtzeitig zu erkennen und die Risiken zu minimieren. Aber noch besser ist es, das Einchecken von Geheimnissen ganz zu verhindern.
-
-In diesem Zusammenhang hat Microsoft eine frühe Vorschau von Credential Scanner Code Analyzer als Teil der [Microsoft DevLabs-Erweiterung](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) für Visual Studio veröffentlicht. Das Analysetool ist eine frühe Vorschauversion. Es bietet Entwicklern eine Inline-Erfahrung, um potenzielle Geheimnisse im Code zu entdecken. Auf diese Weise gibt das Analysetool Entwicklern auch die Möglichkeit, diese Probleme in Echtzeit zu beheben.
-
-Weitere Informationen finden Sie im Blogbeitrag zum [sicheren Verwalten von Geheimnissen in der Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
-
 Die folgenden Ressourcen helfen Ihnen, Geheimnisse sicher zu verwalten und von Anwendungen aus sicher auf vertrauliche Informationen zuzugreifen:
 
  - [Azure Key Vault](../../key-vault/index.yml)
@@ -166,6 +160,9 @@ Die folgenden Ressourcen helfen Ihnen, Geheimnisse sicher zu verwalten und von A
  - [Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Verwaltete Identitäten im Azure App Service und Azure Functions](../../app-service/overview-managed-identity.md)
  - [AppAuthentication-Bibliothek](../../key-vault/service-to-service-authentication.md)
+
+
+Weitere Informationen finden Sie im Blogbeitrag zum [sicheren Verwalten von Geheimnissen in der Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kann ich meine eigenen benutzerdefinierten Suchroutinen schreiben?
 
@@ -182,8 +179,8 @@ Eine Inhaltssuchroutine wird wie folgt definiert:
 - **ContentSearchPatterns**: Ein Array von Zeichenfolgen mit RegEx-Anweisungen, die abgeglichen werden sollen. Wenn keine Suchmuster definiert sind, werden alle Dateien zurückgegeben, die mit dem **ResourceMatchPattern**-Wert übereinstimmen.
 - **ContentSearchFilters**: Ein Array von Zeichenfolgen, das RegEx-Anweisungen enthält, um suchroutinenspezifische falsch positive Ergebnisse zu filtern.
 - **MatchDetails**: Eine beschreibende Nachricht und/oder Risikominderungsanweisungen, die für jede Übereinstimmung mit der Suchroutine hinzugefügt werden sollen.
-- **Recommendation**: Stellt den Inhalt des Vorschlagsfelds für einen Abgleich im PREfast-Berichtsformat zur Verfügung.
-- **Severity**: Ein Integerwert, der den Schweregrad eines Problems angibt. Der höchste Schweregrad hat den Wert 1.
+- **Empfehlung**: Stellt den Inhalt des Vorschlagsfelds für einen Abgleich im PREfast-Berichtsformat zur Verfügung.
+- **Schweregrad**: Ein Integerwert, der den Schweregrad eines Problems angibt. Der höchste Schweregrad hat den Wert 1.
 
   ![XML für Credential Scanner-Setup](./media/security-tools/6-credscan-customsearchers.png)
 

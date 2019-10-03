@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/26/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: dbd4f2cd4691f9ae6d8e37f38d2b600ec4897e45
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105157"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326693"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst
 
@@ -270,7 +270,9 @@ Die vom Container bereitgestellten REST-Endpunkt-APIs finden Sie [hier](https://
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container ausführen, werden mithilfe von **stdout** und **stderr** Informationen ausgegeben, die hilfreich sind, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](speech-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 

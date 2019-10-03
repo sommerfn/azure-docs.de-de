@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909781"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673421"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts der Mitgliedschaftsregel darf 2048 Zeichen nicht überschreiten.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
+## <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
 
 Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
 

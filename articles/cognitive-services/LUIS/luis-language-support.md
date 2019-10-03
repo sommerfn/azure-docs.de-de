@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307425"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316354"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -34,18 +34,18 @@ LUIS versteht Äußerungen in den folgenden Sprachen:
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Niederländisch |`nl-NL` |-|  -   |-|✔|
-| Französisch (Frankreich) |`fr-FR` |-| ✔ |✔ |✔|
+| Niederländisch |`nl-NL` |✔|  -   |-|✔|
+| Französisch (Frankreich) |`fr-FR` |✔| ✔ |✔ |✔|
 | Französisch (Kanada) |`fr-CA` |-|   -   |-|✔|
-| Deutsch |`de-DE` |-| ✔ |✔ |✔|
+| Deutsch |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
-| Italienisch |`it-IT` |-| ✔ |✔|✔|
-| *[Japanisch](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Nur Schlüsselausdruck|
-| Koreanisch |`ko-KR` |-|   -   |-|Nur Schlüsselausdruck|
-| Portugiesisch (Brasilien) |`pt-BR` |-| ✔ |✔ |Nicht alle Unterkulturen|
-| Spanisch (Spanien) |`es-ES` |-| ✔ |✔|✔|
+| Italienisch |`it-IT` |✔| ✔ |✔|✔|
+| *[Japanisch](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Nur Schlüsselausdruck|
+| Koreanisch |`ko-KR` |✔|   -   |-|Nur Schlüsselausdruck|
+| Portugiesisch (Brasilien) |`pt-BR` |✔| ✔ |✔ |Nicht alle Unterkulturen|
+| Spanisch (Spanien) |`es-ES` |✔| ✔ |✔|✔|
 | Spanisch (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Türkisch | `tr-TR` |-|-|-|Nur Stimmung|
+| Türkisch | `tr-TR` |✔|-|-|Nur Stimmung|
 
 
 Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und [vordefinierte Domänen](luis-reference-prebuilt-domains.md).

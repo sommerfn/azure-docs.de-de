@@ -1,19 +1,19 @@
 ---
 title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen
 description: In diesem Artikel wird beschrieben, wie Sie eine Protokollwarnungsregel mit einem Log Analytics-Arbeitsbereich mit Application Insights erstellen, wie die Warnung Daten per Pushvorgang als HTTP-Webhook überträgt sowie die Details der verschiedenen möglichen Anpassungen.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226788"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677769"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit, [sie mithilfe von Aktionsgruppen so zu konfigurieren](action-groups.md), dass sie eine oder mehrere Aktionen ausführt. Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und zeigt, wie Sie einen benutzerdefinierten, JSON-basierten Webhook konfigurieren.

@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594320"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702923"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -38,7 +38,7 @@ Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungs
 | Aktion | Verbesserungen|
 |:---|:---|
 | sms | Eine einheitliche SMS-Vorlage für alle Warnungstypen. |
-| E-Mail | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |
+| Email | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |
 | Webhook/Logik-App/Azure-Funktion/Automation-Runbook | Eine einheitliche JSON-Struktur für alle Warnungstypen, um Ihnen das einfache Entwickeln von Integrationen für die unterschiedlichen Warnungstypen zu ermöglichen. |
 
 Mit dem neuen Schema wird in naher Zukunft auch eine umfassendere Oberfläche für die Nutzung von Warnungen bereitgestellt – sowohl im Azure-Portal als auch in der mobilen Azure-App. 

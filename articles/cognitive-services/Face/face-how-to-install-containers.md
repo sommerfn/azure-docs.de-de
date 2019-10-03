@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102008"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316368"
 ---
 # <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 
@@ -126,8 +126,9 @@ Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container mit einer [Ausgabenbereitstellung](./face-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](./face-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
 
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 

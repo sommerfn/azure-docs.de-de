@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899778"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828552"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -102,7 +102,7 @@ Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungssc
 Weitere Informationen:
 
 * [Azure Disk Encryption für virtuelle IaaS-Computer](/azure/security/azure-security-disk-encryption-overview)
-* [Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)
+* [Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Sicherung virtueller Computer
 

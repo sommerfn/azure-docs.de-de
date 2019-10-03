@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3805e0bb86772836ba4a1c91661477f29d5e0f70
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383993"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827943"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Ausgaben in einer Azure Resource Manager-Vorlage
 
@@ -64,7 +64,7 @@ Das folgende Beispiel zeigt, wie Sie die IP-Adresse auf einen Lastenausgleich fe
 }
 ```
 
-Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer [geschachtelten Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
+Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer [geschachtelten Vorlage](resource-group-linked-templates.md#nested-template) verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 ## <a name="get-output-values"></a>Abrufen von Ausgabewerten
 

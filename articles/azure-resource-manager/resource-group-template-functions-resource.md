@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390706"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827473"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -400,7 +400,7 @@ Verwenden Sie `'Full'`, wenn Sie Ressourcenwerte benötigen, die nicht Teil des 
 
 Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden. Wenn sie mit [Eigenschafteniteration](resource-group-create-multiple.md#property-iteration) verwendet wird, können Sie die Verweisfunktion für `input` verwenden, weil der Ausdruck der Ressourceneigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Verweisfunktion aufgelöst wird.
 
-Die Referenzfunktion kann nicht in den Ausgaben einer [geschachtelten Vorlage](resource-group-linked-templates.md#nested-template) verwendet werden, um eine Ressource zurückzugeben, die Sie in der geschachtelten Vorlage bereitgestellt haben. Verwenden Sie stattdessen eine [verknüpfte Vorlage](resource-group-linked-templates.md#external-template-and-external-parameters).
+Die Referenzfunktion kann nicht in den Ausgaben einer [geschachtelten Vorlage](resource-group-linked-templates.md#nested-template) verwendet werden, um eine Ressource zurückzugeben, die Sie in der geschachtelten Vorlage bereitgestellt haben. Verwenden Sie stattdessen eine [verknüpfte Vorlage](resource-group-linked-templates.md#external-template).
 
 Bei Verwendung der **reference**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird.  Es wird eine Fehlermeldung angezeigt, wenn die **reference**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
 

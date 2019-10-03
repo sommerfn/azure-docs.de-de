@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479978"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338633"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -37,7 +37,7 @@ Cost Management ist in allen Bereichen oberhalb von Ressourcen aktiv, damit Orga
 
 Azure unterstützt für die Ressourcenverwaltung drei Bereiche. Jeder Bereich unterstützt die Verwaltung von Zugriff und Governance, einschließlich, aber nicht beschränkt auf Kostenverwaltung.
 
-- [**Verwaltungsgruppen**](../governance/management-groups/index.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
+- [**Verwaltungsgruppen**](../governance/management-groups/overview.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
 
     Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 

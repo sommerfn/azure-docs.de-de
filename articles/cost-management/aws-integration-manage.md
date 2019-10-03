@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019546"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338894"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Verwalten von AWS-Kosten und -Nutzung in Azure
 
@@ -183,4 +183,4 @@ Dieser Fehler bezieht sich auf die Definition des AWS-Berichts „Cost and Usage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/index.md#initial-setup-of-management-groups) weitere Informationen.
+- Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/overview.md#initial-setup-of-management-groups) weitere Informationen.

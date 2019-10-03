@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 64cac3d200a2cfc3b826dc75bfacc6457a01f294
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e2e829fba9846c2429e362903f5ce49b9344e1bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727569"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672627"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
 
@@ -28,7 +28,7 @@ Die nachstehenden Artikel enthalten bewährte Methoden für die Sicherheit, die 
 
 Die bewährten Methoden sind als Ressource für IT-Experten ausgelegt. Dazu gehören beispielsweise Designer, Architekten, Entwickler und Tester, die sichere Azure-Lösungen erstellen und bereitstellen.
 
-* [Microsoft-Clouddienste und Netzwerksicherheit](network-best-practices.md)
+* [Microsoft-Clouddienste und Netzwerksicherheit](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Bewährte Methoden für die Azure-Datenbanksicherheit](database-best-practices.md)
 * [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](data-encryption-best-practices.md)
 * [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](identity-management-best-practices.md)

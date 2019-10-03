@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 3c4c70aeed833e25eb75a9eaa385e2299c2a4b7e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300760"
+ms.locfileid: "71316775"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -273,7 +273,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Apache Kafka in Azure HDInsight  | Ja                | Alle RSA-Längen   | -                  |
 | Azure-Daten-Explorer              | Ja                | -                  | -                  |
-| Azure Data Factory               | Ja                | -                  | -                  |
+| Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  |
 | **Container**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ja                | -                  | -                  |

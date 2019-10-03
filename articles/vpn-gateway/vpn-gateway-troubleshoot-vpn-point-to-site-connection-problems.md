@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104817"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695528"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Troubleshooting: Azure Point-to-Site-Verbindungsprobleme
 
@@ -250,32 +250,6 @@ Laden Sie das P2S-Paket für alle Clients erneut herunter, und stellen Sie es er
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Zu viele VPN-Clients gleichzeitig verbunden
 
 Die maximale Anzahl von zulässigen Verbindungen wurde erreicht. Sie können sich die Gesamtzahl von verbundenen Clients im Azure-Portal anzeigen lassen.
-
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Punkt-zu-Standort-VPN fügt fälschlicherweise eine Route für 10.0.0.0/8 zur Routingtabelle hinzu
-
-### <a name="symptom"></a>Symptom
-
-Wenn Sie die VPN-Verbindung auf dem Punkt-zu-Standort-Client anwählen, sollte der VPN-Client eine Route zum virtuellen Azure-Netzwerk hinzufügen. Der IP-Hilfsdienst sollte eine Route für das Subnetz der VPN-Clients hinzufügen. 
-
-Der VPN-Clientbereich gehört zu einem kleineren Subnetz von 10.0.0.0/8, z.B. 10.0.12.0/24. Statt eine Route für 10.0.12.0/24 wird eine Route für 10.0.0.0/8 hinzugefügt, was eine höhere Priorität besitzt. 
-
-Diese fehlerhafte Route unterbricht die Verbindung mit anderen lokalen Netzwerken, die möglicherweise zu einem anderen Subnetz innerhalb des Bereichs von 10.0.0.0/8 gehören, z.B. 10.50.0.0/24, die keine bestimmte Route definiert haben. 
-
-### <a name="cause"></a>Ursache
-
-Dieses Verhalten ist für Windows-Clients beabsichtigt . Wenn der Client das PPP IPCP-Protokoll verwendet, erhält der die IP-Adresse für die Tunnelschnittstelle vom Server (in diesem Fall VPN-Gateway). Allerdings verfügt der Client aufgrund einer Einschränkung im Protokoll nicht über die Subnetzmaske. Da es keine andere Möglichkeit zum Abrufen gibt, versucht der Client, die Subnetzmaske basierend auf der Klasse der IP-Adresse der Tunnelschnittstelle zu erraten. 
-
-Aus diesem Grund wird eine Route anhand der folgenden statischen Zuordnung hinzugefügt: 
-
-Wenn die Adresse zu Klasse A gehört, wenden Sie /8 an.
-
-Wenn die Adresse zu Klasse B gehört, wenden Sie /16 an
-
-Wenn die Adresse zu Klasse C gehört, wenden Sie /24 an.
-
-### <a name="solution"></a>Lösung
-
-Sorgen Sie dafür, dass Routen für andere Netzwerke in die Routingtabelle aufgenommen werden. Verwenden Sie dabei die längste Präfixübereinstimmung oder eine niedrigere Metrik (höhere Priorität) als P2S. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN-Client kann nicht auf die Netzwerkdateifreigaben zugreifen
 

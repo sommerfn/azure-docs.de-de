@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170473"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315269"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -88,7 +88,6 @@ Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsd
 Aktivieren Sie das Kontrollkästchen **Aktuellen Status löschen und Synchronisierung neu starten**, und klicken Sie auf **Speichern**, um Folgendes zu erreichen:
 
 * Beenden des Bereitstellungsdiensts
-* Sichern der zwischengespeicherten Daten zu den von Azure AD verwalteten Konten
 * Neustarten der Dienste und erneutes Ausführen des anfänglichen Zyklus
 
 Diese Option ermöglicht Administratoren das erneute Starten des Bereitstellungsprozesses.

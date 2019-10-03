@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146459"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315720"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -101,7 +101,7 @@ Die unterstützten Tarife umfassen:
 
 Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype For Business enthalten, z. B. über ein kostenloses Abonnement für Office. 
 
-Optional können Sie die [**ForceTakeover**-Option](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus dem nicht verwalteten Mandanten zu entfernen und diesen Namen für den gewünschten Mandanten zu überprüfen. **Die ForceTakeover-Option bewirkt nicht, dass Benutzer verschoben werden oder Zugriff auf das Abonnement erhalten bleibt. Diese Option verschiebt nur den Domänennamen.**
+Optional können Sie die [**ForceTakeover**-Option](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus dem nicht verwalteten Mandanten zu entfernen und diesen Namen für den gewünschten Mandanten zu überprüfen. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Weitere Informationen zu RMS for Individuals
 

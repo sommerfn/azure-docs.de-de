@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232972"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338196"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
@@ -223,7 +223,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
    1. Wählen Sie in der Dropdownliste das verfügbare **Angebot** aus.
 
-   1. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/index.md), der das Abonnement untergeordnet werden soll.
+   1. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/overview.md), der das Abonnement untergeordnet werden soll.
 
    1. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
 

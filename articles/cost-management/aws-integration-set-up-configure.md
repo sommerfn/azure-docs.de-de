@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535192"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338872"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -172,7 +172,7 @@ Wenn den Benutzern nach dem Erkennen Connectorberechtigungen zugewiesen werden, 
 
 ## <a name="take-additional-steps"></a>Durchführen zusätzlicher Schritte
 
-- [Richten Sie Verwaltungsgruppen ein](../governance/management-groups/index.md#initial-setup-of-management-groups), sofern das noch nicht geschehen ist.
+- [Richten Sie Verwaltungsgruppen ein](../governance/management-groups/overview.md#initial-setup-of-management-groups), sofern das noch nicht geschehen ist.
 - Stellen Sie sicher, dass Ihrer Bereichsauswahl neue Bereiche hinzugefügt wurden. Wählen Sie **Aktualisieren** aus, um die neuesten Daten anzuzeigen.
 - Wählen Sie auf der Seite **Cloudconnectors** Ihren Connector aus, und klicken Sie auf **Zu Abrechnungskonto wechseln**, um das verknüpfte Konto Verwaltungsgruppen zuzuweisen.
 
@@ -189,7 +189,7 @@ Wenn Sie auf der Seite **Cloudconnectors** einen Connector auswählen, haben Sie
 
 ## <a name="set-up-azure-management-groups"></a>Einrichten von Azure-Verwaltungsgruppen
 
-Ordnen Sie Ihre Azure-Abonnements und verknüpften AWS-Konten in derselben Verwaltungsgruppe ein, um einen zentralen Ort für die Anzeige von cloudübergreifenden Anbieterinformationen zu erstellen. Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/index.md#initial-setup-of-management-groups) weitere Informationen.
+Ordnen Sie Ihre Azure-Abonnements und verknüpften AWS-Konten in derselben Verwaltungsgruppe ein, um einen zentralen Ort für die Anzeige von cloudübergreifenden Anbieterinformationen zu erstellen. Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/overview.md#initial-setup-of-management-groups) weitere Informationen.
 
 Wenn Sie die Kosten trennen möchten, können Sie eine Verwaltungsgruppe anlegen, die nur die mit verknüpften AWS-Konten enthält.
 

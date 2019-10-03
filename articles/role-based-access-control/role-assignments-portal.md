@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9a53c41535c17de2d56227012160c7f6eb25c6
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532955"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337619"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal
 
@@ -208,4 +208,4 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen
 * [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](quickstart-assign-role-user-portal.md)
 * [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
 * [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md)
-* [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md)
+* [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md)

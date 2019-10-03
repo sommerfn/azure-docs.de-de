@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172327"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695293"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -309,7 +309,9 @@ Zum Herunterfahren des Containers drücken Sie in der Befehlszeilenumgebung, in 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 
@@ -323,7 +325,6 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Con
 
 Der neueste auf der Microsoft Build 2019 veröffentlichte Container unterstützt Folgendes:
 
-* Bing-Rechtschreibprüfung: Anforderungen an den Endpunkt der Abfragevorhersage mit Parametern des Typs `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` für Abfragezeichenfolgen. Im Tutorial [Bing-Rechtschreibprüfung V7](luis-tutorial-bing-spellcheck.md) erfahren Sie mehr. Wenn dieses Feature verwendet wird, sendet der Container die Äußerung an die Bing-Rechtschreibprüfung V7.
 * [Neue vordefinierte Bereiche](luis-reference-prebuilt-domains.md): Zu diesen auf Unternehmen fokussierten Domänen gehören Entitäten, Beispieläußerungen und Muster. Erweitern Sie diese Domänen für Ihre eigenen Zwecke. 
 
 <a name="unsupported-dependencies"></a>
@@ -341,6 +342,7 @@ Nicht unterstützte App-Konfigurationen|Details|
 |Nicht unterstützte Entitäten für die Kultur Englisch (en-US)|Vordefinierte [GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2)-Entitäten|
 |Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 |Stimmungsanalyse|Externe Abhängigkeiten werden im Container nicht unterstützt.|
+|Bing-Rechtschreibprüfung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

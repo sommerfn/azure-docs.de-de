@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013975"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336911"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -197,7 +197,7 @@ Ein komplexeres Beispiel für eine benutzerdefinierte Funktion finden Sie im [Be
 
 Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion ausgeführt werden soll. Wenn für die benutzerdefinierte Funktion keine Rollenzuweisung vorhanden ist, verfügt sie nicht über die erforderlichen Berechtigungen für die Interaktion mit der Verwaltungs-API oder den Zugriff zum Ausführen von Aktionen an Graphobjekten. Aktionen, die eine benutzerdefinierte Funktion ausführen kann, werden über eine rollenbasierte Zugriffskontrolle innerhalb der Azure Digital Twins-Verwaltungs-APIs spezifiziert und definiert. Benutzerdefinierte Funktionen können beispielsweise hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in der Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
 
-1. [Fragen Sie die System-API](./security-create-manage-role-assignments.md#all) nach allen Rollen ab, um die Rollen-ID zu erhalten, die Sie Ihrer benutzerdefinierten Funktion zuweisen möchten. Stellen Sie hierzu eine authentifizierte HTTP-GET-Anforderung an:
+1. [Fragen Sie die System-API](./security-create-manage-role-assignments.md#retrieve-all-roles) nach allen Rollen ab, um die Rollen-ID zu erhalten, die Sie Ihrer benutzerdefinierten Funktion zuweisen möchten. Stellen Sie hierzu eine authentifizierte HTTP-GET-Anforderung an:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles

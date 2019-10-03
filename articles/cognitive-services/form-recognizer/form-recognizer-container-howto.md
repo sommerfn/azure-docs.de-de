@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: c58f8ae0605f99952507a5f308316f784b3d8de1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105146"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316642"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 
@@ -303,7 +303,9 @@ Der Container stellt REST-Endpunkt-APIs bereit, die Sie auf der Seite [Formulare
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container ausführen, gibt er mithilfe von **stdout** und **stderr** Informationen aus. Diese sind hilfreich bei der Behandlung von Problemen, die beim Starten oder Ausführen des Containers auftreten.
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](form-recognizer-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 

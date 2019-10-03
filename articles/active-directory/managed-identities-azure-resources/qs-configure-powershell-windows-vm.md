@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ba8ce6fb8147736c8265148a9f3576390dcccc6
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112695"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309774"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell
 
@@ -57,8 +57,7 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
    - [Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
    - [Erstellen eines virtuellen Linux-Computers mithilfe von PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Erweiterung von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität auf einem vorhandenen virtuellen Azure-Computer
 
@@ -77,8 +76,7 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Erweiterung von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>Hinzufügen einer systemseitig zugewiesenen Identität einer VM zu einer Gruppe
 
@@ -134,8 +132,7 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-> [!NOTE]
-> Wenn Sie die verwaltete Identität für die VM-Erweiterung für Azure-Ressourcen (bald veraltet) bereitgestellt haben, müssen Sie diese mithilfe von [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) entfernen. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zu Azure IMDS für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ## <a name="user-assigned-managed-identity"></a>Benutzerseitig zugewiesene verwaltete Identität
 
@@ -156,8 +153,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
     - [Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
     - [Erstellen eines virtuellen Linux-Computers mithilfe von PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Erweiterung von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem vorhandenen virtuellen Azure-Computer
 
@@ -187,8 +183,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Erweiterung von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einer Azure-VM
 

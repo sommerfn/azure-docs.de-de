@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044637"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828001"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.FileUpload“
 Ein Steuerelement, mit dem Benutzer hochzuladende Dateien angeben können.
@@ -48,7 +48,7 @@ Ein Steuerelement, mit dem Benutzer hochzuladende Dateien angeben können.
 ```
 
 ## <a name="remarks"></a>Anmerkungen
-- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://www.w3.org/TR/html5/forms.html#attr-input-accept). Der Standardwert lautet **null**.
+- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert lautet **null**.
 - Wenn `options.multiple` auf **true** festgelegt ist, kann der Benutzer im Dateidialogfeld des Browsers mehr als eine Datei auswählen. Der Standardwert ist **false**.
 - Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
 - Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) für den Zugriff auf die Datei während der Bereitstellung.

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2019
 ms.author: sagupt
-ms.openlocfilehash: a67034752b4c43533a5735b857186ee83934717a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935499"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326613"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Erstellen von Azure Advisor-Warnungen für neue Empfehlungen 
 
@@ -24,7 +24,7 @@ Sobald Azure Advisor eine neue Empfehlung für eine Ihrer Ressourcen erkennt, wi
 
 Sie können auch die Arten von Empfehlungen mithilfe der folgenden Eigenschaften festlegen:
 
-* Kategorie
+* Category
 * Auswirkungsstufe
 * Empfehlungstyp
 
@@ -33,7 +33,7 @@ Sie können auch die Aktion konfigurieren, die bei Auslösen einer Warnung durch
 * Auswählen einer vorhandenen Aktionsgruppe
 * Erstellen einer neuen Aktionsgruppe
 
-Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen](../azure-monitor/platform/action-groups.md.
+Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
 > [!NOTE] 
 > Advisor-Warnungen stehen derzeit nur für Hochverfügbarkeits-, Leistungs- und Kostenempfehlungen zur Verfügung. Sicherheitsempfehlungen werden nicht unterstützt. 

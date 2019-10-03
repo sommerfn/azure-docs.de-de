@@ -1,19 +1,19 @@
 ---
 title: Behandeln von Protokollwarnungen in Azure Monitor | Microsoft-Dokumentation
 description: Allgemeine Probleme, Fehler und deren Behandlung für Protokollwarnungsregeln in Azure.
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 794f4ad5bba46af53280d35b55b762b9eef8e1a1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66477858"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675245"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 

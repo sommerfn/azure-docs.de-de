@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 04/22/2018
 ms.author: yegu
-ms.openlocfilehash: a93d21b07dc486f743694ee99f60018ed4ef517c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3babb213f633586786c0015c27fae50e44369df
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943867"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815663"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis
 
@@ -59,7 +59,7 @@ Mit dem heruntergeladenen NuGet-Paket werden die erforderlichen Assemblyverweise
 
 Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsoft Azure-Portal, und konfigurieren Sie die restlichen Werte wie gewünscht. Anweisungen zum Zugreifen auf die Cacheeigenschaften finden Sie unter [Konfigurieren von Azure Cache for Redis-Einstellungen](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Attribut | Type | Standard | BESCHREIBUNG |
+| Attribut | type | Standard | BESCHREIBUNG |
 | --------- | ---- | ------- | ----------- |
 | *host* | Zeichenfolge | „localhost“ | IP-Adresse oder Hostname des Redis-Servers |
 | *port* | Positive ganze Zahl | 6379 (non-SSL)<br/>6380 (SSL) | Redis-Serverport |
@@ -171,7 +171,7 @@ namespace MyCompany.Redis
 
         public object Deserialize(byte[] data)
         {
-            if (data == null)6t6
+            if (data == null)
             {
                 return null;
             }

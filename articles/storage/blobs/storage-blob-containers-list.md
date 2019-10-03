@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie einen Blobcontainer in Ihrem Azure Stora
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 07/10/2019
+ms.topic: conceptual
+ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e0197d59cdadd5e9462daf879d915ac2520bc149
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985663"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803378"
 ---
 # <a name="list-blob-containers-with-net"></a>Auflisten von Blobcontainern mit .NET
 

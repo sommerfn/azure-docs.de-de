@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: memildin
-ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200499"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338772"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -42,7 +42,7 @@ Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sic
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancerichtlinien auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe (Root) bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Befolgen Sie die Anleitung unter [Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center](security-center-management-groups.md), um Verwaltungsgruppen für die Verwendung mit Azure Security Center einzurichten.
 
 > [!NOTE]
-> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md#root-management-group-for-each-directory).
+> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#root-management-group-for-each-directory).
 >
 
 ## <a name="how-security-policies-work"></a>Funktionsweise von Sicherheitsrichtlinien

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: b1aac19885e2b640063e4840f047916ad51e9656
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2731bbcd6a6b0c8f7d82334c022c017d5eae35f0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855748"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677019"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei IoT Hub
 
@@ -91,9 +91,6 @@ Im Gerätecode müssen Sie den [Endpunkt für die Gerätebereitstellung](/azure/
 ## <a name="generate-x509-certificate"></a>Generieren eines X.509-Zertifikats
 
 Der von diesem Beispiel verwendete [Nachweismechanismus](/azure/iot-dps/concepts-device#attestation-mechanism) ist ein X.509-Zertifikat. Zu dessen Generierung müssen Sie ein Hilfsprogramm verwenden.
-
-> [!NOTE]
-> Der X.509-Zertifikatgenerator unterstützt derzeit nur Windows.
 
 1. Klicken Sie in VS Code auf `F1`, geben Sie **Open New Terminal** (Neues Terminal öffnen) ein, und wählen Sie den Befehl aus, um ein Terminalfenster zu öffnen.
 
