@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779157"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146646"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 
@@ -28,7 +28,6 @@ Wenn Sie im Azure-Portal ein Automation-Konto erstellen, werden automatisch folg
   * Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD)
   * Erstellen eines Zertifikats
   * Zuweisen der Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC), die zum Verwalten von Azure Resource Manager-Ressourcen mit Runbooks verwendet wird
-* **Klassisches ausführendes Konto:** Dieses Konto lädt ein Verwaltungszertifikat hoch. Das Zertifikat verwaltet klassische Ressourcen mithilfe von Runbooks.
 
 Dank der automatischen Erstellung dieser Konten können Sie schnell Runbooks für Ihre Automatisierungsanforderungen erstellen und bereitstellen.
 
@@ -97,14 +96,13 @@ Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch versc
 | AzureRunAsCertificate |Eine Zertifikatressource, die automatisch zusammen mit dem Automation-Konto oder mithilfe eines PowerShell-Skripts für ein vorhandenes Konto erstellt wird. Das Zertifikat dient zur Authentifizierung bei Azure, um Azure Resource Manager-Ressourcen über Runbooks verwalten zu können. Dieses Zertifikat ist ein Jahr lang gültig. |
 | AzureRunAsConnection |Eine Verbindungsressource, die automatisch zusammen mit dem Automation-Konto oder mithilfe eines PowerShell-Skripts für ein vorhandenes Konto erstellt wird. |
 
-In der folgenden Tabelle sind die Ressourcen für das klassische ausführende Konto zusammengefasst.
+## <a name="classic-run-as-accounts"></a>Klassische ausführende Konten
 
-| Resource | BESCHREIBUNG |
-| --- | --- |
-| AzureClassicAutomationTutorial-Runbook |Ein grafisches Beispielrunbook. Das Runbook ruft alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) ab. Anschließend zeigt es die VM-Namen und den Status an. |
-| AzureClassicAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook. Das Runbook ruft alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) ab. Anschließend zeigt es die VM-Namen und den Status an. |
-| AzureClassicRunAsCertificate |Eine automatisch erstellte Zertifikatressource. Das Zertifikat dient zur Authentifizierung bei Azure, um klassische Azure-Ressourcen über Runbooks verwalten zu können. Dieses Zertifikat ist ein Jahr lang gültig. |
-| AzureClassicRunAsConnection |Eine automatisch erstellte Verbindungsressource. Die Ressource dient zur Authentifizierung bei Azure, um klassische Azure-Ressourcen über Runbooks verwalten zu können. |
+Klassische ausführende Konten werden nicht mehr standardmäßig erstellt, wenn Sie ein Azure Automation-Konto erstellen. Wenn Sie weiterhin ein klassisches ausführendes Konto benötigen, führen Sie die folgenden Schritte aus.
+
+1. Wählen Sie auf Ihrer Seite **Automation-Konto** den Eintrag **Ausführende Konten** unter **Kontoeinstellungen** aus.
+2. Wählen Sie **Klassisches ausführendes Azure-Konto** aus.
+3. Klicken Sie auf **Erstellen**, um mit dem Erstellen des klassischen ausführenden Kontos fortzufahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

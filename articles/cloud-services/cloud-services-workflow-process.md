@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die Workflowprozesse be
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945328"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162150"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Workflow der klassischen Windows-Azure-VM-Architektur 
 Dieser Artikel bietet eine Übersicht über die Workflowprozesse, die beim Bereitstellen oder Aktualisieren einer Azure-Ressource (z. B. einer VM) stattfinden. 
@@ -43,9 +43,10 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 
 **D**.  WindowsAzureGuestAgent ist für Folgendes zuständig:
 
-1. Konfigurieren des Gastbetriebssystems, einschließlich Firewall, Zugriffssteuerungslisten (Access Control List, ACL), LocalStorage-Ressourcen, Dienstpaket, Konfiguration und Zertifikate, sowie Einrichten der Sicherheits-ID (SID) für das Benutzerkonto, unter dem die Rolle ausgeführt wird
-2. Melden des Rollenstatus an das Fabric
-3. Starten und Überwachen von WaHostBootstrapper, um sicherzustellen, dass sich die Rolle im Zielzustand befindet
+1. Konfigurieren des Gastbetriebssystems, einschließlich Firewall, Zugriffssteuerungslisten (Access Control List, ACL), LocalStorage-Ressourcen, Dienstpaket, Konfiguration und Zertifikate,
+2. sowie Einrichten der Sicherheits-ID (SID) für das Benutzerkonto, unter dem die Rolle ausgeführt wird.
+3. Melden des Rollenstatus an das Fabric
+4. Starten und Überwachen von WaHostBootstrapper, um sicherzustellen, dass sich die Rolle im Zielzustand befindet
 
 **E**. WaHostBootstrapper ist für Folgendes zuständig:
 
@@ -85,7 +86,7 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 7. WaHostBootstrapper liest die **Startaufgaben** aus „E:\RoleModel.xml“ und beginnt mit ihrer Ausführung. WaHostBootstrapper wartet, bis alle einfachen Aufgaben abgeschlossen sind und eine Erfolgsmeldung zurückgegeben haben.
 8. Für Webrollen mit der IIS-Vollversion weist WaHostBootstrapper IISConfigurator an, den IIS-AppPool zu konfigurieren, und verweist die Website auf `E:\Sitesroot\<index>`, wobei `<index>` ein 0-basierter Index für die Anzahl von `<Sites>`-Elementen ist, die für den Dienst definiert sind.
 9. WaHostBootstrapper startet den Hostprozess je nach Rollentyp:
-    1. **Workerrolle**: „WaWorkerHost.exe“ wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu (wenn „InputEndpoints“ definiert sind). Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
+    1. **Workerrolle**: „WaWorkerHost.exe“ wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu (falls Eingabeendpunkte definiert sind). Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
     1. **SDK 1.2-HWC-Webrolle**: WaWebHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. WaWebHost gibt eine Aufwärmanforderung aus (GET /do.rd_runtime_init). Alle Webanforderungen werden an „WaWebHost.exe“ gesendet. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
     1. **Webrolle mit der IIS-Vollversion**: aIISHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet er die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
 10. Eingehende Webanforderungen an eine Webrolle mit der IIS-Vollversion lösen wie in einer lokalen IIS-Umgebung IIS aus, um den W3WP-Prozess zu starten und die Anforderung zu verarbeiten.

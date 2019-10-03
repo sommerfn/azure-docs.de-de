@@ -4,7 +4,7 @@ description: Dieser Artikel behandelt häufig gestellte Fragen zur Bereitstellun
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941724"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154799"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Bereitstellungsprobleme bei Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -32,22 +32,22 @@ Verfügt ein Clouddienst über eine Bereitstellung in einem der Slots, wird der 
 
 Fehler bei der Zuordnung treten auf, wenn der Cluster, in dem sich der Clouddienst befindet, nicht über ausreichend physische Computeressourcen verfügt, um die Bereitstellungsanfrage zu erfüllen.
 
-Hilfe bei der Minimierung solcher Fehler bei der Zuordnung finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
+Hilfe bei der Abmilderung solcher Zuordnungsfehler finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Warum führt das Hochskalieren oder das horizontale Skalieren einer Clouddienstbereitstellung manchmal zu Zuordnungsfehlern?
 Wenn ein Clouddienst bereitgestellt ist, wird er normalerweise an einen bestimmten Cluster angeheftet. Das bedeutet, dass beim horizontalen oder Hochskalieren eines vorhandenen Clouddiensts eine Zuweisung neuer Instanzen in demselben Cluster erfolgen muss. Wenn der Cluster seine Kapazität nahezu erreicht hat, oder die gewünschte Größe/der gewünschte Typ des virtuellen Computers nicht verfügbar ist, schlägt die Anforderung möglicherweise fehl.
 
-Hilfe bei der Minimierung solcher Fehler bei der Zuordnung finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
+Hilfe bei der Abmilderung solcher Zuordnungsfehler finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Warum führt die Bereitstellung eines Clouddiensts in einer Affinitätsgruppe manchmal zu einem Fehler bei der Zuordnung?
 Eine neue Bereitstellung für einen leeren Clouddienst kann von dem Fabric in jedem Cluster in dieser Region zugeordnet werden, es sei denn, der Clouddienst ist mit einer Affinitätsgruppe verknüpft. Bereitstellungen in derselben Affinitätsgruppe werden auch im selben Cluster versucht. Wenn der Cluster seine Kapazität nahezu erreicht hat, schlägt die Anforderung möglicherweise fehl.
 
-Hilfe bei der Minimierung solcher Fehler bei der Zuordnung finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
+Hilfe bei der Abmilderung solcher Zuordnungsfehler finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Warum führt das Ändern der Größe eines virtuellen Computers oder das Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst manchmal zu einem Zuordnungsfehler?
-Die Cluster in einem Datencenter können über verschiedene Konfigurationen der Computertypen verfügen (z.B. A-Serie, Av2-Serie, D-Serie, Dv2-Serie, G-Serie, H-Serie, usw.). Allerdings verfügen möglicherweise nicht alle Cluster über alle Arten von virtuellen Computern. Wenn Sie z.B. versuchen, einen virtuellen Computer der D-Serie einem Clouddienst zuzuordnen, der bereits in einem Cluster der A-Serie bereitgestellt ist, tritt ein Zuordnungsfehler auf. Dies geschieht auch dann, wenn Sie versuchen, die SKU-Größe des virtuellen Computers zu ändern (z.B. durch Wechsel von einer A-Serie zu einer D-Serie).
+Die Cluster in einem Datencenter können über verschiedene Konfigurationen der Computertypen verfügen (z. B. A-Serie, Av2-Serie, D-Serie, Dv2-Serie, G-Serie, H-Serie usw.). Allerdings verfügen möglicherweise nicht alle Cluster über alle Arten von virtuellen Computern. Wenn Sie z.B. versuchen, einen virtuellen Computer der D-Serie einem Clouddienst zuzuordnen, der bereits in einem Cluster der A-Serie bereitgestellt ist, tritt ein Zuordnungsfehler auf. Dies geschieht auch dann, wenn Sie versuchen, die SKU-Größe des virtuellen Computers zu ändern (z.B. durch Wechsel von einer A-Serie zu einer D-Serie).
 
-Hilfe bei der Minimierung solcher Fehler bei der Zuordnung finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
+Hilfe bei der Abmilderung solcher Zuordnungsfehler finden Sie unter [Zuordnungsfehler bei Cloud Service-Instanzen: Lösungen](cloud-services-allocation-failures.md#solutions).
 
 Informationen zu den verfügbaren Größen in Ihrer Region finden Sie unter [Microsoft Azure: Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services).
 

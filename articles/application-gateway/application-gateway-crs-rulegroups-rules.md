@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e56301e98ca773369631e2f7ae137c63d0b9ddef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613314"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240336"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
@@ -197,6 +197,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Application Gatewa
 |942270|Suche nach grundlegender SQL-Einschleusung. Häufig verwendete Angriffszeichenfolge für MySQL Oracle und andere.|
 |942290|Ermittelt Angriffsversuche mit grundlegender MongoDB SQL-Einschleusung.|
 |942300|Erkennt MySQL-Kommentare, Bedingungen und Einschleusungen von „ch(ar)“|
+|942310|Erkennt verkette Angriffsversuche SQL-Einschleusung 2/2.|
 |942320|Erkennt Einschleusungen von gespeicherten Prozeduren/Funktionen für MySQL und PostgreSQL.|
 |942330|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen, 1/2|
 |942340|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung, 3/3|

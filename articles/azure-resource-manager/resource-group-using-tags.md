@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312133"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146839"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
 
@@ -23,7 +23,7 @@ Um Tags auf Ressourcen anwenden zu können, muss der Benutzer Schreibzugriff auf
 
 ## <a name="policies"></a>Richtlinien
 
-Sie können [Azure Policy](../governance/policy/overview.md) verwenden, um Taggingregeln und -konventionen zu erzwingen. Durch die Erstellung einer Richtlinie vermeiden Sie das Szenario, dass Ressourcen in Ihrem Abonnement bereitgestellt werden, die nicht den erwarteten Tags für Ihr Unternehmen entsprechen. Anstelle der manuellen Anwendung von Tags oder der Suche nach Ressourcen, die nicht konform sind, können Sie eine Richtlinie erstellen, die die erforderlichen Tags während der Bereitstellung automatisch anwendet. Im folgenden Abschnitt werden Beispielrichtlinien für Tags dargestellt.
+Sie können [Azure Policy](../governance/policy/overview.md) verwenden, um Taggingregeln und -konventionen zu erzwingen. Durch die Erstellung einer Richtlinie vermeiden Sie das Szenario, dass Ressourcen in Ihrem Abonnement bereitgestellt werden, die nicht den erwarteten Tags für Ihr Unternehmen entsprechen. Anstelle der manuellen Anwendung von Tags oder der Suche nach Ressourcen, die nicht konform sind, können Sie eine Richtlinie erstellen, die die erforderlichen Tags während der Bereitstellung automatisch anwendet. Tags können jetzt auch auf vorhandene Ressourcen mit dem neuen Effekt [Ändern](../governance/policy/concepts/effects.md#modify) und einer [Korrekturaufgabe](../governance/policy/how-to/remediate-resources.md) angewendet werden. Im folgenden Abschnitt werden Beispielrichtlinien für Tags dargestellt.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 

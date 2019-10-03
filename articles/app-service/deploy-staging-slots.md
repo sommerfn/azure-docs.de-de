@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070602"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129713"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -220,6 +220,9 @@ Sie können das Aufwärmverhalten ferner mithilfe folgender [App-Einstellungen](
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. Ein Beispiel ist `/statuscheck`. Standardwert: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 
+> [!NOTE]
+> `<applicationInitialization>` ist Teil jedes App-Starts, während diese zwei App-Einstellungen nur für den Slotaustausch gelten.
+
 Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von Problemen beim Austausch](#troubleshoot-swaps).
 
 ## <a name="monitor-a-swap"></a>Überwachen eines Austauschs
@@ -368,6 +371,8 @@ Im Anschluss folgen einige allgemeine Austauschfehler:
     </conditions>
     ```
 - Einige [IP-Einschränkungsregeln](app-service-ip-restrictions.md) verhindern unter Umständen das Senden von HTTP-Anforderungen an Ihre App. IPv4-Adressbereiche, die mit `10.` und `100.` beginnen, sind interne Adressbereiche für Ihre Bereitstellung. Es empfiehlt sich, für diese Bereich die Verbindungsherstellung mit Ihrer App zuzulassen.
+
+- Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` ](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Blockieren des Zugriffs auf produktionsfremde Slots](app-service-ip-restrictions.md)

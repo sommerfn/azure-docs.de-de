@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325815"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178568"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern mithilfe einer YAML-Datei
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325815"
 
 Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Containergruppen sind nützlich, wenn eine Sidecaranwendung für die Protokollierung, die Überwachung oder eine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
-In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecarkonfiguration mit zwei Containern durch Bereitstellung einer YAML-Datei mithilfe der Azure-Befehlszeilenschnittstelle. Eine YAML-Datei bietet ein übersichtliches Format zur Angabe der Instanzeinstellungen. Folgendes wird vermittelt:
+In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecarkonfiguration mit zwei Containern durch Bereitstellung einer [YAML-Datei](container-instances-reference-yaml.md) mithilfe der Azure-Befehlszeilenschnittstelle. Eine YAML-Datei bietet ein übersichtliches Format zur Angabe der Instanzeinstellungen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer YAML-Datei

@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie Azure Resource Manager-Vorlagen für d
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300153"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
@@ -47,9 +47,11 @@ Bei der Entscheidung zwischen Resource Manager-Vorlagen und einem der anderen In
 
 * **Bereitstellungsblaupausen**: Sie können von Microsoft bereitgestellte [Blaupausen](../governance/blueprints/overview.md) nutzen, um gesetzliche Vorgaben und Konformitätsstandards einzuhalten. Diese Blaupausen umfassen vorgefertigte Vorlagen für verschiedene Architekturen.
 
+* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgabe verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von Azure Resource Manager-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](./vs-resource-groups-project-devops-pipelines.md) und [Continuous Integration mit Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md).
+
 * **Exportierbarer Code**: Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](export-template-portal.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
-* **Dokumenterstellungstools**: Sie können Vorlagen mit [Visual Studio Code](resource-manager-tools-vs-code.md) und der Vorlagentoolerweiterung erstellen. IntelliSense, Syntaxhervorhebung, Inlinehilfe und viele andere Sprachfunktionen stehen Ihnen zur Verfügung.
+* **Dokumenterstellungstools**: Sie können Vorlagen mit [Visual Studio Code](resource-manager-tools-vs-code.md) und der Vorlagentoolerweiterung erstellen. IntelliSense, Syntaxhervorhebung, Inlinehilfe und viele andere Sprachfunktionen stehen Ihnen zur Verfügung. Zusätzlich zu Visual Studio Code können Sie auch [Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) verwenden.
 
 ## <a name="template-file"></a>Vorlagendatei
 
@@ -124,7 +126,4 @@ Informationen zu geschachtelten Vorlagen finden Sie unter [Verwenden von verknü
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-* Wie Sie Abhängigkeiten explizit festlegen, damit eine Ressource vor einer anderen Ressource bereitgestellt wird, erfahren Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](resource-group-define-dependencies.md).
-* Sie können Ihrer Vorlage eine Ressource hinzufügen und diese optional bereitstellen. Weitere Informationen finden Sie unter [Bedingte Bereitstellung in Resource Manager-Vorlagen](conditional-resource-deployment.md).
-* Anstatt JSON-Blöcke mehrmals in der Vorlage zu wiederholen, können Sie mehrere Instanzen einer Variablen, Eigenschaft oder Ressource anzugeben. Weitere Informationen finden Sie unter [Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen](resource-group-create-multiple.md).
 * Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

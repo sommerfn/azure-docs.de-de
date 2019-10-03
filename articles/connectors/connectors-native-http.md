@@ -1,6 +1,6 @@
 ---
-title: Herstellen der Verbindung mit HTTP- oder HTTPS-Endpunkten von Azure Logic Apps
-description: Überwachen von HTTP- oder HTTPS-Endpunkten in automatisierten Aufgaben, Prozessen und Workflows mithilfe von Azure Logic Apps
+title: Aufrufen von HTTP- und HTTPS-Endpunkten – Azure Logic Apps
+description: Senden von ausgehenden Anforderung an HTTP- und HTTPS-Endpunkte mithilfe von Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,18 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234364"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122698"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Aufrufen von HTTP- oder HTTPS-Endpunkten mit Azure Logic Apps
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Senden von ausgehenden Aufrufen an HTTP- oder HTTPS-Endpunkte mithilfe von Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Connector können Sie durch Erstellung von Logik-Apps Workflows automatisieren, die regelmäßig HTTP- oder HTTPS-Endpunkte aufrufen. So können Sie beispielsweise den Dienstendpunkt für Ihre Website überwachen, indem Sie diesen Endpunkt nach einem bestimmten Zeitplan überprüfen. Wenn ein bestimmtes Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die angegebenen Aktionen aus.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Trigger oder der HTTP-Aktion können Sie automatisierte Tasks und Workflows erstellen, die regelmäßig Anforderungen an HTTP- oder HTTPS-Endpunkte senden. Um stattdessen eingehende HTTP- oder HTTPS-Aufrufe zu empfangen und darauf zu reagieren, verwenden Sie den integrierten [Anforderungstrigger oder die Antwortaktion](../connectors/connectors-native-reqres.md).
+
+So können Sie beispielsweise den Dienstendpunkt für Ihre Website überwachen, indem Sie diesen Endpunkt nach einem bestimmten Zeitplan überprüfen. Wenn ein bestimmtes Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die angegebenen Aktionen aus.
 
 Um einen Endpunkt gemäß einem Zeitplan zu überprüfen oder *abzurufen*, können Sie den HTTP-Trigger als ersten Schritt in Ihrem Workflow verwenden. Bei jeder Überprüfung sendet der Trigger einen Aufruf oder eine *Anforderung* an den Endpunkt. Die Antwort des Endpunkts bestimmt, ob der Workflow der Logik-App ausgeführt wird. Der Trigger übergibt alle Inhalte aus der Antwort an die Aktionen in Ihrer Logik-App.
 

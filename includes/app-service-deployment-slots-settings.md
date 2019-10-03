@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 0691b1a531ffebbb2c368bdb37dd4d8025fb4a4e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623706"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129697"
 ---
 Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann die geklonte Konfiguration bearbeitet werden. Bei einem Austausch werden einige Konfigurationselemente zusammen mit dem Inhalt überführt (nicht slotspezifisch), während andere Konfigurationselemente nach einem Austausch im gleichen Slot verbleiben (slotspezifisch). Im Anschluss sind die Einstellungen aufgeführt, die sich beim Austauschen der Slots ändert.
 
@@ -19,7 +19,6 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * App-Einstellungen (können so konfiguriert werden, dass sie beim Slot verbleiben)
 * Verbindungszeichenfolgen (können so konfiguriert werden, dass sie beim Slot verbleiben)
 * Handlerzuordnungen
-* Überwachungs- und Diagnoseeinstellungen
 * Öffentliche Zertifikate
 * WebJobs-Inhalte
 * Hybridverbindungen *
@@ -27,19 +26,20 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * Dienstendpunkte*
 * Azure Content Delivery Network*
 
-Für mit einem Sternchen (*) gekennzeichnete Features ist eine feste Slotzuordnung geplant. 
+Für mit einem Sternchen (*) gekennzeichnete Features ist eine Rückgängigmachung des Austauschs geplant. 
 
 **Einstellungen, die nicht ausgetauscht werden**:
 
 * Veröffentlichungsendpunkte
 * Benutzerdefinierte Domänennamen
-* Private Zertifikate und SSL-Bindungen
+* Nicht öffentliche Zertifikate und TLS/SSL-Einstellungen
 * Skalierungseinstellungen
 * WebJobs-Planer
 * IP-Einschränkungen
 * Always On
-* Protokolleinstellungen (HTTPS, TLS-Version, Clientzertifikate)
 * Einstellungen für das Diagnoseprotokoll
 * Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+> [!NOTE]
+> Bestimmte App-Einstellungen, die für nicht ausgetauschte Einstellungen gelten, werden ebenfalls nicht ausgetauscht. Da z. B. die Diagnoseprotokolleinstellungen nicht ausgetauscht werden, werden verwandte App-Einstellungen wie `WEBSITE_HTTPLOGGING_RETENTION_DAYS` und `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` ebenfalls nicht ausgetauscht, auch wenn Sie nicht als Sloteinstellungen angezeigt werden.
+>

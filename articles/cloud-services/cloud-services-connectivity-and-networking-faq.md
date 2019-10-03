@@ -4,7 +4,7 @@ description: Dieser Artikel behandelt häufig gestellte Fragen zu Konnektivität
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941748"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154872"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -103,7 +103,7 @@ Damit die öffentliche IP-Adresse des Clouddiensts (auch bekannt als VIP-Adresse
 - [Reservieren der IP-Adresse eines vorhandenen Clouddiensts](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Wenn Sie über mehrere Instanzen für Ihre Rollen verfügen, sollte die Zuordnung von RIP zu Ihrem Clouddienst keine Downtime verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums der Whitelist hinzufügen. Sie finden alle Azure-IP-Adressbereiche im [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Wenn Sie über mehrere Instanzen für Ihre Rollen verfügen, dürfte die RIP-Zuordnung zu Ihrem Clouddienst keine Ausfallzeit verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums der Zulassungsliste hinzufügen. Sie finden alle Azure-IP-Adressbereiche im [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Azure-Rechenzentren verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird Azure ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt.
 

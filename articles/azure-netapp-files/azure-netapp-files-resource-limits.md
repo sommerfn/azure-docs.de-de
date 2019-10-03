@@ -1,6 +1,6 @@
 ---
 title: Ressourceneinschränkungen für Azure NetApp Files | Microsoft-Dokumentation
-description: Hier werden Grenzwerte für Azure NetApp Files-Ressourcen beschrieben, einschließlich der Grenzwerte für NetApp-Konten, Kapazitätspools, Volumes, Momentaufnahmen und das delegierte Subnetz.
+description: Beschreibt Limits für Azure NetApp Files-Ressourcen und wie eine Erhöhung des Ressourcenlimits angefordert wird.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984001"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170021"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -40,10 +40,27 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 |  Mindestgröße eines einzelnen Kapazitätspools   |  4 TiB     |    Nein  |
 |  Maximale Größe eines einzelnen Kapazitätspools    |  500 TiB   |   Nein   |
 |  Mindestgröße eines einzelnen Volumes    |    100 GB    |    Nein    |
-|  Maximale Größe eines einzelnen Volumes     |    ca. 100 TiB    |    Nein       |
-|  Maximale Anzahl von Dateien (I-Knoten) pro Volume     |    50 Mio.    |    Nein    |    
+|  Maximale Größe eines einzelnen Volumes     |    ca. 100 TiB    |    Nein    |
+|  Maximale Anzahl von Dateien ([maxfiles](#maxfiles)) pro Volume     |    100 Mio.    |    Ja    |    
+|  Maximale Größe einer einzelnen Datei     |    16 TiB    |    Nein    |    
 
-## <a name="request-limit-increase"></a>Anfordern einer Erhöhung der Grenzwerte 
+## Maxfiles-Limits <a name="maxfiles"></a> 
+
+Azure NetApp Files-Volumes besitzen ein Limit namens *maxfiles*. Das maxfiles-Limit ist die Anzahl von Dateien, die ein Volume enthalten kann. Das maxfiles-Limit für ein Azure NetApp Files-Volume wird basierend auf der Größe (dem Kontingent) des Volumes indiziert. Das maxfiles-Limit für ein Volume erhöht oder verringert sich mit einer Rate von 20 Millionen Dateien pro TiB bereitgestellter Volumegröße. 
+
+Der Dienst passt das maxfiles-Limit für ein Volume basierend auf seiner bereitgestellten Größe dynamisch an. Beispielsweise hätte ein Volume, das anfänglich mit einer Größe von 1 TiB konfiguriert wurde, ein maxfiles-Limit von 20 Millionen. Nachfolgende Änderungen an der Größe des Volumes führten zu einer automatischen Neuanpassung des maxfiles-Limits basierend auf den folgenden Regeln: 
+
+|    Volumegröße (Kontingent)     |  Automatische Neuanpassung des maxfiles-Limits    |
+|----------------------------|-------------------|
+|    < 1 TiB                 |    20 Mio.     |
+|    >= 1 TiB, aber < 2 TiB    |    40 Mio.     |
+|    >= 2 TiB, aber < 3 TiB    |    60 Mio.     |
+|    >= 3 TiB, aber < 4 TiB    |    80 Mio.     |
+|    >= 4 TiB                |    100 Mio.    |
+
+Für jede Volumegröße können Sie eine [Supportanfrage](#limit_increase) initiieren, um das maxfiles-Limit über 100 Millionen hinaus zu erhöhen.
+
+## Anfordern einer Limiterhöhung <a name="limit_increase"></a> 
 
 Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren Grenzwerte aus der obigen Tabelle zu erhöhen. 
 
@@ -64,6 +81,7 @@ Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren
         |  Konto |  *Abonnement-ID*   |  *Angeforderte neue maximale Anzahl an **Konten***    |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
         |  Pool    |  *Abonnement-ID, Konto-URI*  |  *Angeforderte neue maximale Anzahl an **Pools***   |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
         |  Volume  |  *Abonnement-ID, Konto-URI, Pool-URI*   |  *Angeforderte neue maximale Anzahl an **Volumes***     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
+        |  Maxfiles  |  *Abonnement-ID, Konto-URI, Pool-URI, Volume-URI*   |  *Angeforderter neuer maximaler **maxfiles**-Wert*     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |    
 
     2. Legen Sie die entsprechende Supportmethode fest, und geben Sie Ihre Kontaktinformationen an.
 

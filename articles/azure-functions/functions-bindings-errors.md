@@ -7,17 +7,17 @@ author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
 ms.topic: reference
-ms.date: 01/14/2019
+ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e289243949ee769322d55a7c2dde5bd8e6af1ca1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 23aa30a93e5e3820d431afc00aa77071762feb14
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097505"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155666"
 ---
 # <a name="handle-azure-functions-binding-errors"></a>Fehlerbehandlung bei der Azure Functions-Bindung
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-Links zu allen relevanten Fehlerthemen für die unterschiedlichen von Functions unterstützten Dienste finden Sie im Abschnitt [Bindungsfehlercodes](functions-bindings-error-pages.md#binding-error-codes) des Übersichtsthemas [Fehlerbehandlung bei Azure Functions](functions-bindings-error-pages.md).  
+Informationen Fehlern, die von Diensten zurückgegeben werden, die von Functions unterstützt werden, finden Sie im Abschnitt [Bindungsfehlercodes](functions-bindings-error-pages.md#binding-error-codes) des Übersichtsartikels [Fehlerbehandlung bei Azure Functions](functions-bindings-error-pages.md).  
