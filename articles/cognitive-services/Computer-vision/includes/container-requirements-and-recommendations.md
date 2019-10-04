@@ -6,20 +6,35 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 8/26/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 5da088bf0356dd54d98ec5393fd2db8068f9c666
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 47c889a428ec2916dc8cad73e30ef5ff630372a7
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034474"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129811"
 ---
-In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Texterkennung zugeordnet werden.
+> [!NOTE]
+> Die Anforderungen und Empfehlungen basieren auf Benchmarks mit einer einzelnen Anforderung pro Sekunde, wobei ein 8 MB großes Bild eines gescannten Geschäftsbriefs mit 29 Zeilen und insgesamt 803 Zeichen verwendet wird.
+
+#### <a name="readtabread"></a>[Lesen](#tab/read)
+
+In der folgenden Tabelle werden die minimale und empfohlene Zuordnung von Ressourcen für jeden Container für das Lesen beschrieben.
 
 | Container | Minimum | Empfohlen |TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|Texterkennung|Ein Kern, 8 GB Arbeitsspeicher, 0,5 TPS|Zwei Kerne, 8 GB Arbeitsspeicher, 1 TPS|0,5, 1|
+| Lesen | Ein Kern, 8 GB Arbeitsspeicher, 0,24 TPS | Acht Kerne, 16 GB Arbeitsspeicher, 1,17 TPS | 0,24, 1,17 |
+
+#### <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
+
+In der folgenden Tabelle werden die minimale und empfohlene Zuordnung von Ressourcen für jeden Container für die Texterkennung beschrieben.
+
+| Container | Minimum | Empfohlen |TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+| Texterkennung | Ein Kern, 8 GB Arbeitsspeicher, 0,12 TPS | Zwei Kerne, 16 GB Arbeitsspeicher, 0,60 TPS | 0,12, 0,60 |
+
+***
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 * TPS: Transaktionen pro Sekunde

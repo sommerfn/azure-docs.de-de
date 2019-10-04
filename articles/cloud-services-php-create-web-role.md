@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82bb5f153a2c70d3b26f295925f8e48693bc49b9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337560"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146868"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Erstellen von PHP-Web- und Workerrollen
 
@@ -32,7 +32,7 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Computehostingoptione
 
 ## <a name="download-the-azure-sdk-for-php"></a>Herunterladen des Azure SDK für PHP
 
-Das [Azure SDK für PHP](php-download-sdk.md) besteht aus verschiedenen Komponenten. In diesem Artikel werden zwei Komponenten verwendet: Azure PowerShell und die Azure-Emulatoren. Diese beiden Komponenten können über den Microsoft-Webplattform-Installer installiert werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Das [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php) besteht aus verschiedenen Komponenten. In diesem Artikel werden zwei Komponenten verwendet: Azure PowerShell und die Azure-Emulatoren. Diese beiden Komponenten können über den Microsoft-Webplattform-Installer installiert werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="create-a-cloud-services-project"></a>Erstellen eines Cloud-Dienst-Projekts
 

@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 92ea3c71dda011c5f7b19682d9bdea6c226ae5d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d958202ee42b1edec5e1b65c120536c656823ecf
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992081"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147238"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Verwenden von Service Bus-Warteschlangen mit PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -35,10 +35,10 @@ In diesem Tutorial erfahren Sie, wie Sie PHP-Anwendungen erstellen, um Nachricht
 
         > [!NOTE]
         > In diesem Tutorial erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von PHP. 
-3. [Azure SDK für PHP](../php-download-sdk.md)
+3. [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung
-Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Blob-Dienst zugreift, ist das Verweisen auf Klassen im [Azure-SDK für PHP](../php-download-sdk.md) aus dem Code heraus. Sie können die Anwendung mit beliebigen Entwicklungstools oder mit Editor erstellen.
+Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Blob-Dienst zugreift, ist das Verweisen auf Klassen im [Azure-SDK für PHP](https://github.com/Azure/azure-sdk-for-php) aus dem Code heraus. Sie können die Anwendung mit beliebigen Entwicklungstools oder mit Editor erstellen.
 
 > [!NOTE]
 > In Ihrer PHP-Installation muss außerdem die [OpenSSL-Erweiterung](https://php.net/openssl) installiert und aktiviert sein.
@@ -227,7 +227,7 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor der Ausgabe de
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie weitere Informationen unter [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions].
+Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie weitere Informationen unter [Service Bus-Warteschlangen, -Themen und -Abonnements][Queues, topics, and subscriptions].
 
 Weitere Informationen finden Sie auch im [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 

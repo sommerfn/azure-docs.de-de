@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999644"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155226"
 ---
 # <a name="where-can-you-use-personalizer"></a>Wo können Sie Personalisierung verwenden?
 
@@ -33,7 +33,7 @@ Sie können Personalisierung in folgenden Situationen anwenden:
 * Die beste Auswahl kann und sollte aus dem kollektiven Benutzerverhalten und der Belohnungsgesamtbewertung abgeleitet werden.
 * Die Verwendung von maschinellem Lernen für die Personalisierung befolgt die [Leitlinien für die verantwortungsvolle Verwendung](ethics-responsible-use.md) und die von Ihnen ausgewählten Optionen.
 * Die kontextbezogene Entscheidung kann als Rangfolge der besten Option (Aktion) aus einer begrenzten Anzahl von Auswahlmöglichkeiten ausgedrückt werden.
-* Wie gut die nach Rang sortierte Auswahl für Ihre Anwendung funktioniert hat, kann bestimmt werden, indem ein Aspekt des Benutzerverhaltens gemessen und als _Belohnungsbewertung_ zum Ausdruck kommt. Dies ist eine Zahl zwischen -1 und 1.
+* Wie gut die nach Rang sortierte Auswahl für Ihre Anwendung funktioniert hat, kann bestimmt werden, indem ein Aspekt des Benutzerverhaltens gemessen und als _[Belohnungsbewertung](concept-rewards.md)_ zum Ausdruck kommt.
 * Die Belohnungsbewertung führt nicht zu viele störende oder externe Faktoren ein. Die Experimentdauer ist kurz genug, sodass die Belohnungsbewertung berechnet werden kann, während sie noch relevant ist.
 * Sie können den Kontext für die Rangfolge als eine Liste von mindestens 5 [Merkmalen](concepts-features.md) ausdrücken, von denen Sie glauben, dass sie beim Treffen der richtigen Auswahl hilfreich sind, und die keine personenbezogenen Informationen enthalten (PII).
 * Sie besitzen Informationen über jede Inhaltsauswahl, _Aktion_, als Liste von mindestens 5 [Merkmalen](concepts-features.md), von denen Sie glauben, dass sie der Personalisierung beim Treffen der richtigen Auswahl helfen werden.

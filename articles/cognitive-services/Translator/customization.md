@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e6771a0d72592f1952853642ceea196b02774ada
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595309"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257628"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -29,7 +29,7 @@ Mit dem benutzerdefinierten Translator können Sie neuronale Übersetzungssystem
 
 ### <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentationen usw.), um ein Übersetzungssystem zu erstellen, das die domänenspezifische Terminologie und den Stil besser als ein herkömmliches Übersetzungssystem widerspiegelt. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: TMX, XLIFF, TXT, DOCX und XLSX.  
+Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentationen usw.), um ein Übersetzungssystem zu erstellen, das die domänenspezifische Terminologie und den Stil besser als ein Standardübersetzungssystem widerspiegelt. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: TMX, XLIFF, TXT, DOCX und XLSX.  
 
 Das System akzeptiert auch Daten, die parallel auf Dokumentebene parallel sind, jedoch noch nicht auf Satzebene ausgerichtet wurden. Wenn Sie über Zugriff auf Versionen mit dem gleichen Inhalt in mehreren Sprachen verfügen, die sich jedoch in separaten Dokumenten befinden, kann der benutzerdefinierte Translator Sätze über mehrere Dokumente hinweg automatisch abgleichen.  Das System kann auch einsprachige Daten in einer oder beiden Sprachen verwenden, um die parallelen Trainingsdaten zu ergänzen, um die Übersetzungen zu verbessern.
 

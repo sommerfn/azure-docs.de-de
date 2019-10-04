@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663376"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154661"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
 
@@ -25,7 +25,7 @@ Die Personalisierung trainiert die eigenen Machine Learning-Modelle durch Auswer
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Verwenden der Relevanz-API für die Bewertung der Personalisierung
 
-Die Relevanzergebnisse werden mithilfe der [Relevanz-API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) an die Personalisierung übermittelt. Die Relevanz wird als Zahl zwischen -1 und 1 angegeben. Die Personalisierung trainiert das Modell, um im Lauf der Zeit die höchstmögliche Relevanzsumme zu erreichen.
+Die Relevanzergebnisse werden mithilfe der [Relevanz-API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) an die Personalisierung übermittelt. In der Regel wird die Relevanz als Zahl zwischen 0 und 1 angegeben. Ein negatives Relevanzergebnis mit dem Wert -1 ist in bestimmten Szenarien möglich und sollte nur verwendet werden, wenn Sie Erfahrung mit dem vertiefenden Lernen (Reinforcement Learning, RL) haben. Die Personalisierung trainiert das Modell, um im Lauf der Zeit die höchstmögliche Relevanzsumme zu erreichen.
 
 Die Relevanzergebnisse werden nach dem Benutzerverhalten übermittelt, wobei ein Zeitraum von mehreren Tagen vergehen kann. Die maximale Zeitspanne, die die Personalisierung wartet, bevor ein Ereignis als ohne Relevanz oder als Standardrelevanz eingestuft wird, kann im Azure-Portal mit der [Reward Wait Time](#reward-wait-time) (Relevanzwartezeit) konfiguriert werden.
 
@@ -56,7 +56,7 @@ Wenn innerhalb der [Reward Wait Time](#reward-wait-time) (Relevanzwartezeit) sei
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>Erstellen von Relevanzen mit mehreren Faktoren  
 
-Für eine effektive Personalisierung können Sie für die Relevanzbewertung (beliebige Zahl zwischen -1 und 1) mehrere Faktoren zugrunde legen. 
+Für eine effektive Personalisierung können Sie für die Relevanzbewertung mehrere Faktoren zugrunde legen. 
 
 Sie können z. B. die folgenden Regeln für die Personalisierung einer Liste von Videoinhalten anwenden:
 
@@ -80,7 +80,7 @@ Aggregationseinstellungen:
 
 Sämtliche nach der **Reward Wait Time** (Relevanzwartezeit) empfangenen Bewertungen für ein Ereignis werden verworfen und nicht in das Training von Modellen einbezogen.
 
-Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevanz größer als 1 oder kleiner als -1 sein. Dies führt nicht zu einem Fehler beim Dienst.
+Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevanz außerhalb des erwarteten Bewertungsbereichs liegen. Dies führt nicht zu einem Fehler beim Dienst.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?

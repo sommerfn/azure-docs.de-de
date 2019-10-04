@@ -1,21 +1,21 @@
 ---
-title: Verschieben von Daten in einen Azure HPC Cache-Cloudcontainer
+title: Verschieben von Daten in einen Azure HPC Cache-Cloudcontainer (Vorschauversion)
 description: Auffüllen von Azure Blob Storage für die Verwendung mit Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299998"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Verschieben von Daten in Azure Blob Storage für Azure HPC Cache
+# <a name="move-data-to-azure-blob-storage"></a>Verschieben von Daten in Azure-Blobspeicher
 
-Wenn Ihr Workflow das Verschieben von Daten in Azure Blob Storage beinhaltet, achten Sie darauf, eine effiziente Strategie zum Kopieren Ihrer Daten über den Azure HPC Cache zu verwenden.
+Wenn Ihr Workflow das Verschieben von Daten in Azure Blob Storage beinhaltet, achten Sie darauf, eine effiziente Strategie zu verwenden. Sie können entweder Daten vorab in einen neuen Blobcontainer laden, bevor Sie ihn als Speicherziel definieren, oder den Container hinzufügen und dann Ihre Daten mithilfe von Azure HPC Cache kopieren.
 
 Dieser Artikel erläutert die besten Verfahren zum Verschieben von Daten in Blobspeicher für die Verwendung mit Azure HPC Cache.
 
@@ -23,7 +23,7 @@ Beachten Sie dabei Folgendes:
 
 * Azure HPC Cache verwendet ein spezielles Speicherformat zum Strukturieren der Daten in Blobspeicher. Aus diesem Grund muss ein Blob Storage-Ziel entweder ein neuer, leerer Container oder ein Blobcontainer sein, der zuvor für Azure HPC Cache-Daten verwendet wurde. ([Avere vFXT für Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) verwendet ebenfalls dieses Clouddateisystem.)
 
-* Das Kopieren von Daten über den Azure HPC Cache funktioniert am besten bei mehreren Clients und parallelen Vorgängen. Ein einfacher Kopierbefehl von einem Client verschiebt Daten langsam.
+* Das Kopieren von Daten über Azure HPC Cache in ein Back-End-Speicherziel ist effizienter, wenn Sie mehrere Clients und parallele Operationen verwenden. Ein einfacher Kopierbefehl von einem Client verschiebt Daten langsam.
 
 Es steht ein Python-basiertes Hilfsprogramm zum Laden von Inhalten in einen Blobspeichercontainer zur Verfügung. Weitere Informationen finden Sie unter [Vorabladen von Daten in Blob Storage](#pre-load-data-in-blob-storage-with-clfsload).
 
@@ -33,7 +33,7 @@ Wenn Sie das Hilfsprogramm zum Laden nicht verwenden oder Inhalte zu einem vorha
 
 Sie können das <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Hilfsprogramm Avere CLFSLoad verwenden, um Daten in einen neuen Blobspeichercontainer zu kopieren, bevor Sie ihn als Speicherziel hinzufügen. Dieses Hilfsprogramm wird in auf einem einzelnen Linux-System ausgeführt und schreibt Daten in dem proprietären Format, das für Azure HPC Cache erforderlich ist. CLFSLoad ist die effizienteste Methode zum Auffüllen eines Blobspeichercontainers für die Verwendung mit dem Cache.
 
-Das Hilfsprogramm Avere CLFSLoad ist per Anforderung von Ihrem Azure HPC Cache-Team verfügbar. Wenden Sie sich an Ihren Teamkontakt, oder erstellen Sie ein Supportticket, um Unterstützung anzufordern.
+Das Hilfsprogramm Avere CLFSLoad ist per Anforderung von Ihrem Azure HPC Cache-Team verfügbar. Wenden Sie sich dazu an Ihren Teamkontakt, oder erstellen Sie ein [Supportticket](hpc-cache-support-ticket.md), um Unterstützung anzufordern.
 
 Diese Option funktioniert nur mit neuen, leeren Containern. Erstellen Sie den Container, bevor Sie Avere CLFSLoad verwenden.
 
@@ -41,7 +41,7 @@ Ausführliche Informationen finden Sie in der Avere CLFSLoad-Distribution, die a
 
 Allgemeine Übersicht des Vorgangs:
 
-1. Bereiten Sie ein Linux-System (VM oder physisch) mit Python-Version 3.6 oder höher vor. (Empfehlenswert ist Python 3.7, das eine bessere Leistung erzielt.)
+1. Bereiten Sie ein Linux-System (VM oder physisch) mit Python-Version 3.6 oder höher vor. Empfehlenswert ist Python 3.7, das eine bessere Leistung erzielt.
 1. Installieren Sie die Avere CLFSLoad-Software auf dem Linux-System.
 1. Führen Sie die Übertragung über die Linux-Befehlszeile aus.
 
@@ -60,7 +60,7 @@ Wenn Sie das Avere CLFSLoad-Hilfsprogramm nicht verwenden oder einem vorhandenen
 
 ![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf den Azure HPC Cache. Vom Azure HPC Cache zeigen mehrere Pfeile zum Blobspeicher.](media/hpc-cache-parallel-ingest.png) 
 
-Die Befehle ``cp`` oder ``copy``, die normalerweise verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die jeweils nur eine Datei zugleich kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Clusters darstellt.
+Die Befehle ``cp`` oder ``copy``, die normalerweise verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die jeweils nur eine Datei zugleich kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Cache darstellt.
 
 In diesem Abschnitt werden Strategien zur Erstellung eines Dateikopiersystems mit mehreren Clients und mehreren Threads erläutert, um Daten mithilfe von Azure HPC Cache in Blobspeicher zu verschieben. Es werden Konzepte für die Dateiübertragung und Entscheidungspunkte erläutert, die für eine effiziente Datenkopie mit mehreren Clients und einfachen Kopierbefehlen verwendet werden können.
 

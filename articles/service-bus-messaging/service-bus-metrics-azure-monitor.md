@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 80a4b1e60202b88f6ed3c1574bd4684575a9b153
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6d25bdf6ff8e790466f3a28e3b6043e347d74198
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538060"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261854"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
@@ -30,7 +30,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Azure Monitor-Protokolle und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dieser Wert wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dieser Wert wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor konfiguriert.
 
 ## <a name="access-metrics-in-the-portal"></a>Zugreifen auf Metriken über das Portal
 
@@ -38,7 +38,7 @@ Im [Azure-Portal](https://portal.azure.com) können Sie Metriken im Zeitverlauf 
 
 ![][1]
 
-Sie können auch direkt über den Namespace auf die Metriken zugreifen. Dazu wählen Sie den Namespace aus und klicken dann auf **Metriken**. Um Metriken, die auf Entitätsebene gefiltert werden, anzuzeigen, wählen Sie die Entität aus und klicken dann auf **„Metriken“** .
+Sie können auch direkt über den Namespace auf die Metriken zugreifen. Dazu wählen Sie den Namespace aus und klicken dann auf **Metriken**. Um Metriken, die auf Entitätsebene gefiltert werden, anzuzeigen, wählen Sie die Entität aus und klicken dann auf **Metriken**.
 
 ![][2]
 
@@ -46,7 +46,7 @@ Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimension
 
 ## <a name="billing"></a>Abrechnung
 
-Metrik und Benachrichtigungen auf Azure Monitor werden pro Benachrichtigung abgerechnet. Diese Kosten finden Sie im Portal, wenn Sie die Benachrichtigung einrichten und bevor Sie sie speichern. 
+Metriken und Benachrichtigungen auf Azure Monitor werden pro Benachrichtigung abgerechnet. Diese Kosten finden Sie im Portal, wenn Sie die Benachrichtigung einrichten und bevor Sie sie speichern. 
 
 Zusätzliche Lösungen, die Metrikdaten erfassen, werden direkt von diesen Lösungen abgerechnet. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Kosten für Log Analytics fallen auch an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Log Analytics streamen.
 

@@ -14,18 +14,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063868"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147219"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Verwenden von Service Bus-Themen und -Abonnements mit PHP
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure-SDK für PHP](../php-download-sdk.md). Folgende Szenarien werden behandelt:
+In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure-SDK für PHP](https://github.com/Azure/azure-sdk-for-php). Folgende Szenarien werden behandelt:
 
 - Erstellen von Themen und Abonnements 
 - Erstellen von Abonnementfiltern 
@@ -41,7 +41,7 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
     > Sie erstellen ein **Thema** und ein **Abonnement** für das Thema, indem Sie **PHP** in dieser Schnellstartanleitung verwenden. 
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung
-Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Blob-Dienst zugreift, ist das Verweisen auf Klassen im [Azure SDK für PHP](../php-download-sdk.md) aus dem Code heraus. Sie können die Anwendung mit beliebigen Entwicklungstools oder mit Editor erstellen.
+Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Blob-Dienst zugreift, ist das Verweisen auf Klassen im [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php) aus dem Code heraus. Sie können die Anwendung mit beliebigen Entwicklungstools oder mit Editor erstellen.
 
 > [!NOTE]
 > In Ihrer PHP-Installation muss außerdem die [OpenSSL-Erweiterung](https://php.net/openssl) installiert und aktiviert sein.

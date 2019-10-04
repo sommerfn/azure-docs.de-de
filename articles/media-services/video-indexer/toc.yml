@@ -9,6 +9,8 @@
   items:
     - name: Erste Schritte
       href: video-indexer-get-started.md
+    - name: Benutzer einladen
+      href: invite-users.md
 - name: Lernprogramme
   items:
     - name: Verwenden der Video Indexer-API

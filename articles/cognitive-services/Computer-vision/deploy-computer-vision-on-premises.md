@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 8/22/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068971"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129829"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 
-Eine Möglichkeit zur lokalen Verwaltung Ihrer Container für maschinelles Sehen ist die Verwendung von Kubernetes und Helm. Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um das Containerimage für Texterkennung zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen. Weitere Informationen zum Ausführen von Docker-Containern ohne Kubernetes-Orchestrierung finden Sie unter [Installieren und Ausführen von Containern für Texterkennung](computer-vision-how-to-install-containers.md).
+Eine Möglichkeit zur lokalen Verwaltung Ihrer Container für maschinelles Sehen ist die Verwendung von Kubernetes und Helm. Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um das Containerimage für maschinelles Sehen zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen. Weitere Informationen zum Ausführen von Docker-Containern ohne Kubernetes-Orchestrierung finden Sie unter [Installieren und Ausführen von Containern für maschinelles Sehen](computer-vision-how-to-install-containers.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,6 +89,86 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurieren von Helm-Chart-Werten für die Bereitstellung
+
+# <a name="readtabread"></a>[Lesen](#tab/read)
+
+Erstellen Sie zunächst einen Ordner namens *read*, kopieren Sie dann den folgenden YAML-Inhalt und fügen Sie ihn in eine neue Datei namens *Chart.yml* ein.
+
+```yaml
+apiVersion: v1
+name: read
+version: 1.0.0
+description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+```
+
+Kopieren Sie zum Konfigurieren der Standardwerte des Helm-Charts den folgenden YAML-Code, und fügen Sie ihn in eine Datei namens `values.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte.
+
+```yaml
+# These settings are deployment specific and users can provide customizations
+
+read:
+  enabled: true
+  image:
+    name: cognitive-services-read
+    registry: containerpreview.azurecr.io/
+    repository: microsoft/cognitive-services-read
+    tag: latest
+    pullSecret: containerpreview # Or an existing secret
+    args:
+      eula: accept
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
+```
+
+> [!IMPORTANT]
+> Ohne Angabe der Werte `billing` und `apikey` laufen die Dienste nach 15 Minuten ab. Dies führt dann dazu, dass die Überprüfung nicht erfolgreich ist, da die Dienste nicht zur Verfügung stehen.
+
+Erstellen Sie den Ordner *templates* unter dem Verzeichnis *read*. Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Die `deployment.yaml`-Datei dient als Helm-Vorlage.
+
+> Vorlagen generieren Manifestdateien, die Beschreibungen von Ressourcen im YAML-Format darstellen, die von Kubernetes verstanden werden können. [- Leitfaden zur Vorlage für Helm-Charts][chart-template-guide]
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: read
+spec:
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: {{.Values.read.image.name}}
+        image: {{.Values.read.image.registry}}{{.Values.read.image.repository}}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: {{.Values.read.image.args.eula}}
+        - name: billing
+          value: {{.Values.read.image.args.billing}}
+        - name: apikey
+          value: {{.Values.read.image.args.apikey}}
+      imagePullSecrets:
+      - name: {{.Values.read.image.pullSecret}}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: read-app
+```
+
+Die Vorlage gibt einen Lastenausgleichsdienst und die Bereitstellung Ihres Containers/Bilds für das Lesen an.
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
 
 Erstellen Sie zunächst einen Ordner namens *text-recognizer*, kopieren Sie den folgenden YAML-Inhalt und fügen Sie ihn in eine neue Datei namens `Chart.yml` ein.
 
@@ -166,15 +246,73 @@ spec:
 
 Die Vorlage gibt einen Lastenausgleichsdienst und die Bereitstellung Ihres Containers/Bilds für die Texterkennung an.
 
+***
+
 ### <a name="the-kubernetes-package-helm-chart"></a>Das Kubernetes-Paket (Helm-Chart)
 
 Das *Helm-Chart* enthält die Konfiguration, die angibt, welche Docker-Images aus der Containerregistrierung `containerpreview.azurecr.io` gepullt werden sollen.
 
 > Bei einem [Helm-Chart][helm-charts] handelt es sich um eine Sammlung von Dateien, die eine zusammengehörige Gruppe von Kubernetes-Ressourcen beschreiben. Ein einzelnes Chart kann sowohl für eine einfache Bereitstellung (beispielsweise eines Memcached-Pods) als auch für komplexere Bereitstellungen (etwa eines vollständigen Web-App-Stapels mit HTTP-Servern, Datenbanken, Caches und Ähnlichem) verwendet werden.
 
-Die bereitgestellten *Helm-Charts* pullen die Docker-Images des Diensts für maschinelles Sehen und die Texterkennungsdienste aus der Containerregistrierung `containerpreview.azurecr.io`.
+Die bereitgestellten *Helm-Charts* pullen die Docker-Images des Diensts für maschinelles Sehen und den entsprechenden Dienst aus der Containerregistrierung `containerpreview.azurecr.io`.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Installieren des Helm-Charts für den Kubernetes-Cluster
+
+# <a name="readtabread"></a>[Lesen](#tab/read)
+
+Zum Installieren des *Helm-Charts* muss der Befehl [`helm install`][helm-install-cmd] ausgeführt werden. Stellen Sie sicher, dass Sie den Installationsbefehl im Verzeichnis über dem Ordner `read` ausführen.
+
+```console
+helm install read --name read
+```
+
+Die Ausgabe nach einer erfolgreichen Installation kann beispielsweise wie folgt aussehen:
+
+```console
+NAME: read
+LAST DEPLOYED: Thu Sep 04 13:24:06 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Pod(related)
+NAME                    READY  STATUS             RESTARTS  AGE
+read-57cb76bcf7-45sdh   0/1    ContainerCreating  0         0s
+
+==> v1/Service
+NAME     TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
+read     LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
+
+==> v1beta1/Deployment
+NAME    READY  UP-TO-DATE  AVAILABLE  AGE
+read    0/1    1           0          0s
+```
+
+Der Kubernetes-Bereitstellungsvorgang kann mehrere Minuten dauern. Vergewissern Sie sich durch Ausführen des folgenden Befehls, dass die Pods und Dienste ordnungsgemäß bereitgestellt wurden und verfügbar sind:
+
+```console
+kubectl get all
+```
+
+Die Ausgabe sollte in etwa wie folgt aussehen:
+
+```console
+λ kubectl get all
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
+
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes     ClusterIP      10.96.0.1      <none>        443/TCP          45h
+service/read           LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   1/1     1            1           17s
+
+NAME                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-57cb76bcf7   1         1         1       17s
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Texterkennung](#tab/recognize-text)
 
 Zum Installieren des *Helm-Charts* muss der Befehl [`helm install`][helm-install-cmd] ausgeführt werden. Stellen Sie sicher, dass Sie den Installationsbefehl im Verzeichnis über dem Ordner `text-recognizer` ausführen.
 
@@ -227,6 +365,8 @@ deployment.apps/text-recognizer   1/1     1            1           17s
 NAME                                         DESIRED   CURRENT   READY   AGE
 replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
 ```
+
+***
 
 <!--  ## Validate container is running -->
 

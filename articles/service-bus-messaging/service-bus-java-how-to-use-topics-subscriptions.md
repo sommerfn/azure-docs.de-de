@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967829"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155586"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
@@ -41,7 +41,7 @@ In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein A
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
-![Bibliotheken am Buildpfad von Eclipse](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Hinzufügen von Microsoft Azure-Bibliotheken für Java zu Ihrem Eclipse-Projekt](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 Darüber hinaus müssen dem Java-Buildpfad die folgenden JAR-Dateien hinzugefügt werden:
 

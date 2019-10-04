@@ -3,16 +3,16 @@ title: Grundlegendes zur Vorgehensweise beim Überwachen des Inhalts eines Compu
 description: Erfahren Sie, wie Azure Policy mithilfe der Gastkonfiguration Einstellungen auf einem Azure-Computer überprüft.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/04/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308570"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172481"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -130,7 +130,7 @@ Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzei
 
 ## <a name="built-in-resource-modules"></a>Integrierte Ressourcenmodule
 
-Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „GuestConfiguration“ in der neuesten Version von DSC-Ressourcenmodulen enthalten. Dieses Modul kann über den PowerShell-Katalog mithilfe des Links „Manueller Download“ auf der Modulseite [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/) heruntergeladen werden.
+Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „GuestConfiguration“ in der neuesten Version von DSC-Ressourcenmodulen enthalten. Dieses Modul kann über den PowerShell-Katalog mithilfe des Links „Manueller Download“ auf der Modulseite [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/) heruntergeladen werden.
 Das Dateiformat „.nupkg“ kann zur Dekomprimierung und Überprüfung in „.zip“ umbenannt werden.
 
 ## <a name="client-log-files"></a>Protokolldateien des Clients
@@ -175,7 +175,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 Beispiele für Guest Configuration von Policy finden Sie unter:
 
 - [Beispielindex: Guest Configuration](../samples/index.md#guest-configuration)
-- [Azure Policy-Beispiele: GitHub-Repository](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+- [Azure Policy-Beispiele: GitHub-Repository](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

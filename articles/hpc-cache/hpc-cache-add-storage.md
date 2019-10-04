@@ -1,19 +1,19 @@
 ---
-title: Hinzufügen von Speicher zu einem Azure HPC Cache
+title: Hinzufügen von Speicher zu einem Azure HPC Cache (Vorschauversion)
 description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokales NFS-System oder Azure-Blobcontainer für die langfristige Speicherung von Dateien verwenden kann
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037212"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300040"
 ---
-# <a name="add-storage"></a>Hinzufügen von Speicher
+# <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
 *Speicherziele* sind Back-End-Speicher für Dateien, auf die über eine Azure HPC Cache-Instanz zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten im Azure-Blob speichern.
 
@@ -21,11 +21,11 @@ Es können bis zu zehn verschiedene Speicherziele für einen Cache definiert wer
 
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prereqs.md#dns-access).
 
-Sie können Speicherziele beim Erstellen Ihres Azure HPC Caches hinzufügen oder später. Das Verfahren unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
+Sie können Speicherziele beim Erstellen Ihres Caches oder später hinzufügen. Das Verfahren unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
 
 ## <a name="add-storage-targets-while-creating-the-cache"></a>Hinzufügen von Speicherzielen beim Erstellen des Caches
 
-Verwenden Sie die Registerkarte **Speicherziele** des Assistenten zur Cache-Erstellung, um Speicher zu definieren, während Sie die Cache-Instanz erstellen.
+Verwenden Sie die Registerkarte **Speicherziele** des Assistenten zur Azure HPC Cache-Erstellung, um Speicher zu definieren, während Sie die Cache-Instanz erstellen.
 
 ![Screenshot der Seite „Speicherziele“](media/hpc-cache-storage-targets-pop.png)
 
@@ -45,6 +45,8 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 ![Screenshot der Seite „Speicherziel hinzufügen“, aufgefüllt mit Informationen für ein neues Azure-Blobspeicherziel](media/hpc-cache-add-blob.png)
 
+<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+
 * **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * **Zieltyp**: Wählen Sie **Blob** aus.
 * **Speicherkonto**: Wählen Sie das Konto mit dem Container aus, auf den verwiesen werden soll.
@@ -58,7 +60,7 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hinzufügen der Zugriffssteuerungsrollen zu Ihrem Konto
 
-Azure HPC Cache verwendet [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index), um die Cache-Anwendung für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
+Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index), um die Cache-Anwendung für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
 
 Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) und [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) für den Benutzer "StorageCache-Ressourcenanbieter" explizit hinzufügen.
 
@@ -98,9 +100,14 @@ Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
 
 * **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eins der Datencacheprofile aus, die unten in [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschrieben sind.
 
-Sie können mehrere Namespacepfade erstellen, die verschiedene Exporte im gleichen NFS-Speichersystem darstellen, Sie müssen sie aber alle aus dem gleichen Speicherziel erstellen.
+### <a name="nfs-namespace-paths"></a>NFS-Namespacepfade
 
-Geben Sie für jeden Export folgende Werte an:
+Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad ein anderes Export- oder Unterverzeichnis in demselben Speichersystem darstellt.
+
+Erstellen Sie alle Pfade von einem Speicherziel aus.
+<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+Geben Sie diese Werte für die einzelnen Namespacepfade ein: 
 
 * **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
 
@@ -112,8 +119,8 @@ Geben Sie für jeden Export folgende Werte an:
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
-### <a name="choose-a-usage-model"></a>Auswählen eines Nutzungsmodells 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Auswählen eines Nutzungsmodells
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das *Nutzungsmodell* für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 

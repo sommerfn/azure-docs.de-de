@@ -1,19 +1,19 @@
 ---
-title: Öffnen eines Supporttickets für Azure HPC Cache
+title: Öffnen eines Supporttickets für Azure HPC Cache (Vorschauversion)
 description: Öffnen einer Hilfeanforderung für Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036915"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299947"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Öffnen eines Supporttickets für Azure HPC Cache
+# <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Öffnen eines Supporttickets für Azure HPC Cache (Vorschauversion)
 
 Verwenden Sie das Azure-Portal, um ein Supportticket zu öffnen. Navigieren Sie zu Ihrer Cache-Instanz, und klicken Sie dann auf den Link **Neue Supportanfrage**, die unten in der Seitenleiste angezeigt wird.
 
@@ -24,6 +24,8 @@ Wählen Sie Ihr Abonnement in der Liste aus.
 Um den Azure HPC Cache-Vorschaudienst zu finden, klicken Sie auf die Schaltfläche **Alle Dienste**, und suchen Sie nach „HPC“.
 
 ![Screenshot der Registerkarte „Grundlagen“ für Supportanfragen, teilweise ausgefüllt wie beschrieben](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 Füllen Sie die restlichen Felder mit Ihren Informationen und Einstellungen aus, und übermitteln Sie das Ticket, wenn Sie fertig sind.
 

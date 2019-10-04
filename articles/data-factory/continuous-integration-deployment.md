@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002403"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265978"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
@@ -669,7 +669,7 @@ Wenn Sie Git nicht konfiguriert haben, kann über die Geste **ARM-Vorlage export
 
 ## <a name="hot-fix-production-branch"></a>Hotfix für den Produktionsbranch
 
-Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und feststellen, dass ein Fehler sofort behoben werden muss, Sie jedoch den aktuellen Kollaborationsbranch nicht bereitstellen können, müssen Sie möglicherweise einen Hotfix bereitstellen.
+Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und feststellen, dass ein Fehler sofort behoben werden muss, Sie jedoch den aktuellen Kollaborationsbranch nicht bereitstellen können, müssen Sie möglicherweise einen Hotfix bereitstellen. Dieser Ansatz wird als Quick Fix Engineering oder QFE bezeichnet. 
 
 1.  Navigieren Sie in Azure DevOps zu dem Release, das in der Produktionsumgebung bereitgestellt wurde, und suchen Sie den letzten bereitgestellten Commit.
 
@@ -705,8 +705,11 @@ Wenn Sie Git-Integration mit Ihrer Data Factory verwenden und über eine CI/CD-P
 
 ## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 
--   Einzelne Ressourcen können nicht veröffentlicht werden. Data Factory-Entitäten sind voneinander abhängig. Veränderliche Abhängigkeiten lassen sich nur schwer nachverfolgen und können zu unerwartetem Verhalten führen. Beispielsweise hängen Trigger von Pipelines ab, Pipelines von Datasets und anderen Pipelines usw. Wenn es möglich wäre, nur eine Teilmenge des gesamten Änderungssatzes zu veröffentlichen, können unvorhergesehene Fehler auftreten.
+- ADF ist _nicht_ auf Cherrypicking-Commits oder die selektive Veröffentlichung von Ressourcen ausgelegt. Veröffentlichungen enthalten **alle** in der Data Factory vorgenommenen Änderungen.
+
+    - Data Factory-Entitäten hängen voneinander ab, d. h. Trigger hängen z. B. von Pipelines ab, Pipelines hängen von Datasets und anderen Pipelines ab usw. Die selektive Veröffentlichung einer Teilmenge von Ressourcen _kann_ zu unerwartetem Verhalten und Fehlern führen.
+    - In seltenen Fällen, in denen eine selektive Veröffentlichung erforderlich ist, können Sie einen Hotfix in Betracht ziehen. Weitere Informationen finden Sie unter [Hotfix für den Produktionsbranch](#hot-fix-production-branch).
 
 -   Sie können nicht aus privaten Branches veröffentlichen.
 
--   Sie können keine Projekte unter Bitbucket hosten.
+-   Ab sofort können Sie keine Projekte unter Bitbucket hosten.

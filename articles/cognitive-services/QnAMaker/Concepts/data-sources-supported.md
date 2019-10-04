@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4e24246ec4ed30ec93bf8e113d659bc5e3600913
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615981"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130115"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
@@ -202,6 +202,15 @@ Eine neue Zeile zwischen zwei Sätzen.|`\n\n`|`How can I create a bot with \n\n 
 |Geschachtelte Listen|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sie können sortierte und unsortierte Listen schachteln. Der Tabstopp `\t` gibt die Einzugsebene des untergeordneten Elements an.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![Unsortierte geschachtelte Liste formatieren](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![Sortierte geschachtelte Liste formatieren](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 *QnA Maker verarbeitet das Bild nicht. Die Clientanwendung ist für das Rendern des Bilds zuständig. 
+
+Wenn Sie Inhalte mithilfe von Wissensdatenbank-APIs aktualisieren/ersetzen möchten und der Inhalt bzw. die Datei HTML-Tags enthält, können Sie das HTML in Ihrer Datei beibehalten, indem Sie sicherstellen, dass die öffnenden und schließenden Tags in das codierte Format konvertiert werden.
+
+| Beibehalten von HTML  | Darstellung in der API-Anforderung  | Darstellung in Wissensdatenbank |
+|-----------|---------|-------------------------|
+| Ja | \&lt;br\&gt; | &lt;br&gt; |
+| Ja | \&lt;h3\&gt;header\&lt;/h3\&gt; | &lt;h3&gt;header&lt;/h3&gt; |
+
+Außerdem werden CR LF(\r\n) in der Wissensdatenbank in \n konvertiert. LF(\n) bleibt unverändert. Wenn Sie eine Escapesequenz wie \t oder \n als Escapezeichen verwenden möchten, können Sie einen Schrägstrich verwenden. Beispiel: '\\\\r\\\\n' und '\\\\t'
 
 ## <a name="editing-your-knowledge-base-locally"></a>Lokales Bearbeiten Ihrer Wissensdatenbank
 

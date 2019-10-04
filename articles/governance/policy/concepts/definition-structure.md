@@ -3,23 +3,23 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie die von Azure Policy verwendete Definition von Ressourcenrichtlinien es Ihnen ermöglicht, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll und welche Auswirkungen erfolgen sollen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b2b38fe2d9a2bf4c645e5b1cda4b8fba356353d3
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239187"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181189"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
 Definitionen von Ressourcenrichtlinien werden von Azure Policy verwendet, um Konventionen für Ressourcen festzulegen. Jede Definition beschreibt Ressourcenkonformität und welche Maßnahme ergriffen werden soll, wenn eine Ressource nicht konform ist.
 Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
-Das von Azure Policy verwendete Schema finden Sie hier: [https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json](https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json)
+Das von Azure Policy verwendete Schema finden Sie hier: [https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policydefinitions](/azure/templates/microsoft.authorization/2019-01-01/policydefinitions)
 
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
@@ -398,6 +398,7 @@ Azure Policy unterstützt die folgenden Auswirkungstypen:
 - **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
 - **EnforceRegoPolicy** konfiguriert den Open Policy Agent-Zugangscontroller in Azure Kubernetes Service (Vorschauversion).
+- **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert sie oder entfernt sie aus einer Ressource.
 
 Für **append**müssen Sie die folgenden Details angeben:
 
@@ -424,6 +425,8 @@ Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft 
     ]
 }
 ```
+
+Auf ähnliche Weise erfordert **Modify** die Eigenschaft **roleDefinitionId** im Bereich **details** der Richtlinienregel für den [Wartungstask](../how-to/remediate-resources.md). **Modify** erfordert auch ein **operations**-Array zur Definition, welche Aktionen für die Ressourcentags ausgeführt werden müssen.
 
 Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 
