@@ -60,8 +60,9 @@
     - name: Behandeln von Trefferhervorhebungen
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Blättern durch Webseiten
-      href: page-webpages.md
+    - name: Seitenweises Anzeigen von Suchergebnissen
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Verweis
   items:
     - name: Bing-API für die benutzerdefinierte Vorschlagssuche – Referenz

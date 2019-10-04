@@ -54,7 +54,7 @@
     - name: Behandeln von Trefferhervorhebungen
       href: hit-highlighting.md
     - name: Durchblättern von Ergebnissen
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       href: resize-and-crop-thumbnails.md
     - name: Upgrade von v5 auf v7

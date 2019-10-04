@@ -50,10 +50,11 @@
       href: image-insights.md
     - name: Abrufen von GIF-Bildern
       href: gif-images.md
-    - name: Abrufen von Bildern zu Trends
+    - name: Abrufen von beliebten Bildern
       href: trending-images.md
-    - name: Blättern durch Bilder
-      href: paging-images.md
+    - name: Seitenweises Anzeigen von Suchergebnissen
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

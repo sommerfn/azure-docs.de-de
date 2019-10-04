@@ -49,8 +49,8 @@
     - name: Behandeln von Trefferhervorhebungen
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Einteilen von Nachrichten in Seiten
-      href: paging-news.md
+    - name: Seitenweises Anzeigen von Suchergebnissen
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

@@ -50,7 +50,8 @@
     - name: Abrufen von beliebten Videos
       href: trending-videos.md
     - name: Einteilen von Videos in Seiten
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
