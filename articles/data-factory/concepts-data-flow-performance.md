@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992346"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180861"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -90,6 +90,13 @@ Wenn Sie auf das Symbol klicken, werden der Ausführungsplan und das nachfolgend
 * Verwenden Sie im Datenfluss-Designer die Registerkarte „Data Preview“ (Datenvorschau) für Transformationen zum Anzeigen der Ergebnisse Ihrer Transformationslogik.
 * Führen Sie Komponententests für Ihre Datenflüsse aus der Pipeline-Designer aus, indem Sie eine Datenflussaktivität in den Pipelineentwurfscanvas platzieren und die Schaltfläche „Debug“ zum Starten des Tests verwenden.
 * Das Testen im Debugmodus funktioniert für eine aktive, warmgelaufene Clusterumgebung, ohne auf das Just-In-Time-Hochfahren des Clusters warten zu müssen.
+* Während des Debuggens der Datenvorschau innerhalb der Umgebung des Datenfluss-Designers können Sie die Datenmenge, mit der Sie die einzelnen Quellen testen, begrenzen, indem Sie den Zeilengrenzwert über den Link zu den Debugeinstellungen auf der Benutzeroberfläche des Datenfluss-Designers festlegen. Beachten Sie, dass Sie zuerst den Debugmodus aktivieren müssen.
+
+![Debugeinstellungen](media/data-flow/debug-settings.png "Debugeinstellungen")
+
+* Wenn Sie Ihre Datenflüsse über die Debugausführung für die Pipeline testen, können Sie die Anzahl der für den Test verwendeten Zeilen begrenzen, indem Sie die Samplinggröße für jede Ihrer Quellen festlegen. Achten Sie darauf, dass Sie das Sampling deaktivieren, wenn Sie Ihre Pipelines nach einem regelmäßigen, operationalisierten Zeitplan planen.
+
+![Zeilensampling](media/data-flow/source1.png "Zeilensampling")
 
 ### <a name="disable-indexes-on-write"></a>Deaktivieren von Indizes beim Schreiben
 * Verwenden Sie vor der Datenflussaktivität eine Aktivität mit einer gespeicherten Prozedur in Ihrer ADF-Pipeline, die Indizes in Ihren Zieltabellen deaktiviert, in die von der Senke aus geschrieben wird.
@@ -140,6 +147,10 @@ Ein Beispiel: Angenommen, in einem Ordner in Blob Storage befindet sich eine Lis
 ```DateFiles/*_201907*.txt```
 
 Dadurch erzielen Sie eine bessere Leistung als bei einem Suchvorgang für den Blobspeicher in einer Pipeline, bei der dann alle entsprechenden Dateien mittels „ForEach“ mit einer eingeschlossenen Aktivität zum Ausführen des Datenflusses durchlaufen werden.
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>Erhöhen der Größe Ihres Debugclusters
+
+Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure Integration Runtime verwendet, die automatisch für jede Data Factory erstellt wird. Diese standardmäßige Azure Integration Runtime ist auf acht Kerne festgelegt, d. h. vier für einen Treiberknoten und vier für einen Workerknoten, wobei die allgemeinen Eigenschaften für „Compute allgemein“ verwendet werden. Beim Testen mit größeren Datenmengen können Sie Ihren Debugcluster vergrößern, indem Sie eine neue Azure Integration Runtime mit umfangreicheren Konfigurationen erstellen und diese neue Azure Integration Runtime auswählen, wenn Sie das Debuggen aktivieren. Dadurch wird ADF angewiesen, diese Azure Integration Runtime für die Datenvorschau und das Debuggen der Pipeline mit Datenflüssen zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

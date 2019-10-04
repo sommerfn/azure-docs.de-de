@@ -1,24 +1,25 @@
 ---
-title: Erstellen einer Azure HPC Cache-Instanz
+title: Erstellen einer Azure HPC Cache-Instanz (Vorschauversion)
 description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036847"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299932"
 ---
-# <a name="configure-aggregated-namespace"></a>Konfigurieren eines aggregierten Namespace
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>Planen des aggregierten Namespace
 
-Azure HPC Cache ermöglicht Clients den Zugriff auf eine Vielzahl von Speichersystemen über einen virtuellen Namespace, der die Details des Back-End-Speichersystems verbirgt.
+Azure HPC Cache (Vorschauversion) ermöglicht Clients den Zugriff auf eine Vielzahl von Speichersystemen über einen virtuellen Namespace, der die Details des Back-End-Speichersystems verbirgt.
 
-Beim Hinzufügen eines Speicherziels legen Sie den clientseitigen Dateipfad fest. Clientcomputer binden diesen Dateipfad ein. Sie können das Speicherziel ändern, das diesem Pfad zugeordnet ist. Beispielsweise können Sie ein Hardware-Speichersystem durch Cloudspeicher ersetzen, ohne die clientseitigen Prozeduren erneut generieren zu müssen.
+Beim Hinzufügen eines Speicherziels legen Sie den clientseitigen Dateipfad fest. Clientcomputer binden diesen Dateipfad ein und können Dateileseanforderungen an den Cache stellen, anstatt das Speichersystem direkt einzubinden.
+
+Da Azure HPC Cache dieses virtuelle Dateisystem verwaltet, können Sie das Speicherziel ändern, ohne den clientseitigen Pfad zu ändern. Beispielsweise können Sie ein Hardware-Speichersystem durch Cloudspeicher ersetzen, ohne die clientseitigen Prozeduren erneut generieren zu müssen.
 
 ## <a name="aggregated-namespace-example"></a>Beispiel zum aggregierten Namespace
 
@@ -31,7 +32,7 @@ Die Vorlagendaten sind in einem Rechenzentrum gespeichert, und die für diesen A
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-Das Speichersystem des Rechenzentrums macht diese Exporte verfügbar: 
+Das Speichersystem des Rechenzentrums macht diese Exporte verfügbar:
 
     /
     /goldline
@@ -41,20 +42,22 @@ Die zu analysierenden Daten wurden mithilfe des [CLFSLoad-Hilfsprogramms](hpc-ca
 
 Um den komfortablen Zugriff über den Cache zu ermöglichen, sollten Sie das Erstellen von Speicherzielen mit diesen virtuellen Namespacepfaden in Erwägung ziehen:
 
-| NFS-Back-End-Dateipfad oder Blobcontainer | Pfad des virtuellen Namespace |
+| Back-End-Speichersystem <br/> (NFS-Dateipfad oder Blobcontainer) | Pfad des virtuellen Namespace |
 |-----------------------------------------|------------------------|
 | /goldline/templates/acme2017/sku798     | /templates/sku798      |
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source/               |
 
-Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports handelt, müssen Sie für das gleiche Speicherziel mehrere Namespacepfade definieren. 
+Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jeder von ihnen auf einen eindeutigen Exportpfad verweist.
+
+Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports handelt, müssen Sie für das gleiche Speicherziel mehrere Namespacepfade definieren.
 
 | Hostname des Speicherziels  | NFS-Exportpfad      | Unterverzeichnispfad | Namespacepfad    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP-Adresse oder Hostname* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-Adresse oder Hostname* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Eine Clientanwendung kann den Cache einbinden und komfortabel auf die Dateipfade „/source“, „/templates/sku798“ und „/templates/sku980“ des aggregierten Namespace zugreifen.
+Eine Clientanwendung kann den Cache einbinden und komfortabel auf die Dateipfade ``/source``, ``/templates/sku798`` und ``/templates/sku980`` des aggregierten Namespace zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

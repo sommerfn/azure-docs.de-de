@@ -1,22 +1,22 @@
 ---
 title: Korrigieren nicht konformer Ressourcen
-description: Diese Anweisungen führen Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
+description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241134"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147053"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
-Ressourcen, die mit der Richtlinie **deployIfNotExists** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den **deployIfNotExists**-Effekt der zugewiesenen Richtlinie auf Ihren vorhandenen Ressourcen auszuführen. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
+Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den **deployIfNotExists**-Effekt oder das Tag **operations** der zugewiesenen Richtlinie auf Ihren vorhandenen Ressourcen auszuführen. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
 
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 
@@ -26,11 +26,11 @@ Azure Policy erstellt für jede Ihrer Zuweisungen eine verwaltete Identität, mu
 ![Verwaltete Identität – fehlende Rolle](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Wenn eine Ressource durch **deployIfNotExists** geänderte Ressource außerhalb des Bereichs der Richtlinienzuweisung liegt oder die Vorlage auf Eigenschaften in Ressourcen außerhalb des Bereichs der Richtlinienzuweisung zugreift, muss der verwalteten Identität der Zuweisung [manuell Zugriff gewährt werden](#manually-configure-the-managed-identity). Andernfalls schlägt die Bereitstellung der Wiederherstellung fehl.
+> Wenn eine Ressource durch **deployIfNotExists** oder **modify** geänderte Ressource außerhalb des Bereichs der Richtlinienzuweisung liegt oder die Vorlage auf Eigenschaften in Ressourcen außerhalb des Bereichs der Richtlinienzuweisung zugreift, muss der verwalteten Identität der Zuweisung [manuell Zugriff gewährt werden](#manually-configure-the-managed-identity). Andernfalls schlägt die Bereitstellung der Wiederherstellung fehl.
 
 ## <a name="configure-policy-definition"></a>Konfigurieren einer Richtliniendefinition
 
-Im ersten Schritt werden die Rollen definiert, die **deployIfNotExists** in der Richtliniendefinition benötigt, um die Inhalte Ihrer eingebundenen Vorlage bereitstellen zu können. Fügen Sie unter der Eigenschaft **Details** eine **roleDefinitionIds**-Eigenschaft hinzu. Diese Eigenschaft ist ein Array von Zeichenfolgen, die Rollen in Ihrer Umgebung entsprechen. Ein vollständiges Beispiel finden Sie bei den [Beispielen für „deployIfNotExists“](../concepts/effects.md#deployifnotexists-example).
+Im ersten Schritt werden die Rollen definiert, die **deployIfNotExists** und **modify** in der Richtliniendefinition benötigt, um die Inhalte Ihrer eingebundenen Vorlage bereitstellen zu können. Fügen Sie unter der Eigenschaft **Details** eine **roleDefinitionIds**-Eigenschaft hinzu. Diese Eigenschaft ist ein Array von Zeichenfolgen, die Rollen in Ihrer Umgebung entsprechen. Ein vollständiges Beispiel finden Sie bei den [Beispielen für „deployIfNotExists“](../concepts/effects.md#deployifnotexists-example) oder bei den [Beispielen für „modify“](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -42,7 +42,7 @@ Im ersten Schritt werden die Rollen definiert, die **deployIfNotExists** in der 
 }
 ```
 
-**roleDefinitionIds** verwendet die vollständige Ressourcen-ID und nicht den kurzen **roleName** der Rolle. Verwenden Sie den folgenden Code, um die ID für die Rolle „Mitwirkender“ in Ihrer Umgebung abzurufen:
+Die Eigenschaft **roleDefinitionIds** verwendet die vollständige Ressourcen-ID und nicht den kurzen **roleName** der Rolle. Verwenden Sie den folgenden Code, um die ID für die Rolle „Mitwirkender“ in Ihrer Umgebung abzurufen:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +126,7 @@ Führen Sie die folgenden Schritte aus, um eine Rolle zu der verwalteten Identit
 
 ### <a name="create-a-remediation-task-through-portal"></a>Erstellen eines Wartungstasks über das Portal
 
-Während der Auswertung wird durch die Richtlinienzuweisung mit dem **deployIfNotExists**-Effekt bestimmt, ob nicht konforme Ressourcen vorhanden sind. Falls nicht konforme Ressourcen gefunden werden, finden Sie auf der Seite **Wartung** weitere Einzelheiten. Neben der Liste der Richtlinien mit nicht konformen Ressourcen ist die Option, einen **Wartungstask** auszulösen. Dadurch wird eine Bereitstellung mithilfe der Vorlage **deployIfNotExists** erstellt.
+Während der Auswertung wird durch die Richtlinienzuweisung mit den Effekten **deployIfNotExists** oder **modify** bestimmt, ob nicht konforme Ressourcen vorhanden sind. Falls nicht konforme Ressourcen gefunden werden, finden Sie auf der Seite **Wartung** weitere Einzelheiten. Neben der Liste der Richtlinien mit nicht konformen Ressourcen ist die Option, einen **Wartungstask** auszulösen. Dadurch wird eine Bereitstellung mithilfe der Vorlage **deployIfNotExists** oder den **modify**-Vorgängen erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
    ![Auswählen von „Wartung“ auf der Seite „Richtlinie“](../media/remediate-resources/select-remediation.png)
 
-1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Klicken Sie auf eine Richtlinie mit Ressourcen, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
+1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**- und **modify**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Klicken Sie auf eine Richtlinie mit Ressourcen, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
 
    > [!NOTE]
    > Eine alternative Möglichkeit zum Öffnen der Seite **Wiederherstellungstask** besteht darin, über die Seite **Konformität** nach der Richtlinie zu suchen, darauf zu klicken und anschließend auf die Schaltfläche **Wartungstask erstellen** zu klicken.
@@ -161,7 +161,7 @@ Ressourcen, die über einen **Wartungstask** bereitgestellt werden, werden auf d
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Erstellen eines Wartungstasks über die Azure CLI
 
-Verwenden Sie zum Erstellen eines **Wartungstasks** mit der Azure-Befehlszeilenschnittstelle die `az policy remediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**-Richtlinienzuweisungs-ID.
+Verwenden Sie zum Erstellen eines **Wartungstasks** mit der Azure-Befehlszeilenschnittstelle die `az policy remediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**- oder **modify**-Richtlinienzuweisungs-ID.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +174,7 @@ Informationen zu anderen Wartungsbefehlen und Beispiele finden Sie im Artikel zu
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Erstellen eines Wartungstasks über Azure PowerShell
 
-Verwenden Sie zum Erstellen eines **Wartungstasks** mit Azure PowerShell die `Start-AzPolicyRemediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**-Richtlinienzuweisungs-ID.
+Verwenden Sie zum Erstellen eines **Wartungstasks** mit Azure PowerShell die `Start-AzPolicyRemediation`-Befehle. Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{myAssignmentId}` durch Ihre **deployIfNotExists**- oder **modify**-Richtlinienzuweisungs-ID.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

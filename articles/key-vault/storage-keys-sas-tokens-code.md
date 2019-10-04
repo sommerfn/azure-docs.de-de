@@ -7,18 +7,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: a20f5b16b90b9bac7e6bc3ff808cf443b252fb44
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204489"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673453"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Abrufen von Shared Access Signature-Token im Code
 
 Sie können Ihr Speicherkonto mit den [SAS-Token (Shared Access Signature)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) in Ihrem Schlüsseltresor verwalten. Dieser Artikel enthält Beispiele für C#-Code, der ein SAS-Token abruft und damit Operationen durchführt.  Weitere Informationen zum Erstellen und Speichern von SAS-Token finden Sie unter [Azure-Befehlszeilenschnittstelle](key-vault-ovw-storage-keys.md) oder [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und Azure PowerShell](key-vault-overview-storage-keys-powershell.md).
 
-# <a name="code-samples"></a>Codebeispiele
+## <a name="code-samples"></a>Codebeispiele
 
 In diesem Beispiel ruft der Code ein SAS-Token aus Ihrem Schlüsselspeicher ab, verwendet es zur Erstellung eines neuen Speicherkontos und erstellt dann einen neuen Blobdienstclient.  
 

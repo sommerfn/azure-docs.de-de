@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache-Voraussetzungen
+title: Azure HPC Cache-Voraussetzungen (Vorschauversion)
 description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036872"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299915"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
+# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Voraussetzungen für Azure HPC Cache (Vorschauversion)
 
 Stellen Sie sicher, dass Ihre Umgebung diese Anforderungen erfüllt, bevor Sie das Azure-Portal zum Erstellen eines neuen Azure HPC Cache verwenden.
 
@@ -26,7 +26,7 @@ Ein kostenpflichtiges Abonnement wird empfohlen.
 
 ## <a name="network-infrastructure"></a>Netzwerkinfrastruktur
 
-Bevor Sie den Cache verwenden können, sollten Sie zwei netzwerkbezogene Optionen einrichten:
+Bevor Sie den Cache verwenden können, sollten Sie zwei netzwerkbezogene Voraussetzungen einrichten:
 
 * Ein dediziertes Subnetz für die Azure HPC Cache-Instanz
 * DNS-Unterstützung, sodass der Cache auf Speicher und andere Ressourcen zugreifen kann
@@ -37,13 +37,13 @@ Der Azure HPC Cache benötigt ein dediziertes Subnetz mit diesen Eigenschaften:
 
 * Im Subnetz müssen mindestens 64 IP-Adressen verfügbar sein.
 * Das Subnetz darf keine weiteren VMs hosten, nicht einmal für verwandte Dienste wie Clientcomputer.
-* Wenn Sie mehrere Cache-Instanzen verwenden, benötigt jedes ein eigenes Subnetz.
+* Wenn Sie mehrere Azure HPC Cache-Instanzen verwenden, benötigt jede ein eigenes Subnetz.
 
-Die bewährte Methode besteht im Erstellen eines neuen Subnetzes für den Cache. Sie können im Rahmen der Cache-Erstellung ein neues virtuelles Netzwerk und Subnetz erstellen.
+Die bewährte Methode besteht im Erstellen eines neuen Subnetzes für die einzelnen Caches. Sie können im Rahmen der Cache-Erstellung ein neues virtuelles Netzwerk und Subnetz erstellen.
 
 ### <a name="dns-access"></a>DNS-Zugriff
 
-Der Azure HPC Cache benötigt DNS für den Zugriff auf Ressourcen außerhalb seines virtuellen Netzwerks. Je nachdem, welche Ressourcen Sie verwenden, müssen Sie möglicherweise einen angepassten DNS-Server einrichten und die Weiterleitung zwischen diesem Server und Azure DNS-Servern konfigurieren: 
+Der Cache benötigt DNS für den Zugriff auf Ressourcen außerhalb seines virtuellen Netzwerks. Je nachdem, welche Ressourcen Sie verwenden, müssen Sie möglicherweise einen angepassten DNS-Server einrichten und die Weiterleitung zwischen diesem Server und Azure DNS-Servern konfigurieren:
 
 * Um auf Azure Blob Storage-Endpunkte und andere interne Ressourcen zuzugreifen, benötigen Sie den Azure-basierten DNS-Server.
 * Um auf lokalen Speicher zuzugreifen, müssen Sie einen benutzerdefinierten DNS-Server konfigurieren, der Ihre Speicherhostnamen auflösen kann.
@@ -56,14 +56,16 @@ Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfiguration
 
 Überprüfen Sie diese Voraussetzungen im Hinblick auf Berechtigungen, bevor Sie mit dem Erstellen des Caches beginnen.
 
-* Der Azure HPC Cache muss in der Lage sein, virtuelle Netzwerkschnittstellen (NICs) zu erstellen. Der Benutzer, der den Cache erstellt, muss über ausreichende Berechtigungen für das Abonnement verfügen, um NICs zu erstellen.
+* Die Cache-Instanz muss in der Lage sein, virtuelle Netzwerkschnittstellen (NICs) zu erstellen. Der Benutzer, der den Cache erstellt, muss über ausreichende Berechtigungen für das Abonnement verfügen, um NICs zu erstellen.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* Bei der Verwendung von Blobspeicher benötigt die Azure HPC Cache-Instanz die Autorisierung zum Zugriff auf Ihr Speicherkonto. Sie können rollenbasierte Zugriffssteuerung (RBAC) verwenden, um dem Cache Zugriff auf Ihren Blobspeicher zu erteilen. Zwei Rollen sind erforderlich: „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“. Befolgen Sie die Anweisungen unter [Hinzufügen von Speicher zum Cache](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
+* Bei der Verwendung von Blobspeicher benötigt Azure HPC Cache die Autorisierung zum Zugriff auf Ihr Speicherkonto. Sie können rollenbasierte Zugriffssteuerung (RBAC) verwenden, um dem Cache Zugriff auf Ihren Blobspeicher zu erteilen. Zwei Rollen sind erforderlich: „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“. Befolgen Sie die Anweisungen unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um die Rollen hinzuzufügen.
 
 ## <a name="storage-infrastructure"></a>Speicherinfrastruktur
 
-Der Cache unterstützt Azure-Blobcontainer oder NFS-Hardwarespeicherexporte. Sie können Speicherziele beim Erstellen des Caches definieren, sie aber auch später hinzufügen. 
+Der Cache unterstützt Azure-Blobcontainer oder NFS-Hardwarespeicherexporte. Sie können Speicherziele beim Erstellen des Caches definieren, aber Sie können Speicher auch später hinzufügen.
+
+Für jeden Speichertyp gelten bestimmte Voraussetzungen. 
 
 ### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
 
@@ -73,7 +75,7 @@ Der NFS-Back-End-Speicher muss eine kompatible Hardware-/Softwareplattform aufwe
 
 ### <a name="blob-storage-requirements"></a>Blobspeicheranforderungen
 
-Wenn Sie Azure-Blobspeicher in Kombination mit dem Azure HPC Cache verwenden möchten, benötigen Sie ein kompatibles Speicherkonto und entweder einen leeren Blobcontainer oder einen Container, der mit Daten im Format des Azure HPC Caches aufgefüllt ist, wie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md) beschrieben.
+Wenn Sie Azure-Blobspeicher in Kombination mit Ihrem Cache verwenden möchten, benötigen Sie ein kompatibles Speicherkonto und entweder einen leeren Blobcontainer oder einen Container, der mit Daten im Format von Azure HPC Cache aufgefüllt ist, wie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md) beschrieben.
 
 Erstellen Sie das Konto und den Container, bevor Sie versuchen, ihn als Speicherziel hinzufügen.
 
@@ -85,8 +87,9 @@ Verwenden Sie diese Einstellungen, um ein kompatibles Speicherkonto zu erstellen
 * Zugriffsebene (Standard): **Heiße Ebene**
 
 Es wird empfohlen, ein Speicherkonto am Standort Ihres Caches zu verwenden.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
-Außerdem müssen Sie der Cache-Anwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben. Folgen Sie der Beschreibung unter [Hinzufügen von Speicher zum Cache](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die Zugriffsrollen „Speicherkontomitwirkender“ und „Mitwirkender an Storage-Blobdaten“ zu erteilen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
+Außerdem müssen Sie der Cache-Anwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben. Folgen Sie der Beschreibung unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die Zugriffsrollen „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“ zu erteilen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
