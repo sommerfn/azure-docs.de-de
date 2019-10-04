@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638458"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178250"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Datenverarbeitung und benutzerdefinierte Funktionen
 
@@ -23,7 +23,7 @@ Azure Digital Twins stellt erweiterte Computefunktionen bereit. Entwickler könn
 
 Nachdem Geräte Telemetriedaten an Azure Digital Twins gesendet haben, können Entwickler diese Daten in vier Phasen verarbeiten: *Überprüfen*, *Abgleichen*, *Berechnen* und *Versenden*.
 
-![Datenverarbeitungsfluss in Azure Digital Twins][1]
+[![Datenverarbeitungsfluss in Azure Digital Twins](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. In der Phase „Überprüfen“ wird die eingehende Telemetrienachricht in ein allgemein verständliches Format eines [Datenübertragungsobjekts](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) transformiert. In dieser Phase erfolgt auch die Überprüfung von Geräten und Sensoren.
 1. In der Phase „Abgleichen“ wird nach den entsprechenden benutzerdefinierten Funktionen gesucht, die ausgeführt werden sollen. Vordefinierte Matcher (Abgleicher) finden die benutzerdefinierten Funktionen anhand der Geräte-, Sensor- und Rauminformationen aus der eingehenden Telemetrienachricht.
@@ -34,9 +34,7 @@ Nachdem Geräte Telemetriedaten an Azure Digital Twins gesendet haben, können E
 
 Die Datenverarbeitung in Azure Digital Twins umfasst das Definieren von drei Objekten: *Matcher*, *benutzerdefinierte Funktionen* und *Rollenzuweisungen*.
 
-![Datenverarbeitungsobjekte in Azure Digital Twins][2]
-
-<div id="matcher"></div>
+[![Datenverarbeitungsobjekte in Azure Digital Twins](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Matcher (Abgleicher)
 
@@ -92,7 +90,7 @@ Matcher definieren eine Reihe von Bedingungen, mit denen anhand der eingehenden 
 
 ### <a name="user-defined-functions"></a>Benutzerdefinierte Funktionen
 
-Eine benutzerdefinierte Funktion ist eine angepasste Funktion, die in einer isolierten Azure Digital Twins-Umgebung ausgeführt wird. Benutzerdefinierte Funktionen haben Zugriff auf die empfangene unformatierte Telemetrienachricht eines Sensors. Benutzerdefinierte Funktionen haben auch Zugriff auf den Raumgraph und den Verteilerdienst. Nachdem die benutzerdefinierte Funktion im Graph registriert wurde, muss ein Matcher (Beschreibung weiter [oben](#matcher)) erstellt werden, um anzugeben, wann die Funktion ausgeführt werden soll. Wenn Azure Digital Twins beispielsweise neue Telemetriedaten von einem bestimmten Sensor empfängt, kann die übereinstimmende benutzerdefinierte Funktion einen gleitenden Durchschnitt der letzten Sensormesswerte berechnen.
+Eine benutzerdefinierte Funktion ist eine angepasste Funktion, die in einer isolierten Azure Digital Twins-Umgebung ausgeführt wird. Benutzerdefinierte Funktionen haben Zugriff auf die empfangene unformatierte Telemetrienachricht eines Sensors. Benutzerdefinierte Funktionen haben auch Zugriff auf den Raumgraph und den Verteilerdienst. Nachdem die benutzerdefinierte Funktion im Graph registriert wurde, muss ein Matcher (Beschreibung weiter [oben](#matchers)) erstellt werden, um anzugeben, wann die Funktion ausgeführt werden soll. Wenn Azure Digital Twins beispielsweise neue Telemetriedaten von einem bestimmten Sensor empfängt, kann die übereinstimmende benutzerdefinierte Funktion einen gleitenden Durchschnitt der letzten Sensormesswerte berechnen.
 
 Benutzerdefinierte Funktionen können in JavaScript geschrieben werden. Hilfsmethoden interagieren mit dem Graphen in der benutzerdefinierten Ausführungsumgebung. Entwickler können benutzerdefinierte Codeausschnitte für Telemetrienachrichten von Sensoren ausführen. Beispiele:
 
@@ -103,14 +101,11 @@ Benutzerdefinierte Funktionen können in JavaScript geschrieben werden. Hilfsmet
 
 Weitere Informationen finden Sie unter [Definieren von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
 
-
 #### <a name="examples"></a>Beispiele
 
 Das [GitHub-Repository mit dem C#-Beispiel für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/) enthält einige Beispiele für benutzerdefinierte Funktionen:
 - [Mit dieser Funktion](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) wird nach Kohlendioxid-, Bewegungs- und Temperaturwerten gesucht, um festzustellen, ob ein Raum verfügbar ist, bei dem diese Werte im zulässigen Bereich liegen. In den [Tutorials für Digital Twins](tutorial-facilities-udf.md) wird diese Funktion genauer untersucht. 
 - [Mit dieser Funktion](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) wird nach Daten von mehreren Bewegungssensoren gesucht und festgestellt, dass der Platz verfügbar ist, wenn von keinem Sensor eine Bewegung erkannt wird. Sie können die im [Schnellstart](quickstart-view-occupancy-dotnet.md) oder den [Tutorials](tutorial-facilities-setup.md) verwendete benutzerdefinierte Funktion problemlos ersetzen, indem Sie die Änderungen vornehmen, die im Kommentarabschnitt der Datei genannt sind. 
-
-
 
 ### <a name="role-assignment"></a>Rollenzuweisung
 
@@ -125,7 +120,3 @@ Möglicherweise kann ein Matcher eine benutzerdefinierte Funktion auslösen, die
 - Weitere Informationen dazu, wie Matcher, benutzerdefinierte Funktionen und Rollenzuweisungen erstellt werden, finden Sie unter [Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
 
 - Weitere Informationen finden Sie in der [Referenzdokumentation zur UDF-Clientbibliothek](./reference-user-defined-functions-client-library.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

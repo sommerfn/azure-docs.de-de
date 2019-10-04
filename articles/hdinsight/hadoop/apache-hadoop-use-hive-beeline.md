@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 8a1bb4f0315be70cfe8debab0ee9eb1e4b576738
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259127"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181135"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -111,7 +111,7 @@ Wenn Sie direkt vom Clusterhauptknoten oder von einer Ressource, die sich in der
 
 * Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Beachten Sie das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für den primären Speicher Ihres Clusters. Beispiele: `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Weitere Informationen finden Sie unter [Sichere Übertragung](../../storage/common/storage-require-secure-transfer.md).
+* Beachten Sie das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für den primären Speicher Ihres Clusters. Beispiele: `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Weitere Informationen finden Sie unter [Sichere Übertragung](../../storage/common/storage-require-secure-transfer.md).
 
 
 * Option 1: Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). In den meisten Schritten in diesem Dokument wird davon ausgegangen, dass Sie Beeline aus einer SSH-Sitzung für den Cluster verwenden.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299240"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338088"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 
@@ -122,7 +122,7 @@ Fügen Sie der Datei „AI-Agent.xml“ Folgendes hinzu:
 
 Idealerweise wäre dies der Fall, wenn alle Dienste auf neuere Versionen der SDKs aktualisiert wurden, die das W3C-Protokoll unterstützen. Es wird dringend empfohlen, so bald wie möglich auf neuere Versionen der SDKs mit W3C-Unterstützung umzustellen.
 
-Stellen Sie sicher, dass die **Konfigurationen für [eingehende](correlation.md#w3c-distributed-tracing) und ausgehende Vorgänge (Agent)** exakt gleich sind.
+Stellen Sie sicher, dass die **Konfigurationen für [eingehende](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) und ausgehende Vorgänge (Agent)** exakt gleich sind.
 
 ## <a name="view-the-data"></a>Anzeigen der Daten
 In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel „Leistung“][metrics] angezeigt.

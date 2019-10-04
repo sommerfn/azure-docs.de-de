@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638535"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177086"
 ---
 # <a name="routing-events-and-messages"></a>Weiterleiten von Ereignissen und Nachrichten
 
@@ -29,7 +29,7 @@ Azure Digital Twins bietet zwei Möglichkeiten zum Verbinden von IoT-Ereignissen
 
 Benutzer können mindestens einen ausgehenden Endpunkt angeben, um Ereignisse zu senden oder Nachrichten weiterzuleiten. Ereignisse und Nachrichten werden gemäß diesen vordefinierten Routingeinstellungen an die Endpunkte gesendet. Anders ausgedrückt: Benutzer können einen Endpunkt zum Empfangen von Graphvorgangsereignissen, einen weiteren zum Empfangen von Gerätetelemetrieereignissen usw. angeben.
 
-![Weiterleiten von Azure Digital Twins-Ereignissen][1]
+[![Weiterleiten von Azure Digital Twins-Ereignissen](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Bei der Weiterleitung an Event Hubs wird die Reihenfolge beibehalten, in der Telemetrienachrichten gesendet werden. Sie gehen daher in der Reihenfolge, in der sie ursprünglich empfangen wurden, auf dem Endpunkt ein. Event Grid und Service Bus garantieren nicht, dass Endpunkte die Ereignisse in der gleichen Reihenfolge empfangen, in der sie aufgetreten sind. Das Ereignisschema enthält jedoch einen Zeitstempel, mit dem die Reihenfolge ermittelt werden kann, nachdem die Ereignisse auf dem Endpunkt eingegangen sind.
 
@@ -67,6 +67,3 @@ Azure Digital Twins unterstützt derzeit die folgenden Ereignistypen (**EventTyp
 - Informationen zu den Einschränkungen der Vorschauversion von Azure Digital Twins finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
 
 - Wenn Sie ein Azure Digital Twins-Beispiel ausprobieren möchten, fahren Sie mit [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](quickstart-view-occupancy-dotnet.md) fort.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

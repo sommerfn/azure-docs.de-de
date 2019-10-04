@@ -1,19 +1,19 @@
 ---
 title: Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight
 description: Erfahren Sie, wie Sie Microsoft Power BI verwenden, um Interactive Query-Hive-Daten von Azure HDInsight zu visualisieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 6311ae7e89cab67611396c607d38fd0f00f99dad
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811622"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123020"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Visualisieren von Interactive Query Apache Hive-Daten mit Microsoft Power BI mithilfe direkter Abfragen in HDInsight
 
@@ -37,7 +37,7 @@ Die Hive-Tabelle `hivesampletable` ist in allen HDInsight-Clustern enthalten.
 
 2. Navigieren Sie in der Menüleiste zu **Start** > **Daten abrufen** > **Mehr...** .
 
-    ![HDInsight Power BI Daten öffnen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    ![HDInsight – Power BI: Abrufen zusätzlicher Daten](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. Geben Sie im Fenster **Daten abrufen** im Suchfeld **hdinsight** ein.  
 

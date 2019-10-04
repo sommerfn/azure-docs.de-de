@@ -6,19 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092467"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147172"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
 Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for PostgreSQL (Einzelserver) ist über die PostgreSQL-Überwachungserweiterung [pgAudit](https://www.pgaudit.org/) verfügbar. pgAudit bietet eine ausführliche Sitzungs- und/oder Objektüberwachungsprotokollierung.
 
 > [!NOTE]
-> pgAudit kann nur auf universellen und arbeitsspeicheroptimierten Servern aktiviert werden.
+> pgAudit befindet sich in Azure Database for PostgreSQL in der Vorschau.
+> Die Erweiterung kann nur auf universellen und arbeitsspeicheroptimierten Servern aktiviert werden.
 
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
 Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. In Azure Database for PostgreSQL können diese LOG-Dateien über das Azure-Portal oder die CLI herunterladen werden. Der maximale Speicherplatz für die Sammlung von Dateien beträgt 1 GB, und jede Datei ist für maximal sieben Tage verfügbar (der Standardwert ist drei Tage). Bei diesem Dienst handelt es sich um eine kurzfristige Speicheroption.
@@ -65,7 +66,7 @@ Nachdem Sie [pgAudit installiert haben](#installing-pgaudit), können Sie die zu
 > Wenn `pgaudit.log_client` auf „ON“ festgelegt wird, werden Protokolle an einen Clientprozess (z.B. psql) umgeleitet, anstatt in eine Datei geschrieben zu werden. Diese Einstellung sollte in der Regel deaktiviert bleiben.
 
 > [!NOTE]
-> `pgaudit.log_level` ist nur aktiviert, wenn `pgaudit.log_client` aktiviert ist. Außerdem gibt es im Azure-Portal derzeit einen Fehler bei `pgaudit.log_level`: ein Kombinationsfeld wird angezeigt, das impliziert, dass mehrere Ebenen ausgewählt werden können. Es sollte aber nur eine Ebene ausgewählt werden. 
+> `pgaudit.log_level` ist nur aktiviert, wenn `pgaudit.log_client` aktiviert ist. Außerdem gibt es im Azure-Portal derzeit einen Fehler bei `pgaudit.log_level`: Es wird ein Kombinationsfeld angezeigt, das impliziert, dass mehrere Ebenen ausgewählt werden können. Es sollte aber nur eine Ebene ausgewählt werden. 
 
 > [!NOTE]
 > In Azure Database for PostgreSQL kann `pgaudit.log` nicht mit einer Minuszeichenverknüpfung („`-`“) festgelegt werden, wie in der pgAudit-Dokumentation beschrieben. Alle erforderlichen Anweisungsklassen (READ, WRITE usw.) sollten einzeln angegeben werden.

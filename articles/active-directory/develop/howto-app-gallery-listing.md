@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033753"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176868"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -80,7 +80,7 @@ Damit eine Anwendung in den Azure AD-App-Katalog aufgenommen werden kann, müsse
     ![Zeitplan für das Listing einer OpenID Connect-Anwendung im Katalog](./media/howto-app-gallery-listing/openid.png)
 
     * Wenn Sie Ihre Anwendung mit OpenID Connect hinzufügen möchten, um sie im Katalog listen zu lassen, wählen Sie wie oben gezeigt **OpenID Connect und OAuth 2.0** aus.
-    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 - **SAML 2.0** oder **WS-Fed**: Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Befolgen Sie dazu die [Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md).
 
@@ -98,6 +98,12 @@ Erstellen Sie eine Webanwendung mit einer HTML-Anmeldeseite, um das [kennwortbas
 * Wenn Sie Ihre Anwendung mit Kennwort-SSO hinzufügen möchten, um sie im Katalog listen zu lassen, wählen Sie wie oben gezeigt **Kennwort-SSO** aus.
 * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
+## <a name="requesting-for-user-provisioning"></a>Anfordern der Benutzerbereitstellung
+
+Befolgen Sie den unten stehenden Prozess, um die Benutzerbereitstellung anzufordern:
+
+   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Aktualisieren bzw. Entfernen vorhandener Auflistungen
 
 Um eine bestehende Anwendung im Azure AD-App-Katalog zu aktualisieren oder zu entfernen, müssen Sie zuerst die Anfrage im [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps) stellen. Wenn Sie über ein Office 365-Konto verfügen, verwenden Sie dieses für die Anmeldung bei diesem Portal. Verwenden Sie andernfalls Ihr Microsoft-Konto (z.B. Outlook oder Hotmail) für die Anmeldung.
@@ -106,9 +112,9 @@ Um eine bestehende Anwendung im Azure AD-App-Katalog zu aktualisieren oder zu en
 
     ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Wenn Sie eine vorhandene Anwendung aktualisieren möchten, wählen Sie **Vorhandene Anwendungsauflistung aktualisieren**.
-    * Wenn Sie eine vorhandene Anwendung aus dem Azure AD-Katalog entfernen möchten, wählen Sie **Vorhandene Anwendungsauflistung entfernen** aus.
-    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Wenn Sie eine vorhandene Anwendung aktualisieren möchten, wählen Sie die entsprechende Option gemäß den jeweiligen Anforderungen aus.
+    * Wenn Sie eine vorhandene Anwendung aus dem Azure AD-Katalog entfernen möchten, wählen Sie **Remove my application listing from the gallery** (Anwendungsauflistung aus dem Katalog entfernen) aus.
+    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="listing-requests-by-customers"></a>Auflisten von Anforderungen nach Kunden
 
@@ -124,11 +130,11 @@ Unten sehen Sie den Fluss für von Kunden angeforderten Anwendungen:
 
 Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis 10 Werktage.
 
-   ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline.png)
+  ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline.png)
 
 Das Auflisten einer OpenID Connect-Anwendung im Katalog dauert etwa 2 bis 5 Werktage.
 
-   ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline2.png)
+  ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalationen
 

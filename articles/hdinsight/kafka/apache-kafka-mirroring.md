@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960237"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123243"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -84,7 +84,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     1. Klicken Sie auf **Hinzufügen**.
     1. Geben Sie auf dem Bildschirm **Peering hinzufügen** die Informationen wie im Screenshot unten gezeigt ein.
 
-        ![Hinzufügen des VNET-Peerings](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka – Hinzufügen von VNET-Peering](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. Konfigurieren der Ankündigung der IP-Adresse:
     1. Wechseln Sie zum Ambari-Dashboard für den primären Cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
@@ -104,7 +104,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     1. Klicken Sie bei **Save Configuration Changes** (Konfigurationsänderungen speichern) auf **OK**.
     1. Klicken Sie in der Benachrichtigung **Restart Required** (Neustart erforderlich) auf **Restart** > **Restart All Affected** (Neustart > Alle betroffenen neu starten). Klicken Sie auf **Confirm Restart All** (Bestätigen: Alle neu starten).
 
-        ![Neustart von Kafka-Knoten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Apache Ambari – Neustarten aller betroffenen Instanzen](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Konfigurieren Sie Kafka zum Lauschen auf allen Netzwerkschnittstellen.
     1. Bleiben Sie auf der Registerkarte **Configs** (Konfigurationen) unter **Services** > **Kafka** (Dienste > Kafka). Legen Sie im Abschnitt **Kafka Broker** die Eigenschaft **listeners** auf `PLAINTEXT://0.0.0.0:9092` fest.
@@ -115,7 +115,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     1. Klicken Sie auf dem Ambari-Dashboard auf **Hosts**.
     1. Notieren Sie sich die IP-Adressen für Broker und Zookeeper. Die ersten beiden Buchstaben des Hostnamens lauten **wn** für die Brokerknoten und **zk** für die Zookeeperknoten.
 
-        ![Anzeigen von IP-Adressen](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Apache Ambari – Ansicht mit IP-Adressknoten](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Wiederholen Sie die vorangegangenen drei Schritte für den zweiten Cluster **kafka-secondary-cluster**: Konfigurieren der Ankündigung von IP-Adressen, Einrichten von Listenern und Notieren der IP-Adressen von Broker und Zookeeper.
 
@@ -251,7 +251,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
         6. Ändern Sie den Wert von `auto.create.topics.enable` in „true“, und wählen Sie dann __Speichern__. Fügen Sie einen Hinweis hinzu, und wählen Sie dann erneut __Speichern__.
         7. Wählen Sie den Dienst __Kafka__, dann die Option __Neu starten__ und abschließend die Option __Neustart aller betroffenen__. Klicken Sie bei entsprechender Aufforderung auf __Neustart aller Dienste bestätigen__.
 
-        ![Konfigurieren der automatischen Themenerstellung](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![Kafka – Aktivieren der automatischen Erstellung eines Themas](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>Starten von MirrorMaker
 

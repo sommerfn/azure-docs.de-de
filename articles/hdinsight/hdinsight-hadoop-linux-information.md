@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441988"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181110"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -124,11 +124,9 @@ Nutzen Sie bei Verwendung von __Azure Storage__ eines der folgenden URI-Schemas:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-Nutzen Sie bei Verwendung von __Azure Data Lake Storage Gen2__ eines der folgenden URI-Schemas:
+Nutzen Sie bei Verwendung von __Azure Data Lake Storage Gen2__ das folgende URI-Schema:
 
-* `abfs:///`: Zugriff auf Standardspeicher über unverschlüsselte Verbindungen.
-
-* `abfss:///`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.  Das abfss-Schema wir nur ab HDInsight-Version 3.6 unterstützt.
+* `abfs://`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 

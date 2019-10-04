@@ -1,5 +1,5 @@
 ---
-title: Verbinden von Microsoft Web Application Firewall-Daten mit Azure Sentinel Preview | Microsoft-Dokumentation
+title: Verbinden von Microsoft Web Application Firewall-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Microsoft Web Application Firewall-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0a308394c3cfa77f80db1361b5a49a485ee5ca0e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611350"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240025"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Verbinden von Daten von Microsoft Web Application Firewall
 
-> [!IMPORTANT]
-> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Sie können Protokolle von der Microsoft Web Application Firewall (WAF) für Azure Application Gateway in Azure Sentinel streamen. Diese Web Application Firewall schützt Ihre Anwendungen vor gängigen Sicherheitsrisiken im Web wie Einschleusung von SQL-Befehlen und Cross-Site-Scripting und ermöglicht Ihnen, Regeln anzupassen, um falsch positive Ergebnisse zu verringern. Befolgen Sie diese Anweisungen, um Protokolle Ihrer Microsoft Web Application Firewall in Azure Sentinel zu streamen.
 
@@ -53,4 +51,4 @@ Sobald Ihre Microsoft Web Application Firewall bereitgestellt ist und Daten empf
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde erläutert, wie Sie Microsoft Web Application Firewall mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).

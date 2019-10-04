@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376203"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178002"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
 
-Mit Azure Media Services (AMS) v3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer über die Voreinstellungen des AMS v3-Analysetools extrahieren. Die genaue Vorgehensweise beschreibt dieser Artikel. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Mit Azure Media Services (AMS) v3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer über die Voreinstellungen des Media Services v3-Analysetools extrahieren. Die genaue Vorgehensweise beschreibt dieser Artikel. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
 Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Transformation**, und senden Sie einen **Auftrag**, der eine der folgenden Voreinstellungen verwendet: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) oder **AudioAnalyzerPreset**. Im folgenden Artikel wird die Verwendung von **VideoAnalyzerPreset** veranschaulicht: [Tutorial: Analysieren von Videos mit Azure Media Services](analyze-videos-tutorial-with-api.md).
 

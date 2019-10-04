@@ -3,9 +3,8 @@ title: Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Si
 description: Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: memildin
+ms.openlocfilehash: 0663e97dabe8b5f50ee9605f0bc9319c7a2aa13c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551735"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201242"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
@@ -40,7 +39,7 @@ Sie können ein Upgrade für ein gesamtes Azure-Abonnement auf den Standard-Tari
 
 So erhalten Sie den Standard-Tarif:
 
-1. Klicken Sie im Hauptmenü von **„Security Center“** auf **„Preise & Einstellungen“** .
+1. Klicken Sie im Hauptmenü von **Security Center** auf **Preise & Einstellungen**.
 2. Wählen Sie das Abonnement aus, das Sie auf den Standard-Tarif umstellen möchten.
 3. Wählen Sie den **Tarif**.
 4. Wählen Sie **Standard** aus, um das Upgrade durchzuführen.

@@ -1,19 +1,19 @@
 ---
 title: Herstellen einer Verbindung mit Kafka mithilfe von virtuellen Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Erfahren Sie, wie Sie über Entwicklungsclients mit einem VPN-Gateway oder über Clients in Ihrem lokalen Netzwerk mithilfe eines VPN-Gateway-Geräts eine Verbindung mit Kafka herstellen.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960428"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122608"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -252,7 +252,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 3. Wählen Sie zum Anzeigen der Kafka-Konfiguration oben in der Mitte __Konfigurationen__ aus.
 
-    ![Konfigurationslinks für Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
 
@@ -274,7 +274,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 8. Klicken Sie auf die Schaltfläche __Speichern__, um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
 
-    ![Schaltfläche zum Speichern der Konfiguration](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari – Speichern der Konfiguration](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
 

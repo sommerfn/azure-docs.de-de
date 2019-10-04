@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor-Protokolle für Apache Kafka – Azure HDInsight
 description: Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen Protokolle aus Apache Kafka-Clustern in Azure HDInsight analysieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960112"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122595"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
@@ -43,7 +43,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
 * Datenträgerauslastung:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -82,17 +82,17 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
 
     > [!IMPORTANT]  
     > Ersetzen Sie die Abfragewerte durch die jeweiligen Informationen Ihres Clusters. Beispielsweise muss `ClusterName_s` auf den Namen Ihres Clusters festgelegt werden. `HostName_s` muss auf den Domänennamen eines Workerknotens im Cluster festgelegt werden.
-    
+
     Sie können auch `*` eingeben, um alle protokollierte Typen zu suchen. Derzeit sind folgende Protokolle für Abfragen verfügbar:
-    
+
     | Protokolltyp | BESCHREIBUNG |
     | ---- | ---- |
     | log\_kafkaserver\_CL | server.log des Kafka-Brokers |
     | log\_kafkacontroller\_CL | controller.log des Kafka-Brokers |
     | metrics\_kafka\_CL | Kafka-JMX-Metriken |
-    
-    ![Abbildung der Suche nach der CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![Apache Kafka-Protokollanalyse – CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Monitor finden Sie unter [Azure Monitor – Übersicht](../../log-analytics/log-analytics-get-started.md) und [Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern](../hdinsight-hadoop-oms-log-analytics-use-queries.md).

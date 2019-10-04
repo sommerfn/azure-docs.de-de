@@ -1,30 +1,31 @@
 ---
 title: Durchführen eines Upgrades für HDInsight-Cluster auf eine neuere Version – Azure
 description: Hier finden Sie Richtlinien für das Upgrade Ihres Azure HDInsight-Clusters auf eine neuere Version.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960699"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122446"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Aktualisieren eines HDInsight-Clusters auf eine neuere Version
+
 Um die neuesten HDInsight-Funktionen nutzen zu können, wird empfohlen, HDInsight-Cluster auf die neueste Version zu aktualisieren. Befolgen Sie die nachstehenden Leitlinien zum Aktualisieren Ihrer HDInsight-Clusterversionen.
 
 > [!NOTE]  
 > Informationen zu unterstützten HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 ## <a name="upgrade-tasks"></a>Aufgaben für das Upgrade
-Der Workflow für ein Upgrade eines HDInsight-Clusters ist wie folgt.
 
-![Diagramm des Upgradeworkflows](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+Der Workflow für ein Upgrade eines HDInsight-Clusters ist wie folgt.
+![HDInsight-Upgradeworkflow – Diagramm](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Lesen Sie jeden Abschnitt dieses Dokuments, um zu verstehen, welche Änderungen möglicherweise erforderlich sind, wenn Sie Ihren HDInsight-Cluster aktualisieren.
 2. Erstellen Sie einen Cluster als Test-/Qualitätssicherungsumgebung. Weitere Informationen zur Erstellung eines Clusters finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
@@ -40,7 +41,7 @@ Nachdem Sie überprüft haben, dass alles wie erwartet funktioniert, planen Sie 
 5.  Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster erstellen](hdinsight-hadoop-provision-linux-clusters.md)
 * [Herstellen von Verbindungen mit HDInsight per SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Verwalten eines Linux-basierten Clusters mithilfe von Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-

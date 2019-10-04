@@ -5,16 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: ce6188732720bc43c5849fa492237c7ab98487c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/22/2019
+ms.openlocfilehash: 91ba485347aeb19ce9b173bd4cec944a655a56dc
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067503"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203503"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Einzelserver
-In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können.
+In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können. 
+
+Wenn Sie mehr darüber erfahren möchten, wie Sie Benutzer von Azure-Abonnements und deren Berechtigungen erstellen und verwalten, lesen Sie den [Artikel zur rollenbasierten Zugriffssteuerung von Azure (RBAC)](../role-based-access-control/built-in-roles.md), oder informieren Sie sich über die [Anpassung von Rollen](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Das Serveradministratorkonto
 Bei der anfänglichen Erstellung Ihrer Azure Database for PostgreSQL-Instanz haben Sie einen Serveradministrator-Benutzernamen und das dazugehörige Kennwort angegeben. Weitere Informationen sowie eine Erläuterung der einzelnen Schritte finden Sie in der [Schnellstartanleitung](quickstart-create-server-database-portal.md). Da es sich beim Serveradministrator-Benutzernamen um einen benutzerdefinierten Namen handelt, können Sie den ausgewählten Serveradministrator-Benutzernamen im Azure-Portal ermitteln.

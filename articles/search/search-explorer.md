@@ -1,33 +1,30 @@
 ---
-title: Suchexplorer-Tool zum Abfragen von Daten im Azure-Portal – Azure Search
-description: Verwenden Sie die im Azure-Portal verfügbaren Tools wie den Suchexplorer, um Indizes in Azure Search abzufragen. Geben Sie Suchbegriffe oder vollqualifizierte Suchzeichenfolgen mit erweiterter Syntax ein.
+title: Verwenden des Suchexplorer-Tools zum Abfragen von Daten im Azure-Portal – Azure Search
+description: Suchexplorer ist in das Azure-Portal integriert. Das Tool ist hilfreich beim Erkunden von Inhalten und Überprüfen von Abfragen in Azure Search. Geben Sie Zeichenfolgen zum Suchen nach Begriffen oder Wendungen oder mithilfe erweiterter Syntax vollqualifizierte Suchausdrücke ein.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649969"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178137"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Suchexplorer zum Abfragen von Daten in Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Verwenden von Suchexplorer im Azure-Portal zum Abfragen von Dokumenten in Azure Search 
 
-In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln. 
+In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Sie können den Suchexplorer von der Befehlsleiste aus starten, um einfache oder vollständige Lucene-Abfrageausdrücke an einen beliebigen Index in Ihrem Dienst zu übermitteln. 
 
    ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
 
-
-Hilfe zu den ersten Schritten finden Sie unter [So starten Sie den Suchexplorer](#start-search-explorer).
-
 ## <a name="basic-search-strings"></a>Grundlegende Suchzeichenfolgen
 
-In den folgenden Beispielen wird vom integrierten Beispielimmobilienindex ausgegangen. Hilfe zum Erstellen dieses Index finden Sie unter [Schnellstart: Importieren, Indizieren und Abfragen im Azure-Portal](search-get-started-portal.md).
+In den folgenden Beispielen wird vom integrierten Beispielimmobilienindex ausgegangen. Sie können diesen Index mithilfe des Datenimport-Assistenten im Portal erstellen. Wählen Sie dabei **Beispiele** als Datenquelle aus.
 
 ### <a name="example-1---empty-search"></a>Beispiel 1: leere Suche
 

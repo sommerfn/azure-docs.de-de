@@ -1,19 +1,19 @@
 ---
 title: Operationalisieren von ML Services in HDInsight – Azure
 description: Erfahren Sie, wie Sie Ihr Datenmodell operationalisieren, um Vorhersagen mit ML Services in Azure HDInsight zu treffen.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967674"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123567"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -50,31 +50,31 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
-    ![Operationalisierung mit einem einzelnen Computer (1)](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R Server-Verwaltungshilfsprogramm – Auswählen](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Sie können jetzt eine Option für die Operationalisierung von ML Server auswählen. Wählen Sie die erste der angebotenen Optionen durch Eingabe von **A** aus.
 
-    ![Operationalisierung mit einem einzelnen Computer (2)](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R Server-Verwaltungshilfsprogramm – Operationalisieren](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Geben Sie bei Aufforderung das Kennwort für einen lokalen Administratorbenutzer ein bzw. erneut ein.
 
 1. Daraufhin sollte ausgegeben werden, dass der Vorgang erfolgreich war. Sie werden außerdem aufgefordert, eine andere Option aus dem Menü auszuwählen. Wählen Sie „E“ aus, um zum Hauptmenü zurückzukehren.
 
-    ![Operationalisierung mit einem einzelnen Computer (3)](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R Server-Verwaltungshilfsprogramm – erfolgreich abgeschlossen](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. Optional können Sie die Diagnoseprüfungen ausführen, indem Sie wie folgt einen Diagnosetest ausführen:
 
     a. Wählen Sie im Hauptmenü **6** aus, um Diagnosetests auszuführen.
 
-    ![Diagnose (1)](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![R Server-Verwaltungshilfsprogramm – Diagnose](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Wählen Sie im Diagnosetestmenü **A** aus. Wenn Sie aufgefordert werden, geben Sie das Kennwort ein, das Sie für den lokalen Administratorbenutzer bereitgestellt haben.
 
-    ![Diagnose (2)](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![R Server-Verwaltungshilfsprogramm – Test](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Überprüfen Sie, ob ausgegeben wird, dass die Gesamtintegrität einwandfrei ist.
 
-    ![Diagnose (3)](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R Server-Verwaltungshilfsprogramm – Test bestanden](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. Geben Sie von den angebotenen Menüoptionen **E** ein, um zum Hauptmenü zurückzukehren, und geben Sie dann **8** ein, um das Verwaltungshilfsprogramm zu beenden.
 
@@ -148,7 +148,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN**. In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
 
-   ![Außerbetriebnahme von Workerknoten](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari – Aktivieren des Wartungsmodus](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Außer Betrieb setzen**.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Außer Betrieb setzen**.

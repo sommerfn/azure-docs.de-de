@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638496"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177075"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zu Digital Twins-Objektmodellen und zum Raumintelligenzgraphen
 
@@ -23,9 +23,7 @@ In Digital Twins-Objektmodellen werden domänenspezifische Konzepte, Kategorien 
 
 Mit formulierten Digital Twins-Objektmodellen und formulierter Ontologie kann ein _Raumgraph_ bestückt werden. Raumgraphen sind virtuelle Darstellungen der vielen Beziehungen zwischen Räumen, Geräten und Personen, die für eine IoT-Lösung relevant sind. In diesem Diagramm sehen Sie ein Beispiel für einen Raumgraphen, für den die Ontologie eines intelligenten Gebäudes verwendet wurde.
 
-![Digital Twins-Raumgraph für ein Gebäude][1]
-
-<a id="model"></a>
+[![Digital Twins-Raumgraph für ein Gebäude](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 In dem Raumgraph werden Räume, Geräte, Sensoren und Benutzer zusammengeführt. Die einzelnen Elemente sind auf eine Weise verknüpft, die die reale Welt im Modell darstellt. In diesem Beispiel weist Ort 43 vier Etagen auf, die jeweils viele verschiedene Bereiche umfassen. Benutzer sind ihren Arbeitsstationen zugeordnet und erhalten Zugriff auf Teile des Graphen. Ein Administrator besitzt die Berechtigungen zum Durchführen von Änderungen am Raumgraphen, während ein Besucher nur Berechtigungen zum Anzeigen bestimmter Gebäudedaten besitzt.
 
@@ -55,8 +53,6 @@ Weitere Objektkategorien sind:
   - Senden von Benachrichtigungen, wenn vordefinierte Bedingungen erfüllt sind. Derzeit können benutzerdefinierte Funktionen in JavaScript geschrieben werden.
 - **Matcher** (Abgleicher) sind Objekte, die festlegen, welche benutzerdefinierten Funktionen für eine bestimmte Telemetrienachricht ausgeführt werden sollen.
 - **Endpunkte** sind die Orte, an denen Telemetrienachrichten und Digital Twins-Ereignisse weitergeleitet werden können, z.B. `Event Hub`, `Service Bus` und `Event Grid`.
-
-<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>Raumintelligenzgraph
 
@@ -89,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  In dieser Abbildung wird das vollständige URL-Format angezeigt.
 
-![Digital Twins-Verwaltungs-API im Portal][2]
+(![Digital Twins-Verwaltungs-API im Portal](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Wenn Sie weitere Informationen zur Verwendung von Raumintelligenzgraphen wünschen, sehen Sie sich die Vorschau der Azure Digital Twins-Verwaltungs-APIs an.
 
@@ -106,7 +102,3 @@ Alle API-Aufrufe müssen mit [OAuth](https://docs.microsoft.com/azure/active-dir
 - Informationen zur Gerätekonnektivität und zum Senden von Telemetrienachrichten an Digital Twins finden Sie unter [Gerätekonnektivität und eingehende Telemetriedaten](concepts-device-ingress.md).
 
 - Informationen über Einschränkungen und Drosselungen von Verwaltungs-APIs finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

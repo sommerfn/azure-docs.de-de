@@ -1,5 +1,5 @@
 ---
-title: Verknüpfen von Palo Alto Networks-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+title: Verknüpfen von Palo Alto Networks-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Palo Alto Networks-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679232"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240238"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Verbinden Ihrer Palo Alto Networks-Appliance
 
-> [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Sie können Azure Sentinel mit jeder Palo Alto Networks-Appliance verbinden, indem Sie die Protokolldateien im Syslog Common Error Format (CEF) speichern. Die Integration mit Azure Sentinel ermöglicht Ihnen die einfache Ausführung von Analysen und Abfragen von Daten der Protokolldateien von Palo Alto Networks. Weitere Informationen dazu, wie Azure Sentinel CEF-Daten erfasst, finden Sie unter [Verbinden der externen Lösung mithilfe von Common Event Format](connect-common-event-format.md).
 
@@ -141,5 +139,5 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Sie Palo Alto Networks-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
 

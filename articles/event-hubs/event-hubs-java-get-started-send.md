@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967613"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219424"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Senden von Ereignissen an oder Empfangen von Ereignissen von Event Hubs mithilfe von Java
 
@@ -181,11 +181,11 @@ Zum Verwenden von EventProcessorHost benötigen Sie ein [Azure Storage-Konto][Az
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite des Bildschirms **Ressource erstellen** aus.
 2. Wählen Sie **Speicher** und anschließend **Speicherkonto** aus. Geben Sie im Fenster **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. Füllen Sie die restlichen Felder aus, wählen Sie Ihre gewünschte Region aus, und wählen Sie dann **Erstellen** aus.
    
-    ![Speicherkonto erstellen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Erstellen eines Speicherkontos im Azure-Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Wählen Sie das neu erstellte Speicherkonto und anschließend **Zugriffsschlüssel** aus:
    
-    ![Abrufen von Zugriffsschlüsseln](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Abrufen von Zugriffsschlüsseln im Azure-Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Kopieren Sie den Wert von „key1“ an einen temporären Speicherort. Sie benötigen ihn später in diesem Tutorial.
 

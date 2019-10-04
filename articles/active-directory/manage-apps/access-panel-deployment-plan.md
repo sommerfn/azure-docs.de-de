@@ -1,6 +1,6 @@
 ---
 title: Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
-description: Leitfaden zum Bereitstellen der Azure AD-Zugriffsbereichsfunktionen
+description: Anleitung zum Bereitstellen des Azure Active Directory-Zugriffsbereichs
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -15,23 +15,24 @@ ms.date: 08/16/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448af7075297c2b18df1eceaeaac34d5da762489
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575965"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258518"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
 
-Der Azure Active Directory-Zugriffsbereich ist ein webbasiertes Portal, mit dem Sie die Supportkosten senken, die Produktivität und Sicherheit erhöhen und die Frustration der Benutzer verringern können. Das System verfügt über eine ausführliche Berichterstellung, bei der der Benutzerzugriff auf das System nachverfolgt wird, sowie über eine Benachrichtigungsfunktion, mit der Administratoren über eine fehlerhafte oder missbräuchliche Nutzung informiert werden.
+Der Azure AD-Zugriffsbereich (Azure Active Directory) ist ein webbasiertes Portal, mit dem Sie die Supportkosten senken, die Produktivität und Sicherheit erhöhen und die Frustration der Benutzer verringern können. Das System verfügt über eine ausführliche Berichterstellung, bei der Ihr Zugriff auf das System nachverfolgt wird, sowie über eine Benachrichtigungsfunktion, mit der Administratoren über eine fehlerhafte oder missbräuchliche Nutzung informiert werden.
 
-Der Azure Active Directory-Zugriffsbereich ermöglicht Benutzern Folgendes:
+Der Azure AD-Zugriffsbereich bietet Ihnen folgende Möglichkeiten:
 
-* Alle mit Azure Active Directory verbundenen Ressourcen ihres Unternehmens entdecken und darauf zugreifen, z. B. Anwendungen.
-* Zugriff auf neue Apps und Gruppen anfordern oder Zugriff auf diese Ressourcen für andere verwalten.
-* Self-Service-Kennwortzurücksetzung und Einstellungen für mehrstufige Authentifizierung verwalten.
-* Ihre Geräte verwalten.
+* Entdecken aller mit Azure AD verbundenen Ressourcen Ihres Unternehmens, z. B. Anwendungen, und Zugriff auf diese
+* Anfordern von Zugriff auf neue Apps und Gruppen
+* Verwalten des Zugriffs auf diese Ressourcen für andere Benutzer
+* Verwalten der Self-Service-Kennwortzurücksetzung und der Einstellungen für Azure Multi-Factor Authentication
+* Verwalten Ihrer Geräte
 
 Administratoren können damit Folgendes verwalten:
 
@@ -40,41 +41,41 @@ Administratoren können damit Folgendes verwalten:
 * Zugriffsüberprüfungen
 
 
-## <a name="benefits-of-azure-active-directory-access-panel-integration"></a>Vorteile der Azure Active Directory-Zugriffsbereichsintegration
+## <a name="benefits-of-azure-ad-access-panel-integration"></a>Vorteile der Azure Active Directory-Zugriffsbereichsintegration
 
-Der Microsoft Azure Active Directory-Zugriffsbereich (Azure AD) bietet Unternehmen folgende Vorteile:
+Der Azure AD-Zugriffsbereich bietet Unternehmen folgende Vorteile:
 
-**Bietet eine intuitive Benutzeroberfläche**: Die Aktivierung des Zugriffsbereichs bietet Benutzern die Möglichkeit, einen einzelnen Ausgangspunkt für alle ihre mit der einmaligen Anmeldung verbundenen Azure-Anwendungen zu verwenden. Da Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, verfügen die Benutzer weiterhin über ein einheitliches Portal, um diese Einstellungen zu finden. Die intuitive Benutzeroberfläche ermöglicht es den Benutzern, schneller wieder an die Arbeit zu gehen und produktiver zu sein, während sie gleichzeitig ihre Frustration reduziert.
+**Bietet eine intuitive Benutzeroberfläche**: Der Zugriffsbereich bietet eine einzige Plattform für alle mit einmaligem Anmelden (SSO) in Azure verbundenen Anwendungen. Sie verfügen über ein einheitliches Portal, um vorhandene Einstellungen und neue Funktionen, z. B. Gruppenverwaltung und Self-Service-Kennwortzurücksetzung, zu finden, sobald sie hinzugefügt wurden. Die intuitive Benutzeroberfläche ermöglicht es den Benutzern, schneller wieder an die Arbeit zu gehen und produktiver zu sein, während sie gleichzeitig ihre Frustration reduziert.
 
-**Steigerung der Produktivität**: Für alle Benutzeranwendungen im Zugriffsbereich ist das einmalige Anmelden (Single Sign-On, SSO) aktiviert. Die Aktivierung des einmaligen Anmeldens zwischen Unternehmensanwendungen und Office 365 bietet eine optimierte Anmeldung für bestehende Benutzer, da hierdurch die Anzahl von zusätzlichen Anmeldeeingabeaufforderungen reduziert wird oder diese gänzlich beseitigt werden. Der Zugriffsbereich ermöglicht eine Self-Service- und dynamische Mitgliedschaft und verbessert die Gesamtsicherheit Ihres Identitätssystems, indem er sicherstellt, dass die richtigen Personen den Zugriff auf die Anwendungen verwalten. Der Zugriffsbereich dient als kohärente Landing Page für einen Benutzer, um schnell Ressourcen zu finden und Arbeitsaufgaben fortzusetzen.
+**Steigerung der Produktivität**: Für alle Benutzeranwendungen im Zugriffsbereich ist SSO aktiviert. Die Aktivierung von SSO zwischen Unternehmensanwendungen und Office 365 bietet eine optimierte Anmeldung, da hierdurch die Anzahl von zusätzlichen Anmeldeeingabeaufforderungen reduziert wird oder diese gänzlich beseitigt werden. Im Zugriffsbereich werden Self-Service und dynamische Mitgliedschaft verwendet, und die Gesamtsicherheit Ihres Identitätsverwaltungssystems wird verbessert. Dies stellt sicher, dass der Zugriff auf die Anwendungen von den richtigen Personen verwaltet wird. Der Zugriffsbereich dient als kohärente Landing Page, damit Sie schnell Ressourcen finden und Arbeitsaufgaben fortsetzen können.
 
-**Verwaltung der Kosten**: Die Aktivierung des Zugriffsbereichs mit Azure Active Directory kann die Desinvestition von lokalen Infrastrukturen ermöglichen. Dadurch werden die Supportkosten gesenkt, da die Benutzer über ein einheitliches Portal verfügen, um alle ihre Anwendungen zu finden, den Zugriff auf Ressourcen anzufordern und ihr Konto zu verwalten.
+**Verwaltung der Kosten**: Die Aktivierung des Zugriffsbereichs mit Azure AD kann die Desinvestition von lokalen Infrastrukturen unterstützen. Dadurch werden die Supportkosten gesenkt, da Sie über ein einheitliches Portal verfügen, um alle Ihre Anwendungen zu finden, den Zugriff auf Ressourcen anzufordern und Konten zu verwalten.
 
-**Steigerung von Flexibilität und Sicherheit**: Über den Zugriffsbereich können Sie auf die Sicherheit und Flexibilität zugreifen, die eine Cloudplattform bietet. Administratoren können Einstellungen von Anwendungen und Ressourcen einfach ändern und neue Sicherheitsanforderungen erfüllen, ohne die Benutzer zu beeinträchtigen.
+**Steigerung von Flexibilität und Sicherheit**: Über den Zugriffsbereich erhalten Sie die Sicherheit und Flexibilität, die eine Cloudplattform bietet. Administratoren können Einstellungen von Anwendungen und Ressourcen einfach ändern und neue Sicherheitsanforderungen erfüllen, ohne die Benutzer zu beeinträchtigen.
 
-**Ermöglichen einer zuverlässigen Überwachung und Nutzungsnachverfolgung**: Durch die Überwachung und Nutzungsnachverfolgung für alle Endbenutzerfunktionen erfahren Sie, wann Benutzer ihre Ressourcen nutzen, und Sie können die Sicherheit bewerten.
+**Ermöglichen einer zuverlässigen Überwachung und Nutzungsnachverfolgung**: Durch die Überwachung und Nutzungsnachverfolgung für alle Benutzerfunktionen erfahren Sie, wann Benutzer ihre Ressourcen nutzen, und Sie können die Sicherheit bewerten.
 
 ### <a name="licensing-considerations"></a>Lizenzierungsaspekte
 
-Der Zugriffsbereich ist kostenlos und erfordert auf der Ebene „Basic“ keine Lizenzen. Die Anzahl der Objekte in Ihrem Verzeichnis und die Funktionen, die Sie bereitstellen möchten, können jedoch zusätzliche Lizenzen erfordern. Allgemeine Azure AD-Szenarien umfassen die folgenden Sicherheitsfeatures, für die Lizenzanforderungen gelten.
+Der Zugriffsbereich ist kostenlos und erfordert auf der Ebene „Basic“ keine Lizenzen. Die Anzahl der Objekte in Ihrem Verzeichnis und die zusätzlichen Funktionen, die Sie bereitstellen möchten, können jedoch zusätzliche Lizenzen erfordern. Allgemeine Azure AD-Szenarien mit Lizenzanforderungen umfassen die folgenden Sicherheitsfeatures:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Gruppenbasierte Mitgliedschaft](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [Self-Service-Kennwortanforderung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
-* [Schutz der Identität (Identity Protection)](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
-Weitere Informationen finden Sie im [Leitfaden zur Lizenzierung für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+Weitere Informationen finden Sie im [Leitfaden zur Lizenzierung für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>Voraussetzungen für die Bereitstellung des Azure AD-Zugriffsbereichs
 
-Die folgenden Voraussetzungen müssen vor Beginn dieses Projekts erfüllt sein.
+Bevor Sie mit diesem Projekt beginnen, müssen folgende erforderliche Schritte ausgeführt werden:
 
-* [Integration von Anwendungs-SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
+* [Integrieren von Anwendungs-SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
 
-* [Benutzer- und Gruppeninfrastruktur von Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [Verwalten der Benutzer- und Gruppeninfrastruktur von Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-the-azure-ad-access-panel-deployment"></a>Planen der Bereitstellung des Azure AD-Zugriffsbereichs
 
@@ -83,16 +84,16 @@ In der folgenden Tabelle sind die wichtigsten Anwendungsfälle für eine Bereits
 | Bereich| BESCHREIBUNG |
 | - | - |
 | Access| Das Portal des Zugriffsbereichs ist von firmeneigenen und privaten Geräten im Unternehmensnetzwerk aus zugänglich. |
-|Access | Das Portal des Zugriffsbereichs ist von firmeneigenen Geräten außerhalb des Unternehmensnetzwerk aus zugänglich. |
+|Access | Das Portal des Zugriffsbereichs ist von firmeneigenen Geräten von außerhalb des Unternehmensnetzwerks aus zugänglich. |
 | Überwachung| Die Nutzungsdaten werden mindestens alle 29 Tage in die Unternehmenssysteme heruntergeladen. |
-| Governance| Der Lebenszyklus von Benutzerzuweisungen zu Anwendungen und Gruppen, die mit Azure AD verbunden sind, wird definiert und überwacht. |
+| Governance| Der Lebenszyklus der Benutzerzuweisungen zu Anwendungen und Gruppen, die mit Azure AD verbunden sind, wird definiert und überwacht. |
 | Sicherheit| Der Zugriff auf Ressourcen wird über die Zuweisung von Benutzern und Gruppen gesteuert. Nur autorisierte Benutzer können den Ressourcenzugriff verwalten. |
 | Leistung| Die Zeitachsen für die Verteilung von Zugriffszuweisungen werden dokumentiert und überwacht. |
 | Benutzererfahrung| Die Benutzer sind sich der Funktionen des Zugriffsbereichs und deren Verwendung bewusst.|
-| Benutzererfahrung| Benutzer können ihren Zugriff auf Anwendungen und Gruppen selbst verwalten.|
+| Benutzererfahrung| Benutzer können ihren Zugriff auf Anwendungen und Gruppen verwalten.|
 | Benutzererfahrung| Benutzer können ihre Konten verwalten. |
 | Benutzererfahrung| Die Benutzer sind sich der Browserkompatibilität bewusst. |
-| Support| Benutzer können Unterstützung bei Probleme mit dem Zugriffsbereich finden. |
+| Support| Benutzer können Unterstützung bei Problemen mit dem Zugriffsbereich finden. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Bewährte Methoden für die Bereitstellung des Azure AD-Zugriffsbereichs
 
@@ -123,12 +124,12 @@ In der folgenden Tabelle sind einige wichtige Zugriffsbereichskonfigurationen un
 
 | Konfiguration| Typische Werte |
 | - | - |
-| Ermitteln der Pilotgruppe (n)| Identifizieren Sie die zu verwendende Azure AD-Sicherheitsgruppe und stellen Sie sicher, dass alle Pilotmitglieder Teil der Gruppe sind. |
-| Ermitteln Sie die für die Produktion zu aktivierende(n) Gruppe(n).| Identifizieren Sie die zu verwendende(n) Azure AD-Sicherheitsgruppe(n) oder AD-Gruppen, die mit Azure AD synchronisiert sind. Stellen Sie sicher, dass alle Pilotmitglieder Teil der Gruppe sind. |
-| Benutzern die Verwendung des einmaligen Anmeldens für welche Arten von Anwendungen erlauben| Verbund-SSO, OAuth, Kennwort-SSO, App-Proxy |
-| Benutzern die Verwendung der Self-Service-Kennwortzurücksetzung erlauben| Ja |
+| Ermitteln der Pilotgruppen| Identifizieren Sie die zu verwendende Azure AD-Sicherheitsgruppe und stellen Sie sicher, dass alle Pilotmitglieder Teil der Gruppe sind. |
+| Ermitteln Sie die für die Produktion zu aktivierende(n) Gruppe(n).| Identifizieren Sie die zu verwendenden Azure AD-Sicherheitsgruppen oder Azure AD-Gruppen, die mit Azure AD synchronisiert sind. Stellen Sie sicher, dass alle Pilotmitglieder Teil der Gruppe sind. |
+| Benutzern die Verwendung von SSO für bestimmte Anwendungstypen erlauben| Verbund-SSO, OAuth, Kennwort-SSO, App-Proxy |
+| Benutzern die Verwendung der Self-Service-Kennwortzurücksetzung erlauben | Ja |
 | Benutzern die Verwendung der mehrstufigen Authentifizierung erlauben| Ja |
-| Benutzern die Verwendung der Self-Service-Gruppenverwaltung für welche Arten von Gruppen erlauben| Sicherheitsgruppen, O365-Gruppen |
+| Benutzern die Verwendung der Self-Service-Gruppenverwaltung für bestimmte Arten von Gruppen erlauben| Sicherheitsgruppen, Office 365-Gruppen |
 | Benutzern die Verwendung der Self-Service-App-Verwaltung erlauben| Ja |
 | Benutzern die Verwendung von Zugriffsüberprüfungen erlauben| Ja |
 
@@ -136,11 +137,11 @@ In der folgenden Tabelle sind einige wichtige Zugriffsbereichskonfigurationen un
 
 Benutzer oder Administratoren müssen den Nutzungsbedingungen und den Datenschutzrichtlinien jeder Anwendung zustimmen. Wenn möglich, sollten Sie nach Ihren Geschäftsregeln die Einwilligung des Administrators einholen, was den Benutzern ein besseres Erlebnis bietet.
 
-Damit Sie die Einwilligung des Administrators nutzen können, müssen Sie ein globaler Administrator des Mandanten und die Anwendungen Folgendes sein:
+Damit Sie die Einwilligung des Administrators nutzen können, müssen Sie ein globaler Administrator der Organisation sein, und die Anwendungen müssen eine der folgenden Anforderungen erfüllen:
 
-* Sie ist im Mandanten registriert, oder
+* In Ihrer Organisation registriert
 
-* In einem anderen Azure AD-Mandanten registriert und mindestens ein Endbenutzer hat seine Einwilligung erteilt.
+* In einem anderen Azure AD-Mandanten registriert, und mindestens ein Benutzer hat seine Einwilligung erteilt
 
 Weitere Informationen finden Sie unter [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md).
 
@@ -150,7 +151,7 @@ Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 
-Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Informieren Sie Ihre Benutzer proaktiv darüber, wie und wann sich ihre Erfahrungen ändern werden und wie sie bei Bedarf Unterstützung erhalten können.
+Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Informieren Sie die Benutzer proaktiv darüber, wie und wann sich ihre Erfahrungen ändern werden und wie sie bei Bedarf Unterstützung erhalten können.
 
 Obwohl der Zugriffsbereich in der Regel keine Benutzerprobleme verursacht, ist es wichtig, sich darauf vorzubereiten. Erstellen Sie vor dem Start Leitfäden und eine Liste aller Ressourcen für Ihre Supportmitarbeiter.
 
@@ -160,9 +161,9 @@ Microsoft stellt [anpassbare Vorlagen für E-Mails und andere Kommunikationsform
 
 ## <a name="plan-your-sso-configuration"></a>Planen der SSO-Konfiguration
 
-Wenn sich ein Benutzer bei einer Anwendung anmeldet, durchläuft er einen Authentifizierungsprozess und muss seine Identität belegen. Ohne einmaliges Anmelden wird ein in der Anwendung gespeichertes Kennwort benötigt, und der Benutzer muss dieses Kennwort kennen. Mit einmaligem Anmelden werden die Anmeldeinformationen der Benutzer an die Anwendung weitergegeben, sodass sie nicht für jede Anwendung erneut Kennwörter eingeben müssen.
+Wenn sich ein Benutzer bei einer Anwendung anmeldet, durchläuft er einen Authentifizierungsprozess und muss seine Identität belegen. Ohne SSO wird ein in der Anwendung gespeichertes Kennwort benötigt, und der Benutzer muss dieses Kennwort kennen. Mit SSO werden die Anmeldeinformationen der Benutzer an die Anwendung weitergegeben, sodass sie nicht für jede Anwendung erneut Kennwörter eingeben müssen.
 
-Um Anwendungen in „Meine Apps“ zu starten, muss für die Anwendungen das einmalige Anmelden aktiviert sein.
+Zum Starten von Anwendungen in „Meine Apps“ muss SSO aktiviert sein.
 
 Azure AD unterstützt drei verschiedene Methoden für das [einmalige Anmelden bei Anwendungen](what-is-single-sign-on.md):
 
@@ -171,7 +172,7 @@ Azure AD unterstützt drei verschiedene Methoden für das [einmalige Anmelden be
     * Diese Methode wird für Anwendungen unterstützt, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect verwenden, und sie ist der umfassendste Modus bei der einmaligen Anmeldung.
 
 * **Kennwortbasiertes einmaliges Anmelden** 
-    * Ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. 
+    * Ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mithilfe einer Webbrowsererweiterung oder einer mobilen App. 
     * Sie nutzt den von der Anwendung bereitgestellten vorhandenen Anmeldevorgang, die Kennwortverwaltung kann jedoch der Administrator übernehmen. Der Benutzer muss das Kennwort nicht kennen.
 
 * **Vorhandenes einmaliges Anmelden** 
@@ -182,7 +183,7 @@ Azure AD unterstützt drei verschiedene Methoden für das [einmalige Anmelden be
 
 Erfahren Sie hier, wie Sie den Modus einer Anwendung für einmaliges Anmelden konfigurieren: [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-Für eine optimale Erfahrung mit der Seite „Meine Apps“ wird empfohlen, mit der Integration von Cloudanwendungen zu beginnen, die für Verbund-SSO verfügbar sind. Verbund-SSO ermöglicht Benutzern eine einheitliche 1-Klick-Erfahrung über die verschiedenen App-Startoberflächen hinweg und ist hinsichtlich der Konfigurationssteuerung tendenziell stabiler.
+Integrieren Sie für eine optimale Erfahrung mit der Seite „Meine Apps“ zunächst Cloudanwendungen, die für Verbund-SSO verfügbar sind. Verbund-SSO ermöglicht Benutzern eine einheitliche 1-Klick-Erfahrung über die verschiedenen App-Startoberflächen hinweg und ist hinsichtlich der Konfigurationssteuerung tendenziell stabiler.
 
 Verwenden Sie Verbund-SSO mit Azure AD (OpenID Connect/SAML) anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.
 
@@ -190,7 +191,7 @@ Weitere Informationen zum Bereitstellen und Konfigurieren von SaaS-Anwendungen f
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>Planen der Bereitstellung der Browsererweiterung „Meine Apps“
 
-Wenn kennwortbasierte SSO-Anwendungen den Endbenutzern zur Verfügung gestellt werden, müssen sie die sichere Anmeldeerweiterung „Meine Apps“ installieren, um sich anzumelden. Die Erweiterung führt ein Skript aus, das das Kennwort in das Anmeldeformular der Anwendung überträgt. Die Benutzer werden beim ersten Start der kennwortbasierten SSO-Anwendung aufgefordert, die Erweiterung zu installieren. Weitere Informationen zur Erweiterung finden Sie in unserer Dokumentation [Installieren der Browsererweiterung für den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
+Wenn sich Benutzer bei kennwortbasierten SSO-Anwendungen anmelden, müssen sie die sichere Anmeldeerweiterung „Meine Apps“ installieren und verwenden. Die Erweiterung führt ein Skript aus, das das Kennwort in das Anmeldeformular der Anwendung überträgt. Die Benutzer werden beim ersten Start der kennwortbasierten SSO-Anwendung aufgefordert, die Erweiterung zu installieren. Weitere Informationen zur Erweiterung finden Sie in der Dokumentation [Installieren der Browsererweiterung für den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
 
 Wenn Sie kennwortbasierte SSO-Anwendungen integrieren müssen, sollten Sie einen Mechanismus definieren, um die Erweiterung skalierbar mit [unterstützten Browsern](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) bereitzustellen. Beispiele für Optionen:
 
@@ -220,11 +221,11 @@ Die Grundlage des Zugriffsbereichs ist das Anwendungsstartprogramm „My Apps“
 
 Dieselben Anwendungen werden im Office 365 App-Startfeld angezeigt, wenn Benutzer das Office 365-Portal verwenden.
 
-Planen Sie die Reihenfolge, in der Sie dem „Meine Apps“-Startfeld Anwendungen hinzufügen, und ob Sie deren Rollout schrittweise oder gleichzeitig durchführen möchten. Erstellen Sie dazu einen Anwendungsbestand, der die Art der Authentifizierung und alle vorhandenen SSO-Integrationen für die einzelnen Anwendungen enthält.
+Planen Sie die Reihenfolge, in der Sie dem „Meine Apps“-Startfeld Anwendungen hinzufügen, und entscheiden Sie, ob Sie deren Rollout schrittweise oder gleichzeitig durchführen möchten. Erstellen Sie dazu einen Anwendungsbestand, der die Art der Authentifizierung und alle vorhandenen SSO-Integrationen für die einzelnen Anwendungen enthält.
 
 #### <a name="add-applications-to-the-my-apps-panel"></a>Hinzufügen von Anwendungen zum Bereich „Meine Apps“
 
-Alle Azure AD SSO-fähigen Anwendungen können dem „Meine Apps“-Startprogramm hinzugefügt werden. Andere Anwendungen werden mithilfe der Option „Verknüpftes einmaliges Anmelden“ hinzugefügt. Sie können eine Anwendungskachel konfigurieren, die auf die URL Ihrer vorhandenen Webanwendung verweist. Mit „Verknüpftes einmaliges Anmelden“ können Sie beginnen, Benutzer zum „Meine Apps“-Portal zu leiten, ohne alle Anwendungen in Azure Active Directory SSO migrieren zu müssen. Sie können schrittweise zu Azure AD SSO-konfigurierten Anwendungen wechseln, ohne die Benutzerfreundlichkeit zu beeinträchtigen.
+Alle Azure AD SSO-fähigen Anwendungen können dem „Meine Apps“-Startprogramm hinzugefügt werden. Andere Anwendungen werden mithilfe der Option „Verknüpftes einmaliges Anmelden“ hinzugefügt. Sie können eine Anwendungskachel konfigurieren, die auf die URL Ihrer vorhandenen Webanwendung verweist. Mit „Verknüpftes einmaliges Anmelden“ können Sie beginnen, Benutzer zum „Meine Apps“-Portal zu leiten, ohne alle Anwendungen nach Azure AD SSO migrieren zu müssen. Sie können schrittweise zu Azure AD SSO-konfigurierten Anwendungen wechseln, ohne die Benutzerfreundlichkeit zu beeinträchtigen.
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Planen der Verwendung von „Meine Apps“ oder eines bestehenden Portals
 
@@ -232,22 +233,23 @@ Ihre Benutzer verfügen möglicherweise bereits über eine andere Anwendung oder
 
 Wenn ein vorhandenes Portal bereits als Startpunkt für Benutzer verwendet wird, können Sie die Funktionalität von „My Apps“ über „URLs für den Benutzerzugriff“ integrieren. URLs für den Benutzerzugriff fungieren als direkte Links zu den im Portal „Meine Apps“ verfügbaren Anwendungen. Diese URLs können in jede vorhandene Website eingebettet werden. Wenn ein Benutzer auf den Link klickt, wird die Anwendung über das Portal „Meine Apps“ gestartet.
 
-Sie finden die Eigenschaft „URL für den Benutzerzugriff“ im Bereich „Eigenschaften“ der Anwendung im Azure-Portal.
+Sie finden die Eigenschaft „URL für den Benutzerzugriff“ im Bereich **Eigenschaften** der Anwendung im Azure-Portal.
 
 ![Screenshot des Bereichs „Apps“](media/access-panel-deployment-plan/ap-dp-user-access-url.png)
 
 
 ## <a name="plan-self-service-application-discovery-and-access"></a>Planen der Self-Service-Anwendungsermittlung und des -zugriffs
 
-Sobald ein Kernsatz von Anwendungen auf der Seite „Meine Apps“ eines Benutzers bereitgestellt wird, empfehlen wir, Features zur Verwaltung von Self-Service-Anwendungen zu aktivieren. Die Self-Service-App-Ermittlung ermöglicht Folgendes:
-* Benutzer können neue Apps finden, die sie zu ihrer Seite „Meine Apps“ hinzufügen können. 
-* Benutzer können optionale Apps hinzufügen, von denen Sie vielleicht nicht wissen, dass sie sie während des Setups benötigen.
+Sobald ein Kernsatz von Anwendungen auf der Seite „Meine Apps“ eines Benutzers bereitgestellt wird, sollten Sie Features zur Verwaltung von Self-Service-Anwendungen aktivieren. Die Self-Service-App-Ermittlung ermöglicht Benutzern Folgendes:
+
+* Suchen neuer Apps, die „Meine Apps“ hinzugefügt werden sollen. 
+* Hinzufügen optionaler Apps, von denen die Benutzer vielleicht nicht wissen, dass sie sie während des Setups benötigen.
 
 Für die ausdrückliche Genehmigung des Zugriffs auf Anwendungen stehen Genehmigungsworkflows zur Verfügung. Benutzer, die genehmigende Personen sind, erhalten Benachrichtigungen im Portal „Meine Apps“, wenn eine Anforderung für den Zugriff auf die Anwendung aussteht.
 
 ## <a name="plan-self-service-group-membership"></a>Planen der Self-Service-Gruppenmitgliedschaft 
 
-Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgruppen oder Office 365-Gruppen in Azure Active Directory (Azure AD) ermöglichen. Der Besitzer der Gruppe kann Mitgliedschaftsanforderungen genehmigen oder ablehnen sowie die Steuerung der Gruppenmitgliedschaft delegieren. Self-Service-Funktionen zur Gruppenverwaltung sind nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
+Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgruppen oder Office 365-Gruppen in Azure AD ermöglichen. Der Besitzer der Gruppe kann Mitgliedschaftsanforderungen genehmigen oder ablehnen sowie die Steuerung der Gruppenmitgliedschaft delegieren. Self-Service-Funktionen zur Gruppenverwaltung sind nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
 
 Zur Planung der Self-Service-Gruppenmitgliedschaft bestimmen Sie, ob Sie allen Benutzern in Ihrem Unternehmen oder nur einer Teilmenge von Benutzern erlauben, Gruppen zu erstellen und zu verwalten. Wenn Sie es nur einer Teilmenge von Benutzern erlauben, müssen Sie eine Gruppe einrichten, zu der diese Personen hinzugefügt werden. Weitere Informationen zum Aktivieren dieser Szenarien finden Sie unter [Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).
 
@@ -270,25 +272,25 @@ Dokumentieren Sie für Überwachungs-, Berichts- und Notfallwiederherstellungssi
 
 ## <a name="deploy-applications-to-users-my-apps-panel"></a>Bereitstellen von Anwendungen im Bereich „Meine Apps“ der Benutzer
 
-Nachdem eine Anwendung für SSO konfiguriert wurde, wird den Gruppen der Zugriff zugewiesen. Benutzer in den zugewiesenen Gruppen haben Zugriff auf die Anwendung und sie wird in ihrem App-Startfeld für „Meine Apps“ und Office 365 angezeigt.
+Nachdem eine Anwendung für SSO konfiguriert wurde, wird den Gruppen der Zugriff zugewiesen. Benutzer in den zugewiesenen Gruppen haben Zugriff auf die Anwendung, und sie wird in „Meine Apps“ und im Office 365-Startfeld angezeigt.
 
 Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Active Directory](methods-for-assigning-users-and-groups.md).
 
-Wenn Sie während des Tests oder der Bereitstellung die Gruppen hinzufügen möchten, die Anwendungen aber noch nicht in Meine Apps anzeigen lassen, finden Sie weitere Informationen unter [Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Wenn Sie während des Tests oder der Bereitstellung die Gruppen hinzufügen möchten, die Anwendungen aber noch nicht in „Meine Apps“ angezeigt werden sollen, finden Sie weitere Informationen unter [Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ### <a name="deploy-microsoft-office-365-applications-to-my-apps"></a>Bereitstellen von Microsoft Office 365-Anwendungen für Meine Apps
 
-Für Office 365-Anwendungen erhalten Benutzer eine Kopie von Office, die auf den ihnen zugewiesenen Lizenzen basiert. Eine Voraussetzung für den Zugriff auf Office-Anwendungen ist die Zuweisung von Benutzern zu den richtigen Lizenzen, die an die Office-Anwendungen gebunden sind. Wenn Sie einem Benutzer die Lizenz zuweisen, werden ihm automatisch die mit der Lizenz verbundenen Anwendungen auf der Seite „Meine Apps“ und im O365-App-Startfeld angezeigt.
+Für Office 365-Anwendungen erhalten Benutzer eine Kopie von Office, die auf den ihnen zugewiesenen Lizenzen basiert. Eine Voraussetzung für den Zugriff auf Office-Anwendungen ist die Zuweisung von Benutzern zu den richtigen Lizenzen, die an die Office-Anwendungen gebunden sind. Wenn Sie einem Benutzer die Lizenz zuweisen, werden ihm automatisch die mit der Lizenz verbundenen Anwendungen auf der Seite „Meine Apps“ und im Office 365-App-Startfeld angezeigt.
 
-Wenn Sie eine Reihe von Office-Anwendungen vor Benutzern ausblenden möchten, gibt es eine Option zum Ausblenden von Anwendungen über das „Meine Apps“-Portal, während Sie dennoch den Zugriff über das O365-Portal gestatten. Diese Einstellungen finden Sie im Abschnitt „Benutzereinstellungen“ der Anwendung. Weitere Informationen: [Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)
+Wenn Sie für Benutzer eine Reihe von Office-Anwendungen ausblenden möchten, gibt es eine Option zum Ausblenden von Anwendungen über das „Meine Apps“-Portal, während Sie dennoch den Zugriff über das Office 365-Portal gestatten. Diese Einstellungen finden Sie im Abschnitt „Benutzereinstellungen“ der Anwendung. Weitere Informationen: [Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)
 
 ![Screenshot zum Konfigurieren der Ausblendung von Anwendungen](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 
 ### <a name="deploy-application-self-service-capabilities"></a>Bereitstellen von Self-Service-Funktionen für Anwendungen
 
-Der Zugriff auf Self-Service-Anwendungen ermöglicht es Benutzern, den Zugriff auf beliebige Anwendungen selbst zu entdecken und anzufordern. Die Benutzer erhalten die Möglichkeit, auf die erforderlichen Apps zuzugreifen, ohne jedes Mal eine IT-Gruppe zu durchlaufen, um den Zugriff anzufordern. Wenn ein Benutzer den Zugriff anfordert und entweder automatisch oder manuell von einem App-Besitzer genehmigt wird, wird er zu einer Gruppe im Back-End hinzugefügt. Das Berichterstellung ist dafür aktiviert, wer den Zugriff beantragt, genehmigt oder aufgehoben hat, und gibt Ihnen die Kontrolle über die Verwaltung der zugewiesenen Rollen.
+Der Zugriff auf Self-Service-Anwendungen ermöglicht es Benutzern, den Zugriff auf beliebige Anwendungen selbst zu entdecken und anzufordern. Die Benutzer erhalten die Möglichkeit, auf die erforderlichen Apps zuzugreifen, ohne jedes Mal eine IT-Gruppe zu durchlaufen, um den Zugriff anzufordern. Wenn ein Benutzer den Zugriff anfordert und entweder automatisch oder manuell von einem App-Besitzer genehmigt wird, wird er zu einer Gruppe im Back-End hinzugefügt. Die Berichterstellung ist dafür aktiviert, wer den Zugriff beantragt, genehmigt oder aufgehoben hat, und gibt Ihnen die Kontrolle über die Verwaltung der zugewiesenen Rollen.
 
-Sie können die Genehmigung von Zugriffsanforderungen für Anwendungen an genehmigende Personen des Unternehmens delegieren. Die genehmigende Person des Unternehmens kann die Kennwörter für den App-Zugriff direkt auf der Seite „Meine Apps“ der genehmigende Person des Unternehmens festlegen.
+Sie können die Genehmigung von Zugriffsanforderungen für Anwendungen an genehmigende Personen des Unternehmens delegieren. Die genehmigende Person des Unternehmens kann die Kennwörter für den App-Zugriff auf der Seite „Meine Apps“ der genehmigenden Person des Unternehmens festlegen.
 
 Weitere Informationen: [Verwenden des Self-Service-Anwendungszugriffs](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)
 
@@ -298,7 +300,7 @@ Weitere Informationen: [Verwenden des Self-Service-Anwendungszugriffs](https://d
 
 Stellen Sie sicher, dass die Bereitstellung des Zugriffsbereichs sorgfältig getestet wurde und ein Rollbackplan vorhanden ist.
 
-Die folgenden Tests sollten sowohl mit firmeneigenen als auch mit privaten Geräten durchgeführt werden. Diese Testfälle sollten auch Ihre geschäftlichen Anwendungsfälle widerspiegeln. Im Folgenden werden einige Fälle aufgeführt, die auf den beispielhaften Geschäftsanforderungen in diesem Dokument und auf typischen technischen Szenarien basieren. Fügen Sie weitere, auf Ihre Bedürfnisse zugeschnittene Testfälle hinzu.
+Die folgenden Tests sollten sowohl mit firmeneigenen als auch mit privaten Geräten durchgeführt werden. Diese Testfälle sollten auch Ihre geschäftlichen Anwendungsfälle widerspiegeln. Im Folgenden werden einige Fälle aufgeführt, die auf den Geschäftsanforderungsbeispielen in diesem Dokument und auf typischen technischen Szenarien basieren. Fügen Sie weitere, auf Ihre Bedürfnisse zugeschnittene Testfälle hinzu.
 
 #### <a name="application-sso-access-test-case-examples"></a>Beispiele für Testfälle mit SSO-Zugriff auf die Anwendung:
 
@@ -309,7 +311,7 @@ Die folgenden Tests sollten sowohl mit firmeneigenen als auch mit privaten Gerä
 | Benutzer startet eine Verbund-SSO-Anwendung| Benutzer wird automatisch bei der Anwendung angemeldet |
 | Benutzer öffnet zum ersten Mal eine Kennwort-SSO-Anwendung| Benutzer muss die Erweiterung „Meine Apps“ installieren |
 | Benutzer startet eine Kennwort-SSO-Anwendung zu einem späteren Zeitpunkt erneut| Benutzer wird automatisch bei der Anwendung angemeldet |
-| Benutzer startet eine App über das O365-Portal| Benutzer wird automatisch bei der Anwendung angemeldet |
+| Benutzer startet eine App über das Office 365-Portal| Benutzer wird automatisch bei der Anwendung angemeldet |
 | Benutzer startet eine App über den verwalteten Browser| Benutzer wird automatisch bei der Anwendung angemeldet |
 
 
@@ -323,12 +325,12 @@ Die folgenden Tests sollten sowohl mit firmeneigenen als auch mit privaten Gerä
 
 ### <a name="rollback-steps"></a>Rollbackschritte
 
-Es ist wichtig, die Vorgehensweise zu planen, falls Ihre Bereitstellung nicht wie geplant verläuft. Wenn bei der SSO-Konfiguration während der Bereitstellung ein Fehler auftritt, müssen Sie verstehen, wie Sie [SSO-Probleme beheben](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) und die Auswirkungen auf Ihre Benutzer verringern können. In extremen Fällen müssen Sie für das [einmalige Anmelden](../manage-apps/plan-sso-deployment.md) möglicherweise ein Rollback durchführen.
+Es ist wichtig, zu planen, was zu tun ist, wenn Ihre Bereitstellung nicht wie gewünscht verläuft. Wenn bei der SSO-Konfiguration während der Bereitstellung ein Fehler auftritt, müssen Sie verstehen, wie Sie [SSO-Probleme beheben](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) und die Auswirkungen auf Ihre Benutzer verringern können. In extremen Fällen müssen Sie möglicherweise für [SSO ein Rollback durchführen](../manage-apps/plan-sso-deployment.md).
 
 
 ## <a name="manage-your-implementation"></a>Verwalten Ihrer Implementierung
 
-Microsoft empfiehlt, die am wenigsten privilegierte Rolle zu verwenden, um eine erforderliche Aufgabe innerhalb von Azure Active Directory auszuführen. Microsoft empfiehlt [die verschiedenen verfügbaren Rollen zu überprüfen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) und die richtige auszuwählen, um Ihre Anforderungen für jede Persona für diese Anwendung zu erfüllen. Einige Rollen müssen unter Umständen nur vorübergehend angewendet und können nach Abschluss der Bereitstellung wieder entfernt werden.
+Sie sollten die am wenigsten privilegierte Rolle verwenden, um eine erforderliche Aufgabe innerhalb von Azure Active Directory auszuführen. [Überprüfen Sie die verschiedenen verfügbaren Rollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal), und wählen Sie die richtige aus, um Ihre Anforderungen für jede Persona für diese Anwendung zu erfüllen. Einige Rollen müssen unter Umständen nur vorübergehend angewendet werden und können nach Abschluss der Bereitstellung wieder entfernt werden.
 
 | Personas| Rollen| Azure AD-Rolle  |
 | - | -| -|
@@ -338,13 +340,13 @@ Microsoft empfiehlt, die am wenigsten privilegierte Rolle zu verwenden, um eine 
 | Infrastrukturadministratoren| Besitzer des Zertifikatrollovers| Globaler Administrator |
 | Geschäftsbesitzer/Beteiligter| Benutzernachweis in Anwendung, Konfiguration für Benutzer mit Berechtigungen| Keine |
 
-Wir empfehlen die Verwendung von [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) zur Verwaltung Ihrer Rollen, um zusätzliche Überwachung, Kontrolle und Zugriffsprüfungen für Benutzer mit Verzeichnisberechtigungen bereitzustellen.
+Sie können Ihre Rollen mithilfe von [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) verwalten, um zusätzliche Überwachung, Kontrolle und Zugriffsprüfungen für Benutzer mit Verzeichnisberechtigungen bereitzustellen.
 
 ### <a name="troubleshoot-access-panel-issues"></a>Beheben von Problemen mit dem Zugriffsbereich
 
-Erstellen Sie Leitfäden zur Problembehandlung für Ihre Supportorganisation mit häufigen Szenarien, und verweisen Sie zu deren Auflösung auf die Microsoft-Dokumentation. Möglicherweise möchten Sie Leitfäden erstellen, die die Unterstützung auf die von Ihrem Unternehmen verwendeten Ebenen aufteilen.
+Erstellen Sie Leitfäden zur Problembehandlung für Ihre Supportorganisation mit häufigen Szenarien, die in ihrer Auflösung auf die Microsoft-Dokumentation verweisen. Möglicherweise sollten Sie Leitfäden erstellen, die die Unterstützung auf die von Ihrem Unternehmen verwendeten Ebenen aufteilen.
 
-Weitere Informationen finden Sie in den folgenden Leitfaden zur Problembehandlung:
+Weitere Informationen finden Sie in den folgenden Leitfäden zur Problembehandlung:
 
 [Anwendungen, die nicht angezeigt werden](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-application-not-appearing)
 
@@ -358,4 +360,4 @@ Weitere Informationen finden Sie in den folgenden Leitfaden zur Problembehandlun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Planen einer Bereitstellung von Azure Active Directory Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)
+[Planen einer Bereitstellung von Azure Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)

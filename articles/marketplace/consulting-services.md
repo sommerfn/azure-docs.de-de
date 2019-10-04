@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876692"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147287"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -24,15 +24,17 @@ Diese Beratungsdienste sind kundenspezifische Angebote. Herausgeber haben die M�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Beratungsdienste in Azure Marketplace im Vergleich zur AppSource-Storefront
 Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte ausgerichtet, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, die bewirken sollen, dass sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Diese Optionen sind in der folgenden Tabelle zusammengefasst:
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**Zielgruppe**   |**IT-Profis und Cloudentwickler**|**Geschäftsbenutzer / Branchenentscheidungsträger**|
 |Lösungsrelevanz     |Für Azure oder auf Basis von Azure erstellte technische Apps|Geschäfts-Apps, die D365, Power BI, Office 365, Azure nutzen / erweitern. (Fertig gestellte Add-In- oder Add-On-Apps)|
-|Veröffentlichungsoptionen     |Kontakt mit mir aufnehmen, Testversion, Transact oder Beratungsdienste|Kontakt mit mir aufnehmen, Testversion oder Beratungsdienste|
+|Veröffentlichungsoptionen     |Kontakt mit mir aufnehmen, Testversion, Transact oder Dienste für Azure|Kontakt mit mir aufnehmen, Testversion oder Dienste für Dynamics 365 und Power BI|
 |In Produkterfahrung      |Azure-Verwaltungsportal|Dynamics 365, Office 365, Office-Client-Apps| 
-|Andere      |Lokale Veröffentlichung über Azure Stack|Beratungsdienste für Dynamics und Power BI|
+|Andere      |Lokale Veröffentlichung über Azure Stack, Beratungsdienste für Azure, verwaltete Dienste für Azure|Beratungsdienste für Dynamics und Power BI|
 
-Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Dienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Beratungsdienstangebote sind für das Listing in Microsoft AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+Beratungsdienstangebote und Angebote verwalteter Dienste, die auf Microsoft Azure basieren, sind für das Listing im Azure Marketplace geeignet. Weitere Informationen finden Sie in den Artikeln zum [Veröffentlichen eines Azure-Beratungsdiensts](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) und [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
 > Beratungsdienste in Azure Marketplace sollten Angebote einsetzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine **technische Zielgruppe richten. ** Beratungsdienste in AppSource sollten Angebote einsetzen, die schwerpunktmäßig auf ihr Fachwissen bei der Bereitstellung qualitativ hochwertiger Lösungen für Dynamics 365, Power BI oder PowerApps ausgerichtet sind

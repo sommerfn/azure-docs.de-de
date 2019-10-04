@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: Konfigurieren von Testumgebungen mit geschachtelten Vorlagen
               href: deploy-nested-template-environments.md
+            - name: Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen
+              href: use-managed-identities-environments.md
         - name: Verwalten wiederverwendbarer Vorlagen
           items:
             - name: Benutzerdefinierte Images oder Formeln

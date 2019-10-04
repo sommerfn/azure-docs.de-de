@@ -7,73 +7,57 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 30c3b233a1454d04fb281e049376b2b3aafe1879
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/20/2019
+ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647969"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178019"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Erstellen einer Abfrage in Azure Search
+# <a name="query-types-and-composition-in-azure-search"></a>Abfragetypen und -komposition in Azure Search
 
-In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter in der Anforderung geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. 
+In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter in der Anforderung geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Kriterien für das Einschließen oder Ausschließen von Feldern, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. Wenn keine Angaben vorhanden sind (`search=*`), wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuche ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
 
-Eine Abfrageanforderung ist ein komplexes Konstrukt, mit dem Sie angeben können, welche Felder im Bereich liegen, wie die Suche durchgeführt wird, welche Felder zurückgegeben werden sollen, ob eine Filterung oder Sortierung angewendet wird usw. Wenn keine Angaben vorhanden sind, wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuchvorgang ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
-
-## <a name="apis-and-tools-for-testing"></a>APIs und Tools zum Testen
-
-In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitteln von Abfragen aufgeführt.
-
-| Methodik | BESCHREIBUNG |
-|-------------|-------------|
-| [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
-| [Postman oder Fiddler](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in Azure Search. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an Azure Search einrichten.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
-
-## <a name="a-first-look-at-query-requests"></a>Kurzer Überblick über Abfrageanforderungen
-
-Beispiele sind bei der Vorstellung von neuen Konzepten hilfreich. Dieses Beispiel ist eine repräsentative, in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) erstellte Abfrage, die für den [realestate-Demoindex](search-get-started-portal.md) ausgeführt wird und allgemeine Parameter enthält.
+Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) erstellt wurde. Dieses Beispiel ist für den [„hotels“-Demoindex](search-get-started-portal.md) vorgesehen und enthält allgemeine Parameter.
 
 ```
 {
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"",
-    "searchFields": "description, city",
-    "count": "true",
-    "select": "listingId, street, status, daysOnMarket, description",
+    "search": "+New York +restaurant",
+    "searchFields": "Description, Address/City, Tags",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
-    "orderby": "daysOnMarket"
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-+ **`queryType`** legt den Parser fest. In Azure Search kann es sich dabei um den [einfachen Standardabfrageparser](search-query-simple-examples.md) (optimal für die Volltextsuche) handeln oder um den [vollständigen Lucene-Abfrageparser](search-query-lucene-examples.md), der für erweiterte Abfragekonstrukte wie reguläre Ausdrücke, NEAR-Suche, Fuzzy- und Platzhaltersuche usw. verwendet wird.
++ **`queryType`** legt den Parser fest. Es kann es sich dabei um den [einfachen Standardabfrageparser](search-query-simple-examples.md) (optimal für die Volltextsuche) handeln oder um den [vollständigen Lucene-Abfrageparser](search-query-lucene-examples.md), der für erweiterte Abfragekonstrukte wie reguläre Ausdrücke, NEAR-Suche, Fuzzy- und Platzhaltersuche usw. verwendet wird.
 
 + **`search`** gibt die Übereinstimmungskriterien an. Gewöhnlich handelt es sich dabei um Text, dieser wird jedoch häufig von booleschen Operatoren begleitet. Einzelne eigenständige Begriffe sind *Begriffsabfragen*. In Anführungszeichen eingeschlossene mehrteilige Abfragen sind *Schlüsselbegriffsabfragen*. Die Suche kann wie in **`search=*`** nicht definiert sein, besteht aber in den meisten Fällen wie im Beispiel gezeigt aus Begriffen, Ausdrücken und Operatoren.
 
-+ **`searchFields`** ist optional und wird verwendet, um die Abfrageausführung auf bestimmte Felder zu beschränken.
++ **`searchFields`** schränkt die Ausführung von Abfragen auf bestimmte Felder ein. Jedes im Indexschema als *durchsuchbar* (searchable) attributierte Feld ist ein Kandidat für diesen Parameter.
 
-Antworten werden ebenfalls durch die Parameter bestimmt, die Sie in der Abfrage hinzufügen. Im Beispiel besteht das Resultset aus Feldern, die in der **`select`** -Anweisung aufgelistet sind. Bei dieser Abfrage werden nur die ersten zehn Treffer zurückgegeben, **`count`** gibt jedoch an, wie viele Dokumente insgesamt übereinstimmen. Bei dieser Abfrage werden Zeilen nach „daysOnMarket“ sortiert.
+Antworten werden ebenfalls durch die Parameter bestimmt, die Sie in der Abfrage hinzufügen. Im Beispiel besteht das Resultset aus Feldern, die in der **`select`** -Anweisung aufgelistet sind. Nur die als *abrufbar* (retrievable) markierten Felder können in einer $select-Anweisung verwendet werden. Darüber hinaus werden in dieser Abfrage nur die 10 besten Treffer ( **`top`** 10) zurückgegeben, während **`count`** Aufschluss darüber gibt, wie viele Dokumente insgesamt mit der Abfrage übereinstimmen. Diese Anzahl kann die Anzahl der zurückgegebenen Dokumente überschreiten. In dieser Abfrage werden die Zeilen nach Bewertung in absteigender Reihenfolge sortiert.
 
 In Azure Search erfolgt die Abfrageausführung immer für einen Index, und für die Authentifizierung wird ein API-Schlüssel verwendet, der in der Anforderung angegeben ist. In REST wird beides in Anforderungsheadern angegeben.
 
 ### <a name="how-to-run-this-query"></a>Ausführen der Abfrage
 
-Verwenden Sie zum Ausführen dieser Abfrage den [Suchexplorer und den realestate-Demoindex](search-get-started-portal.md). 
+Verwenden Sie zum Ausführen dieser Abfrage den [Suchexplorer und den „hotels“-Demoindex](search-get-started-portal.md). 
 
-Sie können die folgende Abfragezeichenfolge in die Suchleiste des Explorers einfügen: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+Sie können die folgende Abfragezeichenfolge in die Suchleiste des Explorers einfügen: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Ermöglichung von Abfragevorgängen durch den Index
 
 Der Indexentwurf und der Abfrageentwurf sind in Azure Search eng an einander gekoppelt. Wichtig zu wissen ist hierbei, dass das *Indexschema* mit Attributen für jedes Feld die Art der Abfrage bestimmt, die Sie erstellen können. 
 
-Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein Feld im Index *durchsuchbar* ist, ob es in Ergebnissen *abrufbar*, *sortierbar*, *filterbar* ist usw. In der Beispielabfragezeichenfolge funktioniert `"$orderby": "daysOnMarket"` nur, weil das Feld „DaysOnMarket“ im Indexschema als *sortierbar* (sortable) gekennzeichnet ist. 
+Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein Feld im Index *durchsuchbar* ist, ob es in Ergebnissen *abrufbar*, *sortierbar*, *filterbar* ist usw. In der Beispielabfragezeichenfolge funktioniert `"$orderby": "Rating"` nur, weil das Feld „Rating“ (Bewertung) im Indexschema als *sortierbar* (sortable) markiert ist. 
 
-![Indexdefinition für das „realestate“-Beispiel](./media/search-query-overview/realestate-sample-index-definition.png "Indexdefinition für das „realestate“-Beispiel")
+![Indexdefinition für das „hotels“-Beispiel](./media/search-query-overview/hotel-sample-index-definition.png "Indexdefinition für das „hotels“-Beispiel")
 
-Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „realestate“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
+Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „hotels“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
 
 > [!Note]
 > Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](search-synonyms.md), [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), [Vorschlagskonstrukte (für AutoVervollständigen und vorgeschlagene Abfragen)](index-add-suggesters.md) sowie die [Bewertungslogik für Ergebnisse](index-add-scoring-profiles.md).
@@ -92,22 +76,33 @@ Erforderliche Elemente in einer Abfrageanforderung enthalten die folgenden Kompo
 
 Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute finden Sie unter [Create Index (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen des Index [REST]). Eine ausführlichere Erläuterung, wie Parameter während der Verarbeitung verwendet werden, finden Sie unter [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
 
+## <a name="choose-apis-and-tools"></a>Auswählen von APIs und Tools
+
+In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitteln von Abfragen aufgeführt.
+
+| Methodik | BESCHREIBUNG |
+|-------------|-------------|
+| [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. Empfohlen für das Erkunden, Testen und Validieren. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
+| [Postman oder andere REST-Tools](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in Azure Search. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an Azure Search einrichten.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
+
 ## <a name="choose-a-parser-simple--full"></a>Auswählen eines Parsers: einfach | vollständig
 
 Azure Search basiert auf Apache Lucene und ermöglicht Ihnen die Wahl zwischen zwei Abfrageparsern zur Verarbeitung von typischen und spezialisierten Abfragen. Anforderungen mit dem einfachen Parser werden mit der [einfachen Abfragesyntax](query-simple-syntax.md) formuliert. Dieser Parser ist aufgrund seiner Geschwindigkeit und Effizienz bei Freitextabfragen standardmäßig ausgewählt. Diese Syntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z.B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
 
 Die vollständige [Lucene-Abfragesyntax](query-Lucene-syntax.md#bkmk_syntax) wird aktiviert, wenn Sie der Anforderung `queryType=full` hinzufügen. So wird die häufig genutzte und ausdrucksstarke Abfragesprache verfügbar gemacht, die im Rahmen von [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) entwickelt wurde. Die vollständige Syntax erweitert die einfache Syntax. Jede Abfrage, die Sie für die einfache Syntax schreiben, kann mit dem vollständigen Lucene-Parser ausgeführt werden. 
 
-Die folgenden Beispiele veranschaulichen den entscheidenden Punkt: Die gleiche Abfrage liefert bei der Verwendung unterschiedlicher queryType-Einstellungen verschiedene Ergebnisse. In der ersten Abfrage wird `^3` als Teil des Suchbegriffs behandelt.
+Die folgenden Beispiele veranschaulichen den entscheidenden Punkt: Die gleiche Abfrage liefert bei der Verwendung unterschiedlicher queryType-Einstellungen verschiedene Ergebnisse. In der ersten Abfrage wird `^3` nach `historic` als Teil des Suchbegriffs behandelt. Das Ergebnis mit dem höchsten Rang für diese Abfrage lautet „Marquis Plaza & Suites“, dessen Beschreibung *ocean* enthält.
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-Die gleiche Abfrage mit dem vollständigen Lucene-Parser interpretiert die Verstärkung im Feld „ranch“, wodurch der Suchrang von Ergebnissen mit diesem Begriff erhöht wird.
+Dieselbe Abfrage unter Verwendung des Lucene-Parsers interpretiert `^3` als Begriffsverstärker für den Feldinhalt. Durch das Wechseln des Parsers wird der Rang geändert, wobei Ergebnisse, die den Begriff *historic* enthalten, in den oberen Bereich verschoben werden.
 
 ```
-queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
 <a name="types-of-queries"></a>

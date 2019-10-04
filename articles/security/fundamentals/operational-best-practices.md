@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129329"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219509"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -95,7 +95,7 @@ Der Free-Tarif des Security Center bietet eingeschränkte Sicherheit nur für Ih
 
 Im Security Center können Sie sich den Sicherheitsstatus Ihrer gesamten Azure-Ressourcen in einer zentralen Übersicht ansehen. Erfahren Sie auf einen Blick, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und ermitteln Sie schnell Ressourcen, die Ihre Aufmerksamkeit erfordern.
 
-Security Center bietet auch Integration von [Windows Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md), die umfassende Funktionen für Endpoint Detection and Response (EDR) bereitstellt. Durch die ATP-Integration in Windows Defender können Sie Anomalien erkennen. Sie können auch erweiterte Angriffe auf Serverendpunkte, die von Security Center überwacht werden, erkennen und darauf reagieren.
+Security Center bietet auch Integration von [Microsoft Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md), die umfassende Funktionen für Endpoint Detection and Response (EDR) bereitstellt. Durch die ATP-Integration in Microsoft Defender können Sie Anomalien erkennen. Sie können auch erweiterte Angriffe auf Serverendpunkte, die von Security Center überwacht werden, erkennen und darauf reagieren.
 
 Fast alle Unternehmen verfügen über ein SIEM-System (Security Information and Event Management) zur Identifizierung aufkommender Bedrohungen durch Konsolidierung von Protokollinformationen, die von verschiedenen Geräten zur Signalerfassung stammen. Die Protokolle werden dann von einem Datenanalysesystem analysiert, um zwischen Stördatenverkehr, der bei allen Protokollsammlungs- und Analyselösungen unvermeidlich ist, und „interessanten“ Daten zu unterscheiden.
 
@@ -121,7 +121,7 @@ Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Interne
 **Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](/azure/azure-monitor/overview#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).
 
 **Bewährte Methode**: Beschleunigen Sie Ihre Untersuchungs- und Ermittlungsprozesse, und verringern Sie falsch positive Ergebnisse durch Integration von Funktionen für Endpoint Detection and Response (EDR) in Ihre Untersuchung von Angriffen.   
-**Detail**: [Aktivieren Sie die ATP-Integration von Windows Defender](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) über Ihre Security Center-Sicherheitsrichtlinie. Ziehen Sie die Verwendung von Azure Sentinel zur Ermittlung von Bedrohungen und für die Reaktion auf Incidents in Betracht.
+**Detail**: [Aktivieren Sie die ATP-Integration von Microsoft Defender](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) über Ihre Security Center-Sicherheitsrichtlinie. Ziehen Sie die Verwendung von Azure Sentinel zur Ermittlung von Bedrohungen und für die Reaktion auf Incidents in Betracht.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Szenariobasierte End-to-End-Netzwerküberwachung
 Kunden erstellen ein End-to-End-Netzwerk in Azure, indem sie verschiedene Netzwerkressourcen wie z.B. virtuelle Netzwerke, ExpressRoute, Application Gateway und Load Balancer miteinander kombinieren. Überwachung steht für jede der Netzwerkressourcen zur Verfügung.

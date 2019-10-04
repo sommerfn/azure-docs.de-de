@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816029"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240368"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
@@ -109,6 +109,15 @@ Im Bericht werden keine Aktivitäten angezeigt, da es sich um einen brandneuen C
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
 
 Azure Monitor unterstützt auch das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen zum Aktivieren und Konfigurieren dieses Features finden Sie unter [Linux-Leistungsdatenquellen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Clusterüberwachung
+
+HDInsight unterstützt die Clusterüberwachung mit Azure Monitor-Protokollen, indem die folgenden Protokolltypen importiert werden:
+
+* `log_gateway_audit_CL`: Diese Tabelle enthält Überwachungsprotokolle von Clustergatewayknoten, in denen erfolgreiche und fehlerhafte Anmeldeversuche aufgezeichnet sind.
+* `log_auth_CL`: Diese Tabelle enthält SSH-Protokolle mit erfolgreichen und fehlerhaften Anmeldeversuchen.
+* `log_ambari_audit_CL`: Diese Tabelle enthält Überwachungsprotokolle von Ambari.
+* `log_ranger_audti_CL`: Diese Tabelle enthält Überwachungsprotokolle von Apache Ranger auf Clustern mit Enterprise-Sicherheitspaket.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

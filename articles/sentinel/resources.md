@@ -1,5 +1,5 @@
 ---
-title: Nützliche Ressourcen für das Arbeiten mit Azure Sentinel Preview | Microsoft-Dokumentation
+title: Nützliche Ressourcen für das Arbeiten mit Azure Sentinel | Microsoft-Dokumentation
 description: Dieses Dokument enthält eine Liste von Ressourcen, die nützlich sind, wenn mit Azure Sentinel gearbeitet wird.
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036230"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239977"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel Preview
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Dieser Artikel listet Ressourcen auf, aus denen Sie weitere Informationen zum Arbeiten mit Azure Sentinel abrufen können.
 
 Azure Logic Apps-Connectoren: <https://docs.microsoft.com/connectors/>
 
-## <a name="vendor-documentation"></a>Herstellerdokumentation
 
+## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
+Überwachungsprotokolle von Azure Sentinel werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md) verwaltet.
+
+
+## <a name="vendor-documentation"></a>Herstellerdokumentation
 
 | **Hersteller**  | **Anwendungsvorfall in Azure Sentinel** | **Link**|
 |----|----|----|

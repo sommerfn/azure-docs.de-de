@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877185"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147357"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -25,13 +25,17 @@ Das Nachrichtenrouting ermöglicht es Ihnen, Nachrichten automatisiert, skalierb
 
 * **Filtern von Daten vor dem Weiterleiten an verschiedene Endpunkte** durch Anwenden umfassender Abfragen. Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Erfahren Sie mehr über die Verwendung von [Abfragen im Nachrichtenrouting](iot-hub-devguide-routing-query-syntax.md).
 
-IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Nach der Erstkonfiguration Ihrer IoT-Lösung müssen Sie möglicherweise Ihre zusätzlichen Endpunkte überwachen und ggf. Anpassungen an die tatsächliche Last vornehmen.
+IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Wenn Sie z. B. Event Hubs als benutzerdefinierten Endpunkt verwenden, müssen Sie die **Durchsatzeinheiten** für den Event Hub so konfigurieren, dass er den Eingang von Ereignissen behandeln kann, die über IoT Hub-Nachrichtenrouting gesendet werden sollen. Wenn Sie eine Service Bus-Warteschlange als Endpunkt verwenden, müssen Sie auch die **maximale Größe** konfigurieren, damit die Warteschlange alle eingegangenen Daten aufnehmen kann, bis sie aus Consumern ausgehen. Nach der Erstkonfiguration Ihrer IoT-Lösung müssen Sie möglicherweise Ihre zusätzlichen Endpunkte überwachen und ggf. Anpassungen an die tatsächliche Last vornehmen.
 
 Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-construct.md) für alle Gerät-zu-Cloud-Nachrichten, um Interoperabilität zwischen Protokollen zu ermöglichen. Wenn eine Nachricht mehreren Routen entspricht, die auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie keine Deduplizierung für Ihre Service Bus-Warteschlange oder Ihr Service Bus-Thema konfigurieren. In partitionierten Warteschlangen garantiert die Partitionsaffinität die Nachrichtensortierung. In diesem Tutorial lernen Sie, wie Sie das [Nachrichtenrouting konfigurieren](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Routingendpunkte
 
-Ein IoT Hub verfügt über einen standardmäßigen integrierten Endpunkt (**messages/events**), der mit Event Hubs kompatibel ist. Sie können [benutzerdefinierte Endpunkte](iot-hub-devguide-endpoints.md#custom-endpoints) für die Weiterleitung von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem IoT Hub verknüpfen. IoT Hub unterstützt derzeit folgende Dienste als benutzerdefinierte Endpunkte:
+Ein IoT Hub verfügt über einen standardmäßigen integrierten Endpunkt (**messages/events**), der mit Event Hubs kompatibel ist. Sie können [benutzerdefinierte Endpunkte](iot-hub-devguide-endpoints.md#custom-endpoints) für die Weiterleitung von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem IoT Hub verknüpfen. 
+
+Jede Nachricht wird an alle Endpunkte weitergeleitet, die mit ihren Routingabfragen übereinstimmen. Anders ausgedrückt: Eine Nachricht kann an mehrere Endpunkte weitergeleitet werden.
+
+IoT Hub unterstützt derzeit folgende Dienste als benutzerdefinierte Endpunkte:
 
 ### <a name="built-in-endpoint"></a>Integrierter Endpunkt
 
@@ -43,9 +47,9 @@ IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage im [Apache Av
 
 ![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub unterstützt auch das Weiterleiten von Nachrichten an ADLS Gen2-Konten, bei denen es sich um Speicherkonten mit aktivierten [hierarchischen Namespaces](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) handelt, die auf BLOB-Speicher basieren. Diese Funktion befindet sich in der öffentlichen Vorschau und ist für neue ADLS Gen2-Konten in den Regionen „USA, Westen 2“ und „USA, Westen-Mitte“ verfügbar. Wir werden diese Funktion in Kürze in allen Cloud-Regionen einführen.
+IoT Hub unterstützt auch das Weiterleiten von Nachrichten an [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) Gen2-Konten (ADLS), bei denen es sich um Speicherkonten mit aktivierten [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md) handelt, die auf Blog Storage basieren. Diese Funktion befindet sich in der öffentlichen Vorschau und ist für neue ADLS Gen2-Konten in den Regionen „USA, Westen 2“ und „USA, Westen-Mitte“ verfügbar. [Registrieren Sie sich](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion dieser Funktion. Wir werden diese Funktion in Kürze in allen Cloud-Regionen einführen. 
 
-IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist. IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
+IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist. IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}

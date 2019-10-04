@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034850"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258472"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
@@ -60,13 +60,9 @@ Das Protokollprofil definiert Folgendes:
 Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist, werden die Aufbewahrungsrichtlinien ignoriert. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden.
 
 
-
-> [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wurde am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](diagnostic-logs-append-blobs.md)
-
-
 > [!IMPORTANT]
 > Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, wird beim Erstellen eines Protokollprofils möglicherweise eine Fehlermeldung angezeigt. Informationen zum Registrieren dieses Anbieters finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/resource-manager-supported-services.md).
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Erstellen eines Protokollprofils mit dem Azure-Portal
 
@@ -118,7 +114,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge im Format `{service bus resource ID}/authorizationrules/{key name}`. |
     | Location |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
     | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen im Speicherkonto (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
-    | Category (Kategorie) |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind _Write_, _Delete_ und _Action_. |
+    | Category |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind _Write_, _Delete_ und _Action_. |
 
 ### <a name="example-script"></a>Beispielskript
 Es folgt ein PowerShell-Beispielskript zum Erstellen eines Protokollprofils, mit dem das Aktivitätsprotokoll sowohl in ein Speicherkonto als auch einen Event Hub geschrieben wird.
@@ -167,6 +163,9 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
 
 ## <a name="activity-log-schema"></a>Aktivitätsprotokollschema
 Die Aktivitätsprotokolldaten werden im folgenden Format in JSON geschrieben, unabhängig davon, ob sie an den Azure-Speicher oder Event Hub gesendet werden.
+
+
+> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden](diagnostic-logs-append-blobs.md).
 
 ``` JSON
 {

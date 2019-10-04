@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: efc439d56ee864d940942369b3d226ed2a94a383
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072632"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219551"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -38,8 +38,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Anforderungsmethode festlegen](#SetRequestMethod) – Dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.
 -   [Statuscode festlegen](#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.
 -   [Variable festlegen](api-management-advanced-policies.md#set-variable) – Speichert einen Wert in einer benannten [Kontext](api-management-policy-expressions.md#ContextVariables)variablen, um später darauf zugreifen zu können.
--   [Ablaufverfolgung](#Trace) – Fügt eine Zeichenfolge in der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) hinzu.
--   [Warten](#Wait) – Wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.
+-   [Ablaufverfolgung](#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Diagnoseprotokollen.
+-   [Warten](#Wait) – wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.
 
 ## <a name="choose"></a> Ablaufsteuerung
 
@@ -913,16 +913,31 @@ Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen
 
 ## <a name="Trace"></a> Ablaufverfolgung
 
-Mit der `trace`-Richtlinie wird der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) eine Zeichenfolge hinzugefügt. Die Richtlinie wird nur ausgeführt, wenn die Ablaufverfolgung ausgelöst wird, d.h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf `true` festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der dem Administratorkonto zugeordnet ist.
+Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Telemetrien und/oder Diagnoseprotokollen eine benutzerdefinierte Ablaufverfolgung hinzu. 
+
+* Die Richtlinie fügt der [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe eine benutzerdefinierte Ablaufverfolgung hinzu, wenn die Ablaufverfolgung ausgelöst wird, d. h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf „true“ festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der Ablaufverfolgung zulässt. 
+* Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry), wenn die [Application Insights-Integration](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) aktiviert ist und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist. 
+* Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Diagnoseprotokolle](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.  
+
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
 
-<trace source="arbitrary string literal">
-    <!-- string expression or literal -->
+<trace source="arbitrary string literal" severity="verbose|information|error">
+    <message>String literal or expressions</message>
+    <metadata name="string literal or expressions" value="string literal or expressions"/>
 </trace>
 
+```
+
+### <a name="traceExample"></a> Beispiel
+
+```xml
+<trace source="PetStore API" severity="verbose">
+    <message>@((string)context.Variables["clientConnectionID"])</message>
+    <metadata name="Operation Name" value="New-Order"/>
+</trace>
 ```
 
 ### <a name="elements"></a>Elemente
@@ -930,12 +945,17 @@ Mit der `trace`-Richtlinie wird der Ausgabe für den [API-Inspektor](https://azu
 | Element | BESCHREIBUNG   | Erforderlich |
 | ------- | ------------- | -------- |
 | Ablaufverfolgung   | Stammelement | Ja      |
+| message | Eine Zeichenfolge oder ein Ausdruck, die bzw. der protokolliert werden soll. | Ja |
+| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) eine benutzerdefinierte Eigenschaft hinzu. | Nein |
 
 ### <a name="attributes"></a>Attribute
 
 | Attribut | BESCHREIBUNG                                                                             | Erforderlich | Standard |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | Quelle    | Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an. | Ja      | –     |
+| severity    | Legt den Schweregrad der Ablaufverfolgung fest. Zulässige Werte sind `verbose`, `information` und `error` (vom niedrigsten zum höchsten Schweregrad). | Nein      | Ausführlich     |
+| name    | Der Name der Eigenschaft. | Ja      | –     |
+| value    | Der Wert der Eigenschaft. | Ja      | –     |
 
 ### <a name="usage"></a>Verwendung
 

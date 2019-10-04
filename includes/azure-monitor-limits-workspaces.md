@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392954"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210229"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -35,21 +35,21 @@ ms.locfileid: "70392954"
 
 **Azure-Portal**
 
-| Category (Kategorie) | Einschränkungen | Kommentare |
+| Category | Einschränkungen | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen, die von einer Protokollabfrage zurückgegebenen werden | 10.000 | Reduziert die Ergebnisse durch die Verwendung eines Abfragebereichs, eines Zeitbereichs und von Filtern in der Abfrage. |
 
 
 **Datensammler-API**
 
-| Category (Kategorie) | Einschränkungen | Kommentare |
+| Category | Einschränkungen | Kommentare |
 |:---|:---|:---|
 | Maximale Größe für einen einzelnen Beitrag | 30 MB | Teilen Sie größere Volumen auf mehrere Beiträge auf. |
 | Maximale Größe für Feldwerte  | 32 KB | Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
 
 **Search-API**
 
-| Category (Kategorie) | Einschränkungen | Kommentare |
+| Category | Einschränkungen | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen, die bei einer einzelnen Abfrage zurückgegeben werden | 500.000 | |
 | Maximale Größe der zurückgegebenen Daten | 64.000.000 Byte (~61 MiB)| |
@@ -58,12 +58,25 @@ ms.locfileid: "70392954"
 
 **Allgemeine Grenzwerte für Arbeitsbereiche**
 
-| Category (Kategorie) | Einschränkungen | Kommentare |
+| Category | Einschränkungen | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Spalten in einer Tabelle         | 500 | |
 | Maximale Anzahl an Zeichen für einen Spaltennamen | 500 | |
 | Verfügbare Regionen | USA, Westen-Mitte | Sie können derzeit keine neuen Arbeitsbereiche in dieser Region erstellen, da deren Kapazitäten vorübergehend ausgeschöpft sind. Diese Einschränkung soll bis Ende Oktober 2019 angegangen werden. |
 | Datenexport | Derzeit nicht verfügbar | Verwenden Sie Azure Functions oder Logic Apps, um Daten zu aggregieren und zu exportieren. | 
+
+**Datenerfassungsrate**
+
+Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Der Standardschwellenwert für die Datenerfassungsrate ist auf **500 MB/min** pro Arbeitsbereich festgelegt. Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
+ 
+Damit Sie bei einem solchen Ereignis in Ihrem Arbeitsbereich benachrichtigt werden, erstellen Sie eine [Protokollwarnungsregel](../articles/azure-monitor/platform/alerts-log.md). Dazu verwenden Sie die folgende Abfrage mit der Warnungslogik basierend auf der Anzahl von Ergebnissen größer null.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >Abhängig von Ihrer Log Analytics-Nutzungsdauer haben Sie ggf. Zugang zu Legacytarifen. Weitere Informationen zu Legacytarifen von Log Analytics finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

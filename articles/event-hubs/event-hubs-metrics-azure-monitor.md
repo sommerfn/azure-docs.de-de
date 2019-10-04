@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/18/2019
 ms.author: shvija
-ms.openlocfilehash: 99b3b4b8d48ff04fc2ced686c01b2d4de12c6555
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 788f0647bec11184c2a85d87d0dfde2cb6c5744c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742137"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266305"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-Metriken in Azure Monitor
 
@@ -32,7 +32,8 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Log Analytics und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/platform/data-platform.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor konfiguriert.
+
 
 ## <a name="access-metrics-in-the-portal"></a>Zugreifen auf Metriken über das Portal
 
@@ -109,6 +110,19 @@ Azure Event Hubs unterstützt folgende Dimensionen für Metriken in Azure Monito
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs unterstützt die Event Hub-Entitäten unter dem Namespace.|
+
+## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor-Integration mit SIEM-Tools
+Durch das Weiterleiten von Überwachungsdaten (Aktivitätsprotokollen, Diagnoseprotokollen usw.) an einen Event Hub mit Azure Monitor erreichen Sie auf einfache Weise eine Integration mit SIEM-Tools (Security Information & Event Management). Weitere Informationen finden Sie in den folgenden Artikeln und Blogbeiträgen:
+
+- [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [Einführung in Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md)
+- [Verwenden von Azure Monitor zur Integration in SIEM-Tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+
+Wenn Sie in einem Szenario, in dem ein SIEM-Tool Daten von einem Event Hub verwendet, im Metrikendiagramm keine eingehenden Nachrichten oder eingehende Nachrichten, jedoch keine ausgehenden Nachrichten sehen, führen Sie die folgenden Schritte aus:
+
+- Wenn **keine eingehenden Nachrichten** vorhanden sind, bedeutet dies, dass der Azure Monitor-Dienst keine Überwachungs-/Diagnoseprotokolle in den Event Hub verschiebt. Öffnen Sie in einem solchen Szenario ein Supportticket beim Azure Monitor-Team. 
+- Sind eingehende Nachrichten, jedoch **keine ausgehenden Nachrichten** vorhanden, heißt dies, dass die Nachrichten von der SIEM-Anwendung nicht gelesen werden. Wenden Sie sich an den SIEM-Anbieter, um festzustellen, ob die Konfiguration des Event Hub für die betreffenden Anwendungen korrekt ist.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

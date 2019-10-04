@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e3b9acf38bc213db7fcde5fbb5fe26f455c0fc00
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 44dbe6d036000aaff403e212052f8fdb21647a80
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67305286"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71210223"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
-| Metrikwarnungen |1\.000 aktive Warnungsregeln pro Abonnement (in öffentlichen Clouds) und 100 aktive Warnungsregeln pro Abonnement in Azure China 21Vianet und Azure Government. | Wenden Sie sich an den Support. |
+| Metrikwarnungen |1\.000 aktive Warnungsregeln pro Abonnement in öffentlichen Azure-Clouds sowie in Azure China 21Vianet- und Azure Government-Clouds. | Wenden Sie sich an den Support. |
 | Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement. | Wie Standard. |
 | Protokollwarnungen | 512 | Wenden Sie sich an den Support. |
 | Aktionsgruppen |2\.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |

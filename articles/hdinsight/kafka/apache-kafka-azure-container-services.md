@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Azure Kubernetes Service mit Kafka in HDInsight
 description: Hier erfahren Sie, wie Sie über Containerimages, die in Azure Kubernetes Service (AKS) gehostet werden, Kafka in HDInsight verwenden.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960560"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122646"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Verwenden von Azure Kubernetes Service mit Apache Kafka in HDInsight
 
@@ -43,10 +43,9 @@ Es wird ebenso vorausgesetzt, dass Sie das [Tutorial zu Azure Kubernetes Service
 
 HDInsight und AKS verwenden ein virtuelles Azure-Netzwerk als Container für Computerressourcen. Um die Kommunikation zwischen HDInsight und AKS zu ermöglichen, müssen Sie die Kommunikation zwischen diesen Netzwerken aktivieren. Bei den Schritten in diesem Dokument wird für die Netzwerke das VNET-Peering (Virtual Network Peering) verwendet. Andere Verbindungen (z. B. VPN) sollten ebenfalls funktionieren. Weitere Informationen zum Peering finden Sie im Dokument [Peering in virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md).
 
-
 Das folgende Diagramm veranschaulicht die in diesem Dokument verwendete Netzwerktopologie:
 
-![HDInsight befindet sich in einem virtuellen Netzwerk, AKS in einem anderen, und die Netzwerke sind über Peering miteinander verbunden](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![HDInsight befindet sich in einem virtuellen Netzwerk, AKS in einem anderen. Sie sind durch Peering verbunden.](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]  
 > Die Namensauflösung zwischen den beiden durch Peering verbundenen Netzwerken ist nicht aktiviert. Daher wird die IP-Adressierung verwendet. Standardmäßig ist Kafka in HDInsight so konfiguriert, dass anstelle von IP-Adressen Hostnamen zurückgegeben werden, wenn Clients eine Verbindung herstellen. Mit den Schritten in diesem Dokument wird Kafka so geändert, dass es stattdessen die Ankündigung von IP-Adressen verwendet.
@@ -113,7 +112,7 @@ In den folgenden Schritten konfigurieren Sie Kafka so, dass anstelle von Domäne
 
 3. Wählen Sie zum Anzeigen der Kafka-Konfiguration oben in der Mitte __Konfigurationen__ aus.
 
-    ![Konfigurationslinks für Kafka](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
 
@@ -135,7 +134,7 @@ In den folgenden Schritten konfigurieren Sie Kafka so, dass anstelle von Domäne
 
 8. Klicken Sie auf die Schaltfläche __Speichern__, um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
 
-    ![Schaltfläche zum Speichern der Konfiguration](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    ![Apache Ambari – Speichern der Konfiguration](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
 
@@ -192,6 +191,7 @@ An diesem Punkt kommunizieren Kafka und Azure Kubernetes Service über die durch
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
+
     Dieser Vorgang dauert einige Minuten.
 
 8. Bearbeiten Sie die Kubernetes-Manifestdatei (`kafka-aks-test.yaml`), und ersetzen Sie `microsoft` durch den Namen des ACR-loginServers, den Sie in Schritt 4 abgerufen haben.
@@ -212,7 +212,7 @@ An diesem Punkt kommunizieren Kafka und Azure Kubernetes Service über die durch
 
 11. Öffnen Sie einen Webbrowser, und geben Sie die externe IP-Adresse für den Dienst ein. Sie gelangen zu einer Seite, die der folgenden Abbildung ähnelt:
 
-    ![Abbildung der Webseite](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    ![Apache Kafka-Testwebseite – Abbildung](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. Geben Sie Text in das Feld ein, und wählen Sie dann die Schaltfläche __Senden__ aus. Die Daten werden an Kafka gesendet. Der Kafka-Kunde in der Anwendung liest die Nachricht und fügt sie dem Abschnitt __Nachrichten von Kafka__ hinzu.
 

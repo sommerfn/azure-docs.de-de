@@ -1,18 +1,18 @@
 ---
 title: Bring Your Own Key für Apache Kafka in Azure HDInsight
 description: In diesem Artikel wird beschrieben, wie Sie mit Ihrem eigenen Schlüssel aus Azure Key Vault Daten verschlüsseln, die in Apache Kafka in Azure HDInsight gespeichert sind.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000096"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122678"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight
 
@@ -22,7 +22,7 @@ Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschl�
 
 Die BYOK-Verschlüsselung besteht aus einem Schritt, der bei der Clustererstellung ohne zusätzliche Kosten ausgeführt wird. Sie müssen bei der Erstellung Ihres Clusters lediglich HDInsight als verwaltete Identität bei Azure Key Vault registrieren und den Verschlüsselungsschlüssel hinzufügen.
 
-Alle Nachrichten an den Kafka-Cluster (einschließlich von Kafka verwaltete Replikate) werden mit einem symmetrischen Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) verschlüsselt. Der DEK wird mit dem Schlüssel für die Schlüsselverschlüsselung (Key Encryption Key, KEK) aus Ihrem Schlüsseltresor geschützt. Die Ver- und Entschlüsselung wird vollständig von Azure HDInsight übernommen. 
+Alle Nachrichten an den Kafka-Cluster (einschließlich von Kafka verwaltete Replikate) werden mit einem symmetrischen Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) verschlüsselt. Der DEK wird mit dem Schlüssel für die Schlüsselverschlüsselung (Key Encryption Key, KEK) aus Ihrem Schlüsseltresor geschützt. Die Ver- und Entschlüsselung wird vollständig von Azure HDInsight übernommen.
 
 Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azure-Portal oder die Azure CLI verwenden. Beim Rotieren eines Schlüssels beginnt der HDInsight Kafka-Cluster innerhalb weniger Minuten mit der Verwendung des neuen Schlüssels. Aktivieren Sie die Schlüsselschutzfunktion „Soft Delete“ (Vorläufig löschen) zum Schutz vor Ransomware und versehentlichem Löschen. Schlüsseltresore ohne diese Schutzfunktion werden nicht unterstützt.
 
@@ -46,6 +46,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
    1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die Schnellstartanleitung für [Azure Key Vault](../../key-vault/key-vault-overview.md). Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../../key-vault/about-keys-secrets-and-certificates.md).
 
    2. Aktivieren Sie „Vorläufig löschen“ für den Schlüsseltresor mithilfe des CLI-Befehls [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update).
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 
         b. Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
 
-        ![Generieren eines Schlüsselnamens](./media/apache-kafka-byok/apache-kafka-create-key.png "Generieren eines Schlüsselnamens")
+        ![Generieren eines Apache Kafka-Schlüsselnamens](./media/apache-kafka-byok/apache-kafka-create-key.png "Generieren eines Schlüsselnamens")
 
         c. Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
 
-        ![Azure Key Vault-Schlüsselliste](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Apache Kafka Key Vault-Schlüsselliste](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des Kafka-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
 
-        ![Kopieren des Schlüsselbezeichners](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka – Abrufen des Schlüsselbezeichners](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Fügen Sie eine verwaltete Identität zur Key Vault-Zugriffsrichtlinie hinzu.
 
         a. Erstellen Sie eine neue Azure Key Vault-Zugriffsrichtlinie.
@@ -99,6 +100,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
    Geben Sie während der Clustererstellung die vollständige Schlüssel-URL (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
 
 ## <a name="rotating-the-encryption-key"></a>Rotieren des Verschlüsselungsschlüssels
+
    Es gibt möglicherweise Szenarien, in denen Sie die Verschlüsselungsschlüssel ändern möchten, die vom Kafka-Cluster verwendet werden, nachdem er erstellt wurde. Hierzu können Sie das Portal verwenden. Für diesen Vorgang muss der Cluster sowohl auf den aktuellen Schlüssel als auch auf den vorgesehenen neuen Schlüssel zugreifen können, andernfalls schlägt der Vorgang zum Rotieren des Schlüssels fehl.
 
    Um den Schlüssel zu rotieren, müssen Sie über die vollständige URL des neuen Schlüssels verfügen (siehe Schritt 3 unter [Einrichten des Schlüsseltresors und der Schlüssel](#setup-the-key-vault-and-keys)). Wechseln Sie anschließend zum Abschnitt „Kafka-Clustereigenschaften“ im Portal, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
@@ -122,7 +124,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 **Was geschieht, wenn der Cluster den Zugriff auf den Schlüsseltresor oder den Schlüssel verliert?**
 Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambari-Portal Warnungen angezeigt. In diesem Zustand schlägt der Vorgang **Schlüssel ändern** fehl. Sobald der Schlüsselzugriff wieder hergestellt wurde, verschwinden die Ambari-Warnungen, und Vorgänge wie z. B. die Schlüsselrotation können erfolgreich ausgeführt werden.
 
-   ![Ambari-Warnung zum Kafka-Schlüsselzugriff](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Ambari-Warnung zum Apache Kafka-Schlüsselzugriff](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Wie kann ich den Cluster wiederherstellen, wenn die Schlüssel gelöscht werden?**
 

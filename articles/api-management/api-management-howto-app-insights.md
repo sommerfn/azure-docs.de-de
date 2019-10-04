@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 10e8edcd3a1e781866eaee2cbe48d1536dbc1229
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073578"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219490"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -78,7 +78,8 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 | Sampling (%)                        | decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
 | Fehler immer protokollieren                   | boolean                           | Wenn diese Einstellung ausgewählt ist, werden alle Fehler unabhängig von der Einstellung **Sampling** in Azure Application Insights protokolliert.                                                                                                                                                                                                                  |
 | Grundlegende Optionen: Header              | list                              | Gibt die Header an, die in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Es werden keine Header protokolliert.                                                                                                                                                                                                             |
-| Grundlegende Optionen: Erste Bytes des Texts  | integer                           | Gibt an, wie viele erste Bytes des Texts in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Text wird nicht protokolliert.                                                                                                                                                                                              |
+| Grundlegende Optionen: Erste Bytes des Texts  | integer                           | Gibt an, wie viele erste Bytes des Texts in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Text wird nicht protokolliert.                                                                                                                                                                                                    |
+| Erweiterte Optionen: Ausführlichkeit         |                                   | Gibt den Ausführlichkeitsgrad an. Nur benutzerdefinierte Ablaufverfolgungen mit höherem Schweregrad werden protokolliert. Standardwert: Information.                                                                                                                                                                                                                               |
 | Erweiterte Optionen: Front-End-Anforderung  |                                   | Gibt an, ob und wie *Front-End-Anforderungen* in Azure Application Insights protokolliert werden. Eine *Front-End-Anforderung* ist eine an den Azure API Management-Dienst gerichtete Anforderung.                                                                                                                                                                        |
 | Erweiterte Optionen: Front-End-Antwort |                                   | Gibt an, ob und wie *Front-End-Antworten* in Azure Application Insights protokolliert werden. *Front-End-Antwort* ist eine vom Azure API Management-Dienst ausgehende Antwort.                                                                                                                                                                   |
 | Erweiterte Optionen: Back-End-Anforderung   |                                   | Gibt an, ob und wie *Back-End-Anforderungen* in Azure Application Insights protokolliert werden. Eine *Back-End-Anforderung* ist eine vom Azure API Management-Dienst ausgehende Anforderung.                                                                                                                                                                        |

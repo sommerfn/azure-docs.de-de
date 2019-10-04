@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f7f6fe31afe35d9ccfd6ee33617bd7e4fbe46b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46cf7d3dd7efecff0280320c100af432367e25f2
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409558"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180818"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -41,7 +41,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 
 * Bei Verwendung von C# muss die Version von Visual Studio 2013 oder höher sein.
 
-* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../storage/common/storage-require-secure-transfer.md).
+* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihr Speicherkonto. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI `wasbs://`. Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
 
 * Ein vorhandener HDInsight-Cluster, dem eine Shared Access Signature hinzugefügt werden kann. Falls nicht, können Sie mit Azure PowerShell einen Cluster erstellen und während der Clustererstellung eine Shared Access Signature hinzufügen.
 
