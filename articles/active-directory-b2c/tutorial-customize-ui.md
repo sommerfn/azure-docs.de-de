@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063284"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291108"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
 
 1. Wählen Sie im Menü **CORS** aus.
 2. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
-3. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
+3. Wählen Sie für **Zulässige Methoden** sowohl `GET` und `PUT` als auch `OPTIONS` aus.
 4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
 5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
 6. Für **Max. Alter** geben Sie 200 ein.

@@ -66,12 +66,12 @@
       items:
         - name: Sicherheitsübersicht
           href: overview-security.md
-        - name: Integrierte Sicherheitskontrollen
-          href: key-vault-security-controls.md
         - name: Sicherheitsumgebungen (Security Worlds)
           href: key-vault-ovw-security-worlds.md
         - name: Schützen einer Key Vault-Instanz
           href: key-vault-secure-your-key-vault.md
+        - name: Integrierte Sicherheitskontrollen
+          href: key-vault-security-controls.md
     - name: Vorläufiges Löschen
       href: key-vault-ovw-soft-delete.md
     - name: Drosselung
@@ -98,8 +98,12 @@
       items:
         - name: Empfehlungen
           href: security-recommendations.md
-    - name: Verwenden einer verwalteten App Service-Identität
-      href: managed-identity.md
+    - name: Authentication
+      items:
+        - name: Verwenden einer verwalteten App Service-Identität
+          href: managed-identity.md
+        - name: Verwenden einer Zugriffssteuerungsrichtlinie
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault-Protokollierung
       href: key-vault-logging.md
     - name: Zugreifen hinter Firewalls
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Verwenden des vorläufigen Löschens in Key Vault mit Azure PowerShell
       href: key-vault-soft-delete-powershell.md
-    - name: Gewähren des Zugriffs mithilfe von Gruppen
-      href: key-vault-group-permissions-for-apps.md
     - name: Konfigurieren von Firewalls und virtuellen Netzwerken
       href: key-vault-network-security.md
     - name: Java-Entwicklung

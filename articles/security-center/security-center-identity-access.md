@@ -3,9 +3,8 @@ title: Überwachen von Identität und Zugriff in Azure Security Center | Microso
 description: Hier erfahren Sie, wie Sie mithilfe der Identitäts- und Zugriffsfunktion in Azure Security Center die Zugriffsaktivitäten der Benutzer sowie identitätsbezogene Probleme überwachen können.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.author: memildin
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905342"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268857"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
-
-> [!NOTE]
-> Der Link „Identität und Zugriff (*klassisch*) anzeigen“ wird am 31. Juli 2019 eingestellt. Klicken Sie [hier](security-center-features-retirement-july2019.md#menu_classicidentity), um Informationen zu alternativen Diensten zu erhalten.
 
 > [!NOTE]
 > Die Überwachung der Identität und des Zugriffs ist als Vorschauversion und im Standard-Tarif vom Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
@@ -68,7 +64,7 @@ Unter **Identität und Zugriff** befinden sich zwei Registerkarten:
 ### <a name="overview-section"></a>Abschnitt „Übersicht“
 Unter **Übersicht** finden Sie eine Liste von Empfehlungen. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl der Abonnements, die diese Empfehlung betrifft. Die dritte Spalte gibt den Schweregrad des Problems an.
 
-1. Wählen Sie eine Empfehlung aus. Das Fenster der Empfehlung wird geöffnet und zeigt Folgendes an:
+1. Wählen Sie eine Empfehlung aus. Das Fenster für Empfehlungen wird geöffnet und zeigt Folgendes an:
 
    - Beschreibung der Empfehlung
    - Liste der fehlerhaften und fehlerfreien Abonnements
@@ -126,13 +122,13 @@ Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsemp
 > Wenn Sie eine Richtlinie für bedingten Zugriff erstellt haben, die MFA erfordert, für die jedoch Ausschlüsse festgelegt sind, wird die Richtlinie beim Assessment der MFA-Empfehlung für Security Center als nicht kompatibel eingestuft, da sie zulässt, dass sich einige Benutzer in Azure ohne MFA anmelden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
+Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Artikeln:
 
 - [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 - [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 - [Schützen des Azure SQL-Diensts und der Daten im Azure Security Center](security-center-sql-service-recommendations.md)
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Hier finden Sie häufig gestellte Fragen zur Verwendung von Security Center.

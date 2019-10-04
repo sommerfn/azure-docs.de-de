@@ -4,6 +4,8 @@
   items:
     - name: Worum handelt es sich bei Azure DB for MySQL?
       href: overview.md
+    - name: Welche MySQL-Option sollte ich auswählen?
+      href: select-right-deployment-type.md
 - name: Schnellstarts
   expanded: true
   items:

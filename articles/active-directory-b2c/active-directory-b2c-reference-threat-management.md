@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065417"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256902"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C
 
@@ -37,10 +37,10 @@ Die ersten 10 Sperrzeiträume sind eine Minute lang. Die nächsten 10 Sperrzeitr
 
 So verwalten Sie die Kennwortschutzeinstellungen, einschließlich des Sperrschwellenwerts:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Portal im Menü oben rechts den Filter **Verzeichnis + Abonnement**, und wählen Sie dann den Azure AD B2C-Mandanten aus.
-1. Wählen Sie im linken Menü **Azure Active Directory** aus (oder wählen Sie im oberen linken Bereich des Portals **Alle Dienste** aus, suchen Sie den Eintrag *Azure Active Directory*, und wählen Sie ihn aus).
-1. Wählen Sie unter **Sicherheit** die Option **Authentifizierungsmethoden**, und wählen Sie dann **Kennwortschutz** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Verwenden Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie unter **Sicherheit** die Option **Authentifizierungsmethoden (Vorschau)** und dann **Kennwortschutz** aus.
 1. Geben Sie die gewünschten Kennwortschutzeinstellungen ein, und klicken Sie dann auf **Speichern**.
 
     ![Seite „Kennwortschutz“ in den Azure AD-Einstellungen des Azure-Portals](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

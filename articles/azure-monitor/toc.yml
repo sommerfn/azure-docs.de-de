@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: Arbeitsbereichsausdruck
                   href: log-query/workspace-expression.md
+                - name: Ressourcenausdruck
+                  href: log-query/resource-expression.md
                 - name: Vereinheitlichen von Anwendungsressourcendaten
                   href: log-query/unify-app-resource-data.md
             - name: Beispiele und Anleitungen

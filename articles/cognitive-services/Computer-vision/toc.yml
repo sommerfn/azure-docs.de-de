@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Erkennung von gedrucktem und handschriftlichem Text
       href: concept-recognizing-text.md
-    - name: Erkennung von nicht jugendfreien und freizügigen Inhalten
+    - name: Erkennung von nicht jugendfreien Inhalten
       href: concept-detecting-adult-content.md
 - name: Anleitungen
   items:

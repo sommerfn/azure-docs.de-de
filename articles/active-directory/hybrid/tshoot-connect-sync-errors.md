@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fc25cffde264a5c9c9e9627bbf4b72ccda60673
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298760"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290866"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -237,9 +237,10 @@ Azure AD Connect darf keinen Soft Match eines Benutzerobjekts aus dem lokalen AD
 ### <a name="how-to-fix"></a>So behebt man den Fehler
 Führen Sie einen der folgenden Schritte aus, um dieses Problem zu beheben:
 
-
-- Ändern Sie den „UserPrincipalName“ in einen Wert, der nicht dem eines Administratorbenutzers in Azure AD entspricht – hierdurch wird ein neuer Benutzer in Azure AD mit übereinstimmendem „UserPrincipalName“ erstellt.
-- Entfernen Sie die Administratorrolle von dem Administratorbenutzer in Azure AD, wodurch ein Soft Match zwischen dem lokalen Benutzerobjekt und dem vorhandenen Azure AD-Benutzerobjekt ermöglicht wird.
+ - Entfernen Sie das Azure AD-Konto (Besitzer) aus allen Administratorrollen. 
+ - Führen Sie für das Objekt „Unter Quarantäne“ in der Cloud das **endgültige Löschen** durch. 
+ - Beim nächsten Synchronisierungszyklus wird der lokale Benutzer dem Cloudkonto per Soft Match-Vorgang hinzugefügt (da es sich beim Cloudbenutzer nicht mehr um einen globalen Administrator handelt). 
+ - Stellen Sie die Rollenmitgliedschaften für den Besitzer wieder her. 
 
 >[!NOTE]
 >Sie können die Administratorrolle dem vorhandenen Benutzerobjekt erneut zuweisen, nachdem der Soft Match zwischen dem lokalen Benutzerobjekt und dem Azure AD-Benutzerobjekt abgeschlossen ist.

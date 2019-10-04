@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053159"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272412"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Verwenden des Bots mit QnA Maker und LUIS zum Verteilen Ihrer Wissensdatenbank
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.
@@ -51,7 +51,7 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
 
 ## <a name="web-app-bot"></a>Web-App-Bot
 
-1. [Erstellen Sie einen „einfachen“ Web-App-Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0), der automatisch eine LUIS-App enthält. Wählen Sie das SDK 4.x und die Programmiersprache C# aus.
+1. [Erstellen Sie einen „einfachen“ Web-App-Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0), der automatisch eine LUIS-App enthält. Wählen Sie die Programmiersprache C# aus.
 
 1. Nachdem der Web-App-Bot erstellt wurde, wählen Sie im Azure-Portal den Web-App-Bot aus.
 1. Wählen Sie **Anwendungseinstellungen** in der Dienstnavigation des Web-App-Bots, und scrollen Sie dann nach unten zum Abschnitt **Anwendungseinstellungen** der verfügbaren Einstellungen.

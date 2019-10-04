@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2aa2dd8373a9568478a02691ca5e6a43e80cd408
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951918"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289425"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -234,8 +234,8 @@ ResultCode | Das Gleiche wie bei OperationResult | Diese Feld gibt das Ergebnis 
 OperationType | 1: Installation<br> 0: Suchen und Herunterladen| „Installation“ ist der einzige Wert für OperationType, der standardmäßig in den Ergebnissen angezeigt wird.
 WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. |Windows Update-Abfrage, die für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | TRUE: Neustart war erforderlich<br> FALSE: Neustart war nicht erforderlich | Gibt an, ob ein Neustart erforderlich war, um die Installation des Updates abzuschließen.
-OperationStartTime | DateTime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) gestartet wurde.
-OperationTime | DateTime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) abgeschlossen wurde.
+OperationStartTime | Datetime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) gestartet wurde.
+OperationTime | Datetime | Gibt den Zeitpunkt an, zu dem der Vorgang (Herunterladen/Installation) abgeschlossen wurde.
 HRESULT | 0 – erfolgreich<br> Sonstiges – Fehler| Gibt den Grund des Fehlers beim Windows Update mit UpdateID „7392acaf-6a85-427c-8a8d-058c25beb0d6“ an.
 
 Wenn noch keine Aktualisierung geplant ist, ist die JSON-Ausgabe leer.
@@ -273,7 +273,11 @@ Der NodeAgentNTService erstellt [Reparaturtasks](https://docs.microsoft.com/dotn
 
     [![Abbildung des Clusterpatchzustands](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
-4. Sobald der Knoten deaktiviert ist, wird der Reparaturtask in den Executing-Zustand gesetzt. Beachten Sie: Sobald ein Reparaturtask im Preparing-Zustand stecken bleibt, weil ein Knoten im Deaktivierungszustand stecken bleibt, kann dies zum Blockieren neuer Reparaturtasks führen und so das Patchen des Clusters anhalten.
+4. Sobald der Knoten deaktiviert ist, wird der Reparaturtask in den Executing-Zustand gesetzt.
+   
+   >[!NOTE]
+   > Ein Knoten, der im deaktivierten Zustand hängen bleibt, kann einen neuen Reparaturtask blockieren. Dies führt dazu, dass der Patchvorgang im Cluster angehalten wird.
+
 5. Sobald ein Reparaturtask sich im Executing-Zustand befindet, beginnt die Patchinstallation auf diesem Knoten. Sobald der Patch installiert ist, kann der Knoten je nach Patch neu gestartet werden oder auch nicht. Posten Sie, dass der Reparaturtask in den Restoring-Zustand gesetzt wird, sodass der Knoten wieder aktiviert und dann als abgeschlossen gekennzeichnet wird.
 
    In v1.4.0 und höheren Versionen der Anwendung können Sie den Zustand des Updates den Integritätsereignissen im NodeAgentService unter der Eigenschaft „WUOperationStatus-[Knotenname]“ entnehmen. Die hervorgehobenen Abschnitte in den folgenden Abbildungen zeigen den Zustand des Windows Updates für Knoten „poanode_0“ und „poanode_2“:

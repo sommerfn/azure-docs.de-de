@@ -106,6 +106,10 @@
       href: /rest/api/virtual-desktop/
 - name: Ressourcen
   items:
+    - name: Erfahrungsschätzung
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Supportgruppe der technischen Community
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
     - name: UserVoice-Forum

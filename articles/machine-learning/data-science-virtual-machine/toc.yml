@@ -4,10 +4,12 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei Data Science Virtual Machine?
+    - name: Worum handelt es sich bei Data Science Virtual Machine (DSVM)?
       href: overview.md
     - name: Worum handelt es sich bei der DSVM-Instanz für geografische KI?
       href: geo-ai-dsvm-overview.md
+    - name: Auf der DSVM-Instanz enthaltene Tools
+      href: tools-included.md
 - name: Schnellstarts
   expanded: true
   items:

@@ -7,6 +7,12 @@
       items:
         - name: Web-App in einem Linux-Container
           href: secure-web-app.md
+        - name: Web-App mit Azure Active Directory
+          href: secure-aad-app.md
+    - name: Branchenkonforme Lösungen
+      items:
+        - name: Payment Card Industry
+          href: secure-pci-web-app.md
 - name: Konzepte
   expanded: true
   items:

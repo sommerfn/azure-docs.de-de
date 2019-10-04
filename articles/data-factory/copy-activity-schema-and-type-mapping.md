@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875803"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272264"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 
-In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) beim Kopieren der Daten ausführt.
+In diesem Artikel wird beschrieben, wie die Kopieraktivität von Azure Data Factory beim Kopieren der Daten die Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) durchführt.
 
 ## <a name="schema-mapping"></a>Schemazuordnung
 
@@ -92,7 +92,7 @@ Die folgenden Eigenschaften werden unter `translator` -> `mappings` unterstützt
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Name der Quell- oder Senkenspalte.                           | Ja      |
 | ordinal  | Spaltenindex. Beginnen Sie mit 1. <br>Anwenden und erforderlich, wenn Text mit Trennzeichen und ohne Kopfzeile verwendet wird. | Nein       |
-| path     | Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert oder zugeordnet werden soll. Anwenden auf hierarchische Daten, z. B. MongoDB/REST.<br>Der JSON-Pfad für Felder unter der Stammobjekt beginnt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Arrayelement. | Nein       |
+| path     | Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert oder zugeordnet werden soll. Anwenden auf hierarchische Daten, z. B. MongoDB/REST.<br>Der JSON-Pfad für Felder unter dem Stammobjekt beginnt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Arrayelement. | Nein       |
 | type     | Data Factory-Zwischendatentyp der Quell- oder Senkenspalte. | Nein       |
 | culture  | Kultur der Quell- oder Senkenspalte. <br>Anwenden, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Der Standardwert lautet `en-us`. | Nein       |
 | format   | Zu verwendende Formatzeichenfolge, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein       |
@@ -112,7 +112,7 @@ Sie können die Kopieraktivität -> `translator` -> `columnMappings` angeben, um
 * Entweder sind weniger Spalten oder mehr Spalten in „structure“ des Senkendatasets, als in der Zuordnung angegeben.
 * Doppelte Zuordnung.
 
-Im folgenden Beispiel verfügt das Eingabedataset über eine Struktur, und diese verweist auf eine Tabelle in einer lokalen Oracle-Datenbank.
+Im folgenden Beispiel verfügt das Eingabedataset über eine Struktur, die auf eine Tabelle in einer lokalen Oracle-Datenbank verweist.
 
 ```json
 {
@@ -287,7 +287,7 @@ Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Kon
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double

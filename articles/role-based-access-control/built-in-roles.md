@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801376"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289608"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -183,8 +183,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Aktionen** |  |
 > | * | Erstellen und Verwalten von Ressourcen aller Typen |
 > | **NotActions** |  |
-> | Microsoft.Authorization/*/Delete | Löschen von Rollen und Rollenzuweisungen |
-> | Microsoft.Authorization/*/Write | Erstellen von Rollen und Rollenzuweisungen |
+> | Microsoft.Authorization/*/Delete | Löschen von Rollen, Richtlinienzuweisungen, Richtliniendefinitionen und Richtliniensatzdefinitionen |
+> | Microsoft.Authorization/*/Write | Erstellen von Rollen, Rollenzuweisungen, Richtlinienzuweisungen, Richtliniendefinitionen und Richtliniensatzdefinitionen |
 > | Microsoft.Authorization/elevateAccess/Action | Gewährt dem Aufrufer Zugriff vom Typ „Benutzerzugriffsadministrator“ auf der Mandantenebene. |
 > | Microsoft.Blueprint/blueprintAssignments/write | Erstellt oder aktualisiert alle Blaupausenartefakte. |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Löscht alle Blaupausenartefakte. |

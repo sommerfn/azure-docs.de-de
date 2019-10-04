@@ -276,6 +276,12 @@
               href: authentication-national-cloud.md
             - name: Authentication
               href: msal-national-cloud.md
+        - name: Automatische Benutzerbereitstellung (SCIM)
+          items:
+            - name: Worum handelt es sich bei automatischer Benutzerbereitstellung?
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: Erstellen und Integrieren eines SCIM-Endpunkts
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: Anleitungen
       items:
         - name: Authentication
